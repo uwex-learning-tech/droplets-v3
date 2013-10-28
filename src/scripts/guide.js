@@ -38,7 +38,7 @@ $(document).ready(function() {
 	
 	function getContent(page) {
 		$("#page-content").hide();
-		$("#page-content").load("parts/"+page+".html", function(){
+		$("#page-content").load("src/parts/"+page+".html", function(){
 			SyntaxHighlighter.highlight();
 			$(this).fadeIn("slow");
 		});
