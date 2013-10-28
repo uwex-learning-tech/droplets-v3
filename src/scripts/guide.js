@@ -5,21 +5,36 @@ $(document).ready(function() {
 	var pages;
 	var pIndex = -1;
 	var hIndex = -1;
+	var isHome = false;
 	
 	/******************** FUNCTIONS ********************/
 	
 	function determinePage() {
 		var pageId = $("html").attr("id");
 		
-		if (pageId === "css") {
-			pages = ["pageheaders","typo","layouts","emphasis","tables","footers","helpers"];
-		} else if (pageId === "callouts") {
-			pages = ["callouts-inline","callouts-block-level"];
+		if (pageId === "lytele") {
+			pages = ["pageheaders","typo","layouts","emphasis","callouts-inline","callouts-block-level","tables","footers","helpers"];
 		} else if (pageId === "advEx") {
+			// do nothing at the moment
+		} else if (pageId === "landing") {
+			var wHeight = $(".guide-wrapper").outerHeight(),
+				cHeight = $(".cover").outerHeight(),
+				middle = ((wHeight - cHeight) / 2) - 40;
+			
+			$(".cover").css("padding-top",middle+"px");
+			$(window).resize(function(){
+				var wHeight = $(".guide-wrapper").outerHeight(),
+					cHeight = $(".cover").outerHeight(),
+					middle = ((wHeight - cHeight) / 2) - 40;
+			
+				$(".cover").css("padding-top",middle+"px");
+			});
+			isHome = true;
 			
 		} else {
 			pages = ["404"];
 		}
+		
 	}
 	
 	function checkIfExist(page) {
@@ -83,32 +98,36 @@ $(document).ready(function() {
 	
 	determinePage();
 	
-	if (checkForHash() === -1) {
-		makeCurrent(0);
-		getContent(pages[0]);
-	}
-	
-	$(window).on('hashchange', function() {
-		checkForHash();
-	});
-	
-	$(".toc ul li a").on("click", function() {
-		var exist = false;
-		var parent = this.parentNode;
-		var index = $(parent).index();
-		var current = $(this).data("name");
-		exist = checkIfExist(current);
-		
-		if (exist) {
-			if (index !== pIndex) {
-				makeCurrent(index);
-				getContent(current);
-			}
-		} else {
-			makeCurrent(-1);
-			getContent("404");
+	if (!isHome) {
+		if (checkForHash() === -1) {
+			makeCurrent(0);
+			getContent(pages[0]);
 		}
 		
-	});
+		$(window).on('hashchange', function() {
+			checkForHash();
+		});
+		
+		$(".toc ul li a").on("click", function() {
+			var exist = false;
+			var parent = this.parentNode;
+			var index = $(parent).index();
+			var current = $(this).data("name");
+			exist = checkIfExist(current);
+			
+			if (exist) {
+				if (index !== pIndex) {
+					makeCurrent(index);
+					getContent(current);
+				}
+			} else {
+				makeCurrent(-1);
+				getContent("404");
+			}
+			
+		});
+	}
+	
+	
 	
 });

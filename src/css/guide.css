@@ -23,24 +23,24 @@ body {
 	letter-spacing: .05em;
 	font-weight: 100;
 }
-.guide-wrapper.home .container .logo {
-	padding: 80px 0px 0px 0px;
-	text-align: center;
-}
 .guide-wrapper.home .container .cover {
 	width:534px;
 	margin: 0px auto;
 }
+.guide-wrapper.home .container .cover .logo {
+	padding: 20px 0px 0px 0px;
+	text-align: center;
+}
 .guide-wrapper.home .container .cover p.lead-one {
 	font-family: 'Coda Caption', sans-serif;
 	text-transform: uppercase;
-	font-size: 1.9687em;
+	font-size: 1.912em;
 	padding: 0;
 	letter-spacing: .038em;
 	margin: 20px 0px 0px 0px;
 }
 .guide-wrapper.home .container .cover p.lead-two {
-	font-size: 6.79em;
+	font-size: 6.78em;
 	margin: -15px 0px 0px 0px;
 	padding:0px;
 	font-family: 'Lily Script One', cursive;
@@ -55,10 +55,12 @@ body {
 }
 .guide-wrapper.home .container .cover p.lead-four {
 	text-align: justify;
+	font-weight: 400;
 }
 .guide-wrapper.home .container .cover p.action {
 	text-align: center;
 	font-size: 24px;
+	font-weight: 400;
 }
 .guide-wrapper.home a,
 .guide-wrapper.home a:link,
@@ -76,12 +78,44 @@ body {
 /* header */
 .guide-container {
 	background-color: #0f4b90;
-	border-bottom: 5px solid #000;
 	margin:0px;
 }
 .guide-nav {
+	background-color: #393939;
+	border-top: 5px solid #000;
+
+}
+.guide-nav nav {
 	width: 960px;
 	margin: 0px auto;
+}
+.guide-nav nav ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.guide-nav nav ul li {
+	display: inline-block;
+	margin-right: 10px;
+}
+.guide-nav nav ul li a,
+.guide-nav nav ul li a:link,
+.guide-nav nav ul li a:visited {
+	font-size: 14px;
+	text-decoration: none;
+	color:#FFF;
+	padding:10px 10px 5px 10px;
+	background-color: transparent;
+	border-radius: 0;
+	opacity: 1;
+}
+.guide-nav nav ul li a:hover {
+	border-bottom:5px solid #3f8feb;
+}
+.guide-nav nav ul li a.active {
+	color:#3f8feb;
+	border-bottom:5px solid #3f8feb;
+	opacity: 1;
 }
 .guide-title {
 	width:960px;
@@ -99,59 +133,29 @@ body {
 }
 .guide-container ul li {
 	display: inline-block;
-	margin-left: 10px;
+	margin-left: 0px;
 }
 .guide-container ul li.active > a {
 	background-color: #000;
+	opacity: 1;
 	color:#fff !important;
 }
 .guide-container ul li a,
 .guide-container ul li a:visited {
 	display: block;
 	text-decoration: none;
-	color:#000;
-	padding:5px 10px 0px 10px;
-	border-radius: 5px 5px 0px 0px;
+	color:#f9f9f9;
+	padding:5px 10px;
+	border-radius: 0px 10px 0px 0px;
+	background-color: #0f3765;
+	opacity: .75;
 }
 .guide-container ul li a:hover {
 	background-color: #000;
 	color:#fff;
+	opacity: 1;
 }
 /* end header */
-
-/* guide sub nav */
-nav {
-	margin:25px 0px;
-}
-nav ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-nav ul li {
-	display: inline-block;
-	margin-right: 15px;
-}
-nav ul li a,
-nav ul li a:link,
-nav ul li a:visited {
-	font-size: 14px;
-	text-decoration: none;
-	color:#FFF;
-	padding:10px;
-	background-color: #0f4b90;
-	border-radius: 6px;
-	opacity: 0.75;
-}
-nav ul li a:hover {
-	background-color: #000;
-	opacity: 1;
-}
-nav ul li a.active {
-	background-color: #000;
-	opacity: 1;
-}
-/* end guide sub nav */
 
 /* code and result container */
 .guide-example {
@@ -202,7 +206,7 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	padding:0px;
 	font-size: 12px;
 	background-color: #393939;
-	margin: 0px;
+	margin: 0px 0px 0px 0px;
 }
 
 
