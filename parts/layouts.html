@@ -1,0 +1,376 @@
+<header>
+	<h1>Layouts</h1>
+</header>
+<h2>Two-Column Body Copy</h2>
+<p>A two-column page content layout using two nested <code>&lt;section&gt;</code> elements with <code>two-column</code> class applied to the outer-most <code>&lt;div&gt;</code> element. In addition, a <code>&lt;div&gt;</code> element with <code>clearfix</code> class is needed right after the second <code>&lt;div&gt;</code> element.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;div class="two-column"&gt;
+	&lt;section&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/section&gt;
+	&lt;section&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/section&gt;
+&lt;/div&gt;
+&lt;div class="clearfix"&gt;&lt;/div&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<div class="two-column">
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</section>
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</section>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<h3>Alternative</h3>
+<p>A two-column page content layout with wide right column and a left side bar.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;div class="two-column wide-right"&gt;
+	&lt;aside&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/aside&gt;
+	&lt;section&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/section&gt;
+&lt;/div&gt;
+&lt;div class="clearfix"&gt;&lt;/div&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<div class="two-column wide-right">
+			<aside>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</aside>
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</section>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<p>A two-column page content layout with wide left column and a right side bar.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;div class="two-column wide-left"&gt;
+	&lt;section&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/section&gt;
+	&lt;aside&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/aside&gt;
+&lt;/div&gt;
+&lt;div class="clearfix"&gt;&lt;/div&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<div class="two-column wide-left">
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</section>
+			<aside>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</aside>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<h2>Three-Column Body Copy</h2>
+<p>A three-column page content layout using three nested <code>&lt;div&gt;</code> elements with <code>three-column</code> class applied to the outer-most <code>&lt;div&gt;</code> element. In addition, a <code>&lt;div&gt;</code> element with <code>clearfix</code> class is needed right after the third <code>&lt;div&gt;</code> element.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;div class="three-column"&gt;
+	&lt;section&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/section&gt;
+	&lt;section&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/section&gt;
+	&lt;section&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/section&gt;
+&lt;/div&gt;
+&lt;div class="clearfix"&gt;&lt;/div&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<div class="three-column">
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</section>
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</section>
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</section>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<h2>First Line Indentation</h2>
+<p>Indent the first line of a paragraph by applying the <code>indent</code> class to the <code>&lt;p&gt;</code> element. The <code>indent</code> class can also be applied to a <code>&lt;div&gt;</code> element. The first line of all the paragraphs inside the <code>&lt;div&gt;</code> element will be indented.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;p class="indent"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo
+itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur
+adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus
+dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse!&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p class="indent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse!</p>
+	</div>
+</div>
+
+<h2>All Line Indentation</h2>
+<p>Indent all lines in a paragraph by applying the <code>indent-all</code> class to a <code>&lt;div&gt;</code> element. The <code>indent-all</code> class can also be applied to a <code>&lt;p&gt;</code> element. Only that individual paragraph will be indented.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo
+itaque modi quos delectus nesciunt est facere.&lt;/p&gt;
+
+&lt;div class="indent-all"&gt;
+	&lt;p&gt;Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos
+	quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi,
+	possimus!&lt;/p&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic
+	officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+	voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+&lt;/div&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere.</p>
+
+		<div class="indent-all">
+			<p> Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+		</div>
+	</div>
+</div>
+
+<h2>Hanging Indentation</h2>
+<p>Indent all lines except the first line in a paragraph by applying the <code>hanging-indent</code> class to a <code>&lt;p&gt;</code> element. The <code>hanging-indent</code> class can also be applied to a <code>&lt;div&gt;</code> element, and any elements nested inside the <code>&lt;div&gt;</code> element will have the hanging indentation format.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;p class="hanging-indent"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
+impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis
+at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet,
+consectetur adipisicing elit. Autem, perspiciatis voluptatibus quasi perferendis veritatis
+vitae architecto corporis quos! Consequuntur, et, atque voluptatem obcaecati sequi optio
+aspernatur maxime nam. Quisquam, cum!&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p class="hanging-indent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, perspiciatis voluptatibus quasi perferendis veritatis vitae architecto corporis quos! Consequuntur, et, atque voluptatem obcaecati sequi optio aspernatur maxime nam. Quisquam, cum!</p>
+	</div>
+</div>
+
+<h2>Text Alignments</h2>
+<p>Align text on the page by applying the <code>left</code>, <code>center</code>, or <code>right</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;p class="left"&gt;The quick brown fox jumps over the lazy dog.&lt;/p&gt;
+&lt;p class="center"&gt;The quick brown fox jumps over the lazy dog.&lt;/p&gt;
+&lt;p class="right"&gt;The quick brown fox jumps over the lazy dog.&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p class="left">The quick brown fox jumps over the lazy dog.</p>
+		<p class="center">The quick brown fox jumps over the lazy dog.</p>
+		<p class="right">The quick brown fox jumps over the lazy dog.</p>
+	</div>
+</div>
+
+<h3>Justify Alignment</h3>
+<p>Justify columns of paragraph by using the <code>justify</code> class. The <code>justify</code> class can be used with individual <code>&lt;div&gt;</code> and <code>&lt;p&gt;</code> elements.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;div class="three-column justify"&gt;
+	&lt;section&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/section&gt;
+	&lt;section&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/section&gt;
+	&lt;section&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+		explicabo, sit repellat tenetur soluta eius quae ducimus vero minima
+		perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum
+		dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis
+		at illo natus deserunt necessitatibus dignissimos quo assumenda est odit
+		voluptatem laudantium dolores alias esse! Excepturi, possimus!&lt;/p&gt;
+	&lt;/section&gt;
+&lt;/div&gt;
+&lt;div class="clearfix"&gt;&lt;/div&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<div class="three-column justify">
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</section>
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</section>
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
+			</section>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<h2>Line Break</h2>
+<p>Move to a new line inside a <code>&lt;p&gt;</code> element by using the <code>&lt;br /&gt;</code> element.</p>
+
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;p&gt;&lt;strong&gt;Ethan Lin&lt;/strong&gt;&lt;br /&gt;ethan.lin.05@gmail.com&lt;br /&gt;www.ethanslin.com&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p><strong>Ethan Lin</strong><br />ethan.lin.05@gmail.com<br />www.ethanslin.com</p>
+	</div>
+</div>
+
+
+<h2>Horizontal Rule</h2>
+<p>Create a horizontal line to separate contents.</p>
+
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, ut, esse doloribus
+libero natus repudiandae similique placeat quis repellat necessitatibus. Voluptas, porro sed
+dolore enim hic repudiandae consequatur quisquam dicta.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, ut, esse doloribus
+libero natus repudiandae similique placeat quis repellat necessitatibus. Voluptas, porro sed
+dolore enim hic repudiandae consequatur quisquam dicta.&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, ut, esse doloribus libero natus repudiandae similique placeat quis repellat necessitatibus. Voluptas, porro sed dolore enim hic repudiandae consequatur quisquam dicta.</p>
+		<hr />
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, ut, esse doloribus libero natus repudiandae similique placeat quis repellat necessitatibus. Voluptas, porro sed dolore enim hic repudiandae consequatur quisquam dicta.</p>
+	</div>
+</div>
+
+<h3>Alternative</h3>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, ut, esse doloribus
+libero natus repudiandae similique placeat quis repellat necessitatibus. Voluptas, porro sed
+dolore enim hic repudiandae consequatur quisquam dicta.&lt;/p&gt;
+
+&lt;hr class="wide" /&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, ut, esse doloribus
+libero natus repudiandae similique placeat quis repellat necessitatibus. Voluptas, porro sed
+dolore enim hic repudiandae consequatur quisquam dicta.&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, ut, esse doloribus libero natus repudiandae similique placeat quis repellat necessitatibus. Voluptas, porro sed dolore enim hic repudiandae consequatur quisquam dicta.</p>
+		<hr class="wide" />
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, ut, esse doloribus libero natus repudiandae similique placeat quis repellat necessitatibus. Voluptas, porro sed dolore enim hic repudiandae consequatur quisquam dicta.</p>
+	</div>
+</div>
+
+<div class="push"></div>

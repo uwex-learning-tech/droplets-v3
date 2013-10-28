@@ -1,0 +1,401 @@
+<!-- table -->
+<header>
+	<h1>Tables</h1>
+</header>
+
+<p>The width of the <code>&lt;table&gt;</code> element will always be 100%; thus, it fills up the whole width of the page or container. The <code>&lt;table&gt;</code> is a block-level element. The use of <code>&lt;thead&gt;</code> is optional but recommended. The use of <code>&lt;tbody&gt;</code> is required in table with classes. The cells of the table will auto-resize accordingly to the content they held.</p>
+
+<h2>Basic Table</h2>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;table&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;ID&lt;/th&gt;
+			&lt;th&gt;First Name&lt;/th&gt;
+			&lt;th&gt;Last Name&lt;/th&gt;
+			&lt;th&gt;Username&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;1&lt;/td&gt;
+			&lt;td&gt;Ethan&lt;/td&gt;
+			&lt;td&gt;Lin&lt;/td&gt;
+			&lt;td&gt;ethan.lin&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;2&lt;/td&gt;
+			&lt;td&gt;Patrick&lt;/td&gt;
+			&lt;td&gt;Wirth&lt;/td&gt;
+			&lt;td&gt;patrick.wirth&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;3&lt;/td&gt;
+			&lt;td&gt;Bryan&lt;/td&gt;
+			&lt;td&gt;Bortz&lt;/td&gt;
+			&lt;td&gt;bryan.bortz&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;4&lt;/td&gt;
+			&lt;td&gt;John&lt;/td&gt;
+			&lt;td&gt;Oppenheimer&lt;/td&gt;
+			&lt;td&gt;john.oppenheimer&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;5&lt;/td&gt;
+			&lt;td&gt;Kristin&lt;/td&gt;
+			&lt;td&gt;Barnes&lt;/td&gt;
+			&lt;td&gt;kristin.barnes&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;6&lt;/td&gt;
+			&lt;td&gt;Nate&lt;/td&gt;
+			&lt;td&gt;Ewings&lt;/td&gt;
+			&lt;td&gt;nate.ewings&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Ethan</td>
+					<td>Lin</td>
+					<td>ethan.lin</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Patrick</td>
+					<td>Wirth</td>
+					<td>patrick.wirth</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Bryan</td>
+					<td>Bortz</td>
+					<td>bryan.bortz</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>John</td>
+					<td>Oppenheimer</td>
+					<td>john.oppenheimer</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Kristin</td>
+					<td>Barnes</td>
+					<td>kristin.barnes</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Nate</td>
+					<td>Ewings</td>
+					<td>nate.ewings</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<h2>Striped Table</h2>
+<p>Add "zebra-striping" to odd table rows within the <code>&lt;tbody&gt;</code> element by using the <code>striped</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;table class="striped"&gt;&lt;/table&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<table class="striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Ethan</td>
+					<td>Lin</td>
+					<td>ethan.lin</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Patrick</td>
+					<td>Wirth</td>
+					<td>patrick.wirth</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Bryan</td>
+					<td>Bortz</td>
+					<td>bryan.bortz</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>John</td>
+					<td>Oppenheimer</td>
+					<td>john.oppenheimer</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Kristin</td>
+					<td>Barnes</td>
+					<td>kristin.barnes</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Nate</td>
+					<td>Ewings</td>
+					<td>nate.ewings</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<h2>Bordered Table</h2>
+<p>Add borders to all table cells by using the <code>bordered</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;table class="bordered"&gt;&lt;/table&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<table class="bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Ethan</td>
+					<td>Lin</td>
+					<td>ethan.lin</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Patrick</td>
+					<td>Wirth</td>
+					<td>patrick.wirth</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Bryan</td>
+					<td>Bortz</td>
+					<td>bryan.bortz</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>John</td>
+					<td>Oppenheimer</td>
+					<td>john.oppenheimer</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Kristin</td>
+					<td>Barnes</td>
+					<td>kristin.barnes</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Nate</td>
+					<td>Ewings</td>
+					<td>nate.ewings</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<h2>Hover Rows</h2>
+<p>Add a hover state to all table rows by using the <code>hover</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;table class="hover"&gt;&lt;/table&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<table class="hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Ethan</td>
+					<td>Lin</td>
+					<td>ethan.lin</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Patrick</td>
+					<td>Wirth</td>
+					<td>patrick.wirth</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Bryan</td>
+					<td>Bortz</td>
+					<td>bryan.bortz</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>John</td>
+					<td>Oppenheimer</td>
+					<td>john.oppenheimer</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Kristin</td>
+					<td>Barnes</td>
+					<td>kristin.barnes</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Nate</td>
+					<td>Ewings</td>
+					<td>nate.ewings</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<h2>Table with Contextual Classes</h2>
+<p>Change the background of rows or cells with a meaningful color by using the following class: <code>info</code> (light blue), <code>success</code> (green), <code>warning</code> (yellow), and <code>danger</code> (red). Please use these contextual classes wisely.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;table&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;ID&lt;/th&gt;
+			&lt;th&gt;First Name&lt;/th&gt;
+			&lt;th&gt;Last Name&lt;/th&gt;
+			&lt;th&gt;Username&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr class="info"&gt;
+			&lt;td&gt;1&lt;/td&gt;
+			&lt;td&gt;Ethan&lt;/td&gt;
+			&lt;td&gt;Lin&lt;/td&gt;
+			&lt;td&gt;ethan.lin&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;2&lt;/td&gt;
+			&lt;td&gt;Patrick&lt;/td&gt;
+			&lt;td class="success"&gt;Wirth&lt;/td&gt;
+			&lt;td&gt;patrick.wirth&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;3&lt;/td&gt;
+			&lt;td&gt;Bryan&lt;/td&gt;
+			&lt;td&gt;Bortz&lt;/td&gt;
+			&lt;td class="warning"&gt;bryan.bortz&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;4&lt;/td&gt;
+			&lt;td&gt;John&lt;/td&gt;
+			&lt;td class="danger"&gt;Oppenheimer&lt;/td&gt;
+			&lt;td&gt;john.oppenheimer&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;5&lt;/td&gt;
+			&lt;td&gt;Kristin&lt;/td&gt;
+			&lt;td&gt;Barnes&lt;/td&gt;
+			&lt;td&gt;kristin.barnes&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;6&lt;/td&gt;
+			&lt;td&gt;Nate&lt;/td&gt;
+			&lt;td&gt;Ewings&lt;/td&gt;
+			&lt;td&gt;nate.ewings&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="info">
+					<td>1</td>
+					<td>Ethan</td>
+					<td>Lin</td>
+					<td>ethan.lin</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td class="success">Patrick</td>
+					<td>Wirth</td>
+					<td>patrick.wirth</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Bryan</td>
+					<td>Bortz</td>
+					<td class="warning">bryan.bortz</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>John</td>
+					<td class="danger">Oppenheimer</td>
+					<td>john.oppenheimer</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Kristin</td>
+					<td>Barnes</td>
+					<td>kristin.barnes</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Nate</td>
+					<td>Ewings</td>
+					<td>nate.ewings</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="push"></div>
+<!-- end table -->

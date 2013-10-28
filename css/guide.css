@@ -1,0 +1,231 @@
+@import url(https://fonts.googleapis.com/css?family=Coda+Caption:800|Lily+Script+One);
+
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	background:#e9e9e9;
+	font-size: 16px;
+	color: #333333;
+	line-height: 1.428;
+}
+.guide-wrapper {
+	min-height: 100%;
+    height: auto !important;
+    margin: 0 auto -60px;
+}
+.guide-wrapper.home {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #0f4b90;
+	color:#FFFFFF;
+	letter-spacing: .05em;
+	font-weight: 100;
+}
+.guide-wrapper.home .container .logo {
+	padding: 80px 0px 0px 0px;
+	text-align: center;
+}
+.guide-wrapper.home .container .cover {
+	width:534px;
+	margin: 0px auto;
+}
+.guide-wrapper.home .container .cover p.lead-one {
+	font-family: 'Coda Caption', sans-serif;
+	text-transform: uppercase;
+	font-size: 1.9687em;
+	padding: 0;
+	letter-spacing: .038em;
+	margin: 20px 0px 0px 0px;
+}
+.guide-wrapper.home .container .cover p.lead-two {
+	font-size: 6.79em;
+	margin: -15px 0px 0px 0px;
+	padding:0px;
+	font-family: 'Lily Script One', cursive;
+	text-shadow: 4px 4px 0px #333;
+}
+.guide-wrapper.home .container .cover p.lead-three {
+	font-size: 1.55em;
+	margin: -35px 0px 0px 0px;
+	padding:0px 5px 0px 0px;
+	font-family: 'Lily Script One', cursive;
+	text-align: right;
+}
+.guide-wrapper.home .container .cover p.lead-four {
+	text-align: justify;
+}
+.guide-wrapper.home .container .cover p.action {
+	text-align: center;
+	font-size: 24px;
+}
+.guide-wrapper.home a,
+.guide-wrapper.home a:link,
+.guide-wrapper.home a:visited {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+.page-container {
+	margin: 0px auto;
+}
+/* header */
+.guide-container {
+	background-color: #0f4b90;
+	border-bottom: 5px solid #000;
+	margin:0px;
+}
+.guide-nav {
+	width: 960px;
+	margin: 0px auto;
+}
+.guide-title {
+	width:960px;
+	font-size: 34px;
+	line-height: 1.1;
+	color:#ffffff;
+	margin:0px auto;
+	padding:20px 0px;
+}
+.guide-container ul {
+	width: 960px;
+	padding: 0;
+	margin: 10px auto 0;
+	list-style: none;
+}
+.guide-container ul li {
+	display: inline-block;
+	margin-left: 10px;
+}
+.guide-container ul li.active > a {
+	background-color: #000;
+	color:#fff !important;
+}
+.guide-container ul li a,
+.guide-container ul li a:visited {
+	display: block;
+	text-decoration: none;
+	color:#000;
+	padding:5px 10px 0px 10px;
+	border-radius: 5px 5px 0px 0px;
+}
+.guide-container ul li a:hover {
+	background-color: #000;
+	color:#fff;
+}
+/* end header */
+
+/* guide sub nav */
+nav {
+	margin:25px 0px;
+}
+nav ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+nav ul li {
+	display: inline-block;
+	margin-right: 15px;
+}
+nav ul li a,
+nav ul li a:link,
+nav ul li a:visited {
+	font-size: 14px;
+	text-decoration: none;
+	color:#FFF;
+	padding:10px;
+	background-color: #0f4b90;
+	border-radius: 6px;
+	opacity: 0.75;
+}
+nav ul li a:hover {
+	background-color: #000;
+	opacity: 1;
+}
+nav ul li a.active {
+	background-color: #000;
+	opacity: 1;
+}
+/* end guide sub nav */
+
+/* code and result container */
+.guide-example {
+	overflow: hidden;
+	border: 1px #ccc solid;
+	border-radius: 6px;
+	margin-bottom: 35px;
+}
+.guide-example .tip {
+	font-size:12px;
+	font-weight: 500;
+	text-transform: uppercase;
+	color:#888;
+	margin: 0px 0px 15px -15px;
+	width:50px;
+	padding: 5px;
+	background: #eee;
+	border-radius: 0px 0px 5px 0px;
+}
+.guide-example .guide-code {
+	padding:0px 15px 15px 15px;
+}
+.guide-example .guide-result {
+	border-top: 1px solid #ccc;
+	background: #f7f7f9;
+	padding:0px 15px 5px 15px;
+}
+.syntaxhighlighter .toolbar {
+	display: none;
+}
+code {
+	padding:2px 4px;
+	color:#419ade;
+	white-space: nowrap;
+	background-color: #f9f2f4;
+	border-radius: 4px;
+}
+/* end code and result container */
+
+/* guide footer */
+.guide-footer {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color:#a5a5a5;
+	font-weight: 300;
+	letter-spacing: normal;
+	height: 55px;
+	border-top: 5px #242424 solid;
+	padding:0px;
+	font-size: 12px;
+	background-color: #393939;
+	margin: 0px;
+}
+
+
+/* end guide footer */
+
+/* 404 error */
+.notfound {
+	width: 500px;
+	margin:0px auto;
+	padding:50px 0;
+	text-align: center;
+}
+.notfound h1 {
+	font-size: 38px;
+}
+.notfound p {
+	margin: 0px 0px 15px 0px;
+}
+.notfound p small {
+	margin: 0px;
+	font-size: 18px;
+	color:#ccc;
+}
+.push {
+	height: 60px;
+}
