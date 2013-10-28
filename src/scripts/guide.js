@@ -13,7 +13,7 @@ $(document).ready(function() {
 		var pageId = $("html").attr("id");
 		
 		if (pageId === "lytele") {
-			pages = ["pageheaders","typo","layouts","emphasis","callouts-inline","callouts-block-level","tables","helpers"];
+			pages = ["pageheaders","typo","layouts","emphasis","callouts-inline","callouts-block-level","tables","image","helpers"];
 		} else if (pageId === "advEx") {
 			// do nothing at the moment
 		} else if (pageId === "landing") {
