@@ -13,7 +13,7 @@ $(document).ready(function() {
 		var pageId = $("html").attr("id");
 		
 		if (pageId === "lytele") {
-			pages = ["pageheaders","typo","layouts","emphasis","callouts-inline","callouts-block-level","tables","footers","helpers"];
+			pages = ["pageheaders","typo","layouts","emphasis","callouts-inline","callouts-block-level","tables","helpers"];
 		} else if (pageId === "advEx") {
 			// do nothing at the moment
 		} else if (pageId === "landing") {
@@ -82,8 +82,10 @@ $(document).ready(function() {
 					return (1);
 				}
 			} else {
-				makeCurrent(-1);
+				/*
+makeCurrent(-1);
 				getContent("404");
+*/
 				return (0);
 			}
 		} else {
@@ -128,6 +130,6 @@ $(document).ready(function() {
 		});
 	}
 	
-	
+	$(function(){ $.scrollUp(); });
 	
 });
