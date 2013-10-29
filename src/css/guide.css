@@ -274,7 +274,7 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* buttons */
-.btn, a.btn, button.btn {
+.home .btn, .home a.btn, .home button.btn {
 	display: inline-block;
 	border-top: 1px solid #737373;
 	background: #949596;
@@ -299,12 +299,12 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	outline: none;
 	cursor: pointer;
 }
-.btn:hover, a.btn:hover {
+.home .btn:hover, .home a.btn:hover {
 	border-top-color: #28597a;
 	background: #404040;
 	color: #ffffff;
 }
-.btn.warning, a.btn.warning, button.btn.warning {
+.home .btn.warning, .home a.btn.warning, .home button.btn.warning {
 	border-top: 1px solid #f2d450;
 	background: #edce42;
 	background: -webkit-gradient(linear, left top, left bottom, from(#c7a50e), to(#edce42));
@@ -313,11 +313,11 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: -ms-linear-gradient(top, #c7a50e, #edce42);
 	background: -o-linear-gradient(top, #c7a50e, #edce42);
 }
-.btn.warning:hover, a.btn.warning:hover, button.btn.warning:hover {
+.home .btn.warning:hover, .home a.btn.warning:hover, .home button.btn.warning:hover {
 	border-top-color: #c2a215;
 	background: #c2a215;
 }
-.btn.success, a.btn.success, button.btn.success {
+.home .btn.success, .home a.btn.success, .home button.btn.success {
 	border-top: 1px solid #57d451;
 	background: #65b660;
 	background: -webkit-gradient(linear, left top, left bottom, from(#109e08), to(#65b660));
@@ -326,14 +326,18 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: -ms-linear-gradient(top, #109e08, #65b660);
 	background: -o-linear-gradient(top, #109e08, #65b660);
 }
-.btn.success:hover, a.btn.success:hover, button.btn.success:hover {
+.home .btn.success:hover, .home a.btn.success:hover, .home button.btn.success:hover {
 	border-top-color: #159c0b;
 	background: #159c0b;
 }
-.btn:focus {
+.home .btn:focus {
 	outline:none;
 }
-
+.home button.btn {
+	border: 0;
+	padding: 11.2px 19px;
+	margin: 0;
+}
 #scrollUp {
   bottom: 0px;
   right: 35px;

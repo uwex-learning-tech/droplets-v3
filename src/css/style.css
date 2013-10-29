@@ -518,6 +518,17 @@ footer p {
 .callout h4.icon.instruction {
 	background-image: url("../img/icon_instruction.png");
 }
+.vertical.left {
+	width: 250px;
+	margin: 5px 16px 0px 0px;
+	float: left;
+}
+.vertical.right {
+	width: 250px;
+	margin: 5px 0px 0px 16px;
+	float: right;
+	text-align: left;
+}
 /* buttons */
 .btn, a.btn, button.btn {
 	display: inline-block;
