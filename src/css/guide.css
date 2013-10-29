@@ -236,7 +236,8 @@ code {
 
 /* guide footer */
 .guide-footer {
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	width: 100%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color:#a5a5a5;
 	font-weight: 300;
 	letter-spacing: normal;
