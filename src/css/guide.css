@@ -281,8 +281,10 @@ code {
 	border-top: 5px #242424 solid;
 	padding:0px;
 	font-size: 12px;
+	background: none;
 	background-color: #393939;
 	margin: 0px 0px 0px 0px;
+	box-shadow: none;
 }
 
 
