@@ -43,6 +43,9 @@ body {
 	background-repeat: no-repeat;
 }
 .home .container .ribbon small {
+	font-size: 14px;
+}
+.home .container .ribbon small a {
 	display: block;
 	margin-top: 15px;
 	font-size:12px;

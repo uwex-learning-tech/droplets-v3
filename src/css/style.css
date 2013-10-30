@@ -10,6 +10,7 @@ body {
 	font-size: 16px;
 	color: #333333;
 	line-height: 1.428;
+	background-color: #e9e9e9;
 }
 
 /* page header */
@@ -31,23 +32,6 @@ header h1 small {
 	font-weight: normal;
 	line-height: 1;
 	color: #4c4c4c;
-}
-header.smgt {
-	height: 75px;
-	background-image: url("../img/banner.png");
-	background-position: left top;
-	background-repeat: no-repeat;
-	margin-top:0px;
-	margin-bottom: 16px;
-	border: none;
-}
-
-header.smgt h1 {
-	color:#FFFFFF;
-	font-size: 24px;
-	margin:0px;
-	padding: 5px 0px 0px 10px;
-	line-height: 1;
 }
 
 /* headings */
@@ -375,12 +359,20 @@ table > tfoot > tr.danger > th {
 /* footer */
 footer {
 	width:954px;
-	border-top: 2px #333 solid;
-	margin:0;
-	padding-bottom: 20px;
-	color:#fafafa;
+	border-top: 2px #6d6d6d solid;
+	margin:0px 0px 10px 1px;
+	padding-bottom: 15px;
+	color:#777777;
 	font-size:12px;
-	background-color: #636363;
+	background: #b6b6b6;
+	background: -moz-linear-gradient(top,  #b6b6b6 0%, #e8e8e8 95%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b6b6b6), color-stop(95%,#e8e8e8));
+	background: -webkit-linear-gradient(top,  #b6b6b6 0%,#e8e8e8 95%);
+	background: -o-linear-gradient(top,  #b6b6b6 0%,#e8e8e8 95%);
+	background: -ms-linear-gradient(top,  #b6b6b6 0%,#e8e8e8 95%);
+	background: linear-gradient(to bottom,  #b6b6b6 0%,#e8e8e8 95%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6b6b6', endColorstr='#e8e8e8',GradientType=0);
+	box-shadow: 0px -3px 3px #bcbcbc;
 }
 footer p {
 	padding:0px 15px;
@@ -388,9 +380,9 @@ footer p {
 
 /* helpers */
 .page-container {
-	width:930px;
-	margin: 0px;
-	padding:0px 15px 20px 9px;
+	width: 924px;
+	margin: 0px 0px 0px 1px;
+	padding:0px 15px 20px 15px;
 	box-shadow: 0px 0px 4px #888;
 	background-color: #FFFFFF;
 }
@@ -665,4 +657,90 @@ img.right {
 	display: inline-block;
 	float: right;
 	margin-left: 16px;
+}
+
+
+/********* OLD DOWNLOAD BAR AND SUPPORT BUTTON ***********/
+#downloads, .downloads_bar {
+	font-size: small;
+	border: 1px solid #999;
+	-moz-border-radius: 5px;
+	-webkit-border-radius:5px;
+	border-radius: 5px;
+	visibility: visible;
+	width: 100%;
+	height: 34px;
+	margin: 10px auto 0px auto;
+	white-space:nowrap;
+	background-color: #EBEBEB;
+}
+#downloads #dltitle, .downloads_bar .dltitle {
+	width:20%;
+	color: #333;
+	font-size:150%;
+	font-family: Helvetica, Arial, sans-serif;
+	float: left;
+	padding-left: 10px;
+	padding-top:7px;
+	margin:0px;
+}
+#dlfiles, .dlfiles {
+	width:75%;
+	float:right;
+	margin:0;
+	padding: 0px;
+	display:inline;
+	list-style:none;
+}
+#downloads strong, .downloads_bar strong {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+#downloads #dlfiles li, .downloads_bar .dlfiles li {
+	float:right;
+	font-size: 95%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+#downloads #dlfiles a, .downloads_bar .dlfiles a {
+	text-decoration: none;
+	display:block;
+	padding:5px 10px 5px 30px;
+	color: #333;
+	width: 7em;
+	margin-right: 0.5em;
+	border: 1px solid #515151;
+	background: #fff url(../images/dl_icon_bkgd.gif) repeat-x left top;
+}
+#downloads #dlfiles a:hover, .downloads_bar .dlfiles a:hover {
+	color: #000;
+	border: 1px solid #000;
+	background: #fff url(../images/dl_icon_bkgd_over.gif) repeat-x left top;
+}
+#videoPlayer #downloads_bar #dlfiles .ol, .videoPlayer .downloads_bar .dlfiles .ol {
+	list-style:none;
+}
+#support, .support {
+	width: 132px;
+	height: auto;
+	text-align: center;
+}
+#support a:link, .support a:link {
+	text-decoration: none;
+	font-size: 12px;
+	display: block;
+	padding:5px 10px 5px 10px;
+	color: #333;
+	margin-top:10px;
+	margin-right: 0.5em;
+	border: 1px solid #999999;
+	background-color: #F2F2F2;
+}
+#support a:visited, .support a:visited {
+	color: #333;
+}
+#support a:hover, .support a:hover {
+	color: #000;
+	border: 1px solid #000;
+	background-color: #F9F9F9;
 }
