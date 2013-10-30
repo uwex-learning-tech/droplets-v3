@@ -23,6 +23,40 @@ body {
 	letter-spacing: .05em;
 	font-weight: 100;
 }
+.guide-wrapper.home .container {
+	position: relative;
+}
+.home .container .ribbon {
+	display: block;
+	position: absolute;
+	width:129px;
+	height: 162px;
+	font-size: 24px;
+	font-weight: 100;
+	color: #fafafa;
+	padding:53px 0px 0px;
+	text-align: center;
+	top:0;
+	right: 20px;
+	background-image: url("../img/home_ribbon.png");
+	background-position: left top;
+	background-repeat: no-repeat;
+}
+.home .container .ribbon small {
+	display: block;
+	margin-top: 15px;
+	font-size:12px;
+	font-weight: normal;
+}
+.home .container .ribbon small a,
+.home .container .ribbon small a:visited {
+	text-decoration: none;
+	color: #166fd3;
+}
+.home .container .ribbon small a:hover {
+	color: #177ef2;
+	text-decoration: underline;
+}
 .guide-wrapper.home .container .cover {
 	width:534px;
 	margin: 0px auto;
@@ -39,19 +73,18 @@ body {
 	letter-spacing: .038em;
 	margin: 20px 0px 0px 0px;
 }
+.guide-wrapper.home .container .cover p.lead-onehalf {
+	font-size: 22px;
+	font-family: 'Coda Caption', sans-serif;
+	text-align: center;
+	margin: 0px 0px;
+}
 .guide-wrapper.home .container .cover p.lead-two {
 	font-size: 6.78em;
 	margin: -15px 0px 0px 0px;
 	padding:0px;
 	font-family: 'Lily Script One', cursive;
 	text-shadow: 4px 4px 0px #333;
-}
-.guide-wrapper.home .container .cover p.lead-three {
-	font-size: 1.55em;
-	margin: -35px 0px 0px 0px;
-	padding:0px 5px 0px 0px;
-	font-family: 'Lily Script One', cursive;
-	text-align: right;
 }
 .guide-wrapper.home .container .cover p.lead-four {
 	text-align: justify;

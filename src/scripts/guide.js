@@ -19,7 +19,7 @@ $(document).ready(function() {
 		} else if (pageId === "landing") {
 			var wHeight = $(".guide-wrapper").outerHeight(),
 				cHeight = $(".cover").outerHeight(),
-				middle = ((wHeight - cHeight) / 2) - 40;
+				middle = ((wHeight - cHeight) / 2) - 82;
 			
 			$(".cover").css("padding-top",middle+"px");
 			$(window).resize(function(){
