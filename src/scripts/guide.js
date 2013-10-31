@@ -6,22 +6,26 @@ $(document).ready(function() {
 	var pIndex = -1;
 	var hIndex = -1;
 	var isHome = false;
+	var pageId;
 	
 	/******************** FUNCTIONS ********************/
 	
 	function determinePage() {
-		var pageId = $("html").attr("id");
+		pageId = $("html").attr("id");
 		
 		if (pageId === "lytele") {
 			pages = ["pageheaders","typo","layouts","emphasis","callouts-inline","callouts-block-level","tables","image","helpers"];
 		} else if (pageId === "advEx") {
-			// do nothing at the moment
+			pages = [""];
+			SyntaxHighlighter.highlight();
 		} else if (pageId === "landing") {
+		
 			var wHeight = $(".guide-wrapper").outerHeight(),
 				cHeight = $(".cover").outerHeight(),
 				middle = ((wHeight - cHeight) / 2) - 82;
 			
 			$(".cover").css("padding-top",middle+"px");
+			
 			$(window).resize(function(){
 				var wHeight = $(".guide-wrapper").outerHeight(),
 					cHeight = $(".cover").outerHeight(),
@@ -29,6 +33,7 @@ $(document).ready(function() {
 			
 				$(".cover").css("padding-top",middle+"px");
 			});
+			
 			isHome = true;
 			
 		} else {
@@ -82,10 +87,8 @@ $(document).ready(function() {
 					return (1);
 				}
 			} else {
-				/*
-makeCurrent(-1);
-				getContent("404");
-*/
+				//makeCurrent(-1);
+				//getContent("404");
 				return (0);
 			}
 		} else {
@@ -101,9 +104,12 @@ makeCurrent(-1);
 	determinePage();
 	
 	if (!isHome) {
-		if (checkForHash() === -1) {
-			makeCurrent(0);
-			getContent(pages[0]);
+	
+		if (checkForHash() === -1 || checkForHash() === 0) {
+			if (pageId === "lytele") {
+				makeCurrent(0);
+				getContent(pages[0]);
+			}
 		}
 		
 		$(window).on('hashchange', function() {
@@ -111,6 +117,7 @@ makeCurrent(-1);
 		});
 		
 		$(".toc ul li a").on("click", function() {
+			
 			var exist = false;
 			var parent = this.parentNode;
 			var index = $(parent).index();
