@@ -291,6 +291,9 @@ code {
 	box-shadow:none;
 	background-color:transparent;
 }
+.guide-footer p:after {
+	content:"";
+}
 footer {
 	width:100%;
 }
