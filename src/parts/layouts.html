@@ -435,19 +435,34 @@ dolore enim hic repudiandae consequatur quisquam dicta.&lt;/p&gt;</pre>
 </div>
 
 <h2 id="footer">Footer</h2>
-<p></p>
+<h3>Basic</h3>
 <div class="guide-example">
 	<div class="guide-code">
 	<p class="tip">Code</p>
 <pre class="brush: html">&lt;footer&gt;
-	&lt;p&gt;&copy; 2013 Board of Regents. University of Wisconsin-Extension, Continuing Education,
-	Outreach &amp; E-Learning. All rights reserved.&lt;/p&gt;
+	&lt;p&gt;&lt;a class="course-support"&gt;&copy;Course Support&lt;/a&gt;&lt;/p&gt;
 &lt;/footer&gt;</pre>
 	</div>
 	<div class="guide-result">
 		<p class="tip">Result</p>
 		<footer>
-			<p>&copy; 2013 Board of Regents. University of Wisconsin-Extension, Continuing Education, Outreach &amp; E-Learning. All rights reserved.</p>
+			<p><a class="course-support" href="#">Course Support</a></p>
+		</footer>
+	</div>
+</div>
+
+<h3>with CSS text</h3>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;footer class="no-text"&gt;
+	&lt;p&gt;&lt;a class="course-support"&gt;&copy;Course Support&lt;/a&gt;&lt;/p&gt;
+&lt;/footer&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<footer class="no-text">
+			<p><a class="course-support" href="#">Course Support</a></p>
 		</footer>
 	</div>
 </div>

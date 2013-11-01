@@ -111,7 +111,8 @@ body {
 .page-container {
 	width: 930px;
 	padding: 0px 15px 20px 15px;
-	margin: 0px auto;
+	margin: 0px auto 0px auto;
+	min-height: 0;
 }
 /* header */
 .guide-container {
@@ -286,7 +287,13 @@ code {
 	margin: 0px 0px 0px 0px;
 	box-shadow: none;
 }
-
+.guide-footer p {
+	box-shadow:none;
+	background-color:transparent;
+}
+footer {
+	width:100%;
+}
 
 /* end guide footer */
 
