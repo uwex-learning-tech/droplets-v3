@@ -2,133 +2,119 @@
 
 $(document).ready(function() {
 	
-	
-	/*
-	TOOLTIP
-	*/
-	
-	$("abbr, .with-tooltip").on("mouseover", function() {
-	
-		var title = $(this).attr("title"),
-			position = $(this).position();
+	// Check to see if any components are used
+	function checkComponents() {
 		
-		$(this).attr("title","").css("position","relative");
-		
-		if ($(this).hasClass("top")) {
-		
-			$(this).before("<div class=\"tooltip in top\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
-			$(".tooltip").css({"top":(position.top - 28)+"px", "left":position.left+"px"});
-			
-		} else if ($(this).hasClass("bottom")) {
-		
-			$(this).after("<div class=\"tooltip in bottom\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
-			$(".tooltip").css({"bottom":(position.bottom + 28)+"px", "left":position.left+"px"});
-			
-		} else if ($(this).hasClass("right")) {
-		
-			$(this).before("<div class=\"tooltip in right\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
-			$(".tooltip").css({"top":position.top+"px", "left":(position.left + $(this).width())+"px"});
-			
-		} else if ($(this).hasClass("left")) {
-		
-			$(this).before("<div class=\"tooltip in left\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
-			$(".tooltip").css({"top":position.top+"px", "left":(position.left - ($(".tooltip").width() + 8))+"px"});
-			
-		} else {
-		
-			$(this).before("<div class=\"tooltip in\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
-			$(".tooltip").css({"top":(position.top - 28)+"px", "left":position.left+"px"});
+		if ($("abbr").length || $(".with-tooltip").length) {
+			getTooltip();
+			console.log("Tooltip available!");
 		}
-
-	});
-	
-	$("abbr, .with-tooltip").on("mouseout", function() {
-		$(this).attr("title",$(".tooltip.in .tooltip-inner").html()).css("position","static");
-		$(".tooltip").remove();
-	});
-	
-	/*
-	POPOVER
-	*/
-	
-	
-/*
-	$.fn.initPopover = function() {
-		var popover = $("span.with-popover");
-		var total = popover.length;
-		var index = popover.index(this);
 		
-		popover.each(function(i) {
-			$(this).addClass(""+i+"");
-			$(this).on("click",showPopover);
-		});
+		if ($(".with-popover").length) {
+			getPopover();
+			console.log("Popover available!");
+		}
 		
-	}
-*/
+	} // end checkComponents
 	
-/*
-	function showPopover() {
-		var index = $("span.with-popover").index(this);
-		var title = $(this).attr("data-title"),
-			position = $(this).position();
+	// Tooltip
+	function getTooltip() {
+		
+		$("abbr, .with-tooltip").on("mouseover", function() {
+	
+			var title = $(this).attr("title"),
+				position = $(this).position();
 			
-		
-		
-	}
-*/
-	
-	//$("span.with-popover").initPopover();
-	
-	/*
-$(".with-popover").on("click", function() {
-	
-		var title = $(this).attr("data-title"),
-			position = $(this).position();
+			$(this).attr("title","").css("position","relative");
 			
-		var index = $("span.with-popover").index(this);
-		
-		if ($(".popover."+index).is(":visible")) {
-			$(this).css("position","static");
-			$(".popover."+index).remove();
-		} else {
-		
-			$(this).css("position","relative");
-		
 			if ($(this).hasClass("top")) {
 			
-				$(this).before("<div class=\"popover " + index + " in top\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover").css({"top":(position.top -$(".popover").height() - 15)+"px", "left":position.left+"px"});
+				$(this).before("<div class=\"tooltip in top\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
+				$(".tooltip").css({"top":(position.top - 28)+"px", "left":position.left+"px"});
 				
 			} else if ($(this).hasClass("bottom")) {
 			
-				$(this).after("<div class=\"popover " + index + " in bottom\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover").css({"top":(position.top + 18)+"px", "left":position.left+"px"});
+				$(this).after("<div class=\"tooltip in bottom\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
+				$(".tooltip").css({"bottom":(position.bottom + 28)+"px", "left":position.left+"px"});
 				
 			} else if ($(this).hasClass("right")) {
 			
-				$(this).before("<div class=\"popover " + index + " in right\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover").css({"top":(position.top - ($(this).height() + ($(this).height() / 2)))+"px", "left":(position.left + $(this).width() + 3)+"px"});
+				$(this).before("<div class=\"tooltip in right\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
+				$(".tooltip").css({"top":position.top+"px", "left":(position.left + $(this).width())+"px"});
 				
 			} else if ($(this).hasClass("left")) {
 			
-				$(this).before("<div class=\"popover " + index + " in left\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover").css({"top":(position.top - ($(this).height() + ($(this).height() / 2)))+"px", "left":(position.left - $(".popover").width() - 5)+"px"});
+				$(this).before("<div class=\"tooltip in left\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
+				$(".tooltip").css({"top":position.top+"px", "left":(position.left - ($(".tooltip").width() + 8))+"px"});
 				
 			} else {
 			
-				$(this).before("<div class=\"popover " + index + " in\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover").css({"top":(position.top - 28)+"px", "left":position.left+"px"});
+				$(this).before("<div class=\"tooltip in\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
+				$(".tooltip").css({"top":(position.top - 28)+"px", "left":position.left+"px"});
 			}
-		
 			
-		}
+			$("abbr, .with-tooltip").on("mouseout", function() {
+				$(this).attr("title",$(".tooltip.in .tooltip-inner").html()).css("position","static");
+				$(".tooltip").remove();
+			});
+	
+		});
+		
+	} // end getTooltip
+	
+	// Popover
+	function getPopover() {
+		
+		$(".with-popover").each(function(i){
+		
+			var title = $(this).attr("data-title"), position = $(this).position();
+			
+			console.log(position);
+			
+			if ($(this).hasClass("top")) {
 				
+				$("body").append("<div class=\"popover top\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$(".popover:eq("+i+")").css({"top":(position.top - ($(".popover:eq("+i+")").innerHeight() + 8))+"px", "left":position.left+"px"});
+				
+			} else if ($(this).hasClass("bottom")) {
+			
+				$("body").append("<div class=\"popover bottom\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$(".popover:eq("+i+")").css({"top":(position.top + $(this).height() + 4)+"px", "left":position.left+"px"});
+				
+			} else if ($(this).hasClass("right")) {
+			
+				$("body").append("<div class=\"popover right\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left + $(this).width() + 3)+"px"});
+				
+			} else if ($(this).hasClass("left")) {
+			
+				$("body").append("<div class=\"popover left\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left - $(".popover").width() - 5)+"px"});
+				
+			} else {
+			
+				$("body").append("<div class=\"popover\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$(".popover:eq("+i+")").css({"top":(position.top - ($(".popover:eq("+i+")").innerHeight() + 8))+"px", "left":position.left+"px"});
+			}
+			
+		});
 		
+		$(".with-popover").on("click", function(){
+			var index = $(".with-popover").index(this);
+			
+			if ($(this).hasClass("active")) {
+				$(this).removeClass("active");
+				$(".popover:eq("+index+")").removeClass("in");
+			} else {
+				$(this).addClass("active");
+				$(".popover:eq("+index+")").addClass("in");
+			}
+			
+		});
 		
-		
-		console.log(index);
-
-	});
-*/
+	} // end getPopover
+	
+	// call to check available component
+	checkComponents();
 	
 });

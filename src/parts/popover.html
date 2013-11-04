@@ -1,0 +1,81 @@
+<!-- popover -->
+
+<header>
+	<h1>Popover</h1>
+</header>
+<p class="lead">A small overlays of content that appears when the mouse click on an icon, image, or text in a page content. <span class="text-danger">Do not use this component for tooltips and on hyperlinks.</span></p>
+
+<p>Popover has four options: top, bottom, right, and left. Each option will be explained below with code and examples. To use popover, add the <code>with-popover</code> class and the <code>data-title</code> attribute to the HTML elements including <code>&lt;span&gt;</code>, <code>&lt;img&gt;</code>, etc. The <code>data-title</code> attribute is used to hold the popover content. Thus, it is required.</p>
+<p><span class="label info">NOTE:</span> The <code>&lt;a&gt;</code> and <code>&lt;abbr&gt;</code> elements do not support the <code>with-popover</code> class.</p>
+
+<h2>Top</h2>
+<p>By default, the popover will be displayed on the top of the element. The <code>top</code> class is optional.</p>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur elit. Vitae, &lt;span class="with-popover" 
+data-title="Doloribus is so awesome. I do not even know what it means."&gt;doloribus&lt;/span&gt;
+aperiam temporibus iusto est vel aut aliquam ipsum quidem consectetur possimus laboriosam
+iste molestiae consequatur magnam soluta porro commodi quia?&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>Lorem ipsum dolor sit amet, consectetur elit. Vitae, <span class="with-popover top" data-title="Doloribus is so awesome. I do not even know what it means.">doloribus</span> aperiam temporibus iusto est vel aut aliquam ipsum quidem consectetur possimus laboriosam iste molestiae consequatur magnam soluta porro commodi quia?</p>
+	</div>
+</div>
+
+
+<h2>Bottom</h2>
+<p>The popover will be placed at the bottom of the text. To specify the bottom position, add the <code>bottom</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur &lt;span class="with-popover bottom"
+data-title="Adipisicing has nice sound to it. I don't know what it means, but I like it."&gt;
+adipisicing&lt;/span&gt; elit. Vitae, doloribus aperiam temporibus iusto est vel aut aliquam ipsum
+quidem consectetur possimus laboriosam iste molestiae consequatur magnam soluta porro
+commodi quia?&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>Lorem ipsum dolor sit amet, consectetur <span class="with-popover bottom" data-title="Adipisicing has nice sound to it. I don't know what it means, but I like it.">adipisicing</span> elit. Vitae, doloribus aperiam temporibus iusto est vel aut aliquam ipsum quidem consectetur possimus laboriosam iste molestiae consequatur magnam soluta porro commodi quia?</p>
+	</div>
+</div>
+
+
+
+<h2>Right</h2>
+<p>The popover will be placed at the bottom of the text. To specify the right position, add the <code>right</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur elit. Vitae, &lt;span class="with-popover right" 
+data-title="Doloribus is so awesome. I do not even know what it means."&gt;doloribus&lt;/span&gt;
+aperiam temporibus iusto est vel aut aliquam ipsum quidem consectetur possimus laboriosam
+iste molestiae consequatur magnam soluta porro commodi quia?&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, <span class="with-popover right" data-title="Doloribus is so awesome. I do not even know what it means.">doloribus</span> aperiam temporibus iusto est vel aut aliquam ipsum quidem consectetur possimus laboriosam iste molestiae consequatur magnam soluta porro commodi quia?</p>
+	</div>
+</div>
+
+
+
+<h2>Left</h2>
+<p>The popover will be placed at the bottom of the text. To specify the left position, add the <code>left</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur elit. Vitae, &lt;span class="with-popover left" 
+data-title="Doloribus is so awesome. I do not even know what it means."&gt;doloribus&lt;/span&gt;
+aperiam temporibus iusto est vel aut aliquam ipsum quidem consectetur possimus laboriosam
+iste molestiae consequatur magnam soluta porro commodi quia?&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, <span class="with-popover left" data-title="Doloribus is so awesome. I do not even know what it means.">doloribus</span> aperiam temporibus iusto est vel aut aliquam ipsum quidem consectetur possimus laboriosam iste molestiae consequatur magnam soluta porro commodi quia?</p>
+	</div>
+</div>
+
+<div class="push"></div>

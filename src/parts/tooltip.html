@@ -1,0 +1,124 @@
+<!-- tooltip -->
+<header>
+	<h1>Tooltip</h1>
+</header>
+<p class="lead">A short message that appears when the mouse cursor is positioned over an icon, image, hyperlink, or text in a page content. <span class="text-danger">Do not use this component for popovers.</span></p>
+<p>Tooltip has five options: default, top, bottom, right, and left. Each option will be explained below with code and examples. To use tooltip, add the <code>with-tooltip</code> class and the <code>title</code> attribute to the HTML elements including <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, etc. The <code>title</code> attribute is used to hold the tooltip message. Thus, it is required.</p>
+<p><span class="label info">NOTE:</span> The <code>&lt;abbr&gt;</code> element does not require the <code>with-tooltip</code> class. When using the <code>&lt;abbr&gt;</code> element, please follow the standards for using an abbreviation.</p>
+
+<h2>Default</h2>
+<p>By default, the tooltip will be displayed on the top of the element without any arrow indication.</p>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; is the best thing ever.&lt;/p&gt;
+&lt;!-- can also be done by using the with-tooltip class --&gt;
+&lt;p&gt;&lt;span class="with-tooltip" title="HyperText Markup Language"&gt;HTML&lt;/span&gt; is the best
+thing ever.&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p><abbr title="HyperText Markup Language">HTML</abbr> is the best thing ever.</p>
+		<p><span class="with-tooltip" title="HyperText Markup Language">HTML</span> is the best thing ever.</p>
+	</div>
+</div>
+
+<h2>Top</h2>
+<p>The tooltip will be placed at the top of the text and with an arrow pointing to the element. To specify the top position, add the <code>top</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;p&gt;The way to go is &lt;abbr class="top" title="PHP: Hypertext Preprocessor"&gt;PHP&lt;/abbr&gt;.&lt;/p&gt;
+&lt;!-- can also be done by using the with-tooltip class --&gt;
+&lt;p&gt;The way to go is &lt;span class="with-tooltip top" title="PHP: Hypertext Preprocessor"&gt;PHP
+&lt;/span&gt;.&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>The way to go is <abbr class="top" title="PHP: Hypertext Preprocessor">PHP</abbr>.</p>
+		<p>The way to go is <span class="with-tooltip top" title="PHP: Hypertext Preprocessor">PHP</span>.</p>
+	</div>
+</div>
+
+
+<h2>Bottom</h2>
+<p>The tooltip will be placed at the bottom of the text and with an arrow pointing to the element. To specify the bottom position, add the <code>bottom</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;p&gt;When it is funny, you go &lt;abbr class="bottom" title="laugh out loud"&gt;lol&lt;/abbr&gt;.&lt;/p&gt;
+&lt;!-- can also be done by using the with-tooltip class --&gt;
+&lt;p&gt;When it is funny, you go &lt;span class="with-tooltip bottom" title="laugh out loud"&gt;lol
+&lt;/span&gt;.&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>When it is funny, you go <abbr class="bottom" title="laugh out loud">lol</abbr>.</p>
+		<p>When it is funny, you go <span class="with-tooltip bottom" title="laugh out loud">lol</span>.</p>
+	</div>
+</div>
+
+<h2>Right</h2>
+<p>The tooltip will be placed at the right of the text and with an arrow pointing to the element. To specify the right position, add the <code>right</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;p&gt;The file was not found because the server does not support the correct
+&lt;abbr class="right" title="Multipurpose Internet Mail Extensions"&gt;MIME&lt;/abbr&gt; types.&lt;/p&gt;
+&lt;!-- can also be done by using the with-tooltip class --&gt;
+&lt;p&gt;The file was not found because the server does not support the correct &lt;span
+class="with-tooltip right" title="Multipurpose Internet Mail Extensions"&gt;MIME&lt;/span&gt; types.
+&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>The file was not found because the server does not support the correct <abbr class="right" title="Multipurpose Internet Mail Extensions">MIME</abbr> types.</p>
+		<p>The file was not found because the server does not support the correct <span class="with-tooltip right" title="Multipurpose Internet Mail Extensions">MIME</span> types.</p>
+	</div>
+</div>
+
+<h2>Left</h2>
+<p>The tooltip will be placed at the left of the text and with an arrow pointing to the element. To specify the left position, add the <code>left</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;p&gt;When the server has trouble fulfilling your request, a &lt;abbr class="left"
+title="HyperText Transfer Protocol"&gt;HTTP&lt;/abbr&gt; error code will be displayed instead.&lt;/p&gt;
+&lt;!-- can also be done by using the with-tooltip class --&gt;
+&lt;p&gt;When the server has trouble fulfilling your request, a &lt;span class="with-tooltip left"
+title="HyperText Transfer Protocol"&gt;HTTP&lt;/span&gt; error code will be displayed instead.&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>When the server has trouble fulfilling your request, a <abbr class="left" title="HyperText Transfer Protocol">HTTP</abbr> error code will be display instead.</p>
+		<p>When the server has trouble fulfilling your request, a <span class="with-tooltip left" title="HyperText Transfer Protocol">HTTP</span> error code will be display instead.</p>
+	</div>
+</div>
+
+<h2>Other Examples:</h2>
+<p>Tooltip can also be use on hyperlink and image.</p>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, possimus, reprehenderit,
+&lt;a class="with-tooltip top" href="javascript:void(0);" title="I have no idea what that
+means."&gt;numquam&lt;/a&gt; facere corporis necessitatibus atque rerum asperiores quidem maxime
+veniam magnam alias enim reiciendis nisi illo eveniet minima quos?&lt;/p&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, possimus, reprehenderit, <a class="with-tooltip top" href="javascript:void(0);" title="I have no idea what that means.">numquam</a> facere corporis necessitatibus atque rerum asperiores quidem maxime veniam magnam alias enim reiciendis nisi illo eveniet minima quos?</p>
+	</div>
+</div>
+<div class="guide-example">
+	<div class="guide-code">
+		<p class="tip">Code</p>
+		<pre class="brush: html">&lt;img class="with-tooltip right" title="Boo! Watch your back." src="src/img/cat1.jpg"
+width="316" height="237" alt="Cat" /&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<img class="with-tooltip right" title="Boo! Watch your back." src="src/img/cat1.jpg" width="316" height="237" alt="Cat" />
+	</div>
+</div>
+<div class="push"></div>
