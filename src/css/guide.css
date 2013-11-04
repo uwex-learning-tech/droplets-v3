@@ -290,6 +290,7 @@ code {
 .guide-footer p {
 	box-shadow:none;
 	background-color:transparent;
+	min-height: 0;
 }
 .guide-footer p:after {
 	content:"";
