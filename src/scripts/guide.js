@@ -106,12 +106,10 @@ $(document).ready(function() {
 		
 		if ($("abbr").length || $(".with-tooltip").length) {
 			getTooltip();
-			console.log("Tooltip available!");
 		}
 		
 		if ($(".with-popover").length) {
 			getPopover();
-			console.log("Popover available!");
 		}
 		
 	} // end checkComponents
