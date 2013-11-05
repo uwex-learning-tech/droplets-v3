@@ -4,8 +4,9 @@
 </header>
 
 <p class="lead">A great way to handle lot of information on a page without losing usability if used correctly.</p>
+<p>To organize information with tabs, create a <code>&lt;div&gt;</code> element with the <code>with-tabs</code> class. Nested inside the <code>&lt;div&gt;</code> element, a <code>&lt;ul&gt;</code> and another <code>&lt;div&gt;</code> are required. The nested <code>&lt;ul&gt;</code> has the <code>tabs</code> class, and the nested <code>&lt;div&gt;</code> class has the <code>tab-contents</code> class. Each <code>&lt;li&gt;</code> element inside the <code>&lt;ul&gt;</code> element is the title of the tab, and each <code>&lt;section&gt;</code> element nested inside the inner <code>&lt;div&gt;</code> element holds the content of the tab accordingly to the order of the <code>&lt;li&gt;</code> elements inside <code>&lt;ul&gt;</code> element.</p>
 
-
+<p><span class="label info">Note:</span> apply the <code>active</code> class on the <code>&lt;li&gt;</code> and <code>&lt;section&gt;</code> to specify the default tab and tab content to be opened on page load. The <code>active</code> class is required for both elements.</p>
 
 <div class="guide-example">
 	<div class="guide-code">
@@ -19,48 +20,15 @@
 	&lt;div class="tab-contents"&gt;
 		&lt;section class="active"&gt;
 			&lt;h4&gt;Item 1 Content&lt;/h4&gt;
-			&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem,
-			dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum
-			ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime
-			placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem,
-			dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga
-			cum ullam quam velit temporibus iusto quo saepe esse in consequatur.&lt;/p&gt;
+			&lt;p&gt;...&lt;/p&gt;
 		&lt;/section&gt;
 		&lt;section&gt;
 			&lt;h4&gt;Item 2 Content&lt;/h4&gt;
-			&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem,
-			dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum
-			ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime
-			placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem,
-			dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga
-			cum ullam quam velit temporibus iusto quo saepe esse in consequatur.&lt;/p&gt;
-			&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem,
-			dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum
-			ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime
-			placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem,
-			dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga
-			cum ullam quam velit temporibus iusto quo saepe esse in consequatur.&lt;/p&gt;
+			&lt;p&gt;...&lt;/p&gt;
 		&lt;/section&gt;
 		&lt;section&gt;
 			&lt;h4&gt;Item 3 Content&lt;/h4&gt;
-			&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem,
-			dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum
-			ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime
-			placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem,
-			dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga
-			cum ullam quam velit temporibus iusto quo saepe esse in consequatur.&lt;/p&gt;
-			&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem,
-			dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum
-			ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime
-			placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem,
-			dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga
-			cum ullam quam velit temporibus iusto quo saepe esse in consequatur.&lt;/p&gt;
-			&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem,
-			dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum
-			ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime
-			placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem,
-			dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga
-			cum ullam quam velit temporibus iusto quo saepe esse in consequatur.&lt;/p&gt;
+			&lt;p&gt;...&lt;/p&gt;
 		&lt;/section&gt;
 	&lt;/div&gt;
 &lt;/div&gt;</pre>
