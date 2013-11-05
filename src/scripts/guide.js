@@ -19,7 +19,7 @@ $(document).ready(function() {
 			pages = [""];
 			SyntaxHighlighter.highlight();
 		} else if (pageId === "cmpnt") {
-			pages = ["tooltip","popover","tabs"];
+			pages = ["tooltip","popover","tab","accordion","button-plus"];
 		} else if (pageId === "landing") {
 		
 			var wHeight = $(".guide-wrapper").outerHeight(),
@@ -114,6 +114,10 @@ $(document).ready(function() {
 		
 		if ($(".with-tabs").length) {
 			getTabs();
+		}
+		
+		if ($(".with-accordion").length) {
+			getAccordion();
 		}
 		
 	} // end checkComponents
@@ -250,6 +254,50 @@ $(document).ready(function() {
 			
 		});
 	} // end getTabs
+	
+	// accordion
+	function getAccordion() {
+	
+		$(".with-accordion .accordion-title").each(function(i){
+			if ($(this).hasClass("active")) {
+				$(".accordion-content:eq("+i+")").show();
+			}
+		});
+	
+		$(".with-accordion .accordion-title").on("click",function(){
+		
+			var index = $(".with-accordion .accordion-title").index(this);
+			
+			if (!$(this).hasClass("active")) {
+				
+				$(".with-accordion .accordion-title").each(function(i){
+					if ($(this).hasClass("active")) {
+						$(this).removeClass("active");
+						$(".accordion-content:eq("+i+")").slideUp("fast",function(){
+							$(".accordion-title:eq("+index+")").addClass("active");
+							$(".accordion-content:eq("+index+")").slideDown();
+						});
+					} else {
+						if (i === index) {
+							$(".accordion-title:eq("+index+")").addClass("active");
+							$(".accordion-content:eq("+index+")").slideDown();
+						}
+					}
+				});
+				
+			} else {
+			
+				$(".accordion-content:eq("+index+")").slideUp("fast", function(){
+					$(".accordion-title:eq("+index+")").removeClass("active");
+				});
+				
+			}
+			
+			return false;
+			
+		});
+		
+	} // end getAccordion
 	
 	/******************** MAIN CODE ********************/
 	

@@ -929,7 +929,7 @@ span.with-popover.active {
 	list-style: none;
 	padding: 0;
 	margin: 0 0 19px 0;
-	border-bottom: 1px solid #bcbcbc;
+	border-bottom: 1px solid #ddd;
 	float: left;
 	clear: both;
 }
@@ -941,16 +941,16 @@ span.with-popover.active {
 	background-color: white;
 }
 .with-tabs .tabs li.active {
-	border-top: 1px solid #bcbcbc;
-	border-right: 1px solid #bcbcbc;
-	border-left: 1px solid #bcbcbc;
+	border-top: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
 	border-bottom: transparent;
 }
 .with-tabs .tabs li.active:hover {
 	background-color: #fff;
 }
 .with-tabs .tabs li:hover {
-	background-color: #e5e5e5;
+	background-color: #e7e7e7;
 }
 .with-tabs .tabs li a,
 .with-tabs .tabs li a:visited {
@@ -959,11 +959,11 @@ span.with-popover.active {
 	text-decoration: none;
 }
 .with-tabs .tab-contents {
-	border-bottom: 1px solid #bcbcbc;
+	border-bottom: 1px solid #ddd;
 	clear: both;
 }
 .with-tabs .tab-contents section {
-	padding: 0px 5px;
+	padding: 0px 10px;
 	display: none;
 }
 .with-tabs .tab-contents section.active {
@@ -979,6 +979,31 @@ span.with-popover.active {
 	from {opacity: 0;}
 	to {opacity: 1;}
 }
+
+/* ACCORDION */
+.with-accordion .accordion-title {
+	background-color: #e7e7e7;
+	border: 1px solid #ddd;
+	padding:10px;
+	border-radius: 5px;
+	margin-top:5px;
+	cursor: pointer;
+}
+.with-accordion .accordion-title:first-child {
+	margin-top:0;
+}
+.with-accordion .accordion-title.active {
+	border-radius: 5px 5px 0px 0px;
+	border-bottom: transparent;
+}
+.with-accordion .accordion-content {
+	padding:0px 10px;
+	border:1px solid #ddd;
+	border-radius: 0px 0px 5px 5px;
+	display: none;
+}
+
+
 /********* OLD DOWNLOAD BAR AND SUPPORT BUTTON ***********/
 #downloads, .downloads_bar {
 	font-size: small;

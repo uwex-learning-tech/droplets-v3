@@ -20,6 +20,11 @@ $(document).ready(function() {
 			console.log("Tab available!");
 		}
 		
+		if ($(".with-accordion").length) {
+			getAccordion();
+			console.log("Accordion available!");
+		}
+		
 	} // end checkComponents
 	
 	// Tooltip
@@ -154,7 +159,84 @@ $(document).ready(function() {
 		});
 	} // end getTabs
 	
+	// accordion
+	function getAccordion() {
+	
+		$(".with-accordion .accordion-title").each(function(i){
+			if ($(this).hasClass("active")) {
+				$(".accordion-content:eq("+i+")").show();
+			}
+		});
+	
+		$(".with-accordion .accordion-title").on("click",function(){
+		
+			var index = $(".with-accordion .accordion-title").index(this);
+			
+			if (!$(this).hasClass("active")) {
+				
+				$(".with-accordion .accordion-title").each(function(i){
+					if ($(this).hasClass("active")) {
+						$(this).removeClass("active");
+						$(".accordion-content:eq("+i+")").slideUp("fast",function(){
+							$(".accordion-title:eq("+index+")").addClass("active");
+							$(".accordion-content:eq("+index+")").slideDown();
+						});
+					} else {
+						if (i === index) {
+							$(".accordion-title:eq("+index+")").addClass("active");
+							$(".accordion-content:eq("+index+")").slideDown();
+						}
+					}
+				});
+				
+			} else {
+			
+				$(".accordion-content:eq("+index+")").slideUp("fast", function(){
+					$(".accordion-title:eq("+index+")").removeClass("active");
+				});
+				
+			}
+			
+			return false;
+			
+		});
+	} // end getAccordion
+	
 	// call to check available component
 	checkComponents();
 	
 });
+
+function getParameterByName(url,name) {
+	var regexS = "[\\?&]" + name + "=([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(url);
+	
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	
+	if (results === null) {
+		return "";
+	} else {
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+}
+
+function gotoToC(){
+	var tocURL = '/d2l/lms/content/home.d2l?ou='+getParameterByName(window.parent.location.href,'ou')+'&showTOC=1';
+	top.location.href = tocURL;
+}
+
+function gotoGrades() {
+	var tocURL = '/d2l/lms/grades/my_grades/main.d2l?ou='+getParameterByName(window.parent.location.href,'ou');
+	top.location.href = tocURL;
+}
+
+function gotoDropbox() {
+	var tocURL = '/d2l/lms/dropbox/user/folders_list.d2l?ou='+getParameterByName(window.parent.location.href,'ou');
+	top.location.href = tocURL;
+}
+
+function gotoDiscussions() {
+	var tocURL = '/d2l/lms/discussions/admin/forum_topics_list.d2l?ou='+getParameterByName(window.parent.location.href,'ou');
+	top.location.href = tocURL;
+}
