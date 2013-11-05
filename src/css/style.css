@@ -772,6 +772,8 @@ span.with-tooltip {
   border-width: 0 5px 5px;
 }
 img.with-tooltip.right,
+img.with-popover.right,
+img.with-popover.left,
 img.with-tooltip.left {
 	float: none;
 }
@@ -917,6 +919,66 @@ span.with-popover.active {
   content: " ";
 }
 
+/* TABBED CONTENTS */
+.with-tabs {
+	margin: 16px 0px;
+	clear: both;
+}
+.with-tabs .tabs {
+	width: 100%;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 19px 0;
+	border-bottom: 1px solid #bcbcbc;
+	float: left;
+	clear: both;
+}
+.with-tabs .tabs li {
+	display: block;
+	float:left;
+	margin-bottom: -1px;
+	border-radius: 0px 5px 0px 0px;
+	background-color: white;
+}
+.with-tabs .tabs li.active {
+	border-top: 1px solid #bcbcbc;
+	border-right: 1px solid #bcbcbc;
+	border-left: 1px solid #bcbcbc;
+	border-bottom: transparent;
+}
+.with-tabs .tabs li.active:hover {
+	background-color: #fff;
+}
+.with-tabs .tabs li:hover {
+	background-color: #e5e5e5;
+}
+.with-tabs .tabs li a,
+.with-tabs .tabs li a:visited {
+	display: block;
+	padding:10px;
+	text-decoration: none;
+}
+.with-tabs .tab-contents {
+	border-bottom: 1px solid #bcbcbc;
+	clear: both;
+}
+.with-tabs .tab-contents section {
+	padding: 0px 5px;
+	display: none;
+}
+.with-tabs .tab-contents section.active {
+	display: block;
+	animation: fadeIn 1s;
+	-webkit-animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+@-webkit-keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
 /********* OLD DOWNLOAD BAR AND SUPPORT BUTTON ***********/
 #downloads, .downloads_bar {
 	font-size: small;

@@ -388,6 +388,13 @@ footer {
 	padding: 11.2px 19px;
 	margin: 0;
 }
+
+.with-tabs .tabs li {
+	background-color: #f7f7f9;
+}
+.with-tabs .tabs li.active:hover {
+	background-color: #f7f7f9;
+}
 #scrollUp {
   bottom: 0px;
   right: 35px;

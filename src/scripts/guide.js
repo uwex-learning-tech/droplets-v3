@@ -19,7 +19,7 @@ $(document).ready(function() {
 			pages = [""];
 			SyntaxHighlighter.highlight();
 		} else if (pageId === "cmpnt") {
-			pages = ["tooltip","popover"];
+			pages = ["tooltip","popover","tabs"];
 		} else if (pageId === "landing") {
 		
 			var wHeight = $(".guide-wrapper").outerHeight(),
@@ -112,6 +112,10 @@ $(document).ready(function() {
 			getPopover();
 		}
 		
+		if ($(".with-tabs").length) {
+			getTabs();
+		}
+		
 	} // end checkComponents
 	
 	// Tooltip
@@ -162,6 +166,8 @@ $(document).ready(function() {
 	// Popover
 	function getPopover() {
 		
+		$(".with-popover").css("position","relative");
+		
 		$(".with-popover").each(function(i){
 		
 			var title = $(this).attr("data-title"), position = $(this).position();
@@ -179,18 +185,27 @@ $(document).ready(function() {
 			} else if ($(this).hasClass("right")) {
 			
 				$("body").append("<div class=\"popover right\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left + $(this).width() + 3)+"px"});
+				if ($(this).is("img")) {
+					$(".popover:eq("+i+")").css({"top":(position.top + ($(this).height()/2))+"px", "left":(position.left + $(this).width() + 3)+"px"});
+				} else {
+					$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left + $(this).width() + 3)+"px"});
+				}
 				
 			} else if ($(this).hasClass("left")) {
 			
 				$("body").append("<div class=\"popover left\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left - $(".popover").width() - 5)+"px"});
+				if ($(this).is("img")) {
+					$(".popover:eq("+i+")").css({"top":(position.top + ($(this).height()/2))+"px", "left":(position.left - $(".popover").width()+100)+"px"});
+				} else {
+					$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left - $(".popover").width() - 5)+"px"});
+				}
 				
 			} else {
 			
 				$("body").append("<div class=\"popover\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
 				$(".popover:eq("+i+")").css({"top":(position.top - ($(".popover:eq("+i+")").innerHeight() + 8))+"px", "left":position.left+"px"});
 			}
+			
 			
 		});
 		
@@ -208,6 +223,33 @@ $(document).ready(function() {
 		});
 		
 	} // end getPopover
+	
+	// tabs
+	function getTabs() {
+		$(".with-tabs .tabs li").on("click",function(){
+		
+			var index = $(".with-tabs .tabs li").index(this);
+			
+			$(".with-tabs .tabs li").each(function(){
+				if ($(".with-tabs .tabs li").hasClass("active")) {
+					$(this).removeClass("active");
+				}
+			});
+			
+			$(this).addClass("active");
+			
+			$(".with-tabs .tab-contents section").each(function(){
+				if ($(".with-tabs .tab-contents section").hasClass("active")) {
+					$(this).removeClass("active");
+				}
+			});
+			
+			$(".with-tabs .tab-contents section:eq("+index+")").addClass("active");
+			
+			return false;
+			
+		});
+	} // end getTabs
 	
 	/******************** MAIN CODE ********************/
 	

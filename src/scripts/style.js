@@ -15,6 +15,11 @@ $(document).ready(function() {
 			console.log("Popover available!");
 		}
 		
+		if ($(".with-tabs").length) {
+			getTabs();
+			console.log("Tab available!");
+		}
+		
 	} // end checkComponents
 	
 	// Tooltip
@@ -84,12 +89,20 @@ $(document).ready(function() {
 			} else if ($(this).hasClass("right")) {
 			
 				$("body").append("<div class=\"popover right\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left + $(this).width() + 3)+"px"});
+				if ($(this).is("img")) {
+					$(".popover:eq("+i+")").css({"top":(position.top + ($(this).height()/2))+"px", "left":(position.left + $(this).width() + 3)+"px"});
+				} else {
+					$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left + $(this).width() + 3)+"px"});
+				}
 				
 			} else if ($(this).hasClass("left")) {
 			
 				$("body").append("<div class=\"popover left\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left - $(".popover").width() - 5)+"px"});
+				if ($(this).is("img")) {
+					$(".popover:eq("+i+")").css({"top":(position.top + ($(this).height()/2))+"px", "left":(position.left - $(".popover").width()+100)+"px"});
+				} else {
+					$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left - $(".popover").width() - 5)+"px"});
+				}
 				
 			} else {
 			
@@ -113,6 +126,33 @@ $(document).ready(function() {
 		});
 		
 	} // end getPopover
+	
+	// tabs
+	function getTabs() {
+		$(".with-tabs .tabs li").on("click",function(){
+		
+			var index = $(".with-tabs .tabs li").index(this);
+			
+			$(".with-tabs .tabs li").each(function(){
+				if ($(".with-tabs .tabs li").hasClass("active")) {
+					$(this).removeClass("active");
+				}
+			});
+			
+			$(this).addClass("active");
+			
+			$(".with-tabs .tab-contents section").each(function(){
+				if ($(".with-tabs .tab-contents section").hasClass("active")) {
+					$(this).removeClass("active");
+				}
+			});
+			
+			$(".with-tabs .tab-contents section:eq("+index+")").addClass("active");
+			
+			return false;
+			
+		});
+	} // end getTabs
 	
 	// call to check available component
 	checkComponents();
