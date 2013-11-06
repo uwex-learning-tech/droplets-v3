@@ -147,6 +147,22 @@ blockquote.pull-right {
 ul, ol {
 	margin-top: 0px;
 }
+ul li,
+ol li {
+	margin-bottom: 14px;
+}
+ul li ul li,
+ol li ol li,
+ol li ul li,
+ul li ol li {
+	margin-bottom: 5px;
+}
+ul li ul,
+ol li ol,
+ol li ul,
+ul li ol {
+	margin-top: 14px;
+}
 ul li ul {
 	list-style: square;
 }
@@ -579,6 +595,10 @@ button.btn {
 	border: 0;
 	padding: 11.2px 19px;
 	margin: 0;
+}
+/* IE hack fix*/
+html>/**/body button.btn {
+	padding:9.5px 19px;
 }
 .btn.info, a.btn.info, button.btn.info {
 	border-top: 1px solid #5db0e3;

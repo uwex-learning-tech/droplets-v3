@@ -89,6 +89,9 @@ body {
 	font-family: 'Lily Script One', cursive;
 	text-shadow: 4px 4px 0px #333;
 }
+html>/**/body .guide-wrapper.home .container .cover p.lead-two {
+	font-size: 6.36em !important;
+}
 .guide-wrapper.home .container .cover p.lead-four {
 	text-align: justify;
 	font-weight: 400;
@@ -184,6 +187,7 @@ body {
 .guide-container ul li {
 	display: inline-block;
 	margin-left: 0px;
+	margin-bottom: 0;
 }
 .guide-container ul li.active > a {
 	background-color: #000;
@@ -222,6 +226,7 @@ body {
 	display: inline-block;
 	margin-right: 10px;
 	margin-top: 5px;
+	margin-bottom: 0;
 }
 .guide-jump ul li a,
 .guide-jump ul li a:visited {
