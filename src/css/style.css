@@ -1023,19 +1023,23 @@ span.with-popover.active {
 	display: none;
 }
 
+/* MEDIA PLAYERS */
+iframe, object {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 /********* OLD DOWNLOAD BAR AND SUPPORT BUTTON ***********/
 #downloads, .downloads_bar {
 	font-size: small;
 	border: 1px solid #999;
-	-moz-border-radius: 5px;
-	-webkit-border-radius:5px;
-	border-radius: 5px;
-	visibility: visible;
-	width: 100%;
-	height: 34px;
-	margin: 10px auto 0px auto;
-	white-space:nowrap;
+	-moz-border-radius: 3px;
+	-webkit-border-radius:3px;
+	border-radius: 3px;
+	width: 756px;
+	margin: 10px 0px 0px 0px;
+	padding:5px;
 	background-color: #EBEBEB;
 }
 #downloads #dltitle, .downloads_bar .dltitle {
@@ -1044,20 +1048,17 @@ span.with-popover.active {
 	font-size:150%;
 	font-family: Helvetica, Arial, sans-serif;
 	float: left;
-	padding-left: 10px;
-	padding-top:7px;
 	margin:0px;
 }
 #dlfiles, .dlfiles {
-	width:75%;
-	float:right;
+	width:80%;
+	float:left;
 	margin:0;
-	padding: 0px;
-	display:inline;
+	padding: 0;
 	list-style:none;
+	text-align: right;
 }
 #downloads strong, .downloads_bar strong {
-	font-family: Helvetica, Arial, sans-serif;
 	font-size: 12px;
 }
 #downloads #dlfiles li, .downloads_bar .dlfiles li {
@@ -1074,19 +1075,19 @@ span.with-popover.active {
 	width: 7em;
 	margin-right: 0.5em;
 	border: 1px solid #515151;
-	background: #fff url(../images/dl_icon_bkgd.gif) repeat-x left top;
+	background: #fff;
 }
 #downloads #dlfiles a:hover, .downloads_bar .dlfiles a:hover {
 	color: #000;
 	border: 1px solid #000;
-	background: #fff url(../images/dl_icon_bkgd_over.gif) repeat-x left top;
+	background: #fff;
 }
 #videoPlayer #downloads_bar #dlfiles .ol, .videoPlayer .downloads_bar .dlfiles .ol {
 	list-style:none;
+	text-align: left;
 }
 #support, .support {
 	width: 132px;
-	height: auto;
 	text-align: center;
 }
 #support a:link, .support a:link {
