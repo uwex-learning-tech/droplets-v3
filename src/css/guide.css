@@ -259,6 +259,12 @@ html>/**/body .guide-wrapper.home .container .cover p.lead-two {
 .guide-example .guide-code {
 	padding:0px 15px 15px 15px;
 }
+.resize {
+	font-size: 14px;
+}
+.resize .guide-code {
+	padding: 0px;
+}
 .guide-example .guide-result {
 	border-top: 1px solid #ccc;
 	background: #f7f7f9;
