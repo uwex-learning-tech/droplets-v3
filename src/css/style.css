@@ -390,7 +390,7 @@ footer p {
 	box-shadow: 0px 0px 6px #888;
 }
 footer p:after {
-	content: "\00A9  Board of Regents. University of Wisconsin Systems. All rights reserved.";
+	content: "\00A9  Board of Regents. University of Wisconsin System. All rights reserved.";
 }
 footer.no-text p:after {
 	content: "";
