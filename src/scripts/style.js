@@ -161,7 +161,33 @@ $(document).ready(function() {
 	
 	// accordion
 	function getAccordion() {
-	
+		
+		$(".with-accordion").prepend("<div class=\"accordion-controls\"><a class=\"closeAll\" href=\"javascript:void(0)\">Close All</a> <a class=\"openAll\" href=\"javascript:void(0)\">Open All</a></div>");
+		
+		$(".closeAll").on("click",function(){
+			
+			$(".with-accordion .accordion-title").each(function(i){
+				if ($(this).hasClass("active")) {
+					$(".accordion-content:eq("+i+")").slideUp("fast", function(){
+						$(".accordion-title:eq("+i+")").removeClass("active");
+					});
+				}
+			});
+			
+		});
+		
+		$(".openAll").on("click",function(){
+			
+			$(".with-accordion .accordion-title").each(function(i){
+				if (!$(this).hasClass("active")) {
+					$(".accordion-content:eq("+i+")").slideDown("fast", function(){
+						$(".accordion-title:eq("+i+")").addClass("active");
+					});
+				}
+			});
+			
+		});
+		
 		$(".with-accordion .accordion-title").each(function(i){
 			if ($(this).hasClass("active")) {
 				$(".accordion-content:eq("+i+")").show();
@@ -221,6 +247,7 @@ function getParameterByName(url,name) {
 	}
 }
 
+// D2L BUTTONS/ACTION CALLS
 function gotoToC(){
 	var tocURL = '/d2l/lms/content/home.d2l?ou='+getParameterByName(window.parent.location.href,'ou')+'&showTOC=1';
 	top.location.href = tocURL;

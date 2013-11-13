@@ -421,3 +421,9 @@ a#scrollUp:visited,
 a#scrollUp:hover {
 	text-decoration: none;
 }
+
+@media print {
+	#scrollUp {
+		display: none;
+	}
+}

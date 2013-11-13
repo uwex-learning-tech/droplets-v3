@@ -1001,6 +1001,25 @@ span.with-popover.active {
 }
 
 /* ACCORDION */
+.with-accordion .accordion-controls {
+	font-size: 12px;
+	text-align: right;
+	margin: 0px 0px -5px 0px;
+	padding-right: 10px;
+}
+.with-accordion .accordion-controls a,
+.with-accordion .accordion-controls a:visited {
+	display: inline-block;
+	text-decoration: none;
+	background-color:#eaeaea;
+	padding:2px 5px;
+	border-radius: 3px 3px 0px 0px;
+	color:#9c9c9c;
+}
+.with-accordion .accordion-controls a:hover {
+	background-color:#ddd;
+	color:#5b5b5b;
+}
 .with-accordion .accordion-title {
 	background-color: #e7e7e7;
 	border: 1px solid #ddd;
@@ -1108,4 +1127,16 @@ iframe, object {
 	color: #000;
 	border: 1px solid #000;
 	background-color: #F9F9F9;
+}
+
+/* FOR PRINTING */
+@media print {
+	.with-accordion .accordion-title {
+		border: 0;
+		font-weight: bold;
+	}
+	.with-accordion .accordion-content {
+		border: 0;
+		display: block;
+	}
 }
