@@ -1046,55 +1046,41 @@ span.with-popover.active {
 /* MEDIA PLAYERS */
 iframe, object {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	margin:10px auto;
 }
 
 /********* OLD DOWNLOAD BAR AND SUPPORT BUTTON ***********/
 #downloads, .downloads_bar {
-	font-size: small;
-	border: 1px solid #999;
-	-moz-border-radius: 3px;
-	-webkit-border-radius:3px;
-	border-radius: 3px;
-	width: 756px;
-	margin: 10px 0px 0px 0px;
-	padding:5px;
-	background-color: #EBEBEB;
+	width: 640px;
+	margin: 10px auto;
 }
 #downloads #dltitle, .downloads_bar .dltitle {
-	width:20%;
-	color: #333;
-	font-size:150%;
-	font-family: Helvetica, Arial, sans-serif;
-	float: left;
-	margin:0px;
+	display: none;
 }
 #dlfiles, .dlfiles {
-	width:80%;
-	float:left;
 	margin:0;
 	padding: 0;
 	list-style:none;
-	text-align: right;
+	text-align:right;
 }
-#downloads strong, .downloads_bar strong {
+#downloads #dlfiles li,
+.downloads_bar .dlfiles li {
+	display: inline-block;
 	font-size: 12px;
+	margin-right: 5px;
+	margin-bottom: 0px;
 }
-#downloads #dlfiles li, .downloads_bar .dlfiles li {
-	float:right;
-	font-size: 95%;
-	margin-top: 5px;
-	margin-bottom: 5px;
+#downloads #dlfiles li:last-child,
+.downloads_bar .dlfiles li:last-child {
+	margin-right: 0px;
 }
-#downloads #dlfiles a, .downloads_bar .dlfiles a {
+#downloads #dlfiles a,
+.downloads_bar .dlfiles a {
 	text-decoration: none;
 	display:block;
-	padding:5px 10px 5px 30px;
-	color: #333;
-	width: 7em;
-	margin-right: 0.5em;
-	border: 1px solid #515151;
+	padding:5px 10px;
+	color: #8d8d8d;
+	border: 1px solid #8d8d8d;
 	background: #fff;
 }
 #downloads #dlfiles a:hover, .downloads_bar .dlfiles a:hover {
@@ -1107,17 +1093,18 @@ iframe, object {
 	text-align: left;
 }
 #support, .support {
-	width: 132px;
-	text-align: center;
+	width: 640px;
+	margin: 0px auto;
 }
 #support a:link, .support a:link {
+	display: block;
+	width: 132px;
+	text-align: center;
 	text-decoration: none;
 	font-size: 12px;
 	display: block;
-	padding:5px 10px 5px 10px;
+	padding:5px 0px;
 	color: #333;
-	margin-top:10px;
-	margin-right: 0.5em;
 	border: 1px solid #999999;
 	background-color: #F2F2F2;
 }
