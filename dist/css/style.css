@@ -399,6 +399,14 @@ footer p:after {
 footer.no-text p:after {
 	content: "";
 }
+footer.no-text {
+	margin-top: 30px;
+}
+footer.no-text p {
+	padding:15px;
+	min-height: 0px;
+}
+/*
 footer p a.course-support,
 footer p a.course-support:visited {
 	display: inline-block;
@@ -414,6 +422,7 @@ footer p a.course-support:hover {
 	color:#e9e9e9;
 	background-color: #1f1f1f;
 }
+*/
 
 /* helpers */
 .page-container {
