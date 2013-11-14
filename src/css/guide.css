@@ -422,6 +422,20 @@ a#scrollUp:hover {
 	text-decoration: none;
 }
 
+/* ICON */
+.icon-set tbody > tr > td {
+	vertical-align: middle;
+}
+.icon-size-up [class*=" icon-"],
+.icon-size-up [class^="icon-"] {
+	font-size: 36px;
+}
+.non-flex-assessment:before {
+	font-family: 'collaborateicon';
+	content: "\e083";
+	font-size: 36px;
+}
+
 @media print {
 	#scrollUp {
 		display: none;

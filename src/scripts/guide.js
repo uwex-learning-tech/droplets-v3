@@ -18,6 +18,7 @@ $(document).ready(function() {
 		} else if (pageId === "advEx") {
 			pages = [""];
 			SyntaxHighlighter.highlight();
+			checkComponents();
 		} else if (pageId === "cmpnt") {
 			pages = ["tooltip","popover","tab","accordion","button-plus"];
 		} else if (pageId === "landing") {
