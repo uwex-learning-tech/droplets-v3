@@ -182,6 +182,118 @@
 	</div>
 </div>
 
+<h2 id="striped">Striped Multi-body Table</h2>
+<p>Add "zebra-striping" to even table body (<code>&lt;tbody&gt;</code>) within the <code>&lt;table&gt;</code> element by using the <code>striped-body</code> class. This class is recommended to use for table with <code>rowspan</code>.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;table class="striped-body"&gt;
+
+	&lt;tbody&gt;
+		&lt;tr&gt;...&lt;/tr&gt;
+	&lt;/tbody&gt;
+		
+	&lt;tbody&gt;
+		&lt;tr&gt;...&lt;/tr&gt;
+	&lt;/tbody&gt;
+		
+	&lt;tbody&gt;
+		&lt;tr&gt;...&lt;/tr&gt;
+	&lt;/tbody&gt;
+		
+	&lt;tbody&gt;
+		&lt;tr&gt;...&lt;/tr&gt;
+	&lt;/tbody&gt;
+	
+&lt;/table&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<table class="striped-body">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="4">4</td>
+					<td>John</td>
+					<td>Oppenheimer</td>
+					<td>john.oppenheimer</td>
+				</tr>
+				<tr>
+					<td>Kristin</td>
+					<td>Barnes</td>
+					<td>kristin.barnes</td>
+				</tr>
+				<tr>
+					<td>Nate</td>
+					<td>Ewings</td>
+					<td>nate.ewings</td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td rowspan="4">1</td>
+					<td>Ethan</td>
+					<td>Lin</td>
+					<td>ethan.lin</td>
+				</tr>
+				<tr>
+					<td>Patrick</td>
+					<td>Wirth</td>
+					<td>patrick.wirth</td>
+				</tr>
+				<tr>
+					<td>Bryan</td>
+					<td>Bortz</td>
+					<td>bryan.bortz</td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td rowspan="4">4</td>
+					<td>John</td>
+					<td>Oppenheimer</td>
+					<td>john.oppenheimer</td>
+				</tr>
+				<tr>
+					<td>Kristin</td>
+					<td>Barnes</td>
+					<td>kristin.barnes</td>
+				</tr>
+				<tr>
+					<td>Nate</td>
+					<td>Ewings</td>
+					<td>nate.ewings</td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td rowspan="4">1</td>
+					<td>Ethan</td>
+					<td>Lin</td>
+					<td>ethan.lin</td>
+				</tr>
+				<tr>
+					<td>Patrick</td>
+					<td>Wirth</td>
+					<td>patrick.wirth</td>
+				</tr>
+				<tr>
+					<td>Bryan</td>
+					<td>Bortz</td>
+					<td>bryan.bortz</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
 <h2 id="bordered">Bordered Table</h2>
 <p>Add borders to all table cells by using the <code>bordered</code> class.</p>
 <div class="guide-example">
@@ -192,6 +304,66 @@
 	<div class="guide-result">
 		<p class="tip">Result</p>
 		<table class="bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Ethan</td>
+					<td>Lin</td>
+					<td>ethan.lin</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Patrick</td>
+					<td>Wirth</td>
+					<td>patrick.wirth</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Bryan</td>
+					<td>Bortz</td>
+					<td>bryan.bortz</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>John</td>
+					<td>Oppenheimer</td>
+					<td>john.oppenheimer</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Kristin</td>
+					<td>Barnes</td>
+					<td>kristin.barnes</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Nate</td>
+					<td>Ewings</td>
+					<td>nate.ewings</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<h2 id="bordered">No-Bordered Table</h2>
+<p>Removed borders to all table cells by using the <code>no-bordered</code> class.</p>
+<div class="guide-example">
+	<div class="guide-code">
+	<p class="tip">Code</p>
+<pre class="brush: html">&lt;table class="no-bordered"&gt;&lt;/table&gt;</pre>
+	</div>
+	<div class="guide-result">
+		<p class="tip">Result</p>
+		<table class="no-bordered">
 			<thead>
 				<tr>
 					<th>ID</th>

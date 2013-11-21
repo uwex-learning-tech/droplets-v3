@@ -437,7 +437,14 @@ a#scrollUp:hover {
 }
 
 @media print {
-	#scrollUp {
+	#scrollUp,
+	a#scrollUp,
+	a#scrollUp:visited {
 		display: none;
+		visibility: hidden;
+	}
+	.guide-container ul li a:after,
+	.guide-nav nav ul li a:after {
+		content: "";
 	}
 }
