@@ -289,6 +289,25 @@ table {
 	border-spacing: 0;
 	margin: 16px 0px;
 }
+table.three-fourths {
+	width: 75%;
+}
+table.half {
+	width: 50%;
+}
+table.quarter {
+	width: 25%;
+}
+table.left {
+	float: left;
+	margin: 0px 16px 0px 0px;
+	text-align: left;
+}
+table.right {
+	float: right;
+	margin: 0px 0px 0px 16px;
+	text-align: left;
+}
 table thead > tr > th {
 	padding:8px;
 	line-height: 1.428;
