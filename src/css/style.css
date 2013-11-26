@@ -41,7 +41,7 @@ header h1 small {
 h1, h2, h3, h4, h5, h6 {
 	margin-top:16px;
 	margin-bottom: 16px;
-	line-height: 1.1;
+	line-height: 1.25;
 	font-weight: 500;
 }
 
@@ -1097,6 +1097,42 @@ span.with-popover.active {
 	border:1px solid #ddd;
 	border-radius: 0px 0px 5px 5px;
 	display: none;
+}
+
+/* PAGE SUB NAV */
+.page-subnav {
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 914px;
+	list-style: none;
+	padding: 10px 20px 5px;
+	background-color: #fff;
+	margin: 0 0 0 1px;
+	background-color: #fff;
+	box-shadow: 0px 0px 4px #888;
+}
+.page-subnav li {
+	display: inline-block;
+	border-right: 1px solid #888;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	padding-right: 10px;
+}
+.page-subnav li:last-child {
+	border-right: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+	padding-right: 0;
+}
+.page-subnav li a,
+.page-subnav li a:visited {
+	font-size: 12px;
+	line-height: 1;
+	text-decoration: none;
+}
+.page-subnav li a:hover {
+	text-decoration: underline;
 }
 
 /* MEDIA PLAYERS */

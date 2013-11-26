@@ -25,6 +25,10 @@ $(document).ready(function() {
 			console.log("Accordion available!");
 		}
 		
+		if ($(".with-subnav").length) {
+			getSubnav();
+		}
+		
 	} // end checkComponents
 	
 	// Tooltip
@@ -227,6 +231,23 @@ $(document).ready(function() {
 			
 		});
 	} // end getAccordion
+	
+	// subnav
+	function getSubnav() {
+	
+		var nav = "<ul class=\"page-subnav\">";
+		
+		$(".with-subnav h2").each(function(i) {
+			$(this).attr("id","nav"+i);
+			nav += "<li><a href=\"#nav"+i+"\">" + $(this).html() + "</a></li>";
+		});
+		
+		nav += "</ul>";
+		
+		$(".with-subnav").prepend(nav);
+		$("body").css("padding-top",$(".page-subnav").innerHeight());
+		
+	} // end getSubnav
 	
 	// call to check available component
 	checkComponents();
