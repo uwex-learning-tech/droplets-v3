@@ -1,4 +1,4 @@
-@import url(../../dist/fonts/collaborateicon.css);
+@import url(../../dist/fonts/collaborativeicon.css);
 
 /* global */
 html,
@@ -26,7 +26,7 @@ header {
 header h1 {
 	margin-top:20px;
 	margin-bottom: 10px;
-	font-size: 32px;
+	font-size: 30px;
 	font-weight: 500;
 	line-height: 1.1;
 }
@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	font-size: 32px;
+	font-size: 30px;
 }
 
 h1 [class^="icon-"],
@@ -982,7 +982,7 @@ span.with-popover.active {
 	list-style: none;
 	padding: 0;
 	margin: 0 0 19px 0;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #929292;
 	float: left;
 	clear: both;
 }
@@ -991,13 +991,14 @@ span.with-popover.active {
 	float:left;
 	margin-bottom: -1px;
 	border-radius: 0px 5px 0px 0px;
-	background-color: white;
+	background-color: #fff;
 }
 .with-tabs .tabs li.active {
-	border-top: 1px solid #ddd;
-	border-right: 1px solid #ddd;
-	border-left: 1px solid #ddd;
+	border-top: 1px solid #929292;
+	border-right: 1px solid #929292;
+	border-left: 1px solid #929292;
 	border-bottom: transparent;
+	box-shadow: 0px -3px 3px #a2a2a2;
 }
 .with-tabs .tabs li.active:hover {
 	background-color: #fff;
@@ -1010,6 +1011,10 @@ span.with-popover.active {
 	display: block;
 	padding:10px;
 	text-decoration: none;
+	color:#4e4e4e;
+}
+.with-tabs .tabs li a:hover {
+	color:#333;
 }
 .with-tabs .tab-contents {
 	border-bottom: 1px solid #ddd;
