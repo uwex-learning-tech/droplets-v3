@@ -238,7 +238,7 @@ $(document).ready(function() {
 		var nav = "<ul class=\"page-subnav\">";
 		
 		$(".with-subnav h2").each(function(i) {
-			$(this).attr("id","nav"+i);
+			$(this).before("<a class=\"anchor\" id=\"nav"+i+"\" href=\"#\"></a>");
 			nav += "<li><a href=\"#nav"+i+"\">" + $(this).html() + "</a></li>";
 		});
 		
@@ -246,6 +246,7 @@ $(document).ready(function() {
 		
 		$(".with-subnav").prepend(nav);
 		$("body").css("padding-top",$(".page-subnav").innerHeight());
+		$(".anchor").css({"display":"block", "position":"relative", "top":($(".page-subnav").innerHeight() * -1)+"px", "visibility":"hidden"});
 		
 	} // end getSubnav
 	
