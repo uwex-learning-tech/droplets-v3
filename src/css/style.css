@@ -67,7 +67,7 @@ h3, h4, h5, h6 {
 
 /* body copy */
 p {
-	margin: 16px 0px;
+	margin: 15px 0px;
 }
 p.lead {
 	font-size: 21px;
@@ -551,6 +551,17 @@ footer p a.course-support:hover {
 .callout p:last-child {
 	margin-bottom: 0px;
 }
+.callout.minimal {
+	background-color:transparent !important;
+	border-right: 0;
+	border-left-width: 5px;
+}
+.callout.minimal.alt {
+	background-color:#FFFFFF !important;
+	border:1px solid #d6d6d6;
+	border-radius: 3px;
+	box-shadow: 0px 1px 1px #cdcdcd;
+}
 .callout.vertical {
 	padding:15px;
 	border-left: 0;
@@ -592,6 +603,7 @@ footer p a.course-support:hover {
 }
 .callout h4 {
 	vertical-align:baseline;
+	margin-bottom: 0px;
 }
 .callout h4 [class^="icon-"],
 .callout h4 [class*=" icon-"] {
