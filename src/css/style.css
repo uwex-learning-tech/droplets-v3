@@ -371,6 +371,26 @@ table.hover > tbody > tr:hover > td,
 table.hover > tbody > tr:hover > th {
 	background-color: #f1f1f1;
 }
+
+table.minimal {
+	background-color:#ffffff;
+	border:1px solid #d6d6d6;
+	border-radius: 3px;
+	box-shadow: 0px 1px 1px #cdcdcd;
+}
+table.minimal > thead > tr > th,
+table.minimal > tbody > tr > th,
+table.minimal > tfoot > tr > th,
+table.minimal > thead > tr > td,
+table.minimal > tbody > tr > td,
+table.minimal > tfoot > tr > td {
+	border: 0;
+	vertical-align: middle;
+	border-right:1px solid #e3e3e3;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
 table > thead > tr > td.info,
 table > tbody > tr > td.info,
 table > tfoot > tr > td.info,
