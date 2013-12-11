@@ -138,98 +138,110 @@ $(document).ready(function() {
 	
 	// tabs
 	function getTabs() {
-		$(".with-tabs .tabs li").on("click",function(){
-		
-			var index = $(".with-tabs .tabs li").index(this);
+	
+		$(".with-tabs").each(function(i){
+			$(this).attr("data-id",i);
 			
-			$(".with-tabs .tabs li").each(function(){
-				if ($(".with-tabs .tabs li").hasClass("active")) {
-					$(this).removeClass("active");
-				}
+			$(".with-tabs[data-id='"+i+"'] .tabs li").on("click",function(){
+				
+				var index = $(".with-tabs[data-id='"+i+"'] .tabs li").index(this);
+				
+				$(".with-tabs[data-id='"+i+"'] .tabs li").each(function(){
+					if ($(".with-tabs[data-id='"+i+"'] .tabs li").hasClass("active")) {
+						$(this).removeClass("active");
+					}
+				});
+				
+				$(this).addClass("active");
+				
+				$(".with-tabs[data-id='"+i+"'] .tab-contents section").each(function(){
+					if ($(".with-tabs[data-id='"+i+"'] .tab-contents section").hasClass("active")) {
+						$(this).removeClass("active");
+					}
+				});
+				
+				$(".with-tabs[data-id='"+i+"'] .tab-contents section:eq("+index+")").addClass("active");
+				
+				return false;
+				
 			});
-			
-			$(this).addClass("active");
-			
-			$(".with-tabs .tab-contents section").each(function(){
-				if ($(".with-tabs .tab-contents section").hasClass("active")) {
-					$(this).removeClass("active");
-				}
-			});
-			
-			$(".with-tabs .tab-contents section:eq("+index+")").addClass("active");
-			
-			return false;
-			
 		});
+	
 	} // end getTabs
 	
 	// accordion
 	function getAccordion() {
 		
-		$(".with-accordion").prepend("<div class=\"accordion-controls\"><a class=\"closeAll\" href=\"javascript:void(0)\">Close All</a> <a class=\"openAll\" href=\"javascript:void(0)\">Open All</a></div>");
-		
-		$(".closeAll").on("click",function(){
+		$(".with-accordion").each(function(i){
+			$(this).attr("id","ai"+i);
 			
-			$(".with-accordion .accordion-title").each(function(i){
-				if ($(this).hasClass("active")) {
-					$(".accordion-content:eq("+i+")").slideUp("fast", function(){
-						$(".accordion-title:eq("+i+")").removeClass("active");
-					});
-				}
-			});
+			$("#ai"+i).prepend("<div class=\"accordion-controls\"><a class=\"closeAll\" href=\"javascript:void(0)\">Close All</a> <a class=\"openAll\" href=\"javascript:void(0)\">Open All</a></div>");
 			
-		});
-		
-		$(".openAll").on("click",function(){
+			$("#ai"+i+" .closeAll").on("click",function(){
 			
-			$(".with-accordion .accordion-title").each(function(i){
-				if (!$(this).hasClass("active")) {
-					$(".accordion-content:eq("+i+")").slideDown("fast", function(){
-						$(".accordion-title:eq("+i+")").addClass("active");
-					});
-				}
-			});
-			
-		});
-		
-		$(".with-accordion .accordion-title").each(function(i){
-			if ($(this).hasClass("active")) {
-				$(".accordion-content:eq("+i+")").show();
-			}
-		});
-	
-		$(".with-accordion .accordion-title").on("click",function(){
-		
-			var index = $(".with-accordion .accordion-title").index(this);
-			
-			if (!$(this).hasClass("active")) {
-				
-				$(".with-accordion .accordion-title").each(function(i){
+				$("#ai"+i+" .accordion-title").each(function(k){
 					if ($(this).hasClass("active")) {
-						$(this).removeClass("active");
-						$(".accordion-content:eq("+i+")").slideUp("fast",function(){
-							$(".accordion-title:eq("+index+")").addClass("active");
-							$(".accordion-content:eq("+index+")").slideDown();
+						$("#ai"+i+" > .accordion-content:eq("+k+")").slideUp("fast", function(){
+							$("#ai"+i+" > .accordion-title:eq("+k+")").removeClass("active");
 						});
-					} else {
-						if (i === index) {
-							$(".accordion-title:eq("+index+")").addClass("active");
-							$(".accordion-content:eq("+index+")").slideDown();
-						}
 					}
 				});
 				
-			} else {
+			}); // end closeAll
 			
-				$(".accordion-content:eq("+index+")").slideUp("fast", function(){
-					$(".accordion-title:eq("+index+")").removeClass("active");
+			$("#ai"+i+" .openAll").on("click",function(){
+				
+				$("#ai"+i+" .accordion-title").each(function(j){
+					if (!$(this).hasClass("active")) {
+						$("#ai"+i+" > .accordion-content:eq("+j+")").slideDown("fast", function(){
+							$("#ai"+i+" > .accordion-title:eq("+j+")").addClass("active");
+						});
+					}
 				});
 				
-			}
+			}); // end openAll
 			
-			return false;
+			$("#ai"+i+" .accordion-title").each(function(m){
+				if ($(this).hasClass("active")) {
+					$("#ai"+i+" > .accordion-content:eq("+m+")").show();
+				}
+			}); // end init state
+			
+			$("#ai"+i+" .accordion-title").on("click",function(){
+			
+				var index = $("#ai"+i+" .accordion-title").index(this);
+				
+				if (!$(this).hasClass("active")) {
+					
+					$("#ai"+i+" .accordion-title").each(function(n){
+						if ($(this).hasClass("active")) {
+							$(this).removeClass("active");
+							$("#ai"+i+" > .accordion-content:eq("+n+")").slideUp("fast",function(){
+								$("#ai"+i+" > .accordion-title:eq("+index+")").addClass("active");
+								$("#ai"+i+" > .accordion-content:eq("+index+")").slideDown();
+							});
+						} else {
+							if (n === index) {
+								$("#ai"+i+" > .accordion-title:eq("+index+")").addClass("active");
+								$("#ai"+i+" > .accordion-content:eq("+index+")").slideDown();
+							}
+						}
+					});
+					
+				} else {
+				
+					$("#ai"+i+" > .accordion-content:eq("+index+")").slideUp("fast", function(){
+						$("#ai"+i+" > .accordion-title:eq("+index+")").removeClass("active");
+					});
+					
+				}
+				
+				return false;
+				
+			}); // end click
 			
 		});
+
 	} // end getAccordion
 	
 	// subnav

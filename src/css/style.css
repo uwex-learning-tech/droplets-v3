@@ -1089,6 +1089,9 @@ span.with-popover.active {
 }
 
 /* ACCORDION */
+.with-accordion {
+	margin: 16px 0px;
+}
 .with-accordion .accordion-controls {
 	font-size: 12px;
 	text-align: right;
