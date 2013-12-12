@@ -159,7 +159,7 @@ ul, ol {
 }
 ul li,
 ol li {
-	margin-bottom: 14px;
+	margin-bottom: 10px;
 }
 ul li ul li,
 ol li ol li,
@@ -171,7 +171,7 @@ ul li ul,
 ol li ol,
 ol li ul,
 ul li ol {
-	margin-top: 14px;
+	margin-top: 10px;
 }
 ul li ul,
 ul > ul,
