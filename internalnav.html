@@ -40,7 +40,7 @@
 				<li><a href="accordion.html">Accordion</a></li>
 				<li><a href="actioncalls.html">Action Calls</a></li>
 				<li><a class="active" href="javascript:void(0)">Internal Page Navigation</a></li>
-				<li><a href="scrolltop.html">Scroll to Top</a></li>
+				<!-- <li><a href="scrolltop.html">Scroll to Top</a></li> -->
 			</ul>
 		</div>
 		<div class="guide_outlayer">
@@ -52,7 +52,12 @@
 				
 				<p class="lead">An internal page navigation for long content pages using anchor tags.</p>
 				
-				<p>To use a sub navigation for long content pages, add the <code>with-subnav</code> class to the <code>&lt;body&gt;</code> or <code>&lt;div&gt;</code> element. Any <code>&lt;h2&gt;</code> element inside the <code>&lt;body&gt;</code> or <code>&lt;div&gt;</code> element will be used by the JavaScript to create the sub menu box, which will be fixed to the top of the page. The JavaScript will automatically anchor each menu item to the contents.</p>
+				<p>To use a sub navigation for long content pages, add the <code>with-subnav</code> class to the <code>&lt;div&gt;</code> element. Any <code>&lt;h2&gt;</code> element inside the <code>&lt;div&gt;</code> element will be used by the JavaScript to create the sub menu box. The JavaScript will automatically anchor each menu item to the contents.</p>
+				
+				<div class="callout warning">
+					<h4>D2L v10.1 Changes</h4>
+					<p>Due to the new structure in D2l v10.1, the internal page navigation menu area is no longer fixed to the top (or anywhere) of the page. Fixing the menu area on top (or anywhere) of the page will cause D2L to go banana. D2L will continuously increasing the height of the iFrame, which makes the page longer and longer every second. This issue is D2L's responsibility to resolve it.</p>
+				</div>
 				
 				<p><a class="btn info" href="src/examples/internalnav.html" target="_blank">SEE DEMO</a></p>
 				
@@ -61,22 +66,7 @@
 				<div class="guide-example">
 					<div class="guide-code">
 						<p class="tip">Code</p>
-						<pre class="brush: html">&lt;body class="with-subnav"&gt;
-		
-	&lt;h2&gt;...&lt;/h2&gt;
-	&lt;p&gt;...&lt;/p&gt;
-	
-	&lt;h2&gt;...&lt;/h2&gt;
-	&lt;p&gt;...&lt;/p&gt;
-	
-	&lt;h2&gt;...&lt;/h2&gt;
-	&lt;p&gt;...&lt;/p&gt;
-	
-&lt;/body&gt;
-
-&lt;!-- can also be done by using a div element --&gt;
-
-&lt;div class="with-subnav"&gt;
+						<pre class="brush: html">&lt;div class="with-subnav"&gt;
 
 	&lt;h2&gt;...&lt;/h2&gt;
 	&lt;p&gt;...&lt;/p&gt;
