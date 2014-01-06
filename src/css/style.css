@@ -451,9 +451,9 @@ table > tfoot > tr.danger > th {
 /* footer */
 footer {
 	width:954px;
-	border-top: 1px #131313 solid;
-	margin:0px 0px 0px 1px;
-	color:#cbcbcb;
+	border-top: 1px #b4b4b4 solid;
+	margin:0px;
+	color:#b4b4b4;
 	font-size:12px;
 }
 footer p {
@@ -461,8 +461,8 @@ footer p {
 	line-height: 0;
 	padding:30px 15px 15px 15px;
 	min-height: 15px;
-	background-color: #6e6e6e;
-	box-shadow: 0px 0px 6px #888;
+	background-color: #FFFFFF;
+	/* box-shadow: 0px 0px 6px #888; */
 }
 footer p:after {
 	content: "\00A9  Board of Regents. University of Wisconsin System. All rights reserved.";
@@ -500,10 +500,10 @@ footer p a.course-support:hover {
 	width: 924px;
 	min-height: 100%;
 	height: auto !important;
-	margin: 0 0 -61px 1px;
+	margin: 0 0 -61px 0px;
 	background-color: #fff;
 	padding:0px 15px 0px 15px;
-	box-shadow: 0px 0px 4px #888;
+	/* box-shadow: 0px 0px 4px #888; */
 }
 .push {
 	height: 90px;
@@ -579,8 +579,36 @@ footer p a.course-support:hover {
 .callout.minimal.alt {
 	background-color:#FFFFFF !important;
 	border:1px solid #d6d6d6;
-	border-radius: 3px;
+	border-radius: 3px 3px;
 	box-shadow: 0px 1px 1px #cdcdcd;
+}
+.callout.minimal.alt.danger {
+	background-color:#FFFFFF !important;
+	border:0px solid #d6d6d6;
+	border-left: 5px solid #cc4745;
+	border-radius: 0px 0px;
+	box-shadow: 0px 1px 5px #bebebe;
+}
+.callout.minimal.alt.success {
+	background-color:#FFFFFF !important;
+	border:0px solid #d6d6d6;
+	border-left: 5px solid #64b660;
+	border-radius: 0px 0px;
+	box-shadow: 0px 1px 5px #bebebe;
+}
+.callout.minimal.alt.info {
+	background-color:#FFFFFF !important;
+	border:0px solid #d6d6d6;
+	border-left: 5px solid #4dabe9;
+	border-radius: 0px 0px;
+	box-shadow: 0px 1px 5px #bebebe;
+}
+.callout.minimal.alt.warning {
+	background-color:#FFFFFF !important;
+	border:0px solid #d6d6d6;
+	border-left: 5px solid #edce42;
+	border-radius: 0px 0px;
+	box-shadow: 0px 1px 5px #bebebe;
 }
 .callout.vertical {
 	padding:15px;
@@ -1302,4 +1330,21 @@ iframe, object {
 		content: "";
 	}
 	
+}
+
+/* SCROLLUP */
+#scrollUp {
+  bottom: 0px;
+  right: 35px;
+  padding: 10px 20px;
+  background:rgba(0,0,0,0.75);
+  color: #fff;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0px 0px 8px #000;
+  cursor: pointer;
+}
+a#scrollUp,
+a#scrollUp:visited,
+a#scrollUp:hover {
+	text-decoration: none;
 }

@@ -1,66 +1,57 @@
 <!doctype html>
-<html lang="en" id="advEx">
+<html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>Examples | Instructional Designer's Page Content Style Guide | UWEX-CEOEL</title>
+	<title>Examples | Style Guide | UWEX-CEOEL</title>
 	<link rel="shortcut icon" type="image/x-icon" href="src/img/uwex.ico" />
-	<link href="src/css/style.min.css" rel="stylesheet" media="all" />
-	<link href="src/css/guide.min.css" rel="stylesheet" media="all" />
-	<script src="src/scripts/jquery.min.js" type="text/javascript"></script>
-	<script src="src/scripts/guide.min.js" type="text/javascript"></script>
+	<link href="src/css/style.css" rel="stylesheet" media="all" />
+	<link href="src/css/guide.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shCore.min.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shThemeDefault.min.css" rel="stylesheet" media="all" />
+	<script src="src/script/jquery.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shCore.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shBrushXml.min.js" type="text/javascript"></script>
+	<script src="src/script/guide.min.js" type="text/javascript"></script>
 </head>
 <body>
-
-
-<div class="guide-wrapper">
-
-	<!-- guide header -->
-	<div class="guide-container">
-		<h1 class="guide-title"><a href="./"><img src="src/img/ex_logo.png" width="200" height="70" alt="University of Wisconsin-Extension, Continuing Education, Outreach &amp; E-Learning" border="0" /></a><small>Instructional Designer's Page Content Style Guide</small></h1>
-		<div class="clearfix"></div>
-		<ul>
-			<li><a href="./">Home</a></li>
-			<li><a href="layoutselements.html">Layouts &amp; Elements</a></li>
-			<li><a href="icons.html">Icons</a></li>
-			<li><a href="components.html">JavaScript Components</a></li>
-			<li class="active"><a href="javascript:void(0);">Examples</a></li>
-			<li><a href="gettingstarted.html">Starter File</a></li>
-			<li><a href="support.html">Support</a></li>
-		</ul>
+	<div class="guide_wrapper">
+		<div class="guide_header">
+			<div class="nav_bar">
+				<div class="logo"><a href="index.html"><img src="src/img/uwex_ceoel_black.png" width="154" height="50" alt="University of Wisconsin-Extension, division of Continuing Education, Outreach & E-Learning" /></a></div>
+				<ul class="nav">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="pageheaders.html">Layouts &amp; Elements</a></li>
+					<li><a href="icons.html">Icons</a></li>
+					<li><a href="tooltip.html">JavaScript Components</a></li>
+					<li><a class="active" href="examples.html">Examples</a></li>
+					<li><a href="starter.html">Starter Files</a></li>
+					<li><a href="support.html">Support</a></li>
+				</ul>
+			</div>
+		</div>
 		
-		<!-- guide sub nav -->
-		<div class="guide-nav"></div>
-		<!-- end guide sub nav -->
-		
+		<div class="guide_container">
+			<div class="guide_outlayer_full">
+				<div class="guide_content">
+					
+					<header>
+						<h1>Examples</h1>
+					</header>
+				
+					<ul>
+						<li><a href="src/examples/callout.html" target="_blank">Mixing Callouts and Other Element in Page Content</a></li>
+						<li><a href="src/examples/internalnav.html" target="_blank">Internal Page Navigation</a></li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>
 	</div>
-	<!-- end guide header -->
-	
-	<!-- page content -->
-	<div id="page-content" class="page-container">
-	
-		<header>
-			<h1>Examples <small>What you can further do</small></h1>
-		</header>
-	
-		<ul>
-			<li><a href="src/parts/callout_example.html" target="_blank">Mixing Callouts and Other Element in Page Content</a></li>
-			<li><a href="src/parts/subnav_example.html" target="_blank">Sub (Internal) Navigation</a></li>
-		</ul>
-		
-		<div class="push"></div>
+	<div class="clearfix"></div>
+
+	<div class="home_footer_copyright">
+		<p class="home_footer_copyright_notice">Copyright &copy; 2013 Board of Regents. University of Wisconsin-Extension, Continuing Education, Outreach & E-Learning. All rights reserved.</p>
 	</div>
-	<!-- end page content -->
-
-</div>
-<!-- end guide-wrapper -->
-
-<!-- guide footer -->
-<footer class="guide-footer">
-	<div class="container">
-		<p>&copy; 2013 University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning.</p>
-	</div>
-</footer>
-<!-- end guide footer -->
-
+	
 </body>
 </html>

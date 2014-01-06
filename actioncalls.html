@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Action Calls | Style Guide | UWEX-CEOEL</title>
+	<link rel="shortcut icon" type="image/x-icon" href="src/img/uwex.ico" />
+	<link href="src/css/style.css" rel="stylesheet" media="all" />
+	<link href="src/css/guide.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shCore.min.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shThemeDefault.min.css" rel="stylesheet" media="all" />
+	<script src="src/script/jquery.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shCore.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shBrushXml.min.js" type="text/javascript"></script>
+	<script src="src/script/guide.min.js" type="text/javascript"></script>
+	<script src="src/script/style.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<div class="guide_header">
+		<div class="nav_bar">
+			<div class="logo"><a href="index.html"><img src="src/img/uwex_ceoel_black.png" width="154" height="50" alt="University of Wisconsin-Extension, division of Continuing Education, Outreach & E-Learning" /></a></div>
+			<ul class="nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="pageheaders.html">Layouts &amp; Elements</a></li>
+				<li><a href="icons.html">Icons</a></li>
+				<li><a class="active" href="tooltip.html">JavaScript Components</a></li>
+				<li><a href="examples.html">Examples</a></li>
+				<li><a href="starter.html">Starter Files</a></li>
+				<li><a href="support.html">Support</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="guide_container">
+		<div class="side_nav">
+			<ul id="primary">
+				<li><a href="tooltip.html">Tooltip</a></li>
+				<li><a href="popover.html">Popover</a></li>
+				<li><a href="tab.html">Tab</a></li>
+				<li><a href="accordion.html">Accordion</a></li>
+				<li><a class="active" href="javascript:void(0)">Action Calls</a></li>
+				<li><a href="internalnav.html">Internal Page Navigation</a></li>
+				<li><a href="scrolltop.html">Scroll to Top</a></li>
+			</ul>
+		</div>
+		<div class="guide_outlayer">
+			<div class="guide_content">
+				
+				<header>
+					<h1>Action Calls</small></h1>
+				</header>
+				
+				<p class="lead">Action Calls only work within D2L courses as long the URL does not change.</p>
+				<h2>Table of Contents</h2>
+				<p>To go to the table of content, add <code>onclick="gotoToC();"</code> to <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> element.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;a class="btn default block" href="javascript:void(0)" onclick="gotoToC();"&gt;
+Table of Contents&lt;/a&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p><a class="btn default block" href="javascript:void(0)">Table of Contents</a></p>
+					</div>
+				</div>
+				
+				<h2>Grades</h2>
+				<p>To go to the grades page, add <code>onclick="gotoGrades();"</code> to <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> element.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;a class="btn success block" href="javascript:void(0)" onclick="gotoGrades();"&gt;
+Grades&lt;/a&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p><a class="btn success block" href="javascript:void(0)">Grades</a></p>
+					</div>
+				</div>
+				
+				<h2>Dropbox</h2>
+				<p>To go to the dropbox page, add <code>onclick="gotoDropbox();"</code> to <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> element.</p>
+				<p><span class="label danger">Note:</span> only works when in student mode.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;a class="btn info block" href="javascript:void(0)" onclick="gotoDropbox();"&gt;
+Dropbox&lt;/a&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p><a class="btn info block" href="javascript:void(0)">Dropbox</a></p>
+					</div>
+				</div>
+				
+				<h2>Discussions</h2>
+				<p>To go to the discussion page, add <code>onclick="gotoDiscussions();"</code> to <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> element.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;a class="btn warning block" href="javascript:void(0)" onclick="gotoDiscussions();"&gt;
+Discussions&lt;/a&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p><a class="btn warning block" href="javascript:void(0)">Discussions</a></p>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+
+	<div class="home_footer_copyright">
+		<p class="home_footer_copyright_notice">Copyright &copy; 2013 Board of Regents. University of Wisconsin-Extension, Continuing Education, Outreach & E-Learning. All rights reserved.</p>
+	</div>
+	
+</body>
+</html>

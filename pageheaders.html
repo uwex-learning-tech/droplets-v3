@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Headers | Style Guide | UWEX-CEOEL</title>
+	<link rel="shortcut icon" type="image/x-icon" href="src/img/uwex.ico" />
+	<link href="src/css/style.css" rel="stylesheet" media="all" />
+	<link href="src/css/guide.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shCore.min.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shThemeDefault.min.css" rel="stylesheet" media="all" />
+	<script src="src/script/jquery.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shCore.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shBrushXml.min.js" type="text/javascript"></script>
+	<script src="src/script/guide.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<div class="guide_header">
+		<div class="nav_bar">
+			<div class="logo"><a href="index.html"><img src="src/img/uwex_ceoel_black.png" width="154" height="50" alt="University of Wisconsin-Extension, division of Continuing Education, Outreach & E-Learning" /></a></div>
+			<ul class="nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a class="active" href="pageheaders.html">Layouts &amp; Elements</a></li>
+				<li><a href="icons.html">Icons</a></li>
+				<li><a href="tooltip.html">JavaScript Components</a></li>
+				<li><a href="examples.html">Examples</a></li>
+				<li><a href="starter.html">Starter Files</a></li>
+				<li><a href="support.html">Support</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="guide_container">
+		<div class="side_nav">
+			<ul id="primary">
+				<li><a class="active" href="pageheaders.html">Page Headers</a></li>
+				<li><a href="javascript:void(0)">Typography</a>
+					<ul>
+						<li><a href="typography.html">Heading</a></li>
+						<li><a href="typography.html#leadbodycopy">Lead Body Copy</a></li>
+						<li><a href="typography.html#bodycopy">Body Copy</a></li>
+						<li><a href="typography.html#hyperlink">Hyperlink</a></li>
+						<li><a href="typography.html#blockquote">Blockquote</a></li>
+						<li><a href="typography.html#lists">Lists</a></li>
+					</ul>
+				</li>
+				<li><a href="javascript:void(0)">Layouts</a>
+					<ul>
+						<li><a href="layouts.html">Two-Column</a></li>
+						<li><a href="layouts.html#three-column">Three-Column</a></li>
+						<li><a href="layouts.html#first-line">First Line Indentation</a></li>
+						<li><a href="layouts.html#all-line">All Line Indentation</a></li>
+						<li><a href="layouts.html#hanging">Hanging Indentation</a></li>
+						<li><a href="layouts.html#text-alignments">Text Alignments</a></li>
+						<li><a href="layouts.html#buttons">Buttons</a></li>
+						<li><a href="layouts.html#line-break">Line Break</a></li>
+						<li><a href="layouts.html#horizontal-rule">Horizontal Rule</a></li>
+						<li><a href="layouts.html#footer">Footer</a></li>
+					</ul>
+				</li>
+				<li><a href="emphasis.html">Emphasis</a></li>
+				<li><a href="inlinecallouts.html">Inline Callouts</a></li>
+				<li><a href="javascript:void(0)">Block-Level Callouts</a>
+					<ul>
+						<li><a href="blockcallouts.html">Basic Horizontal</a></li>
+						<li><a href="blockcallouts.html#basic-vert">Basic Vertical</a></li>
+						<li><a href="blockcallouts.html#iconic-horz">Iconic Horizontal</a></li>
+						<li><a href="blockcallouts.html#iconic-vert">Iconic Vertical</a></li>
+						<li><a href="blockcallouts.html#minimal">Minimal Style</a></li>
+						<li><a href="blockcallouts.html#floating">Floating</a></li>
+					</ul>
+				</li>
+				<li><a href="javascript:void(0)">Tables</a>
+					<ul>
+						<li><a href="tables.html">Basic</a></li>
+						<li><a href="tables.html#striped">Striped</a></li>
+						<li><a href="tables.html#bordered">Bordered</a></li>
+						<li><a href="tables.html#no-border">No Border</a></li>
+						<li><a href="tables.html#hover">Hover Rows</a></li>
+						<li><a href="tables.html#widths">Widths</a></li>
+						<li><a href="tables.html#minimal">Minimal</a></li>
+						<li><a href="tables.html#floating">Floating</a></li>
+						<li><a href="tables.html#contextual">Contextual</a></li>
+					</ul>
+				</li>
+				<li><a href="image.html">Image</a></li>
+				<li><a href="helpers.html">Helpers</a></li>
+			</ul>
+		</div>
+		<div class="guide_outlayer">
+			<div class="guide_content">
+				<header>
+					<h1>Page Headers</h1>
+				</header>
+				<p>A page must starts with a page header. Page header may not be used multiple times throughout the page.</p>
+				
+				<h2>Basic Page Header</h2>
+				<p>A basic page header contains only the page title.</p>
+				
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;header&gt;
+	&lt;h1&gt;Page title (30 pixels)&lt;/h1&gt;
+&lt;/header&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<header>
+							<h1>Page title (30 pixels)</h1>
+						</header>
+					</div>
+				</div>
+				
+				<h2>Page Header with Subtext</h2>
+				<p>A page header with subtext contains the page title and supplement text</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;header&gt;
+	&lt;h1&gt;Page title (30 pixels) &lt;small&gt;subtext (24 pixels)&lt;/small&gt;&lt;/h1&gt;
+&lt;/header&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<header>
+							<h1>Page title (30 pixels) <small>subtext (24 pixels)</small></h1>
+						</header>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+
+	<div class="home_footer_copyright">
+		<p class="home_footer_copyright_notice">Copyright &copy; 2013 Board of Regents. University of Wisconsin-Extension, Continuing Education, Outreach & E-Learning. All rights reserved.</p>
+	</div>
+	
+</body>
+</html>

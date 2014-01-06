@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Block-Level Callouts | Style Guide | UWEX-CEOEL</title>
+	<link rel="shortcut icon" type="image/x-icon" href="src/img/uwex.ico" />
+	<link href="src/css/style.css" rel="stylesheet" media="all" />
+	<link href="src/css/guide.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shCore.min.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shThemeDefault.min.css" rel="stylesheet" media="all" />
+	<script src="src/script/jquery.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shCore.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shBrushXml.min.js" type="text/javascript"></script>
+	<script src="src/script/jquery.scrollUp.min.js" type="text/javascript"></script>
+	<script src="src/script/guide.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$(function(){ $.scrollUp(); });
+	});
+	</script>
+</head>
+<body>
+
+	<div class="guide_header">
+		<div class="nav_bar">
+			<div class="logo"><a href="index.html"><img src="src/img/uwex_ceoel_black.png" width="154" height="50" alt="University of Wisconsin-Extension, division of Continuing Education, Outreach & E-Learning" /></a></div>
+			<ul class="nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a class="active" href="pageheaders.html">Layouts &amp; Elements</a></li>
+				<li><a href="icons.html">Icons</a></li>
+				<li><a href="tooltip.html">JavaScript Components</a></li>
+				<li><a href="examples.html">Examples</a></li>
+				<li><a href="starter.html">Starter Files</a></li>
+				<li><a href="support.html">Support</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="guide_container">
+		<div class="side_nav">
+			<ul id="primary">
+				<li><a href="pageheaders.html">Page Headers</a></li>
+				<li><a href="javascript:void(0)">Typography</a>
+					<ul>
+						<li><a href="typography.html">Heading</a></li>
+						<li><a href="typography.html#leadbodycopy">Lead Body Copy</a></li>
+						<li><a href="typography.html#bodycopy">Body Copy</a></li>
+						<li><a href="typography.html#hyperlink">Hyperlink</a></li>
+						<li><a href="typography.html#blockquote">Blockquote</a></li>
+						<li><a href="typography.html#lists">Lists</a></li>
+					</ul>
+				</li>
+				<li><a href="javascript:void(0)">Layouts</a>
+					<ul>
+						<li><a href="layouts.html">Two-Column</a></li>
+						<li><a href="layouts.html#three-column">Three-Column</a></li>
+						<li><a href="layouts.html#first-line">First Line Indentation</a></li>
+						<li><a href="layouts.html#all-line">All Line Indentation</a></li>
+						<li><a href="layouts.html#hanging">Hanging Indentation</a></li>
+						<li><a href="layouts.html#text-alignments">Text Alignments</a></li>
+						<li><a href="layouts.html#buttons">Buttons</a></li>
+						<li><a href="layouts.html#line-break">Line Break</a></li>
+						<li><a href="layouts.html#horizontal-rule">Horizontal Rule</a></li>
+						<li><a href="layouts.html#footer">Footer</a></li>
+					</ul>
+				</li>
+				<li><a href="emphasis.html">Emphasis</a></li>
+				<li><a href="inlinecallouts.html">Inline Callouts</a></li>
+				<li><a class="active" href="javascript:void(0)">Block-Level Callouts</a>
+					<ul class="active">
+						<li><a class="active" href="#basic-horz" data-link="basic-horz">Basic Horizontal</a></li>
+						<li><a href="#basic-vert" data-link="basic-vert">Basic Vertical</a></li>
+						<li><a href="#iconic-horz" data-link="iconic-horz">Iconic Horizontal</a></li>
+						<li><a href="#iconic-vert" data-link="iconic-vert">Iconic Vertical</a></li>
+						<li><a href="#minimal" data-link="minimal">Minimal Style</a></li>
+						<li><a href="#floating" data-link="floating">Floating</a></li>
+					</ul>
+				</li>
+				<li><a href="javascript:void(0)">Tables</a>
+					<ul>
+						<li><a href="tables.html">Basic</a></li>
+						<li><a href="tables.html#striped">Striped</a></li>
+						<li><a href="tables.html#bordered">Bordered</a></li>
+						<li><a href="tables.html#no-border">No Border</a></li>
+						<li><a href="tables.html#hover">Hover Rows</a></li>
+						<li><a href="tables.html#widths">Widths</a></li>
+						<li><a href="tables.html#minimal">Minimal</a></li>
+						<li><a href="tables.html#floating">Floating</a></li>
+						<li><a href="tables.html#contextual">Contextual</a></li>
+					</ul>
+				</li>
+				<li><a href="image.html">Image</a></li>
+				<li><a href="helpers.html">Helpers</a></li>
+			</ul>
+		</div>
+		<div class="guide_outlayer">
+			<div class="guide_content">
+				
+				<header>
+					<h1>Block-Level Callouts</h1>
+				</header>
+				
+				<h2 id="basic-horz">Basic Horizontal</h2>
+				<p>Basic callouts use <code>callout</code> class with a <code>&lt;div&gt;</code> element. For callout heading use <code>&lt;h4&gt;</code> element, and <code>&lt;p&gt;</code> element for body copy. For different variations of callout, apply any of the following classes: <code>success</code>, <code>info</code>, <code>warning</code>, or <code>danger</code>.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;div class="callout"&gt;
+	&lt;h4&gt;Something!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+		
+&lt;div class="callout success"&gt;
+	&lt;h4&gt;Success!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+		
+&lt;div class="callout info"&gt;
+	&lt;h4&gt;Information!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout warning"&gt;
+	&lt;h4&gt;Warning!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout danger"&gt;
+	&lt;h4&gt;Danger!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						
+						<div class="callout">
+							<h4>Something!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout success">
+							<h4>Success!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout info">
+							<h4>Information!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout warning">
+							<h4>Warning!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout danger">
+							<h4>Danger!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+					</div>
+				</div>
+				
+				<h2 id="basic-vert">Basic Vertical</h2>
+				<p>Horizontal becomes vertical by applying the <code>vertical</code> class.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;div class="callout vertical"&gt;
+	&lt;h4&gt;Something!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+		
+&lt;div class="callout success vertical"&gt;
+	&lt;h4&gt;Success!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+		
+&lt;div class="callout info vertical"&gt;
+	&lt;h4&gt;Information!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout warning vertical"&gt;
+	&lt;h4&gt;Warning!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout danger vertical"&gt;
+	&lt;h4&gt;Danger!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						
+						<div class="callout vertical">
+							<h4>Something!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout success vertical">
+							<h4>Success!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout info vertical">
+							<h4>Information!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout warning vertical">
+							<h4>Warning!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout danger vertical">
+							<h4>Danger!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+					</div>
+				</div>
+				
+				<h2 id="iconic-horz">Iconic Horizontal</h2>
+				<p>Iconic callouts are built from basic callout. They continue to use <code>callout</code> class with a <code>&lt;div&gt;</code> element, but in addition, a <code>icon</code> class and class name of the icon are applied to the <code>&lt;h4&gt;</code> element.</p>
+				
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;div class="callout"&gt;
+	&lt;h4&gt;&lt;span class="icon-resources"&gt;&lt;/span&gt; Something!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+		
+&lt;div class="callout success"&gt;
+	&lt;h4&gt;&lt;span class="icon-assessment"&gt;&lt;/span&gt; Success!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+		
+&lt;div class="callout info"&gt;
+	&lt;h4&gt;&lt;span class="icon-calendar"&gt;&lt;/span&gt; Information!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout warning"&gt;
+	&lt;h4&gt;&lt;span class="icon-important"&gt;&lt;/span&gt; Warning!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout danger"&gt;
+	&lt;h4&gt;&lt;span class="icon-project"&gt;&lt;/span&gt; Danger!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						
+						<div class="callout">
+							<h4><span class="icon-resources"></span> Something!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout success">
+							<h4><span class="icon-assessment"></span> Success!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout info">
+							<h4><span class="icon-calendar"></span> Information!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout warning">
+							<h4><span class="icon-important"></span> Warning!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout danger">
+							<h4 class="icon"><span class="icon-project"></span> Danger!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+					</div>
+				</div>
+				
+				<h2 id="iconic-vert">Iconic Vertical</h2>
+				<p>Iconic horizontal becomes vertical by applying the <code>vertical</code> class.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;div class="three-column"&gt;
+
+	&lt;section&gt;
+	
+		&lt;div class="callout info vertical"&gt;
+			&lt;h4&gt;&lt;span class="icon-reading"&gt;&lt;/span&gt; Reading&lt;/h4&gt;
+			&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			Repellendus, recusandae impedit quod consectetur corporis neque
+			suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio
+			reprehenderit atque deserunt facere quo.&lt;/p&gt;
+		&lt;/div&gt;
+		
+	&lt;/section&gt;
+
+	&lt;section&gt;
+	
+		&lt;div class="callout warning vertical justify"&gt;
+			&lt;h4&gt;&lt;span class="icon-assignment"&gt;&lt;/span&gt; Assignment&lt;/h4&gt;
+			&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			Repellendus, recusandae impedit quod consectetur corporis neque
+			suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio
+			reprehenderit atque deserunt facere quo.&lt;/p&gt;
+		&lt;/div&gt;
+		
+	&lt;/section&gt;
+
+	&lt;section&gt;
+	
+		&lt;div class="callout danger vertical"&gt;
+			&lt;h4&gt;&lt;span class="icon-discussion"&gt;&lt;/span&gt; Discussion&lt;/h4&gt;
+			&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			Repellendus, recusandae impedit quod consectetur corporis neque
+			suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio
+			reprehenderit atque deserunt facere quo.&lt;/p&gt;
+		&lt;/div&gt;
+		
+	&lt;/section&gt;
+	
+&lt;/div&gt;
+
+&lt;div class="clearfix"&gt;&lt;/div&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						
+						<div class="three-column">
+							<section>
+								<div class="callout info vertical">
+									<h4><span class="icon-reading"></span> Reading</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt facere quo.</p>
+								</div>
+							</section>
+							<section>
+								<div class="callout warning icon assignment vertical justify">
+									<h4><span class="icon-assignment"></span> Assignment</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt facere quo.</p>
+								</div>
+							</section>
+							<section>
+								<div class="callout danger icon discussion vertical">
+									<h4><span class="icon-discussion"></span> Discussion</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt facere quo.</p>
+								</div>
+							</section>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				
+				<h2 id="minimal">Minimal</h2>
+				<p>Minimal callouts use <code>callout</code> class along with a <code>minimal</code> class. Minimal class removed the fill and the right border.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;div class="callout minimal"&gt;
+	&lt;h4&gt;Something!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+		
+&lt;div class="callout minimal success"&gt;
+	&lt;h4&gt;Success!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+		
+&lt;div class="callout minimal info"&gt;
+	&lt;h4&gt;Information!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout minimal warning"&gt;
+	&lt;h4&gt;Warning!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout minimal danger"&gt;
+	&lt;h4&gt;Danger!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						
+						<div class="callout minimal">
+							<h4>Something!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout minimal success">
+							<h4>Success!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout minimal info">
+							<h4>Information!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout minimal warning">
+							<h4>Warning!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout minimal danger">
+							<h4>Danger!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+					</div>
+				</div>
+				
+				<h3>Alternative</h3>
+				<p>An alternative minimal callouts use <code>callout</code> class along with a <code>minimal</code> and <code>alt</code> class.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;div class="callout minimal alt"&gt;
+	&lt;h4&gt;Something!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout minimal alt success"&gt;
+	&lt;h4&gt;Something!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout minimal alt info"&gt;
+	&lt;h4&gt;Something!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout minimal alt warning"&gt;
+	&lt;h4&gt;Something!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="callout minimal danger"&gt;
+	&lt;h4&gt;Something!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.&lt;/p&gt;
+&lt;/div&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						
+						<div class="callout minimal alt">
+							<h4>Something!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout minimal alt success">
+							<h4>Something!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout minimal alt info">
+							<h4>Something!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout minimal alt warning">
+							<h4>Something!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+						<div class="callout minimal alt danger">
+							<h4>Something!</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt.</p>
+						</div>
+						
+					</div>
+				</div>
+						
+				<h2 id="floating">Floating</h2>
+				<p>Floating callouts is for text wrap purposes. Only work with vertical callouts, and the width is set at 250 pixels. Please use this formatting with cautions.</p>
+				<h3>Left</h3>
+				<p>Add the <code>left</code> class the the callout's <code>&lt;div&gt;</code> element.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;p&gt;
+				
+&lt;div class="callout danger icon discussion vertical left"&gt;
+	&lt;h4&gt;&lt;span class="icon-reading"&gt;&lt;/span&gt; Danger!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt facere
+	quo.&lt;/p&gt;
+&lt;/div&gt;
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, quidem,
+eligendi, in quis nulla laboriosam dolores optio culpa earum cumque error voluptate
+quibusdam accusantium suscipit natus iste ex repudiandae! Reiciendis, ex quibusdam
+a quas dolores tempore repudiandae vitae ipsa aliquam ducimus odit nesciunt
+explicabo nostrum iste vel tempora libero molestias magni porro laudantium
+excepturi earum eos dicta quisquam fugiat. Explicabo, maiores velit atque dolor
+deserunt optio soluta dolores nulla voluptate. Vero, ducimus, inventore,
+repellendus alias voluptatibus fuga debitis porro nesciunt ullam officiis minus
+vitae commodi! Adipisci sit asperiores incidunt! Lorem ipsum dolor sit amet,
+consectetur adipisicing elit. Mollitia, quidem, nostrum, eligendi, in quis nulla
+laboriosam dolores optio culpa earum cumque error voluptate quibusdam accusantium
+suscipit natus iste ex repudiandae! Reiciendis, ex quibusdam a quas dolores tempore
+repudiandae vitae ipsa aliquam ducimus odit nesciunt explicabo nostrum iste vel
+tempora libero molestias magni porro laudantium excepturi earum eos dicta quisquam
+fugiat. Explicabo, maiores velit atque dolor deserunt optio soluta dolores nulla
+voluptate. Vero, ducimus, inventore, repellendus alias voluptatibus fuga debitis
+porro nesciunt ullam officiis minus vitae commodi! Adipisci sit asperiores
+incidunt!&lt;/p&gt;
+
+&lt;div class="clearfix"&gt;&lt;/div&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p>
+							<div class="callout danger icon discussion vertical left">
+								<h4><span class="icon-reading"></span> Danger!</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt facere quo.</p>
+							</div>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, quidem, eligendi, in quis nulla laboriosam dolores optio culpa earum cumque error voluptate quibusdam accusantium suscipit natus iste ex repudiandae! Reiciendis, ex quibusdam a quas dolores tempore repudiandae vitae ipsa aliquam ducimus odit nesciunt explicabo nostrum iste vel tempora libero molestias magni porro laudantium excepturi earum eos dicta quisquam fugiat. Explicabo, maiores velit atque dolor deserunt optio soluta dolores nulla voluptate. Vero, ducimus, inventore, repellendus alias voluptatibus fuga debitis porro nesciunt ullam officiis minus vitae commodi! Adipisci sit asperiores incidunt!</p>
+							<div class="clearfix"></div>
+						
+					</div>
+				</div>
+				
+				<h3>Right</h3>
+				<p>Add the <code>right</code> class the the callout's <code>&lt;div&gt;</code> element.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;p&gt;
+				
+&lt;div class="callout danger icon discussion vertical right"&gt;
+	&lt;h4&gt;&lt;span class="icon-tip"&gt;&lt;/span&gt; Danger!&lt;/h4&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+	recusandae impedit quod consectetur corporis neque suscipit laboriosam eum.
+	Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt facere
+	quo.&lt;/p&gt;
+&lt;/div&gt;
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, quidem,
+eligendi, in quis nulla laboriosam dolores optio culpa earum cumque error voluptate
+quibusdam accusantium suscipit natus iste ex repudiandae! Reiciendis, ex quibusdam
+a quas dolores tempore repudiandae vitae ipsa aliquam ducimus odit nesciunt
+explicabo nostrum iste vel tempora libero molestias magni porro laudantium
+excepturi earum eos dicta quisquam fugiat. Explicabo, maiores velit atque dolor
+deserunt optio soluta dolores nulla voluptate. Vero, ducimus, inventore,
+repellendus alias voluptatibus fuga debitis porro nesciunt ullam officiis minus
+vitae commodi! Adipisci sit asperiores incidunt! Lorem ipsum dolor sit amet,
+consectetur adipisicing elit. Mollitia, quidem, nostrum, eligendi, in quis nulla
+laboriosam dolores optio culpa earum cumque error voluptate quibusdam accusantium
+suscipit natus iste ex repudiandae! Reiciendis, ex quibusdam a quas dolores tempore
+repudiandae vitae ipsa aliquam ducimus odit nesciunt explicabo nostrum iste vel
+tempora libero molestias magni porro laudantium excepturi earum eos dicta quisquam
+fugiat. Explicabo, maiores velit atque dolor deserunt optio soluta dolores nulla
+voluptate. Vero, ducimus, inventore, repellendus alias voluptatibus fuga debitis
+porro nesciunt ullam officiis minus vitae commodi! Adipisci sit asperiores
+incidunt!&lt;/p&gt;
+
+&lt;div class="clearfix"&gt;&lt;/div&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p>
+							<div class="callout danger icon discussion vertical right">
+								<h4><span class="icon-tip"></span> Danger!</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, recusandae impedit quod consectetur corporis neque suscipit laboriosam eum. Neque sit ipsa est consequatur illum optio reprehenderit atque deserunt facere quo.</p>
+							</div>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, quidem, eligendi, in quis nulla laboriosam dolores optio culpa earum cumque error voluptate quibusdam accusantium suscipit natus iste ex repudiandae! Reiciendis, ex quibusdam a quas dolores tempore repudiandae vitae ipsa aliquam ducimus odit nesciunt explicabo nostrum iste vel tempora libero molestias magni porro laudantium excepturi earum eos dicta quisquam fugiat. Explicabo, maiores velit atque dolor deserunt optio soluta dolores nulla voluptate. Vero, ducimus, inventore, repellendus alias voluptatibus fuga debitis porro nesciunt ullam officiis minus vitae commodi! Adipisci sit asperiores incidunt! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis veniam facere incidunt exercitationem aut in. Reprehenderit, ea, autem, quibusdam labore neque maxime saepe debitis aliquid illo nemo cum quos! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis veniam facere incidunt exercitationem aut in. Reprehenderit, ea, autem, quibusdam labore neque maxime saepe debitis aliquid illo nemo cum quos! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis veniam facere incidunt exercitationem aut in. Reprehenderit, ea, autem, quibusdam labore neque maxime saepe debitis aliquid illo nemo cum quos! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis veniam facere incidunt exercitationem aut in. Reprehenderit, ea, autem, quibusdam labore neque maxime saepe debitis aliquid illo nemo cum quos!</p>
+						
+					</div>
+				</div>
+				
+				<div class="callout minimal alt info">
+				    <h4>Do not forget!</h4>
+				    <p>If you are experiencing float issues, place a <code>&lt;div&gt;</code> element with <code>clearfix</code> class right under it.</p>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+
+	<div class="home_footer_copyright">
+		<p class="home_footer_copyright_notice">Copyright &copy; 2013 Board of Regents. University of Wisconsin-Extension, Continuing Education, Outreach & E-Learning. All rights reserved.</p>
+	</div>
+	
+</body>
+</html>

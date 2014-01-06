@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Typography | Style Guide | UWEX-CEOEL</title>
+	<link rel="shortcut icon" type="image/x-icon" href="src/img/uwex.ico" />
+	<link href="src/css/style.css" rel="stylesheet" media="all" />
+	<link href="src/css/guide.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shCore.min.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shThemeDefault.min.css" rel="stylesheet" media="all" />
+	<script src="src/script/jquery.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shCore.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shBrushXml.min.js" type="text/javascript"></script>
+	<script src="src/script/jquery.scrollUp.min.js" type="text/javascript"></script>
+	<script src="src/script/guide.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$(function(){ $.scrollUp(); });
+	});
+	</script>
+</head>
+<body>
+
+	<div class="guide_header">
+		<div class="nav_bar">
+			<div class="logo"><a href="index.html"><img src="src/img/uwex_ceoel_black.png" width="154" height="50" alt="University of Wisconsin-Extension, division of Continuing Education, Outreach & E-Learning" /></a></div>
+			<ul class="nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a class="active" href="pageheaders.html">Layouts &amp; Elements</a></li>
+				<li><a href="icons.html">Icons</a></li>
+				<li><a href="tooltip.html">JavaScript Components</a></li>
+				<li><a href="examples.html">Examples</a></li>
+				<li><a href="starter.html">Starter Files</a></li>
+				<li><a href="support.html">Support</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="guide_container">
+		<div class="side_nav">
+			<ul id="primary">
+				<li><a href="pageheaders.html">Page Headers</a></li>
+				<li><a class="active" href="javascript:void(0)">Typography</a>
+					<ul class="active">
+						<li><a class="active" href="#heading" data-link="heading">Heading</a></li>
+						<li><a href="#leadbodycopy" data-link="leadbodycopy">Lead Body Copy</a></li>
+						<li><a href="#bodycopy" data-link="bodycopy">Body Copy</a></li>
+						<li><a href="#hyperlink" data-link="hyperlink">Hyperlink</a></li>
+						<li><a href="#blockquote" data-link="blockquote">Blockquote</a></li>
+						<li><a href="#lists" data-link="lists">Lists</a></li>
+					</ul>
+				</li>
+				<li><a href="javascript:void(0)">Layouts</a>
+					<ul>
+						<li><a href="layouts.html">Two-Column</a></li>
+						<li><a href="layouts.html#three-column">Three-Column</a></li>
+						<li><a href="layouts.html#first-line">First Line Indentation</a></li>
+						<li><a href="layouts.html#all-line">All Line Indentation</a></li>
+						<li><a href="layouts.html#hanging">Hanging Indentation</a></li>
+						<li><a href="layouts.html#text-alignments">Text Alignments</a></li>
+						<li><a href="layouts.html#buttons">Buttons</a></li>
+						<li><a href="layouts.html#line-break">Line Break</a></li>
+						<li><a href="layouts.html#horizontal-rule">Horizontal Rule</a></li>
+						<li><a href="layouts.html#footer">Footer</a></li>
+					</ul>
+				</li>
+				<li><a href="emphasis.html">Emphasis</a></li>
+				<li><a href="inlinecallouts.html">Inline Callouts</a></li>
+				<li><a href="javascript:void(0)">Block-Level Callouts</a>
+					<ul>
+						<li><a href="blockcallouts.html">Basic Horizontal</a></li>
+						<li><a href="blockcallouts.html#basic-vert">Basic Vertical</a></li>
+						<li><a href="blockcallouts.html#iconic-horz">Iconic Horizontal</a></li>
+						<li><a href="blockcallouts.html#iconic-vert">Iconic Vertical</a></li>
+						<li><a href="blockcallouts.html#minimal">Minimal Style</a></li>
+						<li><a href="blockcallouts.html#floating">Floating</a></li>
+					</ul>
+				</li>
+				<li><a href="javascript:void(0)">Tables</a>
+					<ul>
+						<li><a href="tables.html">Basic</a></li>
+						<li><a href="tables.html#striped">Striped</a></li>
+						<li><a href="tables.html#bordered">Bordered</a></li>
+						<li><a href="tables.html#no-border">No Border</a></li>
+						<li><a href="tables.html#hover">Hover Rows</a></li>
+						<li><a href="tables.html#widths">Widths</a></li>
+						<li><a href="tables.html#minimal">Minimal</a></li>
+						<li><a href="tables.html#floating">Floating</a></li>
+						<li><a href="tables.html#contextual">Contextual</a></li>
+					</ul>
+				</li>
+				<li><a href="image.html">Image</a></li>
+				<li><a href="helpers.html">Helpers</a></li>
+			</ul>
+		</div>
+		<div class="guide_outlayer">
+			<div class="guide_content">
+				
+				<header>
+					<h1>Typography</h1>
+				</header>
+				
+				<h2 id="heading">Headings</h2>
+				<p>If the page has a pager header, do not use the <code>&lt;h1&gt;</code> element. Start with <code>&lt;h2&gt;</code> instead. Heading 3 through 6 are the same size.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;h1&gt;H1 heading (30 pixels)&lt;h1&gt;
+&lt;h2&gt;H2 heading (24 pixels)&lt;h2&gt;
+&lt;h3&gt;H3 heading (18 pixels)&lt;h3&gt;
+&lt;h4&gt;H4 heading (18 pixels)&lt;h4&gt;
+&lt;h5&gt;H5 heading (18 pixels)&lt;h5&gt;
+&lt;h6&gt;H6 heading (18 pixels)&lt;h6&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<h1>H1 heading (30 pixels)</h1>
+						<h2>H2 heading (24 pixels)</h2>
+						<h3>H3 heading (18 pixels)</h3>
+						<h4>H4 heading (18 pixels)</h4>
+						<h5>H5 heading (18 pixels)</h5>
+						<h6>H6 heading (18 pixels)</h6>
+					</div>
+				</div>
+				
+				<h2 id="leadbodycopy">Lead Body Copy</h2>
+				<p>A lead body copy is making a sentence or a paragraph stands out among the rest of the contents. To create a lead, apply the <code>lead</code> class to a <code>&lt;p&gt;</code> element.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;p class="lead"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque,
+nesciunt sapiente eius officiis. Reiciendis, numquam, blanditiis doloribus iste.&lt;/p&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, nesciunt sapiente eius officiis. Reiciendis, numquam, blanditiis doloribus iste.</p>
+					</div>
+				</div>
+				
+				<h2 id="bodycopy">Body Copy</h2>
+				<p>The content of the page using the <code>&lt;p&gt;</code> element.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+					<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis
+at illo itaque modiquos delectus nesciunt est facere. Lorem ipsum dolor sit amet,
+consectetur adipisicing elit.&lt;/p&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis
+at illo itaque modiquos delectus nesciunt est facere. Lorem ipsum dolor sit amet,
+consectetur adipisicing elit.&lt;/p&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit,
+explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis
+at illo itaque modiquos delectus nesciunt est facere. Lorem ipsum dolor sit amet,
+consectetur adipisicing elit.&lt;/p&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modiquos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modiquos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modiquos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					</div>
+				</div>
+				
+				<h2 id="hyperlink">Hyperlink (or Link)</h2>
+				<p>Create a hyperlink between documents or websites by using the <code>&lt;a&gt;</code> element.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;p&gt;Nulla, harum, &lt;a href="http://www.ethanslin.com" target="_blank"&gt;Ethan Lin&lt;/a&gt;
+aut reiciendis eum ipsum soluta sequi dolore cum ratione ex.&lt;/p&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p>Nulla, harum, <a href="http://www.ethanslin.com" target="_blank">Ethan Lin</a> aut reiciendis eum ipsum soluta sequi dolore cum ratione.</p>
+					</div>
+				</div>
+				
+				<h2 id="blockquote">Blockquote</h2>
+				<p>For quoting blocks of content from another source. Can also be use for quoting a passage from a famous person or literature.</p>
+				
+				<h3>Basic</h3>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;blockquote&gt;
+	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&lt;/p&gt;
+&lt;/blockquote&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<blockquote>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						</blockquote>
+					</div>
+				</div>
+				
+				<h3>With Author or Source</h3>
+				<p>Add an author or a source to the blockqoute by nesting a <code>&lt;small&gt;</code> element after the content.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;blockquote&gt;
+	&lt;p&gt;I have not failed. I’ve just found 10,000 ways that won’t work.&lt;/p&gt;
+	&lt;small&gt;Thomas A. Edison&lt;/small&gt;
+&lt;/blockquote&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<blockquote>
+							<p>I have not failed. I’ve just found 10,000 ways that won’t work.</p>
+							<small>Thomas A. Edison</small>
+						</blockquote>
+					</div>
+				</div>
+				
+				<h3>Right Aligned</h3>
+				<p>Right aligned the blockquote by applying the <code>pull-right</code> class.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;blockquote class="pull-right"&gt;
+	&lt;p&gt;When Mr. and Mrs. Dursley woke up on the dull, gray Tuesday our story starts,
+	there was nothing about the cloudy sky outside to suggest that strange and
+	mysterious things would soon be happening all over the country.&lt;/p&gt;
+	&lt;small&gt;Harry Potter and the Sorcerer's Stone (page 2)&lt;/small&gt;
+&lt;/blockquote&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<blockquote class="pull-right">
+							<p>When Mr. and Mrs. Dursley woke up on the dull, gray Tuesday our story starts, there was nothing about the cloudy sky outside to suggest that strange and mysterious things would soon be happening all over the country.</p>
+							<small>Harry Potter and the Sorcerer's Stone (page 2)</small>
+						</blockquote>
+					</div>
+				</div>
+				
+				<h3>Alternative</h3>
+				<p>An alternative blockquote style by applying the <code>quote</code> class. Recommended to use for a long quote.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;blockquote class="quote"&gt;
+	&lt;p&gt;Here’s to the crazy ones. The misfits. The rebels. The troublemakers. The
+	round pegs in the square holes. The ones who see things differently. They’re
+	not fond of rules.And they have no respect for the status quo. You can quote
+	them, disagree with them, glorify or vilify them. About the only thing you
+	can’t do is ignore them. Because they change things. They push the human race
+	forward. And while some may see them as the crazy ones, we see genius. Because
+	the people who are crazy enough to think they can change the world, are the
+	ones who do.&lt;/p&gt;
+	&lt;small&gt;Steve Jobs&lt;/small&gt;
+&lt;/blockquote&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<blockquote class="quote">
+							<p>Here’s to the crazy ones. The misfits. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world, are the ones who do.</p>
+							<small>Steve Jobs</small>
+						</blockquote>
+					</div>
+				</div>
+				
+				<h2 id="lists">Lists</h2>
+				<h3>Unordered</h3>
+				<p>Create list of items in no specific order by using the <code>&lt;ul&gt;</code> element.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores,
+consectetur laborum ex atque eos possimus doloribus distinctio natus reiciendis
+impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;Apple&lt;/li&gt;
+	&lt;li&gt;Peace&lt;/li&gt;
+	&lt;li&gt;Grape&lt;/li&gt;
+	&lt;li&gt;Pear&lt;/li&gt;
+	&lt;li&gt;Orange&lt;/li&gt;
+&lt;/ul&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, consectetur laborum ex atque eos possimus doloribus distinctio natus reiciendis impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.</p>
+						<ul>
+							<li>Apple</li>
+							<li>Peace</li>
+							<li>Grape</li>
+							<li>Pear</li>
+							<li>Orange</li>
+						</ul>
+					</div>
+				</div>
+				
+				<h3>Nested Unordered</h3>
+				<p>Create nested list of items in no specific order by nesting the <code>&lt;ul&gt;</code> elements.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;ul&gt;
+	&lt;li&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, magni,
+	voluptates, adipisci, facere aliquam dolorum ducimus libero possimus porro
+	asperiores quibusdam magnam dicta iste aperiam alias itaque ea quaerat!
+		&lt;ul&gt;
+			&lt;li&gt;Green&lt;/li&gt;
+			&lt;li&gt;Red&lt;/li&gt;
+			&lt;li&gt;Yellow&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, magni,
+	voluptates, adipisci, facere aliquam dolorum ducimus libero possimus porro
+	asperiores quibusdam magnam dicta iste aperiam alias itaque ea quaerat!
+		&lt;ul&gt;
+			&lt;li&gt;Sliced&lt;/li&gt;
+			&lt;li&gt;Diced&lt;/li&gt;
+			&lt;li&gt;Smashed&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, magni,
+	voluptates, adipisci, facere aliquam dolorum ducimus libero possimus porro
+	asperiores quibusdam magnam dicta iste aperiam alias itaque ea quaerat!&lt;/li&gt;
+&lt;/ul&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<ul>
+							<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, magni, voluptates, adipisci, facere aliquam dolorum ducimus libero possimus porro asperiores quibusdam magnam dicta iste aperiam alias itaque ea quaerat!
+								<ul>
+									<li>Green</li>
+									<li>Red</li>
+									<li>Yellow</li>
+								</ul>
+							</li>
+							<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, magni, voluptates, adipisci, facere aliquam dolorum ducimus libero possimus porro asperiores quibusdam magnam dicta iste aperiam alias itaque ea quaerat!
+								<ul>
+									<li>Sliced</li>
+									<li>Diced</li>
+									<li>Smashed</li>
+								</ul>
+							</li>
+							<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, magni, voluptates, adipisci, facere aliquam dolorum ducimus libero possimus porro asperiores quibusdam magnam dicta iste aperiam alias itaque ea quaerat!</li>
+						</ul>
+					</div>
+				</div>
+				
+				<h3>Ordered</h3>
+				<p>Create list of items in a precise order or steps by using the <code>&lt;ol&gt;</code> element.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores,
+consectetur laborum ex atque eos possimus doloribus distinctio natus reiciendis
+impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Apple&lt;/li&gt;
+	&lt;li&gt;Peace&lt;/li&gt;
+	&lt;li&gt;Grape&lt;/li&gt;
+	&lt;li&gt;Pear&lt;/li&gt;
+	&lt;li&gt;Orange&lt;/li&gt;
+&lt;/ol&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, consectetur laborum ex atque eos possimus doloribus distinctio natus reiciendis impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.</p>
+						<ol>
+							<li>Pick</li>
+							<li>Wash</li>
+							<li>Slice and dice</li>
+							<li>Cook</li>
+							<li>Eat</li>
+							<li>Sleep</li>
+						</ol>
+					</div>
+				</div>
+				
+				<h3>No Bullets</h3>
+				<p>Create a list of items without bullet style by applying the <code>no-bullet</code> class. All nested <code>&lt;ol&gt;</code> and <code>&lt;ul&gt;</code> elements will not have bullets as well. Works with both <code>&lt;ol&gt;</code> and <code>&lt;ul&gt;</code> elements.</p>
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores,
+consectetur laborum ex atque eos possimus doloribus distinctio natus reiciendis
+impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/p&gt;
+&lt;ul class="no-bullet"&gt;
+	&lt;li&gt;I'm a bulleted list... OMG where are my bullets!&lt;/li&gt;
+	&lt;li&gt;My bullets are gone!&lt;/li&gt;
+		&lt;ol&gt;
+			&lt;li&gt;Not even square...&lt;/li&gt;
+			&lt;li&gt;Not even a number...&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;li&gt;What happened to my bullets!?&lt;/li&gt;
+	&lt;li&gt;I don't look like a list...&lt;/li&gt;
+	&lt;li&gt;...incomplete ... an odd ball.&lt;/li&gt;
+	&lt;li&gt;Use me with cautions...&lt;/li&gt;
+&lt;/ul&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, consectetur laborum ex atque eos possimus doloribus distinctio natus reiciendis impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.</p>
+						<ul class="no-bullet">
+							<li>I'm a bulleted list... OMG where are my bullets!</li>
+							<li>My bullets are gone!
+								<ol>
+									<li>Not even square...</li>
+									<li>Not even a number...</li>
+								</ol>
+							</li>
+							<li>What happened to my bullets!?</li>
+							<li>I don't look like a list...</li>
+							<li>...incomplete ... an odd ball.</li>
+							<li>Use me with cautions...</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+
+	<div class="home_footer_copyright">
+		<p class="home_footer_copyright_notice">Copyright &copy; 2013 Board of Regents. University of Wisconsin-Extension, Continuing Education, Outreach & E-Learning. All rights reserved.</p>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Scroll to Top | Style Guide | UWEX-CEOEL</title>
+	<link rel="shortcut icon" type="image/x-icon" href="src/img/uwex.ico" />
+	<link href="src/css/style.css" rel="stylesheet" media="all" />
+	<link href="src/css/guide.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shCore.min.css" rel="stylesheet" media="all" />
+	<link href="src/syntaxhighlighter/styles/shThemeDefault.min.css" rel="stylesheet" media="all" />
+	<script src="src/script/jquery.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shCore.min.js" type="text/javascript"></script>
+	<script src="src/syntaxhighlighter/scripts/shBrushJScript.js" type="text/javascript"></script>
+	<script src="src/script/guide.min.js" type="text/javascript"></script>
+	<script src="src/script/style.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<div class="guide_header">
+		<div class="nav_bar">
+			<div class="logo"><a href="index.html"><img src="src/img/uwex_ceoel_black.png" width="154" height="50" alt="University of Wisconsin-Extension, division of Continuing Education, Outreach & E-Learning" /></a></div>
+			<ul class="nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="pageheaders.html">Layouts &amp; Elements</a></li>
+				<li><a href="icons.html">Icons</a></li>
+				<li><a class="active" href="tooltip.html">JavaScript Components</a></li>
+				<li><a href="examples.html">Examples</a></li>
+				<li><a href="starter.html">Starter Files</a></li>
+				<li><a href="support.html">Support</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="guide_container">
+		<div class="side_nav">
+			<ul id="primary">
+				<li><a href="tooltip.html">Tooltip</a></li>
+				<li><a href="popover.html">Popover</a></li>
+				<li><a href="tab.html">Tab</a></li>
+				<li><a href="accordion.html">Accordion</a></li>
+				<li><a href="actioncalls.html">Action Calls</a></li>
+				<li><a href="internalnav.html">Internal Page Navigation</a></li>
+				<li><a class="active" href="javascript:void(0)">Scroll to Top</a></li>
+			</ul>
+		</div>
+		<div class="guide_outlayer">
+			<div class="guide_content">
+				
+				<header>
+					<h1>Scroll to Top</h1>
+				</header>
+				
+				<p class="lead">Scroll back to the top of the page with one click!</p>
+				
+				<h2>Basic</h2>
+				
+				<p>To use scroll to top feature, insert the code below into the <code>&lt;head&gt;</code> element.</p>
+				
+				<div class="guide-example">
+					<div class="guide-code">
+						<p class="tip">Code</p>
+						<pre class="brush: js">&lt;script type="text/javascript"&gt;
+$(document).ready(function() {
+	$(function(){ $.scrollUp(); });
+});
+&lt;/script&gt;</pre>
+					</div>
+				</div>
+				
+				<h2>Advanced</h2>
+				
+				<p>The following code shows the scroll to top options.</p>
+				
+				<div class="guide-example">
+					<div class="guide-code">
+						<p class="tip">Code</p>
+						<pre class="brush: js">&lt;script type="text/javascript"&gt;
+$(document).ready(function() {
+	$(function(){
+		$.scrollUp({
+			// Element ID
+			scrollName: 'scrollUp',
+			// Distance from top/bottom before showing element (px)
+	        scrollDistance: 300,
+	        // 'top' or 'bottom'
+	        scrollFrom: 'top',
+	        // Speed back to top (ms)
+	        scrollSpeed: 300,
+	        // Scroll to top easing (see http://easings.net/)
+	        easingType: 'linear',
+	        // Fade, slide, none
+	        animation: 'fade',
+	        // Animation in speed (ms)
+	        animationInSpeed: 200,
+	        // Animation out speed (ms)
+	        animationOutSpeed: 200,
+	        // Text for element, can contain HTML
+	        scrollText: 'Scroll to top',
+	        // Set a custom &lt;a&gt; title if required. Defaults to scrollText
+	        scrollTitle: false,
+	        // Set true to use image
+	        scrollImg: false,
+	        // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+	        activeOverlay: false,
+	        // Z-Index for the overlay
+	        zIndex: 2147483647
+		});
+	});
+});
+&lt;/script&gt;</pre>
+					</div>
+				</div>
+				
+				<p><a class="btn info" href="src/examples/internalnav.html" target="_blank">SEE DEMO</a></p>
+				<p><small>Scroll to Top is a third-party script, <a href="https://github.com/markgoodyear/scrollup" target="_blank">ScrollUp</a>, written by <a href="http://markgoodyear.com" target="_blank">Mark Goodyear</a>. For more information, please visit the link provided.</small></p>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+
+	<div class="home_footer_copyright">
+		<p class="home_footer_copyright_notice">Copyright &copy; 2013 Board of Regents. University of Wisconsin-Extension, Continuing Education, Outreach & E-Learning. All rights reserved.</p>
+	</div>
+	
+</body>
+</html>
