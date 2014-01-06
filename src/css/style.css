@@ -450,7 +450,7 @@ table > tfoot > tr.danger > th {
 
 /* footer */
 footer {
-	width:954px;
+	width:940px;
 	border-top: 1px #b4b4b4 solid;
 	margin:0px;
 	color:#b4b4b4;
@@ -497,7 +497,7 @@ footer p a.course-support:hover {
 
 /* helpers */
 .page-container {
-	width: 924px;
+	width: 910px;
 	min-height: 100%;
 	height: auto !important;
 	margin: 0 0 -61px 0px;

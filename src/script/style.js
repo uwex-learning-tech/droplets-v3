@@ -77,8 +77,6 @@ $(document).ready(function() {
 		
 			var title = $(this).attr("data-title"), position = $(this).position();
 			
-			console.log(position);
-			
 			if ($(this).hasClass("top")) {
 				
 				$("body").append("<div class=\"popover top\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
@@ -277,22 +275,22 @@ function getParameterByName(url,name) {
 
 // D2L BUTTONS/ACTION CALLS
 function gotoToC(){
-	var tocURL = '/d2l/lms/content/home.d2l?ou='+getParameterByName(window.parent.location.href,'ou')+'&showTOC=1';
+	var tocURL = 'd2l/le/content/'+getParameterByName(window.location.href,'ou')+'/Home';
 	top.location.href = tocURL;
 }
 
 function gotoGrades() {
-	var tocURL = '/d2l/lms/grades/my_grades/main.d2l?ou='+getParameterByName(window.parent.location.href,'ou');
+	var tocURL = 'd2l/lms/grades/my_grades/main.d2l?ou='+getParameterByName(window.location.href,'ou');
 	top.location.href = tocURL;
 }
 
 function gotoDropbox() {
-	var tocURL = '/d2l/lms/dropbox/user/folders_list.d2l?ou='+getParameterByName(window.parent.location.href,'ou');
+	var tocURL = 'd2l/lms/dropbox/user/folders_list.d2l?ou='+getParameterByName(window.location.href,'ou');
 	top.location.href = tocURL;
 }
 
 function gotoDiscussions() {
-	var tocURL = '/d2l/lms/discussions/admin/forum_topics_list.d2l?ou='+getParameterByName(window.parent.location.href,'ou');
+	var tocURL = 'd2l/le/'+getParameterByName(window.location.href,'ou')+'/discussions/List';
 	top.location.href = tocURL;
 }
 
