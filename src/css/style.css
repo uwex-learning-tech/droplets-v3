@@ -568,6 +568,9 @@ footer p a.course-support:hover {
 .callout h4 {
 	margin-top: 0px;
 }
+.callout p:first-child {
+	margin-top: 0px;
+}
 .callout p:last-child {
 	margin-bottom: 0px;
 }
