@@ -241,8 +241,14 @@ $(document).ready(function() {
 	
 		var nav = "<ul class=\"page-subnav\">";
 		
+		$("header").before("<a class=\"anchorTop\" id=\"page-top\" href=\"#\"></a>");
+		$(".anchorTop").css({"display":"block", "position":"relative", "top":"-32px", "visibility":"hidden"});
+		
 		$(".with-subnav h2").each(function(i) {
 			$(this).before("<a class=\"anchor\" id=\"nav"+i+"\" href=\"#\"></a>");
+			if (i !==0) {
+				$(this).before("<small><a href=\"#page-top\">Back to top</a></small>");
+			}
 			nav += "<li><a href=\"#nav"+i+"\">" + $(this).html() + "</a></li>";
 		});
 		
@@ -250,7 +256,7 @@ $(document).ready(function() {
 		
 		$(".with-subnav").prepend(nav);
 		/* $("body").css("padding-top",$(".page-subnav").innerHeight()); */
-		$(".anchor").css({"display":"block", "position":"relative", "top":"-32px", "visibility":"hidden"});
+		$(".anchor").css({"display":"block", "position":"relative", "top":"32px", "visibility":"hidden"});
 		
 	} // end getSubnav
 	

@@ -1170,11 +1170,12 @@ span.with-popover.active {
 */
 	/* width: 940px; */
 	list-style: none;
-	padding: 10px 0px 5px;
+	padding: 0 0 10px;
 	background-color: #fff;
 	margin: 0;
 	/* box-shadow: 0px 0px 4px #888; */
 	border-bottom: 1px #e8e8e8 solid;
+	line-height: 1;
 }
 .page-subnav li {
 	display: inline-block;
