@@ -447,6 +447,36 @@ table > tbody > tr.danger > th,
 table > tfoot > tr.danger > th {
   background-color: #f2dede;
 }
+table > thead > tr > td.horz-left,
+table > tbody > tr > td.horz-left,
+table > tfoot > tr > td.horz-left {
+	text-align: left;
+}
+table > thead > tr > td.horz-center,
+table > tbody > tr > td.horz-center,
+table > tfoot > tr > td.horz-center  {
+	text-align: center;
+}
+table > thead > tr > td.horz-right,
+table > tbody > tr > td.horz-right,
+table > tfoot > tr > td.horz-right  {
+	text-align: right;
+}
+table > thead > tr > td.vert-top,
+table > tbody > tr > td.vert-top,
+table > tfoot > tr > td.vert-top {
+	vertical-align: top;
+}
+table > thead > tr > td.vert-center,
+table > tbody > tr > td.vert-center,
+table > tfoot > tr > td.vert-center {
+	vertical-align: middle;
+}
+table > thead > tr > td.vert-bottom,
+table > tbody > tr > td.vert-bottom,
+table > tfoot > tr > td.vert-bottom {
+	vertical-align: bottom;
+}
 
 /* footer */
 footer {
