@@ -23,6 +23,10 @@ $(document).ready(function() {
 			getSubnav();
 		}
 		
+		if ($(".with-zoom").length) {
+			getImgZoom();
+		}
+		
 	} // end checkComponents
 	
 	// Tooltip
@@ -259,6 +263,62 @@ $(document).ready(function() {
 		$(".anchor").css({"display":"block", "position":"relative", "top":"32px", "visibility":"hidden"});
 		
 	} // end getSubnav
+	
+	// image zoom
+	function getImgZoom() {
+	
+		var native_width = 0;
+		var native_height = 0;
+		
+		$(".with-zoom").each(function(i){
+			$(this).attr("id","wiz"+i);
+			$("#wiz"+i).css("width",$("#wiz"+i+" .small").width()+"px");
+			$("#wiz"+i+" .magnify").css({"background-image":"url("+$("#wiz"+i+" .small").attr("src")+")", "background-repeat":"no-repeat"});
+			
+			$("#wiz"+i).mousemove(function(e){
+		
+				if(!native_width && !native_height) {
+			
+					var image_object = new Image();
+					image_object.src = $("#wiz"+i+" .small").attr("src");
+			
+					native_width = image_object.width;
+					native_height = image_object.height;
+			
+				} else {
+			
+					var magnify_offset = $(this).offset();
+					var mx = e.pageX - magnify_offset.left;
+					var my = e.pageY - magnify_offset.top;
+			
+					if(mx < $(this).width() && my < $(this).height() && mx > 0 && my > 0) {
+						$("#wiz"+i+" .magnify").fadeIn(100);
+					} else {
+						$("#wiz"+i+" .magnify").fadeOut(100);
+						native_width = 0;
+						native_height = 0;
+					}
+			
+					if($("#wiz"+i+" .magnify").is(":visible")) {
+			
+						var rx = Math.round(mx/$("#wiz"+i+" .small").width()*native_width - $("#wiz"+i+" .magnify").width()/2)*-1;
+						var ry = Math.round(my/$("#wiz"+i+" .small").height()*native_height - $("#wiz"+i+" .magnify").height()/2)*-1;
+						var bgp = rx + "px " + ry + "px";
+			
+						var px = mx - $("#wiz"+i+" .magnify").width()/2;
+						var py = my - $("#wiz"+i+" .magnify").height()/2;
+			
+						$("#wiz"+i+" .magnify").css({"left": px, "top": py, "background-position": bgp});
+						
+					}
+			
+				}
+			
+			});
+			
+		});
+		
+	}
 	
 	// call to check available component
 	checkComponents();
