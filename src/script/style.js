@@ -282,23 +282,26 @@ function getParameterByName(url,name) {
 }
 
 // D2L BUTTONS/ACTION CALLS
+
+var D2LROOT = "https://uwli.courses.wisconsin.edu/";
+
 function gotoToC(){
 	var tocURL = 'd2l/le/content/'+getParameterByName(window.location.href,'ou')+'/Home';
-	top.location.href = tocURL;
+	top.location.href = D2LROOT+tocURL;
 }
 
 function gotoGrades() {
 	var tocURL = 'd2l/lms/grades/my_grades/main.d2l?ou='+getParameterByName(window.location.href,'ou');
-	top.location.href = tocURL;
+	top.location.href = D2LROOT+tocURL;
 }
 
 function gotoDropbox() {
-	var tocURL = 'd2l/lms/dropbox/user/folders_list.d2l?ou='+getParameterByName(window.location.href,'ou');
-	top.location.href = tocURL;
+	var tocURL = 'd2l/lms/dropbox/user/folders_list.d2l?ou='+getParameterByName(window.location.href,'ou')+'&isprv=0';
+	top.location.href = D2LROOT+tocURL;
 }
 
 function gotoDiscussions() {
 	var tocURL = 'd2l/le/'+getParameterByName(window.location.href,'ou')+'/discussions/List';
-	top.location.href = tocURL;
+	top.location.href = D2LROOT+tocURL;
 }
 /* jshint ignore:end */
