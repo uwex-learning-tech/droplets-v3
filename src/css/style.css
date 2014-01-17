@@ -1389,22 +1389,3 @@ iframe, object {
 	}
 	
 }
-
-/* SCROLLUP */
-/*
-#scrollUp {
-  bottom: 0px;
-  right: 35px;
-  padding: 10px 20px;
-  background:rgba(0,0,0,0.75);
-  color: #fff;
-  border-radius: 5px 5px 0px 0px;
-  box-shadow: 0px 0px 8px #000;
-  cursor: pointer;
-}
-a#scrollUp,
-a#scrollUp:visited,
-a#scrollUp:hover {
-	text-decoration: none;
-}
-*/
