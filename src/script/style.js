@@ -136,6 +136,7 @@ $(document).ready(function() {
 	function getTabs() {
 	
 		$(".with-tabs").each(function(i){
+
 			$(this).attr("data-id",i);
 			
 			$(".with-tabs[data-id='"+i+"'] .tabs li").on("click",function(){
@@ -160,7 +161,16 @@ $(document).ready(function() {
 				
 				return false;
 				
-			});
+			}); // end click
+			
+			/*
+for (var j = 0; j < $(".with-tabs[data-id='"+i+"'] .tabs li").length; j++) {
+				
+				$(".with-tabs[data-id='"+i+"'] .tabs li:eq("+j+")").addClass("active");
+				
+			}
+*/
+						
 		});
 	
 	} // end getTabs
@@ -169,6 +179,9 @@ $(document).ready(function() {
 	function getAccordion() {
 		
 		$(".with-accordion").each(function(i){
+		
+			var fakeIndex = [];
+			
 			$(this).attr("id","ai"+i);
 			
 			$("#ai"+i).prepend("<div class=\"accordion-controls\"><a class=\"closeAll\" href=\"javascript:void(0)\">Close All</a> <a class=\"openAll\" href=\"javascript:void(0)\">Open All</a></div>");
@@ -198,10 +211,24 @@ $(document).ready(function() {
 			}); // end openAll
 			
 			$("#ai"+i+" .accordion-title").each(function(m){
+			
 				if ($(this).hasClass("active")) {
 					$("#ai"+i+" > .accordion-content:eq("+m+")").show();
+				} else {
+					fakeIndex.push(m);
 				}
+				
+				$(this).addClass("active");
+				$("#ai"+i+" > .accordion-content:eq("+m+")").show();
+					
 			}); // end init state
+			
+			$.each(fakeIndex, function(k) {
+				
+				$("#ai"+i+" > .accordion-content:eq("+fakeIndex[k]+")").prev().removeClass("active");
+				$("#ai"+i+" > .accordion-content:eq("+fakeIndex[k]+")").slideUp(1000);
+					
+			});
 			
 			$("#ai"+i+" .accordion-title").on("click",function(){
 			
