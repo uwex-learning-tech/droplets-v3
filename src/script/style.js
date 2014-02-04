@@ -163,17 +163,44 @@ $(document).ready(function() {
 				
 			}); // end click
 			
-			/*
-for (var j = 0; j < $(".with-tabs[data-id='"+i+"'] .tabs li").length; j++) {
-				
-				$(".with-tabs[data-id='"+i+"'] .tabs li:eq("+j+")").addClass("active");
-				
-			}
-*/
+			loopTabs(i,$(".with-tabs[data-id='"+i+"'] .tabs li").length);
 						
 		});
 	
 	} // end getTabs
+	
+	function loopTabs(i,length) {
+		var k = 0, l = 0;
+		var loop = setInterval(function() { // this code is executed every 5 seconds:
+		
+			if(k < length) {
+			
+				l = k;
+				
+				$(".with-tabs[data-id='"+i+"'] .tabs li:eq("+k+")").addClass("active");
+				$(".with-tabs[data-id='"+i+"'] .tab-contents section:eq("+k+")").addClass("active");
+				
+				k++;
+				l--;
+				
+				if (l >= 0) {
+					$(".with-tabs[data-id='"+i+"'] .tabs li:eq("+ l +")").removeClass("active");
+					$(".with-tabs[data-id='"+i+"'] .tab-contents section:eq("+ l +")").removeClass("active");
+				}
+				
+			} else {
+				
+				$(".with-tabs[data-id='"+i+"'] .tabs li:eq("+ (length-1) +")").removeClass("active");
+				$(".with-tabs[data-id='"+i+"'] .tab-contents section:eq("+ (length-1) +")").removeClass("active");
+				$(".with-tabs[data-id='"+i+"'] .tabs li:eq("+ 0 +")").addClass("active");
+				$(".with-tabs[data-id='"+i+"'] .tab-contents section:eq("+ 0 +")").addClass("active");
+				clearInterval(loop);
+				
+			}
+		
+		}, 750);
+
+	}
 	
 	// accordion
 	function getAccordion() {
