@@ -1175,7 +1175,7 @@ span.with-popover.active {
 .with-accordion .accordion-title {
 	background-color: #e7e7e7;
 	border: 1px solid #ddd;
-	padding:10px;
+	padding:10px 16px 10px 10px;
 	border-radius: 5px;
 	margin-top:5px;
 	cursor: pointer;
@@ -1192,6 +1192,25 @@ span.with-popover.active {
 	border:1px solid #ddd;
 	border-radius: 0px 0px 5px 5px;
 	display: none;
+}
+/* with arrow */
+.with-accordion.arrow .accordion-title {
+	position: relative;
+	padding-right: 25px;
+}
+.with-accordion.arrow .accordion-title .indicator {
+	position:absolute;
+	width: 11px;
+	height: 100%;
+	background: url("../img/accordion_arrow.png");
+	background-repeat: no-repeat;
+	background-position: left center;
+	top:0;
+	right: 10px;
+}
+.with-accordion.arrow .accordion-title.active .indicator {
+	width: 16px;
+	background-position: -11px center;
 }
 
 /* PAGE SUB NAV */

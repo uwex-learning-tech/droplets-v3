@@ -178,6 +178,10 @@ for (var j = 0; j < $(".with-tabs[data-id='"+i+"'] .tabs li").length; j++) {
 	// accordion
 	function getAccordion() {
 		
+		$(".with-accordion.arrow .accordion-title").each(function() {
+			$(this).append("<div class=\"indicator\"></div>");
+		});
+		
 		$(".with-accordion").each(function(i){
 		
 			var fakeIndex = [];
