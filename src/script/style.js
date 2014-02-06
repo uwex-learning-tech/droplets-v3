@@ -1,4 +1,19 @@
+/* global calIframeHeight */
+
 $(document).ready(function() {
+	
+	var child = false;
+	
+	if (parent === top) {
+		var iframe = $(parent.document).find("div#ContentView").find("iframe");
+		
+		iframe.attr('allowfullscreen', '');
+		iframe.attr('webkitallowfullscreen', '');
+		iframe.attr('mozallowfullscreen', '');
+		iframe.css("height", calIframeHeight() + "px");
+		
+		child = true;
+	}
 	
 	// Check to see if any components are used
 	function checkComponents() {
@@ -159,50 +174,17 @@ $(document).ready(function() {
 				
 				$(".with-tabs[data-id='"+i+"'] .tab-contents section:eq("+index+")").addClass("active");
 				
+				if (child) {
+					iframe.css("height", calIframeHeight() + "px");
+				}
+				
 				return false;
 				
 			}); // end click
-			
-			/* loopTabs(i,$(".with-tabs[data-id='"+i+"'] .tabs li").length); */
 						
 		});
 	
 	} // end getTabs
-	
-	/*
-function loopTabs(i,length) {
-		var k = 0, l = 0;
-		var loop = setInterval(function() { // this code is executed every 5 seconds:
-		
-			if(k < length) {
-			
-				l = k;
-				
-				$(".with-tabs[data-id='"+i+"'] .tabs li:eq("+k+")").addClass("active");
-				$(".with-tabs[data-id='"+i+"'] .tab-contents section:eq("+k+")").addClass("active");
-				
-				k++;
-				l--;
-				
-				if (l >= 0) {
-					$(".with-tabs[data-id='"+i+"'] .tabs li:eq("+ l +")").removeClass("active");
-					$(".with-tabs[data-id='"+i+"'] .tab-contents section:eq("+ l +")").removeClass("active");
-				}
-				
-			} else {
-				
-				$(".with-tabs[data-id='"+i+"'] .tabs li:eq("+ (length-1) +")").removeClass("active");
-				$(".with-tabs[data-id='"+i+"'] .tab-contents section:eq("+ (length-1) +")").removeClass("active");
-				$(".with-tabs[data-id='"+i+"'] .tabs li:eq("+ 0 +")").addClass("active");
-				$(".with-tabs[data-id='"+i+"'] .tab-contents section:eq("+ 0 +")").addClass("active");
-				clearInterval(loop);
-				
-			}
-		
-		}, 750);
-
-	}
-*/
 	
 	// accordion
 	function getAccordion() {
@@ -212,25 +194,32 @@ function loopTabs(i,length) {
 		});
 		
 		$(".with-accordion").each(function(i){
-		
-			/* var fakeIndex = []; */
 			
 			$(this).attr("id","ai"+i);
 			
 			$("#ai"+i).prepend("<div class=\"accordion-controls\"><a class=\"closeAll\" href=\"javascript:void(0)\">Close All</a> <a class=\"openAll\" href=\"javascript:void(0)\">Open All</a></div>");
 			
+			/* close all sections */
 			$("#ai"+i+" .closeAll").on("click",function(){
 			
 				$("#ai"+i+" .accordion-title").each(function(k){
+				
 					if ($(this).hasClass("active")) {
 						$("#ai"+i+" > .accordion-content:eq("+k+")").slideUp("fast", function(){
 							$("#ai"+i+" > .accordion-title:eq("+k+")").removeClass("active");
+							if (child) {
+								iframe.css("height", calIframeHeight() + "px");
+							}
 						});
 					}
+					
 				});
+				
+				
 				
 			}); // end closeAll
 			
+			/* open all section */
 			$("#ai"+i+" .openAll").on("click",function(){
 				
 				$("#ai"+i+" .accordion-title").each(function(j){
@@ -247,26 +236,9 @@ function loopTabs(i,length) {
 			
 				if ($(this).hasClass("active")) {
 					$("#ai"+i+" > .accordion-content:eq("+m+")").show();
-				} /*
-else {
-					fakeIndex.push(m);
 				}
-				
-				$(this).addClass("active");
-				$("#ai"+i+" > .accordion-content:eq("+m+")").show();
-*/
-					
 			}); // end init state
-			
-			/*
-$.each(fakeIndex, function(k) {
-				
-				$("#ai"+i+" > .accordion-content:eq("+fakeIndex[k]+")").prev().removeClass("active");
-				$("#ai"+i+" > .accordion-content:eq("+fakeIndex[k]+")").slideUp(1000);
-					
-			});
-*/
-			
+						
 			$("#ai"+i+" .accordion-title").on("click",function(){
 			
 				var index = $("#ai"+i+" .accordion-title").index(this);
@@ -279,6 +251,9 @@ $.each(fakeIndex, function(k) {
 							$("#ai"+i+" > .accordion-content:eq("+n+")").slideUp("fast",function(){
 								$("#ai"+i+" > .accordion-title:eq("+index+")").addClass("active");
 								$("#ai"+i+" > .accordion-content:eq("+index+")").slideDown();
+								if (child) {
+									iframe.css("height", calIframeHeight() + "px");
+								}
 							});
 						} else {
 							if (n === index) {
@@ -292,9 +267,13 @@ $.each(fakeIndex, function(k) {
 				
 					$("#ai"+i+" > .accordion-content:eq("+index+")").slideUp("fast", function(){
 						$("#ai"+i+" > .accordion-title:eq("+index+")").removeClass("active");
+						if (child) {
+							iframe.css("height", calIframeHeight() + "px");
+						}
 					});
 					
 				}
+
 				
 				return false;
 				
@@ -403,6 +382,19 @@ function getParameterByName(url,name) {
 	} else {
 		return decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
+}
+
+function calIframeHeight() {
+	var pageContainer = $(document).find("div.page-container");
+	var oriHeight = 0;
+	
+	pageContainer.children().each(function() {
+		oriHeight += $(this).outerHeight(true);
+	});
+	
+	oriHeight += $(document).find("footer").outerHeight(true);
+	
+	return oriHeight;
 }
 
 // D2L BUTTONS/ACTION CALLS

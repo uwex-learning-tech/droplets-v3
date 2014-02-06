@@ -5,7 +5,7 @@ html,
 body {
 	padding:0px;
 	margin:0px;
-	height: 100%;
+	/* height: 100%; */
 }
 
 body {
@@ -491,7 +491,7 @@ footer p {
 	line-height: 0;
 	padding:30px 15px 15px 15px;
 	min-height: 15px;
-	background-color: #FFFFFF;
+	background-color: #FAFAFA;
 	/* box-shadow: 0px 0px 6px #888; */
 }
 footer p:after {
@@ -500,12 +500,14 @@ footer p:after {
 footer.no-text p:after {
 	content: "";
 }
+/*
 footer.no-text {
-	margin-top: 30px;
+	margin-top: 15px;
 }
+*/
 footer.no-text p {
 	padding:15px;
-	min-height: 0px;
+	/* min-height: 0px; */
 }
 /*
 footer p a.course-support,
@@ -528,15 +530,18 @@ footer p a.course-support:hover {
 /* helpers */
 .page-container {
 	width: 910px;
-	min-height: 100%;
+	/*
+min-height: 100%;
 	height: auto !important;
-	margin: 0 0 -61px 0px;
+*/
+	margin: 0;
 	background-color: #fff;
 	padding:0px 15px 0px 15px;
 	/* box-shadow: 0px 0px 4px #888; */
 }
 .push {
-	height: 90px;
+	display: none;
+	height: 0px;
 }
 .clearfix:before,
 .clearfix:after {
@@ -1085,7 +1090,7 @@ span.with-popover.active {
 
 /* TABBED CONTENTS */
 .with-tabs {
-	margin: 16px 0px;
+	padding: 16px 0px;
 	clear: both;
 }
 .with-tabs .tabs {
@@ -1128,7 +1133,7 @@ span.with-popover.active {
 	color:#333;
 }
 .with-tabs .tab-contents {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #929292;
 	clear: both;
 }
 .with-tabs .tab-contents section {
