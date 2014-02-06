@@ -163,13 +163,14 @@ $(document).ready(function() {
 				
 			}); // end click
 			
-			loopTabs(i,$(".with-tabs[data-id='"+i+"'] .tabs li").length);
+			/* loopTabs(i,$(".with-tabs[data-id='"+i+"'] .tabs li").length); */
 						
 		});
 	
 	} // end getTabs
 	
-	function loopTabs(i,length) {
+	/*
+function loopTabs(i,length) {
 		var k = 0, l = 0;
 		var loop = setInterval(function() { // this code is executed every 5 seconds:
 		
@@ -201,6 +202,7 @@ $(document).ready(function() {
 		}, 750);
 
 	}
+*/
 	
 	// accordion
 	function getAccordion() {
@@ -211,7 +213,7 @@ $(document).ready(function() {
 		
 		$(".with-accordion").each(function(i){
 		
-			var fakeIndex = [];
+			/* var fakeIndex = []; */
 			
 			$(this).attr("id","ai"+i);
 			
@@ -245,21 +247,25 @@ $(document).ready(function() {
 			
 				if ($(this).hasClass("active")) {
 					$("#ai"+i+" > .accordion-content:eq("+m+")").show();
-				} else {
+				} /*
+else {
 					fakeIndex.push(m);
 				}
 				
 				$(this).addClass("active");
 				$("#ai"+i+" > .accordion-content:eq("+m+")").show();
+*/
 					
 			}); // end init state
 			
-			$.each(fakeIndex, function(k) {
+			/*
+$.each(fakeIndex, function(k) {
 				
 				$("#ai"+i+" > .accordion-content:eq("+fakeIndex[k]+")").prev().removeClass("active");
 				$("#ai"+i+" > .accordion-content:eq("+fakeIndex[k]+")").slideUp(1000);
 					
 			});
+*/
 			
 			$("#ai"+i+" .accordion-title").on("click",function(){
 			
