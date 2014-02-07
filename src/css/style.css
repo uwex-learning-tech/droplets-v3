@@ -536,7 +536,7 @@ min-height: 100%;
 */
 	margin: 0;
 	background-color: #fff;
-	padding:0px 15px 0px 15px;
+	padding:0px 15px 30px 15px;
 	/* box-shadow: 0px 0px 4px #888; */
 }
 .push {
@@ -694,9 +694,24 @@ min-height: 100%;
 .callout h4 [class^="icon-"],
 .callout h4 [class*=" icon-"] {
 	display: inline-block;
-	margin-right: 9px;
-	font-size: 26px;
-	vertical-align:bottom;
+	margin-right: 5px;
+	font-size: 175%;
+	line-height: 0;
+	vertical-align:middle;
+}
+[class^="icon-"].medium,
+[class*=" icon-"].medium {
+	font-size: 150%;
+	display: inline-block;
+	margin-right: 5px;
+	vertical-align: middle;
+}
+[class^="icon-"].large,
+[class*=" icon-"].large {
+	font-size: 200%;
+	display: inline-block;
+	margin-right: 5px;
+	vertical-align: middle;
 }
 .vertical.left {
 	width: 250px;
