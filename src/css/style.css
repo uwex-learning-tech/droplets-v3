@@ -531,9 +531,9 @@ footer p a.course-support:hover {
 .page-container {
 	width: 910px;
 	/*
-min-height: 100%;
 	height: auto !important;
 */
+	min-height: 580px;
 	margin: 0;
 	background-color: #fff;
 	padding:0px 15px 30px 15px;
