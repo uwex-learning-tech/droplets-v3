@@ -54,7 +54,7 @@ h1 [class*=" icon-"] {
 	display: inline-block;
 	margin-right: 5px;
 	font-size: 42px;
-	vertical-align:bottom;
+	vertical-align:baseline;
 }
 
 h2 {
@@ -697,21 +697,21 @@ min-height: 100%;
 	margin-right: 5px;
 	font-size: 175%;
 	line-height: 0;
-	vertical-align:middle;
+	vertical-align:baseline;
 }
 [class^="icon-"].medium,
 [class*=" icon-"].medium {
 	font-size: 150%;
 	display: inline-block;
 	margin-right: 5px;
-	vertical-align: middle;
+	vertical-align: baseline;
 }
 [class^="icon-"].large,
 [class*=" icon-"].large {
 	font-size: 200%;
 	display: inline-block;
 	margin-right: 5px;
-	vertical-align: middle;
+	vertical-align: baseline;
 }
 .vertical.left {
 	width: 250px;

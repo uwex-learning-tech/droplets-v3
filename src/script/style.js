@@ -3,14 +3,14 @@
 $(document).ready(function() {
 	
 	var child = false;
+	var iframe = null;
 	
 	if (parent === top) {
-		var iframe = $(parent.document).find("div#ContentView").find("iframe");
+		iframe = $(parent.document).find("div#ContentView").find("iframe");
 		
 		iframe.attr('allowfullscreen', '');
 		iframe.attr('webkitallowfullscreen', '');
 		iframe.attr('mozallowfullscreen', '');
-		iframe.css("height", calIframeHeight() + "px");
 		
 		child = true;
 	}
@@ -40,6 +40,12 @@ $(document).ready(function() {
 		
 		if ($(".with-zoom").length) {
 			getImgZoom();
+		}
+		
+		if ($(".with-accordion").length || $(".with-tabs").length) {
+			if (child) {
+				iframe.css("height", calIframeHeight() + "px");
+			}
 		}
 		
 	} // end checkComponents
