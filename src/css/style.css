@@ -1214,11 +1214,11 @@ span.with-popover.active {
 	display: none;
 }
 /* with arrow */
-.with-accordion.arrow .accordion-title {
+.with-accordion .accordion-title {
 	position: relative;
 	padding-right: 25px;
 }
-.with-accordion.arrow .accordion-title .indicator {
+.with-accordion .accordion-title .indicator {
 	position:absolute;
 	width: 11px;
 	height: 100%;
@@ -1228,7 +1228,7 @@ span.with-popover.active {
 	top:0;
 	right: 10px;
 }
-.with-accordion.arrow .accordion-title.active .indicator {
+.with-accordion .accordion-title.active .indicator {
 	width: 16px;
 	background-position: -11px center;
 }

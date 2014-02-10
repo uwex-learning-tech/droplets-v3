@@ -195,15 +195,17 @@ $(document).ready(function() {
 	// accordion
 	function getAccordion() {
 		
-		$(".with-accordion.arrow .accordion-title").each(function() {
-			$(this).append("<div class=\"indicator\"></div>");
-		});
-		
 		$(".with-accordion").each(function(i){
 			
 			$(this).attr("id","ai"+i);
 			
 			$("#ai"+i).prepend("<div class=\"accordion-controls\"><a class=\"closeAll\" href=\"javascript:void(0)\">Close All</a> <a class=\"openAll\" href=\"javascript:void(0)\">Open All</a></div>");
+			
+			if (!$(this).hasClass("no-arrow")) {
+				$(this).find(".accordion-title").each(function(){
+					$(this).append("<div class=\"indicator\"></div>");
+				});
+			}
 			
 			/* close all sections */
 			$("#ai"+i+" .closeAll").on("click",function(){
@@ -220,8 +222,6 @@ $(document).ready(function() {
 					}
 					
 				});
-				
-				
 				
 			}); // end closeAll
 			
@@ -280,12 +280,11 @@ $(document).ready(function() {
 					
 				}
 
-				
 				return false;
 				
 			}); // end click
 			
-		});
+		}); // end each
 
 	} // end getAccordion
 	
