@@ -539,10 +539,12 @@ footer p a.course-support:hover {
 	padding:0px 15px 30px 15px;
 	/* box-shadow: 0px 0px 4px #888; */
 }
+/*
 .push {
 	display: none;
 	height: 0px;
 }
+*/
 .clearfix:before,
 .clearfix:after {
   display: table;
@@ -1287,7 +1289,7 @@ span.with-popover.active {
 	width:200px;
 	height: 200px;
 	border-radius: 100%;
-	box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 
+	box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85),
 	0 0 7px 7px rgba(0, 0, 0, 0.25), 
 	inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
 	background-color:#fff;
@@ -1370,25 +1372,72 @@ iframe, object {
 
 /* FOR PRINTING */
 @media print {
-	abbr, span.with-tooltip {
-		border-bottom: 0;
-	}
-	abbr:after,
-	span.with-tooltip:after {
-		content: " (" attr(title) ")";
-	}
-	a[href].with-tooltip:after {
-		content: " (" attr(title) " | Link URL: " attr(href) ")";
+	
+	body {
+		font-size: 10.5pt;
+		font-family: Helvetica, Arial, sans-serif;
+		width: 100%;
+		word-wrap: break-word;
+		white-space: normal;
+		overflow: visible;
+		background-color: transparent;
 	}
 	
-	span.with-popover {
-		border: 0;
-		background:none;
-	}
-	span.with-popover:after {
-		content: " (" attr(data-title) ")";
+	.page_container {
+		width:100%;
+		padding: 0;
+		margin: 0;
+		background-color: #ffffff;
 	}
 	
+	/* page header */
+	header {
+		border: none;
+		padding: 0;
+	}
+	header h1 {
+		font-size: 20pt;
+		margin: 0;
+	}
+	
+	header h1 small {
+		font-size:14.5pt;
+	}
+	
+	h1 {
+		font-size: 18pt;
+	}
+	
+	h1 [class^="icon-"],
+	h1 [class*=" icon-"] {
+		font-size: 24pt;
+	}
+	
+	h2 {
+		font-size:14.5pt;
+	}
+	
+	h3, h4, h5, h6 {
+		font-size: 12pt;
+	}
+	
+	p {
+		white-space: normal;
+		word-wrap: break-word;
+		padding: 0;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	p.lead {
+		font-size: 13pt;
+	}
+	
+	blockquote p {
+		font-size: 13pt;
+	}
+
+	/* link */
 	a:link,
 	a:visited {
 		color:#333;
@@ -1396,12 +1445,54 @@ iframe, object {
 	}
 	a:after {
 		content: " (" attr(href) ")";
+		font-size: 75%;
+	}
+	table > thead > tr > td a:after,
+	table > tbody > tr > td a:after {
+		content: "";
+	}
+
+	/* footer */
+	footer {
+		display: none;
 	}
 	
+	/* abbreviation */
+	abbr, span.with-tooltip {
+		border-bottom: 0;
+	}
+	
+	abbr:after,
+	span.with-tooltip:after {
+		content: " (" attr(title) ")";
+	}
+	
+	/* buton */
+	.btn:after {
+		content: "";
+	}
+	
+	/* tooltip */
+	a[href].with-tooltip:after {
+		content: " (" attr(title) " | Link URL: " attr(href) ")";
+	}
+	
+	/* popover */
+	span.with-popover {
+		border: 0;
+		background:none;
+	}
+	
+	span.with-popover:after {
+		content: " (" attr(data-title) ")";
+	}
+	
+	/* tab */
 	.with-accordion .accordion-title {
 		border: 0;
 		font-weight: bold;
 	}
+	
 	.with-accordion .accordion-content {
 		border: 0;
 		display: block;
@@ -1421,10 +1512,6 @@ iframe, object {
 	
 	.with-tabs .tab-contents section {
 		display: block;
-	}
-	
-	.btn:after {
-		content: "";
 	}
 	
 }
