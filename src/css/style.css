@@ -740,6 +740,7 @@ footer p a.course-support:hover {
 	vertical-align: middle;
 	outline: none;
 	cursor: pointer;
+	box-sizing: border-box;
 }
 .btn:hover, a.btn:hover {
 	border-top-color: #28597a;
@@ -751,6 +752,7 @@ button.btn {
 	padding: 11.2px 19px;
 	margin: 0;
 }
+
 /* IE hack fix*/
 html>/**/body button.btn {
 	padding:9.5px 19px;
@@ -1283,6 +1285,27 @@ span.with-popover.active {
 	inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
 	background-color:#fff;
 	z-index: 99;
+}
+
+/* WITH READ MORE */
+.with-readmore {
+    position: relative;
+    padding-bottom: 5px;
+}
+.with-readmore .readmore-ctrl {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    font-size: smaller;
+    padding-top: 5px;
+    background: #ffffff;
+    box-shadow: 0px -3px 10px #FFF;
+}
+.with-readmore .readmore-ctrl.opened {
+    position: relative;
+    padding-top:0px;
+    cursor: pointer;
 }
 
 /* MEDIA PLAYERS */

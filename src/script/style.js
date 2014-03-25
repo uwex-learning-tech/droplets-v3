@@ -42,7 +42,11 @@ $(document).ready(function() {
 			getImgZoom();
 		}
 		
-		if ($(".with-accordion").length || $(".with-tabs").length) {
+		if ($(".with-readmore").length) {
+			getReadMore();
+		}
+		
+		if ($(".with-accordion").length || $(".with-tabs").length || $(".with-readmore").length) {
 			if (child) {
 				iframe.css("height", calIframeHeight() + "px");
 			}
@@ -367,6 +371,48 @@ $(document).ready(function() {
 		});
 		
 	}
+	
+	// read more
+    function getReadMore() {
+    
+        var h = "250px";
+    
+        $(".with-readmore").each(function(i) {
+        
+            $(this).attr("id","more"+i);
+            $("#more"+i).attr("data-height",$("#more"+i).height());
+            $("#more"+i).append("<div class=\"readmore-ctrl\"><a href=\"javascript:void(0)\">READ MORE...</a></div>").css({"height":h,"overflow":"hidden"});
+            
+            $("#more"+i + " .readmore-ctrl a").on("click", function() {
+                
+                var rmID = "#more"+i;
+                var rmHeight = Number($(rmID).attr("data-height")) + Number($(rmID + " .readmore-ctrl").height()) + 10;
+                
+                if ($("#more"+i + " .readmore-ctrl").hasClass("opened")) {
+                    
+                    $(rmID).animate({
+                        height: h
+                    }, "slow", "linear", function() {
+                        $(rmID + " .readmore-ctrl").removeClass("opened");
+                        $(rmID + " .readmore-ctrl a").html("READ MORE...");
+                    });
+                    
+                } else {
+                    
+                    $(rmID).animate({
+                        height: rmHeight+"px"
+                    }, "slow", "linear", function() {
+                        $(rmID + " .readmore-ctrl").addClass("opened");
+                        $(rmID + " .readmore-ctrl a").html("READ LESS");
+                    });
+                    
+                }
+                
+            }); // end click
+            
+        }); // end each
+    
+    }
 	
 	// call to check available component
 	checkComponents();
