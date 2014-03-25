@@ -1526,4 +1526,14 @@ iframe, object {
 		display: block;
 	}
 	
+	/* read more */
+	.with-readmore {
+        overflow: visible !important;
+        height: 100% !important;
+    }
+    
+    .with-readmore .readmore-ctrl {
+        display: none;
+    }
+	
 }
