@@ -376,7 +376,7 @@ table.minimal {
 	background-color:#ffffff;
 	border:1px solid #d6d6d6;
 	border-radius: 3px;
-	box-shadow: 0px 1px 1px #cdcdcd;
+	box-shadow: 0px 2px 0px #d6d6d6;
 }
 table.minimal > thead > tr > th,
 table.minimal > tbody > tr > th,
@@ -601,6 +601,9 @@ footer p a.course-support:hover {
 	border-color: #7e7e7e;
 	border-left: 10px solid #7e7e7e;
 	border-right: 5px solid #b2b2b2;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 .callout h4 {
 	margin-top: 0px;
@@ -616,39 +619,30 @@ footer p a.course-support:hover {
 	border-right: 0;
 	border-left-width: 5px;
 }
+.callout.minimal.shadowed {
+    box-shadow: 0px 0px 6px #858585;
+}
 .callout.minimal.alt {
 	background-color:#FFFFFF !important;
 	border:1px solid #d6d6d6;
 	border-radius: 3px 3px;
-	box-shadow: 0px 1px 1px #cdcdcd;
+	box-shadow: 0px 2px 0px #d6d6d6;
 }
 .callout.minimal.alt.danger {
-	background-color:#FFFFFF !important;
-	border:0px solid #d6d6d6;
-	border-left: 5px solid #cc4745;
-	border-radius: 0px 0px;
-	box-shadow: 0px 1px 5px #bebebe;
+	border-color:#cc4745;
+	box-shadow: 0px 2px 0px #cc4745;
 }
 .callout.minimal.alt.success {
-	background-color:#FFFFFF !important;
-	border:0px solid #d6d6d6;
-	border-left: 5px solid #64b660;
-	border-radius: 0px 0px;
-	box-shadow: 0px 1px 5px #bebebe;
+	border-color:#64b660;
+	box-shadow: 0px 2px 0px #64b660;
 }
 .callout.minimal.alt.info {
-	background-color:#FFFFFF !important;
-	border:0px solid #d6d6d6;
-	border-left: 5px solid #4dabe9;
-	border-radius: 0px 0px;
-	box-shadow: 0px 1px 5px #bebebe;
+	border-color:#4dabe9;
+	box-shadow: 0px 2px 0px #4dabe9;
 }
 .callout.minimal.alt.warning {
-	background-color:#FFFFFF !important;
-	border:0px solid #d6d6d6;
-	border-left: 5px solid #edce42;
-	border-radius: 0px 0px;
-	box-shadow: 0px 1px 5px #bebebe;
+	border-color:#edce42;
+	box-shadow: 0px 2px 0px #edce42;
 }
 .callout.vertical {
 	padding:15px;
@@ -697,23 +691,17 @@ footer p a.course-support:hover {
 .callout h4 [class*=" icon-"] {
 	display: inline-block;
 	margin-right: 5px;
-	font-size: 175%;
+	font-size: 130%;
 	line-height: 0;
 	vertical-align:baseline;
 }
 [class^="icon-"].medium,
 [class*=" icon-"].medium {
-	font-size: 150%;
-	display: inline-block;
-	margin-right: 5px;
-	vertical-align: baseline;
+	font-size: 155%;
 }
 [class^="icon-"].large,
 [class*=" icon-"].large {
-	font-size: 200%;
-	display: inline-block;
-	margin-right: 5px;
-	vertical-align: baseline;
+	font-size: 170%;
 }
 .vertical.left {
 	width: 250px;
@@ -726,6 +714,7 @@ footer p a.course-support:hover {
 	float: right;
 	text-align: left;
 }
+
 /* buttons */
 .btn, a.btn, button.btn {
 	display: inline-block;
@@ -740,9 +729,9 @@ footer p a.course-support:hover {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-	-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-	box-shadow: rgba(0,0,0,1) 0 1px 0;
+	-webkit-box-shadow: rgba(0,0,0,.75) 0 1px 0;
+	-moz-box-shadow: rgba(0,0,0,.75) 0 1px 0;
+	box-shadow: rgba(0,0,0,.75) 0 2px 0;
 	text-shadow: rgba(0,0,0,.4) 0 1px 0;
 	color: white;
 	font-size: 14px;
@@ -847,7 +836,7 @@ figure figcaption {
 }
 .polaroid img {
 	display: block;
-	width:316px;
+	width: 316px;
 	height: 237px;
 	border: 15px solid #fff;
 }

@@ -93,6 +93,13 @@ body.home {
 	padding: 10px 30px;
 	line-height: 1;
 }
+.footer_copyright_notice {
+    text-align: center;
+    color: #a2a2a2;
+	font-size: 12px;
+	padding: 10px 0px;
+	line-height: 1;
+}
 
 /* NAV BAR */
 .guide_header {
@@ -147,7 +154,6 @@ body.home {
 .guide_wrapper {
 	min-height: 100%;
 	height: auto !important;
-	margin-bottom: -42px;
 }
 .guide_container {
 	width:1024px;
