@@ -267,6 +267,9 @@ abbr {
 small {
 	font-size: 12px;
 }
+code {
+    font-family: monospace;
+}
 .text-info {
 	color:#317594;
 }
@@ -622,25 +625,30 @@ footer p a.course-support:hover {
 .callout.minimal.shadowed {
     box-shadow: 0px 0px 6px #858585;
 }
-.callout.minimal.alt {
+.callout.minimal.alt,
+.callout.minimal.bordered {
 	background-color:#FFFFFF !important;
 	border:1px solid #d6d6d6;
 	border-radius: 3px 3px;
 	box-shadow: 0px 2px 0px #d6d6d6;
 }
-.callout.minimal.alt.danger {
+.callout.minimal.alt.danger,
+.callout.minimal.bordered.danger {
 	border-color:#cc4745;
 	box-shadow: 0px 2px 0px #cc4745;
 }
-.callout.minimal.alt.success {
+.callout.minimal.alt.success,
+.callout.minimal.bordered.success {
 	border-color:#64b660;
 	box-shadow: 0px 2px 0px #64b660;
 }
-.callout.minimal.alt.info {
+.callout.minimal.alt.info,
+.callout.minimal.bordered.info {
 	border-color:#4dabe9;
 	box-shadow: 0px 2px 0px #4dabe9;
 }
-.callout.minimal.alt.warning {
+.callout.minimal.alt.warning,
+.callout.minimal.bordered.warning {
 	border-color:#edce42;
 	box-shadow: 0px 2px 0px #edce42;
 }
