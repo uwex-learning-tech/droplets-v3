@@ -65,7 +65,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/dist\/scripts\/jquery.min.js": {
 		"fileType": 64,
@@ -76,7 +76,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/dist\/scripts\/style.js": {
 		"fileType": 64,
@@ -87,7 +87,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/dist\/starter-collaborative.html": {
 		"fileType": 8192,
@@ -367,7 +367,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/script\/guide.min.js": {
 		"fileType": 64,
@@ -378,7 +378,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/script\/jquery.min.js": {
 		"fileType": 64,
@@ -389,7 +389,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/script\/jquery.scrollUp.min.js": {
 		"fileType": 64,
@@ -400,7 +400,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/script\/style.js": {
 		"fileType": 64,
@@ -411,7 +411,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/script\/style.min.js": {
 		"fileType": 64,
@@ -422,7 +422,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/syntaxhighlighter\/scripts\/shBrushJScript.js": {
 		"fileType": 64,
@@ -433,7 +433,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/syntaxhighlighter\/scripts\/shBrushXml.js": {
 		"fileType": 64,
@@ -444,7 +444,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/syntaxhighlighter\/scripts\/shBrushXml.min.js": {
 		"fileType": 64,
@@ -455,7 +455,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/syntaxhighlighter\/scripts\/shCore.js": {
 		"fileType": 64,
@@ -466,7 +466,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/syntaxhighlighter\/scripts\/shCore.min.js": {
 		"fileType": 64,
@@ -477,7 +477,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 2
+		"syntaxCheckerStyle": 1
 		},
 	"\/src\/syntaxhighlighter\/styles\/shCore.css": {
 		"fileType": 16,
@@ -721,7 +721,7 @@
 	"javascriptCreateSourceMap": 1,
 	"javascriptOutputStyle": 1,
 	"javascriptOutputSuffix": ".min",
-	"javascriptSyntaxCheckerStyle": 2,
+	"javascriptSyntaxCheckerStyle": 1,
 	"jsCheckerReservedNamesString": "",
 	"jsHintFlags2": {
 		"asi": {
