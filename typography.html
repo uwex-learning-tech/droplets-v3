@@ -94,14 +94,17 @@
 			</ul>
 		</div>
 		<div class="guide_outlayer">
-			<div class="guide_content">
-				
-				<header>
+		
+		        <header class="guide">
 					<h1>Typography</h1>
 				</header>
+		
+			<div class="guide_content">
 				
-				<h2 id="heading">Headings</h2>
-				<p>If the page has a pager header, do not use the <code>&lt;h1&gt;</code> element. Start with <code>&lt;h2&gt;</code> instead. Heading 3 through 6 are the same size.</p>
+				<p class="lead">Look matters. Every typeface is unique.</p>
+				
+				<h1 id="heading">Headings</h1>
+				<p>Headings are used to show the document structure!</p>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -123,8 +126,8 @@
 					</div>
 				</div>
 				
-				<h2 id="leadbodycopy">Lead Body Copy</h2>
-				<p>A lead body copy is making a sentence or a paragraph stands out among the rest of the contents. To create a lead, apply the <code>lead</code> class to a <code>&lt;p&gt;</code> element.</p>
+				<h1 id="leadbodycopy">Lead Body Copy</h1>
+				<p>A lead body copy is a sentence or paragraph that stands out among the rest of the contents. To create a lead, apply the <code>lead</code> class to a <code>&lt;p&gt;</code> element.</p>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -137,7 +140,7 @@ nesciunt sapiente eius officiis. Reiciendis, numquam, blanditiis doloribus iste.
 					</div>
 				</div>
 				
-				<h2 id="bodycopy">Body Copy</h2>
+				<h1 id="bodycopy">Body Copy</h1>
 				<p>The content of the page using the <code>&lt;p&gt;</code> element.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -165,7 +168,7 @@ consectetur adipisicing elit.&lt;/p&gt;</pre>
 					</div>
 				</div>
 				
-				<h2 id="hyperlink">Hyperlink (or Link)</h2>
+				<h1 id="hyperlink">Hyperlink (or Link)</h1>
 				<p>Create a hyperlink between documents or websites by using the <code>&lt;a&gt;</code> element.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -179,10 +182,10 @@ aut reiciendis eum ipsum soluta sequi dolore cum ratione ex.&lt;/p&gt;</pre>
 					</div>
 				</div>
 				
-				<h2 id="blockquote">Blockquote</h2>
+				<h1 id="blockquote">Blockquote</h1>
 				<p>For quoting blocks of content from another source. Can also be use for quoting a passage from a famous person or literature.</p>
 				
-				<h3>Basic</h3>
+				<h2>Basic</h2>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -198,7 +201,7 @@ aut reiciendis eum ipsum soluta sequi dolore cum ratione ex.&lt;/p&gt;</pre>
 					</div>
 				</div>
 				
-				<h3>With Author or Source</h3>
+				<h2>With Author or Source</h2>
 				<p>Add an author or a source to the blockqoute by nesting a <code>&lt;small&gt;</code> element after the content.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -217,7 +220,7 @@ aut reiciendis eum ipsum soluta sequi dolore cum ratione ex.&lt;/p&gt;</pre>
 					</div>
 				</div>
 				
-				<h3>Right Aligned</h3>
+				<h2>Right Aligned</h2>
 				<p>Right aligned the blockquote by applying the <code>pull-right</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -238,8 +241,8 @@ aut reiciendis eum ipsum soluta sequi dolore cum ratione ex.&lt;/p&gt;</pre>
 					</div>
 				</div>
 				
-				<h3>Alternative</h3>
-				<p>An alternative blockquote style by applying the <code>quote</code> class. Recommended to use for a long quote.</p>
+				<h2>Alternative</h2>
+				<p>An alternative style by applying the <code>quote</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -264,8 +267,8 @@ aut reiciendis eum ipsum soluta sequi dolore cum ratione ex.&lt;/p&gt;</pre>
 					</div>
 				</div>
 				
-				<h2 id="lists">Lists</h2>
-				<h3>Unordered</h3>
+				<h1 id="lists">Lists</h1>
+				<h2>Unordered</h2>
 				<p>Create list of items in no specific order by using the <code>&lt;ul&gt;</code> element.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -295,7 +298,7 @@ impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/
 					</div>
 				</div>
 				
-				<h3>Nested Unordered</h3>
+				<h2>Nested Unordered</h2>
 				<p>Create nested list of items in no specific order by nesting the <code>&lt;ul&gt;</code> elements.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -346,7 +349,7 @@ impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/
 					</div>
 				</div>
 				
-				<h3>Ordered</h3>
+				<h2>Ordered</h2>
 				<p>Create list of items in a precise order or steps by using the <code>&lt;ol&gt;</code> element.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -376,8 +379,8 @@ impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/
 					</div>
 				</div>
 				
-				<h3>No Bullets</h3>
-				<p>Create a list of items without bullet style by applying the <code>no-bullet</code> class. All nested <code>&lt;ol&gt;</code> and <code>&lt;ul&gt;</code> elements will not have bullets as well. Works with both <code>&lt;ol&gt;</code> and <code>&lt;ul&gt;</code> elements.</p>
+				<h2>No Bullets</h2>
+				<p>Create a list of items without bullet style by applying the <code>no-bullet</code> class. All nested <code>&lt;ol&gt;</code> and <code>&lt;ul&gt;</code> elements will not have bullets as well.</p>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -385,7 +388,7 @@ impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/
 consectetur laborum ex atque eos possimus doloribus distinctio natus reiciendis
 impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/p&gt;
 &lt;ul class="no-bullet"&gt;
-	&lt;li&gt;I'm a bulleted list... OMG where are my bullets!&lt;/li&gt;
+	&lt;li&gt;I'm a bulleted list ... OMG where are my bullets?!&lt;/li&gt;
 	&lt;li&gt;My bullets are gone!&lt;/li&gt;
 		&lt;ol&gt;
 			&lt;li&gt;Not even square...&lt;/li&gt;
@@ -393,7 +396,7 @@ impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/
 		&lt;/ol&gt;
 	&lt;li&gt;What happened to my bullets!?&lt;/li&gt;
 	&lt;li&gt;I don't look like a list...&lt;/li&gt;
-	&lt;li&gt;...incomplete ... an odd ball.&lt;/li&gt;
+	&lt;li&gt;... incomplete ... an odd ball.&lt;/li&gt;
 	&lt;li&gt;Use me with cautions...&lt;/li&gt;
 &lt;/ul&gt;</pre>
 					</div>
@@ -401,7 +404,7 @@ impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/
 						<p class="tip">Result</p>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, consectetur laborum ex atque eos possimus doloribus distinctio natus reiciendis impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.</p>
 						<ul class="no-bullet">
-							<li>I'm a bulleted list... OMG where are my bullets!</li>
+							<li>I'm a bulleted list ... OMG where are my bullets?!</li>
 							<li>My bullets are gone!
 								<ol>
 									<li>Not even square...</li>
@@ -410,7 +413,7 @@ impedit ut earum quasi voluptas delectus molestiae. Laudantium perferendis.&lt;/
 							</li>
 							<li>What happened to my bullets!?</li>
 							<li>I don't look like a list...</li>
-							<li>...incomplete ... an odd ball.</li>
+							<li>... incomplete ... an odd ball.</li>
 							<li>Use me with cautions...</li>
 						</ul>
 					</div>

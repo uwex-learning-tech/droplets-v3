@@ -88,14 +88,17 @@
 			</ul>
 		</div>
 		<div class="guide_outlayer">
-			<div class="guide_content">
-				<header>
-					<h1>Page Headers</h1>
-				</header>
-				<p>A page must starts with a page header. Page header may not be used multiple times throughout the page.</p>
+		
+		    <header class="guide">
+                <h1>Page Headers</h1>
+            </header>
 				
-				<h2>Simple Page Header</h2>
-				<p>A simple page header contains only the page title.</p>
+			<div class="guide_content">
+				
+				<p class="lead">A person must have a name. A page must starts with a page header.</p>
+				
+				<h1>Regular Page Header</h1>
+				<p>A regular page header contains only the title.</p>
 				
 				<div class="guide-example">
 					<div class="guide-code">
@@ -107,13 +110,31 @@
 					<div class="guide-result">
 						<p class="tip">Result</p>
 						<header>
+							<h1>Page title (30 pixels)</h1>
+						</header>
+					</div>
+				</div>
+				
+				<h1>Page Header with Icon</h1>
+				<p>A page header begins with an icon. Please refer to the <a href="icons.html">icons page</a> for a complete list of available icons.</p>
+				
+				<div class="guide-example">
+					<div class="guide-code">
+					<p class="tip">Code</p>
+				<pre class="brush: html">&lt;header&gt;
+	&lt;h1&gt;&lt;span class="icon icon-discussion"&gt;&lt;/span&gt;Page title (30 pixels)&lt;/h1&gt;
+&lt;/header&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Result</p>
+						<header>
 							<h1><span class="icon icon-discussion"></span>Page title (30 pixels)</h1>
 						</header>
 					</div>
 				</div>
 				
-				<h2>Page Header with Subtext</h2>
-				<p>A page header with subtext contains the page title with a short supplement text.</p>
+				<h1>Page Header with Subtext</h1>
+				<p>A page header contains a short supplement text after the title.</p>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>

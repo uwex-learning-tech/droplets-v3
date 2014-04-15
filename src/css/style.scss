@@ -1,6 +1,6 @@
 @import "../fonts/collaborativeicon";
 
-/* VARIABLES
+/* SASS VARIABLES
 -----------------------------------------------------------------*/
 $primary-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $body-font-size: 16px;
@@ -10,10 +10,11 @@ $background-color: #e9e9e9;
 $margin-top: 16px;
 $margin-bottom: 16px;
 $heading-font-weight: 500;
+$light-font-weight: 300;
+$gray-color: #bfbfbf;
 
-
-
-/* global */
+/* GLOBAL
+-----------------------------------------------------------------*/
 html,
 body {
 	padding: 0;
@@ -28,7 +29,8 @@ body {
 	background-color: $background-color;
 }
 
-/* page header */
+/* PAGE HEADER
+-----------------------------------------------------------------*/
 header {
 
 	padding: 10px 0;
@@ -46,7 +48,7 @@ header {
         [class*=" icon-"] {
             display: inline-block;
             margin-right: 5px;
-            font-size: 25px;
+            font-size: 82%;
         } // header h1 [class^="icon-"], header h1 [class*=" icon-"]
         
         small {
@@ -59,6 +61,8 @@ header {
 	
 } // header
 
+/* TYPOGRAPHY
+-----------------------------------------------------------------*/
 /* headings elements */
 h1, h2, h3, h4, h5, h6 {
 	margin: $margin-top 0 $margin-bottom;
@@ -84,25 +88,10 @@ p {
 
 p.lead {
 	font-size: 22px;
-	font-weight: 300;
-	line-height: $body-line-height;
+	font-weight: $light-font-weight;
 }
-.left {
-	text-align: left;
-}
-.center {
-	text-align: center;
-}
-.right {
-	text-align: right;
-}
-.justify {
-	text-align: justify;
-	text-justify: newspaper;
-}
-span.underline {
-	text-decoration: underline;
-}
+
+/* link */
 a, a:link {
 	color: #005393;
 	text-decoration: underline;
@@ -114,59 +103,71 @@ a:visited {
 a:hover {
 	text-decoration: none;
 }
+
+/* blockquote */
 blockquote {
+
 	display: block;
 	padding: 10px 20px;
-	margin: 0px 0px 6px;
-	border-left: 5px solid #bfbfbf;
-}
-blockquote p {
-	font-size: 17.5px;
-	font-weight: 300;
-	line-height: 1.25;
-	margin:0px 0px 10px;
-}
-blockquote p:last-child {
-	margin-bottom: 0px;
-}
-blockquote small {
-	display: block;
-	line-height: 1.428;
-	color:#4c4c4c;
-	font-size: 85%;
-}
-blockquote small:before {
-	content: '\2014 \00A0';
-}
+	margin: $margin-top 0 $margin-bottom;
+	border-left: 5px solid $gray-color;
+	box-sizing: border-box;
+	
+	p {
+    	font-size: 110%;
+        font-weight: $light-font-weight;
+        margin: 0 0 $margin-bottom;
+	} // blockquote p
+	
+	p:last-child {
+    	margin-bottom: 0;
+	} // blockquote p:last-child
+	
+	small {
+    	display: block;
+    	color: #4c4c4c;
+    	font-size: 85%;
+	} // blockquote small
+	
+	small:before {
+    	content: '\2014 \00A0';
+	} // blockquote small:before
+	
+} // blockquote
+
 blockquote.quote {
+
 	border: 0;
 	quotes: "\201C""\201D";
-}
+	
+	p {
+    	display: inline;
+	} // blockquote.quote p
+	
+	small {
+	    display: inline;
+	} // blockquote.quote small
+	
+} // blockquote.quote
+
 blockquote.quote:before {
-  color: #ccc;
+  color: $gray-color;
   content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
+  font-size: 500%;
+  line-height: 0;
+  margin-right: 10px;
+  vertical-align: -30px;
 }
-blockquote.quote p {
-  display: inline;
-}
-blockquote.quote small {
-	text-align: right;
-	margin:8px 0px 0px 0px;
-	padding-right: 12px;
-	display: inline;
-	font-size: 75%;
-}
+
 blockquote.pull-right {
-	padding-right:15px;
+	padding-right: 16px;
 	padding-left: 0;
-	border-right:5px solid #bfbfbf;
+	border-right:5px solid $gray-color;
 	border-left: 0;
 	text-align: right;
 }
+
+/* unordered & ordered list */
 ul, ol {
 	margin-top: 0px;
 }
@@ -208,6 +209,25 @@ ol.no-bullet ul {
 .hanging-indent {
     padding-left: 40px ;
     text-indent: -40px ;
+}
+
+/* text alignment */
+.left {
+	text-align: left;
+}
+.center {
+	text-align: center;
+}
+.right {
+	text-align: right;
+}
+.justify {
+	text-align: justify;
+	text-justify: newspaper;
+}
+
+span.underline {
+	text-decoration: underline;
 }
 
 /* layouts */
@@ -719,10 +739,12 @@ footer p a.course-support:hover {
 [class^="icon-"].medium,
 [class*=" icon-"].medium {
 	font-size: 155%;
+	vertical-align: middle;
 }
 [class^="icon-"].large,
 [class*=" icon-"].large {
 	font-size: 170%;
+	vertical-align: middle;
 }
 .vertical.left {
 	width: 250px;
