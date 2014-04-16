@@ -204,6 +204,10 @@ body.home {
 	float: none;
 	clear: both;
 }
+.guide_container .guide_outlayer_full .guide_content {
+	width:1024px;
+	margin-bottom: 10px;
+}
 .guide_container .guide_content {
 	width:764px;
 	margin: 0 auto;
@@ -211,9 +215,13 @@ body.home {
 	border-radius: 0 0 3px 3px;
 	background: #ffffff;
 }
-.guide_container .guide_outlayer_full .guide_content {
-	width:1024px;
-	margin-bottom: 10px;
+.guide_container .guide_content > .callout {
+	font-size: 90%;
+	font-style: italic;
+	padding: 5px;
+}
+.guide_container .guide_content > .callout code {
+	font-style: normal;
 }
 
 /* SIDEBAR 2ND LEVEL */
