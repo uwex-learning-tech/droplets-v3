@@ -272,38 +272,29 @@ blockquote.pull-right {
 ul, ol {
   margin-top: 0px;
 }
-
-ul li,
-ol li {
+ul li, ol li {
   margin-bottom: 10px;
 }
-
-ul li ul li,
-ol li ol li,
-ol li ul li,
-ul li ol li {
-  margin-bottom: 5px;
-}
-
-ul li ul,
-ol li ol,
-ol li ul,
-ul li ol {
+ul li ul, ul li ol, ol li ul, ol li ol {
   margin-top: 10px;
 }
-
-ul li ul,
-ul > ul,
-ol > ul {
+ul li ul li, ul li ol li, ol li ul li, ol li ol li {
+  margin-bottom: 5px;
+}
+ul li ul, ol li ul {
+  list-style: disc;
+}
+ul ul, ol ul {
   list-style: disc;
 }
 
 ul.no-bullet,
-ol.no-bullet,
-ul.no-bullet ul,
-ol.no-bullet ol,
-ul.no-bullet ol,
-ol.no-bullet ul {
+ol.no-bullet {
+  list-style: none;
+}
+ul.no-bullet ul, ul.no-bullet ol,
+ol.no-bullet ul,
+ol.no-bullet ol {
   list-style: none;
 }
 

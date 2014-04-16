@@ -169,37 +169,46 @@ blockquote.pull-right {
 
 /* unordered & ordered list */
 ul, ol {
+
 	margin-top: 0px;
-}
-ul li,
-ol li {
-	margin-bottom: 10px;
-}
-ul li ul li,
-ol li ol li,
-ol li ul li,
-ul li ol li {
-	margin-bottom: 5px;
-}
-ul li ul,
-ol li ol,
-ol li ul,
-ul li ol {
-	margin-top: 10px;
-}
-ul li ul,
-ul > ul,
-ol > ul {
-	list-style: disc;
-}
+	
+	li {
+	
+    	margin-bottom: 10px;
+    	
+    	ul, ol {
+        	
+        	margin-top: 10px;
+        	
+        	li {
+            	margin-bottom: 5px;
+        	} // ul li ul li, ul li ol li, ol li ul li, ol li ol li
+        	
+    	} // ul li ul, ul li ol, ol li ul, ol li ol
+    	
+    	ul {
+        	list-style: disc;
+    	} // ul li ul, ol li ul
+    	
+	} // ul li, ol li
+	
+    ul {
+    	list-style: disc;
+	} // ul ul, ol ul
+	
+} // ul, ol
+
 ul.no-bullet,
-ol.no-bullet,
-ul.no-bullet ul,
-ol.no-bullet ol,
-ul.no-bullet ol,
-ol.no-bullet ul {
-	list-style: none;
-}
+ol.no-bullet {
+    
+    list-style: none;
+    
+    ul, ol {
+        list-style: none;
+    } // ul.no-bullet ul, ul.no-bullet ol, ol.no-bullet ul, ol.no-bullet ol
+    
+} // ul.no-bullet, ol.no-bullet
+
 .indent {
 	text-indent: 40px;
 }
