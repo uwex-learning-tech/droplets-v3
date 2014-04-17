@@ -51,21 +51,25 @@
 			</ul>
 		</div>
 		<div class="guide_outlayer">
+		
+		    <header class="guide">
+				<h1>Tooltip</h1>
+            </header>
+            
 			<div class="guide_content">
 				
-				<header>
-					<h1>Tooltip</h1>
-				</header>
 				<p class="lead">A short message that appears when the mouse cursor is positioned over an icon, image, hyperlink, or text in a page content. <span class="text-danger">Do not use this component for popovers.</span></p>
 				<p>Tooltip has five options: default, top, bottom, right, and left. Each option will be explained below with code and examples. To use tooltip, add the <code>with-tooltip</code> class and the <code>title</code> attribute to the HTML elements including <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, etc. The <code>title</code> attribute is used to hold the tooltip message. Thus, it is required.</p>
-				<p><span class="label info">NOTE:</span> The <code>&lt;abbr&gt;</code> element does not require the <code>with-tooltip</code> class. When using the <code>&lt;abbr&gt;</code> element, please follow the standards for using an abbreviation.</p>
 				
-				<div class="callout minimal alt warning">
-					<h4><span class="icon-important"></span> Use responsibility!</h4>
-					<p>Use tooltip for non-essential information. Tooltip adds a nice interaction to the content but excessive use will cause unintended learning problems.</p>
+				<div class="callout warning">
+					<p><strong>Tip:</strong> use tooltip for non-essential information. Tooltip adds a nice interaction to the content but excessive use will cause unintended learning problems.</p>
 				</div>
 				
-				<h2>Default</h2>
+				<div class="callout info">
+					<p><strong>Notes:</strong> the <code>&lt;abbr&gt;</code> element does not require the <code>with-tooltip</code> class. When using the <code>&lt;abbr&gt;</code> element, please follow the standards for using an abbreviation.</p>
+				</div>
+				
+				<h1>Default</h1>
 				<p>By default, the tooltip will be displayed on the top of the element without any arrow indication.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -84,7 +88,7 @@ best thing ever.&lt;/p&gt;</pre>
 					</div>
 				</div>
 				
-				<h2>Top</h2>
+				<h1>Top</h1>
 				<p>The tooltip will be placed at the top of the text and with an arrow pointing to the element. To specify the top position, add the <code>top</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -105,7 +109,7 @@ title="PHP: Hypertext Preprocessor"&gt;PHP&lt;/span&gt;.&lt;/p&gt;</pre>
 				</div>
 				
 				
-				<h2>Bottom</h2>
+				<h1>Bottom</h1>
 				<p>The tooltip will be placed at the bottom of the text and with an arrow pointing to the element. To specify the bottom position, add the <code>bottom</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -125,7 +129,7 @@ title="PHP: Hypertext Preprocessor"&gt;PHP&lt;/span&gt;.&lt;/p&gt;</pre>
 					</div>
 				</div>
 				
-				<h2>Right</h2>
+				<h1>Right</h1>
 				<p>The tooltip will be placed at the right of the text and with an arrow pointing to the element. To specify the right position, add the <code>right</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -147,7 +151,7 @@ types.&lt;/p&gt;</pre>
 					</div>
 				</div>
 				
-				<h2>Left</h2>
+				<h1>Left</h1>
 				<p>The tooltip will be placed at the left of the text and with an arrow pointing to the element. To specify the left position, add the <code>left</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -169,7 +173,7 @@ error code will be displayed instead.&lt;/p&gt;</pre>
 					</div>
 				</div>
 				
-				<h2>Other Examples:</h2>
+				<h1>Other Examples:</h1>
 				<p>Tooltip can also be use on hyperlink and image.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -195,8 +199,7 @@ src="src/img/id_logo.png" width="275" height="236" alt="Style Guide" /&gt;</pre>
 						<img class="with-tooltip right" title="All you ever needed!" src="src/img/id_logo.png" width="275" height="236" alt="Style Guide" />
 					</div>
 				</div>
-				<div class="callout minimal alt warning">
-					<h4><span class="icon-important"></span> Warning!</h4>
+				<div class="callout danger">
 					<p>Tooltip for image will not be displayed when printed. This is a limitation of CSS3. Avoid using image with tooltip for essential information. Use image caption instead.</p>
 				</div>
 				

@@ -209,12 +209,13 @@ body.home {
 	box-sizing: border-box;
 }
 .guide_container .guide_content {
-	width:764px;
-	margin: 0 auto;
-	padding:0px 10px 30px;
+	width: 804px;
+	margin: 0;
+	padding: 0 10px 10px;
 	border-radius: 0 0 3px 3px;
 	background: #ffffff;
 	box-shadow: 0 5px 10px #888;
+	box-sizing: border-box;
 }
 .guide_container .guide_content > .callout {
 	font-size: 90%;
@@ -288,6 +289,14 @@ body.home {
 	padding:0px 15px 5px 15px;
 }
 
+/* guide log */
+.guide_container .guide_content .guide-log {
+
+    font-size: 75%;
+    padding: 0 25px;
+    
+}
+
 /* MISC */
 .syntaxhighlighter .toolbar {
 	display: none;
@@ -319,10 +328,10 @@ code.normalize {
 
 /* GUIDE EXAMPLE FIX */
 header.guide {
-    width: 784px;
+    width: 804px;
     background-color: #3176af;
-    margin: 0 auto;
-    padding: 10px 10px;
+    margin: 0;
+    padding: 10px;
     border-radius: 3px 3px 0 0;
     border-bottom: 5px solid #0f4b90;
     color:#f2f2f2;
