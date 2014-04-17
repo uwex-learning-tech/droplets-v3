@@ -217,11 +217,11 @@ body.home {
 }
 .guide_container .guide_content > .callout {
 	font-size: 90%;
-	font-style: italic;
 	padding: 5px;
 }
 .guide_container .guide_content > .callout code {
-	font-style: normal;
+	background-color: transparent;
+	padding: 0;
 }
 
 /* SIDEBAR 2ND LEVEL */
@@ -256,7 +256,7 @@ body.home {
 	overflow: hidden;
 	border: 1px #ccc solid;
 	border-radius: 6px;
-	margin-bottom: 35px;
+	margin-bottom: 16px;
 }
 .guide-example .tip {
 	font-size:12px;

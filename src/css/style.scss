@@ -11,7 +11,11 @@ $margin-top: 16px;
 $margin-bottom: 16px;
 $heading-font-weight: 500;
 $light-font-weight: 300;
-$gray-color: #bfbfbf;
+$gray-color: #7E7E7E;
+$success-color: #64B660;
+$info-color: #4DABE9;
+$warning-color: #EDCE42;
+$danger-color: #CC4745;
 
 /* GLOBAL
 -----------------------------------------------------------------*/
@@ -466,41 +470,86 @@ footer.no-text {
 
 /* EMPHASIS
 -----------------------------------------------------------------*/
+strong, b {
+	font-weight: bold;
+}
+
+em, i, ins {
+	font-style: italic;
+}
 
 span.underline {
 	text-decoration: underline;
 }
-/* emphasis */
-strong, b {
-	font-weight: bold;
-}
-em, i {
-	font-style: italic;
-}
+
 abbr {
 	cursor: help;
 	border-bottom: 1px dotted #999999;
 }
+
 small {
 	font-size: 12px;
 }
+
 code {
     font-family: monospace;
 }
+
 .text-info {
-	color:#317594;
-}
-.text-success {
-	color:#3b723b;
-}
-.text-warning {
-	color:#a74e00;
-}
-.text-danger {
-	color:#b94a4b;
+	color: $info-color;
 }
 
-/* tables */
+.text-success {
+	color: $success-color;
+}
+
+.text-warning {
+	color: $warning-color;
+}
+
+.text-danger {
+	color: $danger-color;
+}
+
+/* INLINE CALLOUTs
+-----------------------------------------------------------------*/
+/* labels */
+.label {
+	padding: 2px 6px;
+	font-size: 75%;
+	font-weight: bold;
+	color: #ffffff;
+	text-transform: uppercase;
+	white-space: nowrap;
+	border-radius: 3px;
+	background-color: $gray-color;
+}
+
+.label.success {
+	background-color: $success-color;
+}
+
+.label.info {
+	background-color: $info-color;
+}
+
+.label.warning {
+	background-color: $warning-color;
+}
+
+.label.danger {
+	background-color: $danger-color;
+}
+
+/* highlight */
+.highlight {
+	padding: 1px 4px 2px;
+	background-color: #fff3b4;
+	border-radius: 3px;
+}
+
+/* TABLE
+-----------------------------------------------------------------*/
 table {
 	width:100%;
 	max-width: 100%;
@@ -725,44 +774,7 @@ table > tfoot > tr > td.vert-bottom {
   clear: both;
 }
 
-/* labels */
-.label {
-	display: inline;
-	padding: .1em .4em .1em;
-	font-size: 75%;
-	font-weight: bold;
-	line-height: 1;
-	color: #ffffff;
-	text-align: center;
-	text-transform: uppercase;
-	white-space: nowrap;
-	/* vertical-align: baseline; */
-	border-radius: .25em;
-	background-color: #999999;
-}
-.label.success {
-	background-color: #5cb85c;
-}
-.label.info {
-	background-color: #5bc0de;
-}
-.label.warning {
-	background-color: #f0ad4e;
-}
-.label.danger {
-	background-color: #d9534f;
-}
 
-/* highlight */
-.highlight {
-	display: inline;
-	padding: .2em .3em .3em;
-	line-height: 1;
-	text-align: center;
-	vertical-align: baseline;
-	background-color: #fff3b4;
-	border-radius: 5px;
-}
 
 /* callouts */
 .callout {

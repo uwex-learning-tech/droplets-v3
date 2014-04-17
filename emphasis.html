@@ -89,44 +89,54 @@
 			</ul>
 		</div>
 		<div class="guide_outlayer">
+		
+		    <header class="guide">
+				<h1>Emphasis</h1>
+            </header>
+		
 			<div class="guide_content">
 				
-				<header>
-					<h1>Emphasis</h1>
-				</header>
+				<p class="lead">Feeling bold? Be strong!</p>
 				
-				<h2 id="bold">Bold</h2>
-				<p>For emphasizing actions and keywords with a heavier font weight by using the <code>&lt;strong&gt;</code> and <code>&lt;b&gt;</code> elements. It is recommended to use <code>&lt;strong&gt;</code> element rather than <code>&lt;b&gt;</code> element.</p>
+				<h1 id="bold">Bold</h1>
+				<p>For representing important content with a heavier font weight, use the <code>&lt;strong&gt;</code> element. Changing the importance of a piece of text with <code>&lt;strong&gt;</code> element does not and should not change the meaning of the sentence.</p>
+				<div class="callout info">
+				    <p><strong>Notes:</strong> per HTML5 specification, the <code>&lt;b&gt;</code> element should be used as a <strong>last</strong> resort.</p>
+				</div>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
-				<pre class="brush: html">&lt;p&gt;The quick brown fox &lt;strong&gt;jumps&lt;/strong&gt; over the lazy dog.&lt;/p&gt;
-&lt;p&gt;The quick brown fox &lt;b&gt;jumps&lt;/b&gt; over the lazy dog.&lt;/p&gt;</pre>
+				<pre class="brush: html">&lt;p&gt;The quick brown fox &lt;strong&gt;jumps&lt;/strong&gt; over the lazy dog.&lt;/p&gt;</pre>
 					</div>
 					<div class="guide-result">
 						<p class="tip">Result</p>
 						<p>The quick brown fox <strong>jumps</strong> over the lazy dog.</p>
-						<p>The quick brown fox <b>jumps</b> over the lazy dog.</p>
 					</div>
 				</div>
 				
-				<h2 id="italics">Italics</h2>
-				<p>For emphasizing keywords with a slightly slanted style by using the <code>&lt;em&gt;</code> and <code>&lt;i&gt;</code> elements. It is recommended to use <code>&lt;em&gt;</code> element rather than <code>&lt;i&gt;</code> element.</p>
+				<h1 id="italics">Italics</h1>
+				<p>For emphasizing content with a slightly slanted font style, use the <code>&lt;em&gt;</code> element. The placement of <code>&lt;em&gt;</code> element changes the meaning of the sentence.</p>
+				<div class="callout info">
+				    <p><strong>Notes:</strong> per HTML5 specification, the <code>&lt;i&gt;</code> element should be used as a <strong>last</strong> resort.</p>
+				</div>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
-				<pre class="brush: html">&lt;p&gt;The quick brown fox jumps over the &lt;em&gt;lazy&lt;/em&gt; dog.&lt;/p&gt;
-&lt;p&gt;The quick brown fox jumps over the &lt;i&gt;lazy&lt;/i&gt; dog.&lt;/p&gt;</pre>
+				<pre class="brush: html">&lt;p&gt;The quick brown &lt;em&gt;fox&lt;/em&gt; jumps over the lazy dog.&lt;/p&gt;</pre>
 					</div>
 					<div class="guide-result">
 						<p class="tip">Result</p>
-						<p>The quick brown fox jumps over the <em>lazy</em> dog.</p>
-						<p>The quick brown fox jumps over the <i>lazy</i> dog.</p>
+						<p>The quick brown <em>fox</em> jumps over the lazy dog.</p>
 					</div>
 				</div>
 				
-				<h2 id="underline">Underline</h2>
-				<p>For emphasizing keywords with an underline by using the <code>&lt;span&gt;</code> element with an <code>underline</code> class. It is not recommended to use <code>&lt;ins&gt;</code> or <code>&lt;u&gt;</code> elements for underlining. These two elements are depreciated in HTML5 by the W3C standards. </p>
+				<div class="callout info">
+				    <p><strong>Notes:</strong> the differences between <code>&lt;b&gt;</code> vs <code>&lt;strong&gt;</code> and <code>&lt;i&gt;</code> vs <code>&lt;em&gt;</code> are typographic effects (presentational) and semantics. The HTML5 specification redefines the use of <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> to have some semantic functions and, optionally, typographic effects that are specified and dependent on a CSS style definition. For more information on the use of <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> elements, please visit <a href="https://www.w3.org/International/questions/qa-b-and-i-tags" target="_blank">W3C Internationalization (i18N) Activity</a>.</p>
+				</div>
+				
+				
+				<h1 id="underline">Underline</h1>
+				<p>For emphasizing content with an underline, use a <code>&lt;span&gt;</code> element with an <code>underline</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -137,26 +147,31 @@
 						<p>The quick brown fox jumps <span class="underline">over</span> the lazy dog.</p>
 					</div>
 				</div>
+				<div class="callout warning">
+				    <p><strong>Tip:</strong> do not over use underlines. Underlines are frown upon because they are the web browser default for links. Making a regular text looks like a link give users a bad case of clicky-clicky frustration.</p>
+				</div>
+				<div class="callout info">
+				    <p><strong>Notes:</strong> do not use <code>&lt;u&gt;</code> or <code>&lt;ins&gt;</code> element for underlining. The <code>&lt;u&gt;</code> element has been redefined in HTML5 for other purpose with semantic meanings. The <code>&lt;ins&gt;</code> element represents that a text has been inserted into a document. By default, web browser renders both <code>&lt;u&gt;</code> and <code>&lt;ins&gt;</code> elements with an underline; however, the style of each element is solely dependent on the CSS style definition.</p>
+				</div>
 				
-				<h2 id="abbreviation">Abbreviation</h2>
-				<div class="callout minimal alt warning">
-					<h4>Before using it...</h4>
+				<h1 id="abbreviation">Abbreviation</h1>
+				<div class="callout danger">
 					<p>JavaScript component script file is required for abbreviation to work.</p>
 				</div>
 				<p>Implementation of <code>&lt;abbr&gt;</code> element for abbreviation and acronyms to show the expanded version on hover. The <code>&lt;abbr&gt;</code> element must have a <code>title</code> attribute, which holds the full meaning of the abbreviation or acronyms.</p>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
-				<pre class="brush: html">&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; is the best thing ever.&lt;/p&gt;</pre>
+				<pre class="brush: html">&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML5&lt;/abbr&gt; is the best thing ever.&lt;/p&gt;</pre>
 					</div>
 					<div class="guide-result">
 						<p class="tip">Result</p>
-						<p><abbr title="HyperText Markup Language">HTML</abbr> is the best thing ever.</p>
+						<p><abbr title="HyperText Markup Language">HTML5</abbr> is the best thing ever.</p>
 					</div>
 				</div>
 				
-				<h2 id="smalltext">Small Text</h2>
-				<p>For de-emphasizing or just a smaller font size for fine print, use the <code>&lt;small&gt;</code> element. <code>&lt;small&gt;</code> element is inline; thus, can be nested inside a <code>&lt;p&gt;</code> element.</p>
+				<h1 id="smalltext">Small Text</h1>
+				<p>For de-emphasizing or a smaller font size, use the <code>&lt;small&gt;</code> element. The <code>&lt;small&gt;</code> element has an inline position and can be nested.</p>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -168,8 +183,11 @@
 					</div>
 				</div>
 				
-				<h2 id="coloredtext">Colored Text</h2>
-				<p>Convey meaning through color by using the following classes: <code>text-info</code> (light-blue), <code>text-success</code> (green), <code>text-warning</code> (yellow), and <code>text-danger</code> (red). Please use these color classes wisely.</p>
+				<h1 id="coloredtext">Colored Text</h1>
+				<p>Convey meanings through colors by using the following classes: <code>text-info</code> (light-blue), <code>text-success</code> (green), <code>text-warning</code> (yellow), and <code>text-danger</code> (red).</p>
+				<div class="callout danger">
+					<p>Please refer to the best practice guide for the use of colored text.</p>
+				</div>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -187,12 +205,12 @@
 					</div>
 				</div>
 				
-				<h2 id="coloredtext">Code Text</h2>
-				<p>Differentiate code text from regular body text with the use of <code>&lt;code&gt;</code> element.</p>
+				<h1 id="coloredtext">Code Text</h1>
+				<p>Differentiate code text from regular text with the use of <code>&lt;code&gt;</code> element. The <code>&lt;code&gt;</code> element has an inline position and can be nested.</p>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
-				<pre class="brush: html">&lt;code"&gt;var whoAmI = (isHuman) ? 'I am human!' : 'I am not a human!';&lt;/code&gt;
+				<pre class="brush: html">&lt;code&gt;var whoAmI = (isHuman) ? 'I am human!' : 'I am not a human!';&lt;/code&gt;
 &lt;p&gt;Attributes come in name/value pairs like: &lt;code&gt;name="value"&lt;/code&gt;&lt;/p&gt;
 				</pre>
 					</div>

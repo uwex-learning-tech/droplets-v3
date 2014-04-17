@@ -218,7 +218,7 @@ blockquote {
   display: block;
   padding: 10px 20px;
   margin: 16px 0 16px;
-  border-left: 5px solid #bfbfbf;
+  border-left: 5px solid #7e7e7e;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -252,7 +252,7 @@ blockquote.quote small {
 }
 
 blockquote.quote:before {
-  color: #bfbfbf;
+  color: #7e7e7e;
   content: open-quote;
   font-size: 500%;
   line-height: 0;
@@ -263,7 +263,7 @@ blockquote.quote:before {
 blockquote.pull-right {
   padding-right: 16px;
   padding-left: 0;
-  border-right: 5px solid #bfbfbf;
+  border-right: 5px solid #7e7e7e;
   border-left: 0;
   text-align: right;
 }
@@ -520,17 +520,16 @@ footer.no-text p:after {
 
 /* EMPHASIS
 -----------------------------------------------------------------*/
-span.underline {
-  text-decoration: underline;
-}
-
-/* emphasis */
 strong, b {
   font-weight: bold;
 }
 
-em, i {
+em, i, ins {
   font-style: italic;
+}
+
+span.underline {
+  text-decoration: underline;
 }
 
 abbr {
@@ -547,22 +546,60 @@ code {
 }
 
 .text-info {
-  color: #317594;
+  color: #4dabe9;
 }
 
 .text-success {
-  color: #3b723b;
+  color: #64b660;
 }
 
 .text-warning {
-  color: #a74e00;
+  color: #edce42;
 }
 
 .text-danger {
-  color: #b94a4b;
+  color: #cc4745;
 }
 
-/* tables */
+/* INLINE CALLOUTs
+-----------------------------------------------------------------*/
+/* labels */
+.label {
+  padding: 2px 6px;
+  font-size: 75%;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 3px;
+  background-color: #7e7e7e;
+}
+
+.label.success {
+  background-color: #64b660;
+}
+
+.label.info {
+  background-color: #4dabe9;
+}
+
+.label.warning {
+  background-color: #edce42;
+}
+
+.label.danger {
+  background-color: #cc4745;
+}
+
+/* highlight */
+.highlight {
+  padding: 1px 4px 2px;
+  background-color: #fff3b4;
+  border-radius: 3px;
+}
+
+/* TABLE
+-----------------------------------------------------------------*/
 table {
   width: 100%;
   max-width: 100%;
@@ -811,49 +848,6 @@ table > tfoot > tr > td.vert-bottom {
 
 .clearfix:after {
   clear: both;
-}
-
-/* labels */
-.label {
-  display: inline;
-  padding: .1em .4em .1em;
-  font-size: 75%;
-  font-weight: bold;
-  line-height: 1;
-  color: #ffffff;
-  text-align: center;
-  text-transform: uppercase;
-  white-space: nowrap;
-  /* vertical-align: baseline; */
-  border-radius: .25em;
-  background-color: #999999;
-}
-
-.label.success {
-  background-color: #5cb85c;
-}
-
-.label.info {
-  background-color: #5bc0de;
-}
-
-.label.warning {
-  background-color: #f0ad4e;
-}
-
-.label.danger {
-  background-color: #d9534f;
-}
-
-/* highlight */
-.highlight {
-  display: inline;
-  padding: .2em .3em .3em;
-  line-height: 1;
-  text-align: center;
-  vertical-align: baseline;
-  background-color: #fff3b4;
-  border-radius: 5px;
 }
 
 /* callouts */
