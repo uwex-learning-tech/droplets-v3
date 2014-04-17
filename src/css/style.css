@@ -1257,10 +1257,9 @@ span.with-popover.active {
 /* TABBED CONTENTS
 -----------------------------------------------------------------*/
 .with-tabs {
-  padding: 16px 0px;
+  padding: 16px 0;
   clear: both;
 }
-
 .with-tabs .tabs {
   width: 100%;
   list-style: none;
@@ -1270,58 +1269,48 @@ span.with-popover.active {
   float: left;
   clear: both;
 }
-
 .with-tabs .tabs li {
   display: block;
   float: left;
   margin-bottom: -1px;
-  border-radius: 0px 5px 0px 0px;
+  border-radius: 0 5px 0 0;
   background-color: #fff;
 }
-
-.with-tabs .tabs li.active {
-  border-top: 1px solid #929292;
-  border-right: 1px solid #929292;
-  border-left: 1px solid #929292;
-  border-bottom: transparent;
-  -webkit-box-shadow: 0px -3px 3px #a2a2a2;
-  box-shadow: 0px -3px 3px #a2a2a2;
-}
-
-.with-tabs .tabs li.active:hover {
-  background-color: #fff;
-}
-
-.with-tabs .tabs li:hover {
-  background-color: #e7e7e7;
-}
-
-.with-tabs .tabs li a,
-.with-tabs .tabs li a:visited {
+.with-tabs .tabs li a, .with-tabs .tabs li a:visited {
   display: block;
   padding: 10px;
   text-decoration: none;
   color: #4e4e4e;
 }
-
 .with-tabs .tabs li a:hover {
   color: #333;
 }
-
+.with-tabs .tabs li.active {
+  border-top: 1px solid #929292;
+  border-right: 1px solid #929292;
+  border-left: 1px solid #929292;
+  border-bottom: transparent;
+  -webkit-box-shadow: 0 -3px 3px #a2a2a2;
+  box-shadow: 0 -3px 3px #a2a2a2;
+}
+.with-tabs .tabs li.active:hover {
+  background-color: #fff;
+}
+.with-tabs .tabs li:hover {
+  background-color: #e7e7e7;
+}
 .with-tabs .tab-contents {
   border-bottom: 1px solid #929292;
   clear: both;
 }
-
 .with-tabs .tab-contents section {
   padding: 0px 10px;
   display: none;
 }
-
 .with-tabs .tab-contents section.active {
   display: block;
-  animation: fadeIn 1s;
   -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
 }
 
 @keyframes fadeIn {
@@ -1342,7 +1331,8 @@ span.with-popover.active {
     opacity: 1;
   }
 }
-/* ACCORDION */
+/* ACCORDION
+-----------------------------------------------------------------*/
 .with-accordion {
   margin: 16px 0px;
 }
