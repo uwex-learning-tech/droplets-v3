@@ -950,8 +950,7 @@ table > tfoot > tr > td.vert-bottom {
 /* IMAGES
 -----------------------------------------------------------------*/
 figure figcaption {
-  font-size: 12px;
-  padding: 0px 10px;
+  font-size: 80%;
 }
 
 .bordered img {
@@ -959,27 +958,25 @@ figure figcaption {
 }
 
 .shadowed img {
-  -webkit-box-shadow: 0px 0px 6px #888;
-  box-shadow: 0px 0px 6px #888;
+  -webkit-box-shadow: 0 0 6px #888;
+  box-shadow: 0 0 6px #888;
 }
 
 .polaroid {
   width: 346px;
-  -webkit-box-shadow: 0px 0px 6px #888;
-  box-shadow: 0px 0px 6px #888;
+  -webkit-box-shadow: 0 0 6px #888;
+  box-shadow: 0 0 6px #888;
 }
-
 .polaroid img {
   display: block;
   width: 316px;
   height: 237px;
   border: 15px solid #fff;
 }
-
 .polaroid figcaption {
   margin: 0;
   background-color: #fff;
-  padding: 0px 15px 15px 15px;
+  padding: 0 15px 15px;
 }
 
 img.left {

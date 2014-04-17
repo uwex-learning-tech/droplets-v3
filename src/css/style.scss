@@ -923,36 +923,56 @@ table > tfoot > tr > td.vert-bottom {
 
 /* IMAGES
 -----------------------------------------------------------------*/
-figure figcaption {
-	font-size: 12px;
-	padding:0px 10px;
-}
-.bordered img {
-	border: 2px solid #888;
-}
-.shadowed img {
-	box-shadow: 0px 0px 6px #888;
-}
+figure {
+
+	figcaption {
+    	font-size: 80%;
+	} // figure figcaption
+	
+} // figure
+
+.bordered {
+	
+	img {
+    	border: 2px solid #888;
+	} // .bordered img
+	
+} // .bordered
+
+.shadowed {
+    
+    img {
+        box-shadow: 0 0 6px #888;
+    } // .shadowed img
+    
+} // .shadowed
+
 .polaroid {
+
 	width: 346px;
-	box-shadow: 0px 0px 6px #888;
-}
-.polaroid img {
-	display: block;
-	width: 316px;
-	height: 237px;
-	border: 15px solid #fff;
-}
-.polaroid figcaption {
-	margin:0;
-	background-color: #fff;
-	padding: 0px 15px 15px 15px;
-}
+	box-shadow: 0 0 6px #888;
+	
+	img {
+    	display: block;
+    	width: 316px;
+    	height: 237px;
+    	border: 15px solid #fff;
+	} // .polaroid img
+	
+	figcaption {
+    	margin: 0;
+        background-color: #fff;
+        padding: 0 15px 15px;
+	} // .polaroid figcaption
+	
+} // .polaroid
+
 img.left {
 	display: inline-block;
 	float: left;
 	margin-right: 16px;
 }
+
 img.right {
 	display: inline-block;
 	float: right;
