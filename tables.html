@@ -91,15 +91,17 @@
 			</ul>
 		</div>
 		<div class="guide_outlayer">
+		
+		    <header class="guide">
+				<h1>Tables</h1>
+			</header>
+		
 			<div class="guide_content">
 				
-				<header>
-					<h1>Tables</h1>
-				</header>
+				<p class="lead">As in data tables!</p>
 				
+				<h1 id="basic">Basic Table</h1>
 				<p>The default width of the <code>&lt;table&gt;</code> element will always be 100%; thus, it fills up the whole width of the page or container. The <code>&lt;table&gt;</code> is a block-level element. The use of <code>&lt;thead&gt;</code> is optional but recommended. The use of <code>&lt;tbody&gt;</code> is required in table with classes. The cells of the table will auto-resize accordingly to the content they held.</p>
-				
-				<h2 id="basic">Basic Table</h2>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -205,7 +207,7 @@
 					</div>
 				</div>
 				
-				<h2 id="striped">Striped Table</h2>
+				<h1 id="striped">Striped Table</h1>
 				<p>Add "zebra-striping" to odd table rows within the <code>&lt;tbody&gt;</code> element by using the <code>striped</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -265,7 +267,7 @@
 					</div>
 				</div>
 				
-				<h2 id="striped">Striped Multi-body Table</h2>
+				<h1 id="striped">Striped Multi-body Table</h1>
 				<p>Add "zebra-striping" to even table body (<code>&lt;tbody&gt;</code>) within the <code>&lt;table&gt;</code> element by using the <code>striped-body</code> class. This class is recommended to use for table with <code>rowspan</code>.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -377,7 +379,7 @@
 					</div>
 				</div>
 				
-				<h2 id="bordered">Bordered Table</h2>
+				<h1 id="bordered">Bordered Table</h1>
 				<p>Add borders to all table cells by using the <code>bordered</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -437,7 +439,7 @@
 					</div>
 				</div>
 				
-				<h2 id="no-border">No-Bordered Table</h2>
+				<h1 id="no-border">No-Bordered Table</h1>
 				<p>Removed borders to all table cells by using the <code>no-bordered</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -497,7 +499,7 @@
 					</div>
 				</div>
 				
-				<h2 id="hover">Hover Rows</h2>
+				<h1 id="hover">Hover Rows</h1>
 				<p>Add a hover state to all table rows by using the <code>hover</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -557,9 +559,9 @@
 					</div>
 				</div>
 				
-				<h2 id="widths">Widths</h2>
+				<h1 id="widths">Widths</h1>
 				<p>Changing the width of the table by using the following classes:  <code>three-fourths</code>, <code>half</code>, and <code>quarter</code>.</p>
-				<h3>Three Forth</h3>
+				<h2>Three Forth</h2>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -618,7 +620,7 @@
 					</div>
 				</div>
 				
-				<h3>Half</h3>
+				<h2>Half</h2>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -677,7 +679,7 @@
 					</div>
 				</div>
 				
-				<h3>Quarter</h3>
+				<h2>Quarter</h2>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -729,7 +731,7 @@
 					</div>
 				</div>
 				
-				<h2 id="minimal">Minimal Table</h2>
+				<h1 id="minimal">Minimal Table</h1>
 				<p>An alternative look to table with the class <code>minimal</code>.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -772,9 +774,9 @@
 					</div>
 				</div>
 				
-				<h2 id="floating">Floating Table</h2>
+				<h1 id="floating">Floating Table</h1>
 				<p>Float narrow width tables with the <code>left</code> or <code>right</code> classes.</p>
-				<h3>Left</h3>
+				<h2>Left</h2>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -832,7 +834,7 @@
 					</div>
 				</div>
 				
-				<h3>Right</h3>
+				<h2>Right</h2>
 				<div class="guide-example">
 					<div class="guide-code">
 					<p class="tip">Code</p>
@@ -891,15 +893,14 @@
 				</div>
 				
 				<div class="callout info">
-					<h4>FYI</h4>
-					<p>Using columned-layout is much easier and cleaner than giving the table a width and then float.</p>
+					<p><strong>Notes:</strong> using columned-layout is much easier and cleaner than giving the table a width and then float.</p>
 				</div>
 				
-				<h2 id="contextual">Table with Contextual Classes</h2>
+				<h1 id="contextual">Table with Contextual Classes</h1>
 				
-				<h3>Cell Alignments</h3>
+				<h2>Cell Alignments</h2>
 				
-				<p><strong>Horizontal Left</strong> <span class="label">DEFAULT</span></p>
+				<h3>Horizontal Left <span class="label">DEFAULT</span></h3>
 				<p>Left align the text in the cell by using the <code>horz-left</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -928,7 +929,7 @@
 					</div>
 				</div>
 				
-				<p><strong>Horizontal Center</strong></p>
+				<h3>Horizontal Center</h3>
 				<p>Left align the text in the cell by using the <code>horz-center</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -957,7 +958,7 @@
 					</div>
 				</div>
 				
-				<p><strong>Horizontal Right</strong></p>
+				<h3>Horizontal Right</h3>
 				<p>Left align the text in the cell by using the <code>horz-right</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -986,7 +987,7 @@
 					</div>
 				</div>
 				
-				<p><strong>Vertical Top</strong> <span class="label">DEFAULT</span></p>
+				<h3>Vertical Top <span class="label">DEFAULT</span></h3>
 				<p>Left align the text in the cell by using the <code>vert-top</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -1021,7 +1022,7 @@
 					</div>
 				</div>
 				
-				<p><strong>Vertical Center</strong></p>
+				<h3>Vertical Center</h3>
 				<p>Left align the text in the cell by using the <code>vert-center</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
@@ -1056,7 +1057,7 @@
 					</div>
 				</div>
 				
-				<p><strong>Vertical Bottom</strong></p>
+				<h3>Vertical Bottom</h3>
 				<p>Left align the text in the cell by using the <code>vert-bottom</code> class.</p>
 				<div class="guide-example">
 					<div class="guide-code">
