@@ -561,7 +561,7 @@ code {
   color: #cc4745;
 }
 
-/* INLINE CALLOUTs
+/* INLINE CALLOUTS
 -----------------------------------------------------------------*/
 /* labels */
 .label {
@@ -596,6 +596,147 @@ code {
   padding: 1px 4px 2px;
   background-color: #fff3b4;
   border-radius: 3px;
+}
+
+/* BLOCK-LEVEL CALLOUTS
+-----------------------------------------------------------------*/
+.callout {
+  margin: 16px 0 16px;
+  padding: 16px 30px 16px 16px;
+  background-color: #eeeeee;
+  border-color: #7e7e7e;
+  border-left: 8px solid #7e7e7e;
+  border-right: 5px solid #b2b2b2;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.callout h4, .callout p:first-child {
+  margin-top: 0;
+}
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+.callout h4 [class^="icon-"],
+.callout h4 [class*=" icon-"] {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 130%;
+  line-height: 0;
+}
+
+.callout.vertical {
+  padding: 16px;
+  border-left: 0;
+  border-right: 0;
+  border-top: 10px solid #7e7e7e;
+  border-bottom: 5px solid #b2b2b2;
+}
+
+.callout.success {
+  background-color: #eeffef;
+  border-left-color: #64b660;
+  border-right-color: #c0f3bd;
+  border-top-color: #64b660;
+  border-bottom-color: #c0f3bd;
+}
+
+.callout.info {
+  background-color: #f0f7fd;
+  border-left-color: #4dabe9;
+  border-right-color: #d0e3f0;
+  border-top-color: #4dabe9;
+  border-bottom-color: #d0e3f0;
+}
+
+.callout.warning {
+  background-color: #fefbed;
+  border-left-color: #edce42;
+  border-right-color: #f1e7bc;
+  border-top-color: #edce42;
+  border-bottom-color: #f1e7bc;
+}
+
+.callout.danger {
+  background-color: #fcf2f2;
+  border-left-color: #cc4745;
+  border-right-color: #dfb5b4;
+  border-top-color: #cc4745;
+  border-bottom-color: #dfb5b4;
+}
+
+.callout.minimal {
+  background-color: transparent !important;
+  border-right: 0;
+  border-left-width: 5px;
+}
+
+.callout.minimal.shadowed {
+  -webkit-box-shadow: 0 0 6px #858585;
+  box-shadow: 0 0 6px #858585;
+}
+
+.callout.minimal.alt,
+.callout.minimal.bordered {
+  background-color: #FFFFFF !important;
+  border: 1px solid #7e7e7e;
+  border-radius: 3px 3px;
+  -webkit-box-shadow: 0 2px 0px #9f9f9f;
+  box-shadow: 0 2px 0px #9f9f9f;
+}
+
+.callout.minimal.alt.danger,
+.callout.minimal.bordered.danger {
+  border-color: #cc4745;
+  -webkit-box-shadow: 0 2px 0 #cc4745;
+  box-shadow: 0 2px 0 #cc4745;
+}
+
+.callout.minimal.alt.success,
+.callout.minimal.bordered.success {
+  border-color: #64b660;
+  -webkit-box-shadow: 0 2px 0 #64b660;
+  box-shadow: 0 2px 0 #64b660;
+}
+
+.callout.minimal.alt.info,
+.callout.minimal.bordered.info {
+  border-color: #4dabe9;
+  -webkit-box-shadow: 0 2px 0 #4dabe9;
+  box-shadow: 0 2px 0 #4dabe9;
+}
+
+.callout.minimal.alt.warning,
+.callout.minimal.bordered.warning {
+  border-color: #edce42;
+  -webkit-box-shadow: 0 2px 0 #edce42;
+  box-shadow: 0 2px 0 #edce42;
+}
+
+.vertical.left {
+  width: 250px;
+  margin: 5px 16px 0 0;
+  float: left;
+}
+
+.vertical.right {
+  width: 250px;
+  margin: 5px 0 0 16px;
+  float: right;
+  text-align: left;
+}
+
+[class^="icon-"].medium,
+[class*=" icon-"].medium {
+  font-size: 155%;
+  vertical-align: middle;
+}
+
+[class^="icon-"].large,
+[class*=" icon-"].large {
+  font-size: 170%;
+  vertical-align: middle;
 }
 
 /* TABLE
@@ -848,162 +989,6 @@ table > tfoot > tr > td.vert-bottom {
 
 .clearfix:after {
   clear: both;
-}
-
-/* callouts */
-.callout {
-  margin: 16px 0;
-  padding: 15px 30px 15px 15px;
-  background-color: #eeeeee;
-  border-color: #7e7e7e;
-  border-left: 10px solid #7e7e7e;
-  border-right: 5px solid #b2b2b2;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.callout h4 {
-  margin-top: 0px;
-}
-
-.callout p:first-child {
-  margin-top: 0px;
-}
-
-.callout p:last-child {
-  margin-bottom: 0px;
-}
-
-.callout.minimal {
-  background-color: transparent !important;
-  border-right: 0;
-  border-left-width: 5px;
-}
-
-.callout.minimal.shadowed {
-  -webkit-box-shadow: 0px 0px 6px #858585;
-  box-shadow: 0px 0px 6px #858585;
-}
-
-.callout.minimal.alt,
-.callout.minimal.bordered {
-  background-color: #FFFFFF !important;
-  border: 1px solid #d6d6d6;
-  border-radius: 3px 3px;
-  -webkit-box-shadow: 0px 2px 0px #d6d6d6;
-  box-shadow: 0px 2px 0px #d6d6d6;
-}
-
-.callout.minimal.alt.danger,
-.callout.minimal.bordered.danger {
-  border-color: #cc4745;
-  -webkit-box-shadow: 0px 2px 0px #cc4745;
-  box-shadow: 0px 2px 0px #cc4745;
-}
-
-.callout.minimal.alt.success,
-.callout.minimal.bordered.success {
-  border-color: #64b660;
-  -webkit-box-shadow: 0px 2px 0px #64b660;
-  box-shadow: 0px 2px 0px #64b660;
-}
-
-.callout.minimal.alt.info,
-.callout.minimal.bordered.info {
-  border-color: #4dabe9;
-  -webkit-box-shadow: 0px 2px 0px #4dabe9;
-  box-shadow: 0px 2px 0px #4dabe9;
-}
-
-.callout.minimal.alt.warning,
-.callout.minimal.bordered.warning {
-  border-color: #edce42;
-  -webkit-box-shadow: 0px 2px 0px #edce42;
-  box-shadow: 0px 2px 0px #edce42;
-}
-
-.callout.vertical {
-  padding: 15px;
-  border-left: 0;
-  border-right: 0;
-  border-top: 10px solid #7e7e7e;
-  border-bottom: 5px solid #b2b2b2;
-}
-
-.callout.success {
-  background-color: #eeffef;
-  border-color: #64b660;
-  border-left-color: #64b660;
-  border-right-color: #c0f3bd;
-  border-top-color: #64b660;
-  border-bottom-color: #c0f3bd;
-}
-
-.callout.info {
-  background-color: #f0f7fd;
-  border-color: #d0e3f0;
-  border-left-color: #4dabe9;
-  border-right-color: #d0e3f0;
-  border-top-color: #4dabe9;
-  border-bottom-color: #d0e3f0;
-}
-
-.callout.warning {
-  background-color: #fefbed;
-  border-color: #f1e7bc;
-  border-left-color: #edce42;
-  border-right-color: #f1e7bc;
-  border-top-color: #edce42;
-  border-bottom-color: #f1e7bc;
-}
-
-.callout.danger {
-  background-color: #fcf2f2;
-  border-color: #dfb5b4;
-  border-left-color: #cc4745;
-  border-right-color: #dfb5b4;
-  border-top-color: #cc4745;
-  border-bottom-color: #dfb5b4;
-}
-
-.callout h4 {
-  vertical-align: baseline;
-  margin-bottom: 0px;
-}
-
-.callout h4 [class^="icon-"],
-.callout h4 [class*=" icon-"] {
-  display: inline-block;
-  margin-right: 5px;
-  font-size: 130%;
-  line-height: 0;
-  vertical-align: baseline;
-}
-
-[class^="icon-"].medium,
-[class*=" icon-"].medium {
-  font-size: 155%;
-  vertical-align: middle;
-}
-
-[class^="icon-"].large,
-[class*=" icon-"].large {
-  font-size: 170%;
-  vertical-align: middle;
-}
-
-.vertical.left {
-  width: 250px;
-  margin: 5px 16px 0px 0px;
-  float: left;
-}
-
-.vertical.right {
-  width: 250px;
-  margin: 5px 0px 0px 16px;
-  float: right;
-  text-align: left;
 }
 
 /* Images */
