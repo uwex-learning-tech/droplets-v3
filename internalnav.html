@@ -44,24 +44,20 @@
 			</ul>
 		</div>
 		<div class="guide_outlayer">
+		
+		    <header class="guide">
+				<h1>Internal Page Navigation</h1>
+			</header>
+		
 			<div class="guide_content">
-				
-				<header>
-					<h1>Internal Page Navigation</h1>
-				</header>
-				
+
 				<p class="lead">An internal page navigation for long content pages using anchor tags.</p>
 				
 				<p>To use a sub navigation for long content pages, add the <code>with-subnav</code> class to the <code>&lt;div&gt;</code> element. Any <code>&lt;h2&gt;</code> element inside the <code>&lt;div&gt;</code> element will be used by the JavaScript to create the sub menu box. The JavaScript will automatically anchor each menu item to the contents.</p>
 				
-				<div class="callout warning">
-					<h4>D2L v10.1 Changes</h4>
-					<p>Due to the new structure in D2l v10.1, the internal page navigation menu area is no longer fixed to the top (or anywhere) of the page. Fixing the menu area on top (or anywhere) of the page will cause D2L to go banana. D2L will continuously increasing the height of the iFrame, which makes the page longer and longer every second. This issue is D2L's responsibility to resolve it.</p>
+				<div class="callout info">
+				    <p><strong>Notes:</strong> the <code>&lt;h2&gt;</code> elements are required for JavaScript. They will be used to create the sub menu navigation.</p>
 				</div>
-				
-				<p><a class="btn info" href="src/examples/internalnav.html" target="_blank">SEE DEMO</a></p>
-				
-				<p><span class="label warning">NOTE:</span> The <code>&lt;h2&gt;</code> elements are required for JavaScript. They will be used to create the sub menu navigation.</p>
 				
 				<div class="guide-example">
 					<div class="guide-code">
@@ -78,6 +74,19 @@
 	&lt;p&gt;...&lt;/p&gt;
 	
 &lt;/div&gt;</pre>
+					</div>
+					<div class="guide-result">
+						<p class="tip">Sample</p>
+						
+						<div class="with-subnav">
+						    <h2>Item 1</h2>
+						    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, consequatur, sint, rem excepturi soluta vero corporis praesentium qui repudiandae recusandae accusantium debitis vitae atque! Ut perspiciatis itaque ipsam unde numquam.</p>
+						    <h2>Item 2</h2>
+						    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, consequatur, sint, rem excepturi soluta vero corporis praesentium qui repudiandae recusandae accusantium debitis vitae atque! Ut perspiciatis itaque ipsam unde numquam.</p>
+						    <h2>Item 3</h2>
+						    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, consequatur, sint, rem excepturi soluta vero corporis praesentium qui repudiandae recusandae accusantium debitis vitae atque! Ut perspiciatis itaque ipsam unde numquam.</p>
+						</div>
+						
 					</div>
 				</div>
 				

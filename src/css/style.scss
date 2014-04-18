@@ -1441,161 +1441,206 @@ span.with-popover.active {
 /* INTERNAL PAGE NAVIGATION
 -----------------------------------------------------------------*/
 .page-subnav {
-	/* position: fixed; */
-/*
-	top:0;
-	left: 0;
-*/
-	/* width: 940px; */
+
 	list-style: none;
-	padding: 0 0 10px;
+	padding: 0 0 6px;
 	background-color: #fff;
 	margin: 0;
-	/* box-shadow: 0px 0px 4px #888; */
-	border-bottom: 1px #e8e8e8 solid;
+	border-bottom: 1px #bfbfbf solid;
 	line-height: 1;
-}
-.page-subnav li {
-	display: inline-block;
-	border-right: 1px solid #888;
-	margin-right: 10px;
-	margin-bottom: 5px;
-	padding-right: 10px;
-}
-.page-subnav li:last-child {
-	border-right: 0;
-	margin-right: 0;
-	margin-bottom: 0;
-	padding-right: 0;
-}
-.page-subnav li a,
-.page-subnav li a:visited {
-	font-size: 12px;
-	line-height: 1;
-	text-decoration: none;
-}
-.page-subnav li a:hover {
-	text-decoration: underline;
-}
+	
+	li {
+	
+    	display: inline-block;
+    	margin-bottom: 6px;
+    	margin-left: 5px;
+    	
+    	a, a:visited {
+        	font-size: 80%;
+            line-height: 1;
+            text-decoration: none;
+    	}  // .page-subnav li a, .page-subnav li a:visited
+    	
+    	a:hover {
+        	text-decoration: underline;
+    	} // .page-subnav li a:hover
+    	
+	} // .page-subnav li
+	
+	li:first-child {
+    	margin-left: 0;
+	} // .page-subnav li:first-child
+	
+	li:after {
+	    color: #bfbfbf;
+    	content: " | ";
+	} // .page-subnav li:after
+	
+	li:last-child:after {
+    	content: "";
+	} // .page-subnav li:last-child:after
+	
+} // .page-subnav
 
-/* IMAGE ZOOM */
+/* IMAGE ZOOM
+-----------------------------------------------------------------*/
 .with-zoom {
+
 	position: relative;
 	cursor: crosshair;
-}
-.with-zoom .small {
-	display: block;
-	margin: 15px 0;
-}
-.with-zoom .magnify {
-	position: absolute;
-	display: none;
-	width:200px;
-	height: 200px;
-	border-radius: 100%;
-	box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85),
-	0 0 7px 7px rgba(0, 0, 0, 0.25), 
-	inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
-	background-color:#fff;
-	z-index: 99;
-}
+	
+	.small {
+    	display: block;
+        margin: 15px 0;
+	} // .with-zoom .small
+	
+	.magnify {
+    	position: absolute;
+    	display: none;
+    	width: 200px;
+    	height: 200px;
+    	border-radius: 100%;
+    	box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85),
+    	            0 0 7px 7px rgba(0, 0, 0, 0.25), 
+                    inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+    	background-color: #fff;
+    	z-index: 99;
+	} // .with-zoom .magnify
+	
+} // .with-zoom
 
-/* WITH READ MORE */
+/* WITH READ MORE
+-----------------------------------------------------------------*/
 .with-readmore {
+
     position: relative;
     padding-bottom: 5px;
-}
-.with-readmore .readmore-ctrl {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    font-size: smaller;
-    padding-top: 5px;
-    background: #ffffff;
-    box-shadow: 0px -3px 10px #FFF;
-}
-.with-readmore .readmore-ctrl.opened {
-    position: relative;
-    padding-top:0px;
-    cursor: pointer;
-}
+    
+    .readmore-ctrl {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        font-size: 80%;
+        padding-top: 5px;
+        background: #fff;
+        box-shadow: 0 -3px 10px #fff;
+    } // .with-readmore .readmore-ctrl
+    
+    .readmore-ctrl.opened {
+        position: relative;
+        padding-top: 0;
+        cursor: pointer;
+    } // .with-readmore .readmore-ctrl.opened
+    
+} // .with-readmore
 
-/* MEDIA PLAYERS */
+/* MEDIA PLAYERS
+-----------------------------------------------------------------*/
 iframe, object {
 	display: block;
 	margin:10px auto;
 }
 
-/********* OLD DOWNLOAD BAR AND SUPPORT BUTTON ***********/
-#downloads, .downloads_bar {
+/* OLD DOWNLOAD BAR AND SUPPORT BUTTON (DEPRECIATED)
+-----------------------------------------------------------------*/
+#downloads,
+.downloads_bar {
+
 	width: 640px;
 	margin: 10px auto;
-}
-#downloads #dltitle, .downloads_bar .dltitle {
-	display: none;
-}
-#dlfiles, .dlfiles {
-	margin:0;
-	padding: 0;
-	list-style:none;
-	text-align:right;
-}
-#downloads #dlfiles li,
-.downloads_bar .dlfiles li {
-	display: inline-block;
-	font-size: 12px;
-	margin-right: 5px;
-	margin-bottom: 0px;
-}
-#downloads #dlfiles li:last-child,
-.downloads_bar .dlfiles li:last-child {
-	margin-right: 0px;
-}
-#downloads #dlfiles a,
-.downloads_bar .dlfiles a {
-	text-decoration: none;
-	display:block;
-	padding:5px 10px;
-	color: #8d8d8d;
-	border: 1px solid #8d8d8d;
-	background: #fff;
-}
-#downloads #dlfiles a:hover, .downloads_bar .dlfiles a:hover {
-	color: #000;
-	border: 1px solid #000;
-	background: #fff;
-}
-#videoPlayer #downloads_bar #dlfiles .ol, .videoPlayer .downloads_bar .dlfiles .ol {
-	list-style:none;
-	text-align: left;
-}
-#support, .support {
-	width: 640px;
-	margin: 0px auto;
-}
-#support a:link, .support a:link {
-	display: block;
-	width: 132px;
-	text-align: center;
-	text-decoration: none;
-	font-size: 12px;
-	display: block;
-	padding:5px 0px;
-	color: #333;
-	border: 1px solid #999999;
-	background-color: #F2F2F2;
-}
-#support a:visited, .support a:visited {
-	color: #333;
-}
-#support a:hover, .support a:hover {
-	color: #000;
-	border: 1px solid #000;
-	background-color: #F9F9F9;
+	
+	#dltitles,
+	.dltitles {
+	
+    	display: none;
+    	margin:0;
+    	padding: 0;
+    	list-style:none;
+    	text-align:right;
+    	
+    	li {
+        	display: inline-block;
+        	font-size: 12px;
+        	margin-right: 5px;
+        	margin-bottom: 0;
+    	}
+    	
+    	li:last-child {
+        	margin-right: 0;
+    	}
+    	
+    	a {
+        	display: block;
+        	padding: 5px 10px;
+        	color: #8d8d8d;
+        	border: 1px solid #8d8d8d;
+        	background: #fff;
+        	text-decoration: none;
+    	}
+    	
+    	a:hover {
+        	color: #000;
+            border: 1px solid #000;
+            background: #fff;
+    	}
+    	
+	}
+	
 }
 
-/* FOR PRINTING */
+#videoPlayer,
+.videoPlayer {
+    
+    #downloads_bar,
+    .downloads_bar {
+        
+        #dlfiles,
+        .dlfiles {
+            
+            .ol {
+                list-style: none;
+                text-align: left;
+            }
+            
+        }
+        
+    }
+    
+}
+
+#support, .support {
+
+	width: 640px;
+	margin: 0 auto;
+	
+	a:link {
+    	display: block;
+    	width: 132px;
+    	text-align: center;
+    	text-decoration: none;
+    	font-size: 12px;
+    	display: block;
+    	padding: 5px 0;
+    	color: #333;
+    	border: 1px solid #999;
+    	background-color: #F2F2F2;
+	}
+	
+	a:visited {
+    	color: #333;
+	}
+	
+	a:hover {
+    	color: #000;
+        border: 1px solid #000;
+        background-color: #F9F9F9;
+	}
+	
+}
+
+/* FOR PRINTING
+-----------------------------------------------------------------*/
 @media print {
 	
 	body {

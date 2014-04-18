@@ -1394,58 +1394,47 @@ span.with-popover.active {
 /* INTERNAL PAGE NAVIGATION
 -----------------------------------------------------------------*/
 .page-subnav {
-  /* position: fixed; */
-  /*
-  	top:0;
-  	left: 0;
-  */
-  /* width: 940px; */
   list-style: none;
-  padding: 0 0 10px;
+  padding: 0 0 6px;
   background-color: #fff;
   margin: 0;
-  /* box-shadow: 0px 0px 4px #888; */
-  border-bottom: 1px #e8e8e8 solid;
+  border-bottom: 1px #bfbfbf solid;
   line-height: 1;
 }
-
 .page-subnav li {
   display: inline-block;
-  border-right: 1px solid #888;
-  margin-right: 10px;
-  margin-bottom: 5px;
-  padding-right: 10px;
+  margin-bottom: 6px;
+  margin-left: 5px;
 }
-
-.page-subnav li:last-child {
-  border-right: 0;
-  margin-right: 0;
-  margin-bottom: 0;
-  padding-right: 0;
-}
-
-.page-subnav li a,
-.page-subnav li a:visited {
-  font-size: 12px;
+.page-subnav li a, .page-subnav li a:visited {
+  font-size: 80%;
   line-height: 1;
   text-decoration: none;
 }
-
 .page-subnav li a:hover {
   text-decoration: underline;
 }
+.page-subnav li:first-child {
+  margin-left: 0;
+}
+.page-subnav li:after {
+  color: #bfbfbf;
+  content: " | ";
+}
+.page-subnav li:last-child:after {
+  content: "";
+}
 
-/* IMAGE ZOOM */
+/* IMAGE ZOOM
+-----------------------------------------------------------------*/
 .with-zoom {
   position: relative;
   cursor: crosshair;
 }
-
 .with-zoom .small {
   display: block;
   margin: 15px 0;
 }
-
 .with-zoom .magnify {
   position: absolute;
   display: none;
@@ -1458,92 +1447,104 @@ span.with-popover.active {
   z-index: 99;
 }
 
-/* WITH READ MORE */
+/* WITH READ MORE
+-----------------------------------------------------------------*/
 .with-readmore {
   position: relative;
   padding-bottom: 5px;
 }
-
 .with-readmore .readmore-ctrl {
   position: absolute;
   width: 100%;
   left: 0;
   bottom: 0;
-  font-size: smaller;
+  font-size: 80%;
   padding-top: 5px;
-  background: #ffffff;
-  -webkit-box-shadow: 0px -3px 10px #FFF;
-  box-shadow: 0px -3px 10px #FFF;
+  background: #fff;
+  -webkit-box-shadow: 0 -3px 10px #fff;
+  box-shadow: 0 -3px 10px #fff;
 }
-
 .with-readmore .readmore-ctrl.opened {
   position: relative;
-  padding-top: 0px;
+  padding-top: 0;
   cursor: pointer;
 }
 
-/* MEDIA PLAYERS */
+/* MEDIA PLAYERS
+-----------------------------------------------------------------*/
 iframe, object {
   display: block;
   margin: 10px auto;
 }
 
-/********* OLD DOWNLOAD BAR AND SUPPORT BUTTON ***********/
-#downloads, .downloads_bar {
+/* OLD DOWNLOAD BAR AND SUPPORT BUTTON (DEPRECIATED)
+-----------------------------------------------------------------*/
+#downloads,
+.downloads_bar {
   width: 640px;
   margin: 10px auto;
 }
-
-#downloads #dltitle, .downloads_bar .dltitle {
+#downloads #dltitles,
+#downloads .dltitles,
+.downloads_bar #dltitles,
+.downloads_bar .dltitles {
   display: none;
-}
-
-#dlfiles, .dlfiles {
   margin: 0;
   padding: 0;
   list-style: none;
   text-align: right;
 }
-
-#downloads #dlfiles li,
-.downloads_bar .dlfiles li {
+#downloads #dltitles li,
+#downloads .dltitles li,
+.downloads_bar #dltitles li,
+.downloads_bar .dltitles li {
   display: inline-block;
   font-size: 12px;
   margin-right: 5px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
-
-#downloads #dlfiles li:last-child,
-.downloads_bar .dlfiles li:last-child {
-  margin-right: 0px;
+#downloads #dltitles li:last-child,
+#downloads .dltitles li:last-child,
+.downloads_bar #dltitles li:last-child,
+.downloads_bar .dltitles li:last-child {
+  margin-right: 0;
 }
-
-#downloads #dlfiles a,
-.downloads_bar .dlfiles a {
-  text-decoration: none;
+#downloads #dltitles a,
+#downloads .dltitles a,
+.downloads_bar #dltitles a,
+.downloads_bar .dltitles a {
   display: block;
   padding: 5px 10px;
   color: #8d8d8d;
   border: 1px solid #8d8d8d;
   background: #fff;
+  text-decoration: none;
 }
-
-#downloads #dlfiles a:hover, .downloads_bar .dlfiles a:hover {
+#downloads #dltitles a:hover,
+#downloads .dltitles a:hover,
+.downloads_bar #dltitles a:hover,
+.downloads_bar .dltitles a:hover {
   color: #000;
   border: 1px solid #000;
   background: #fff;
 }
 
-#videoPlayer #downloads_bar #dlfiles .ol, .videoPlayer .downloads_bar .dlfiles .ol {
+#videoPlayer #downloads_bar #dlfiles .ol,
+#videoPlayer #downloads_bar .dlfiles .ol,
+#videoPlayer .downloads_bar #dlfiles .ol,
+#videoPlayer .downloads_bar .dlfiles .ol,
+.videoPlayer #downloads_bar #dlfiles .ol,
+.videoPlayer #downloads_bar .dlfiles .ol,
+.videoPlayer .downloads_bar #dlfiles .ol,
+.videoPlayer .downloads_bar .dlfiles .ol {
   list-style: none;
   text-align: left;
 }
 
 #support, .support {
   width: 640px;
-  margin: 0px auto;
+  margin: 0 auto;
 }
-
 #support a:link, .support a:link {
   display: block;
   width: 132px;
@@ -1551,23 +1552,22 @@ iframe, object {
   text-decoration: none;
   font-size: 12px;
   display: block;
-  padding: 5px 0px;
+  padding: 5px 0;
   color: #333;
-  border: 1px solid #999999;
+  border: 1px solid #999;
   background-color: #F2F2F2;
 }
-
 #support a:visited, .support a:visited {
   color: #333;
 }
-
 #support a:hover, .support a:hover {
   color: #000;
   border: 1px solid #000;
   background-color: #F9F9F9;
 }
 
-/* FOR PRINTING */
+/* FOR PRINTING
+-----------------------------------------------------------------*/
 @media print {
   body {
     font-size: 10.5pt;
