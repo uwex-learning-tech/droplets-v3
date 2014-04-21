@@ -11,11 +11,11 @@ $margin-top: 16px;
 $margin-bottom: 16px;
 $heading-font-weight: 500;
 $light-font-weight: 300;
-$gray-color: #7E7E7E;
-$success-color: #64B660;
-$info-color: #4DABE9;
-$warning-color: #EDCE42;
-$danger-color: #CC4745;
+$gray-color: #7e7e7e;
+$success-color: #64b660;
+$info-color: #4dabe9;
+$warning-color: #edce42;
+$danger-color: #cc4745;
 $table-border-color: #727272;
 $table-bg-color: #f1f1f1;
 
@@ -103,9 +103,11 @@ a, a:link {
 	text-decoration: underline;
 	outline: none;
 }
+
 a:visited {
 	color: #720094;
 }
+
 a:hover {
 	text-decoration: none;
 }
@@ -695,7 +697,7 @@ table {
         vertical-align: bottom;
         text-align: left;
         border-bottom: 2px solid $table-border-color;
-	}
+	} // table thead > tr > th
 	
 	thead:first-child {
 	    
@@ -1356,6 +1358,7 @@ span.with-popover.active {
 	from {opacity: 0;}
 	to {opacity: 1;}
 }
+
 @-webkit-keyframes fadeIn {
 	from {opacity: 0;}
 	to {opacity: 1;}
@@ -1539,7 +1542,7 @@ span.with-popover.active {
 -----------------------------------------------------------------*/
 iframe, object {
 	display: block;
-	margin:10px auto;
+	margin: 10px auto;
 }
 
 /* OLD DOWNLOAD BAR AND SUPPORT BUTTON (DEPRECIATED)
@@ -1564,11 +1567,11 @@ iframe, object {
         	font-size: 12px;
         	margin-right: 5px;
         	margin-bottom: 0;
-    	}
+    	} // #downloads #dltitles li, #downloads .dltitles li, .downloads_bar #dltitles li, .downloads_bar .dltitles li
     	
     	li:last-child {
         	margin-right: 0;
-    	}
+    	} // #downloads #dltitles li:last-child, #downloads .dltitles li:last-child, .downloads_bar #dltitles li:last-child, .downloads_bar .dltitles li:last-child
     	
     	a {
         	display: block;
@@ -1577,17 +1580,17 @@ iframe, object {
         	border: 1px solid #8d8d8d;
         	background: #fff;
         	text-decoration: none;
-    	}
+    	} // #downloads #dltitles li a, #downloads .dltitles li a, .downloads_bar #dltitles li a, .downloads_bar .dltitles li a
     	
     	a:hover {
         	color: #000;
             border: 1px solid #000;
             background: #fff;
-    	}
+    	} // #downloads #dltitles li a:hover, #downloads .dltitles li a:hover, .downloads_bar #dltitles li a:hover, .downloads_bar .dltitles li a:hover
     	
-	}
+	} // #downloads #dltitles, #downloads .dltitles, .downloads_bar #dltitles, .downloads_bar .dltitles
 	
-}
+} // #downloads, .downloads_bar
 
 #videoPlayer,
 .videoPlayer {
@@ -1601,13 +1604,13 @@ iframe, object {
             .ol {
                 list-style: none;
                 text-align: left;
-            }
+            } // #videoPlayer #downloads_bar #dlfiles .ol, #videoPlayer #downloads_bar .dlfiles .ol, #videoPlayer .downloads_bar #dlfiles .ol, #videoPlayer .downloads_bar .dlfiles .ol, .videoPlayer #downloads_bar #dlfiles .ol, .videoPlayer #downloads_bar .dlfiles .ol, .videoPlayer .downloads_bar #dlfiles .ol, .videoPlayer .downloads_bar .dlfiles .ol
             
-        }
+        } // #videoPlayer #downloads_bar #dlfiles, #videoPlayer #downloads_bar .dlfiles, #videoPlayer .downloads_bar #dlfiles, #videoPlayer .downloads_bar .dlfiles, .videoPlayer #downloads_bar #dlfiles, .videoPlayer #downloads_bar .dlfiles, .videoPlayer .downloads_bar #dlfiles, .videoPlayer .downloads_bar .dlfiles
         
-    }
+    } // #videoPlayer #downloads_bar, #videoPlayer .downloads_bar, .videoPlayer #downloads_bar, .videoPlayer .downloads_bar
     
-}
+} // #videoPlayer, .videoPlayer
 
 #support, .support {
 
@@ -1624,29 +1627,29 @@ iframe, object {
     	padding: 5px 0;
     	color: #333;
     	border: 1px solid #999;
-    	background-color: #F2F2F2;
-	}
+    	background-color: #f2f2f2;
+	} // #support a:link, .support a:link
 	
 	a:visited {
     	color: #333;
-	}
+	} // #support a:visited, .support a:visited
 	
 	a:hover {
     	color: #000;
         border: 1px solid #000;
-        background-color: #F9F9F9;
-	}
+        background-color: #f9f9f9;
+	} // #support a:hover, .support a:hover
 	
-}
+} // #support, .support
 
 /* FOR PRINTING
 -----------------------------------------------------------------*/
 @media print {
 	
 	body {
+	    width: 100%;
 		font-size: 10.5pt;
 		font-family: Helvetica, Arial, sans-serif;
-		width: 100%;
 		word-wrap: break-word;
 		white-space: normal;
 		overflow: visible;
@@ -1662,25 +1665,32 @@ iframe, object {
 	
 	/* page header */
 	header {
+	
 		border: none;
 		padding: 0;
-	}
-	header h1 {
-		font-size: 20pt;
-		margin: 0;
-	}
-	
-	header h1 small {
-		font-size:14.5pt;
+		
+		h1 {
+		
+    		font-size: 20px;
+    		margin: 0;
+    		
+    		small {
+        		font-size: 14.5pt;
+    		}
+    		
+		}
+		
 	}
 	
 	h1 {
-		font-size: 18pt;
-	}
 	
-	h1 [class^="icon-"],
-	h1 [class*=" icon-"] {
-		font-size: 24pt;
+		font-size: 18pt;
+		
+		[class^="icon-"],
+		[class*=" icon-"] {
+    		font-size: 24pt;
+		}
+		
 	}
 	
 	h2 {
@@ -1703,20 +1713,26 @@ iframe, object {
 		font-size: 13pt;
 	}
 	
-	blockquote p {
-		font-size: 13pt;
+	blockquote {
+		
+		p {
+    		font-size: 13pt;
+		}
+		
 	}
 
 	/* link */
 	a:link,
 	a:visited {
-		color:#333;
+		color: #333;
 		text-decoration: none;
 	}
+	
 	a:after {
 		content: " (" attr(href) ")";
 		font-size: 75%;
 	}
+	
 	table > thead > tr > td a:after,
 	table > tbody > tr > td a:after {
 		content: "";
@@ -1728,7 +1744,8 @@ iframe, object {
 	}
 	
 	/* abbreviation */
-	abbr, span.with-tooltip {
+	abbr,
+	span.with-tooltip {
 		border-bottom: 0;
 	}
 	
@@ -1750,48 +1767,69 @@ iframe, object {
 	/* popover */
 	span.with-popover {
 		border: 0;
-		background:none;
+		background: none;
 	}
 	
 	span.with-popover:after {
 		content: " (" attr(data-title) ")";
 	}
 	
+	/* accordion */
+	.with-accordion {
+    	
+    	.accordion-title {
+        	border: 0;
+        	font-weight: bold;
+    	}
+    	
+    	.accordion-content {
+        	border: 0;
+        	display: block;
+    	}
+    	
+    	.accordion-controls {
+        	display: none;
+    	}
+    	
+	}
+	
 	/* tab */
-	.with-accordion .accordion-title {
-		border: 0;
-		font-weight: bold;
-	}
-	
-	.with-accordion .accordion-content {
-		border: 0;
-		display: block;
-	}
-	
-	.with-accordion .accordion-controls {
-		display: none;
-	}
-	
-	.with-tabs .tabs li a:after {
-		content: "";
-	}
-	
-	.with-tabs .tabs {
-		display: none;
-	}
-	
-	.with-tabs .tab-contents section {
-		display: block;
+	.with-tabs {
+    	
+    	.tabs {
+    	
+    	    display: none;
+        	
+        	li {
+            	
+            	a:after {
+                	content: "";
+            	}
+            	
+        	}
+        	
+    	}
+    	
+    	.tab-contents {
+        	
+        	section {
+            	display: block;
+        	}
+        	
+    	}
+    	
 	}
 	
 	/* read more */
 	.with-readmore {
+	
         overflow: visible !important;
         height: 100% !important;
-    }
-    
-    .with-readmore .readmore-ctrl {
-        display: none;
+        
+        .readmore-ctrl {
+            display: none;
+        }
+        
     }
 	
-}
+} // end print media
