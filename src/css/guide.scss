@@ -26,14 +26,16 @@ body.home {
 	.logo {
     	display: block;
         margin: 0 auto;
-        width: 549px;
+        width: 655px;
 	} // .home_container .logo
 	
 	p.action {
 	
-    	text-align: center;
+    	text-align: right;
         font-size: 24px;
         font-weight: 400;
+        margin: 0 auto;
+        width: 655px;
         
         .btn {
             color: #fff;
@@ -56,7 +58,7 @@ body.home {
 .home_footer_content {
 	width: 904px;
 	margin: 0 auto;
-	padding: 30px 30px 20px;
+	padding: 26px 30px 20px;
 }
 
 .home_footer_grid {
