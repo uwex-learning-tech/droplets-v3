@@ -577,7 +577,7 @@ code {
         	display: inline-block;
             margin-right: 5px;
             font-size: 130%;
-            line-height: 0;
+            line-height: $body-line-height;
     	} // .callout h4 [class^="icon-"], .callout h4 [class*=" icon-"]
     	
 	} // .callout h4, .callout p:first-child

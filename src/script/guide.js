@@ -5,9 +5,8 @@ var anchors = [];
 $(document).ready(function () {
 
     var aCount = 0;
-    var preIndex = -1;
     
-    SyntaxHighlighter.highlight();
+    if ($('.html').length) { SyntaxHighlighter.highlight(); }
     
     $("h1").each(function() {
         if ($(this).is("[id]")) {
@@ -20,43 +19,38 @@ $(document).ready(function () {
     
         var i = $(".guide_container .side_nav #primary li").index(this);
         
-        if ($(this).find("ul").length) {
-        
-            if (preIndex !== i) {
-                $(".guide_container .side_nav #primary li > ul").each(function() {
-                    $(this).slideUp();
-            });
-            
-            $(".guide_container .side_nav #primary li:eq("+i+") > ul").slideDown(function(){ preIndex = i; });
-        
+        if ( !$(".guide_container .side_nav #primary li:eq("+i+") a").hasClass('active'))  {
+            $(".guide_container .side_nav #primary li:eq("+i+") > ul").slideToggle();
         }
         
-        }
-    
     });
 
 });
 
 $(document).scroll(function(){
-
-    var topPos = $(document).scrollTop();
     
-    if (topPos >= $(".guide_container .side_nav").position().top) {
+    if ($(".side_nav").length) {
     
-        $(".guide_container .side_nav").css({ "position":"fixed", "top":"0px" });
-        $(".guide_container .guide_outlayer").css("margin-left","220px");
+        var topPos = $(document).scrollTop();
         
-        if (topPos <= $(".guide_container .side_nav").position().top) {
+        if (topPos >= $(".guide_container .side_nav").position().top) {
         
-            $(".guide_container .side_nav").css({ "position":"static", "top":"75px" });
-            $(".guide_container .guide_outlayer").css("margin-left","0px");
+            $(".guide_container .side_nav").css({ "position":"fixed", "top":"0px" });
+            $(".guide_container .guide_outlayer").css("margin-left","220px");
+            
+            if (topPos <= $(".guide_container .side_nav").position().top) {
+            
+                $(".guide_container .side_nav").css({ "position":"static", "top":"75px" });
+                $(".guide_container .guide_outlayer").css("margin-left","0px");
+            
+            }
         
         }
     
+        $.fn.setActive(topPos);
+    
     }
     
-    $.fn.setActive(topPos);
-
 });
 
 $.fn.setActive = function(topPos) {

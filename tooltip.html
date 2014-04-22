@@ -4,22 +4,9 @@
 	<meta charset="UTF-8" />
 	<title>Tooltip | Style Guide | UWEX-CEOEL</title>
 	<link rel="shortcut icon" type="image/x-icon" href="src/img/uwex.ico" />
-	<link href="src/css/style.css" rel="stylesheet" media="all" />
 	<link href="src/css/guide.css" rel="stylesheet" media="all" />
-	<link href="src/syntaxhighlighter/styles/shCore.min.css" rel="stylesheet" media="all" />
-	<link href="src/syntaxhighlighter/styles/shThemeDefault.min.css" rel="stylesheet" media="all" />
-	<script src="src/script/jquery.min.js" type="text/javascript"></script>
-	<script src="src/syntaxhighlighter/scripts/shCore.min.js" type="text/javascript"></script>
-	<script src="src/syntaxhighlighter/scripts/shBrushXml.min.js" type="text/javascript"></script>
-	<script src="src/script/style.js" type="text/javascript"></script>
-	<script src="src/script/jquery.scrollUp.min.js" type="text/javascript"></script>
-	<script src="src/script/guide.min.js" type="text/javascript"></script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$(function(){ $.scrollUp(); });
-	});
-	</script>
-	
+	<script src="src/script/style.min.js" type="text/javascript"></script>
+	<script src="src/script/guide.min.js" type="text/javascript"></script>	
 </head>
 <body>
 
@@ -61,11 +48,11 @@
 				<p class="lead">A short message that appears when the mouse cursor is positioned over an icon, image, hyperlink, or text in a page content. <span class="text-danger">Do not use this component for popovers.</span></p>
 				<p>Tooltip has five options: default, top, bottom, right, and left. Each option will be explained below with code and examples. To use tooltip, add the <code>with-tooltip</code> class and the <code>title</code> attribute to the HTML elements including <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, etc. The <code>title</code> attribute is used to hold the tooltip message. Thus, it is required.</p>
 				
-				<div class="callout warning">
+				<div class="callout callout-guide warning">
 					<p><strong>Tip:</strong> use tooltip for non-essential information. Tooltip adds a nice interaction to the content but excessive use will cause unintended learning problems.</p>
 				</div>
 				
-				<div class="callout info">
+				<div class="callout callout-guide info">
 					<p><strong>Notes:</strong> the <code>&lt;abbr&gt;</code> element does not require the <code>with-tooltip</code> class. When using the <code>&lt;abbr&gt;</code> element, please follow the standards for using an abbreviation.</p>
 				</div>
 				
@@ -199,7 +186,7 @@ src="src/img/id_logo.png" width="275" height="236" alt="Style Guide" /&gt;</pre>
 						<img class="with-tooltip right" title="All you ever needed!" src="src/img/id_logo.png" width="275" height="236" alt="Style Guide" />
 					</div>
 				</div>
-				<div class="callout danger">
+				<div class="callout callout-guide danger">
 					<p>Tooltip for image will not be displayed when printed. This is a limitation of CSS3. Avoid using image with tooltip for essential information. Use image caption instead.</p>
 				</div>
 				
