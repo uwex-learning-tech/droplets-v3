@@ -317,7 +317,11 @@ div.three-column {
 .btn, a.btn, button.btn {
 	display: inline-block;
 	background-color: $gray-color;
+<<<<<<< HEAD
 	padding: 9px 16px;
+=======
+	padding: 9px 16px 5px;
+>>>>>>> FETCH_HEAD
 	border-radius: 3px;
 	color: #fff;
 	text-decoration: none;
@@ -333,14 +337,34 @@ div.three-column {
 .btn:hover, a.btn:hover {
 	background-color: #404040;
 	text-shadow: 1px 1px 0 rgb(52,52,52);
+<<<<<<< HEAD
+=======
+	box-shadow: 0px 4px 0px 0 $gray-color;
+>>>>>>> FETCH_HEAD
 }
 
 button.btn {
 	border: 0;
+<<<<<<< HEAD
 	padding: 9px 19px;
 	margin: 0;
 }
 
+=======
+	padding: 11px 19px;
+	margin: 0;
+}
+
+/* IE hack fix*/
+html>/**/body {
+
+    button.btn {
+	    padding: 9px 19px;
+	}
+	
+} // end IE hack
+
+>>>>>>> FETCH_HEAD
 .btn.info, a.btn.info, button.btn.info {
 	background-color: $info-color;
 	box-shadow: 0px 4px 0px 0 #1f82bf;
@@ -348,6 +372,7 @@ button.btn {
 
 .btn.info:hover, a.btn.info:hover, button.btn.info:hover {
 	background-color: #1f82bf;
+<<<<<<< HEAD
 }
 
 .btn.success, a.btn.success, button.btn.success {
@@ -375,6 +400,33 @@ button.btn {
 
 .btn.danger:hover, a.btn.danger:hover, button.btn.danger:hover {
 	background-color: #a31818;
+=======
+	/* box-shadow: 0px 4px 0px 0 $info-color; */
+}
+
+.btn.success, a.btn.success, button.btn.success {
+	background-color: #159c0b;
+}
+
+.btn.success:hover, a.btn.success:hover, button.btn.success:hover {
+	background-color: $success-color;
+}
+
+.btn.warning, a.btn.warning, button.btn.warning {
+	background-color: #e2bc0e;
+}
+
+.btn.warning:hover, a.btn.warning:hover, button.btn.warning:hover {
+	background-color: $warning-color;
+}
+
+.btn.danger, a.btn.danger, button.btn.danger {
+	background-color: #a31818;
+}
+
+.btn.danger:hover, a.btn.danger:hover, button.btn.danger:hover {
+	background-color: $danger-color;
+>>>>>>> FETCH_HEAD
 }
 
 .btn.block, a.btn.block, button.btn.block {
