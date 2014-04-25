@@ -1833,11 +1833,9 @@ iframe, object {
 	
 } // end print media
 
-/* EASTER EGGS
+/* GNITE EASTER EGG
 -----------------------------------------------------------------*/
 .gnite {
-    
-    font-size: 14px;
     
     .page-container {
         background: #3b3b3b;
@@ -1852,22 +1850,6 @@ iframe, object {
             color: #fff;
         }
         
-    }
-    
-    h1 {
-        font-size: 26px;
-    }
-    
-    h2 {
-        font-size: 22px;
-    }
-    
-    h3, h4, h5, h6 {
-        font-size: 16px;
-    }
-    
-    p.lead {
-        font-size: 20px;
     }
     
     a {
@@ -1911,7 +1893,11 @@ iframe, object {
     }
     
     button.btn {
-        padding: 10.5px 19px;
+        padding: 10px 19px;
+    }
+    
+    button.btn, x:-moz-any-link, x:default  {
+        padding: 9px 19px;
     }
     
     button.btn.block {

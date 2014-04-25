@@ -547,6 +547,40 @@ $(document).ready(function() {
 	
 });
 
+/* KEYPRESS EASTER EGG
+-----------------------------------------------------------------*/
+$(document).on("keydown", function(e) {
+
+    if (e.altKey && e.which === 78) {
+        if (!$("body").hasClass("gnite")) {
+            $("body").addClass("gnite");
+        }
+    }
+    
+    if (e.altKey && e.which === 77) {
+        if ($("body").hasClass("gnite")) {
+            $("body").removeClass("gnite");
+        }
+    }
+
+});
+
+/* MOUSE CLICK EASTER EGG
+-----------------------------------------------------------------*/
+$(document).ready(function() {
+    $("span[class^='icon-'], span[class*=' icon-']").on("click", function() {
+        $(this).css({color: getRandomColor()});
+    });
+    function getRandomColor() {
+        var letters = "0123456789ABCDEF".split("");
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+});
+
 /* jshint ignore:start */
 /* D2L ACTION BUTTON FUNCTIONS
 -----------------------------------------------------------------*/
