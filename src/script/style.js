@@ -584,7 +584,7 @@ $(document).ready(function() {
 /* jshint ignore:start */
 /* D2L ACTION BUTTON FUNCTIONS
 -----------------------------------------------------------------*/
-var D2LROOT = "https://uwli.courses.wisconsin.edu/";
+var D2LROOT = "https://uwli-beta.courses.wisconsin.edu/";
 
 function gotoToC(){
 	var tocURL = 'd2l/le/content/'+getParameterByName(window.location.href,'ou')+'/Home';

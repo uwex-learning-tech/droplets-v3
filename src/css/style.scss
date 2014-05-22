@@ -5,10 +5,10 @@
 $primary-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $body-font-size: 16px;
 $body-font-color: #333;
-$body-line-height: 1.30;
+$body-line-height: 1.4;
 $background-color: #e9e9e9;
-$margin-top: 16px;
-$margin-bottom: 16px;
+$padding-top: 8px;
+$padding-bottom: 8px;
 $heading-font-weight: 500;
 $light-font-weight: 300;
 $gray-color: #7e7e7e;
@@ -39,8 +39,8 @@ body {
 -----------------------------------------------------------------*/
 header {
 
-	padding: 10px 0;
-	margin: 0 0 $margin-bottom;
+	padding: 10px 0 $padding-bottom;
+	margin: 0 0 16px;
 	border-bottom: 1px solid #bfbfbf;
 	box-sizing: border-box;
 	
@@ -71,7 +71,8 @@ header {
 -----------------------------------------------------------------*/
 /* headings elements */
 h1, h2, h3, h4, h5, h6 {
-	margin: $margin-top 0 $margin-bottom;
+	margin: 0;
+	padding: $padding-top 0 $padding-bottom;
 	font-weight: $heading-font-weight;
 }
 
@@ -89,7 +90,8 @@ h3, h4, h5, h6 {
 
 /* body copy */
 p {
-	margin: $margin-top 0 $margin-bottom;
+	margin: 0;
+	padding: $padding-top 0 $padding-bottom;
 }
 
 p.lead {
@@ -116,15 +118,16 @@ a:hover {
 blockquote {
 
 	display: block;
-	padding: 10px 20px;
-	margin: $margin-top 0 $margin-bottom;
+	margin: 0 0 16px;
+	padding: $padding-top 20px $padding-bottom;
 	border-left: 5px solid $gray-color;
 	box-sizing: border-box;
 	
 	p {
     	font-size: 110%;
         font-weight: $light-font-weight;
-        margin: 0 0 $margin-bottom;
+        margin: 0;
+        padding: 0 0 $padding-bottom;
 	} // blockquote p
 	
 	p:last-child {
@@ -146,6 +149,8 @@ blockquote {
 blockquote.quote {
 
 	border: 0;
+	padding-left: 0;
+	padding-right: 0;
 	quotes: "\201C""\201D";
 	
 	p {
@@ -404,7 +409,7 @@ button.btn {
 	width: 100%;
 	padding: 16px 0;
 	text-align: center;
-	margin: $margin-top auto $margin-bottom;
+	margin: 16px auto;
 }
 
 .btn:focus, a.btn:focus, button.btn:focus {
@@ -542,7 +547,7 @@ code {
 -----------------------------------------------------------------*/
 .callout {
 
-	margin: $margin-top 0 $margin-bottom;
+	margin: 16px 0 16px;
 	padding: 16px 30px 16px 16px;
 	background-color: #eeeeee;
 	border-color: $gray-color;
@@ -553,6 +558,7 @@ code {
 	h4, p:first-child {
 	
     	margin-top: 0;
+    	padding: 0;
     	
     	[class^="icon-"],
     	[class*=" icon-"] {
@@ -672,8 +678,8 @@ table {
 	background-color: transparent;
 	border-collapse: collapse;
 	border-spacing: 0;
-	margin: $margin-top 0 $margin-bottom;
-	
+	margin: 16px 0;
+		
 	thead > tr > th {
     	padding: 8px;
         vertical-align: bottom;
