@@ -1653,6 +1653,7 @@ iframe, object {
 	
 	body {
 	    width: 100%;
+	    display: inline;
 		font-size: 10.5pt;
 		font-family: Helvetica, Arial, sans-serif;
 		word-wrap: break-word;
@@ -1661,8 +1662,9 @@ iframe, object {
 		background-color: transparent;
 	}
 	
-	.page_container {
+	.page-container {
 		width:100%;
+		display: inline;
 		padding: 0;
 		margin: 0;
 		background-color: #ffffff;
@@ -1671,12 +1673,12 @@ iframe, object {
 	/* page header */
 	header {
 	
-		border: none;
+		/* border: none; */
 		padding: 0;
 		
 		h1 {
 		
-    		font-size: 20px;
+    		font-size: 20pt;
     		margin: 0;
     		
     		small {
@@ -1709,7 +1711,7 @@ iframe, object {
 	p {
 		white-space: normal;
 		word-wrap: break-word;
-		padding: 0;
+		/* padding: 0; */
 		margin-left: 0;
 		margin-right: 0;
 	}
