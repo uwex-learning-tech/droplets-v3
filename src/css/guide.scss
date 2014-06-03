@@ -10,6 +10,10 @@ body.home {
 	background-repeat: repeat-x;
 }
 
+body {
+    background-color: #fff;
+}
+
 /* wrapper */
 .home_wrapper {
 	width: 964px;
@@ -477,9 +481,13 @@ p.lead:first-child {
     padding-top: 16px;
 }
 
+blockquote {
+    margin: 10px 0;
+}
+
 footer {
-	margin-bottom: 15px;
-	width: 734px;
+	margin: 15px 0;
+	width: 100%;
 	
 	p {
     	box-shadow: 0 0 0 #888;

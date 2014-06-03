@@ -99,6 +99,16 @@ p.lead {
 	font-weight: $light-font-weight;
 }
 
+/* Drop Caps */
+.dropcap:first-letter {
+    float: left;
+    line-height: 1;
+    font-size: 245.5%;
+    font-weight: bold;
+    padding-right: 8px;
+    padding-top: 4px;
+}
+
 /* link */
 a, a:link {
 	color: #005393;
@@ -183,7 +193,7 @@ blockquote.pull-right {
 /* unordered & ordered list */
 ul, ol {
 
-	margin-top: 0px;
+	margin-top: 16px;
 	
 	li {
 	
@@ -290,7 +300,7 @@ div.three-column {
 	} // div.three-column section:last-child
 	
 	.callout {
-    	margin: 0;
+    	margin: 16px 0;
 	}
 	
 } // div.three-column
@@ -961,12 +971,14 @@ figure {
 	
 } // .polaroid
 
+.polaroid.left,
 img.left {
 	display: inline-block;
 	float: left;
 	margin-right: 16px;
 }
 
+.polaroid.right,
 img.right {
 	display: inline-block;
 	float: right;
