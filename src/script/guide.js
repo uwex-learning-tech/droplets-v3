@@ -1,12 +1,8 @@
-/* global SyntaxHighlighter */
-
 var anchors = [];
 
 $(document).ready(function () {
 
     var aCount = 0;
-    
-    if ($('.html').length) { SyntaxHighlighter.highlight(); }
     
     $("h1").each(function() {
         if ($(this).is("[id]")) {
