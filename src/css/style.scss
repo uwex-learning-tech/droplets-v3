@@ -54,7 +54,7 @@ header {
         [class*=" icon-"] {
             display: inline-block;
             margin-right: 5px;
-            font-size: 82%;
+            font-size: 125%;
         } // header h1 [class^="icon-"], header h1 [class*=" icon-"]
         
         small {
@@ -574,7 +574,7 @@ code {
     	[class*=" icon-"] {
         	display: inline-block;
             margin-right: 5px;
-            font-size: 130%;
+            font-size: 125%;
             line-height: $body-line-height;
     	} // .callout h4 [class^="icon-"], .callout h4 [class*=" icon-"]
     	
@@ -1564,100 +1564,60 @@ iframe, object {
 
 /* OLD DOWNLOAD BAR AND SUPPORT BUTTON (DEPRECIATED)
 -----------------------------------------------------------------*/
-#downloads,
-.downloads_bar {
+#videoPlayer, .videoPlayer {
 
-	width: 640px;
-	margin: 10px auto;
-	
-	#dltitles,
-	.dltitles {
-	
-    	display: none;
-    	margin:0;
-    	padding: 0;
-    	list-style:none;
-    	text-align:right;
-    	
-    	li {
-        	display: inline-block;
-        	font-size: 12px;
-        	margin-right: 5px;
-        	margin-bottom: 0;
-    	} // #downloads #dltitles li, #downloads .dltitles li, .downloads_bar #dltitles li, .downloads_bar .dltitles li
-    	
-    	li:last-child {
-        	margin-right: 0;
-    	} // #downloads #dltitles li:last-child, #downloads .dltitles li:last-child, .downloads_bar #dltitles li:last-child, .downloads_bar .dltitles li:last-child
-    	
-    	a {
-        	display: block;
-        	padding: 5px 10px;
-        	color: #8d8d8d;
-        	border: 1px solid #8d8d8d;
-        	background: #fff;
-        	text-decoration: none;
-    	} // #downloads #dltitles li a, #downloads .dltitles li a, .downloads_bar #dltitles li a, .downloads_bar .dltitles li a
-    	
-    	a:hover {
-        	color: #000;
-            border: 1px solid #000;
-            background: #fff;
-    	} // #downloads #dltitles li a:hover, #downloads .dltitles li a:hover, .downloads_bar #dltitles li a:hover, .downloads_bar .dltitles li a:hover
-    	
-	} // #downloads #dltitles, #downloads .dltitles, .downloads_bar #dltitles, .downloads_bar .dltitles
-	
-} // #downloads, .downloads_bar
-
-#videoPlayer,
-.videoPlayer {
-    
-    #downloads_bar,
-    .downloads_bar {
+    #downloads_bar, .downloads_bar {
         
-        #dlfiles,
-        .dlfiles {
-            
-            .ol {
-                list-style: none;
-                text-align: left;
-            } // #videoPlayer #downloads_bar #dlfiles .ol, #videoPlayer #downloads_bar .dlfiles .ol, #videoPlayer .downloads_bar #dlfiles .ol, #videoPlayer .downloads_bar .dlfiles .ol, .videoPlayer #downloads_bar #dlfiles .ol, .videoPlayer #downloads_bar .dlfiles .ol, .videoPlayer .downloads_bar #dlfiles .ol, .videoPlayer .downloads_bar .dlfiles .ol
-            
-        } // #videoPlayer #downloads_bar #dlfiles, #videoPlayer #downloads_bar .dlfiles, #videoPlayer .downloads_bar #dlfiles, #videoPlayer .downloads_bar .dlfiles, .videoPlayer #downloads_bar #dlfiles, .videoPlayer #downloads_bar .dlfiles, .videoPlayer .downloads_bar #dlfiles, .videoPlayer .downloads_bar .dlfiles
+        width: 640px;
+        margin: 10px auto;
         
-    } // #videoPlayer #downloads_bar, #videoPlayer .downloads_bar, .videoPlayer #downloads_bar, .videoPlayer .downloads_bar
+        #dltitle, .dltitle {
+            display: none;
+        }
+        
+        #dlfiles, .dlfiles {
+        
+        	margin:0;
+        	padding: 0;
+        	list-style:none;
+        	text-align:right;
+            
+            li.ol {
+            	display: inline-block;
+            	font-size: 12px;
+            	margin-right: 5px;
+            	margin-bottom: 0;
+            	
+            	a {
+                	display: block;
+                	padding: 5px 10px;
+                	color: #8d8d8d;
+                	border: 1px solid #8d8d8d;
+                	background: #fff;
+                	text-decoration: none;
+            	}
+            	
+            	a:hover {
+                	color: #000;
+                    border: 1px solid #000;
+                    background: #fff;
+            	}
+            	
+            }
+    	
+        	li:last-child {
+            	margin-right: 0;
+        	}
+            
+        }
+        
+    }
     
 } // #videoPlayer, .videoPlayer
 
 #support, .support {
-
-	width: 640px;
-	margin: 0 auto;
-	
-	a:link {
-    	display: block;
-    	width: 132px;
-    	text-align: center;
-    	text-decoration: none;
-    	font-size: 12px;
-    	display: block;
-    	padding: 5px 0;
-    	color: #333;
-    	border: 1px solid #999;
-    	background-color: #f2f2f2;
-	} // #support a:link, .support a:link
-	
-	a:visited {
-    	color: #333;
-	} // #support a:visited, .support a:visited
-	
-	a:hover {
-    	color: #000;
-        border: 1px solid #000;
-        background-color: #f9f9f9;
-	} // #support a:hover, .support a:hover
-	
-} // #support, .support
+	display: none;
+}
 
 /* FOR PRINTING
 -----------------------------------------------------------------*/
@@ -1797,13 +1757,20 @@ iframe, object {
 	.with-accordion {
     	
     	.accordion-title {
+    	
         	border: 0;
         	font-weight: bold;
+        	
+        	.indicator {
+            	width: 16px;
+                background-position: -11px center;
+        	}
+        	
     	}
     	
     	.accordion-content {
         	border: 0;
-        	display: block;
+        	display: block !important;
     	}
     	
     	.accordion-controls {
@@ -1833,6 +1800,7 @@ iframe, object {
         	
         	section {
             	display: block;
+            	padding: 0;
         	}
         	
     	}
