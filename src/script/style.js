@@ -556,7 +556,10 @@ $(document).ready(function() {
         var year = Number($(".with-tabs.calendar .tabs").attr("data-year"));
         var monthName = ["January", "February", "March", "April", "May", "June",
                          "July", "August", "September", "October", "November", "December"];
-
+        var currentDate = new Date().getDate();
+        var currentMonth = new Date().getMonth();
+        
+        calendar.prepend("<h1>" + year + "</h1>");
         calendar.append("<div class=\"tab-contents\"></div>");
         
         // loop trough each month
@@ -584,7 +587,7 @@ $(document).ready(function() {
                 
             }
             
-            $(".with-tabs.calendar .tab-contents").append( "<section><h2>" + $(this).find("a").text() + " " + year + "</h2><div class=\"calendar-grid\">" + grid + "</div></section>" );
+            $(".with-tabs.calendar .tab-contents").append( "<section data-month=\"" + month + "\"><h2>" + monthName[month - 1] + "</h2><div class=\"calendar-grid\">" + grid + "</div></section>" );
             
             var numOfRow = $(".calendar-grid:eq(" + i + ") .row").length - 1;
             
@@ -594,16 +597,32 @@ $(document).ready(function() {
                     
                     if (count < daysInMonth) {
                         
-                        if ( w === 1 && d >= dayInWeek) {
-                            $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( ++count );
+                        if ( w === 1 ) {
+                        
+                            if ( d >= dayInWeek ) {
+                            
+                                $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + (++count) + "</span>" );
+                                
+                            } else {
+                            
+                                $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("noday");
+                                
+                            }
+                            
+                        } else {
+                        
+                            $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + (++count) + "</span>" );
+                            
                         }
                         
-                        if (w !== 1 ) {
-                            $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( ++count );
+                        if ( count === currentDate && currentMonth === i ) {
+                            $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("current");
                         }
                                                 
                     } else {
-                        break;
+                    
+                        $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("noday");
+                        
                     }
                     
                 }
@@ -612,7 +631,31 @@ $(document).ready(function() {
             
         }); // end loop
         
-        $(".with-tabs.calendar .tab-contents section:first-child").addClass("active");
+        months.each(function() {
+        
+            var month = Number($(this).attr("data-month"));
+            
+            if (month === currentMonth) {
+                
+                if ($(".with-tabs.calendar .tabs li:first-child").hasClass("active")) {
+                    $(".with-tabs.calendar .tabs li:first-child").removeClass("active");
+                }
+                
+                if ($(".with-tabs.calendar .tab-contents section:first-child").hasClass("active")) {
+                    $(".with-tabs.calendar .tab-contents section:first-child").removeClass("active");
+                }
+                
+                $(".with-tabs.calendar .tabs li[data-month=" + (month + 1) + "]").addClass("active");
+                $(".with-tabs.calendar .tab-contents section[data-month=" + (month + 1) + "]").addClass("active");
+                
+                return false;
+                
+            } else {
+                $(".with-tabs.calendar .tabs li:first-child").addClass("active");
+                $(".with-tabs.calendar .tab-contents section:first-child").addClass("active");
+            }
+            
+        }); 
         
     }
     

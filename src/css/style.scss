@@ -1300,7 +1300,7 @@ span.with-popover.active {
 -----------------------------------------------------------------*/
 .with-tabs {
 
-	padding: 16px 0;
+	margin: 16px 0;
 	clear: both;
 	
 	.tabs {
@@ -1374,10 +1374,18 @@ span.with-popover.active {
 .with-tabs.calendar {
     
     .tabs {
-    
-        margin-bottom: 10px;
+        
+        border-bottom: none;
+        margin-bottom: 0px;
     	
     	li {
+    	    
+    	    min-width: 61px;
+    	    border-radius: 0;
+    	    margin-bottom: 0;
+    	    border-top: 1px solid $gray-color;
+    	    border-bottom: 2px solid $gray-color;
+    	    background-color: transparent;
         	
         	a {
         	    text-align: center;
@@ -1390,6 +1398,32 @@ span.with-popover.active {
         	
     	}
     	
+    	li.active {
+    	
+        	border: none;
+        	border-top: 1px solid $danger-color;
+        	border-bottom: 2px solid $danger-color;
+        	background-color: $danger-color;
+        	box-shadow: 0 0 0 #fff;
+        	
+        	a {
+            	color: #fff;
+        	}
+        	
+    	}
+    	
+    	li:hover {
+    	    border-top: 1px solid $danger-color;
+        	border-bottom: 2px solid $danger-color;
+        	background-color: #eee;
+    	}
+    	
+    	li.active:hover {
+    	
+        	background-color: $danger-color;
+        	
+    	}
+    	
     }
     
     .tab-contents {
@@ -1399,30 +1433,61 @@ span.with-popover.active {
         section {
         
             page-break-inside: avoid;
+            padding: 0;
             
             .calendar-grid {
                 
                 display: table;
                 width: 100%;
-                border-top: 1px solid #888;
-                border-left: 1px solid #888;
+                border-top: 1px solid $gray-color;
+                border-right: 1px solid $gray-color;
+                border-left: 1px solid $gray-color;
                 box-sizing: border-box;
                 
                 .row {
                     
                     display: table-row;
                     width: 100%;
-                    height: 126px;
-                    
+                    height: 130px;
                     
                     .grid {
+                    
                         display: table-cell;
+                        vertical-align: top;
                         width: 14.2857143%;
-                        height: 127px;
+                        height: 128px;
                         padding: 5px;
-                        border-right: 1px solid #888;
-                        border-bottom: 1px solid #888;
+                        border-left: 1px solid $gray-color;
+                        border-bottom: 1px solid $gray-color;
                         box-sizing: border-box;
+                        
+                        .day {
+                            display: block;
+                            width: 25px;
+                            height: 25px;
+                            line-height: 1.45;
+                            text-align: center;
+                            border-radius: 50%;
+                            background-color: transparent;
+                        }
+                        
+                    }
+                    
+                    .grid:first-child {
+                        border-left: none;
+                    }
+                    
+                    .grid.current {
+                        
+                        .day {
+                            color: #fafafa;
+                            background-color: $danger-color;
+                        }
+                        
+                    }
+                    
+                    .grid.noday {
+                        background-color: $gray-color;
                     }
                     
                 }
