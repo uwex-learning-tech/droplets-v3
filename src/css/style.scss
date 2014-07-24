@@ -1371,14 +1371,90 @@ span.with-popover.active {
 	
 } // .with-tabs
 
+.with-tabs.calendar {
+    
+    .tabs {
+    
+        margin-bottom: 10px;
+    	
+    	li {
+        	
+        	a {
+        	    text-align: center;
+            	padding: 5px 10px;
+        	}
+        	
+        	.day {
+            	display: none;
+        	}
+        	
+    	}
+    	
+    }
+    
+    .tab-contents {
+    
+        border-bottom: none;
+        
+        section {
+        
+            page-break-inside: avoid;
+            
+            .calendar-grid {
+                
+                display: table;
+                width: 100%;
+                border-top: 1px solid #888;
+                border-left: 1px solid #888;
+                box-sizing: border-box;
+                
+                .row {
+                    
+                    display: table-row;
+                    width: 100%;
+                    height: 126px;
+                    
+                    
+                    .grid {
+                        display: table-cell;
+                        width: 14.2857143%;
+                        height: 127px;
+                        padding: 5px;
+                        border-right: 1px solid #888;
+                        border-bottom: 1px solid #888;
+                        box-sizing: border-box;
+                    }
+                    
+                }
+                
+                .row.heading {
+                    
+                    height: auto;
+                    
+                    .grid {
+                        height: auto;
+                        font-weight: bold;
+                        background-color: #eee;
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
 @keyframes fadeIn {
-	from {opacity: 0;}
-	to {opacity: 1;}
+	from { opacity: 0; }
+	to { opacity: 1; }
 }
 
 @-webkit-keyframes fadeIn {
-	from {opacity: 0;}
-	to {opacity: 1;}
+	from { opacity: 0; }
+	to { opacity: 1; }
 }
 
 /* ACCORDION

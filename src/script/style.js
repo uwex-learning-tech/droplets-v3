@@ -38,6 +38,12 @@ $(document).ready(function() {
 			
 		}
 		
+		if ($(".with-tabs.calendar").length) {
+		
+			getCalendar();
+			
+		}
+		
 		if ($(".with-accordion").length) {
 		
 			getAccordion();
@@ -540,6 +546,75 @@ $(document).ready(function() {
         }); // end each
     
     } // end read more
+    
+    /* READ MORE FUNCTION
+    -----------------------------------------------------------------*/
+    function getCalendar() {
+        
+        var calendar = $(".with-tabs.calendar");
+        var months = $(".with-tabs.calendar .tabs > li");
+        var year = Number($(".with-tabs.calendar .tabs").attr("data-year"));
+        var monthName = ["January", "February", "March", "April", "May", "June",
+                         "July", "August", "September", "October", "November", "December"];
+
+        calendar.append("<div class=\"tab-contents\"></div>");
+        
+        // loop trough each month
+        months.each(function(i) {
+        
+            var month = Number($(this).attr("data-month"));
+            var daysInMonth = new Date(year, month, 0).getDate();
+            var dayInWeek = new Date(year, month - 1, 1).getDay();
+            var weeksInMonth = Math.ceil((daysInMonth + dayInWeek) / 7);
+            var count = 0;
+            var grid = "<div class=\"row heading\"><div class=\"grid\">Sunday</div><div class=\"grid\">Monday</div><div class=\"grid\">Tuesday</div><div class=\"grid\">Wednesday</div><div class=\"grid\">Thursday</div><div class=\"grid\">Friday</div><div class=\"grid\">Saturday</div></div>";
+            
+            $(this).append("<a href=\"#\">" + monthName[month - 1] + "</a>");
+            
+            // creat the grid
+            for (var r = 0; r < weeksInMonth; r++) {
+                
+                grid += "<div class=\"row\">";
+                
+                for (var c = 0; c < 7; c++) {
+                    grid += "<div class=\"grid\"></div>";
+                }
+                
+                grid += "</div>";
+                
+            }
+            
+            $(".with-tabs.calendar .tab-contents").append( "<section><h2>" + $(this).find("a").text() + " " + year + "</h2><div class=\"calendar-grid\">" + grid + "</div></section>" );
+            
+            var numOfRow = $(".calendar-grid:eq(" + i + ") .row").length - 1;
+            
+            for (var w = 1; w <= numOfRow; w++) {
+                
+                for (var d = 0; d < 7; d++) {
+                    
+                    if (count < daysInMonth) {
+                        
+                        if ( w === 1 && d >= dayInWeek) {
+                            $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( ++count );
+                        }
+                        
+                        if (w !== 1 ) {
+                            $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( ++count );
+                        }
+                                                
+                    } else {
+                        break;
+                    }
+                    
+                }
+
+            }
+            
+        }); // end loop
+        
+        $(".with-tabs.calendar .tab-contents section:first-child").addClass("active");
+        
+    }
     
 	/* CALL CHECK COMPONENTS FUNCTION
     -----------------------------------------------------------------*/
