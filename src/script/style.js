@@ -218,7 +218,7 @@ $(document).ready(function() {
 			// on mouse click state
 			$(".with-tabs[data-id='"+i+"'] .tabs li").on("click",function() {
 				
-				var index = $(".with-tabs[data-id='"+i+"'] .tabs li").index(this);
+				var index = $(".with-tabs[data-id='"+i+"'] .tabs li").not("li ul li").index(this);
 				
 				// close all open tabs
 				$(".with-tabs[data-id='"+i+"'] .tabs li").each(function(){
@@ -567,6 +567,7 @@ $(document).ready(function() {
         calendar.append("<div class=\"tab-contents\"></div>");
         tabContent = $(".with-tabs.calendar .tab-contents");
         
+        console.log(months.length);
         // loop trough each month
         months.each(function(i) {
         
