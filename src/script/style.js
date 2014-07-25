@@ -547,20 +547,25 @@ $(document).ready(function() {
     
     } // end read more
     
-    /* READ MORE FUNCTION
+    /* GET CALENDAR FUNCTION
     -----------------------------------------------------------------*/
     function getCalendar() {
         
-        var calendar = $(".with-tabs.calendar");
-        var months = $(".with-tabs.calendar .tabs > li");
-        var year = Number($(".with-tabs.calendar .tabs").attr("data-year"));
-        var monthName = ["January", "February", "March", "April", "May", "June",
-                         "July", "August", "September", "October", "November", "December"];
+        // variables
         var currentDate = new Date().getDate();
         var currentMonth = new Date().getMonth();
+        var monthName = ["January", "February", "March", "April", "May", "June",
+                         "July", "August", "September", "October", "November", "December"];
         
-        calendar.prepend("<h1>" + year + "</h1>");
+        // HTML elements variable
+        var calendar = $(".with-tabs.calendar");
+        var tabContent = "";
+        var months = $(".with-tabs.calendar .tabs li").not("li ul li");
+        var year = Number($(".with-tabs.calendar .tabs").attr("data-year"));
+        
+        calendar.prepend("<h1>" + year + "</h1><p><a class=\"toggle-list-view\"href=\"#\">Toggle List View</a></p>");
         calendar.append("<div class=\"tab-contents\"></div>");
+        tabContent = $(".with-tabs.calendar .tab-contents");
         
         // loop trough each month
         months.each(function(i) {
@@ -572,7 +577,7 @@ $(document).ready(function() {
             var count = 0;
             var grid = "<div class=\"row heading\"><div class=\"grid\">Sunday</div><div class=\"grid\">Monday</div><div class=\"grid\">Tuesday</div><div class=\"grid\">Wednesday</div><div class=\"grid\">Thursday</div><div class=\"grid\">Friday</div><div class=\"grid\">Saturday</div></div>";
             
-            $(this).append("<a href=\"#\">" + monthName[month - 1] + "</a>");
+            $(this).prepend("<a href=\"#\">" + monthName[month - 1] + "</a>");
             
             // creat the grid
             for (var r = 0; r < weeksInMonth; r++) {
@@ -580,26 +585,26 @@ $(document).ready(function() {
                 grid += "<div class=\"row\">";
                 
                 for (var c = 0; c < 7; c++) {
+                
                     grid += "<div class=\"grid\"></div>";
+                    
                 }
                 
                 grid += "</div>";
                 
             }
             
-            $(".with-tabs.calendar .tab-contents").append( "<section data-month=\"" + month + "\"><h2>" + monthName[month - 1] + "</h2><div class=\"calendar-grid\">" + grid + "</div></section>" );
+            tabContent.append( "<section data-month=\"" + month + "\"><h2>" + monthName[month - 1] + "</h2><div class=\"calendar-grid\">" + grid + "</div></section>" );
             
-            var numOfRow = $(".calendar-grid:eq(" + i + ") .row").length - 1;
-            
-            for (var w = 1; w <= numOfRow; w++) {
+            for (var w = 1; w <= weeksInMonth; w++) {
                 
                 for (var d = 0; d < 7; d++) {
                     
                     if (count < daysInMonth) {
                         
-                        if ( w === 1 ) {
+                        if (w === 1) {
                         
-                            if ( d >= dayInWeek ) {
+                            if (d >= dayInWeek) {
                             
                                 $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + (++count) + "</span>" );
                                 
@@ -615,8 +620,10 @@ $(document).ready(function() {
                             
                         }
                         
-                        if ( count === currentDate && currentMonth === i ) {
+                        if (count === currentDate && currentMonth === i) {
+                        
                             $(".calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("current");
+                            
                         }
                                                 
                     } else {
@@ -625,11 +632,11 @@ $(document).ready(function() {
                         
                     }
                     
-                }
+                } // end days loop
 
-            }
+            } // end weeks loop
             
-        }); // end loop
+        }); // end months loop
         
         months.each(function() {
         
@@ -655,7 +662,13 @@ $(document).ready(function() {
                 $(".with-tabs.calendar .tab-contents section:first-child").addClass("active");
             }
             
-        }); 
+        });
+        
+        //list view listening event 
+        $(".toggle-list-view").on("click", function() {
+            calendar.toggleClass("list-view");
+            return false;
+        });
         
     }
     

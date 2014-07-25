@@ -1371,6 +1371,16 @@ span.with-popover.active {
 	
 } // .with-tabs
 
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
 .with-tabs.calendar {
     
     .tabs {
@@ -1392,7 +1402,7 @@ span.with-popover.active {
             	padding: 5px 10px;
         	}
         	
-        	.day {
+        	.days {
             	display: none;
         	}
         	
@@ -1512,14 +1522,88 @@ span.with-popover.active {
     
 }
 
-@keyframes fadeIn {
-	from { opacity: 0; }
-	to { opacity: 1; }
-}
+.with-tabs.calendar.list-view {
+    
+    float: none;
+    
+    .tabs {
+    
+        float: none;
+    
+        li {
 
-@-webkit-keyframes fadeIn {
-	from { opacity: 0; }
-	to { opacity: 1; }
+    	    border-top: none;
+    	    border-bottom: 1px solid $gray-color;
+    	    margin: 0 0 10px;
+    	    float: none;
+        	
+        	a {
+        	    display: inline;
+        	    font-size: 18px;
+        	    font-weight: bold;
+        	    text-align: left;
+            	padding: 0;
+            	cursor: text;
+        	}
+        	
+        	.days {
+        	
+            	display: block;
+            	margin: 0;
+            	padding: 0 0 0 15px;
+                
+                li {
+                    
+                    margin: 15px 0;
+                    border: none;
+                    
+                    .class {
+                	    display: block;
+                    	font-weight: bold;
+                	}
+                	
+                	.info {
+                    	display: block;
+                	}
+                    
+                }
+            	
+        	}
+        	
+    	}
+    	
+    	li:last-child {
+        	border: none;
+    	}
+    	
+    	li:hover {
+    	    border-top: none;
+        	background-color: transparent;
+    	}
+    	
+    	li.active {
+    	
+        	background-color: transparent;
+        	box-shadow: 0 0 0 #fff;
+        	
+        	a {
+            	color: #333;
+        	}
+        	
+    	}
+    	
+    	li.active:hover {
+    	
+        	background-color: transparent;
+        	
+    	}
+        
+    }
+    
+    .tab-contents {
+        display: none;
+    }
+    
 }
 
 /* ACCORDION
