@@ -1417,7 +1417,7 @@ span.with-popover.active {
     	
     	li.active {
     	
-        	border: none;
+        	/* border: none; */
         	border-bottom: 2px solid $danger-color;
         	box-shadow: 0 0 0 #fff;
         	
@@ -1498,13 +1498,17 @@ span.with-popover.active {
             page-break-inside: avoid;
             padding: 0;
             
+            h2.list-view {
+                border-bottom: 1px solid $table-border-color;
+            }
+            
             .calendar-grid {
                 
                 display: table;
                 width: 100%;
-                border-top: 1px solid $gray-color;
-                border-right: 1px solid $gray-color;
-                border-left: 1px solid $gray-color;
+                border-top: 1px solid $table-border-color;
+                border-right: 1px solid $table-border-color;
+                border-left: 1px solid $table-border-color;
                 box-sizing: border-box;
                 
                 .row {
@@ -1518,11 +1522,20 @@ span.with-popover.active {
                         display: table-cell;
                         vertical-align: top;
                         width: 14.2857143%;
+                        max-width: 128px;
                         height: 128px;
-                        padding: 5px;
-                        border-left: 1px solid $gray-color;
-                        border-bottom: 1px solid $gray-color;
+                        padding: 3px;
+                        border-left: 1px solid $table-border-color;
+                        border-bottom: 1px solid $table-border-color;
                         box-sizing: border-box;
+                        
+                        span {
+                            display: block;
+                        }
+                        
+                        span:first-child {
+                            margin-bottom: 2px;
+                        }
                         
                         .day {
                             display: block;
@@ -1530,8 +1543,36 @@ span.with-popover.active {
                             height: 25px;
                             line-height: 1.45;
                             text-align: center;
-                            border-radius: 50%;
-                            background-color: transparent;
+                        }
+                        
+                        .item {
+                            display: block;
+                            word-wrap: break-word;
+                            font-size: 12px;
+                            line-height: 14px;
+                            color: #fafafa;
+                            text-shadow: 1px 1px 0px $body-font-color;
+                            padding: 1px 3px 3px;
+                            background-color: $gray-color;
+                            border-radius: 3px;
+                            margin-bottom: 5px;
+                            cursor: pointer;
+                        }
+                        
+                        .item.info {
+                            background-color: $info-color;
+                        }
+                        
+                        .item.success {
+                            background-color: $success-color;
+                        }
+                        
+                        .item.warning {
+                            background-color: $warning-color;
+                        }
+                        
+                        .item.danger {
+                            background-color: $danger-color;
                         }
                         
                     }
@@ -1542,15 +1583,12 @@ span.with-popover.active {
                     
                     .grid.current {
                         
-                        .day {
-                            color: #fafafa;
-                            background-color: $danger-color;
-                        }
+                        box-shadow: inset 0px 0px 0px 2px #f00;
                         
                     }
                     
                     .grid.noday {
-                        background-color: $gray-color;
+                        background-color: $table-border-color;
                     }
                     
                 }
@@ -1570,7 +1608,29 @@ span.with-popover.active {
             } // enc calendar grid
             
             .calendar-list-view {
+            
                 display: none;
+                
+                div {
+                    padding: 0 16px;
+                }
+                
+                .current {
+                    position: relative;
+                    border: 1px solid $background-color;
+                    background-color: $background-color;
+                }
+                .current:before {
+                    position: absolute;
+                    top: -23px;
+                    right: 0;
+                    content: "TODAY";
+                    font-size: 60px;
+                    font-weight: bold;
+                    color: #fafafa;
+                    cursor: default;
+                }
+                
             }
             
         }

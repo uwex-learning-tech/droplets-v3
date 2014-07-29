@@ -284,7 +284,6 @@ $(document).ready(function() {
         var calendar = $(currentCalendar);
         var tabContent = "";
         var months = $(currentCalendar + " .tabs li").not("li ul li");
-        var year = Number($(currentCalendar + " .tabs").attr("data-year"));
         
         calendar.append("<div class=\"calendar_view_controls\"><a class=\"grid-view active\"href=\"#\" title=\"Grid View\"><span class=\"sg-icon-grid\"></span></a><a class=\"list-view\"href=\"#\" title=\"List View\"><span class=\"sg-icon-list\"></span></a><a class=\"toggle-displayall\"href=\"#\" title=\"Display All\"><span class=\"sg-icon-show-all\"></span></a></div>");
         calendar.append("<div class=\"tab-contents\"></div>");
@@ -292,7 +291,8 @@ $(document).ready(function() {
         
         // loop trough each month
         months.each(function(i) {
-        
+            
+            var year = ($(this).attr("data-year") === undefined) ? currentYear : Number($(this).attr("data-year"));
             var month = Number($(this).attr("data-month"));
             var daysInMonth = new Date(year, month, 0).getDate();
             var dayInWeek = new Date(year, month - 1, 1).getDay();
@@ -317,7 +317,7 @@ $(document).ready(function() {
                 
             }
             
-            tabContent.append( "<section data-month=\"" + month + "\"><h2>" + monthName[month - 1] + " " + year + "</h2><div class=\"calendar-grid\">" + grid + "</div><div class=\"calendar-list-view\">Hello " + month + "!</div></section>" );
+            tabContent.append( "<section data-month=\"" + month + "\"><h2>" + monthName[month - 1] + " " + year + "</h2><div class=\"calendar-grid\">" + grid + "</div><div class=\"calendar-list-view\"></div></section>" );
             
             // nested loop to populate the weeks (rows) and days (columns)
             for (var w = 1; w <= weeksInMonth; w++) {
@@ -327,10 +327,13 @@ $(document).ready(function() {
                     if (count < daysInMonth) {
                         
                         if (w === 1) {
-                        
+                            
                             if (d >= dayInWeek) {
                             
-                                $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + (++count) + "</span>" );
+                                count++;
+                                $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + count + "</span>" + getAgenda(currentCalendar, month, count, true) );
+                                $(currentCalendar + " .calendar-list-view:eq(" + i + ")").append( getAgenda(currentCalendar, month, count) );
+                                
                                 
                             } else {
                             
@@ -339,14 +342,11 @@ $(document).ready(function() {
                             }
                             
                         } else {
-                        
-                            $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + (++count) + "</span>" );
                             
-                        }
-                        
-                        if (count === currentDate && currentMonth === i && year === currentYear) {
-                        
-                            $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("current");
+                            count++;
+                            
+                            $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + count + "</span>" + getAgenda(currentCalendar, month, count, true) );
+                            $(currentCalendar + " .calendar-list-view:eq(" + i + ")").append( getAgenda(currentCalendar, month, count, false) );
                             
                         }
                                                 
@@ -366,6 +366,9 @@ $(document).ready(function() {
                     
                     $(currentCalendar + " .tabs li[data-month=" + (currentMonth + 1) + "]").addClass("active");
                     $(currentCalendar + " .tab-contents section[data-month=" + (currentMonth + 1) + "]").addClass("active");
+                    
+                    $($(currentCalendar + " .tab-contents section[data-month=" + (currentMonth + 1) + "] .calendar-grid .row .grid").not(".row.heading .grid").not(".grid.noday").get(currentDate - 1)).addClass("current");
+                            
                     
                 } else {
                 
@@ -398,9 +401,10 @@ $(document).ready(function() {
         
         // list view listening event 
         $(currentCalendar + " .list-view").on("click", function() {
-        
-            $(currentCalendar + " .calendar-list-view").show();
+            
             $(currentCalendar + " .calendar-grid").hide();
+            $(currentCalendar + " .tab-contents h2").addClass("list-view");
+            $(currentCalendar + " .calendar-list-view").show();
             
             // switch button state
             $(currentCalendar + " .grid-view").removeClass("active");
@@ -411,7 +415,8 @@ $(document).ready(function() {
         
         // grid view listening event
         $(currentCalendar + " .grid-view").on("click", function() {
-        
+            
+            $(currentCalendar + " .tab-contents h2").removeClass("list-view");
             $(currentCalendar + " .calendar-list-view").hide();
             $(currentCalendar + " .calendar-grid").show();
             
@@ -421,6 +426,68 @@ $(document).ready(function() {
             return false;
             
         });
+        
+    }
+    
+    function getAgenda(calendar, month, day, titleOnly) {
+    
+        var agenda = "";
+        var monthName = ["January", "February", "March", "April", "May", "June",
+                         "July", "August", "September", "October", "November", "December"];
+        var currentDate = new Date().getDate();
+        var currentMonth = new Date().getMonth() + 1;
+        var firstLoop = true;
+        var today = "";
+        
+        if (day === currentDate && month === currentMonth) {
+            today = " class=\"current\"";
+        }
+        
+        if (titleOnly) {
+            
+            var legend = "";
+            
+            $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=\"" + day + "\"]").each(function() {
+                var title = $(this).find("span.title").text();
+                legend = $(this).find("span.title").attr("data-cat");
+                agenda += "<span class=\"item " + legend + "\" title=\"" + title + "\">" + shorten(title) + "</span>";
+            
+            });
+            
+        } else {
+            
+            $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=\"" + day + "\"]").each(function(i) {
+            
+                if (firstLoop) {
+                    agenda += "<div" + today + "><p><em>" + monthName[month-1] + " " + day + "</em></p>";
+                    agenda += "<p><strong>" + $(this).find("span.title").html() + "</strong><br />" + $(this).find("span.info").html() + "</p>";
+                    firstLoop = false;
+                } else {
+                    agenda += "<p><strong>" + $(this).find("span.title").html() + "</strong><br />" + $(this).find("span.info").html() + "</p>";
+                }
+                
+                if (i === $(this).length) {
+                    agenda += "</div>";
+                }
+                
+            });
+            
+        }
+        
+        
+        return agenda;
+        
+    }
+    
+    function shorten(string) {
+        
+        if (string.length > 17) {
+            var result = "";
+            result = string.substring(0, 17) + "...";
+            return result;
+        }
+        
+        return string;
         
     }
     
