@@ -286,7 +286,7 @@ $(document).ready(function() {
         var months = $(currentCalendar + " .tabs li").not("li ul li");
         var year = Number($(currentCalendar + " .tabs").attr("data-year"));
         
-        calendar.prepend("<div class=\"calendar_view_controls\"><a class=\"grid-view active\"href=\"#\" title=\"Grid View\"><span class=\"sg-icon-grid\"></span></a><a class=\"list-view\"href=\"#\" title=\"List View\"><span class=\"sg-icon-list\"></span></a><a class=\"toggle-displayall\"href=\"#\" title=\"Display All\"><span class=\"sg-icon-show-all\"></span></a></div>");
+        calendar.append("<div class=\"calendar_view_controls\"><a class=\"grid-view active\"href=\"#\" title=\"Grid View\"><span class=\"sg-icon-grid\"></span></a><a class=\"list-view\"href=\"#\" title=\"List View\"><span class=\"sg-icon-list\"></span></a><a class=\"toggle-displayall\"href=\"#\" title=\"Display All\"><span class=\"sg-icon-show-all\"></span></a></div>");
         calendar.append("<div class=\"tab-contents\"></div>");
         tabContent = $(currentCalendar + " .tab-contents");
         
@@ -317,8 +317,9 @@ $(document).ready(function() {
                 
             }
             
-            tabContent.append( "<section data-month=\"" + month + "\"><h2>" + monthName[month - 1] + " " + year + "</h2><div class=\"calendar-grid\">" + grid + "</div></section>" );
+            tabContent.append( "<section data-month=\"" + month + "\"><h2>" + monthName[month - 1] + " " + year + "</h2><div class=\"calendar-grid\">" + grid + "</div><div class=\"calendar-list-view\">Hello " + month + "!</div></section>" );
             
+            // nested loop to populate the weeks (rows) and days (columns)
             for (var w = 1; w <= weeksInMonth; w++) {
                 
                 for (var d = 0; d < 7; d++) {
@@ -387,7 +388,7 @@ $(document).ready(function() {
 			
 		});
         
-        // toggle disply all
+        // toggle display all
         $(currentCalendar + " .toggle-displayall").on("click", function() {
             
             toggleCalendarDisplayAll(currentCalendar, savedMonth);
@@ -398,7 +399,10 @@ $(document).ready(function() {
         // list view listening event 
         $(currentCalendar + " .list-view").on("click", function() {
         
-            calendar.addClass("list-view");
+            $(currentCalendar + " .calendar-list-view").show();
+            $(currentCalendar + " .calendar-grid").hide();
+            
+            // switch button state
             $(currentCalendar + " .grid-view").removeClass("active");
             $(this).addClass("active");
             return false;
@@ -408,11 +412,12 @@ $(document).ready(function() {
         // grid view listening event
         $(currentCalendar + " .grid-view").on("click", function() {
         
-            if (calendar.hasClass("list-view")) {
-                calendar.removeClass("list-view");
-                $(currentCalendar + " .list-view").removeClass("active");
-                $(this).addClass("active");
-            }
+            $(currentCalendar + " .calendar-list-view").hide();
+            $(currentCalendar + " .calendar-grid").show();
+            
+            // switch button state
+            $(currentCalendar + " .list-view").removeClass("active");
+            $(this).addClass("active");
             return false;
             
         });
@@ -442,13 +447,11 @@ $(document).ready(function() {
             
         } else {
             
-            $(calendar + " .tabs").show();
-            
-            $(calendar + " .tab-contents li").each(function() {
+            $(calendar + " .tabs li").each(function() {
                 $(this).removeClass("active");
             });
             
-            $(calendar + " .tabs li").each(function() {
+            $(calendar + " .tab-contents section").each(function() {
                 $(this).removeClass("active");
             });
             
