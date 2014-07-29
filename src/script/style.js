@@ -4,6 +4,10 @@ $(document).ready(function() {
 	
 	var child = false, iframe = null;
 	
+	// calendar inital varibles
+	var displayAll = false;
+    var savedMonth = 0;
+	
 	// if it is in a iFrame
 	if ( parent === top ) {
 	
@@ -276,17 +280,15 @@ $(document).ready(function() {
                          "July", "August", "September", "October", "November", "December"];
         
         // HTML elements variable
-        var calendar = $(".with-tabs.calendar[data-id="+index+"]");
+        var currentCalendar = ".with-tabs.calendar[data-id="+index+"]";
+        var calendar = $(currentCalendar);
         var tabContent = "";
-        var months = $(".with-tabs.calendar[data-id="+index+"] .tabs li").not("li ul li");
-        var year = Number($(".with-tabs.calendar[data-id="+index+"] .tabs").attr("data-year"));
-        
-        var displayAll = false;
-        var savedMonth = 0;
+        var months = $(currentCalendar + " .tabs li").not("li ul li");
+        var year = Number($(currentCalendar + " .tabs").attr("data-year"));
         
         calendar.prepend("<div class=\"calendar_view_controls\"><a class=\"grid-view active\"href=\"#\" title=\"Grid View\"><span class=\"sg-icon-grid\"></span></a><a class=\"list-view\"href=\"#\" title=\"List View\"><span class=\"sg-icon-list\"></span></a><a class=\"toggle-displayall\"href=\"#\" title=\"Display All\"><span class=\"sg-icon-show-all\"></span></a></div>");
         calendar.append("<div class=\"tab-contents\"></div>");
-        tabContent = $(".with-tabs.calendar[data-id="+index+"] .tab-contents");
+        tabContent = $(currentCalendar + " .tab-contents");
         
         // loop trough each month
         months.each(function(i) {
@@ -300,7 +302,7 @@ $(document).ready(function() {
             
             $(this).prepend("<a href=\"#\">" + monthName[month - 1] + " " + year + "</a>");
             
-            // creat the grid
+            // create the grid
             for (var r = 0; r < weeksInMonth; r++) {
                 
                 grid += "<div class=\"row\">";
@@ -327,29 +329,29 @@ $(document).ready(function() {
                         
                             if (d >= dayInWeek) {
                             
-                                $(".with-tabs.calendar[data-id="+index+"] .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + (++count) + "</span>" );
+                                $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + (++count) + "</span>" );
                                 
                             } else {
                             
-                                $(".with-tabs.calendar[data-id="+index+"] .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("noday");
+                                $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("noday");
                                 
                             }
                             
                         } else {
                         
-                            $(".with-tabs.calendar[data-id="+index+"] .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + (++count) + "</span>" );
+                            $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + (++count) + "</span>" );
                             
                         }
                         
                         if (count === currentDate && currentMonth === i && year === currentYear) {
                         
-                            $(".with-tabs.calendar[data-id="+index+"] .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("current");
+                            $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("current");
                             
                         }
                                                 
                     } else {
                     
-                        $(".with-tabs.calendar[data-id="+index+"] .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("noday");
+                        $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").addClass("noday");
                         
                     }
                     
@@ -357,99 +359,107 @@ $(document).ready(function() {
 
             } // end weeks loop
             
+            if (i === months.length - 1) {
+                
+                if (year === currentYear && $(currentCalendar + " .tabs li[data-month=" + (currentMonth + 1) + "]").length > 0) {
+                    
+                    $(currentCalendar + " .tabs li[data-month=" + (currentMonth + 1) + "]").addClass("active");
+                    $(currentCalendar + " .tab-contents section[data-month=" + (currentMonth + 1) + "]").addClass("active");
+                    
+                } else {
+                
+                    $(currentCalendar + " .tabs li:first-child").addClass("active");
+                    $(currentCalendar + " .tab-contents section:first-child").addClass("active");
+                    
+                }
+            }
+            
         }); // end months loop
         
-        months.each(function() {
-        
-            var month = Number($(this).attr("data-month"));
-            var year = Number($(this).parent().attr("data-year"));
-            
-            if (month === currentMonth && year === currentYear) {
-                
-                if ($(".with-tabs.calendar[data-id="+index+"] .tabs li:first-child").hasClass("active")) {
-                    $(".with-tabs.calendar[data-id="+index+"] .tabs li:first-child").removeClass("active");
-                }
-                
-                if ($(".with-tabs.calendar[data-id="+index+"] .tab-contents section:first-child").hasClass("active")) {
-                    $(".with-tabs.calendar[data-id="+index+"] .tab-contents section:first-child").removeClass("active");
-                }
-                
-                $(".with-tabs.calendar[data-id="+index+"] .tabs li[data-month=" + (month + 1) + "]").addClass("active");
-                $(".with-tabs.calendar[data-id="+index+"] .tab-contents section[data-month=" + (month + 1) + "]").addClass("active");
-                
-                return false;
-                
-            } else {
-                $(".with-tabs.calendar[data-id="+index+"] .tabs li:first-child").addClass("active");
-                $(".with-tabs.calendar[data-id="+index+"] .tab-contents section:first-child").addClass("active");
-            }
-            
-        });
+        // tab mouse click
+		$(currentCalendar + " .tabs li").not("li ul li").on("click",function() {
+			
+			if ($(currentCalendar + " .toggle-displayall").hasClass("active")) {
+			    var month = Number($(this).attr("data-month"));
+    			toggleCalendarDisplayAll(currentCalendar, month);
+			}
+			return false;
+			
+		});
         
         // toggle disply all
-        $(".with-tabs.calendar[data-id="+index+"] .toggle-displayall").on("click", function() {
+        $(currentCalendar + " .toggle-displayall").on("click", function() {
             
-            if (displayAll === false) {
-                
-                $(".with-tabs.calendar[data-id="+index+"] .tab-contents section").each(function() {
-                    if ($(this).hasClass("active")) {
-                        $(this).removeClass("active");
-                    }
-                    $(this).toggleClass("active");
-                });
-            
-                $(".with-tabs.calendar[data-id="+index+"] .tabs li").not("li ul li").each(function() {
-                    if ($(this).hasClass("active")) {
-                        savedMonth = Number($(this).attr("data-month"));
-                        $(this).removeClass("active");
-                    }
-                    $(this).toggleClass("active");
-                });
-                
-                displayAll = true;
-                
-            } else {
-                
-                $(".with-tabs.calendar[data-id="+index+"] .tabs").show();
-                
-                $(".with-tabs.calendar[data-id="+index+"] .tab-contents section").each(function() {
-                    $(this).removeClass("active");
-                });
-                
-                $(".with-tabs.calendar[data-id="+index+"] .tabs li").each(function() {
-                    $(this).removeClass("active");
-                });
-                
-                $(".with-tabs.calendar[data-id="+index+"] .tabs li[data-month=" + (savedMonth) + "]").addClass("active");
-                $(".with-tabs.calendar[data-id="+index+"] .tab-contents section[data-month=" + (savedMonth) + "]").addClass("active");
-                
-                displayAll = false;
-                
-            }
-            
-            $(this).toggleClass("active");
-            
+            toggleCalendarDisplayAll(currentCalendar, savedMonth);
             return false;
             
         });
         
         // list view listening event 
-        $(".with-tabs.calendar[data-id="+index+"] .list-view").on("click", function() {
+        $(currentCalendar + " .list-view").on("click", function() {
+        
             calendar.addClass("list-view");
-            $(".with-tabs.calendar[data-id="+index+"] .grid-view").removeClass("active");
+            $(currentCalendar + " .grid-view").removeClass("active");
             $(this).addClass("active");
             return false;
+            
         });
         
         // grid view listening event
-        $(".with-tabs.calendar[data-id="+index+"] .grid-view").on("click", function() {
+        $(currentCalendar + " .grid-view").on("click", function() {
+        
             if (calendar.hasClass("list-view")) {
                 calendar.removeClass("list-view");
-                $(".with-tabs.calendar[data-id="+index+"] .list-view").removeClass("active");
+                $(currentCalendar + " .list-view").removeClass("active");
                 $(this).addClass("active");
             }
             return false;
+            
         });
+        
+    }
+    
+    function toggleCalendarDisplayAll(calendar, month) {
+    
+        if (displayAll === false) {
+                
+            $(calendar + " .tab-contents section").each(function() {
+                if ($(this).hasClass("active")) {
+                    $(this).removeClass("active");
+                }
+                $(this).toggleClass("active");
+            });
+        
+            $(calendar + " .tabs li").not("li ul li").each(function() {
+                if ($(this).hasClass("active")) {
+                    savedMonth = Number($(this).attr("data-month"));
+                    $(this).removeClass("active");
+                }
+                $(this).toggleClass("active");
+            });
+            
+            displayAll = true;
+            
+        } else {
+            
+            $(calendar + " .tabs").show();
+            
+            $(calendar + " .tab-contents li").each(function() {
+                $(this).removeClass("active");
+            });
+            
+            $(calendar + " .tabs li").each(function() {
+                $(this).removeClass("active");
+            });
+            
+            $(calendar + " .tabs li[data-month=" + (month) + "]").addClass("active");
+            $(calendar + " .tab-contents section[data-month=" + (month) + "]").addClass("active");
+            
+            displayAll = false;
+            
+        }
+        
+        $(calendar + " .toggle-displayall").toggleClass("active");
         
     }
 	
