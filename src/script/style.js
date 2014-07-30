@@ -292,7 +292,7 @@ $(document).ready(function() {
         // loop trough each month
         months.each(function(i) {
             
-            var year = ($(this).attr("data-year") === undefined) ? currentYear : Number($(this).attr("data-year"));
+            var year = ($(this).attr("data-year") === undefined || $.trim($(this).attr("data-year")) === "") ? currentYear : Number($(this).attr("data-year"));
             var month = Number($(this).attr("data-month"));
             var daysInMonth = new Date(year, month, 0).getDate();
             var dayInWeek = new Date(year, month - 1, 1).getDay();
@@ -456,7 +456,7 @@ $(document).ready(function() {
             
         } else {
             
-            $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=\"" + day + "\"]").each(function(i) {
+            $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=" + day + "]").each(function(i) {
             
                 if (firstLoop) {
                     agenda += "<div" + today + "><p><em>" + monthName[month-1] + " " + day + "</em></p>";
@@ -465,8 +465,8 @@ $(document).ready(function() {
                 } else {
                     agenda += "<p><strong>" + $(this).find("span.title").html() + "</strong><br />" + $(this).find("span.info").html() + "</p>";
                 }
-                
-                if (i === $(this).length) {
+            
+                if (i === $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=" + day + "]").length) {
                     agenda += "</div>";
                 }
                 
