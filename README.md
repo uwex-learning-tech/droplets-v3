@@ -9,7 +9,7 @@ A HTML, CSS, and JavaScript framework for instructional designers at University 
 3. Open the `dist` directory.
 4. Upload all of the files and directories inside the `dist` directory to your LMS's file storage.
 5. Include the `style.css` stylesheet from the `css` directory to the HTML head element. For example, `<link href="path_to_your_lms_file_directory/style.css" rel="stylesheet" />`.
-6. If interested in using the JavaScript components, include the `style.js` javascript file from the `script` directory to the HTML element. For example:
+6. If interested in using the JavaScript components, include the `style.js` javascript file from the `script` directory to the HTML head element. For example:
 ```
 <script src="path_to_your_lms_file_directory/style.js" type="text/javascript"></script>
 ```
