@@ -1316,7 +1316,7 @@ span.with-popover.active {
 -----------------------------------------------------------------*/
 .with-tabs {
 
-	margin: $gutter 0;
+	margin: rem( $gutter ) 0;
 	clear: both;
 	
 	.tabs {
@@ -1324,8 +1324,8 @@ span.with-popover.active {
     	width: 100%;
     	list-style: none;
     	padding: 0;
-    	margin: 0 0 19px 0;
-    	border-bottom: 1px solid #929292;
+    	margin: 0 0 rem( 19px ) 0;
+    	border-bottom: rem( 1px ) solid #929292;
     	float: left;
     	clear: both;
     	
@@ -1333,57 +1333,57 @@ span.with-popover.active {
     	
         	display: block;
         	float: left;
-        	margin-bottom: -1px;
-        	border-radius: 0 5px 0 0;
+        	margin-bottom: rem( -1px );
         	background-color: #fff;
+        	@include border-corner-radius( top, right, rem( 5px ) );
         	
         	a, a:visited {
             	display: block;
-            	padding:10px;
+            	padding: rem( 10px );
             	text-decoration: none;
-            	color:#4e4e4e;
-        	} // .with-tabs .tab li a, .with-tabs .tab li a:visited
+            	color: #4e4e4e;
+        	}
         	
         	a:hover {
             	color: #333;
-        	} // .with-tabs .tab li a:hover
+        	}
         	
-    	} // .with-tabs .tab li
+    	}
     	
     	li.active {
-        	border-top: 1px solid #929292;
-        	border-right: 1px solid #929292;
-        	border-left: 1px solid #929292;
+        	border-top: rem( 1px ) solid #929292;
+        	border-right: rem( 1px ) solid #929292;
+        	border-left: rem( 1px ) solid #929292;
         	border-bottom: transparent;
-        	box-shadow: 0 -3px 3px #a2a2a2;
-    	} // .with-tabs .tab li.active
+        	@include single-box-shadow( #a2a2a2, 0, rem( -2px ), rem( 1px ) );
+    	}
     	
     	li.active:hover {
         	background-color: #fff;
-    	} // .with-tabs .tab li.active:hover
+    	}
     	
     	li:hover {
         	background-color: #e7e7e7;
-    	} // .with-tabs .tab li:hover
+    	}
     	
-	} // .with-tabs .tabs
+	}
 	
 	.tab-contents {
 	
-    	border-bottom: 1px solid #929292;
+    	border-bottom: rem( 1px ) solid #929292;
         clear: both;
         
         section {
-            padding: 0 10px;
+            padding: 0 rem( 10px );
             display: none;
-        } // .with-tabs .tab-contents section
+        }
         
         section.active {
             display: block;
             animation: fadeIn 1s;
-        } // .with-tabs .tab-contents section.active
+        }
         
-	} // .with-tabs .tab-contents
+	}
 	
 } // .with-tabs
 
@@ -1427,6 +1427,10 @@ span.with-popover.active {
             	display: none;
         	}
         	
+    	}
+    	
+    	li:last-child {
+        	border-right: none;
     	}
     	
     	li.active {
