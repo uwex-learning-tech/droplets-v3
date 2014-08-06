@@ -1,19 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Erica+One);
+
 /* HOME PAGE
 -----------------------------------------------------------------*/
-body.home {
-	background-color: #f2f2f2;
-	background-image: url("../img/home_top_bg.png");
-	background-position: left -60px;
-	background-repeat: repeat-x;
-}
-
 body {
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color: #f2f2f2;
+	background-image: url("../img/home_top_abstract.png");
+	background-position: left top;
+	background-repeat: repeat-x;
 }
 
 /* wrapper */
 .home_wrapper {
-	width: 964px;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -23,30 +22,65 @@ body {
 	width: 964px;
 	padding-top: 170px;
 	padding-bottom: 50px;
+	margin: 0 auto;
 	
 	.logo {
+	
     	display: block;
-        margin: 0 auto;
-        width: 655px;
+        margin: 16px auto;
+        width: 810px;
+        clear: both;
+        
+        img {
+            
+            width: 349px;
+            display: block;
+            float: left;
+        }
+        
+        .logo-text {
+        
+            width: 461px;
+            float: left;
+            
+            h1 {
+                font-family: 'Erica One', "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 60px;
+                font-weight: bolder;
+            }
+            
+            blockquote.quote {
+                margin-top: 28px;
+            }
+            
+            p {
+                font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 20px;
+                font-weight: 100;
+                margin-top: 24px;
+            }
+            
+            p.action {
+	
+            font-size: 24px;
+            font-weight: normal;
+            margin-top: 50px;
+            
+            .btn {
+                color: #fff;
+            	text-shadow: rgba(0,0,0,.75) 1px 1px 1px;
+            	font-size: 24px;
+            	line-height: normal;
+            	padding-top: 5px;
+            	vertical-align: baseline;
+            } // .home_container p.action .btn
+            
+    	} // .home_container p.action
+            
+        }
+        
 	} // .home_container .logo
 	
-	p.action {
-	
-    	text-align: right;
-        font-size: 24px;
-        font-weight: 400;
-        margin: 0 auto;
-        width: 655px;
-        
-        .btn {
-            color: #fff;
-        	text-shadow: rgba(0,0,0,.75) 1px 1px 1px;
-        	font-size: 24px;
-        	padding-top: 10px;
-        	vertical-align: baseline;
-        } // .home_container p.action .btn
-        
-	} // .home_container p.action
 	
 } // .home_container
 
@@ -84,6 +118,7 @@ body {
     	color: #f2f2f2;
     	font-size: 14px;
     	font-weight: bold;
+    	line-height: normal;
     	text-decoration: none;
     	margin-bottom: 5px;
     } // .home_footer_grid a, .home_footer_grid a:visited
@@ -451,7 +486,7 @@ header.guide {
     width: 804px;
     background-color: #3176af;
     margin: 0;
-    padding: 10px;
+    padding: 15px 10px;
     border-radius: 3px 3px 0 0;
     border-bottom: 5px solid #0f4b90;
     color: #f2f2f2;

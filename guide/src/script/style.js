@@ -774,14 +774,14 @@ $(document).ready(function() {
         $(".with-readmore").each(function(i) {
         
             $(this).attr("id","more"+i);
-            $("#more"+i).attr("data-height",$("#more"+i).height());
-            $("#more"+i).append("<div class=\"readmore-ctrl\"><a href=\"javascript:void(0)\">READ MORE...</a></div>").css({"height":h,"overflow":"hidden"});
+            $("#more"+i).attr("data-height",$("#more"+i).innerHeight()+24);
+            $("#more"+i).append("<div class=\"readmore-ctrl\"><a href=\"javascript:void(0)\">CLICK TO READ MORE...</a></div>").css({"height":h,"overflow":"hidden"});
             
             // on mouse click state
             $("#more"+i + " .readmore-ctrl a").on("click", function() {
                 
                 var rmID = "#more"+i;
-                var rmHeight = Number($(rmID).attr("data-height")) + Number($(rmID + " .readmore-ctrl").height()) + 10;
+                var rmHeight = Number($(rmID).attr("data-height")) + Number($(rmID + " .readmore-ctrl").height() + 10);
                 
                 if ($("#more"+i + " .readmore-ctrl").hasClass("opened")) {
                     
@@ -792,7 +792,7 @@ $(document).ready(function() {
                     }, "slow", "linear", function() {
                     
                         $(rmID + " .readmore-ctrl").removeClass("opened");
-                        $(rmID + " .readmore-ctrl a").html("READ MORE...");
+                        $(rmID + " .readmore-ctrl a").html("CLICK TO READ MORE...");
                         
                     });
                     
@@ -800,12 +800,12 @@ $(document).ready(function() {
                     
                     $(rmID).animate({
                     
-                        height: rmHeight+"px"
+                        height: rmHeight + "px"
                         
                     }, "slow", "linear", function() {
                     
                         $(rmID + " .readmore-ctrl").addClass("opened");
-                        $(rmID + " .readmore-ctrl a").html("READ LESS");
+                        $(rmID + " .readmore-ctrl a").html("CLICK TO READ LESS");
                         
                     });
                     
@@ -844,8 +844,13 @@ $(document).on("keydown", function(e) {
 /* MOUSE CLICK EASTER EGG
 -----------------------------------------------------------------*/
 $(document).ready(function() {
+    var clicks = Math.floor(Math.random() * 4 + 3);
+    var clickCount = 0;
     $("span[class^='icon-'], span[class*=' icon-']").on("click", function() {
-        $(this).css({color: getRandomColor()});
+        clickCount++;
+        if (clickCount >= clicks) {
+            $(this).css({color: getRandomColor()});
+        }
     });
     function getRandomColor() {
         var letters = "0123456789ABCDEF".split("");

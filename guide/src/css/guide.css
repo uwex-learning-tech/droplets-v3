@@ -1,40 +1,58 @@
+@import url(http://fonts.googleapis.com/css?family=Erica+One);
 /* HOME PAGE
 -----------------------------------------------------------------*/
-body.home {
-  background-color: #f2f2f2;
-  background-image: url("../img/home_top_bg.png");
-  background-position: left -60px;
-  background-repeat: repeat-x; }
-
 body {
-  background-color: #fff; }
+  /* background-color: #fff; */
+  background-color: #f2f2f2;
+  background-image: url("../img/home_top_abstract.png");
+  background-position: left top;
+  background-repeat: repeat-x; }
 
 /* wrapper */
 .home_wrapper {
-  width: 964px;
+  width: 100%;
   margin: 0 auto; }
 
 /* container */
 .home_container {
   width: 964px;
   padding-top: 170px;
-  padding-bottom: 50px; }
+  padding-bottom: 50px;
+  margin: 0 auto; }
   .home_container .logo {
     display: block;
-    margin: 0 auto;
-    width: 655px; }
-  .home_container p.action {
-    text-align: right;
-    font-size: 24px;
-    font-weight: 400;
-    margin: 0 auto;
-    width: 655px; }
-    .home_container p.action .btn {
-      color: #fff;
-      text-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px;
-      font-size: 24px;
-      padding-top: 10px;
-      vertical-align: baseline; }
+    margin: 16px auto;
+    width: 810px;
+    clear: both; }
+    .home_container .logo img {
+      width: 349px;
+      display: block;
+      float: left; }
+    .home_container .logo .logo-text {
+      width: 461px;
+      float: left; }
+      .home_container .logo .logo-text h1 {
+        font-family: 'Erica One', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 60px;
+        font-weight: bolder; }
+      .home_container .logo .logo-text blockquote.quote {
+        margin-top: 28px; }
+      .home_container .logo .logo-text p {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        font-weight: 100;
+        margin-top: 24px; }
+      .home_container .logo .logo-text p.action {
+        font-size: 24px;
+        font-weight: normal;
+        margin-top: 50px; }
+        .home_container .logo .logo-text p.action .btn {
+          color: #fff;
+          text-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px;
+          font-size: 24px;
+          line-height: normal;
+          padding-top: 5px;
+          vertical-align: baseline; }
 
 /* footer */
 .home_footer {
@@ -62,6 +80,7 @@ body {
     color: #f2f2f2;
     font-size: 14px;
     font-weight: bold;
+    line-height: normal;
     text-decoration: none;
     margin-bottom: 5px; }
   .home_footer_grid ul {
@@ -292,7 +311,7 @@ header.guide {
   width: 804px;
   background-color: #3176af;
   margin: 0;
-  padding: 10px;
+  padding: 15px 10px;
   border-radius: 3px 3px 0 0;
   border-bottom: 5px solid #0f4b90;
   color: #f2f2f2; }
