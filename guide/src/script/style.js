@@ -284,9 +284,11 @@ $(document).ready(function() {
         var calendar = $(currentCalendar);
         var tabContent = "";
         var months = $(currentCalendar + " .tabs li").not("li ul li");
+        var lastCat = "";
         
         calendar.append("<div class=\"calendar_view_controls\"><a class=\"grid-view active\"href=\"#\" title=\"Grid View\"><span class=\"sg-icon-grid\"></span></a><a class=\"list-view\"href=\"#\" title=\"List View\"><span class=\"sg-icon-list\"></span></a><a class=\"toggle-displayall\"href=\"#\" title=\"Display All\"><span class=\"sg-icon-show-all\"></span></a></div>");
         calendar.append("<div class=\"tab-contents\"></div>");
+        calendar.after("<div class=\"clearfix\"></div>");
         tabContent = $(currentCalendar + " .tab-contents");
         
         // loop trough each month
@@ -313,7 +315,7 @@ $(document).ready(function() {
                     
                 }
                 
-                grid += "</div>";
+                grid += "</div><div class=\"detailed-view\" data-row=\"" + r + "\"><h3></h3><span class=\"info\"></span></div>";
                 
             }
             
@@ -380,6 +382,8 @@ $(document).ready(function() {
             
         }); // end months loop
         
+        calendar.append("<div class=\"legends\"><p>Legends:</p><ul><li class=\"discussion\">Discussion</li><li class=\"assignment\">Assignment</li><li class=\"quiz\">Quiz</li><li class=\"project\">Project</li><li class=\"exam\">Midterm/Final</li><li class=\"reading\">Readings</li><li class=\"open\">Lesson Opens</li><li class=\"close\">Lesson Closes</li></ul></div>");
+        
         // tab mouse click
 		$(currentCalendar + " .tabs li").not("li ul li").on("click",function() {
 			
@@ -405,6 +409,7 @@ $(document).ready(function() {
             $(currentCalendar + " .calendar-grid").hide();
             $(currentCalendar + " .tab-contents h2").addClass("list-view");
             $(currentCalendar + " .calendar-list-view").show();
+            $(currentCalendar + " .legends").hide();
             
             // switch button state
             $(currentCalendar + " .grid-view").removeClass("active");
@@ -419,12 +424,29 @@ $(document).ready(function() {
             $(currentCalendar + " .tab-contents h2").removeClass("list-view");
             $(currentCalendar + " .calendar-list-view").hide();
             $(currentCalendar + " .calendar-grid").show();
+            $(currentCalendar + " .legends").show();
             
             // switch button state
             $(currentCalendar + " .list-view").removeClass("active");
             $(this).addClass("active");
             return false;
             
+        });
+        
+        $(currentCalendar + " .item").on("click", function() {
+        
+            var day = $(this).attr("data-id");
+            var title = $(this).attr("title");
+            var cat = $(this).attr("class").split(" ")[1];
+            var index = $(this).parent().parent().index(".row:visible") - 1;
+            var info = $(currentCalendar + " .tabs li:visible .days li[data-day=" + day + "] .info").html();
+
+            $(".detailed-view[data-row="+index+"]").removeClass(lastCat).addClass(cat);
+            $(".detailed-view[data-row="+index+"] h3").html(title);
+            $(".detailed-view[data-row="+index+"] .info").html(info);
+            $(".detailed-view[data-row="+index+"]").slideDown();
+            lastCat = cat;
+                
         });
         
     }
@@ -450,7 +472,7 @@ $(document).ready(function() {
             $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=\"" + day + "\"]").each(function() {
                 var title = $(this).find("span.title").text();
                 legend = $(this).find("span.title").attr("data-cat");
-                agenda += "<span class=\"item " + legend + "\" title=\"" + title + "\">" + shorten(title) + "</span>";
+                agenda += "<span class=\"item " + legend + "\" title=\"" + title + "\" data-id=\"" + day + "\">" + shorten(title) + "</span>";
             
             });
             
@@ -473,7 +495,6 @@ $(document).ready(function() {
             });
             
         }
-        
         
         return agenda;
         
