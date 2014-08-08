@@ -436,7 +436,6 @@ $(document).ready(function() {
         
         $(currentCalendar + " .item").on("click", function() {
         
-            var day = $(this).attr("data-id");
             var title = $(this).attr("title");
             var info = $(this).attr("data-desc");
             var cat = $(this).attr("class").split(" ")[1];
@@ -444,7 +443,6 @@ $(document).ready(function() {
             
             $(this).parent().parent().find(".arrow").removeClass("arrow");
             $(this).parent().addClass("arrow");
-            
             
             $(currentCalendar + " .detailed-view[data-row="+index+"]").removeClass(lastCat).addClass(cat);
             $(currentCalendar + " .detailed-view[data-row="+index+"] h3").html(title);
@@ -458,7 +456,6 @@ $(document).ready(function() {
         
             var row = $(this).attr("data-row");
             
-            $(this).prev().find(".grid.arrow").removeClass("arrow");
             $(currentCalendar + " .detailed-view[data-row="+row+"]").slideUp("slow", function() {
                 
                 $(this).prev().find(".grid.arrow").removeClass("arrow");
