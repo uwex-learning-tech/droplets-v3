@@ -1408,7 +1408,7 @@ span.with-popover.active {
     .tabs {
         
         width: 100%;
-        margin-bottom: $gutter;
+        margin-bottom: rem( $gutter );
         border-bottom: rem( 1px ) solid $border-color;
     	
     	li {
@@ -1541,7 +1541,6 @@ span.with-popover.active {
             
             .calendar-grid {
                 
-                /* display: table; */
                 width: 100%;
                 border-top: rem( 1px ) solid $table-border-color;
                 border-right: rem( 1px ) solid $table-border-color;
@@ -1553,7 +1552,7 @@ span.with-popover.active {
                 .detailed-view {
                     display: none;
                     width: 100%;
-                    padding: 0 rem( $gutter );
+                    padding: 0 rem( $gutter ) rem( $gutter );
                     border-top: rem( 6px ) solid transparent;
                     border-bottom: rem( 1px ) solid $table-border-color;
                     color: #fafafa;
