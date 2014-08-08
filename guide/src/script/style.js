@@ -285,7 +285,7 @@ $(document).ready(function() {
         var tabContent = "";
         var months = $(currentCalendar + " .tabs li").not("li ul li");
         
-        var lastCat = "";
+        var lastIndex = -1;
         
         calendar.append("<div class=\"calendar_view_controls\"><a class=\"grid-view active\"href=\"#\" title=\"Grid View\"><span class=\"sg-icon-grid\"></span></a><a class=\"list-view\"href=\"#\" title=\"List View\"><span class=\"sg-icon-list\"></span></a><a class=\"toggle-displayall\"href=\"#\" title=\"Display All\"><span class=\"sg-icon-show-all\"></span></a></div>");
         calendar.append("<div class=\"tab-contents\"></div>");
@@ -440,16 +440,28 @@ $(document).ready(function() {
             var info = $(this).attr("data-desc");
             var cat = $(this).attr("class").split(" ")[1];
             var index = $(this).parent().parent().index(".row:visible") - 1;
+            var itemIndex = $(this).index(".item:visible");
             
-            $(this).parent().parent().find(".arrow").removeClass("arrow");
-            $(this).parent().addClass("arrow");
-            
-            $(currentCalendar + " .detailed-view[data-row="+index+"]").removeClass(lastCat).addClass(cat);
-            $(currentCalendar + " .detailed-view[data-row="+index+"] h3").html(title);
-            $(currentCalendar + " .detailed-view[data-row="+index+"] .info").html(info);
-            $(currentCalendar + " .detailed-view[data-row="+index+"]").slideDown();
-            lastCat = cat;
+            if ($(currentCalendar + " .detailed-view[data-row="+index+"]").is(":visible") && itemIndex === lastIndex ) {
                 
+                $(this).parent().parent().find(".arrow").removeClass("arrow");
+                $(currentCalendar + " .detailed-view[data-row="+index+"] h3").html("");
+                $(currentCalendar + " .detailed-view[data-row="+index+"] .info").html("");
+                $(currentCalendar + " .detailed-view[data-row="+index+"]").slideUp();
+                
+            } else {
+                
+                $(this).parent().parent().find(".arrow").removeClass("arrow");
+                $(this).parent().addClass("arrow");
+                
+                $(currentCalendar + " .detailed-view[data-row="+index+"]").removeClass().addClass("detailed-view " + cat);
+                $(currentCalendar + " .detailed-view[data-row="+index+"] h3").html(title);
+                $(currentCalendar + " .detailed-view[data-row="+index+"] .info").html(info);
+                $(currentCalendar + " .detailed-view[data-row="+index+"]").slideDown();
+                lastIndex = itemIndex;
+                
+            }
+            
         });
         
         $(currentCalendar + " .close-btn").on("click", function() {
@@ -459,7 +471,7 @@ $(document).ready(function() {
             $(currentCalendar + " .detailed-view[data-row="+row+"]").slideUp("slow", function() {
                 
                 $(this).prev().find(".grid.arrow").removeClass("arrow");
-                $(this).removeClass(lastCat);
+                $(this).removeClass().addClass("detailed-view");
                 $(this).find("h3").html("");
                 $(this).find("span.info").html("");
                 
