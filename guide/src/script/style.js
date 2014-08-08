@@ -284,6 +284,7 @@ $(document).ready(function() {
         var calendar = $(currentCalendar);
         var tabContent = "";
         var months = $(currentCalendar + " .tabs li").not("li ul li");
+        
         var lastCat = "";
         
         calendar.append("<div class=\"calendar_view_controls\"><a class=\"grid-view active\"href=\"#\" title=\"Grid View\"><span class=\"sg-icon-grid\"></span></a><a class=\"list-view\"href=\"#\" title=\"List View\"><span class=\"sg-icon-list\"></span></a><a class=\"toggle-displayall\"href=\"#\" title=\"Display All\"><span class=\"sg-icon-show-all\"></span></a></div>");
@@ -315,7 +316,7 @@ $(document).ready(function() {
                     
                 }
                 
-                grid += "</div><div class=\"detailed-view\" data-row=\"" + r + "\"><h3></h3><span class=\"info\"></span></div>";
+                grid += "</div><div class=\"detailed-view\" data-row=\"" + r + "\"><span class=\"close-btn\" title=\"close\" data-row=\"" + r + "\"><span class=\"sg-icon-close\"></span></span><h3></h3><span class=\"info\"></span></div>";
                 
             }
             
@@ -437,15 +438,35 @@ $(document).ready(function() {
         
             var day = $(this).attr("data-id");
             var title = $(this).attr("title");
+            var info = $(this).attr("data-desc");
             var cat = $(this).attr("class").split(" ")[1];
             var index = $(this).parent().parent().index(".row:visible") - 1;
-            var info = $(currentCalendar + " .tabs li:visible .days li[data-day=" + day + "] .info").html();
-
-            $(".detailed-view[data-row="+index+"]").removeClass(lastCat).addClass(cat);
-            $(".detailed-view[data-row="+index+"] h3").html(title);
-            $(".detailed-view[data-row="+index+"] .info").html(info);
-            $(".detailed-view[data-row="+index+"]").slideDown();
+            
+            $(this).parent().parent().find(".arrow").removeClass("arrow");
+            $(this).parent().addClass("arrow");
+            
+            
+            $(currentCalendar + " .detailed-view[data-row="+index+"]").removeClass(lastCat).addClass(cat);
+            $(currentCalendar + " .detailed-view[data-row="+index+"] h3").html(title);
+            $(currentCalendar + " .detailed-view[data-row="+index+"] .info").html(info);
+            $(currentCalendar + " .detailed-view[data-row="+index+"]").slideDown();
             lastCat = cat;
+                
+        });
+        
+        $(currentCalendar + " .close-btn").on("click", function() {
+        
+            var row = $(this).attr("data-row");
+            
+            $(this).prev().find(".grid.arrow").removeClass("arrow");
+            $(currentCalendar + " .detailed-view[data-row="+row+"]").slideUp("slow", function() {
+                
+                $(this).prev().find(".grid.arrow").removeClass("arrow");
+                $(this).removeClass(lastCat);
+                $(this).find("h3").html("");
+                $(this).find("span.info").html("");
+                
+            });
                 
         });
         
@@ -471,8 +492,9 @@ $(document).ready(function() {
             
             $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=\"" + day + "\"]").each(function() {
                 var title = $(this).find("span.title").text();
+                var info = $(this).find("span.info").text();
                 legend = $(this).find("span.title").attr("data-cat");
-                agenda += "<span class=\"item " + legend + "\" title=\"" + title + "\" data-id=\"" + day + "\">" + shorten(title) + "</span>";
+                agenda += "<span class=\"item " + legend + "\" title=\"" + title + "\" data-id=\"" + day + "\" data-desc=\"" + info + "\">" + shorten(title) + "</span>";
             
             });
             

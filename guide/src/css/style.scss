@@ -1550,19 +1550,40 @@ span.with-popover.active {
                 clear: both;
                 
                 .detailed-view {
+                
+                    position: relative;
                     display: none;
                     width: 100%;
                     padding: 0 rem( $gutter ) rem( $gutter );
                     border-top: rem( 6px ) solid transparent;
                     border-bottom: rem( 1px ) solid $table-border-color;
                     color: #fafafa;
-                    @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, $font-color );
+                    background-color: $gray-color;
+                    @include single-text-shadow( $font-color, rem( 1px ), rem(1px), 0 );
                     float: left;
                     clear: both;
                     @include box-sizing( "border-box" );
                     
                     h3 {
                         margin-top: rem( 10px );
+                    }
+                    
+                    .info {
+                        display: block;
+                    }
+                    
+                    .close-btn {
+                        position: absolute;
+                        width: rem( 20px );
+                        height: rem( 20px );
+                        font-size: rem( 20px );
+                        line-height: rem( 20px );
+                        text-align: center;
+                        color: $font-color;
+                        top: 0;
+                        right: rem( 6px );
+                        cursor: pointer;
+                        @include single-text-shadow( $font-color, 0, 0, 0 );
                     }
                     
                 }
@@ -1691,7 +1712,6 @@ span.with-popover.active {
                             background-color: #f7c6c7;
                         }
                         
-                        
                     }
                     
                     .grid:first-child {
@@ -1699,9 +1719,37 @@ span.with-popover.active {
                     }
                     
                     .grid.current {
-                        
                         @include single-box-shadow( #da2a07, 0, 0, 0, rem( 2px ), inset );
-                        
+                    }
+                    
+                    .grid.arrow {
+                        position: relative;
+                    }
+                    
+                    .grid.arrow::before {
+                        position: absolute;
+                        width: 0; 
+                    	height: 0; 
+                    	border-left: rem( 20px ) solid transparent;
+                    	border-right: rem( 20px ) solid transparent;
+                    	border-top: rem( 20px ) solid $table-border-color;
+                    	bottom: rem( -20px );
+                    	left: 35%;
+                    	z-index: 10;
+                    	content: "";
+                    }
+                    
+                    .grid.arrow::after {
+                        position: absolute;
+                        width: 0; 
+                    	height: 0; 
+                    	border-left: rem( 20px ) solid transparent;
+                    	border-right: rem( 20px ) solid transparent;
+                    	border-top: rem( 20px ) solid #fff;
+                    	bottom: rem( -18px );
+                    	left: 35%;
+                    	z-index: 10;
+                    	content: "";
                     }
                     
                     .grid.noday {
