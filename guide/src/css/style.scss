@@ -724,12 +724,119 @@ table {
     } // table thead:first-child
     
     tbody > tr > td {
+    
         padding: rem( 8px );
         vertical-align: top;
         border-top: rem( 1px ) solid $table-border-color;
+        line-height: normal;
+        
+        ul, ol {
+            margin: 0;
+            padding: 0 0 0 rem( 16px );
+            list-style-position: inside;
+            text-indent: rem( -13px );
+            
+            li {
+                margin: 0;
+            }
+            
+        }
+        
     } // table tbody > tr > td
 	
 } // table
+
+table.miminal-padding {
+    thead > tr > th,
+    tbody > tr > td {
+        padding: rem(1px) rem( 3px ) !important;
+    }
+}
+
+table.small-text {
+    thead > tr > th,
+    tbody > tr > td {
+        font-size: rem( 14px ) !important;
+    }
+}
+
+table.vert-top {
+    thead > tr > th,
+    tbody > tr > td {
+        vertical-align: top !important;
+    }
+}
+
+table.vert-bottom {
+    thead > tr > th,
+    tbody > tr > td {
+        vertical-align: bottom !important;
+    }
+}
+
+table.vert-center {
+    thead > tr > th,
+    tbody > tr > td {
+        vertical-align: middle !important;
+    }
+}
+
+table.horz-left {
+    thead > tr > th,
+    tbody > tr > td {
+        text-align: left !important;
+    }
+}
+
+table.horz-center {
+    thead > tr > th,
+    tbody > tr > td {
+        text-align: center !important;
+    }
+}
+
+table.horz-right {
+    thead > tr > th,
+    tbody > tr > td {
+        text-align: right !important;
+    }
+}
+
+table > thead > tr > td.horz-left,
+table > tbody > tr > td.horz-left,
+table > tfoot > tr > td.horz-left {
+	text-align: left;
+}
+
+table > thead > tr > td.horz-center,
+table > tbody > tr > td.horz-center,
+table > tfoot > tr > td.horz-center  {
+	text-align: center;
+}
+
+table > thead > tr > td.horz-right,
+table > tbody > tr > td.horz-right,
+table > tfoot > tr > td.horz-right  {
+	text-align: right;
+}
+
+table > thead > tr > td.vert-top,
+table > tbody > tr > td.vert-top,
+table > tfoot > tr > td.vert-top {
+	vertical-align: top;
+}
+
+table > thead > tr > td.vert-center,
+table > tbody > tr > td.vert-center,
+table > tfoot > tr > td.vert-center {
+	vertical-align: middle;
+}
+
+table > thead > tr > td.vert-bottom,
+table > tbody > tr > td.vert-bottom,
+table > tfoot > tr > td.vert-bottom {
+	vertical-align: bottom;
+}
 
 /* width */
 table.three-fourths {
@@ -901,42 +1008,6 @@ table > thead > tr.danger > th,
 table > tbody > tr.danger > th,
 table > tfoot > tr.danger > th {
   background-color: #f2dede;
-}
-
-table > thead > tr > td.horz-left,
-table > tbody > tr > td.horz-left,
-table > tfoot > tr > td.horz-left {
-	text-align: left;
-}
-
-table > thead > tr > td.horz-center,
-table > tbody > tr > td.horz-center,
-table > tfoot > tr > td.horz-center  {
-	text-align: center;
-}
-
-table > thead > tr > td.horz-right,
-table > tbody > tr > td.horz-right,
-table > tfoot > tr > td.horz-right  {
-	text-align: right;
-}
-
-table > thead > tr > td.vert-top,
-table > tbody > tr > td.vert-top,
-table > tfoot > tr > td.vert-top {
-	vertical-align: top;
-}
-
-table > thead > tr > td.vert-center,
-table > tbody > tr > td.vert-center,
-table > tfoot > tr > td.vert-center {
-	vertical-align: middle;
-}
-
-table > thead > tr > td.vert-bottom,
-table > tbody > tr > td.vert-bottom,
-table > tfoot > tr > td.vert-bottom {
-	vertical-align: bottom;
 }
 
 /* IMAGES

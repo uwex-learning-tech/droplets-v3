@@ -665,7 +665,77 @@ table {
   table tbody > tr > td {
     padding: 0.5rem;
     vertical-align: top;
-    border-top: 0.0625rem solid #727272; }
+    border-top: 0.0625rem solid #727272;
+    line-height: normal; }
+    table tbody > tr > td ul, table tbody > tr > td ol {
+      margin: 0;
+      padding: 0 0 0 1rem;
+      list-style-position: inside;
+      text-indent: -0.8125rem; }
+      table tbody > tr > td ul li, table tbody > tr > td ol li {
+        margin: 0; }
+
+table.miminal-padding thead > tr > th,
+table.miminal-padding tbody > tr > td {
+  padding: 0.0625rem 0.1875rem !important; }
+
+table.small-text thead > tr > th,
+table.small-text tbody > tr > td {
+  font-size: 0.875rem !important; }
+
+table.vert-top thead > tr > th,
+table.vert-top tbody > tr > td {
+  vertical-align: top !important; }
+
+table.vert-bottom thead > tr > th,
+table.vert-bottom tbody > tr > td {
+  vertical-align: bottom !important; }
+
+table.vert-center thead > tr > th,
+table.vert-center tbody > tr > td {
+  vertical-align: middle !important; }
+
+table.horz-left thead > tr > th,
+table.horz-left tbody > tr > td {
+  text-align: left !important; }
+
+table.horz-center thead > tr > th,
+table.horz-center tbody > tr > td {
+  text-align: center !important; }
+
+table.horz-right thead > tr > th,
+table.horz-right tbody > tr > td {
+  text-align: right !important; }
+
+table > thead > tr > td.horz-left,
+table > tbody > tr > td.horz-left,
+table > tfoot > tr > td.horz-left {
+  text-align: left; }
+
+table > thead > tr > td.horz-center,
+table > tbody > tr > td.horz-center,
+table > tfoot > tr > td.horz-center {
+  text-align: center; }
+
+table > thead > tr > td.horz-right,
+table > tbody > tr > td.horz-right,
+table > tfoot > tr > td.horz-right {
+  text-align: right; }
+
+table > thead > tr > td.vert-top,
+table > tbody > tr > td.vert-top,
+table > tfoot > tr > td.vert-top {
+  vertical-align: top; }
+
+table > thead > tr > td.vert-center,
+table > tbody > tr > td.vert-center,
+table > tfoot > tr > td.vert-center {
+  vertical-align: middle; }
+
+table > thead > tr > td.vert-bottom,
+table > tbody > tr > td.vert-bottom,
+table > tfoot > tr > td.vert-bottom {
+  vertical-align: bottom; }
 
 /* width */
 table.three-fourths {
@@ -810,36 +880,6 @@ table > thead > tr.danger > th,
 table > tbody > tr.danger > th,
 table > tfoot > tr.danger > th {
   background-color: #f2dede; }
-
-table > thead > tr > td.horz-left,
-table > tbody > tr > td.horz-left,
-table > tfoot > tr > td.horz-left {
-  text-align: left; }
-
-table > thead > tr > td.horz-center,
-table > tbody > tr > td.horz-center,
-table > tfoot > tr > td.horz-center {
-  text-align: center; }
-
-table > thead > tr > td.horz-right,
-table > tbody > tr > td.horz-right,
-table > tfoot > tr > td.horz-right {
-  text-align: right; }
-
-table > thead > tr > td.vert-top,
-table > tbody > tr > td.vert-top,
-table > tfoot > tr > td.vert-top {
-  vertical-align: top; }
-
-table > thead > tr > td.vert-center,
-table > tbody > tr > td.vert-center,
-table > tfoot > tr > td.vert-center {
-  vertical-align: middle; }
-
-table > thead > tr > td.vert-bottom,
-table > tbody > tr > td.vert-bottom,
-table > tfoot > tr > td.vert-bottom {
-  vertical-align: bottom; }
 
 /* IMAGES
 -----------------------------------------------------------------*/

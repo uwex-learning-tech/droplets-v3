@@ -383,7 +383,7 @@ $(document).ready(function() {
             
         }); // end months loop
         
-        calendar.append("<div class=\"legends\"><p>Legends:</p><ul><li class=\"discussion\">Discussion</li><li class=\"assignment\">Assignment</li><li class=\"quiz\">Quiz</li><li class=\"project\">Project</li><li class=\"exam\">Midterm/Final</li><li class=\"reading\">Readings</li><li class=\"open\">Lesson Opens</li><li class=\"close\">Lesson Closes</li></ul></div>");
+        calendar.append("<div class=\"legends\"><p>Legends:</p><ul><li class=\"discussion\">Discussion</li><li class=\"assignment\">Assignment</li><li class=\"quiz\">Quiz</li><li class=\"project\">Project</li><li class=\"exam\">Midterm/Final</li><li class=\"reading\">Readings</li><li class=\"open\">Opens</li><li class=\"close\">Closes</li></ul></div>");
         
         // tab mouse click
 		$(currentCalendar + " .tabs li").not("li ul li").on("click",function() {
