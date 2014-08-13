@@ -488,10 +488,10 @@ $(document).ready(function() {
             
                 if (firstLoop) {
                     agenda += "<div" + today + "><p><em>" + monthName[month-1] + " " + day + "</em></p>";
-                    agenda += "<p><strong>" + $(this).find("span.title").html() + "</strong><br />" + $(this).find("span.info").html() + "</p>";
+                    agenda += "<p><strong>" + $(this).find("span.title").html() + "</strong><br />" + $(this).find("span.desc").html() + "</p>";
                     firstLoop = false;
                 } else {
-                    agenda += "<p><strong>" + $(this).find("span.title").html() + "</strong><br />" + $(this).find("span.info").html() + "</p>";
+                    agenda += "<p><strong>" + $(this).find("span.title").html() + "</strong><br />" + $(this).find("span.desc").html() + "</p>";
                 }
             
                 if (i === $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=" + day + "]").length) {
