@@ -1854,6 +1854,29 @@ iframe, object {
     display: block;
     padding: 0; }
 
+  /* calendar */
+  .with-tabs.calendar .calendar_view_controls {
+    display: none; }
+  .with-tabs.calendar .tab-contents section .calendar-grid {
+    display: table;
+    width: 100%;
+    float: none;
+    clear: none; }
+    .with-tabs.calendar .tab-contents section .calendar-grid .row {
+      display: table-row;
+      width: 100%;
+      float: none;
+      clear: none; }
+      .with-tabs.calendar .tab-contents section .calendar-grid .row .grid {
+        display: table-cell;
+        width: 14.2857143%;
+        max-width: 128px;
+        height: 128px;
+        float: none;
+        clear: none; }
+        .with-tabs.calendar .tab-contents section .calendar-grid .row .grid .item {
+          font-size: 8pt; }
+
   /* read more */
   .with-readmore {
     overflow: visible !important;
