@@ -285,8 +285,6 @@ $(document).ready(function() {
         var tabContent = "";
         var months = $(currentCalendar + " .tabs li").not("li ul li");
         
-        var lastIndex = -1;
-        
         calendar.append("<div class=\"calendar_view_controls\"><a class=\"grid-view active\"href=\"#\" title=\"Grid View\"><span class=\"sg-icon-grid\"></span></a><a class=\"list-view\"href=\"#\" title=\"List View\"><span class=\"sg-icon-list\"></span></a><a class=\"toggle-displayall\"href=\"#\" title=\"Display All\"><span class=\"sg-icon-show-all\"></span></a></div>");
         calendar.append("<div class=\"tab-contents\"></div>");
         calendar.after("<div class=\"clearfix\"></div>");
@@ -316,7 +314,7 @@ $(document).ready(function() {
                     
                 }
                 
-                grid += "</div><div class=\"detailed-view\" data-row=\"" + r + "\"><span class=\"close-btn\" title=\"close\" data-row=\"" + r + "\"><span class=\"sg-icon-close\"></span></span><h3></h3><span class=\"info\"></span></div>";
+                grid += "</div><div class=\"detailed-view\" data-row=\"" + r + "\"><span class=\"close-btn\" title=\"close\" data-row=\"" + r + "\"><span class=\"sg-icon-close\"></span></span><h3></h3><span class=\"desc\"></span></div>";
                 
             }
             
@@ -383,8 +381,6 @@ $(document).ready(function() {
             
         }); // end months loop
         
-        calendar.append("<div class=\"legends\"><p>Legends:</p><ul><li class=\"discussion\">Discussion</li><li class=\"assignment\">Assignment</li><li class=\"quiz\">Quiz</li><li class=\"project\">Project</li><li class=\"exam\">Midterm/Final</li><li class=\"reading\">Readings</li><li class=\"open\">Opens</li><li class=\"close\">Closes</li></ul></div>");
-        
         // tab mouse click
 		$(currentCalendar + " .tabs li").not("li ul li").on("click",function() {
 			
@@ -392,6 +388,10 @@ $(document).ready(function() {
 			    var month = Number($(this).attr("data-month"));
     			toggleCalendarDisplayAll(currentCalendar, month);
 			}
+			
+			$(currentCalendar + " .detailed-view").hide();
+            $(currentCalendar + " .grid").removeClass("arrow");
+			
 			return false;
 			
 		});
@@ -434,36 +434,10 @@ $(document).ready(function() {
             
         });
         
-        $(currentCalendar + " .item").on("click", function() {
+        // listen to item click event
+        $(currentCalendar + " .item").on("click", {obj: this, target: currentCalendar}, openDetails);
         
-            var title = $(this).attr("title");
-            var info = $(this).attr("data-desc");
-            var cat = $(this).attr("class").split(" ")[1];
-            var index = $(this).parent().parent().index(".row:visible") - 1;
-            var itemIndex = $(this).index(".item:visible");
-            
-            if ($(currentCalendar + " .detailed-view[data-row="+index+"]").is(":visible") && itemIndex === lastIndex ) {
-                
-                $(this).parent().parent().find(".arrow").removeClass("arrow");
-                $(currentCalendar + " .detailed-view[data-row="+index+"] h3").html("");
-                $(currentCalendar + " .detailed-view[data-row="+index+"] .info").html("");
-                $(currentCalendar + " .detailed-view[data-row="+index+"]").slideUp();
-                
-            } else {
-                
-                $(this).parent().parent().find(".arrow").removeClass("arrow");
-                $(this).parent().addClass("arrow");
-                
-                $(currentCalendar + " .detailed-view[data-row="+index+"]").removeClass().addClass("detailed-view " + cat);
-                $(currentCalendar + " .detailed-view[data-row="+index+"] h3").html(title);
-                $(currentCalendar + " .detailed-view[data-row="+index+"] .info").html(info);
-                $(currentCalendar + " .detailed-view[data-row="+index+"]").slideDown();
-                lastIndex = itemIndex;
-                
-            }
-            
-        });
-        
+        // listen to item close event
         $(currentCalendar + " .close-btn").on("click", function() {
         
             var row = $(this).attr("data-row");
@@ -474,6 +448,7 @@ $(document).ready(function() {
                 $(this).removeClass().addClass("detailed-view");
                 $(this).find("h3").html("");
                 $(this).find("span.info").html("");
+                $(this).prev().find(".item").attr("data-open", "");
                 
             });
                 
@@ -501,9 +476,9 @@ $(document).ready(function() {
             
             $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=\"" + day + "\"]").each(function() {
                 var title = $(this).find("span.title").text();
-                var info = $(this).find("span.info").text();
+                var info = $(this).find("span.desc").html();
                 legend = $(this).find("span.title").attr("data-cat");
-                agenda += "<span class=\"item " + legend + "\" title=\"" + title + "\" data-id=\"" + day + "\" data-desc=\"" + info + "\">" + shorten(title) + "</span>";
+                agenda += "<span class=\"item " + legend + "\" title=\"" + title + "\" data-id=\"" + day + "\" data-desc=\"" + escapeHtml(info) + "\">" + shorten(title) + "</span>";
             
             });
             
@@ -562,6 +537,9 @@ $(document).ready(function() {
                 $(this).toggleClass("active");
             });
             
+            $(calendar + " .item").off("click");
+            $(calendar + " .item").css("cursor","default");
+            
             displayAll = true;
             
         } else {
@@ -577,13 +555,59 @@ $(document).ready(function() {
             $(calendar + " .tabs li[data-month=" + (month) + "]").addClass("active");
             $(calendar + " .tab-contents section[data-month=" + (month) + "]").addClass("active");
             
+            $(calendar + " .item").on("click", {target: calendar}, openDetails);
+            $(calendar + " .item").css("cursor","pointer");
+            
             displayAll = false;
             
         }
-        
+
+        $(calendar + " .detailed-view").hide();
+        $(calendar + " .grid").removeClass("arrow");
         $(calendar + " .toggle-displayall").toggleClass("active");
         
     }
+    
+    function openDetails(event) {
+            
+        var title = $(event.currentTarget).attr("title");
+        var info = $(event.currentTarget).attr("data-desc");
+        var cat = $(event.currentTarget).attr("class").split(" ")[1];
+        var index = $(event.currentTarget).parent().parent().index(".row:visible") - 1;
+        
+        if ($(event.currentTarget).attr("data-open") === "true" ) {
+            
+            $(event.data.target + " .detailed-view[data-row="+index+"]").slideUp(function() {
+                $(event.currentTarget).parent().parent().find(".arrow").removeClass("arrow");
+                $(event.data.target + " .detailed-view[data-row="+index+"] h3").html("");
+                $(event.data.target + " .detailed-view[data-row="+index+"] .desc").html("");
+            });
+            $(event.currentTarget).attr("data-open", "");
+            
+        } else {
+            
+            $(event.currentTarget).parent().parent().find(".arrow").removeClass("arrow");
+            $(event.currentTarget).parent().addClass("arrow");
+            
+            $(event.data.target + " .detailed-view[data-row="+index+"]").removeClass().addClass("detailed-view " + cat);
+            $(event.data.target + " .detailed-view[data-row="+index+"] h3").html(title);
+            $(event.data.target + " .detailed-view[data-row="+index+"] .desc").html(info);
+            $(event.data.target + " .detailed-view[data-row="+index+"]").slideDown();
+            $(event.data.target + " .detailed-view[data-row="+index+"]").prev().find(".item").attr("data-open", "");
+            $(event.currentTarget).attr("data-open", "true");
+            
+        }
+        
+    }
+    
+    function escapeHtml(string) {
+        return string
+             .replace(/&/g, "&amp;")
+             .replace(/</g, "&lt;")
+             .replace(/>/g, "&gt;")
+             .replace(/"/g, "&quot;")
+             .replace(/'/g, "&#039;");
+     }
 	
 	/* ACCORDION FUNCTION
     -----------------------------------------------------------------*/

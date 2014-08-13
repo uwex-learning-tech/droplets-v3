@@ -1613,9 +1613,9 @@ span.with-popover.active {
             .calendar-grid {
                 
                 width: 100%;
-                border-top: rem( 1px ) solid $table-border-color;
-                border-right: rem( 1px ) solid $table-border-color;
-                border-left: rem( 1px ) solid $table-border-color;
+                border-top: rem( 1px ) solid #e3e3e3;
+                border-right: rem( 1px ) solid #e3e3e3;
+                border-left: rem( 1px ) solid #e3e3e3;
                 @include box-sizing( "border-box" );
                 float: left;
                 clear: both;
@@ -1626,20 +1626,19 @@ span.with-popover.active {
                     display: none;
                     width: 100%;
                     padding: 0 rem( $gutter ) rem( $gutter );
-                    border-top: rem( 6px ) solid transparent;
-                    border-bottom: rem( 1px ) solid $table-border-color;
-                    color: #fafafa;
-                    background-color: $gray-color;
-                    @include single-text-shadow( $font-color, rem( 1px ), rem(1px), 0 );
+                    background-color: #eeeeee;
+                	border-color: $gray-color;
+                	border-left: rem( 8px ) solid #7e7e7e;
+                	border-right: rem( 5px ) solid #b2b2b2;
                     float: left;
                     clear: both;
                     @include box-sizing( "border-box" );
                     
                     h3 {
-                        margin-top: rem( 10px );
+                        margin-top: rem( $gutter );
                     }
                     
-                    .info {
+                    .desc {
                         display: block;
                     }
                     
@@ -1651,50 +1650,44 @@ span.with-popover.active {
                         line-height: rem( 20px );
                         text-align: center;
                         color: $font-color;
-                        top: 0;
-                        right: rem( 6px );
+                        top: rem( 6px );
+                        right: rem( 8px );
                         cursor: pointer;
                         @include single-text-shadow( $font-color, 0, 0, 0 );
                     }
                     
                 }
                 
-                .assignment {
-                    background-color: #0052cc;
-                }
-                                
-                .discussion {
-                    background-color: #207de5;
-                }
-                
-                .quiz {
-                    background-color: #fbca04;
+                .info, .blue {
+                    background-color: #c7def8;
+                    border-left-color: $info-color;
+                	border-right-color: #d0e3f0;
+                	border-top-color: $info-color;
+                	border-bottom-color: #d0e3f0;
                 }
                 
-                .project {
-                    background-color: #eb6420;
-                }
-                
-                .exam {
-                    background-color: #e11d21;
-                }
-                
-                .reading {
-                    color: $font-color;
-                    @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, #fafafa );
-                    background-color: #bfd4f2;
-                }
-                
-                .open {
-                    color: $font-color;
-                    @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, #fafafa );
+                .success, .green {
                     background-color: #bfe5bf;
+                    border-left-color: $success-color;
+                	border-right-color: #c0f3bd;
+                	border-top-color: $success-color;
+                	border-bottom-color: #c0f3bd;
                 }
                 
-                .close {
-                    color: $font-color;
-                    @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, #fafafa );
+                .warning, .yellow {
+                    background-color: #fef2c0;
+                    border-left-color: $warning-color;
+                	border-right-color: #f1e7bc;
+                	border-top-color: $warning-color;
+                	border-bottom-color: #f1e7bc;
+                }
+                
+                .danger, .red {
                     background-color: #f7c6c7;
+                    border-left-color: $danger-color;
+                	border-right-color: #dfb5b4;
+                	border-top-color: $danger-color;
+                	border-bottom-color: #dfb5b4;
                 }
                 
                 .row {
@@ -1710,8 +1703,8 @@ span.with-popover.active {
                         width: rem(129.66px);
                         height: rem( 130px );
                         padding: rem( 2px ) rem( 3px ) 0;
-                        border-left: rem( 1px ) solid $table-border-color;
-                        border-bottom: rem( 1px ) solid $table-border-color;
+                        border-left: rem( 1px ) solid #e3e3e3;
+                        border-bottom: rem( 1px ) solid #e3e3e3;
                         float: left;
                         @include box-sizing( "border-box" );
                         
@@ -1725,10 +1718,9 @@ span.with-popover.active {
                         
                         .day {
                             display: block;
-                            width: rem( 20px );
-                            height: rem( 20px );
+                            color: #5e5e5e;
                             line-height: normal;
-                            text-align: center;
+                            text-align: lwdt;
                         }
                         
                         .item {
@@ -1736,52 +1728,30 @@ span.with-popover.active {
                             word-wrap: break-word;
                             font-size: rem( 12px );
                             line-height: rem( 14px );
-                            color: #fafafa;
+                            color: $font-color;
                             padding: rem( 2px ) rem( 3px );
-                            background-color: $gray-color;
+                            background-color: #eee;
                             margin-bottom: rem( 2px );
-                            @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, $font-color );
                             @include border-radius( rem( 3px ) );
                             cursor: pointer;
                         }
                         
-                        .item.assignment {
-                            background-color: #0052cc;
+                        .info, .blue {
+                            background-color: #c7def8;
                         }
                         
-                        .item.discussion {
-                            background-color: #207de5;
-                        }
-                        
-                        .item.quiz {
-                            background-color: #fbca04;
-                        }
-                        
-                        .item.project {
-                            background-color: #eb6420;
-                        }
-                        
-                        .item.exam {
-                            background-color: #e11d21;
-                        }
-                        
-                        .item.reading {
-                            color: $font-color;
-                            @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, #fafafa );
-                            background-color: #bfd4f2;
-                        }
-                        
-                        .item.open {
-                            color: $font-color;
-                            @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, #fafafa );
+                        .success, .green {
                             background-color: #bfe5bf;
                         }
                         
-                        .item.close {
-                            color: $font-color;
-                            @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, #fafafa );
+                        .warning, .yellow {
+                            background-color: #fef2c0;
+                        }
+                        
+                        .danger, .red {
                             background-color: #f7c6c7;
                         }
+                        
                         
                     }
                     
@@ -1790,7 +1760,13 @@ span.with-popover.active {
                     }
                     
                     .grid.current {
-                        @include single-box-shadow( #da2a07, 0, 0, 0, rem( 2px ), inset );
+                        
+                        @include single-box-shadow( #da2a07, 0, 0, 0, rem( 1px ), inset );
+                        
+                        .day {
+                            color: $font-color;
+                        }
+                    
                     }
                     
                     .grid.arrow {
@@ -1803,7 +1779,7 @@ span.with-popover.active {
                     	height: 0; 
                     	border-left: rem( 20px ) solid transparent;
                     	border-right: rem( 20px ) solid transparent;
-                    	border-top: rem( 20px ) solid $table-border-color;
+                    	border-top: rem( 20px ) solid #e3e3e3;
                     	bottom: rem( -20px );
                     	left: 35%;
                     	z-index: 10;
@@ -1824,7 +1800,7 @@ span.with-popover.active {
                     }
                     
                     .grid.noday {
-                        background-color: $table-border-color;
+                        background-color: $border-color;
                     }
                     
                 }
@@ -1832,12 +1808,13 @@ span.with-popover.active {
                 .row.heading {
                     
                     height: auto;
+                    border-bottom: 2px solid #a3a3a3;
                     
                     .grid {
                         height: auto;
                         font-weight: bold;
                         padding: rem( 2px ) rem( 5px ) rem( 3px );
-                        background-color: #e9e9e9;
+                        background-color: #dcdcdc;
                     }
                     
                 }
@@ -1874,75 +1851,6 @@ span.with-popover.active {
         }
         
     } // .tab-content
-    
-    .legends {
-    
-        float: left;
-        clear: both;
-        
-        ul {
-            
-            padding: 0;
-            list-style: none;
-            
-            li {
-                display: inline-block;
-                margin-right: rem( 8px );
-                margin-bottom: 0;
-                padding: rem( 3px ) rem( 5px ) rem( 4px );
-                min-width: rem( 96px );
-                font-size: rem( 14px );
-                color: #fafafa;
-                line-height: rem( 14px );
-                @include single-text-shadow( rem( 1px ), rem( 1px ), 0, 0, $font-color );
-                @include border-radius( rem( 3px ) );
-            }
-            
-            .assignment {
-                background-color: #0052cc;
-            }
-                            
-            .discussion {
-                background-color: #207de5;
-            }
-            
-            .quiz {
-                background-color: #fbca04;
-            }
-            
-            .project {
-                background-color: #eb6420;
-            }
-            
-            .exam {
-                background-color: #e11d21;
-            }
-            
-            .reading {
-                color: $font-color;
-                @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, #fafafa );
-                background-color: #bfd4f2;
-            }
-            
-            .open {
-                color: $font-color;
-                @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, #fafafa );
-                background-color: #bfe5bf;
-            }
-            
-            .close {
-                color: $font-color;
-                @include single-text-shadow( rem( 1px ), rem(1px), 0, 0, #fafafa );
-                background-color: #f7c6c7;
-            }
-            
-            li:last-child {
-                margin-right: 0;
-            }
-            
-        }
-        
-    } // .legends
     
 }
 
