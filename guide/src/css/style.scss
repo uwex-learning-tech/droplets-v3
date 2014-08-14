@@ -3,8 +3,6 @@ $default-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-size: 16px;
 $font-color: #333;
 $border-color: #e9e9e9;
-$padding-top: 8px;
-$padding-bottom: 8px;
 $gutter: 16px;
 $heading-font-weight: 500;
 $light-font-weight: 300;
@@ -1690,6 +1688,14 @@ span.with-popover.active {
                 	border-bottom-color: #dfb5b4;
                 }
                 
+                .holiday, .purple {
+                    background-color: #d4c5f9;
+                    border-left-color: #a288e3;
+                	border-right-color: #ac9bd6;
+                	border-top-color: #5319e7;
+                	border-bottom-color: #d4c5f9;
+                }
+                
                 .row {
                     
                     width: 100%;
@@ -1750,6 +1756,10 @@ span.with-popover.active {
                         
                         .danger, .red {
                             background-color: #f7c6c7;
+                        }
+                        
+                        .holiday, .purple {
+                            background-color: #d4c5f9;
                         }
                         
                         

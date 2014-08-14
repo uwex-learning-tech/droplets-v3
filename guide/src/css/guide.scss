@@ -374,6 +374,23 @@ body {
             padding: 0 25px;
     	} // .guide_container .guide_content .guide-log
     	
+    	pre {
+        	white-space: pre-line;
+        	background-color: #fff9dc;
+        	padding: 16px;
+        	border-radius: 5px;
+        	border: 1px solid #ffeb84;
+        	font-size: 14px;
+        	color: #1f9914;
+        	font-weight: bold;
+        	
+        	.old {
+            	color: #888;
+            	font-weight: normal;
+        	}
+        	
+    	}
+    	
     } // .guide_container .guide_content
 	
 } // .guide_container

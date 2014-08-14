@@ -243,6 +243,18 @@ body {
     .guide_container .guide_content .guide-log {
       font-size: 75%;
       padding: 0 25px; }
+    .guide_container .guide_content pre {
+      white-space: pre-line;
+      background-color: #fff9dc;
+      padding: 16px;
+      border-radius: 5px;
+      border: 1px solid #ffeb84;
+      font-size: 14px;
+      color: #1f9914;
+      font-weight: bold; }
+      .guide_container .guide_content pre .old {
+        color: #888;
+        font-weight: normal; }
 
 /* CODE AND RESULT CONTAINER
 -----------------------------------------------------------------*/

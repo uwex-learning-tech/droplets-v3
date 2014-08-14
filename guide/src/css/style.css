@@ -1409,6 +1409,12 @@ span.with-popover.active {
           border-right-color: #dfb5b4;
           border-top-color: #cc4745;
           border-bottom-color: #dfb5b4; }
+        .with-tabs.calendar .tab-contents section .calendar-grid .holiday, .with-tabs.calendar .tab-contents section .calendar-grid .purple {
+          background-color: #d4c5f9;
+          border-left-color: #a288e3;
+          border-right-color: #ac9bd6;
+          border-top-color: #5319e7;
+          border-bottom-color: #d4c5f9; }
         .with-tabs.calendar .tab-contents section .calendar-grid .row {
           width: 100%;
           height: 8.125rem;
@@ -1455,6 +1461,8 @@ span.with-popover.active {
               background-color: #fef2c0; }
             .with-tabs.calendar .tab-contents section .calendar-grid .row .grid .danger, .with-tabs.calendar .tab-contents section .calendar-grid .row .grid .red {
               background-color: #f7c6c7; }
+            .with-tabs.calendar .tab-contents section .calendar-grid .row .grid .holiday, .with-tabs.calendar .tab-contents section .calendar-grid .row .grid .purple {
+              background-color: #d4c5f9; }
           .with-tabs.calendar .tab-contents section .calendar-grid .row .grid:first-child {
             border-left: none; }
           .with-tabs.calendar .tab-contents section .calendar-grid .row .grid.current {
