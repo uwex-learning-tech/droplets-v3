@@ -2,7 +2,7 @@
 **_version 1.3.0_**  
 *_(formerly known as idstyleguide)_*
 
-A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
+A HTML, CSS, and JavaScript framework for designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
 
 ### How To Use
 1. To start, download the [framework](https://github.com/oel-mediateam/idstyleguide/archive/master.zip) (ZIP).
