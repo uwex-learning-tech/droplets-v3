@@ -1,5 +1,6 @@
-#idstyleguide
-**_version 1.2.0_**
+#DROPLETS
+**_version 1.3.0_**  
+*_(formerly known as idstyleguide)_*
 
 A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
 
@@ -39,3 +40,10 @@ Knowledges of SASS and Compass are essential to write the CSS for this framework
 If any bugs/glitches are found in this framework, please report them under the "**[Issues](https://github.com/oel-mediateam/idstyleguide/issues)**" page on GitHub. When reporting a bug, please write the report as detailed and specifically as possible. Note the steps to reproduce the bug and include screen captures if possible.
 
 For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/idstyleguide/issues)**" page on GitHub.
+
+### What's new in 1.3.0
+* Added two new classes for table: `minimal-padding` and `small-text`
+* `vert-top`, `vert-center`, `vert-bottom`, `horz-left`, `horz-center`, and `horz-right` classes can now be applied to the whole table rather than individual cells or `td` elements.
+* Read More feature has a new look
+* [Calendar](https://mediastreamer.doit.wisc.edu/uwli-ltc/media/documentation/idstyleguide/calendar.html)
+* Minor bug fixes
