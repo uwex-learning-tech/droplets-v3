@@ -244,7 +244,7 @@ body {
       font-size: 75%;
       padding: 0 25px; }
     .guide_container .guide_content pre {
-      white-space: pre-line;
+      white-space: pre-wrap;
       background-color: #fff9dc;
       padding: 16px;
       border-radius: 5px;
