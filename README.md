@@ -14,7 +14,7 @@ A HTML, CSS, and JavaScript framework for designers at University of Wisconsin-E
 ```
 <script src="path_to_your_lms_file_directory/style.js" type="text/javascript"></script>
 ```
-**Note:** This framework is specifically developed for instructional designers use at UW-EX CEOEL. Some setups or usages may not be optimal or preferable for your organization. In addition, this framework is built to accommodate the LMS (Desire2Learn) that is being used at UW-EX CEOEL. However, you are most welcome to download or fork this repository and modified it to your organization's needs.
+**Note:** This framework is specifically developed for designers use at UW-EX CEOEL. Some setups or usages may not be optimal or preferable for your organization. In addition, this framework is somewhat built to accommodate the LMS (Desire2Learn) that is being used at UW-EX CEOEL. However, you are most welcome to download or fork this repository and modified it to your organization's needs.
 
 ### Development Requirements
 * HTML5
@@ -25,7 +25,7 @@ A HTML, CSS, and JavaScript framework for designers at University of Wisconsin-E
 
 Knowledges of SASS and Compass are essential to write the CSS for this framework. The CSS file is created/compiled and minified by SASS, a CSS preprocessor.
 
-**Note:** [CodeKit](https://incident57.com/codekit/) is highly recommended for the development process.
+**Note:** [CodeKit](https://incident57.com/codekit/) is highly recommended for Mac users during the development process.
 
 ### Minimum Supported Web Browsers
 * Internet Explorer 9+
