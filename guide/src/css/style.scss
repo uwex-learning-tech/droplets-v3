@@ -1471,6 +1471,7 @@ span.with-popover.active {
 .with-tabs.calendar {
     
     position: relative;
+    width: 100%;
     float: left;
     clear: both;
     
@@ -1588,12 +1589,14 @@ span.with-popover.active {
     
     .tab-contents {
     
+        width: 100%;
         border-bottom: none;
         float: left;
         clear: both;
         
         section {
-        
+            
+            width: 100%;
             page-break-inside: avoid;
             padding: 0;
             float: left;

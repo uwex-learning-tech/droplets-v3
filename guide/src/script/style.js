@@ -67,7 +67,7 @@ $(document).ready(function() {
 		}
 		
 		if ($(".with-accordion").length || $(".with-tabs").length || $(".with-readmore").length) {
-		
+		    
 			if (child) {
 			
 				iframe.css("height", calIframeHeight() + "px");
@@ -333,7 +333,13 @@ $(document).ready(function() {
                             
                                 count++;
                                 $(currentCalendar + " .calendar-grid:eq(" + i + ") .row:eq(" + w + ") .grid:eq(" + d + ")").append( "<span class=\"day\">" + count + "</span>" + getAgenda(currentCalendar, month, count, true) );
-                                $(currentCalendar + " .calendar-list-view:eq(" + i + ")").append( getAgenda(currentCalendar, month, count) );
+                                
+                                if ( $(currentCalendar + " .tabs li[data-month=\""+month+"\"] ul").length === 0 ) {
+                                    $(currentCalendar + " .calendar-list-view:eq(" + i + ")").html( "<p>No agendas for this month!</p>" );
+                                } else {
+                                    $(currentCalendar + " .calendar-list-view:eq(" + i + ")").append( getAgenda(currentCalendar, month, count) );
+                                }
+                                
                                 
                                 
                             } else {
@@ -410,11 +416,17 @@ $(document).ready(function() {
             $(currentCalendar + " .calendar-grid").hide();
             $(currentCalendar + " .tab-contents h2").addClass("list-view");
             $(currentCalendar + " .calendar-list-view").show();
-            $(currentCalendar + " .legends").hide();
             
             // switch button state
             $(currentCalendar + " .grid-view").removeClass("active");
             $(this).addClass("active");
+            
+            if (child) {
+							
+				iframe.css("height", calIframeHeight() + "px");
+				
+			}
+            
             return false;
             
         });
@@ -425,11 +437,18 @@ $(document).ready(function() {
             $(currentCalendar + " .tab-contents h2").removeClass("list-view");
             $(currentCalendar + " .calendar-list-view").hide();
             $(currentCalendar + " .calendar-grid").show();
-            $(currentCalendar + " .legends").show();
             
             // switch button state
             $(currentCalendar + " .list-view").removeClass("active");
             $(this).addClass("active");
+            
+            if (child) {
+							
+				iframe.css("height", calIframeHeight() + "px");
+				
+			}
+            
+            
             return false;
             
         });
@@ -472,20 +491,20 @@ $(document).ready(function() {
         
         if (titleOnly) {
             
-            var legend = "";
+            var cat = "";
             
             $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=\"" + day + "\"]").each(function() {
                 var title = $(this).find("span.title").text();
                 var info = $(this).find("span.desc").html();
-                legend = $(this).find("span.title").attr("data-cat");
-                agenda += "<span class=\"item " + legend + "\" title=\"" + title + "\" data-id=\"" + day + "\" data-desc=\"" + escapeHtml(info) + "\">" + shorten(title) + "</span>";
+                cat = $(this).find("span.title").attr("data-cat");
+                agenda += "<span class=\"item " + cat + "\" title=\"" + title + "\" data-id=\"" + day + "\" data-desc=\"" + escapeHtml(info) + "\">" + shorten(title) + "</span>";
             
             });
             
         } else {
             
             $(calendar + " .tabs li[data-month=\""+month+"\"] .days li[data-day=" + day + "]").each(function(i) {
-            
+                
                 if (firstLoop) {
                     agenda += "<div" + today + "><p><em>" + monthName[month-1] + " " + day + "</em></p>";
                     agenda += "<p><strong>" + $(this).find("span.title").html() + "</strong><br />" + $(this).find("span.desc").html() + "</p>";
@@ -566,6 +585,14 @@ $(document).ready(function() {
         $(calendar + " .grid").removeClass("arrow");
         $(calendar + " .toggle-displayall").toggleClass("active");
         
+        if (child) {
+							
+			iframe.css("height", calIframeHeight() + "px");
+			
+		}
+		
+		return false;
+        
     }
     
     function openDetails(event) {
@@ -601,12 +628,11 @@ $(document).ready(function() {
     }
     
     function escapeHtml(string) {
-        return string
-             .replace(/&/g, "&amp;")
-             .replace(/</g, "&lt;")
-             .replace(/>/g, "&gt;")
-             .replace(/"/g, "&quot;")
-             .replace(/'/g, "&#039;");
+        if (string === undefined || string === "") {
+            return "";
+        }
+        var escaped = string.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        return escaped;
      }
 	
 	/* ACCORDION FUNCTION
@@ -986,19 +1012,8 @@ function getParameterByName(url,name) {
 }
 
 function calIframeHeight() {
-
-	var pageContainer = $(document).find("div.page-container");
-	var oriHeight = 0;
 	
-	pageContainer.children().each(function() {
-	
-		oriHeight += $(this).outerHeight(true);
-		
-	});
-	
-	oriHeight += $(document).find("footer").outerHeight(true);
-	
-	return oriHeight;
+	return $(document).find("div.page-container").outerHeight(true) + $(document).find("footer").outerHeight(true) + 16;
 	
 }
 /* jshint ignore:end */
