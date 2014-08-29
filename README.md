@@ -48,7 +48,7 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 * Fixed calendar not displaying/highlighting current day of the month
 * Nested unordered list bullet is now a circle rather than a disc
 
-### What's new in 1.3.0
+#### What's new in 1.3.0
 * Added two new classes for table: `minimal-padding` and `small-text`
 * `vert-top`, `vert-center`, `vert-bottom`, `horz-left`, `horz-center`, and `horz-right` classes can now be applied to the whole table rather than individual cells or `td` elements.
 * Read More feature has a new look
