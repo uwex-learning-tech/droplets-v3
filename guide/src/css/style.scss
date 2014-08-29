@@ -52,7 +52,7 @@ body {
 header {
 
 	padding: rem( 16px ) 0 rem( 8px );
-	margin: 0 0 rem( $gutter );
+	margin: 0 0 rem( 26px );
 	border-bottom: rem( 1px ) solid #bfbfbf;
 	@include box-sizing( "border-box" );
 	
@@ -61,6 +61,7 @@ header {
     	margin: 0;
         font-size: rem( 30px );
         font-weight: $heading-font-weight;
+        line-height: rem( 34px );
         
         [class^="icon-"] {
             display: inline-block;
@@ -75,6 +76,7 @@ header {
         small {
             font-size: rem( 22px );
             font-weight: normal;
+            line-height: normal;
             color: #4c4c4c;
         }
         
@@ -1074,7 +1076,7 @@ img.right {
 .page-container {
 
 	width: rem( 910px );
-	min-height: rem( 580px );
+	/* min-height: rem( 580px ); */
 	margin: 0;
 	background-color: #fff;
 	padding: 0 rem( 15px ) rem( 15px );
