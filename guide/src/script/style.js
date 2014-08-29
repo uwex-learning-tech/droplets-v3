@@ -368,22 +368,24 @@ $(document).ready(function() {
 
             } // end weeks loop
             
+            // at the end of the last loop, determine which calendar to display on load
             if (i === months.length - 1) {
                 
-                if (year === currentYear && $(currentCalendar + " .tabs li[data-month=" + (currentMonth + 1) + "]").length > 0) {
+                var calYear = $(currentCalendar + " .tabs li[data-month=" + (currentMonth + 1) + "]").attr("data-year");
+                calYear = ( calYear === undefined || calYear === "" ) ? currentYear : calYear;
+                
+                if (calYear === currentYear && $(currentCalendar + " .tabs li[data-month=" + (currentMonth + 1) + "]").length) {
                     
                     $(currentCalendar + " .tabs li[data-month=" + (currentMonth + 1) + "]").addClass("active");
                     $(currentCalendar + " .tab-contents section[data-month=" + (currentMonth + 1) + "]").addClass("active");
                     
                     $($(currentCalendar + " .tab-contents section[data-month=" + (currentMonth + 1) + "] .calendar-grid .row .grid").not(".row.heading .grid").not(".grid.noday").get(currentDate - 1)).addClass("current");
-                            
                     
                 } else {
-                
                     $(currentCalendar + " .tabs li:first-child").addClass("active");
                     $(currentCalendar + " .tab-contents section:first-child").addClass("active");
-                    
                 }
+                
             }
             
         }); // end months loop
