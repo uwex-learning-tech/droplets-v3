@@ -218,7 +218,7 @@ ul, ol {
     	
     	ul, ol {
         	
-        	margin-top: rem( 10px );
+        	margin: rem( 8px ) 0;
         	
         	li {
             	margin-bottom: rem( 5px );
@@ -227,13 +227,9 @@ ul, ol {
     	}
     	
     	ul {
-        	list-style: disc;
+        	list-style: circle;
     	}
     	
-	}
-	
-    ul {
-    	list-style: disc;
 	}
 	
 }
