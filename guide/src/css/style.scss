@@ -1075,28 +1075,12 @@ img.right {
 -----------------------------------------------------------------*/
 .page-container {
 
-	width: rem( 910px );
-	/* min-height: rem( 580px ); */
+	width: rem( 940px );
+	min-height: rem( 520px );
 	margin: 0;
 	background-color: #fff;
 	padding: 0 rem( 15px ) rem( 15px );
-	
-	/*
-footer {
-	
-    	margin: rem( 30px ) 0 0;
-    	color: #b4b4b4;
-    	
-    	p {
-        	margin: 0;
-            line-height: 0;
-            padding: 30px 15px 15px;
-            min-height: 15px;
-            background-color: #FAFAFA;
-    	}
-    	
-	}
-*/
+	@include box-sizing( "border-box" );
 	
 }
 

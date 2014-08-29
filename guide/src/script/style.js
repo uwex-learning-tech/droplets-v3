@@ -12,6 +12,7 @@ $(document).ready(function() {
 	if ( parent === top ) {
 	
 		iframe = $( parent.document ).find( "div#ContentView" ).find( "iframe" ); // dependent on parent iFrame
+		iframe.attr( "scrolling", "no" );
 		iframe.attr( "allowfullscreen", "" );
 		iframe.attr( "webkitallowfullscreen", "" );
 		iframe.attr( "mozallowfullscreen", "" );
@@ -670,7 +671,9 @@ $(document).ready(function() {
 							
 							if (child) {
 							
-            					iframe.css("height", calIframeHeight() + "px");
+            					iframe.animate({
+                					height: calIframeHeight() + "px"
+            					}, "fast");
             					
             				}
 							
@@ -695,7 +698,9 @@ $(document).ready(function() {
 							
 							if (child) {
 							
-            					iframe.css("height", calIframeHeight() + "px");
+            					iframe.animate({
+                					height: calIframeHeight() + "px"
+            					}, "fast");
             					
             				}
 							
@@ -747,7 +752,9 @@ $(document).ready(function() {
     								
     								if (child) {
 								
-                    					iframe.css("height", calIframeHeight() + "px");
+                    					iframe.animate({
+                        					height: calIframeHeight() + "px"
+                    					}, "fast");
                     					
                     				}
     								
@@ -767,7 +774,9 @@ $(document).ready(function() {
 						
 						if (child) {
 								
-            				iframe.css("height", calIframeHeight() + "px");
+            				iframe.animate({
+            					height: calIframeHeight() + "px"
+        					}, "fast");
             				
             			}
 						
