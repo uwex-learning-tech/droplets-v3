@@ -1,5 +1,5 @@
 #DROPLETS
-**_version 1.3.0_**  
+**_version 1.3.1_**  
 *_(formerly known as idstyleguide)_*
 
 A HTML, CSS, and JavaScript framework for designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
@@ -40,6 +40,13 @@ Knowledges of SASS and Compass are essential to write the CSS for this framework
 If any bugs/glitches are found in this framework, please report them under the "**[Issues](https://github.com/oel-mediateam/idstyleguide/issues)**" page on GitHub. When reporting a bug, please write the report as detailed and specifically as possible. Note the steps to reproduce the bug and include screen captures if possible.
 
 For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/idstyleguide/issues)**" page on GitHub.
+
+### What's new in 1.3.1
+* Fixed page header line height
+* Added more spacing after the page header
+* Fixed accordion's auto-height calculation in an iFrame
+* Fixed calendar not displaying/highlighting current day of the month
+* Nested unordered list bullet is now a circle rather than a disc
 
 ### What's new in 1.3.0
 * Added two new classes for table: `minimal-padding` and `small-text`

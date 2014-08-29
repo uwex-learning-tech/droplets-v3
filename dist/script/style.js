@@ -1,5 +1,5 @@
 /*
- * DROPLET Framework jQuery Core Script v 1.3.0
+ * DROPLET Framework jQuery Core Script v 1.3.1
  * Author: Ethan Lin
  * Organization: University of Wisconsin-Extension, divison of Continuing Education, Outreach & E-Learning
  * URL: https://github.com/oel-mediateam/idstyleguide
