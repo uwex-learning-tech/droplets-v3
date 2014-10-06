@@ -19,11 +19,11 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-@each $icon, $unicode in (overview, \e680),
-                         (practice-assessment, \e630),
-                         (assessment, \e642),
-                         (set-map, \e68c),
-                         (learning-resource, \e69a) {
+@each $icon, $unicode in (overview, "\e680"),
+                         (practice-assessment, "\e630"),
+                         (assessment, "\e642"),
+                         (set-map, "\e68c"),
+                         (learning-resource, "\e69a") {
     
     .icon-#{$icon}:before {
         color:#40a1a1;

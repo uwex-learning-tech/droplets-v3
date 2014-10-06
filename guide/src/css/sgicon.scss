@@ -20,10 +20,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-@each $icon, $unicode in (grid, \e600),
-                         (list, \e601),
-                         (close, \e602),
-                         (show-all, \e603) {
+@each $icon, $unicode in (grid, "\e600"),
+                         (list, "\e601"),
+                         (close, "\e602"),
+                         (show-all, "\e603") {
                          
     .sg-icon-#{$icon}:before {
         content: "#{$unicode}";

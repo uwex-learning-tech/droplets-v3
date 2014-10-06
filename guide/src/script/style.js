@@ -451,7 +451,6 @@ $(document).ready(function() {
 				
 			}
             
-            
             return false;
             
         });
@@ -471,6 +470,12 @@ $(document).ready(function() {
                 $(this).find("h3").html("");
                 $(this).find("span.info").html("");
                 $(this).prev().find(".item").attr("data-open", "");
+                
+                if (child) {
+
+                    iframe.css("height", calIframeHeight() + "px");
+
+                }
                 
             });
                 
@@ -611,6 +616,11 @@ $(document).ready(function() {
                 $(event.currentTarget).parent().parent().find(".arrow").removeClass("arrow");
                 $(event.data.target + " .detailed-view[data-row="+index+"] h3").html("");
                 $(event.data.target + " .detailed-view[data-row="+index+"] .desc").html("");
+                if (child) {
+
+                    iframe.css("height", calIframeHeight() + "px");
+
+                }
             });
             $(event.currentTarget).attr("data-open", "");
             
@@ -622,7 +632,15 @@ $(document).ready(function() {
             $(event.data.target + " .detailed-view[data-row="+index+"]").removeClass().addClass("detailed-view " + cat);
             $(event.data.target + " .detailed-view[data-row="+index+"] h3").html(title);
             $(event.data.target + " .detailed-view[data-row="+index+"] .desc").html(info);
-            $(event.data.target + " .detailed-view[data-row="+index+"]").slideDown();
+            $(event.data.target + " .detailed-view[data-row="+index+"]").slideDown( function() {
+                
+                if (child) {
+
+                    iframe.css("height", calIframeHeight() + "px");
+
+                }
+                
+            });
             $(event.data.target + " .detailed-view[data-row="+index+"]").prev().find(".item").attr("data-open", "");
             $(event.currentTarget).attr("data-open", "true");
             
@@ -1033,7 +1051,8 @@ function getParameterByName(url,name) {
 
 function calIframeHeight() {
 	
-	return $(document).find("body").outerHeight(true) + 18;
+	//return $(document).find("body").outerHeight(true) + 18;
+    return $(document).find("body").outerHeight(true);
 	
 }
 /* jshint ignore:end */

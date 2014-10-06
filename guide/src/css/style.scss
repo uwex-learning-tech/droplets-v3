@@ -612,7 +612,7 @@ code {
 
 .vertical.right {
 	width: rem( 250px );
-	margin: rem( 5px ) rem( $gutter ) 0 0;
+	margin: rem( 5px ) 0 0 rem( $gutter );
 	float: right;
 	text-align: left;
 }
@@ -798,37 +798,37 @@ table.horz-right {
     }
 }
 
-table > thead > tr > td.horz-left,
+table > thead > tr > th.horz-left,
 table > tbody > tr > td.horz-left,
 table > tfoot > tr > td.horz-left {
 	text-align: left;
 }
 
-table > thead > tr > td.horz-center,
+table > thead > tr > th.horz-center,
 table > tbody > tr > td.horz-center,
 table > tfoot > tr > td.horz-center  {
 	text-align: center;
 }
 
-table > thead > tr > td.horz-right,
+table > thead > tr > th.horz-right,
 table > tbody > tr > td.horz-right,
 table > tfoot > tr > td.horz-right  {
 	text-align: right;
 }
 
-table > thead > tr > td.vert-top,
+table > thead > tr > th.vert-top,
 table > tbody > tr > td.vert-top,
 table > tfoot > tr > td.vert-top {
 	vertical-align: top;
 }
 
-table > thead > tr > td.vert-center,
+table > thead > tr > th.vert-center,
 table > tbody > tr > td.vert-center,
 table > tfoot > tr > td.vert-center {
 	vertical-align: middle;
 }
 
-table > thead > tr > td.vert-bottom,
+table > thead > tr > th.vert-bottom,
 table > tbody > tr > td.vert-bottom,
 table > tfoot > tr > td.vert-bottom {
 	vertical-align: bottom;

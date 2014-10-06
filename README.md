@@ -41,14 +41,19 @@ If any bugs/glitches are found in this framework, please report them under the "
 
 For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/idstyleguide/issues)**" page on GitHub.
 
-### What's new in 1.3.1
+### What's new in 1.3.2
+* Added left margin to right-floated block-level callout
+* Table head are now properly aligned base on the specified class
+* iFrame height is now properly set when expanding agenda detail on calendar
+
+What's new in 1.3.1
 * Fixed page header line height
 * Added more spacing after the page header
 * Fixed accordion's auto-height calculation in an iFrame
 * Fixed calendar not displaying/highlighting current day of the month
 * Nested unordered list bullet is now a circle rather than a disc
 
-#### What's new in 1.3.0
+What's new in 1.3.0
 * Added two new classes for table: `minimal-padding` and `small-text`
 * `vert-top`, `vert-center`, `vert-bottom`, `horz-left`, `horz-center`, and `horz-right` classes can now be applied to the whole table rather than individual cells or `td` elements.
 * Read More feature has a new look
