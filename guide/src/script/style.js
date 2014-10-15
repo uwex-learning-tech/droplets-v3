@@ -141,12 +141,22 @@ $(document).ready(function() {
 			if ($(this).hasClass("top")) {
 				
 				$("body").append("<div class=\"popover top\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover:eq("+i+")").css({"top":(position.top - ($(".popover:eq("+i+")").innerHeight() + 8))+"px", "left":position.left+"px"});
+				$(".popover:eq("+i+")").css(
+                    {
+                        "top": position.top - ( $(".popover:eq("+i+")").outerHeight() + 13 ) + "px",
+                        "left": position.left - ( $(this).outerWidth(true) / 2 ) + "px"
+                    }
+                );
 				
 			} else if ($(this).hasClass("bottom")) {
 			
 				$("body").append("<div class=\"popover bottom\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover:eq("+i+")").css({"top":(position.top + $(this).height() + 4)+"px", "left":position.left+"px"});
+				$(".popover:eq("+i+")").css(
+                    {
+                        "top": position.top + $(this).outerHeight(true) + 2  + "px",
+                        "left": position.left - ( $(this).outerWidth(true) / 2 ) + "px"
+                    }
+                );
 				
 			} else if ($(this).hasClass("right")) {
 			
@@ -158,7 +168,12 @@ $(document).ready(function() {
 					
 				} else {
 				
-					$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left + $(this).width() + 3)+"px"});
+					$(".popover:eq("+i+")").css(
+                        {
+                            "top": position.top + ( $( this ).outerHeight(true) ) - ( $( '.popover:eq('+i+')' ).outerHeight(true) / 2 ) - 12 + "px",
+                            "left": position.left + $(this).width() + 12 + "px"
+                        }
+                    );
 					
 				}
 				
@@ -171,15 +186,26 @@ $(document).ready(function() {
 					$(".popover:eq("+i+")").css({"top":(position.top + ($(this).height()/2))+"px", "left":(position.left - $(".popover").width()+100)+"px"});
 					
 				} else {
-				
-					$(".popover:eq("+i+")").css({"top":(position.top - $(this).height())+"px", "left":(position.left - $(".popover").width() - 5)+"px"});
+                    
+                    $(".popover:eq("+i+")").css(
+                        {
+                            "top": position.top + ( $( this ).outerHeight(true) ) - ( $( '.popover:eq('+i+')' ).outerHeight(true) / 2 ) - 12 + "px",
+                            "left": position.left - $( '.popover:eq('+i+')' ).outerWidth(true) - 12 + "px"
+        
+                        }
+                    );
 					
 				}
 				
 			} else {
 			
-				$("body").append("<div class=\"popover\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover:eq("+i+")").css({"top":(position.top - ($(".popover:eq("+i+")").innerHeight() + 8))+"px", "left":position.left+"px"});
+				$("body").append("<div class=\"popover top\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$(".popover:eq("+i+")").css(
+                    {
+                        "top": position.top - ( $(".popover:eq("+i+")").outerHeight() + 13 ) + "px",
+                        "left": position.left - ( $(this).outerWidth(true) / 2 ) + "px"
+                    }
+                );
 				
 			}
 			
@@ -190,6 +216,8 @@ $(document).ready(function() {
 		
 			var index = $(".with-popover").index(this);
 			
+            console.log('click');
+            
 			if ($(this).hasClass("active")) {
 			
 				$(this).removeClass("active");

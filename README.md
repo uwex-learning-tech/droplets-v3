@@ -1,5 +1,5 @@
 #DROPLETS
-**_version 1.3.1_**  
+**_version 1.3.3_**  
 *_(formerly known as idstyleguide)_*
 
 A HTML, CSS, and JavaScript framework for designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
@@ -41,21 +41,30 @@ If any bugs/glitches are found in this framework, please report them under the "
 
 For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/idstyleguide/issues)**" page on GitHub.
 
-### What's new in 1.3.2
+---
+#### Version Change Log
+**1.3.3**
+* Fixed an issue where popover is not aligned correctly
+
+**1.3.2**
 * Added left margin to right-floated block-level callout
 * Table head are now properly aligned base on the specified class
 * iFrame height is now properly set when expanding agenda detail on calendar
 
-What's new in 1.3.1
+**1.3.1**
 * Fixed page header line height
 * Added more spacing after the page header
 * Fixed accordion's auto-height calculation in an iFrame
 * Fixed calendar not displaying/highlighting current day of the month
 * Nested unordered list bullet is now a circle rather than a disc
 
-What's new in 1.3.0
+**1.3.0**
 * Added two new classes for table: `minimal-padding` and `small-text`
 * `vert-top`, `vert-center`, `vert-bottom`, `horz-left`, `horz-center`, and `horz-right` classes can now be applied to the whole table rather than individual cells or `td` elements.
 * Read More feature has a new look
 * [Calendar](https://mediastreamer.doit.wisc.edu/uwli-ltc/media/documentation/idstyleguide/calendar.html)
 * Minor bug fixes
+
+---
+Ethan S. Lin  
+[University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning](http://ce.uwex.edu/)
