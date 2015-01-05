@@ -421,9 +421,16 @@ $(document).ready(function() {
         // tab mouse click
 		$(currentCalendar + " .tabs li").not("li ul li").on("click",function() {
 
+            var month = Number($(this).attr("data-month"));
+
 			if ($(currentCalendar + " .toggle-displayall").hasClass("active")) {
-			    var month = Number($(this).attr("data-month"));
+
     			toggleCalendarDisplayAll(currentCalendar, month);
+
+			} else {
+
+                getSelectedMonthCalendar(currentCalendar, month);
+
 			}
 
 			$(currentCalendar + " .detailed-view").hide();
@@ -577,6 +584,8 @@ $(document).ready(function() {
 
         if (displayAll === false) {
 
+            $(calendar + " .tab-contents").before("<p class=\"cal-msg\"><small><strong>Notes:</strong> to view each agenda details in the calendar, please exit the \"Display All\" view.</small></p>");
+
             $(calendar + " .tab-contents section").each(function() {
                 if ($(this).hasClass("active")) {
                     $(this).removeClass("active");
@@ -599,16 +608,9 @@ $(document).ready(function() {
 
         } else {
 
-            $(calendar + " .tabs li").each(function() {
-                $(this).removeClass("active");
-            });
+            $(".cal-msg").remove();
 
-            $(calendar + " .tab-contents section").each(function() {
-                $(this).removeClass("active");
-            });
-
-            $(calendar + " .tabs li[data-month=" + (month) + "]").addClass("active");
-            $(calendar + " .tab-contents section[data-month=" + (month) + "]").addClass("active");
+            getSelectedMonthCalendar(calendar, month);
 
             $(calendar + " .item").on("click", {target: calendar}, openDetails);
             $(calendar + " .item").css("cursor","pointer");
@@ -628,6 +630,21 @@ $(document).ready(function() {
 		}
 
 		return false;
+
+    }
+
+    function getSelectedMonthCalendar(calendar, month) {
+
+        $(calendar + " .tabs li").each(function() {
+                $(this).removeClass("active");
+        });
+
+        $(calendar + " .tab-contents section").each(function() {
+            $(this).removeClass("active");
+        });
+
+        $(calendar + " .tabs li[data-month=" + (month) + "]").addClass("active");
+        $(calendar + " .tab-contents section[data-month=" + (month) + "]").addClass("active");
 
     }
 
