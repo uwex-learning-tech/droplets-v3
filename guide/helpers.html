@@ -78,22 +78,37 @@
 					</ul>
 				</li>
 				<li><a href="image.html">Image</a></li>
-				<li><a class="active" href="helpers.html">Helpers</a></li>
+				<li><a class="active" href="helpers.html">Helpers &amp; Accessibility</a></li>
 			</ul>
 		</div>
 		<div class="guide_outlayer">
 
 		    <header class="guide">
-				<h1>Helpers</h1>
+				<h1>Helpers &amp; Accessibility</h1>
 			</header>
 
 			<div class="guide_content">
 
-				<p class="lead">Miscellaneous classes to help style the page content further.</p>
+				<p class="lead">Miscellaneous classes and accessibility markups to help enhance the page content and screen-reader friendly.</p>
 
-				<h1>Clearfix</h1>
+				<h2>HTML / CSS Helpers</h2>
+
+				<h3>Clearfix</h3>
 				<p>Clear CSS <code>float</code> property on any elements. Usually used with columned layouts and floating elements.</p>
 				<p><code>&lt;div class="clearfix"&gt;&lt;/div&gt;</code></p>
+
+				<h2>Accessibility</h2>
+				<p class="lead">When in doubt, use <code>role="presentation"</code>.</p>
+				<p>Websites and web applications use <a href="http://www.w3.org/WAI/intro/aria.php" target="_blank">Accessible Rich Internet Applications Suite (WAI-ARIA)</a> to define a way to make web content more accessible to people with disabilities. It is a standard developed by the <a href="http://www.w3.org" target="_blank">World Wide Web Consortium (W3C)</a>, an international community where private and public organization work together to develop web standards.</p>
+				<p>Throughout Droplets, elements already have ARIA markups. If for any reasons that you need to roll with different markups or want to learn more about WAI-ARIA, see resource links below.</p>
+				<ul>
+    				<li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" target="_blank>">Mozilla Developer Network (MDN) ARIA</a></li>
+    				<li><a href="http://alistapart.com/article/the-accessibility-of-wai-aria" target="_blank>">A List Apart: The Accessibility of WAI-ARIA</a></li>
+    				<li><a href="https://dev.opera.com/articles/introduction-to-wai-aria/" target="_blank>">Introduction to WAI ARIA</a></li>
+    				<li><a href="http://www.paciellogroup.com/blog/2013/02/using-wai-aria-landmarks-2013/" target="_blank>">Using WAI-ARIA Landmarks</a></li>
+				</ul>
+
+				<p>Although WAI-ARIA is currently still in development process, modern web browsers and screen reader software are already supporting most of the essential WAI-ARIA standards.</p>
 
 			</div>
 		</div>
