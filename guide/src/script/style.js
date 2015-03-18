@@ -1,3 +1,16 @@
+/*
+ * DROPLET Framework jQuery Core Script
+ *
+ * @version: 1.3.6
+ * @author: Ethan Lin
+ * @url: https://github.com/oel-mediateam/idstyleguide
+ * Released date: 03/18/2015
+ *
+ * @license: The MIT License (MIT)
+ * Copyright (c) 2013-2015 UWEX CEOEL Media Services
+ *
+ */
+
 /* global calIframeHeight */
 
 $(document).ready(function() {
@@ -93,27 +106,27 @@ $(document).ready(function() {
 			// positions
 			if ($(this).hasClass("top")) {
 
-				$(this).before("<div class=\"tooltip in top\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
+				$(this).before("<div class=\"tooltip in top\" role=\"tooltip\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
 				$(".tooltip").css({"top":(position.top - 28)+"px", "left":position.left+"px"});
 
 			} else if ($(this).hasClass("bottom")) {
 
-				$(this).after("<div class=\"tooltip in bottom\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
+				$(this).after("<div class=\"tooltip in bottom\" role=\"tooltip\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
 				$(".tooltip").css({"bottom":(position.bottom + 28)+"px", "left":position.left+"px"});
 
 			} else if ($(this).hasClass("right")) {
 
-				$(this).before("<div class=\"tooltip in right\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
+				$(this).before("<div class=\"tooltip in right\" role=\"tooltip\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
 				$(".tooltip").css({"top":position.top+"px", "left":(position.left + $(this).width())+"px"});
 
 			} else if ($(this).hasClass("left")) {
 
-				$(this).before("<div class=\"tooltip in left\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
+				$(this).before("<div class=\"tooltip in left\" role=\"tooltip\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
 				$(".tooltip").css({"top":position.top+"px", "left":(position.left - ($(".tooltip").width() + 8))+"px"});
 
 			} else {
 
-				$(this).before("<div class=\"tooltip in\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
+				$(this).before("<div class=\"tooltip in\" role=\"tooltip\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
 				$(".tooltip").css({"top":(position.top - 28)+"px", "left":position.left+"px"});
 			}
 
@@ -140,7 +153,7 @@ $(document).ready(function() {
 
 			if ($(this).hasClass("top")) {
 
-				$("body").append("<div class=\"popover top\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$("body").append("<div class=\"popover top\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
 				$(".popover:eq("+i+")").css(
                     {
                         "top": position.top - ( $(".popover:eq("+i+")").outerHeight() + 13 ) + "px",
@@ -150,7 +163,7 @@ $(document).ready(function() {
 
 			} else if ($(this).hasClass("bottom")) {
 
-				$("body").append("<div class=\"popover bottom\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$("body").append("<div class=\"popover bottom\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
 				$(".popover:eq("+i+")").css(
                     {
                         "top": position.top + $(this).outerHeight(true) + 2  + "px",
@@ -160,7 +173,7 @@ $(document).ready(function() {
 
 			} else if ($(this).hasClass("right")) {
 
-				$("body").append("<div class=\"popover right\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$("body").append("<div class=\"popover right\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
 
 				if ($(this).is("img")) {
 
@@ -179,7 +192,7 @@ $(document).ready(function() {
 
 			} else if ($(this).hasClass("left")) {
 
-				$("body").append("<div class=\"popover left\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$("body").append("<div class=\"popover left\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
 
 				if ($(this).is("img")) {
 
@@ -199,7 +212,7 @@ $(document).ready(function() {
 
 			} else {
 
-				$("body").append("<div class=\"popover top\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+				$("body").append("<div class=\"popover top\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
 				$(".popover:eq("+i+")").css(
                     {
                         "top": position.top - ( $(".popover:eq("+i+")").outerHeight() + 13 ) + "px",
