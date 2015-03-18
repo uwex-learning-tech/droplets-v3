@@ -717,6 +717,7 @@ table {
     	padding: rem( 8px );
         vertical-align: bottom;
         text-align: left;
+        font-size: rem( 18px );
         border-bottom: rem( 2px ) solid $table-border-color;
 	} // table thead > tr > th
 
@@ -755,18 +756,25 @@ table {
 
 } // table
 
-table.miminal-padding {
+table.minimal-padding {
+
     thead > tr > th,
     tbody > tr > td {
         padding: rem(1px) rem( 3px ) !important;
     }
+
 }
 
 table.small-text {
-    thead > tr > th,
+
+    thead > tr > th {
+        font-size: rem( 16px ) !important;
+    }
+
     tbody > tr > td {
         font-size: rem( 14px ) !important;
     }
+
 }
 
 table.vert-top {
@@ -959,6 +967,167 @@ table.minimal > tfoot > tr > td {
 	padding-right: rem( 12px );
 }
 
+/* border and thickness */
+table > thead.top-border,
+table > thead > tr > td.top-border,
+table > tbody > tr > td.top-border,
+table > tfoot > tr > td.top-border,
+table > thead > tr > th.top-border,
+table > tbody > tr > th.top-border,
+table > tfoot > tr > th.top-border,
+table > thead > tr.top-border > td,
+table > tbody > tr.top-border > td,
+table > tfoot > tr.top-border > td,
+table > thead > tr.top-border > th,
+table > tbody > tr.top-border > th,
+table > tfoot > tr.top-border > th {
+	border-top: rem( 1px ) solid $table-border-color;
+}
+
+table > thead.bottom-border,
+table > thead > tr > td.bottom-border,
+table > tbody > tr > td.bottom-border,
+table > tfoot > tr > td.bottom-border,
+table > thead > tr > th.bottom-border,
+table > tbody > tr > th.bottom-border,
+table > tfoot > tr > th.bottom-border,
+table > thead > tr.bottom-border > td,
+table > tbody > tr.bottom-border > td,
+table > tfoot > tr.bottom-border > td,
+table > thead > tr.bottom-border > th,
+table > tbody > tr.bottom-border > th,
+table > tfoot > tr.bottom-border > th {
+	border-bottom: rem( 1px ) solid $table-border-color;
+}
+
+table > thead.left-border,
+table > thead > tr > td.left-border,
+table > tbody > tr > td.left-border,
+table > tfoot > tr > td.left-border,
+table > thead > tr > th.left-border,
+table > tbody > tr > th.left-border,
+table > tfoot > tr > th.left-border,
+table > thead > tr.left-border > td,
+table > tbody > tr.left-border > td,
+table > tfoot > tr.left-border > td,
+table > thead > tr.left-border > th,
+table > tbody > tr.left-border > th,
+table > tfoot > tr.left-border > th {
+	border-left: rem( 1px ) solid $table-border-color;
+}
+
+table > thead.right-border,
+table > thead > tr > td.right-border,
+table > tbody > tr > td.right-border,
+table > tfoot > tr > td.right-border,
+table > thead > tr > th.right-border,
+table > tbody > tr > th.right-border,
+table > tfoot > tr > th.right-border,
+table > thead > tr.right-border > td,
+table > tbody > tr.right-border > td,
+table > tfoot > tr.right-border > td,
+table > thead > tr.right-border > th,
+table > tbody > tr.right-border > th,
+table > tfoot > tr.right-border > th {
+	border-right: rem( 1px ) solid $table-border-color;
+}
+
+table > thead.bottom-border.double-line,
+table > thead > tr > td.bottom-border.double-line,
+table > tbody > tr > td.bottom-border.double-line,
+table > tfoot > tr > td.bottom-border.double-line,
+table > thead > tr > th.bottom-border.double-line,
+table > tbody > tr > th.bottom-border.double-line,
+table > tfoot > tr > th.bottom-border.double-line,
+table > thead > tr.bottom-border.double-line > td,
+table > tbody > tr.bottom-border.double-line > td,
+table > tfoot > tr.bottom-border.double-line > td,
+table > thead > tr.bottom-border.double-line > th,
+table > tbody > tr.bottom-border.double-line > th,
+table > tfoot > tr.bottom-border.double-line > th {
+	border-style: double;
+	border-bottom-width: rem( 4px );
+}
+
+table > thead.dotted,
+table > thead > tr > td.dotted,
+table > tbody > tr > td.dotted,
+table > tfoot > tr > td.dotted,
+table > thead > tr > th.dotted,
+table > tbody > tr > th.dotted,
+table > tfoot > tr > th.dotted,
+table > thead > tr.dotted > td,
+table > tbody > tr.dotted > td,
+table > tfoot > tr.dotted > td,
+table > thead > tr.dotted > th,
+table > tbody > tr.dotted > th,
+table > tfoot > tr.dotted > th {
+	border-style: dotted;
+}
+
+table > thead.medium,
+table > thead > tr > td.medium,
+table > tbody > tr > td.medium,
+table > tfoot > tr > td.medium,
+table > thead > tr > th.medium,
+table > tbody > tr > th.medium,
+table > tfoot > tr > th.medium,
+table > thead > tr.medium > td,
+table > tbody > tr.medium > td,
+table > tfoot > tr.medium > td,
+table > thead > tr.medium > th,
+table > tbody > tr.medium > th,
+table > tfoot > tr.medium > th {
+	border-width: rem( 2px );
+}
+
+table > thead.heavy,
+table > thead > tr > td.heavy,
+table > tbody > tr > td.heavy,
+table > tfoot > tr > td.heavy,
+table > thead > tr > th.heavy,
+table > tbody > tr > th.heavy,
+table > tfoot > tr > th.heavy,
+table > thead > tr.heavy > td,
+table > tbody > tr.heavy > td,
+table > tfoot > tr.heavy > td,
+table > thead > tr.heavy > th,
+table > tbody > tr.heavy > th,
+table > tfoot > tr.heavy > th {
+	border-width: rem( 4px );
+}
+
+table > thead > tr > td.indent,
+table > tbody > tr > td.indent,
+table > tfoot > tr > td.indent,
+table > thead > tr > th.indent,
+table > tbody > tr > th.indent,
+table > tfoot > tr > th.indent,
+table > thead > tr.indent > td,
+table > tbody > tr.indent > td,
+table > tfoot > tr.indent > td,
+table > thead > tr.indent > th,
+table > tbody > tr.indent > th,
+table > tfoot > tr.indent > th {
+	text-indent: rem( 10px );
+}
+
+table > thead > tr > td.double-indent,
+table > tbody > tr > td.double-indent,
+table > tfoot > tr > td.double-indent,
+table > thead > tr > th.double-indent,
+table > tbody > tr > th.double-indent,
+table > tfoot > tr > th.double-indent,
+table > thead > tr.double-indent > td,
+table > tbody > tr.double-indent > td,
+table > tfoot > tr.double-indent > td,
+table > thead > tr.double-indent > th,
+table > tbody > tr.double-indent > th,
+table > tfoot > tr.double-indent > th {
+	text-indent: rem( 20px );
+}
+
+/* colors */
 table > thead > tr > td.info,
 table > tbody > tr > td.info,
 table > tfoot > tr > td.info,
@@ -1017,6 +1186,21 @@ table > thead > tr.danger > th,
 table > tbody > tr.danger > th,
 table > tfoot > tr.danger > th {
   background-color: #f2dede;
+}
+
+table > thead > tr > td.neutral,
+table > tbody > tr > td.neutral,
+table > tfoot > tr > td.neutral,
+table > thead > tr > th.neutral,
+table > tbody > tr > th.neutral,
+table > tfoot > tr > th.neutral,
+table > thead > tr.neutral > td,
+table > tbody > tr.neutral > td,
+table > tfoot > tr.neutral > td,
+table > thead > tr.neutral > th,
+table > tbody > tr.neutral > th,
+table > tfoot > tr.neutral > th {
+  background-color: #e8e8e8;
 }
 
 /* IMAGES
