@@ -92,6 +92,11 @@
 
 				<p class="lead">A house is built with a blueprint. Same goes for a web page.</p>
 
+				<div class="callout callout-guide danger">
+    				<p><strong>Notes on Accessibility</strong><br />
+    				Occasionally, unique IDs are required on elements. They are used for association purposes. Each ID value must be unique. To avoid conflict with existing IDs, prefix the value of the ID with <code>sr-</code>, which stands for screen reader. <strong>Make sure to change the value after the prefix when you copy and pasted them.</strong> For example, <code>sr-col1</code> should be named to <code>sr-[...]</code>, where <code>[...]</code> is whatever you want to name.</p>
+				</div>
+
 				<h1 id="two-column">Two-Column</h1>
 				<p>A two-column layout uses two nested <code>&lt;section&gt;</code> elements inside a <code>&lt;div&gt;</code> element with <code>two-column</code> class. A <code>&lt;div&gt;</code> element with <code>clearfix</code> class is needed right after the two-column <code>&lt;div&gt;</code> element.</p>
 				<p data-height="280" data-theme-id="6473" data-slug-hash="olEzs" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/olEzs/'>Two-Column</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>

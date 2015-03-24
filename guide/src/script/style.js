@@ -874,7 +874,7 @@ $(document).ready(function() {
     -----------------------------------------------------------------*/
 	function getSubnav() {
 
-		var nav = "<ul class=\"page-subnav\">";
+		var nav = "<nav role=\"secondary\"><ul class=\"page-subnav\">";
 
 		$("header").before("<a class=\"anchorTop\" id=\"page-top\" href=\"#\"></a>");
 		$(".anchorTop").css({"display":"block", "position":"relative", "top":"-32px", "visibility":"hidden"});
@@ -889,11 +889,11 @@ $(document).ready(function() {
 
 			}
 
-			nav += "<li><a href=\"#nav"+i+"\">" + $(this).html() + "</a></li>";
+			nav += "<li role=\"presentation\"><a href=\"#nav"+i+"\">" + $(this).html() + "</a></li>";
 
 		}); // end each
 
-		nav += "</ul>";
+		nav += "</ul></nav>";
 
 		$(".with-subnav").prepend(nav);
 		$(".anchor").css({"display":"block", "position":"relative", "top":"32px", "visibility":"hidden"});
@@ -973,7 +973,7 @@ $(document).ready(function() {
 
             $(this).attr("id","more"+i);
             $("#more"+i).attr("data-height",$("#more"+i).innerHeight()+24);
-            $("#more"+i).append("<div class=\"readmore-ctrl\"><a href=\"javascript:void(0)\">CLICK TO READ MORE...</a></div>").css({"height":h,"overflow":"hidden"});
+            $("#more"+i).append("<div class=\"readmore-ctrl\"><a href=\"javascript:void(0)\" role=\"button\" aria-controls=\"click to read more\" aria-expaned=\"false\">CLICK TO READ MORE...</a></div>").css({"height":h,"overflow":"hidden"});
 
             // on mouse click state
             $("#more"+i + " .readmore-ctrl a").on("click", function() {
@@ -991,6 +991,7 @@ $(document).ready(function() {
 
                         $(rmID + " .readmore-ctrl").removeClass("opened");
                         $(rmID + " .readmore-ctrl a").html("CLICK TO READ MORE...");
+                        $(rmID + " .readmore-ctrl a").attr("aria-expaned","false");
 
                     });
 
@@ -1004,6 +1005,7 @@ $(document).ready(function() {
 
                         $(rmID + " .readmore-ctrl").addClass("opened");
                         $(rmID + " .readmore-ctrl a").html("CLICK TO READ LESS");
+                        $(rmID + " .readmore-ctrl a").attr("aria-expaned","true");
 
                     });
 
