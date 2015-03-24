@@ -327,7 +327,7 @@ $(document).ready(function() {
         var tabContent = "";
         var months = $(currentCalendar + " .tabs li").not("li ul li");
 
-        calendar.append("<div class=\"calendar_view_controls\"><a class=\"grid-view active\"href=\"#\" title=\"Grid View\"><span class=\"sg-icon-grid\"></span></a><a class=\"list-view\"href=\"#\" title=\"List View\"><span class=\"sg-icon-list\"></span></a><a class=\"toggle-displayall\"href=\"#\" title=\"Display All\"><span class=\"sg-icon-show-all\"></span></a></div>");
+        calendar.append("<div class=\"calendar_view_controls\"><a class=\"grid-view active\"href=\"#\" title=\"Grid View\" role=\"button\" aria-controls=\"grid view\"><span class=\"sg-icon-grid\"></span></a><a class=\"list-view\"href=\"#\" title=\"List View\" role=\"button\" aria-controls=\"List View\"><span class=\"sg-icon-list\"></span></a><a class=\"toggle-displayall\"href=\"#\" title=\"Display All\" role=\"button\" aria-controls=\"display all\"><span class=\"sg-icon-show-all\"></span></a></div>");
         calendar.append("<div class=\"tab-contents\"></div>");
         calendar.after("<div class=\"clearfix\"></div>");
         tabContent = $(currentCalendar + " .tab-contents");
@@ -343,7 +343,7 @@ $(document).ready(function() {
             var count = 0;
             var grid = "<div class=\"row heading\"><div class=\"grid\">Sunday</div><div class=\"grid\">Monday</div><div class=\"grid\">Tuesday</div><div class=\"grid\">Wednesday</div><div class=\"grid\">Thursday</div><div class=\"grid\">Friday</div><div class=\"grid\">Saturday</div></div>";
 
-            $(this).prepend("<a href=\"#\">" + monthName[month - 1] + " " + year + "</a>");
+            $(this).prepend("<a href=\"#sr-" + monthName[month - 1]  + "\" role=\"tab\" aria-controls=\"" + monthName[month - 1] + " " + year + "\">" + monthName[month - 1] + " " + year + "</a>");
 
             // create the grid
             for (var r = 0; r < weeksInMonth; r++) {
@@ -360,7 +360,7 @@ $(document).ready(function() {
 
             }
 
-            tabContent.append( "<section data-month=\"" + month + "\"><h2>" + monthName[month - 1] + " " + year + "</h2><div class=\"calendar-grid\">" + grid + "</div><div class=\"calendar-list-view\"></div></section>" );
+            tabContent.append( "<section id=\"sr-" + monthName[month - 1] + "\" data-month=\"" + month + "\" role=\"tabpanel\"><h2>" + monthName[month - 1] + " " + year + "</h2><div class=\"calendar-grid\" role=\"presentation\">" + grid + "</div><div class=\"calendar-list-view\"></div></section>" );
 
             // nested loop to populate the weeks (rows) and days (columns)
             for (var w = 1; w <= weeksInMonth; w++) {
@@ -723,7 +723,7 @@ $(document).ready(function() {
 			$(this).attr("id","ai"+i);
 
 			// set open and close all buttons
-			$("#ai"+i).prepend("<div class=\"accordion-controls\"><a class=\"closeAll\" href=\"javascript:void(0)\">Close All</a> <a class=\"openAll\" href=\"javascript:void(0)\">Open All</a></div>");
+			$("#ai"+i).prepend("<div class=\"accordion-controls\"><a class=\"closeAll\" href=\"javascript:void(0)\" role=\"button\" aria-controls=\"close all\">Close All</a> <a class=\"openAll\" href=\"javascript:void(0)\" role=\"button\" aria-controls=\"open all\">Open All</a></div>");
 
 			// loop through to add arrow to title bars if no "no-arrow" class
 			if (!$(this).hasClass("no-arrow")) {
@@ -746,6 +746,7 @@ $(document).ready(function() {
 						$("#ai"+i+" > .accordion-content:eq("+k+")").slideUp("fast", function() {
 
 							$("#ai"+i+" > .accordion-title:eq("+k+")").removeClass("active");
+							$("#ai"+i+" > .accordion-title:eq("+k+")").attr("aria-expanded", "false");
 
 							if (child) {
 
@@ -773,6 +774,7 @@ $(document).ready(function() {
 						$("#ai"+i+" > .accordion-content:eq("+j+")").slideDown("fast", function() {
 
 							$("#ai"+i+" > .accordion-title:eq("+j+")").addClass("active");
+							$("#ai"+i+" > .accordion-title:eq("+j+")").attr("aria-expanded", "true");
 
 							if (child) {
 
@@ -795,6 +797,7 @@ $(document).ready(function() {
 
 				if ($(this).hasClass("active")) {
 
+                    $("#ai"+i+" > .accordion-title:eq("+m+")").attr("aria-expanded", "true");
 					$("#ai"+i+" > .accordion-content:eq("+m+")").show();
 
 				}
@@ -817,6 +820,7 @@ $(document).ready(function() {
 							$("#ai"+i+" > .accordion-content:eq("+n+")").slideUp("fast", function() {
 
 								$("#ai"+i+" > .accordion-title:eq("+index+")").addClass("active");
+								$("#ai"+i+" > .accordion-title:eq("+index+")").attr("aria-expanded", "false");
 								$("#ai"+i+" > .accordion-content:eq("+index+")").slideDown();
 
 							});
@@ -826,6 +830,7 @@ $(document).ready(function() {
 							if (n === index) {
 
 								$("#ai"+i+" > .accordion-title:eq("+index+")").addClass("active");
+								$("#ai"+i+" > .accordion-title:eq("+index+")").attr("aria-expanded", "true");
 								$("#ai"+i+" > .accordion-content:eq("+index+")").slideDown( function() {
 
     								if (child) {
@@ -849,6 +854,7 @@ $(document).ready(function() {
 					$("#ai"+i+" > .accordion-content:eq("+index+")").slideUp("fast", function() {
 
 						$("#ai"+i+" > .accordion-title:eq("+index+")").removeClass("active");
+						$("#ai"+i+" > .accordion-title:eq("+index+")").attr("aria-expanded", "false");
 
 						if (child) {
 
@@ -973,7 +979,7 @@ $(document).ready(function() {
 
             $(this).attr("id","more"+i);
             $("#more"+i).attr("data-height",$("#more"+i).innerHeight()+24);
-            $("#more"+i).append("<div class=\"readmore-ctrl\"><a href=\"javascript:void(0)\" role=\"button\" aria-controls=\"click to read more\" aria-expaned=\"false\">CLICK TO READ MORE...</a></div>").css({"height":h,"overflow":"hidden"});
+            $("#more"+i).append("<div class=\"readmore-ctrl\"><a href=\"javascript:void(0)\" role=\"button\" aria-controls=\"click to read more\" aria-expanded=\"false\">CLICK TO READ MORE...</a></div>").css({"height":h,"overflow":"hidden"});
 
             // on mouse click state
             $("#more"+i + " .readmore-ctrl a").on("click", function() {
@@ -991,7 +997,7 @@ $(document).ready(function() {
 
                         $(rmID + " .readmore-ctrl").removeClass("opened");
                         $(rmID + " .readmore-ctrl a").html("CLICK TO READ MORE...");
-                        $(rmID + " .readmore-ctrl a").attr("aria-expaned","false");
+                        $(rmID + " .readmore-ctrl a").attr("aria-expanded","false");
 
                     });
 
@@ -1005,7 +1011,7 @@ $(document).ready(function() {
 
                         $(rmID + " .readmore-ctrl").addClass("opened");
                         $(rmID + " .readmore-ctrl a").html("CLICK TO READ LESS");
-                        $(rmID + " .readmore-ctrl a").attr("aria-expaned","true");
+                        $(rmID + " .readmore-ctrl a").attr("aria-expanded","true");
 
                     });
 

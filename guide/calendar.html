@@ -58,18 +58,23 @@
 
                 <p><a class="btn info" href="calendar-demo.html" target="_blank">demo</a></p>
 
+                <div class="callout callout-guide danger">
+    				<p><strong>Notes on Accessibility</strong><br />
+    				The calendar grid view is screen reader friendly but not ideal. It is recommended to switch to list view for screen reading.</p>
+				</div>
+
                 <p>The calendar component is built on top of the <a href="tab.html">tab</a> component. To start, create a <code>div</code> element with the <code>with-tabs</code> class. Append the <code>calendar</code> class to the class attribute.</p>
 
 <pre>
-&lt;div class="with-tabs calendar"&gt;
+&lt;div class="with-tabs calendar" role="application"&gt;
 &lt;/div&gt;
 </pre>
 
                 <p>Inside the <code>div</code> element, create an unordered list (<code>ul</code>) element with the <code>tabs</code> class. This unordered list will hold the months, which will be specified next.</p>
 
 <pre>
-<span class="old">&lt;div class="with-tabs calendar"&gt;</span>
-    &lt;ul class="tabs"&gt;
+<span class="old">&lt;div class="with-tabs calendar" role="application"&gt;</span>
+    &lt;ul class="tabs" role="tablist"&gt;
     &lt;/ul&gt;
 <span class="old">&lt;/div&gt;</span>
 </pre>
@@ -87,11 +92,11 @@
                 </div>
 
 <pre>
-<span class="old">&lt;div class="with-tabs calendar"&gt;
-    &lt;ul class="tabs"&gt;</span>
-        &lt;li data-month="12" data-year="2013"&gt;
+<span class="old">&lt;div class="with-tabs calendar" role="application"&gt;
+    &lt;ul class="tabs" role="tablist"&gt;</span>
+        &lt;li data-month="12" data-year="2013" role="presentation"&gt;
         &lt;/li&gt;
-        &lt;li data-month="1"&gt;
+        &lt;li data-month="1" role="presentation"&gt;
         &lt;/li&gt;
     <span class="old">&lt;/ul&gt;
 &lt;/div&gt;</span>
@@ -100,13 +105,13 @@
                 <p>The next step is to create the days for the month. To begin, create another unordered list (<code>ul</code>) element with the <code>days</code> class inside the month <code>li</code> element.</p>
 
 <pre>
-<span class="old">&lt;div class="with-tabs calendar"&gt;
-    &lt;ul class="tabs"&gt;
-        &lt;li data-month="12" data-year="2013"&gt;;</span>
+<span class="old">&lt;div class="with-tabs calendar" role="application"&gt;
+    &lt;ul class="tabs" role="tablist"&gt;
+        &lt;li data-month="12" data-year="2013" role="presentation"&gt;</span>
             &lt;ul class="days"&gt;
             &lt;/ul&gt;
         <span class="old">&lt;/li&gt;</span>
-        <span class="old">&lt;li data-month="1"&gt;</span>
+        <span class="old">&lt;li data-month="1" role="presentation"&gt;</span>
             &lt;ul class="days"&gt;
             &lt;/ul&gt;
         <span class="old">&lt;/li&gt;
@@ -117,15 +122,15 @@
                 <p>Inside the newly created <code>ul</code> element, create list (<code>li</code>) elements to represent the days that have agendas. Days without agendas do not need to be specified. Each <code>li</code> element must have the <code>data-day</code> attribute with numerical value between 1 and 31. The numerical value specifies the day of the month that will have an agenda.</p>
 
 <pre>
-<span class="old">&lt;div class="with-tabs calendar"&gt;
-    &lt;ul class="tabs"&gt;
-        &lt;li data-month="12" data-year="2013"&gt;;
+<span class="old">&lt;div class="with-tabs calendar" role="application"&gt;
+    &lt;ul class="tabs" role="tablist"&gt;
+        &lt;li data-month="12" data-year="2013" role="presentation"&gt;;
             &lt;ul class="days"&gt;</span>
                 &lt;li data-day="8"&gt;
                 &lt;/li&gt;
             <span class="old">&lt;/ul&gt;
         &lt;/li&gt;
-        &lt;li data-month="1"&gt;
+        &lt;li data-month="1" role="presentation"&gt;
             &lt;ul class="days"&gt;</span>
                 &lt;li data-day="4"&gt;
                 &lt;/li&gt;
@@ -144,9 +149,9 @@
                 </div>
 
 <pre>
-<span class="old">&lt;div class="with-tabs calendar"&gt;
-    &lt;ul class="tabs"&gt;
-        &lt;li data-month="12" data-year="2013"&gt;;
+<span class="old">&lt;div class="with-tabs calendar" role="application"&gt;
+    &lt;ul class="tabs" role="tablist"&gt;
+        &lt;li data-month="12" data-year="2013" role="presentation"&gt;;
             &lt;ul class="days"&gt;
                 &lt;li data-day="8"&gt;</span>
                     &lt;span class="title" data-cat="warning"&gt;Title goes here!&lt;/span&gt;
@@ -155,7 +160,7 @@
                     <span class="old">&lt;/li&gt;
                 &lt;/ul&gt; &lt;!-- end days ul --&gt;
         &lt;/li&gt; &lt;!-- end month li --&gt;
-        &lt;li data-month="1"&gt;
+        &lt;li data-month="1" role="presentation"&gt;
             &lt;ul class="days"&gt;
                 &lt;li data-day="4"&gt;</span>
                     &lt;span class="title" data-cat="danger"&gt;Title goes here!&lt;/span&gt;

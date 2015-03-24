@@ -59,6 +59,17 @@
 				    <p><strong>Warning:</strong> do not use the accordion to combine multiple pages worth of content into one single page. Accordion is not meant to replace existing D2L/LMS features.</p>
 				</div>
 
+				<div class="callout callout-guide warning">
+				    <p><strong>Making Accordion Content Accessible</strong><br />Please pay attention to the ARIA markups in the HTML.
+    				    <ul>
+        				    <li>The outer most <code>div</code> tag has the <code>role</code> attribute with the value of <code>tablist</code>. This is telling the screen-reader that it is about to interact with a tabbed-like user interface.</li>
+        				    <li>The <code>div</code> element with the class of <code>accordion-title</code> has the attributes of <code>role</code>, <code>aria-expanded</code>, and <code>aria-controls</code> with values of <code>tab</code>, <code>true</code>, and whatever you want to name the control respectively.</li>
+        				    <li>The <code>div</code> element with the class of <code>accordion-content</code> has the attributes of <code>role</code> and <code>aria-labelledby</code> with values of <code>tabpanel</code> and whatever you want to name the heading respectively.</li>
+        				    <li>Each inner <code>div</code> elements have an unique ID. The value of this ID must match respectively to each heading or content. This is telling the screen-reader that the content is linked to the specific heading above by the association the unique ID.<br /><span class="label danger">Important</span> Since ID value must be unique, to avoid conflict with existing IDs, prefix the value of the ID with <code>sr-</code>, which stands for screen reader. <strong>Make sure to change those values after you copy and pasted them.</strong></li>
+    				    </ul>
+                    </p>
+				</div>
+
 				<p data-height="385" data-theme-id="6473" data-slug-hash="KdDzv" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/KdDzv/'>Accordion with Arrow</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 				<h1>No Arrow</h1>
