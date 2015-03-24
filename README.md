@@ -1,5 +1,5 @@
 #DROPLETS
-**_version 1.3.5_**  
+**_version 1.3.6_**  
 *_(formerly known as idstyleguide)_*
 
 A HTML, CSS, and JavaScript framework for designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
@@ -43,6 +43,12 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 
 ---
 #### Version Change Log
+
+**1.3.6**
+* Improvements and minor fixes
+* Added more contextual styles for tables: border with thickness and styles, cell text indentations, and neutral gray background color
+* Added WAI-ARIA (accessibility) markups to elements
+* Converted "Helpers" page to "Helpers & Accessibility", which now contains information on WAI-ARIA
 
 **1.3.5**
 * Fixed the issue where calendar tab was not working
