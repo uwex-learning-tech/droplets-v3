@@ -90,6 +90,12 @@ $(document).ready(function() {
 
 		}
 
+		if ($(".with-learning-resources").length) {
+
+			getLearningResources();
+
+		}
+
 	} // end checkComponents
 
 	/* TOOLTIP FUNCTION
@@ -1023,6 +1029,72 @@ $(document).ready(function() {
 
     } // end read more
 
+    /* LEARNING RESOURCES FUNCTION
+    -----------------------------------------------------------------*/
+    function getLearningResources() {
+
+        var learningResources = $(".with-learning-resources");
+
+        learningResources.each(function(i) {
+
+            var resourcesObject = null;
+            var idValue = 'with-learning-resources-' + (i + 1);
+
+            $(this).attr('id', idValue);
+
+            resourcesObject = $("#" + idValue).find(".resource");
+
+            for (var j = 0; j < resourcesObject.length; j++) {
+
+                var element = null;
+                var elementContent = null;
+                var resources = [];
+                var pos = 'odd';
+
+                resources[j] = resourcesObject[j];
+
+                element = $(resources[j]).find(".title");
+                elementContent = element.clone().css({'overflow':'visible','height':'auto','max-height':'none', 'visibility':'hidden'}).appendTo('#'+idValue+' .cover-info:eq('+j+')');
+
+                if ( elementContent.height() > element.height() ) {
+
+                    element.append( '<span class="truncated"></span>' );
+
+                } else if ( elementContent.height() <= 22 ) {
+
+                    element.addClass("oneLine");
+
+                }
+
+                element = $(resources[j]).find(".author-source");
+                elementContent = element.clone().css({'overflow':'visible','height':'auto','max-height':'none', 'visibility':'hidden'}).appendTo('#'+idValue+' .cover-info:eq('+j+')');
+
+                if ( elementContent.height() > element.height() ) {
+
+                    element.append( '<span class="truncated"></span>' );
+
+                } else if ( elementContent.height() <= 22 ) {
+
+                    element.addClass("oneLine");
+
+                }
+
+                elementContent.remove();
+
+                if ( (j + 1) % resourcesObject.length === 2 || (j + 1) % resourcesObject.length === 0 ) {
+
+                   $( resources[j] ).after("<div class=\"expanded-panel\"></div><div class=\"clearfix\"></div>");
+                   pos = 'even';
+
+                }
+
+                $(resources[j]).addLREevent( idValue, child, iframe, pos );
+
+            } // end for loop
+        }); // end each loop
+
+    } // end learning resources
+
 	/* CALL CHECK COMPONENTS FUNCTION
     -----------------------------------------------------------------*/
 	checkComponents();
@@ -1095,6 +1167,41 @@ function gotoDiscussions() {
 
 /* HELPER FUNCTIONS
 -----------------------------------------------------------------*/
+
+// LEARNING RESOUCES CLICK EVENT
+$.fn.addLREevent = function( id, dom, frame, pos ) {
+
+    this.on("click", function() {
+
+        var expandedContainer = $(this).nextAll("div.expanded-panel")[0];
+        var content = "";
+
+        if ( !$(this).hasClass("active") ) {
+
+            $("#"+id+" .resource").removeClass("active");
+            $("#"+id+" .expanded-panel").removeClass("active");
+            $(this).addClass("active");
+
+            content = $(this).find(".expanded-info").html();
+            $(expandedContainer).html( "<div class=\"expanded-panel-arrow "+pos+"\"></div>" + content ).addClass("active");
+
+        } else {
+
+            $("#"+id+" .resource").removeClass("active");
+            $("#"+id+" .expanded-panel").removeClass("active");
+
+        }
+
+        if (dom) {
+
+            frame.css("height", calIframeHeight() + "px");
+
+        }
+
+    } );
+
+};
+
 function getParameterByName(url,name) {
 
 	var regexS = "[\\?&]" + name + "=([^&#]*)";
