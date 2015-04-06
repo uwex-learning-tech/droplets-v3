@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Droplets: Learning Resources | University of Wisconsin-Extension Division of Continuing Education, Outreach &amp; E-Learning</title>
+	<link rel="shortcut icon" type="image/x-icon" href="src/img/uwex.ico" />
+	<link href="src/css/style.css" rel="stylesheet" media="all" />
+	<link href="src/css/guide.css" rel="stylesheet" media="all" />
+	<script src="src/script/jquery.min.js" type="text/javascript"></script>
+	<script src="src/script/guide.min.js" type="text/javascript"></script>
+	<script src="src/script/jquery.scrollUp.min.js" type="text/javascript"></script>
+	<script src="src/script/style.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<div class="guide_header">
+		<div class="nav_bar">
+			<div class="logo"><a href="index.html"><img src="src/img/uwex_ceoel_black.png" width="154" height="50" alt="University of Wisconsin-Extension, division of Continuing Education, Outreach & E-Learning" /></a></div>
+			<ul class="nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="pageheaders.html">Layouts &amp; Elements</a></li>
+				<li><a href="icons.html">Icons</a></li>
+				<li><a class="active" href="tooltip.html">JavaScript Components</a></li>
+				<li><a href="starter.html">Starter Files</a></li>
+				<li><a href="support.html">Support</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="guide_container">
+		<div class="side_nav">
+			<ul id="primary">
+				<li><a href="tooltip.html">Tooltip</a></li>
+				<li><a href="popover.html">Popover</a></li>
+				<li><a href="tab.html">Tab</a></li>
+				<li><a href="accordion.html">Accordion</a></li>
+				<li><a href="actioncalls.html">Action Calls</a></li>
+				<li><a href="internalnav.html">Internal Page Navigation</a></li>
+				<li><a href="imagezoom.html">Image Zoom</a></li>
+				<li><a href="readmore.html">Read More</a></li>
+				<li><a href="calendar.html">Calendar</a></li>
+				<li><a class="active" href="javascript:void(0)">Learning Resources</a></li>
+			</ul>
+		</div>
+		<div class="guide_outlayer">
+
+		    <header class="guide">
+				<h1>Learning Resources</h1>
+            </header>
+
+			<div class="guide_content">
+
+				<p class="lead">A simple and organized way to manage learning (or any) resources.</span></p>
+				<p>Learning resources are essentially a glorified and interactive way of listing resources. A learning resource can be a book, video, tool, audio, website, or document. Each learning resource contains an image (if available), a title, an author or a source, tags, and additional content to be shown when clicked.</p>
+				<p>To create a collection of learning resources, create a <code>&lt;div&gt;</code> element with the class of <code>with-learning-resources</code>. This <code>&lt;div&gt;</code> element will serve as the wrapper for the individual resources. To create a resource item. create a <code>&lt;div&gt;</code> element with class of <code>resource</code> follow the type of the resource: <code>book</code>, <code>video</code>, <code>audio</code>, <code>tool</code>, <code>website</code>, or <code>document</code>.</p>
+				<p>Inside the resource <code>&lt;div&gt;</code> element, an image can be displayed by creating a <code>&lt;div&gt;</code> element with the class of <code>image</code> and using the <code>img</code> element to link to your image. The size of the image is recommended at and will be scaled to 100 by 150 pixels. If no <code>img</code> element is specified, an icon representing the resource will be displayed.</p>
+
+				<div class="callout callout-guide danger">
+    				<p>If the image is not available or not needed, the <code>&lt;div&gt;</code> element with the class of <code>image</code> must still be specified.</p>
+				</div>
+
+				<p>After the image, a title, source or author, and tags can be listed. To start, create <code>&lt;div&gt;</code> element with class of <code>cover-info</code>. This <code>&lt;div&gt;</code> element will serve as a wrapper to hold the title, source, and tags. The title can be displayed by creating a <code>&lt;div&gt;</code> element with the class of <code>title</code>. The author or source can be displayed by creating a <code>&lt;div&gt;</code> element with the class of <code>author-source</code> The tags can be displayed by creating a <code>&lt;ul&gt;</code> element with the class of <code>meta</code>.</p>
+
+				<div class="callout callout-guide warning">
+    				<p>The maximum line of title and author/source is two. If more than two lines, they will be truncated. The tags are specified by using a list element, so each tag is a <code>li</code> element.</p>
+				</div>
+
+				<p>The last part of a learning resource is the additional or detailed content to be displayed after a click or touch (if on touch devices). This part is wrapped inside a <code>&lt;div&gt;</code> element with the class of <code>expanded-info</code>. Inside this wrapper you can create individual <code>&lt;div&gt;</code> element with the classes of <code>notes</code> and <code>actions</code>. The notes <code>&lt;div&gt;</code> element holds whatever the content needs to be. The actions <code>&lt;ul&gt;</code> holds a list of link/button to external resources.</p>
+
+                <div class="callout callout-guide info">
+    				<p>For headings, <code>h4</code> is recommended. Also, do not forget to add the <code>clearfix</code> helper after the outer most wrapper.</p>
+				</div>
+
+				<div class="callout callout-guide warning">
+    				<p>You can create a learning resource collection with just one resource; however, it is not recommended.</p>
+				</div>
+
+				<p data-height="530" data-theme-id="6473" data-slug-hash="gbJmad" data-default-tab="result" data-user="Lin87" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/gbJmad/'>Learning Resources</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="footer_copyright">
+		<p class="footer_copyright_notice">Copyright &copy; 2013 - 2015 Board of Regents. University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning. All rights reserved.</p>
+	</div>
+
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+</body>
+</html>

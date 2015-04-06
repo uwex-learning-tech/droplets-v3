@@ -1,10 +1,10 @@
 /*
  * DROPLET Framework jQuery Core Script
  *
- * @version: 1.3.6
+ * @version: 1.4.0
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/idstyleguide
- * Released date: 03/24/2015
+ * Released date: 04/06/2015
  *
  * @license: The MIT License (MIT)
  * Copyright (c) 2013-2015 UWEX CEOEL Media Services
@@ -87,6 +87,12 @@ $(document).ready(function() {
 				iframe.css("height", calIframeHeight() + "px");
 
 			}
+
+		}
+
+		if ($(".with-learning-resources").length) {
+
+			getLearningResources();
 
 		}
 
@@ -1023,6 +1029,75 @@ $(document).ready(function() {
 
     } // end read more
 
+    /* LEARNING RESOURCES FUNCTION
+    -----------------------------------------------------------------*/
+    function getLearningResources() {
+
+        var learningResources = $(".with-learning-resources");
+
+        learningResources.each(function(i) {
+
+            var resourcesObject = null;
+            var idValue = 'with-learning-resources-' + (i + 1);
+
+            $(this).attr('id', idValue);
+
+            resourcesObject = $("#" + idValue).find(".resource");
+
+            for (var j = 0; j < resourcesObject.length; j++) {
+
+                var element = null;
+                var elementContent = null;
+                var resources = [];
+                var pos = 'odd';
+
+                resources[j] = resourcesObject[j];
+
+                element = $(resources[j]).find(".title");
+                elementContent = element.clone().css({'overflow':'visible','height':'auto','max-height':'none', 'visibility':'hidden'}).appendTo('#'+idValue+' .cover-info:eq('+j+')');
+
+                if ( elementContent.height() > element.height() ) {
+
+                    element.append( '<span class="truncated"></span>' );
+
+                } else if ( elementContent.height() <= 22 ) {
+
+                    element.addClass("oneLine");
+
+                }
+
+                element = $(resources[j]).find(".author-source");
+                elementContent = element.clone().css({'overflow':'visible','height':'auto','max-height':'none', 'visibility':'hidden'}).appendTo('#'+idValue+' .cover-info:eq('+j+')');
+
+                if ( elementContent.height() > element.height() ) {
+
+                    element.append( '<span class="truncated"></span>' );
+
+                } else if ( elementContent.height() <= 22 ) {
+
+                    element.addClass("oneLine");
+
+                }
+
+                elementContent.remove();
+
+                if ( ( (j + 1) % 2 === 0 ) || resourcesObject.length === 1 ) {
+
+                   $( resources[j] ).after("<div class=\"expanded-panel\"></div><div class=\"clearfix\"></div>");
+
+                   if ( resourcesObject.length > 1 ) {
+                       pos = 'even';
+                   }
+
+                }
+
+                $(resources[j]).addLREevent( idValue, child, iframe, pos );
+
+            } // end for loop
+        }); // end each loop
+
+    } // end learning resources
+
 	/* CALL CHECK COMPONENTS FUNCTION
     -----------------------------------------------------------------*/
 	checkComponents();
@@ -1095,6 +1170,41 @@ function gotoDiscussions() {
 
 /* HELPER FUNCTIONS
 -----------------------------------------------------------------*/
+
+// LEARNING RESOUCES CLICK EVENT
+$.fn.addLREevent = function( id, dom, frame, pos ) {
+
+    this.on("click", function() {
+
+        var expandedContainer = $(this).nextAll("div.expanded-panel")[0];
+        var content = "";
+
+        if ( !$(this).hasClass("active") ) {
+
+            $("#"+id+" .resource").removeClass("active");
+            $("#"+id+" .expanded-panel").removeClass("active");
+            $(this).addClass("active");
+
+            content = $(this).find(".expanded-info").html();
+            $(expandedContainer).html( "<div class=\"expanded-panel-arrow "+pos+"\"></div>" + content ).addClass("active");
+
+        } else {
+
+            $("#"+id+" .resource").removeClass("active");
+            $("#"+id+" .expanded-panel").removeClass("active");
+
+        }
+
+        if (dom) {
+
+            frame.css("height", calIframeHeight() + "px");
+
+        }
+
+    } );
+
+};
+
 function getParameterByName(url,name) {
 
 	var regexS = "[\\?&]" + name + "=([^&#]*)";
