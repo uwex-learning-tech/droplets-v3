@@ -27,7 +27,6 @@ $table-bg-color: #f1f1f1;
 @import "compass/css3/text-shadow";
 @import "compass/css3/opacity";
 @import "compass/css3/filter";
-@import "compass/css3/transition";
 
 @import "collaborativeicon";
 @import "sgicon";
@@ -2543,7 +2542,7 @@ span.with-popover.active {
         border-bottom: rem( 1px ) solid $gray-color;
         background-color: $border-color;
         margin-bottom: rem( 10px );
-        padding: rem( 10px ) rem(10px) 0;
+        padding: 0 rem(10px);
         font-size: rem( 14px );
         line-height: rem( 16px );
         @include box-sizing( "border-box" );
@@ -2579,14 +2578,12 @@ span.with-popover.active {
 
         	top: rem( -18px );
         	left: rem( 42px );
-        	@include transition(left 1s);
 
         }
 
         .expanded-panel-arrow.even {
 
         	left: rem( 442px );
-        	@include transition(left 1s);
 
         }
 
@@ -2912,6 +2909,111 @@ iframe, object {
 
         .readmore-ctrl {
             display: none;
+        }
+
+    }
+
+    /* learning resources */
+    .with-learning-resources {
+
+        float: none;
+        clear: both;
+
+        .resource {
+
+            width: 100%;
+            margin: 0;
+            border: none;
+            float: none;
+
+            .image {
+
+                width: rem( 100px );
+                height: rem( 150px );
+
+            }
+
+            .image:after {
+
+                top: 0;
+
+            }
+
+            .cover-info {
+
+                height: auto;
+
+                .title {
+
+                    position: relative;
+                    height: auto;
+                    max-height: none;
+                    overflow : visible;
+
+                    .truncated {
+
+                        display: none;
+
+                    }
+
+                }
+
+                .author-source {
+
+                    position: relative;
+                    height: auto;
+                    max-height: none;
+                    overflow : visible;
+
+                    .truncated {
+
+                        display: none;
+
+                    }
+
+                }
+
+            }
+
+            .expanded-info {
+
+                display: block;
+                width: 100%;
+                float: left;
+                clear: both;
+
+                .actions {
+
+                    li {
+
+                        margin: rem( $gutter ) 0;
+
+                        a.btn {
+
+                            display: block;
+                            border: none;
+                            padding: 0;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        .resource.active {
+
+            border-color: transparent;
+
+        }
+
+        .expanded-panel {
+
+            display: none;
+
         }
 
     }

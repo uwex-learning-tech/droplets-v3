@@ -4,7 +4,7 @@
  * @version: 1.4.0
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/idstyleguide
- * Released date:
+ * Released date: 04/06/2015
  *
  * @license: The MIT License (MIT)
  * Copyright (c) 2013-2015 UWEX CEOEL Media Services
@@ -1081,10 +1081,13 @@ $(document).ready(function() {
 
                 elementContent.remove();
 
-                if ( (j + 1) % resourcesObject.length === 2 || (j + 1) % resourcesObject.length === 0 ) {
+                if ( ( (j + 1) % 2 === 0 ) || resourcesObject.length === 1 ) {
 
                    $( resources[j] ).after("<div class=\"expanded-panel\"></div><div class=\"clearfix\"></div>");
-                   pos = 'even';
+
+                   if ( resourcesObject.length > 1 ) {
+                       pos = 'even';
+                   }
 
                 }
 

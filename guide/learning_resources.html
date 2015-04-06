@@ -50,201 +50,32 @@
 
 			<div class="guide_content">
 
-				<p class="lead">Something sassy or cheesy info goes here!</span></p>
-				<p>Some description goes here</p>
+				<p class="lead">A simple and organized way to manage learning (or any) resources.</span></p>
+				<p>Learning resources are essentially a glorified and interactive way of listing resources. A learning resource can be a book, video, tool, audio, website, or document. Each learning resource contains an image (if available), a title, an author or a source, tags, and additional content to be shown when clicked.</p>
+				<p>To create a collection of learning resources, create a <code>&lt;div&gt;</code> element with the class of <code>with-learning-resources</code>. This <code>&lt;div&gt;</code> element will serve as the wrapper for the individual resources. To create a resource item. create a <code>&lt;div&gt;</code> element with class of <code>resource</code> follow the type of the resource: <code>book</code>, <code>video</code>, <code>audio</code>, <code>tool</code>, <code>website</code>, or <code>document</code>.</p>
+				<p>Inside the resource <code>&lt;div&gt;</code> element, an image can be displayed by creating a <code>&lt;div&gt;</code> element with the class of <code>image</code> and using the <code>img</code> element to link to your image. The size of the image is recommended at and will be scaled to 100 by 150 pixels. If no <code>img</code> element is specified, an icon representing the resource will be displayed.</p>
 
-                <h2>Required</h2>
+				<div class="callout callout-guide danger">
+    				<p>If the image is not available or not needed, the <code>&lt;div&gt;</code> element with the class of <code>image</code> must still be specified.</p>
+				</div>
 
-                <!-- begin with learning resources -->
-                <div class="with-learning-resources">
+				<p>After the image, a title, source or author, and tags can be listed. To start, create <code>&lt;div&gt;</code> element with class of <code>cover-info</code>. This <code>&lt;div&gt;</code> element will serve as a wrapper to hold the title, source, and tags. The title can be displayed by creating a <code>&lt;div&gt;</code> element with the class of <code>title</code>. The author or source can be displayed by creating a <code>&lt;div&gt;</code> element with the class of <code>author-source</code> The tags can be displayed by creating a <code>&lt;ul&gt;</code> element with the class of <code>meta</code>.</p>
 
-                    <div class="resource book">
-                        <div class="image"></div>
-                        <div class="cover-info">
-                            <div class="title">Research Methods In Anthropology: Qualitative And Quantitative Approaches</div>
-                            <div class="author-source">Russell H. Bernard</div>
-                            <ul class="meta">
-                                <li>Book</li>
-                                <li>120 Minutes</li>
-                            </ul>
-                        </div>
-                        <div class="expanded-info">
-                            <div class="notes">
-                                <p><strong>Research Methods in Anthropology: Qualitative and Quantitative Approaches Hardcover, 4th ed. 2006 by H. Russell Bernard ISBN-13: 978-0759108684</strong></p>
-                                <h4>Instructor Notes:</h4>
-                                <p>This book goes into much more detail than the suggested textbooks as it solely focuses on methodologies.</p>
-                                <h4>Guide:</h4>
-                                <ol>
-                                    <li>Read chapter 4, Methodologies</li>
-                                    <li>Identify main research methods used for Anthropology studies and examples.</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
+				<div class="callout callout-guide warning">
+    				<p>The maximum line of title and author/source is two. If more than two lines, they will be truncated. The tags are specified by using a list element, so each tag is a <code>li</code> element.</p>
+				</div>
 
-                    <div class="resource book">
-                        <div class="image"><img src="src/img/learning_resource_ph.png" /></div>
-                        <div class="cover-info">
-                            <div class="title">Research Methods In Anthropology: Qualitative And Quantitative Approaches</div>
-                            <div class="author-source">The author or source of the learning resource, which goes on and on and on and forever.</div>
-                            <ul class="meta">
-                                <li><span class="label">Book</span></li>
-                                <li><span class="label info">300 minutes</span></li>
-                                <li><span class="label danger">3 Parts</span></li>
-                            </ul>
-                        </div>
-                        <div class="expanded-info">
-                            <div class="notes">The body content of the learning resources</div>
-                            <ul class="actions">
-                                <li><a class="btn" href="#">Action 1</a></li>
-                                <li><a class="btn" href="#">Action 2</a></li>
-                                <li><a class="btn" href="#">Action 3</a></li>
-                            </ul>
-                        </div>
-                    </div>
+				<p>The last part of a learning resource is the additional or detailed content to be displayed after a click or touch (if on touch devices). This part is wrapped inside a <code>&lt;div&gt;</code> element with the class of <code>expanded-info</code>. Inside this wrapper you can create individual <code>&lt;div&gt;</code> element with the classes of <code>notes</code> and <code>actions</code>. The notes <code>&lt;div&gt;</code> element holds whatever the content needs to be. The actions <code>&lt;ul&gt;</code> holds a list of link/button to external resources.</p>
 
-                    <div class="resource video">
-                        <div class="image"></div>
-                        <div class="cover-info">
-                            <div class="title">How to Bake</div>
-                            <div class="author-source">The author or source of the learning resource</div>
-                            <ul class="meta">
-                                <li>Data 1</li>
-                                <li>Data 2</li>
-                                <li>Data 3</li>
-                            </ul>
-                        </div>
-                        <div class="expanded-info">
-                            <div class="notes">The body content of the learning resources</div>
-                            <ul class="actions">
-                                <li><a class="btn" href="#">Action 1</a></li>
-                                <li><a class="btn" href="#">Action 2</a></li>
-                                <li><a class="btn" href="#">Action 3</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="callout callout-guide info">
+    				<p>For headings, <code>h4</code> is recommended. Also, do not forget to add the <code>clearfix</code> helper after the outer most wrapper.</p>
+				</div>
 
-                    <div class="resource tools">
-                        <div class="image"></div>
-                        <div class="cover-info">
-                            <div class="title">The title of the learning resource</div>
-                            <div class="author-source">The author or source of the learning resource</div>
-                            <ul class="meta">
-                                <li>Data 1</li>
-                                <li>Data 2</li>
-                                <li>Data 3</li>
-                            </ul>
-                        </div>
-                        <div class="expanded-info">
-                            <div class="notes">The body content of the learning resources</div>
-                            <ul class="actions">
-                                <li><a class="btn" href="#">Action 1</a></li>
-                                <li><a class="btn" href="#">Action 2</a></li>
-                                <li><a class="btn" href="#">Action 3</a></li>
-                            </ul>
-                        </div>
-                    </div>
+				<div class="callout callout-guide warning">
+    				<p>You can create a learning resource collection with just one resource; however, it is not recommended.</p>
+				</div>
 
-                </div>
-                <!-- end with learning resources -->
-
-                <div class="clearfix"></div>
-
-                <h2>Recommended</h2>
-
-                <!-- begin with learning resources -->
-                <div class="with-learning-resources">
-
-                    <div class="resource website">
-                        <div class="image"></div>
-                        <div class="cover-info">
-                            <div class="title">Research Methods In Anthropology: Qualitative And Quantitative Approaches</div>
-                            <div class="author-source">Russell H. Bernard</div>
-                            <ul class="meta">
-                                <li>Book</li>
-                                <li>120 Minutes</li>
-                            </ul>
-                        </div>
-                        <div class="expanded-info">
-                            <div class="notes">The body content of the learning resources</div>
-                            <ul class="actions">
-                                <li><a class="btn info" href="#" target="_blank">Action 1</a></li>
-                                <li><a class="btn info" href="#" target="_blank">Action 2</a></li>
-                                <li><a class="btn info" href="#" target="_blank">Action 3</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="resource audio">
-                        <div class="image"><img src="src/img/learning_resource_ph.png" /></div>
-                        <div class="cover-info">
-                            <div class="title">Anthropology In Practice: Building A Career Outside The Academy</div>
-                            <div class="author-source">The author or source of the learning resource</div>
-                            <ul class="meta">
-                                <li>Book</li>
-                                <li>300 minutes</li>
-                                <li>3 Parts</li>
-                                <li>Book</li>
-                                <li>300 minutes</li>
-                                <li>3 Parts</li>
-                            </ul>
-                        </div>
-                        <div class="expanded-info">
-                            <div class="notes">The body content of the learning resources</div>
-                            <ul class="actions">
-                                <li><a class="btn" href="#">Action 1</a></li>
-                                <li><a class="btn" href="#">Action 2</a></li>
-                                <li><a class="btn" href="#">Action 3</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="resource document">
-                        <div class="image"></div>
-                        <div class="cover-info">
-                            <div class="title">The title of the learning resource</div>
-                            <div class="author-source">The author or source of the learning resource</div>
-                            <ul class="meta">
-                                <li>Data 1</li>
-                                <li>Data 2</li>
-                                <li>Data 3</li>
-                            </ul>
-                        </div>
-                        <div class="expanded-info">
-                            <div class="notes">The body content of the learning resources</div>
-                            <ul class="actions">
-                                <li><a class="btn" href="#">Action 1</a></li>
-                                <li><a class="btn" href="#">Action 2</a></li>
-                                <li><a class="btn" href="#">Action 3</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="resource audio">
-                        <div class="image"></div>
-                        <div class="cover-info">
-                            <div class="title">The title of the learning resource</div>
-                            <div class="author-source">The author or source of the learning resource</div>
-                            <ul class="meta">
-                                <li>Data 1</li>
-                                <li>Data 2</li>
-                                <li>Data 3</li>
-                            </ul>
-                        </div>
-                        <div class="expanded-info">
-                            <div class="notes">The body content of the learning resources</div>
-                            <ul class="actions">
-                                <li><a class="btn" href="#">Action 1</a></li>
-                                <li><a class="btn" href="#">Action 2</a></li>
-                                <li><a class="btn" href="#">Action 3</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- end with learning resources -->
-
-                <div class="clearfix"></div>
+				<p data-height="530" data-theme-id="6473" data-slug-hash="gbJmad" data-default-tab="result" data-user="Lin87" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/gbJmad/'>Learning Resources</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 			</div>
 		</div>
