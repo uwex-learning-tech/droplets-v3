@@ -60,6 +60,28 @@
 				    <p><strong>Warning:</strong> do not use the accordion to combine multiple pages worth of content into one single page. Accordion is not meant to replace existing D2L/LMS features.</p>
 				</div>
 
+				<div class="callout callout-guide info">
+				    <h3>Directions for Instructional Designers</h3>
+				    <p><strong>Naming the accordion tab:</strong> In the <code>div</code> element with the class of <code>accordion-title</code> you’ll need to modify <code>aria-controls</code> (green text) to reflect the title of the accordion (white text). The screen reader will say the text in white. In full versions of accessibility software, <code>aria-controls</code> creates a button in the interface and uses the text in green for the button’s text. This button will be used to toggle the accordion open and close on the accessibility software.</p>
+				    <p><img src="src/img/accordion_dids_image1.png" alt="naming the accordion in HTML code" border="0" width="500" height="33" /></p>
+				    <p><strong>Adding tabs:</strong> Each inner <code>div</code> element must have two unique IDs, so use the following conventions when adding:
+					    <ul>
+						    <li><strong>First tab:</strong> Use IDs of <code>sr-headingOne</code> and <code>sr-collapseOne</code></li>
+						    <li><strong>Second tab:</strong> Use IDs of <code>sr-headingTwo</code> and <code>sr-collapseTwo</code></li>
+						    <li><strong>Third tab (new):</strong> Use IDs of <code>sr-headingThree</code> and <code>sr-collapseThree</code></li>
+						    <li>Continue the naming/numbering sequence for additional accordions tabs.</li>
+					    </ul>
+				    </p>
+				    <p><img src="src/img/accordion_dids_image2.png" alt="adding accordion tabs in HTML code" border="0" width="500" height="106" /></p>
+				    <p><span class="label danger">Important</span> If you have two separate accordion instances on the same content page, any of the previously used IDs (<code>sr-headingOne</code>, <code>sr-collapseOne</code>, etc.) for that HTML page cannot be reused. A different set of IDs will need to be used. To avoid conflict with existing CSS IDs, prefix the value of the new ID with <code>sr-</code>, which stands for screen reader.</p>
+   				</div>
+
+				<p data-height="385" data-theme-id="6473" data-slug-hash="KdDzv" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/KdDzv/'>Accordion with Arrow</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
+				<h1>No Arrow</h1>
+				<p>To remove the arrow on the accordion title bars, append the <code>no-arrow</code> class after the <code>with-accordion</code> class.</p>
+				<p data-height="385" data-theme-id="6473" data-slug-hash="rKIyh" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/rKIyh/'>Accordion with No Arrow</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+				
 				<div class="callout callout-guide warning">
 				    <p><strong>Making Accordion Content Accessible</strong><br />Please pay attention to the ARIA markups in the HTML.
     				    <ul>
@@ -70,13 +92,7 @@
     				    </ul>
                     </p>
 				</div>
-
-				<p data-height="385" data-theme-id="6473" data-slug-hash="KdDzv" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/KdDzv/'>Accordion with Arrow</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-
-				<h1>No Arrow</h1>
-				<p>To remove the arrow on the accordion title bars, append the <code>no-arrow</code> class after the <code>with-accordion</code> class.</p>
-				<p data-height="410" data-theme-id="6473" data-slug-hash="rKIyh" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/rKIyh/'>Accordion with No Arrow</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-
+				
 			</div>
 		</div>
 	</div>

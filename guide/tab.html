@@ -55,6 +55,21 @@
 				    <p><strong>Notes:</strong> apply the <code>active</code> class on the <code>&lt;li&gt;</code> and <code>&lt;section&gt;</code> elements to specify the default tab and tab content to be opened on page load. The <code>active</code> class is required for both elements.</p>
 				</div>
 
+				<div class="callout callout-guide info">
+				    <h3>Directions for Instructional Designers</h3>
+				    <p><strong>Naming the tab:</strong> In the a tag inside the li element you’ll need to modify aria-controls (green text) to reflect the title of the tab (white text). The screen reader will say the text in white. In full versions of accessibility software, aria-controls creates a button in the interface and uses the text in green for the button’s text. This button will be used to toggle between tabs on the accessibility software.</p>
+				    <p><img src="src/img/tab_dids_image1.png" alt="naming the tabs in HTML code" border="0" width="500" height="57" /></p>
+				    <p><strong>Adding tabs:</strong> Each href attribute associated with a tab must have a unique identifier (e.g. <code>#sr-item1</code>). The section associated with this tab must also use that same ID minus the pound sign (e.g. <code>#sr-item1</code>). This tells the screen reader which section goes with which tab. When adding additional tabs, continue the naming/numbering sequence.</p>
+				    <p><img src="src/img/tab_dids_image2.png" alt="adding tabs in HTML code" border="0" width="500" height="114" /></p>
+				    <p><span class="label danger">Important</span> If you have two separate tab instances on the same content page (not recommended), the IDs cannot be shared. That is, they cannot both use the <code>sr-item1</code> ID value. A different ID will need to be used. To avoid conflict with existing CSS IDs, prefix the value of the new ID with <code>sr-</code>, which stands for screen reader.</p>
+   				</div>
+
+				<p data-height="310" data-theme-id="6473" data-slug-hash="IinKh" data-default-tab="result" data-user="Lin87" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/IinKh/'>Tab</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
+				<div class="callout callout-guide info">
+				    <p><strong>The example above is not working!</strong> Fear not! The example above stopped working after five seconds. This is a performance measure that CodePen puts in place to prevent looping scripts and animations. Place the cursor over the example and click the "RERUN" button to get it working again for another five seconds.</p>
+				</div>
+				
 				<div class="callout callout-guide warning">
 				    <p><strong>Making Tabbed Content Accessible</strong><br />Please pay attention to the ARIA markups in the HTML.
     				    <ul>
@@ -65,12 +80,6 @@
         				    <li>The <code>section</code> tag has the <code>role</code> attribute with the value of <code>tabpanel</code> and an unique ID. The value of this ID must match the value in the <code>href</code> attribute of the <code>a</code> tag in the <code>ul</code> element. This is telling the screen-reader that the content in this tab panel is linked to the specific tab above by the association the unique ID.<br /><span class="label danger">Important</span> Since ID value must be unique, to avoid conflict with existing IDs, prefix the value of the ID with <code>sr-</code>, which stands for screen reader. <strong>Make sure to change those values after you copy and pasted them.</strong></li>
     				    </ul>
                     </p>
-				</div>
-
-				<p data-height="310" data-theme-id="6473" data-slug-hash="IinKh" data-default-tab="result" data-user="Lin87" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/IinKh/'>Tab</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-
-				<div class="callout callout-guide info">
-				    <p><strong>The example above is not working!</strong> Fear not! The example above stopped working after five seconds. This is a performance measure that CodePen puts in place to prevent looping scripts and animations. Place the cursor over the example and click the "RERUN" button to get it working again for another five seconds.</p>
 				</div>
 
 			</div>
