@@ -1,10 +1,10 @@
 /*
  * DROPLET Framework jQuery Core Script
  *
- * @version: 1.4.0
+ * @version: 1.4.1
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/idstyleguide
- * Released date: 04/06/2015
+ * Released date: 05/12/2015
  *
  * @license: The MIT License (MIT)
  * Copyright (c) 2013-2015 UWEX CEOEL Media Services
@@ -1046,54 +1046,25 @@ $(document).ready(function() {
 
             for (var j = 0; j < resourcesObject.length; j++) {
 
-                var element = null;
-                var elementContent = null;
                 var resources = [];
-                var pos = 'odd';
+                var meta;
+                var afterCover;
 
                 resources[j] = resourcesObject[j];
+                meta = $(resources[j]).find('.meta');
+                afterCover = $(resources[j]).find('.cover-info');
+                afterCover.after('<div class="arrow"><span class="indicator"></span></div>');
 
-                element = $(resources[j]).find(".title");
-                elementContent = element.clone().css({'overflow':'visible','height':'auto','max-height':'none', 'visibility':'hidden'}).appendTo('#'+idValue+' .cover-info:eq('+j+')');
-
-                if ( elementContent.height() > element.height() ) {
-
-                    element.append( '<span class="truncated"></span>' );
-
-                } else if ( elementContent.height() <= 22 ) {
-
-                    element.addClass("oneLine");
-
+                if ( meta.find('li').length === 0 ) {
+	                
+	                meta.hide();
+	                
                 }
-
-                element = $(resources[j]).find(".author-source");
-                elementContent = element.clone().css({'overflow':'visible','height':'auto','max-height':'none', 'visibility':'hidden'}).appendTo('#'+idValue+' .cover-info:eq('+j+')');
-
-                if ( elementContent.height() > element.height() ) {
-
-                    element.append( '<span class="truncated"></span>' );
-
-                } else if ( elementContent.height() <= 22 ) {
-
-                    element.addClass("oneLine");
-
-                }
-
-                elementContent.remove();
-
-                if ( ( (j + 1) % 2 === 0 ) || resourcesObject.length === 1 ) {
-
-                   $( resources[j] ).after("<div class=\"expanded-panel\"></div><div class=\"clearfix\"></div>");
-
-                   if ( resourcesObject.length > 1 ) {
-                       pos = 'even';
-                   }
-
-                }
-
-                $(resources[j]).addLREevent( idValue, child, iframe, pos );
+                
+                $(resources[j]).addLREevent( idValue, child, iframe );
 
             } // end for loop
+            
         }); // end each loop
 
     } // end learning resources
@@ -1103,6 +1074,63 @@ $(document).ready(function() {
 	checkComponents();
 
 });
+
+// LEARNING RESOUCES CLICK EVENT
+$.fn.addLREevent = function( id, dom, frame ) {
+
+    this.on("click", function() {
+		
+		var lr = this;
+		var index = $(this).index( '.resource' );
+		var expandedContent = $( this ).find('.expanded-info').html();
+		
+		if ( $( this ).hasClass('active') ) {
+			
+			$( this ).removeClass('active');
+			$( this ).find('.indicator').removeClass('open');
+			$( '.expanded-panel[data-index='+index+']' ).slideUp( function() {
+				$(this).remove();
+			} );
+			
+		} else {
+			
+			$( this ).addClass( 'active' );
+			$( this ).find('.indicator').addClass('open');
+			$( this ).after('<div class="expanded-panel" data-index="'+index+'"><span class="close-btn"><span class="sg-icon-close"></span></span>'+expandedContent+'</div>');
+			$( '.expanded-panel[data-index='+index+']' ).slideDown();
+			
+			$( '.expanded-panel[data-index='+index+'] .close-btn' ).on( 'click', function() {
+				
+				if ( $( lr ).hasClass('active') ) {
+			
+				$( lr ).removeClass('active');
+				$( lr ).find('.indicator').removeClass('open');
+				$( '.expanded-panel[data-index='+index+']' ).slideUp( function() {
+					$(this).remove();
+				} );
+				
+			} else {
+				
+				$( lr ).addClass( 'active' );
+				$( lr ).find('.indicator').addClass('open');
+				$( lr ).after('<div class="expanded-panel" data-index="'+index+'"><span class="close-btn"><span class="sg-icon-close"></span></span>'+expandedContent+'</div>');
+				$( '.expanded-panel[data-index='+index+']' ).slideDown();
+				
+			}
+				
+			} );
+			
+		}
+
+        if (dom) {
+
+            frame.css("height", calIframeHeight() + "px");
+
+        }
+
+    } );
+
+};
 
 /* KEYPRESS EASTER EGG
 -----------------------------------------------------------------*/
@@ -1170,40 +1198,6 @@ function gotoDiscussions() {
 
 /* HELPER FUNCTIONS
 -----------------------------------------------------------------*/
-
-// LEARNING RESOUCES CLICK EVENT
-$.fn.addLREevent = function( id, dom, frame, pos ) {
-
-    this.on("click", function() {
-
-        var expandedContainer = $(this).nextAll("div.expanded-panel")[0];
-        var content = "";
-
-        if ( !$(this).hasClass("active") ) {
-
-            $("#"+id+" .resource").removeClass("active");
-            $("#"+id+" .expanded-panel").removeClass("active");
-            $(this).addClass("active");
-
-            content = $(this).find(".expanded-info").html();
-            $(expandedContainer).html( "<div class=\"expanded-panel-arrow "+pos+"\"></div>" + content ).addClass("active");
-
-        } else {
-
-            $("#"+id+" .resource").removeClass("active");
-            $("#"+id+" .expanded-panel").removeClass("active");
-
-        }
-
-        if (dom) {
-
-            frame.css("height", calIframeHeight() + "px");
-
-        }
-
-    } );
-
-};
 
 function getParameterByName(url,name) {
 
