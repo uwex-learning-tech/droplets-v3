@@ -670,38 +670,38 @@ code {
 }
 
 .callout.minimal.shadowed {
-    @include single-box-shadow( 0, 0, rem( 6px ), #858585 );
+    @include single-box-shadow( 0, 0, rem( 6px ), 0, #858585, false );
 }
 
 .callout.minimal.alt,
 .callout.minimal.bordered {
 	border: rem( 1px ) solid $gray-color;
 	@include border-radius( rem( 3px ) );
-	@include single-box-shadow( 0, rem( 2px ), 0, #9f9f9f );
+	@include single-box-shadow( 0, rem( 2px ), 0, 0, #9f9f9f, false );
 }
 
 .callout.minimal.alt.danger,
 .callout.minimal.bordered.danger {
 	border-color: $danger-color;
-	@include single-box-shadow( 0, rem( 2px ), 0, #cc4745 );
+	@include single-box-shadow( 0, rem( 2px ), 0, 0, #cc4745, false );
 }
 
 .callout.minimal.alt.success,
 .callout.minimal.bordered.success {
 	border-color: $success-color;
-	@include single-box-shadow( 0, rem( 2px ), 0, #64b660 );
+	@include single-box-shadow( 0, rem( 2px ), 0, 0, #64b660, false );
 }
 
 .callout.minimal.alt.info,
 .callout.minimal.bordered.info {
 	border-color: $info-color;
-	@include single-box-shadow( 0, rem( 2px ), 0, #4dabe9 );
+	@include single-box-shadow( 0, rem( 2px ), 0, 0, #4dabe9, false );
 }
 
 .callout.minimal.alt.warning,
 .callout.minimal.bordered.warning {
 	border-color: $warning-color;
-	@include single-box-shadow( 0, rem( 2px ), 0, #edce42 );
+	@include single-box-shadow( 0, rem( 2px ), 0, 0, #edce42, false );
 }
 
 /* TABLE
