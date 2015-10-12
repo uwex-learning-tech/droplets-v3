@@ -253,19 +253,11 @@ ol.no-bullet {
 div.two-column {
 
 	width: 100%;
-	float: left;
-	clear: both;
 
 	section {
     	display: block !important;
         padding: 0 !important;
-    	width: 49%;
-    	float: left;
     	background-color: transparent !important;
-	}
-
-	section:first-child {
-    	margin-right: 2%;
 	}
 
 }
@@ -275,15 +267,7 @@ div.two-column.wide-right {
     section {
         display: block !important;
         padding: 0 !important;
-        width: 66%;
-        margin-right: 0;
         background-color: transparent !important;
-    }
-
-    aside {
-        width: 32%;
-        margin-right: 2%;
-        float: left;
     }
 
 }
@@ -293,14 +277,7 @@ div.two-column.wide-left {
     section {
         display: block !important;
         padding: 0 !important;
-        width: 66%;
-        margin-right: 2%;
         background-color: transparent !important;
-    }
-
-    aside {
-        width: 32%;
-        float: left;
     }
 
 }
@@ -309,20 +286,11 @@ div.two-column.wide-left {
 div.three-column {
 
 	width: 100%;
-	float: left;
-	clear: both;
 
 	section {
     	display: block !important;
         padding: 0 !important;
-    	width: 32%;
-    	margin-right: 2%;
-    	float: left;
     	background-color: transparent !important;
-	}
-
-	section:last-child {
-    	margin-right: 0;
 	}
 
 	.callout {
@@ -466,7 +434,7 @@ hr {
 /* footer */
 footer {
 
-	width: rem( 940px );
+	width: 100%;
 	border-top: rem( 1px ) solid #b4b4b4;
 	margin: 0;
 	color: #b4b4b4;
@@ -475,7 +443,7 @@ footer {
 	p {
     	margin: 0;
         line-height: 0;
-        padding: rem( 30px ) rem( 15px ) rem( 15px );
+        padding: rem( 30px ) rem( 10px ) rem( 15px );
         min-height: rem( 15px );
         background-color: #fafafa;
 	}
@@ -616,19 +584,6 @@ code {
 	border-right: 0;
 	border-top: rem( 10px ) solid $gray-color;
 	border-bottom: rem( 5px ) solid #b2b2b2;
-}
-
-.vertical.left {
-	width: rem( 250px );
-	margin: rem( 5px ) rem( $gutter ) 0 0;
-	float: left;
-}
-
-.vertical.right {
-	width: rem( 250px );
-	margin: rem( 5px ) 0 0 rem( $gutter );
-	float: right;
-	text-align: left;
 }
 
 .callout.success {
@@ -867,19 +822,6 @@ table.half {
 
 table.quarter {
 	width: 25%;
-}
-
-/* floating */
-table.left {
-	float: left;
-	margin: 0 rem( $gutter ) 0 0;
-	text-align: left;
-}
-
-table.right {
-	float: right;
-	margin: 0 0 0 rem( $gutter );
-	text-align: left;
 }
 
 /* striped */
@@ -1207,7 +1149,13 @@ table > tfoot > tr.neutral > th {
 /* IMAGES
 -----------------------------------------------------------------*/
 figure {
-
+    
+    img {
+        
+        max-width: 100%;
+        
+    }
+    
 	figcaption {
     	font-size: rem( 12px );
 	}
@@ -1219,6 +1167,7 @@ figure {
 	img {
 	    padding: rem( 6px );
     	border: rem( 2px ) solid #888;
+    	@include box-sizing( 'border-box' );
 	}
 
 }
@@ -1228,64 +1177,52 @@ figure {
     img {
         padding: rem( 6px );
         @include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
+        @include box-sizing( 'border-box' );
     }
 
 }
 
 .polaroid {
 
-	width: rem( 345px );
+	max-width: 100%;
 	background-color: #fff;
 	@include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
 
 	img {
-    	display: block;
-    	width: rem( 316px );
-    	height: rem( 238px );
+    	max-width: 100%;
     	padding: rem( $gutter );
+    	@include box-sizing( 'border-box' );
 	}
 
 	figcaption {
+    	text-align: left;
         padding: 0 rem( $gutter ) rem( $gutter );
+        @include box-sizing( 'border-box' );
 	}
 
 }
 
 .polaroid.left,
 img.left {
-	display: inline-block;
-	float: left;
-	margin-right: rem( $gutter );
+	display: block;
 }
 
 .polaroid.right,
 img.right {
-	display: inline-block;
-	float: right;
-	margin-left: rem( $gutter );
+	display: block;
 }
 
 /* HELPERS
 -----------------------------------------------------------------*/
 .page-container {
-
-	width: rem( 940px );
+    
+    width: 100%;
 	min-height: rem( 520px );
 	margin: 0;
 	background-color: #fff;
 	padding: 0 rem( 15px ) rem( 15px );
 	@include box-sizing( "border-box" );
 
-}
-
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: " ";
-}
-
-.clearfix:after {
-  clear: both;
 }
 
 /* ICONS
@@ -1576,22 +1513,29 @@ span.with-popover.active {
     	padding: 0;
     	margin: 0;
     	border-bottom: rem( 1px ) solid #929292;
+    	background-color: #e7e7e7;
+    	padding: rem( 5px ) rem( 5px ) 0;
     	float: left;
     	clear: both;
+    	@include box-sizing( 'border-box' );
+    	@include border-corner-radius( top, left, rem( 3px ) );
+        @include border-corner-radius( top, right, rem( 3px ) );
 
     	li {
 
         	display: block;
         	float: left;
         	margin-bottom: rem( -1px );
+        	margin-right: rem( 3px );
         	background-color: #fff;
-        	@include border-corner-radius( top, right, rem( 5px ) );
+        	@include border-corner-radius( top, left, rem( 3px ) );
+        	@include border-corner-radius( top, right, rem( 3px ) );
 
         	a, a:visited {
             	display: block;
-            	padding: rem( 10px );
+            	padding: rem( 5px ) rem( 10px );
             	text-decoration: none;
-            	color: #4e4e4e;
+            	color: #888;
         	}
 
         	a:hover {
@@ -1599,21 +1543,76 @@ span.with-popover.active {
         	}
 
     	}
+    	
+    	li.info {
+        	
+        	background-color: $info-color;
+        	
+        	a {
+            	
+            	color: #fff;
+            	
+        	}
+        	
+    	}
+    	
+    	li.danger {
+        	
+        	@extend li.info;
+        	
+        	background-color: $danger-color;
+        	
+    	}
+    	
+    	li.success {
+        	
+        	@extend li.info;
+        	
+        	background-color: $success-color;
+        	
+    	}
+    	
+    	li.warning {
+        	
+        	@extend li.info;
+        	
+        	background-color: $warning-color;
+        	
+    	}
 
     	li.active {
         	border-top: rem( 1px ) solid #929292;
         	border-right: rem( 1px ) solid #929292;
         	border-left: rem( 1px ) solid #929292;
         	border-bottom: transparent;
-        	@include single-box-shadow( 0, rem( -2px ), rem( 1px ), #a2a2a2 );
+        	background-color: #fff;
+        	@include single-box-shadow( 0, rem( -1px ), rem( 1px ), 0, #888);
+        	
+        	a {
+            	
+            	color: #333;
+            	
+        	}
+        	
     	}
 
     	li.active:hover {
+        	
         	background-color: #fff;
+        	
     	}
 
     	li:hover {
-        	background-color: #e7e7e7;
+        	
+        	background-color: #fff;
+        	@include single-box-shadow( 0, rem( -1px ), rem( 1px ), 0, #888);
+        	
+        	a {
+            	
+            	color: #333;
+            	
+        	}
+        	
     	}
 
 	}
@@ -1660,6 +1659,8 @@ span.with-popover.active {
         width: 100%;
         margin-bottom: rem( $gutter );
         border-bottom: rem( 1px ) solid $border-color;
+        @include border-corner-radius( top, left, rem( 0px ) );
+        @include border-corner-radius( top, right, rem( 0px ) );
 
     	li {
 
@@ -1690,7 +1691,7 @@ span.with-popover.active {
     	li.active {
 
         	border-bottom: rem( 2px ) solid $danger-color;
-        	@include single-box-shadow( 0, 0, 0, #fff );
+        	@include single-box-shadow( 0, 0, 0, 0, #888);
 
         	a {
             	color: $font-color;
@@ -1699,12 +1700,14 @@ span.with-popover.active {
     	}
 
     	li.active:hover {
+        	background-color: transparent;
         	border-bottom-color: $danger-color;
     	}
 
     	li:hover {
 
         	border-bottom: rem( 2px ) solid $gray-color;
+        	@include single-box-shadow( 0, 0, 0, 0, #888);
 
         	a {
             	color: $font-color;
@@ -2186,6 +2189,8 @@ span.with-popover.active {
 	cursor: crosshair;
 
 	.small {
+    	width: 100%;
+    	height: auto;
     	display: block;
         margin: rem( 16px ) 0;
 	}
@@ -2370,7 +2375,7 @@ span.with-popover.active {
 	        	background-repeat: no-repeat;
 	        	background-position: rem( -11px ) center;
 	        	top: 0;
-	        	left: rem( 15px );
+	        	left: rem( 2px );
 	        }
 	        
 	        .indicator.open {
@@ -2412,14 +2417,14 @@ span.with-popover.active {
         .image:after {
 
             position: absolute;
-            width: rem( 50px );
-            height: rem( 50px );
+            width: rem( 25px );
+            height: rem( 25px );
             font-family: 'sgicon';
-            font-size: rem( 40px );
+            font-size: rem( 25px );
             text-align: center;
             color: $gray-color;
-            top: 42%;
-            left: 25%;
+            top: 45%;
+            left: 22%;
             content: "\e993";
             z-index: 0;
 
@@ -2602,6 +2607,241 @@ iframe, object {
 
 #support, .support {
 	display: none;
+}
+
+/* FOR VIEWPORT < 414px */
+@media (min-width: 414px) {
+    
+    figure {
+    
+        img {
+            
+            max-width: none;
+            
+        }
+    
+    }
+    
+    .polaroid {
+
+    	width: rem( 316px );
+    	max-width: none;
+    
+    	img {
+        	width: rem( 316px );
+        	height: rem( 238px );
+        	max-width: none;
+    	}
+    
+    }
+    
+}
+
+/* FOR VIEWPORT > 768px */
+@media (min-width: 768px) {
+    
+    /* two-column */
+    div.two-column {
+    
+    	float: left;
+    	clear: both;
+    
+    	section {
+        	width: 49%;
+        	float: left;
+    	}
+    
+    	section:first-child {
+        	margin-right: 2%;
+    	}
+    
+    }
+    
+    div.two-column.wide-right {
+    
+        section {
+            width: 66%;
+            margin-right: 0;
+        }
+    
+        aside {
+            width: 32%;
+            margin-right: 2%;
+            float: left;
+        }
+    
+    }
+    
+    div.two-column.wide-left {
+    
+        section {
+            width: 66%;
+            margin-right: 2%;
+        }
+    
+        aside {
+            width: 32%;
+            float: left;
+        }
+    
+    }
+    
+    /* three-column */
+    div.three-column {
+    
+    	float: left;
+    	clear: both;
+    
+    	section {
+        	width: 32%;
+        	margin-right: 2%;
+        	float: left;
+    	}
+    
+    	section:last-child {
+        	margin-right: 0;
+    	}
+    
+    	.callout {
+        	margin: rem( $gutter ) 0;
+    	}
+    
+    }
+    
+    /* image floating */
+    .polaroid.left,
+    img.left {
+    	display: inline-block;
+    	float: left;
+    	margin-right: rem( $gutter );
+    }
+    
+    .polaroid.right,
+    img.right {
+    	display: inline-block;
+    	float: right;
+    	margin-left: rem( $gutter );
+    }
+    
+    /* callout floating */
+    .vertical.left {
+        width: rem( 250px );
+        margin: rem( 5px ) rem( $gutter ) 0 0;
+        float: left;
+    }
+    
+    .vertical.right {
+        width: rem( 250px );
+        margin: rem( 5px ) 0 0 rem( $gutter );
+        float: right;
+        text-align: left;
+    }
+    
+    /* table floating */
+    table.left {
+    	float: left;
+    	margin: 0 rem( $gutter ) 0 0;
+    	text-align: left;
+    }
+    
+    table.right {
+    	float: right;
+    	margin: 0 0 0 rem( $gutter );
+    	text-align: left;
+    }
+    
+    /* clear fix */
+    .clearfix:before,
+    .clearfix:after {
+      display: table;
+      content: " ";
+    }
+    
+    .clearfix:after {
+      clear: both;
+    }
+    
+    .with-learning-resources {
+    
+        .resource {
+            
+            .arrow {
+    	        
+    	        .indicator {
+    
+    	        	left: rem( 10px );
+    	        }
+    	        
+            }
+    
+        }
+    
+        .resource.book {
+    
+            .image:after {
+    
+                width: rem( 50px );
+                height: rem( 50px );
+                font-size: rem( 40px );
+                top: 42%;
+                left: 20%;
+    
+            }
+    
+        }
+    
+    }
+    
+}
+
+/* FOR VIEWPORT > 940px */
+@media (min-width: 940px) {
+    
+    .page-container {
+        
+        width: rem( 940px );
+        margin: 0 auto;
+        
+    }
+    
+    .with-learning-resources {
+    
+        .resource {
+            
+            .arrow {
+    	        
+    	        .indicator {
+    
+    	        	left: rem( 16px );
+    	        }
+    	        
+            }
+    
+        }
+    
+        .resource.book {
+    
+            .image:after {
+    
+                width: rem( 50px );
+                height: rem( 50px );
+                font-size: rem( 40px );
+                top: 42%;
+                left: 26%;
+    
+            }
+    
+        }
+    
+    }
+    
+    footer {
+
+    	width: rem( 940px );
+    	margin: 0 auto;
+    
+    }
+    
 }
 
 /* FOR PRINTING
