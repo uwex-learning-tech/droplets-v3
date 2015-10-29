@@ -10,25 +10,19 @@ body {
 	background-repeat: repeat-x;
 }
 
-/* wrapper */
-.home_wrapper {
-	width: 100%;
-	margin: 0 auto;
-}
 
 /* container */
 .home_container {
-
-	width: 964px;
+    
 	padding-top: 170px;
-	padding-bottom: 50px;
 	margin: 0 auto;
 
 	.logo {
 
     	display: block;
         margin: 16px auto;
-        width: 810px;
+        width: 960px;
+        float: none;
         clear: both;
 
         img {
@@ -40,7 +34,7 @@ body {
 
         .logo-text {
 
-            width: 461px;
+            width: 611px;
             float: left;
 
             h1 {
@@ -50,7 +44,8 @@ body {
             }
 
             blockquote.quote {
-                margin-top: 28px;
+            
+                margin-top: 20px;
             }
 
             p {
@@ -62,16 +57,16 @@ body {
 
             p.action {
 
-            font-size: 24px;
+            font-size: 20px;
             font-weight: normal;
-            margin-top: 50px;
+            margin-top: 20px;
 
             .btn {
                 color: #fff;
             	text-shadow: rgba(0,0,0,.75) 1px 1px 1px;
-            	font-size: 24px;
+            	font-size: 20px;
             	line-height: normal;
-            	padding-top: 5px;
+            	padding: 3px 8px 5px;
             	vertical-align: baseline;
             } // .home_container p.action .btn
 
@@ -81,155 +76,102 @@ body {
 
 	} // .home_container .logo
 
+    /* footer */
+    .home_footer {
+        
+    	background-color: #3176af;
+    	border-top: 1px solid #565656;
+    	float: none;
+    	clear: both;
+    	
+    	.home_footer_content {
+        	width: 900px;
+        	margin: 0 auto;
+        	padding: 26px 30px 20px;
+        	float: none;
+            clear: both;
+        }
+        
+        .home_footer_grid {
+
+        	width: 100%;
+        	color: #f2f2f2;
+        	float: none;
+        	clear: both;
+        
+        	.grid {
+            	width: 25%;
+                margin-right: 0;
+                float: left;
+        	} // .home_footer_grid .grid
+        
+        	.grid:last-child {
+            	margin-right: 0;
+        	} // .home_footer_grid .grid:last-child
+        
+        	a, a:visited {
+                display: block;
+            	color: #f2f2f2;
+            	font-size: 14px;
+            	font-weight: bold;
+            	line-height: normal;
+            	text-decoration: none;
+            	margin-bottom: 5px;
+            } // .home_footer_grid a, .home_footer_grid a:visited
+        
+            ul {
+        
+                padding: 0;
+                margin: 0;
+        
+                li {
+        
+                    list-style: none;
+                	margin-bottom: 8px;
+                	font-size: 12px;
+                	line-height: 1;
+        
+                	a, a:visited {
+                    	display: inline;
+                    	font-size: 12px;
+                    	font-weight: normal;
+                    	margin-bottom: 0;
+                	} // .home_footer_grid li a, .home_footer_grid a:visited
+        
+                	a:hover {
+                    	text-decoration: underline;
+                	} // .home_footer_grid li a:hover
+        
+                } // .home_footer_grid ul li
+        
+            } // .home_footer_grid ul
+        
+        } // .home_footer_grid
+        
+        .home_footer_copyright {
+            
+            width: 100%;
+        	background-color: #333;
+        	float: none;
+        	clear: both;
+        	
+        	.home_footer_copyright_notice {
+            	width: 900px;
+            	margin: 0 auto;
+            	color: #cfcfcf;
+            	font-size: 12px;
+            	padding: 10px 30px;
+            	line-height: 1;
+            	
+            }
+        	
+        }
+        
+        
+    	
+    }
 
 } // .home_container
-
-/* footer */
-.home_footer {
-	background-color: #3176af;
-	border-top: 1px solid #565656;
-}
-
-.home_footer_content {
-	width: 904px;
-	margin: 0 auto;
-	padding: 26px 30px 20px;
-}
-
-.home_footer_grid {
-
-	width: 904px;
-	color: #f2f2f2;
-	float: left;
-	clear: both;
-
-	.grid {
-    	width: 218.5px;
-        margin-right: 10px;
-        float: left;
-	} // .home_footer_grid .grid
-
-	.grid:last-child {
-    	margin-right: 0;
-	} // .home_footer_grid .grid:last-child
-
-	a, a:visited {
-        display: block;
-    	color: #f2f2f2;
-    	font-size: 14px;
-    	font-weight: bold;
-    	line-height: normal;
-    	text-decoration: none;
-    	margin-bottom: 5px;
-    } // .home_footer_grid a, .home_footer_grid a:visited
-
-    ul {
-
-        padding: 0;
-        margin: 0;
-
-        li {
-
-            list-style: none;
-        	margin-bottom: 8px;
-        	font-size: 12px;
-        	line-height: 1;
-
-        	a, a:visited {
-            	display: inline;
-            	font-size: 12px;
-            	font-weight: normal;
-            	margin-bottom: 0;
-        	} // .home_footer_grid li a, .home_footer_grid a:visited
-
-        	a:hover {
-            	text-decoration: underline;
-        	} // .home_footer_grid li a:hover
-
-        } // .home_footer_grid ul li
-
-    } // .home_footer_grid ul
-
-} // .home_footer_grid
-
-.feature_request_wrapper {
-    
-    margin: 0;
-    background-color: #474747;
-    
-    .feature_request {
-        
-        width: 904px;
-        margin: 0 auto;
-        padding: 26px 30px 20px;
-        font-size: 12px;
-        color: #f2f2f2;
-        
-    	font-size: 12px;
-    	line-height: 18px;
-        
-        h2 {
-            
-            font-size: 14px;
-            font-weight: bold;
-            margin-top: 0;
-            margin-bottom: 8px;
-            
-        }
-        
-        p {
-            
-            margin-bottom: 8px;
-            
-            a, a:visited {
-                
-                color: #f2f2f2;
-                text-decoration: underline;
-                
-            }
-            
-            a:hover {
-                
-                text-decoration: none;
-                
-            }
-            
-        }
-        
-        ul {
-            
-            margin-bottom: 8px;
-            
-            li {
-                
-                margin-bottom: 4px;
-                
-            }
-            
-        }
-        
-        p:last-child {
-            
-            margin-bottom: 0;
-            
-        }
-        
-    }
-    
-}
-
-.home_footer_copyright {
-	background-color: #333;
-}
-
-.home_footer_copyright_notice {
-	width: 904px;
-	margin: 0 auto;
-	color: #cfcfcf;
-	font-size: 12px;
-	padding: 10px 30px;
-	line-height: 1;
-}
 
 /* GUIDE PAGES FOOTER
 -----------------------------------------------------------------*/
