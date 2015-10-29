@@ -5,7 +5,7 @@
 A HTML, CSS, and JavaScript framework for designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
 
 ### How To Use
-1. To start, download the [framework](https://github.com/oel-mediateam/idstyleguide/archive/master.zip) (ZIP).
+1. To start, download the [framework](https://github.com/oel-mediateam/droplets/archive/master.zip) (ZIP).
 2. Unzip or extract the ZIP file when the download is completed.
 3. Open the `dist` directory.
 4. Upload all of the files and directories inside the `dist` directory to your LMS's file storage.
@@ -37,23 +37,23 @@ Knowledges of SASS and Compass are essential to write the CSS for this framework
 *Latest stable version is always recommended.*
 
 ### Bug Reporting and Questions
-If any bugs/glitches are found in this framework, please report them under the "**[Issues](https://github.com/oel-mediateam/idstyleguide/issues)**" page on GitHub. When reporting a bug, please write the report as detailed and specifically as possible. Note the steps to reproduce the bug and include screen captures if possible.
+If any bugs/glitches are found in this framework, please report them under the "**[Issues](https://github.com/oel-mediateam/droplets/issues)**" page on GitHub. When reporting a bug, please write the report as detailed and specifically as possible. Note the steps to reproduce the bug and include screen captures if possible.
 
-For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/idstyleguide/issues)**" page on GitHub.
+For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/droplets/issues)**" page on GitHub.
 
 ---
 #### Version Change Log
 
 **1.4.2**
-* Added three new icons to the [icon set](https://media.uwex.edu/content/media/documentation/idstyleguide/icons.html): tech need, welcome, and competency.
+* Added three new icons to the [icon set](https://media.uwex.edu/app/droplets/icons.html): tech need, welcome, and competency.
 * Enhanced the tab style for more visibility.
 * Tab can now be colored. See doc for more info.
 
 **1.4.1**
-* Updated [Learning Resources Component](https://media.uwex.edu/content/media/documentation/idstyleguide/learning_resources.html) to reflect feedback from Instructional Designers.
+* Updated [Learning Resources Component](https://media.uwex.edu/app/droplets/learning_resources.html) to reflect feedback from Instructional Designers.
 
 **1.4.0**
-* New JavaScript component: [Learning Resources](https://media.uwex.edu/content/media/documentation/idstyleguide/learning_resources.html)
+* New JavaScript component: [Learning Resources](https://media.uwex.edu/app/droplets/learning_resources.html)
 
 **1.3.6**
 * Improvements and minor fixes
@@ -88,9 +88,9 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 * Added two new classes for table: `minimal-padding` and `small-text`
 * `vert-top`, `vert-center`, `vert-bottom`, `horz-left`, `horz-center`, and `horz-right` classes can now be applied to the whole table rather than individual cells or `td` elements.
 * Read More feature has a new look
-* [Calendar](https://mediastreamer.doit.wisc.edu/uwli-ltc/media/documentation/idstyleguide/calendar.html)
+* [Calendar](https://media.uwex.edu/app/droplets/calendar.html)
 * Minor bug fixes
 
 ---
 Ethan S. Lin  
-[University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning](http://ce.uwex.edu/)
+University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning
