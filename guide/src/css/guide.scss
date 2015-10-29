@@ -152,8 +152,74 @@ body {
 
 } // .home_footer_grid
 
+.feature_request_wrapper {
+    
+    margin: 0;
+    background-color: #474747;
+    
+    .feature_request {
+        
+        width: 904px;
+        margin: 0 auto;
+        padding: 26px 30px 20px;
+        font-size: 12px;
+        color: #f2f2f2;
+        
+    	font-size: 12px;
+    	line-height: 18px;
+        
+        h2 {
+            
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 8px;
+            
+        }
+        
+        p {
+            
+            margin-bottom: 8px;
+            
+            a, a:visited {
+                
+                color: #f2f2f2;
+                text-decoration: underline;
+                
+            }
+            
+            a:hover {
+                
+                text-decoration: none;
+                
+            }
+            
+        }
+        
+        ul {
+            
+            margin-bottom: 8px;
+            
+            li {
+                
+                margin-bottom: 4px;
+                
+            }
+            
+        }
+        
+        p:last-child {
+            
+            margin-bottom: 0;
+            
+        }
+        
+    }
+    
+}
+
 .home_footer_copyright {
-	background-color: #0f4b90;
+	background-color: #333;
 }
 
 .home_footer_copyright_notice {

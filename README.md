@@ -46,6 +46,8 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 
 **1.4.2**
 * Added three new icons to the [icon set](https://media.uwex.edu/content/media/documentation/idstyleguide/icons.html): tech need, welcome, and competency.
+* Enhanced the tab style for more visibility.
+* Tab can now be colored. See doc for more info.
 
 **1.4.1**
 * Updated [Learning Resources Component](https://media.uwex.edu/content/media/documentation/idstyleguide/learning_resources.html) to reflect feedback from Instructional Designers.
