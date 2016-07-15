@@ -488,7 +488,13 @@ pre {
 
 .non-flex-assessment:before {
 	font-family: 'collaborativeicon';
-	content: '\e083';
+	content: '\e9aa';
+	font-size: 36px;
+}
+
+.non-flex-overview:before {
+	font-family: 'collaborativeicon';
+	content: '\ea4a';
 	font-size: 36px;
 }
 
