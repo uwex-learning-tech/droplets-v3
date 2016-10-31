@@ -1,5 +1,5 @@
 #DROPLETS
-**_version 1.4.3_**  
+**_version 1.4.4_**  
 *_(formerly known as idstyleguide)_*
 
 A HTML, CSS, and JavaScript framework for designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
@@ -43,6 +43,10 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 
 ---
 #### Version Change Log
+
+**1.4.4**
+* Fixed the issue where first icon size in a callout was larger than others.
+* Icon font encoding in CSS is back.
 
 **1.4.3**
 * Added four new icons to the [icon set](https://media.uwex.edu/app/droplets/icons.html).

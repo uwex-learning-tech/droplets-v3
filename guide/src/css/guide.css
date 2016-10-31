@@ -292,7 +292,7 @@ pre {
 
 /* ICON
 -----------------------------------------------------------------*/
-.icon-set tbody tr td {
+.icons-set tbody tr td {
   vertical-align: middle; }
 
 .icon-size-up [class*=" icon-"],
@@ -306,7 +306,7 @@ pre {
 
 .non-flex-overview:before {
   font-family: 'collaborativeicon';
-  content: '\ea4a';
+  content: '\e001';
   font-size: 36px; }
 
 /* GUIDE EXAMPLE FIX
