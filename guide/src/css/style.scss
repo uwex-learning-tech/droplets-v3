@@ -558,7 +558,7 @@ code {
 	border-right: rem( 5px ) solid #b2b2b2;
 	@include box-sizing( "border-box" );
 
-	h4, p:first-child {
+	h4 {
 
     	margin-top: 0;
     	padding: 0;
