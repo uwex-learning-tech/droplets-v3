@@ -565,9 +565,7 @@ code {
 
     	[class^="icon-"],
     	[class*=" icon-"] {
-        	display: inline-block;
-            margin-right: rem( 5px );
-            font-size: rem( 22px );
+            font-size: 100%;
     	}
 
 	}

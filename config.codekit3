@@ -7,7 +7,7 @@
 		"uuidString": "E5DCFD8E-3F47-4090-A652-E5776268F028"
 		}
 	],
-"creatorBuild": "25390",
+"creatorBuild": "25444",
 "files": {
 	"\/.gitignore": {
 		"ft": 8192,
@@ -15,152 +15,137 @@
 		"oAP": "\/.gitignore",
 		"oF": 1
 		},
-	"\/build\/css": {
-		"ft": 65536,
-		"oA": 1,
-		"oAP": "\/build\/build\/css",
-		"oF": 0
-		},
-	"\/build\/fonts": {
-		"ft": 65536,
-		"oA": 1,
-		"oAP": "\/build\/build\/fonts",
-		"oF": 0
-		},
-	"\/build\/script\/droplets.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/build\/script\/min\/droplets-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
 	"\/config.rb": {
 		"ft": 131072,
 		"oA": 0,
 		"oAP": "\/config.rb",
 		"oF": 0
 		},
+	"\/dist": {
+		"ft": 65536,
+		"oA": 1,
+		"oAP": "\/build\/dist",
+		"oF": 0
+		},
 	"\/guide\/accordion.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/accordion.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/actioncalls.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/actioncalls.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/blockcallouts.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/blockcallouts.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/calendar-demo.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/calendar-demo.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/calendar.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/calendar.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/demo.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/demo.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/emphasis.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/emphasis.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/helpers.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/helpers.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/icons.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/icons.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/image.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/image.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/imagezoom.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/imagezoom.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/index.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/index.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/inlinecallouts.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/inlinecallouts.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/internalnav.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/internalnav.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/layouts.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/layouts.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/learning-resources-demo.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/learning-resources-demo.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/learning_resources.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/learning_resources.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/pageheaders.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/pageheaders.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/popover.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/popover.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/readmore.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/readmore.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/src\/css\/collaborativeicon.css": {
 		"aP": 0,
@@ -182,7 +167,7 @@
 		"oA": 0,
 		"oAP": "\/guide\/src\/css\/collaborativeicon.css",
 		"oF": 1,
-		"oS": 0,
+		"oS": 3,
 		"uL": 1
 		},
 	"\/guide\/src\/css\/flexicon.css": {
@@ -205,7 +190,7 @@
 		"oA": 0,
 		"oAP": "\/guide\/src\/css\/flexicon.css",
 		"oF": 0,
-		"oS": 0,
+		"oS": 3,
 		"uL": 1
 		},
 	"\/guide\/src\/css\/guide.css": {
@@ -228,7 +213,7 @@
 		"oA": 0,
 		"oAP": "\/guide\/src\/css\/guide.css",
 		"oF": 0,
-		"oS": 0,
+		"oS": 3,
 		"uL": 1
 		},
 	"\/guide\/src\/css\/sgicon.css": {
@@ -251,7 +236,7 @@
 		"oA": 0,
 		"oAP": "\/guide\/src\/css\/sgicon.css",
 		"oF": 1,
-		"oS": 0,
+		"oS": 3,
 		"uL": 1
 		},
 	"\/guide\/src\/css\/style.css": {
@@ -329,7 +314,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/build\/script\/droplets.js",
+		"oAP": "\/dist\/script\/droplets.js",
 		"oF": 2,
 		"sC": 3,
 		"tS": 0
@@ -342,39 +327,39 @@
 		},
 	"\/guide\/starter.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/starter.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/support.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/support.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/tab.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/tab.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/tables.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/tables.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/tooltip.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/tooltip.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/guide\/typography.html": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/guide\/typography.html",
-		"oF": 0
+		"oF": 1
 		},
 	"\/LICENSE": {
 		"ft": 8192,
@@ -434,6 +419,9 @@
 	"babelModuleID": "",
 	"babelNoComments": 0,
 	"babelPlugins": {
+		"async-generator-functions": {
+			"active": 0
+			},
 		"async-to-generator": {
 			"active": 0
 			},
@@ -1522,6 +1510,10 @@
 			"active": 0,
 			"optionString": "{'ignoreDestructuring': false, 'ignoreImport': false, 'ignoreExport': false}"
 			},
+		"no-useless-return": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-var": {
 			"active": 0,
 			"optionString": ""
@@ -1589,10 +1581,6 @@
 		"prefer-numeric-literals": {
 			"active": 0,
 			"optionString": ""
-			},
-		"prefer-reflect": {
-			"active": 0,
-			"optionString": "{'exceptions': []}"
 			},
 		"prefer-rest-params": {
 			"active": 0,
@@ -1726,7 +1714,7 @@
 	"esLintSourceType": 0,
 	"externalServerAddress": "http:\/\/localhost:8888",
 	"gitIgnoreBuildFolder": 1,
-	"hideConfigFile": 1,
+	"hideConfigFile": 0,
 	"jsCheckerReservedNamesString": "",
 	"jsHintFlags2": {
 		"asi": {
@@ -2308,7 +2296,7 @@
 	"languageDefaultsUserDefined": [
 		],
 	"previewPathAddition": "",
-	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules, \/guide\/src\/img, \/guide\/starter, \/guide\/src\/fonts, \/build\/fonts, \/build\/css",
+	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules, \/guide\/src\/img, \/guide\/starter, \/guide\/src\/fonts, \/build\/fonts, \/build\/css, \/dist",
 	"sourceFolderName": "source",
 	"uglifyDefinesString": "",
 	"uglifyFlags2": {
