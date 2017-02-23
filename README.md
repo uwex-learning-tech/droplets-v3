@@ -1,5 +1,5 @@
 #DROPLETS
-**_version 1.4.5_**  
+**_version 1.4.6_**  
 *_(formerly known as idstyleguide)_*
 
 A HTML, CSS, and JavaScript framework for designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
@@ -43,6 +43,10 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 
 ---
 #### Version Change Log
+
+**1.4.6**
+* Rework CSS for figure element.
+* Figure element can now be floated.
 
 **1.4.5**
 * Updated a few font icons to improve legibility

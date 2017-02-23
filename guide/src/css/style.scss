@@ -1152,14 +1152,20 @@ table > tfoot > tr.neutral > th {
 -----------------------------------------------------------------*/
 figure {
     
+    display: table;
+    text-align: left;
+    width: 1px;
+    margin-left: 0;
+    margin-right: 0;
+    
     img {
-        
-        max-width: 100%;
-        
+        display: table-row;
     }
     
 	figcaption {
+    	display: table-row;
     	font-size: rem( 12px );
+    	line-height: rem( 16px );
 	}
 
 }
@@ -1175,7 +1181,7 @@ figure {
 }
 
 .shadowed {
-
+    
     img {
         padding: rem( 6px );
         @include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
@@ -1189,29 +1195,26 @@ figure {
 	max-width: 100%;
 	background-color: #fff;
 	@include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
+	border-collapse: separate;
+    border-spacing: rem( $gutter );
 
 	img {
     	max-width: 100%;
-    	padding: rem( $gutter );
     	@include box-sizing( 'border-box' );
 	}
 
-	figcaption {
-    	text-align: left;
-        padding: 0 rem( $gutter ) rem( $gutter );
-        @include box-sizing( 'border-box' );
-	}
-
 }
 
-.polaroid.left,
-img.left {
-	display: block;
-}
-
-.polaroid.right,
+img.left,
 img.right {
 	display: block;
+	text-align: left;
+}
+
+figure.left,
+figure.right {
+	display: table;
+	text-align: left;
 }
 
 /* HELPERS
@@ -2711,18 +2714,39 @@ iframe, object {
     }
     
     /* image floating */
-    .polaroid.left,
-    img.left {
-    	display: inline-block;
-    	float: left;
-    	margin-right: rem( $gutter );
+    .imgCommons {
+        display: inline-block;
+    	text-align: left;
     }
     
-    .polaroid.right,
+    img.left {
+        @extend .imgCommons;
+        margin-left: 0;
+        margin-right: rem( $gutter );
+        float: left;
+    }
+    
     img.right {
-    	display: inline-block;
-    	float: right;
-    	margin-left: rem( $gutter );
+        @extend .imgCommons;
+        margin-right: 0;
+        margin-left: rem( $gutter );
+        float: right;
+    }
+    
+    figure.right {
+        @extend .imgCommons;
+        float: right;
+        margin-right: 0;
+        margin-left: rem( $gutter );
+        display: table;
+    }
+    
+    figure.left {
+        @extend .imgCommons;
+        float: left;
+        margin-left: 0;
+        margin-right: rem( $gutter );
+        display: table;
     }
     
     /* callout floating */
