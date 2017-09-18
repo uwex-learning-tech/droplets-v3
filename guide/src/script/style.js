@@ -1,13 +1,13 @@
 /*
  * DROPLET Framework jQuery Core Script
  *
- * @version: 1.4.5
+ * @version: 1.4.6
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/idstyleguide
- * Released date: 11/28/2016
+ * Released date: 09/18/2017
  *
  * @license: The MIT License (MIT)
- * Copyright (c) 2013-2016 UWEX CEOEL Media Services
+ * Copyright (c) 2013-2017 UWEX CEOEL Media Services
  *
  */
 
@@ -25,15 +25,36 @@ $(document).ready(function() {
 	if ( parent === top ) {
 
 		iframe = $( parent.document ).find( "div#ContentView" ).find( "iframe" ); // dependent on parent iFrame
+		
+		if ( iframe.length <= 0 ){
+    		iframe = $( parent.document ).find( "iframe" );
+		}
+		
 		iframe.attr( "scrolling", "no" );
 		iframe.attr( "allowfullscreen", "" );
 		iframe.attr( "webkitallowfullscreen", "" );
 		iframe.attr( "mozallowfullscreen", "" );
-
+        iframe.attr( 'height', calIframeHeight() + "px" );
+        
 		child = true;
+		
+		$( top ).on("resize", function(){
+    		
+        	if ( parent === top ) {
+            	
+            	iframe.attr( "height", calIframeHeight() + "px");
+            	
+            	if ( $(".with-popover.active").length ) {
+                	$(".with-popover.active").trigger( 'click', "reposition" );
+            	}
+            	
+        	}
+    	
+	    });
 
 	}
-
+	
+	
 	/* FUNCTION TO CHECK JS COMPONENTS
     -----------------------------------------------------------------*/
 	function checkComponents() {
@@ -84,7 +105,7 @@ $(document).ready(function() {
 
 			if (child) {
 
-				iframe.css("height", calIframeHeight() + "px");
+				iframe.attr("height", calIframeHeight() + "px");
 
 			}
 
@@ -153,104 +174,93 @@ $(document).ready(function() {
 	function getPopover() {
 
 		// set positions
-		$(".with-popover").each(function(i) {
+		$(".with-popover").each(function() {
 
-			var title = $(this).attr("data-title"), position = $(this).position();
+			var title = $(this).attr("data-title");
+			var position = 'top';
 
 			if ($(this).hasClass("top")) {
 
-				$("body").append("<div class=\"popover top\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover:eq("+i+")").css(
-                    {
-                        "top": position.top - ( $(".popover:eq("+i+")").outerHeight() + 13 ) + "px",
-                        "left": position.left - ( $(this).outerWidth(true) / 2 ) + "px"
-                    }
-                );
+				position = 'top';
 
 			} else if ($(this).hasClass("bottom")) {
 
-				$("body").append("<div class=\"popover bottom\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover:eq("+i+")").css(
-                    {
-                        "top": position.top + $(this).outerHeight(true) + 2  + "px",
-                        "left": position.left - ( $(this).outerWidth(true) / 2 ) + "px"
-                    }
-                );
+				position = 'bottom';
 
 			} else if ($(this).hasClass("right")) {
 
-				$("body").append("<div class=\"popover right\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-
-				if ($(this).is("img")) {
-
-					$(".popover:eq("+i+")").css({"top":(position.top + ($(this).height()/2))+"px", "left":(position.left + $(this).width() + 3)+"px"});
-
-				} else {
-
-					$(".popover:eq("+i+")").css(
-                        {
-                            "top": position.top + ( $( this ).outerHeight(true) ) - ( $( '.popover:eq('+i+')' ).outerHeight(true) / 2 ) - 12 + "px",
-                            "left": position.left + $(this).width() + 12 + "px"
-                        }
-                    );
-
-				}
+				position = 'right';
 
 			} else if ($(this).hasClass("left")) {
 
-				$("body").append("<div class=\"popover left\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-
-				if ($(this).is("img")) {
-
-					$(".popover:eq("+i+")").css({"top":(position.top + ($(this).height()/2))+"px", "left":(position.left - $(".popover").width()+100)+"px"});
-
-				} else {
-
-                    $(".popover:eq("+i+")").css(
-                        {
-                            "top": position.top + ( $( this ).outerHeight(true) ) - ( $( '.popover:eq('+i+')' ).outerHeight(true) / 2 ) - 12 + "px",
-                            "left": position.left - $( '.popover:eq('+i+')' ).outerWidth(true) - 12 + "px"
-
-                        }
-                    );
-
-				}
-
-			} else {
-
-				$("body").append("<div class=\"popover top\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
-				$(".popover:eq("+i+")").css(
-                    {
-                        "top": position.top - ( $(".popover:eq("+i+")").outerHeight() + 13 ) + "px",
-                        "left": position.left - ( $(this).outerWidth(true) / 2 ) + "px"
-                    }
-                );
+				position = 'left';
 
 			}
+			
+			$("body").append("<div class=\"popover " + position + "\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
 
 		}); // end each looop
 
 		// on mouse click state
-		$(".with-popover").on("click", function() {
+		$(".with-popover").on("click", function(e) {
 
 			var index = $(".with-popover").index(this);
+			
+			var target = $(e.currentTarget);
+			var popover = $(".popover:eq("+index+")");
+			var position = target.position();
+			var top = position.top;
+			var left = position.left;
+            
+            if ( target.hasClass('top') ) {
+                top = top - popover.height() - 10;
+            } else if ( target.hasClass('bottom') ) {
+                top = top + target.height() + 7;
+            } else if (target.hasClass("left")) {
+                top = top - ( target.height() / 2 ) - 2;
+                left = left - popover.width() - 2;
+            } else if (target.hasClass('right')) {
+                top = top - ( target.height() / 2 ) - 2;
+                left = left + target.width() + 7;
+            }
+            
+			if ( e.isTrigger === undefined ) {
+    			
+    			if ($(this).hasClass("active")) {
 
-			if ($(this).hasClass("active")) {
-
-				$(this).removeClass("active");
-				$(".popover:eq("+index+")").removeClass("in");
-
+    				$(this).removeClass("active");
+    				popover.removeClass("in").css({
+        				'top':'',
+        				'left': ''
+    				});
+    
+    			} else {
+    
+    				$(this).addClass("active");
+    				popover.addClass("in").css( {
+        				
+        				'top': top,
+        				'left': left
+        				
+    				} );
+    
+    			}
+    			
 			} else {
-
-				$(this).addClass("active");
-				$(".popover:eq("+index+")").addClass("in");
-
+    			
+    			popover.css( {
+        				
+    				'top': top,
+    				'left': left
+    				
+				} );
+    			
 			}
 
 		}); // end mouse click state
 
 	} // end getPopover
-
+    
 	/* TABS FUNCTION
     -----------------------------------------------------------------*/
 	function getTabs() {
@@ -297,7 +307,7 @@ $(document).ready(function() {
                 // set height if it is in a iFrame
 				if (child) {
 
-					iframe.css("height", calIframeHeight() + "px");
+					iframe.attr("height", calIframeHeight() + "px");
 
 				}
 
@@ -480,7 +490,7 @@ $(document).ready(function() {
 
             if (child) {
 
-				iframe.css("height", calIframeHeight() + "px");
+				iframe.attr("height", calIframeHeight() + "px");
 
 			}
 
@@ -501,7 +511,7 @@ $(document).ready(function() {
 
             if (child) {
 
-				iframe.css("height", calIframeHeight() + "px");
+				iframe.attr("height", calIframeHeight() + "px");
 
 			}
 
@@ -527,7 +537,7 @@ $(document).ready(function() {
 
                 if (child) {
 
-                    iframe.css("height", calIframeHeight() + "px");
+                    iframe.attr("height", calIframeHeight() + "px");
 
                 }
 
@@ -644,7 +654,7 @@ $(document).ready(function() {
 
         if (child) {
 
-			iframe.css("height", calIframeHeight() + "px");
+			iframe.attr("height", calIframeHeight() + "px");
 
 		}
 
@@ -682,7 +692,7 @@ $(document).ready(function() {
                 $(event.data.target + " .detailed-view[data-row="+index+"] .desc").html("");
                 if (child) {
 
-                    iframe.css("height", calIframeHeight() + "px");
+                    iframe.attr("height", calIframeHeight() + "px");
 
                 }
             });
@@ -700,7 +710,7 @@ $(document).ready(function() {
 
                 if (child) {
 
-                    iframe.css("height", calIframeHeight() + "px");
+                    iframe.attr("height", calIframeHeight() + "px");
 
                 }
 
@@ -755,10 +765,8 @@ $(document).ready(function() {
 							$("#ai"+i+" > .accordion-title:eq("+k+")").attr("aria-expanded", "false");
 
 							if (child) {
-
-            					iframe.animate({
-                					height: calIframeHeight() + "px"
-            					}, "fast");
+                                
+                                iframe.attr( 'height', calIframeHeight() + "px" );
 
             				}
 
@@ -784,9 +792,7 @@ $(document).ready(function() {
 
 							if (child) {
 
-            					iframe.animate({
-                					height: calIframeHeight() + "px"
-            					}, "fast");
+            					iframe.attr( 'height', calIframeHeight() + "px" );
 
             				}
 
@@ -999,11 +1005,17 @@ $(document).ready(function() {
 
                         height: h
 
-                    }, "slow", "linear", function() {
+                    }, "fast", "linear", function() {
 
                         $(rmID + " .readmore-ctrl").removeClass("opened");
                         $(rmID + " .readmore-ctrl a").html("CLICK TO READ MORE...");
                         $(rmID + " .readmore-ctrl a").attr("aria-expanded","false");
+                        
+                        if (child) {
+                                
+                            iframe.attr( 'height', calIframeHeight() + "px" );
+        
+        				}
 
                     });
 
@@ -1013,11 +1025,17 @@ $(document).ready(function() {
 
                         height: rmHeight + "px"
 
-                    }, "slow", "linear", function() {
+                    }, "fast", "linear", function() {
 
                         $(rmID + " .readmore-ctrl").addClass("opened");
                         $(rmID + " .readmore-ctrl a").html("CLICK TO READ LESS");
                         $(rmID + " .readmore-ctrl a").attr("aria-expanded","true");
+                        
+                        if (child) {
+                                
+                            iframe.attr( 'height', calIframeHeight() + "px" );
+        
+        				}
 
                     });
 
