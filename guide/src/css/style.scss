@@ -1549,7 +1549,7 @@ span.with-popover.active {
 
     	}
     	
-    	li.info {
+    	.info {
         	
         	background-color: $info-color;
         	
@@ -1561,25 +1561,25 @@ span.with-popover.active {
         	
     	}
     	
-    	li.danger {
+    	.danger {
         	
-        	@extend li.info;
+        	@extend .info;
         	
         	background-color: $danger-color;
         	
     	}
     	
-    	li.success {
+    	.success {
         	
-        	@extend li.info;
+        	@extend .info;
         	
         	background-color: $success-color;
         	
     	}
     	
-    	li.warning {
+    	.warning {
         	
-        	@extend li.info;
+        	@extend .info;
         	
         	background-color: $warning-color;
         	
@@ -2411,7 +2411,7 @@ span.with-popover.active {
         background-color: #f9f9f9;
     }
 
-    .resource.book {
+    .book {
 
         .image {
 
@@ -2437,9 +2437,9 @@ span.with-popover.active {
 
     }
 
-    .resource.tools {
+    .tools {
 
-        @extend .resource.book;
+        @extend .book;
 
         .image:after {
 
@@ -2449,9 +2449,9 @@ span.with-popover.active {
 
     }
 
-    .resource.video {
+    .video {
 
-        @extend .resource.book;
+        @extend .book;
 
         .image:after {
 
@@ -2461,9 +2461,9 @@ span.with-popover.active {
 
     }
 
-    .resource.document {
+    .document {
 
-        @extend .resource.book;
+        @extend .book;
 
         .image:after {
 
@@ -2473,9 +2473,9 @@ span.with-popover.active {
 
     }
 
-    .resource.website {
+    .website {
 
-        @extend .resource.book;
+        @extend .book;
 
         .image:after {
 
@@ -2485,9 +2485,9 @@ span.with-popover.active {
 
     }
 
-    .resource.audio {
+    .audio {
 
-        @extend .resource.book;
+        @extend .book;
 
         .image:after {
 

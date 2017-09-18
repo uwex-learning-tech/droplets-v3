@@ -389,12 +389,6 @@
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
-		},
-	"\/test.html": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/test.html",
-		"oF": 0
 		}
 	},
 "hooks": [

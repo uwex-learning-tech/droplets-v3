@@ -1,8 +1,7 @@
-#DROPLETS
-**_version 1.4.6_**  
-*_(formerly known as idstyleguide)_*
+# DROPLETS
+**_version 1.4.7_**  
 
-A HTML, CSS, and JavaScript framework for designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
+A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
 
 ### How To Use
 1. To start, download the [framework](https://github.com/oel-mediateam/droplets/archive/master.zip) (ZIP).
@@ -43,6 +42,10 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 
 ---
 #### Version Change Log
+
+**1.4.7**
+* Added a new briefcase icon
+* Fixed popover position issue
 
 **1.4.6**
 * Rework CSS for figure element.
@@ -107,5 +110,4 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 * Minor bug fixes
 
 ---
-Ethan S. Lin  
-University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning
+&copy; 2013 - 2017. Ethan Lin, University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning, and Board of Regents. All rights reserved.
