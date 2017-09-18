@@ -1,7 +1,7 @@
 /*
  * DROPLET Framework jQuery Core Script
  *
- * @version: 1.4.6
+ * @version: 1.4.7
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/idstyleguide
  * Released date: 09/18/2017
@@ -211,17 +211,34 @@ $(document).ready(function() {
 			var position = target.position();
 			var top = position.top;
 			var left = position.left;
+			
+			console.log(target);
+			console.log(position);
             
             if ( target.hasClass('top') ) {
                 top = top - popover.height() - 10;
             } else if ( target.hasClass('bottom') ) {
                 top = top + target.height() + 7;
             } else if (target.hasClass("left")) {
-                top = top - ( target.height() / 2 ) - 2;
-                left = left - popover.width() - 2;
+                
+                if (target.is("img")) {
+                    top = top + ( target.height() / 2 ) - (popover.height() / 2);
+                    left = left - popover.width();
+                } else {
+                    top = top - ( target.height() / 2 ) - 2;
+                    left = left - popover.width() - 2;
+                }
+                
             } else if (target.hasClass('right')) {
-                top = top - ( target.height() / 2 ) - 2;
-                left = left + target.width() + 7;
+                
+                if (target.is("img")) {
+                    top = top + ( target.height() / 2 ) - (popover.height() / 2);
+                    left = left + target.width() + 15;  
+                } else {
+                    top = top - ( target.height() / 2 ) - 2;
+                    left = left + target.width() + 7;  
+                }
+                          
             }
             
 			if ( e.isTrigger === undefined ) {
@@ -351,7 +368,7 @@ $(document).ready(function() {
         // loop trough each month
         months.each(function(i) {
 
-            var year = ($(this).attr("data-year") === undefined || $.trim($(this).attr("data-year")) === "") ? currentYear : Number($(this).attr("data-year"));
+            var year = $(this).attr("data-year") === undefined || $.trim($(this).attr("data-year")) === "" ? currentYear : Number($(this).attr("data-year"));
             var month = Number($(this).attr("data-month"));
             var daysInMonth = new Date(year, month, 0).getDate();
             var dayInWeek = new Date(year, month - 1, 1).getDay();
@@ -429,7 +446,7 @@ $(document).ready(function() {
             if (i === months.length - 1) {
 
                 var calYear = $(currentCalendar + " .tabs li[data-month=" + (currentMonth + 1) + "]").attr("data-year");
-                calYear = ( calYear === undefined || calYear === "" ) ? currentYear : calYear;
+                calYear = calYear === undefined || calYear === "" ? currentYear : calYear;
 
                 if (calYear === currentYear && $(currentCalendar + " .tabs li[data-month=" + (currentMonth + 1) + "]").length) {
 
@@ -672,8 +689,8 @@ $(document).ready(function() {
             $(this).removeClass("active");
         });
 
-        $(calendar + " .tabs li[data-month=" + (month) + "]").addClass("active");
-        $(calendar + " .tab-contents section[data-month=" + (month) + "]").addClass("active");
+        $(calendar + " .tabs li[data-month=" + month + "]").addClass("active");
+        $(calendar + " .tab-contents section[data-month=" + month + "]").addClass("active");
 
     }
 
