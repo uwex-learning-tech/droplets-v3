@@ -33,9 +33,9 @@ $(document).ready(function() {
 		// set iFrame attributes
 		iframe.attr( {
     		"scrolling": "no",
-    		"allowfullscreen": true,
-    		"webkitallowfullscreen": true,
-    		"mozallowfullscreen": true
+    		"allowfullscreen": "",
+    		"webkitallowfullscreen": "",
+    		"mozallowfullscreen": ""
 
 		} );
 		
@@ -103,7 +103,7 @@ $(document).ready(function() {
 			getReadMore();
 		}
 		
-		if ($(".with-learning-resources").length) {
+		if ( $( ".with-learning-resources" ).length ) {
     		expandable = true;
 			getLearningResources();
 		}
@@ -1120,7 +1120,13 @@ $.fn.addLREevent = function( id, frame ) {
 			$( this ).removeClass('active');
 			$( this ).find('.indicator').removeClass('open');
 			$( '.expanded-panel[data-index='+index+']' ).slideUp( function() {
+    			
 				$(this).remove();
+				
+				if ( frame ) {
+                    setIframeHeight( frame );
+                }
+                
 			} );
 			
 		} else {
@@ -1128,34 +1134,36 @@ $.fn.addLREevent = function( id, frame ) {
 			$( this ).addClass( 'active' );
 			$( this ).find('.indicator').addClass('open');
 			$( this ).after('<div class="expanded-panel" data-index="'+index+'"><span class="close-btn"><span class="sg-icon-close"></span></span>'+expandedContent+'</div>');
-			$( '.expanded-panel[data-index='+index+']' ).slideDown();
-			
-			$( '.expanded-panel[data-index='+index+'] .close-btn' ).on( 'click', function() {
+			$( '.expanded-panel[data-index='+index+']' ).slideDown( function() {
+    			
+    			if ( frame ) {
+                    setIframeHeight( frame );
+                }
+                
+                $( '.expanded-panel[data-index='+index+'] .close-btn' ).on( 'click', function() {
 				
-				if ( $( lr ).hasClass('active') ) {
-			
-				$( lr ).removeClass('active');
-				$( lr ).find('.indicator').removeClass('open');
-				$( '.expanded-panel[data-index='+index+']' ).slideUp( function() {
-					$(this).remove();
-				} );
-				
-			} else {
-				
-				$( lr ).addClass( 'active' );
-				$( lr ).find('.indicator').addClass('open');
-				$( lr ).after('<div class="expanded-panel" data-index="'+index+'"><span class="close-btn"><span class="sg-icon-close"></span></span>'+expandedContent+'</div>');
-				$( '.expanded-panel[data-index='+index+']' ).slideDown();
-				
-			}
-				
+    				if ( $( lr ).hasClass('active') ) {
+    			
+        				$( lr ).removeClass('active');
+        				$( lr ).find('.indicator').removeClass('open');
+        				$( '.expanded-panel[data-index='+index+']' ).slideUp( function() {
+            				
+            				$(this).off('click');
+        					$(this).remove();
+        					
+        					if ( frame ) {
+                                setIframeHeight( frame );
+                            }
+        					
+    				    } );
+    				
+        			}
+    				
+    			} );
+    			
 			} );
 			
 		}
-
-        if ( frame ) {
-            setIframeHeight( frame );
-        }
 
     } );
 
@@ -1259,7 +1267,7 @@ function setIframeHeight( iframe, animate ) {
 		}, "fast" );
         
     } else {
-        iframe.attr("height", calIframeHeight() + "px");
+        iframe.css("height", calIframeHeight() + "px");
     }
 
 }

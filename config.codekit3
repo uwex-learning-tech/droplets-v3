@@ -81,6 +81,12 @@
 		"oAP": "\/guide\/icons.html",
 		"oF": 1
 		},
+	"\/guide\/iframe.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/guide\/iframe.html",
+		"oF": 0
+		},
 	"\/guide\/image.html": {
 		"ft": 8192,
 		"oA": 1,
