@@ -11,11 +11,9 @@
  *
  */
 
-/* global calIframeHeight */
-
 $(document).ready(function() {
 
-	var child = false, iframe = null;
+	var iframe = null;
 
 	// calendar inital varibles
 	var displayAll = false;
@@ -23,29 +21,39 @@ $(document).ready(function() {
 
 	// if it is in a iFrame
 	if ( parent === top ) {
-
-		iframe = $( parent.document ).find( "div#ContentView" ).find( "iframe" ); // dependent on parent iFrame
+        
+        // find D2L's iFrame
+		iframe = $( parent.document ).find( "div#ContentView" ).find( "iframe" );
 		
+		// if no D2L's iFrame is found, set to whatever iFrame is there
 		if ( iframe.length <= 0 ){
     		iframe = $( parent.document ).find( "iframe" );
 		}
 		
-		iframe.attr( "scrolling", "no" );
-		iframe.attr( "allowfullscreen", "" );
-		iframe.attr( "webkitallowfullscreen", "" );
-		iframe.attr( "mozallowfullscreen", "" );
-        iframe.attr( 'height', calIframeHeight() + "px" );
-        
-		child = true;
+		// set iFrame attributes
+		iframe.attr( {
+    		"scrolling": "no",
+    		"allowfullscreen": true,
+    		"webkitallowfullscreen": true,
+    		"mozallowfullscreen": true
+
+		} );
 		
+		// set the height of the iframe using inline CSS
+        setIframeHeight( iframe );
+		
+		// when resizing insiding an iFrame
 		$( top ).on("resize", function(){
     		
         	if ( parent === top ) {
             	
-            	iframe.attr( "height", calIframeHeight() + "px");
+            	// update the iFrame height
+            	setIframeHeight( iframe );
             	
-            	if ( $(".with-popover.active").length ) {
-                	$(".with-popover.active").trigger( 'click', "reposition" );
+            	// if this is any active popover elements
+            	// reposition them by triggering their click event
+            	if ( $( ".with-popover.active" ).length ) {
+                	$( ".with-popover.active" ).trigger( 'click', "reposition" );
             	}
             	
         	}
@@ -54,67 +62,54 @@ $(document).ready(function() {
 
 	}
 	
+	/* CALL CHECK COMPONENTS FUNCTION
+    -----------------------------------------------------------------*/
+	checkComponents();
 	
-	/* FUNCTION TO CHECK JS COMPONENTS
+	/* FUNCTION TO CHECK JS COMPONENTS AND INITIATE WHEN FOUND
     -----------------------------------------------------------------*/
 	function checkComponents() {
-
-		if ($("abbr").length || $(".with-tooltip").length) {
-
+        
+        var expandable = false;
+        
+		if ( $( "abbr" ).length || $( ".with-tooltip" ).length ) {
 			getTooltip();
-
 		}
 
-		if ($(".with-popover").length) {
-
+		if ( $( ".with-popover" ).length ) {
 			getPopover();
-
 		}
 
-		if ($(".with-tabs").length) {
-
+		if ( $( ".with-tabs" ).length ) {
+    		expandable = true;
 			getTabs();
-
 		}
 
-		if ($(".with-accordion").length) {
-
+		if ( $( ".with-accordion" ).length ) {
+    		expandable = true;
 			getAccordion();
-
 		}
 
-		if ($(".with-subnav").length) {
-
+		if ( $( ".with-subnav" ).length ) {
 			getSubnav();
-
 		}
 
-		if ($(".with-zoom").length) {
-
+		if ( $( ".with-zoom" ).length ) {
 			getImgZoom();
-
 		}
 
-		if ($(".with-readmore").length) {
-
+		if ( $( ".with-readmore" ).length ) {
+    		expandable = true;
 			getReadMore();
-
 		}
-
-		if ($(".with-accordion").length || $(".with-tabs").length || $(".with-readmore").length) {
-
-			if (child) {
-
-				iframe.attr("height", calIframeHeight() + "px");
-
-			}
-
-		}
-
+		
 		if ($(".with-learning-resources").length) {
-
+    		expandable = true;
 			getLearningResources();
+		}
 
+		if ( expandable && iframe ) {
+			setIframeHeight( iframe );
 		}
 
 	} // end checkComponents
@@ -124,48 +119,76 @@ $(document).ready(function() {
 	function getTooltip() {
 
 		// on mouse hover state
-		$("abbr, .with-tooltip").on("mouseover", function() {
+		$( "abbr, .with-tooltip" ).on( "mouseover", function() {
 
-			var title = $(this).attr("title"), position = $(this).position();
+			var title = $( this ).attr( "title" );
+			var position = $( this ).position();
+			var x = 0;
+			var y = 0;
+			var arrowPos;
+			
+			// remove the content inside title attribute
+			// and set the element to relative position
+			$( this ).attr( "title", "" ).css( "position", "relative" );
+            
+            // display the tooltip
+            $( this ).before( "<div class=\"tooltip in\" role=\"tooltip\"><div class=\"tooltip-inner\">" + title + "</div><div class=\"tooltip-arrow\"></div></div>" );
+            
+			// calculate positions
+			if ( $( this ).hasClass( "top" ) ) {
+                
+                arrowPos = "top";
+                x = position.top - $( ".tooltip" ).outerHeight() - 2;
+                y = position.left;
 
-			$(this).attr("title","").css("position","relative");
+			} else if ( $( this ).hasClass( "bottom" ) ) {
+                
+                arrowPos = "bottom";
+                x = position.bottom + $( ".tooltip" ).outerHeight();
+                y = position.left;
 
-			// positions
-			if ($(this).hasClass("top")) {
+			} else if ( $( this ).hasClass( "right" ) ) {
+                
+                arrowPos = "right";
+                x = position.top;
+                y = position.left + $( this ).width();
 
-				$(this).before("<div class=\"tooltip in top\" role=\"tooltip\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
-				$(".tooltip").css({"top":(position.top - 28)+"px", "left":position.left+"px"});
-
-			} else if ($(this).hasClass("bottom")) {
-
-				$(this).after("<div class=\"tooltip in bottom\" role=\"tooltip\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
-				$(".tooltip").css({"bottom":(position.bottom + 28)+"px", "left":position.left+"px"});
-
-			} else if ($(this).hasClass("right")) {
-
-				$(this).before("<div class=\"tooltip in right\" role=\"tooltip\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
-				$(".tooltip").css({"top":position.top+"px", "left":(position.left + $(this).width())+"px"});
-
-			} else if ($(this).hasClass("left")) {
-
-				$(this).before("<div class=\"tooltip in left\" role=\"tooltip\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
-				$(".tooltip").css({"top":position.top+"px", "left":(position.left - ($(".tooltip").width() + 8))+"px"});
+			} else if ( $( this ).hasClass( "left" ) ) {
+                
+                arrowPos = "left";
+                x = position.top;
+                y = position.left - $( ".tooltip" ).width() - 8;
 
 			} else {
-
-				$(this).before("<div class=\"tooltip in\" role=\"tooltip\"><div class=\"tooltip-inner\">"+title+"</div><div class=\"tooltip-arrow\"></div></div>");
-				$(".tooltip").css({"top":(position.top - 28)+"px", "left":position.left+"px"});
+                
+                arrowPos = "top";
+                x = position.top - $( ".tooltip" ).outerHeight();
+                y = position.left;
+                
 			}
+            
+            // display the tooltip
+            $( ".tooltip" ).addClass( arrowPos );
+            
+            // position the tooltip
+            if ( arrowPos === "bottom" ) {
+                $( ".tooltip" ).css( "bottom", x + "px" );
+            } else {
+                $( ".tooltip" ).css( "top", x + "px" );
+            }
+            
+            $( ".tooltip" ).css( "left", y + "px" );
+            
+			// on mouse out event
+			$( "abbr, .with-tooltip" ).on( "mouseout", function() {
 
-			// on mouse out state
-			$("abbr, .with-tooltip").on("mouseout", function() {
+				$( this ).attr( "title", $( ".tooltip.in .tooltip-inner" ).html() )
+				         .css("position","static");
+				$( ".tooltip" ).remove();
 
-				$(this).attr("title",$(".tooltip.in .tooltip-inner").html()).css("position","static");
-				$(".tooltip").remove();
+			} ); // end mouse out state
 
-			}); // end mouse out state
-
-		}); // end mouse hover state
+		} ); // end mouse hover state
 
 	} // end getTooltip
 
@@ -174,91 +197,97 @@ $(document).ready(function() {
 	function getPopover() {
 
 		// set positions
-		$(".with-popover").each(function() {
+		$( ".with-popover" ).each( function() {
 
-			var title = $(this).attr("data-title");
+			var title = $( this ).attr( "data-title" );
 			var position = 'top';
 
-			if ($(this).hasClass("top")) {
+			if ( $( this ).hasClass( "top" ) ) {
 
 				position = 'top';
 
-			} else if ($(this).hasClass("bottom")) {
+			} else if ( $( this ).hasClass( "bottom" ) ) {
 
 				position = 'bottom';
 
-			} else if ($(this).hasClass("right")) {
+			} else if ( $( this ).hasClass( "right" ) ) {
 
 				position = 'right';
 
-			} else if ($(this).hasClass("left")) {
+			} else if ( $( this ).hasClass( "left" ) ) {
 
 				position = 'left';
 
 			}
 			
-			$("body").append("<div class=\"popover " + position + "\" role=\"tooltip\"><div class=\"popover-content\">"+title+"</div><div class=\"arrow\"></div></div>");
+			$( "body" ).append( "<div class=\"popover " + position + "\" role=\"tooltip\"><div class=\"popover-content\">" + title + "</div><div class=\"arrow\"></div></div>" );
 
 		}); // end each looop
 
 		// on mouse click state
-		$(".with-popover").on("click", function(e) {
+		$( ".with-popover" ).on( "click", function( e ) {
 
-			var index = $(".with-popover").index(this);
-			
-			var target = $(e.currentTarget);
-			var popover = $(".popover:eq("+index+")");
+			var index = $( ".with-popover" ).index(this);
+			var target = $( e.currentTarget );
+			var popover = $( ".popover:eq(" + index + ")" );
 			var position = target.position();
 			var top = position.top;
 			var left = position.left;
-			
-			console.log(target);
-			console.log(position);
             
-            if ( target.hasClass('top') ) {
+            if ( target.hasClass( "top" ) ) {
+                
                 top = top - popover.height() - 10;
-            } else if ( target.hasClass('bottom') ) {
+                
+            } else if ( target.hasClass( "bottom" ) ) {
+                
                 top = top + target.height() + 7;
-            } else if (target.hasClass("left")) {
+                
+            } else if ( target.hasClass( "left" ) ) {
                 
                 if (target.is("img")) {
-                    top = top + ( target.height() / 2 ) - (popover.height() / 2);
+                    
+                    top = top + ( target.height() / 2 ) - ( popover.height() / 2 );
                     left = left - popover.width();
+                    
                 } else {
+                    
                     top = top - ( target.height() / 2 ) - 2;
                     left = left - popover.width() - 2;
+                    
                 }
                 
-            } else if (target.hasClass('right')) {
+            } else if ( target.hasClass( "right" ) ) {
                 
-                if (target.is("img")) {
-                    top = top + ( target.height() / 2 ) - (popover.height() / 2);
+                if ( target.is( "img" ) ) {
+                    
+                    top = top + ( target.height() / 2 ) - ( popover.height() / 2 );
                     left = left + target.width() + 15;  
+                    
                 } else {
+                    
                     top = top - ( target.height() / 2 ) - 2;
-                    left = left + target.width() + 7;  
+                    left = left + target.width() + 7;
+                      
                 }
                           
             }
             
 			if ( e.isTrigger === undefined ) {
     			
-    			if ($(this).hasClass("active")) {
+    			if ( $( this ).hasClass( "active" ) ) {
 
-    				$(this).removeClass("active");
-    				popover.removeClass("in").css({
+    				$( this ).removeClass( "active" );
+    				popover.removeClass( "in" ).css({
         				'top':'',
         				'left': ''
     				});
     
     			} else {
     
-    				$(this).addClass("active");
-    				popover.addClass("in").css( {
-        				
+    				$( this ).addClass( "active" );
+    				popover.addClass( "in" ).css( {
         				'top': top,
         				'left': left
-        				
     				} );
     
     			}
@@ -266,10 +295,8 @@ $(document).ready(function() {
 			} else {
     			
     			popover.css( {
-        				
     				'top': top,
     				'left': left
-    				
 				} );
     			
 			}
@@ -282,50 +309,48 @@ $(document).ready(function() {
     -----------------------------------------------------------------*/
 	function getTabs() {
 
-		$(".with-tabs").each(function(i) {
+		$( ".with-tabs" ).each( function( i ) {
 
-			$(this).attr("data-id",i);
+			$( this ).attr( "data-id", i );
 
-			$(".with-tabs .tab-contents section").not(".two-column > section, .three-column > section").addClass("tab-section");
+			$( ".with-tabs .tab-contents section" ).not( ".two-column > section, .three-column > section" ).addClass( "tab-section" );
 
 			// on mouse click state
-			$(".with-tabs[data-id='"+i+"'] .tabs li").on("click",function() {
+			$( ".with-tabs[data-id='" + i + "'] .tabs li" ).on( "click", function() {
 
-				var index = $(".with-tabs[data-id='"+i+"'] .tabs li").not("li ul li").index(this);
+				var index = $( ".with-tabs[data-id='" + i + "'] .tabs li" ).not( "li ul li" ).index( this );
 
 				// close all open tabs
-				$(".with-tabs[data-id='"+i+"'] .tabs li").each(function(){
+				$( ".with-tabs[data-id='" + i + "'] .tabs li" ).each( function() {
 
-					if ($(".with-tabs[data-id='"+i+"'] .tabs li").hasClass("active")) {
+					if ( $( ".with-tabs[data-id='" + i + "'] .tabs li" ).hasClass( "active" ) ) {
 
-						$(this).removeClass("active");
+						$( this ).removeClass( "active" );
 
 					}
 
 				});
 
 				// set currently click tab active
-				$(this).addClass("active");
+				$( this ).addClass( "active" );
 
 				// hide all tab contents
-				$(".with-tabs[data-id='"+i+"'] .tab-contents section.tab-section").each(function(){
+				$( ".with-tabs[data-id='" + i + "'] .tab-contents section.tab-section" ).each( function() {
 
-					if ($(".with-tabs[data-id='"+i+"'] .tab-contents section.tab-section").hasClass("active")) {
+					if ( $( ".with-tabs[data-id='" + i + "'] .tab-contents section.tab-section" ).hasClass( "active" )) {
 
-						$(this).removeClass("active");
+						$( this ).removeClass( "active" );
 
 					}
 
 				});
 
 				// display currently click tab contents
-				$(".with-tabs[data-id='"+i+"'] .tab-contents section.tab-section:eq("+index+")").addClass("active");
+				$( ".with-tabs[data-id='" + i + "'] .tab-contents section.tab-section:eq(" + index + ")" ).addClass( "active" );
 
                 // set height if it is in a iFrame
-				if (child) {
-
-					iframe.attr("height", calIframeHeight() + "px");
-
+				if ( iframe ) {
+					setIframeHeight( iframe );
 				}
 
 				return false;
@@ -333,9 +358,9 @@ $(document).ready(function() {
 			}); // end click
 
 			// if it is a calendar
-            if ($(this).hasClass("calendar")) {
+            if ( $( this ).hasClass( "calendar" ) ) {
 
-                getCalendar(i);
+                getCalendar( i );
 
             }
 
@@ -505,10 +530,8 @@ $(document).ready(function() {
             $(currentCalendar + " .grid-view").removeClass("active");
             $(this).addClass("active");
 
-            if (child) {
-
-				iframe.attr("height", calIframeHeight() + "px");
-
+            if ( iframe ) {
+				setIframeHeight( iframe );
 			}
 
             return false;
@@ -526,10 +549,8 @@ $(document).ready(function() {
             $(currentCalendar + " .list-view").removeClass("active");
             $(this).addClass("active");
 
-            if (child) {
-
-				iframe.attr("height", calIframeHeight() + "px");
-
+            if ( iframe ) {
+				setIframeHeight( iframe );
 			}
 
             return false;
@@ -552,11 +573,9 @@ $(document).ready(function() {
                 $(this).find("span.info").html("");
                 $(this).prev().find(".item").attr("data-open", "");
 
-                if (child) {
-
-                    iframe.attr("height", calIframeHeight() + "px");
-
-                }
+                if ( iframe ) {
+    				setIframeHeight( iframe );
+    			}
 
             });
 
@@ -669,10 +688,8 @@ $(document).ready(function() {
         $(calendar + " .grid").removeClass("arrow");
         $(calendar + " .toggle-displayall").toggleClass("active");
 
-        if (child) {
-
-			iframe.attr("height", calIframeHeight() + "px");
-
+        if ( iframe ) {
+			setIframeHeight( iframe );
 		}
 
 		return false;
@@ -707,12 +724,13 @@ $(document).ready(function() {
                 $(event.currentTarget).parent().parent().find(".arrow").removeClass("arrow");
                 $(event.data.target + " .detailed-view[data-row="+index+"] h3").html("");
                 $(event.data.target + " .detailed-view[data-row="+index+"] .desc").html("");
-                if (child) {
-
-                    iframe.attr("height", calIframeHeight() + "px");
-
-                }
+                
+                if ( iframe ) {
+        			setIframeHeight( iframe );
+        		}
+        		
             });
+            
             $(event.currentTarget).attr("data-open", "");
 
         } else {
@@ -725,11 +743,9 @@ $(document).ready(function() {
             $(event.data.target + " .detailed-view[data-row="+index+"] .desc").html(info);
             $(event.data.target + " .detailed-view[data-row="+index+"]").slideDown( function() {
 
-                if (child) {
-
-                    iframe.attr("height", calIframeHeight() + "px");
-
-                }
+            if ( iframe ) {
+				setIframeHeight( iframe );
+			}
 
             });
             $(event.data.target + " .detailed-view[data-row="+index+"]").prev().find(".item").attr("data-open", "");
@@ -781,11 +797,9 @@ $(document).ready(function() {
 							$("#ai"+i+" > .accordion-title:eq("+k+")").removeClass("active");
 							$("#ai"+i+" > .accordion-title:eq("+k+")").attr("aria-expanded", "false");
 
-							if (child) {
-                                
-                                iframe.attr( 'height', calIframeHeight() + "px" );
-
-            				}
+							if ( iframe ) {
+                				setIframeHeight( iframe );
+                			}
 
 						});
 
@@ -807,11 +821,9 @@ $(document).ready(function() {
 							$("#ai"+i+" > .accordion-title:eq("+j+")").addClass("active");
 							$("#ai"+i+" > .accordion-title:eq("+j+")").attr("aria-expanded", "true");
 
-							if (child) {
-
-            					iframe.attr( 'height', calIframeHeight() + "px" );
-
-            				}
+							if ( iframe ) {
+                				setIframeHeight( iframe );
+                			}
 
 						});
 
@@ -862,12 +874,8 @@ $(document).ready(function() {
 								$("#ai"+i+" > .accordion-title:eq("+index+")").attr("aria-expanded", "true");
 								$("#ai"+i+" > .accordion-content:eq("+index+")").slideDown( function() {
 
-    								if (child) {
-
-                    					iframe.animate({
-                        					height: calIframeHeight() + "px"
-                    					}, "fast");
-
+    								if ( iframe ) {
+                    					setIframeHeight( iframe, true );
                     				}
 
 								});
@@ -885,13 +893,9 @@ $(document).ready(function() {
 						$("#ai"+i+" > .accordion-title:eq("+index+")").removeClass("active");
 						$("#ai"+i+" > .accordion-title:eq("+index+")").attr("aria-expanded", "false");
 
-						if (child) {
-
-            				iframe.animate({
-            					height: calIframeHeight() + "px"
-        					}, "fast");
-
-            			}
+						if ( iframe ) {
+        					setIframeHeight( iframe, true );
+        				}
 
 					});
 
@@ -1028,10 +1032,8 @@ $(document).ready(function() {
                         $(rmID + " .readmore-ctrl a").html("CLICK TO READ MORE...");
                         $(rmID + " .readmore-ctrl a").attr("aria-expanded","false");
                         
-                        if (child) {
-                                
-                            iframe.attr( 'height', calIframeHeight() + "px" );
-        
+                        if ( iframe ) {
+        					setIframeHeight( iframe );
         				}
 
                     });
@@ -1048,10 +1050,8 @@ $(document).ready(function() {
                         $(rmID + " .readmore-ctrl a").html("CLICK TO READ LESS");
                         $(rmID + " .readmore-ctrl a").attr("aria-expanded","true");
                         
-                        if (child) {
-                                
-                            iframe.attr( 'height', calIframeHeight() + "px" );
-        
+                        if ( iframe ) {
+        					setIframeHeight( iframe );
         				}
 
                     });
@@ -1096,7 +1096,7 @@ $(document).ready(function() {
 	                
                 }
                 
-                $(resources[j]).addLREevent( idValue, child, iframe );
+                $( resources[j] ).addLREevent( idValue, iframe );
 
             } // end for loop
             
@@ -1104,14 +1104,10 @@ $(document).ready(function() {
 
     } // end learning resources
 
-	/* CALL CHECK COMPONENTS FUNCTION
-    -----------------------------------------------------------------*/
-	checkComponents();
-
 });
 
 // LEARNING RESOUCES CLICK EVENT
-$.fn.addLREevent = function( id, dom, frame ) {
+$.fn.addLREevent = function( id, frame ) {
 
     this.on("click", function() {
 		
@@ -1157,10 +1153,8 @@ $.fn.addLREevent = function( id, dom, frame ) {
 			
 		}
 
-        if (dom) {
-
-            frame.css("height", calIframeHeight() + "px");
-
+        if ( frame ) {
+            setIframeHeight( frame );
         }
 
     } );
@@ -1254,9 +1248,23 @@ function getParameterByName(url,name) {
 
 }
 
-function calIframeHeight() {
+function setIframeHeight( iframe, animate ) {
+    
+    animate = typeof animate != 'undefined' ? animate : false;
+    
+    if ( animate ) {
+        
+        iframe.animate( {
+			height: calIframeHeight() + "px"
+		}, "fast" );
+        
+    } else {
+        iframe.attr("height", calIframeHeight() + "px");
+    }
 
-	//return $(document).find("body").outerHeight(true) + 18;
+}
+
+function calIframeHeight() {
     return $(document).find("body").outerHeight(true);
 
 }
