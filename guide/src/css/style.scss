@@ -420,6 +420,11 @@ button.btn {
 	outline:none;
 }
 
+.btn.small {
+    font-size: rem( 14px );
+    padding: rem(5px);
+}
+
 /* horizontal rule */
 hr {
   margin: rem( 20px ) 0;
@@ -2253,6 +2258,21 @@ span.with-popover.active {
     }
 
 }
+
+/* REVEAL
+-----------------------------------------------------------------*/
+.with-reveal {
+    
+    .hidden-content {
+        display: none;
+    }
+    
+    .show {
+        display: block;
+    }
+    
+}
+
 
 /* WITH LEARNING RESOURCES
 -----------------------------------------------------------------*/

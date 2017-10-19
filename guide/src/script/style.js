@@ -103,6 +103,11 @@ $(document).ready(function() {
 			getReadMore();
 		}
 		
+		if ( $( ".with-reveal" ).length ) {
+    		expandable = true;
+			getReveal();
+		}
+		
 		if ( $( ".with-learning-resources" ).length ) {
     		expandable = true;
 			getLearningResources();
@@ -1063,7 +1068,67 @@ $(document).ready(function() {
         }); // end each
 
     } // end read more
+    
+    /* REVEAL FUNCTION
+    -----------------------------------------------------------------*/
+    function getReveal() {
+        
+        var reveal = $(".with-reveal");
+        
+        reveal.each( function(i) {
+            
+            var id = "with-reveal-" + (i + 1);
+            $(this).attr("id", id);
+            
+            var btnName = $(this).data("button-name");
+            $(this).append("<button class='btn info small' aria-hidden='true'>" + btnName + "</button>");
+            
+            var button = $( $(this).find("button") );
+            
+            button.on("click", handleRevealClick);
+            
+        } );
+        
+    }
+    
+    function handleRevealClick(e) {
+        
+        var currentTarget = $(e.currentTarget);
+        var parent = currentTarget.parent();
+        var hiddenEl = $( parent ).find(".hidden-content")[0];
+        var btnName = $(parent).data("button-name")
+        
+        if ( $(hiddenEl).hasClass("show") ) {
+            
+            $(hiddenEl).hide("fast", function() {
+                
+                $(hiddenEl).removeClass("show");
+                currentTarget.html(btnName);
+                
+                if ( iframe ) {
+                    setIframeHeight( iframe );
+                }
+                
+            });
 
+        } else {
+            
+            $(hiddenEl).show("fast", function() {
+                
+                $(hiddenEl).addClass("show");
+                currentTarget.html("Hide");
+                
+                if ( iframe ) {
+                    setIframeHeight( iframe );
+                }
+                
+            });
+            
+        }
+        
+    }
+    
+    
     /* LEARNING RESOURCES FUNCTION
     -----------------------------------------------------------------*/
     function getLearningResources() {
