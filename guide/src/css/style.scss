@@ -2220,23 +2220,25 @@ span.with-popover.active {
     position: relative;
 
     .readmore-ctrl {
+        
         position: absolute;
         width: 100%;
-        height: rem( 22px );
-        bottom: rem( 2px );
-        background: #e7e7e7;
-        @include box-shadow( #959595 0 rem( -3px ) rem( 6px ), #ddd 0 rem( 2px ) 0 );
-        @include border-corner-radius( top, left, 0 );
-        @include border-corner-radius( top, right, 0 );
-        @include border-corner-radius( bottom, left, rem( 3px ) );
-        @include border-corner-radius( bottom, right, rem( 3px ) );
+        height: rem( 1px );
+        bottom: 0;
+        background: #fff;
+        @include box-shadow( #fff 0 rem( 0px ) rem( 100px ) rem( 70px ) );
+        border-bottom: 1px solid #ccc;
 
         a {
             display: block;
-            color: #5b5b5b;
+            position: absolute;
+            width: 100%;
+            top: -16px;
+            text-align: center;
+            color: #888;
             font-size: rem( 12px );
             line-height: rem( 12px );
-            padding: rem( 6px ) 0 rem( 4px );
+            padding: rem( 4px ) 0 rem( 6px );
             font-weight: bold;
             text-align: center;
             text-decoration: none;
@@ -2247,7 +2249,7 @@ span.with-popover.active {
     .readmore-ctrl.opened {
         position: relative;
         padding-top: 0;
-        @include box-shadow( #959595 0 0 0, #ddd 0 rem( 2px ) 0 );
+        @include box-shadow( #fff 0 0 0 );
     }
 
 }
