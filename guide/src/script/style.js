@@ -112,6 +112,10 @@ $(document).ready(function() {
     		expandable = true;
 			getLearningResources();
 		}
+		
+		if ( $( ".with-lightbox" ).length ) {
+    		getLightbox();
+		}
 
 		if ( expandable && iframe ) {
 			setIframeHeight( iframe );
@@ -1128,6 +1132,50 @@ $(document).ready(function() {
         
     }
     
+    /* LIGHTBOX EFFECT FUNCTION
+    -----------------------------------------------------------------*/
+    function getLightbox() {
+        
+        var lightboxImg = $(".with-lightbox");
+        
+        lightboxImg.each( function(i) {
+            
+            var id = "with-reveal-" + (i + 1);
+            $(this).attr("id", id);
+            
+            $(this).on("click", handleLightBox);
+            
+        } );
+        
+        
+        
+    }
+    
+    function handleLightBox(e) {
+        
+        var currentTarget = $(e.currentTarget);
+        var src = currentTarget.attr("src");
+        var caption = currentTarget.attr("alt");
+        
+        var divEl = "<div id=\"lightbox-effect\"><div class=\"content\"><img src=\"" + src + "\" alt=\"" + caption + "\" /><p class=\"caption\">" + caption + "</p></div><button class=\"closeBtn\">&times;</button></div>";
+        
+        $("body").append(divEl);
+        $("#lightbox-effect").hide().fadeIn(500);
+        
+        $("#lightbox-effect").on("click", function(e) {
+            
+            if (e.target === this || e.target === $(".closeBtn").get(0)) {
+                
+                $(this).fadeOut(500, function() {
+                    $(this).off("click");
+                    $(this).remove();
+                });
+                
+            }
+
+        })
+        
+    }
     
     /* LEARNING RESOURCES FUNCTION
     -----------------------------------------------------------------*/
