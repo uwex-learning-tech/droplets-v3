@@ -1,10 +1,10 @@
 /*
  * DROPLET Framework jQuery Core Script
  *
- * @version: 1.4.7
+ * @version: 1.5.0
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/idstyleguide
- * Released date: 09/18/2017
+ * Released date: 10/24/2017
  *
  * @license: The MIT License (MIT)
  * Copyright (c) 2013-2017 UWEX CEOEL Media Services
@@ -36,7 +36,6 @@ $(document).ready(function() {
     		"allowfullscreen": "",
     		"webkitallowfullscreen": "",
     		"mozallowfullscreen": ""
-
 		} );
 		
 		// set the height of the iframe using inline CSS
@@ -1085,6 +1084,17 @@ $(document).ready(function() {
             $(this).attr("id", id);
             
             var btnName = $(this).data("button-name");
+            
+            if (btnName === undefined) {
+                btnName = "Show";
+            } else {
+                
+                if (btnName.trim().length <= 0) {
+                    btnName = "Show";
+                }
+                
+            }
+            
             $(this).append("<button class='btn info small' aria-hidden='true'>" + btnName + "</button>");
             
             var button = $( $(this).find("button") );

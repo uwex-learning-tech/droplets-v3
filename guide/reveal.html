@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>Droplets: Image Zoom | University of Wisconsin-Extension Division of Continuing Education, Outreach &amp; E-Learning</title>
+	<title>Droplets: Reveal | University of Wisconsin-Extension Division of Continuing Education, Outreach &amp; E-Learning</title>
 	<link rel="shortcut icon" type="image/x-icon" href="src/img/uwex.ico" />
 	<link href="src/css/style.css" rel="stylesheet" media="all" />
 	<link href="src/css/guide.css" rel="stylesheet" media="all" />
 	<script src="src/script/jquery.min.js" type="text/javascript"></script>
 	<script src="src/script/guide.min.js" type="text/javascript"></script>
+	<script src="src/script/jquery.scrollUp.min.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -34,40 +35,32 @@
 				<li><a href="accordion.html">Accordion</a></li>
 				<li><a href="actioncalls.html">Action Calls</a></li>
 				<li><a href="internalnav.html">Internal Page Navigation</a></li>
-				<li><a class="active" href="javascript:void(0)">Image Zoom</a></li>
+				<li><a href="imagezoom.html">Image Zoom</a></li>
 				<li><a href="lightbox.html">Lightbox</a></li>
 				<li><a href="readmore.html">Read More</a></li>
-				<li><a href="reveal.html">Reveal</a></li>
+				<li><a class="active" href="javascript:void(0)">Reveal</a></li>
 				<li><a href="calendar.html">Calendar</a></li>
 				<li><a href="learning_resources.html">Learning Resources</a></li>
 			</ul>
 		</div>
 		<div class="guide_outlayer">
 
-    		<header class="guide">
-				<h1>Image Zoom</h1>
+		    <header class="guide">
+				<h1>Reveal</h1>
 			</header>
 
 			<div class="guide_content">
 
-				<p class="lead">Zoom into an image for a lot more detail.</p>
-
-				<p>To use zoom on images, apply a <code>with-zoom</code> class to a <code>&lt;div&gt;</code> element. Inside the <code>&lt;div&gt;</code> element, create another <code>&lt;div&gt;</code> element with the class of <code>magnify</code>, and in addition, place the desired image by using an <code>&lt;img&gt;</code> element with the class of <code>small</code>. The width and height of the image should not be the full width and height of the image.</p>
-
-				<div class="callout callout-guide danger">
-					<p>Please use responsibly. Not all images should have the ability to zoom. Use for large images that contain many small hard-to-see details.</p>
-				</div>
-
-				<div class="callout callout-guide danger">
-					<p><strong>Accessibility:</strong> Image zoom is not optimized for accessibility. Please avoid using image zoom if accessibility is a need.</p>
-				</div>
-
+				<p class="lead">Perfect way to hide an answer to a question.</p>
+				
+				<p>To use Reveal, create a <code>div</code> tag with the class name of <code>with-reveal</code>. The button for the Reveal will be added automatically. To custom name the button, use the <code>data-button-name</code> attribute. Inside the <code>div</code> tag, any HTML can be used. To hide a part of the content, add the <code>hidden-content</code> class to the tag that will contain the hidden content.</p>
+				
+				<p data-height="310" data-theme-id="6473" data-slug-hash="mBZwxV" data-default-tab="result" data-user="Lin87" data-pen-title="Reveal" class="codepen">See the Pen <a href="https://codepen.io/Lin87/pen/mBZwxV/">Reveal</a> by Ethan Lin (<a href="https://codepen.io/Lin87">@Lin87</a>) on <a href="https://codepen.io">CodePen</a>.
+				
 				<div class="callout callout-guide info">
-					<p><strong>Notes:</strong> the hover feature is not supported on mobile devices.</p>
-				</div>
-
-				<p data-height="495" data-theme-id="6473" data-slug-hash="fKBhv" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/fKBhv/'>Image Zoom</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-
+        		    <p><strong>The example above is not working!</strong> Fear not! The example above stopped working after five seconds. This is a performance measure that CodePen puts in place to prevent looping scripts and animations. Place the cursor over the example and click the "RERUN" button to get it working again for another five seconds.</p>
+        		</div>
+				
 			</div>
 		</div>
 	</div>

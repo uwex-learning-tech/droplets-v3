@@ -16,7 +16,7 @@
 		"oF": 1
 		},
 	"\/config.rb": {
-		"ft": 8192,
+		"ft": 131072,
 		"oA": 0,
 		"oAP": "\/config.rb",
 		"oF": 0
@@ -135,6 +135,12 @@
 		"oAP": "\/guide\/learning_resources.html",
 		"oF": 1
 		},
+	"\/guide\/lightbox.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/guide\/lightbox.html",
+		"oF": 0
+		},
 	"\/guide\/pageheaders.html": {
 		"ft": 8192,
 		"oA": 1,
@@ -152,6 +158,12 @@
 		"oA": 1,
 		"oAP": "\/guide\/readmore.html",
 		"oF": 1
+		},
+	"\/guide\/reveal.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/guide\/reveal.html",
+		"oF": 0
 		},
 	"\/guide\/src\/css\/collaborativeicon.css": {
 		"aP": 0,
