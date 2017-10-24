@@ -1,5 +1,5 @@
 # DROPLETS
-**_version 1.4.7_**  
+**_version 1.5.0_**  
 
 A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
 
@@ -20,7 +20,7 @@ A HTML, CSS, and JavaScript framework for instructional designers at University 
 * Cascading Style Sheets (CSS3)
 * SASS (http://sass-lang.com/)
 * Compass (http://compass-style.org/)
-* jQuery 2.x
+* jQuery 3.x
 
 Knowledges of SASS and Compass are essential to write the CSS for this framework. The CSS file is created/compiled and minified by SASS, a CSS preprocessor.
 
@@ -42,6 +42,14 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 
 ---
 #### Version Change Log
+
+**1.5.0**
+* New Icon: Lab
+* New Feature: Reveal
+* New Feature: Lightbox (for image only)
+* Updated Read More style
+* Updated jQuery to version 3.2.1 slim build
+* Minor fixes
 
 **1.4.7**
 * Added a new briefcase icon
