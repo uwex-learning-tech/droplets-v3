@@ -1,5 +1,5 @@
 # DROPLETS
-**_version 1.5.0_**  
+**_version 1.5.1_**  
 
 A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
 
@@ -42,6 +42,11 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 
 ---
 #### Version Change Log
+
+**1.5.1**
+* Two new icons: Email and Extra Credit
+* Icons are now alphabetically ordered
+* Fixed child iFrame element height when not nested inside a parent iFrame
 
 **1.5.0**
 * New Icon: Lab

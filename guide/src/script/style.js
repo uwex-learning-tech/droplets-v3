@@ -1,10 +1,10 @@
 /*
  * DROPLET Framework jQuery Core Script
  *
- * @version: 1.5.0
+ * @version: 1.5.1
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/idstyleguide
- * Released date: 10/24/2017
+ * Released date: 11/07/2017
  *
  * @license: The MIT License (MIT)
  * Copyright (c) 2013-2017 UWEX CEOEL Media Services
