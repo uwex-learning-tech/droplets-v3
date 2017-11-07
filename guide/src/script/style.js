@@ -18,9 +18,9 @@ $(document).ready(function() {
 	// calendar inital varibles
 	var displayAll = false;
     var savedMonth = 0;
-
+    
 	// if it is in a iFrame
-	if ( parent === top ) {
+	if ( window.self != window.top ) {
         
         // find D2L's iFrame
 		iframe = $( parent.document ).find( "div#ContentView" ).find( "iframe" );
