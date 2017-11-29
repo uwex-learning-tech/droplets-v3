@@ -93,33 +93,86 @@
 				<p class="lead">A picture is worth a thousand words!</p>
 
 				<h2>Basic</h2>
-				<p data-height="250" data-theme-id="6473" data-slug-hash="hLbed" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/hLbed/'>Basic Image</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+				
+				<p>A basic image is created with the use of <code>img</code> tag. The <code>img</code> tag is an inline element like a sentence in a <code>p</code> tag.</p>
+				
+				<div class="example with-code">
+                    <p><img src="src/img/id_logo.png" width="325" height="auto" alt="Style Guide" /></p>
+				</div>
 
-				<h3>with Caption</h3>
-				<p data-height="270" data-theme-id="6473" data-slug-hash="cenKs" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/cenKs/'>Image with Caption</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+				<script src="https://gist.github.com/Lin87/cb4fcd3f088d9e6a5819271a77f71f91.js"></script>
+<!-- 				<p data-height="250" data-theme-id="6473" data-slug-hash="hLbed" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/hLbed/'>Basic Image</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p> -->
 
-				<h2>Bordered</h2>
-				<p data-height="290" data-theme-id="6473" data-slug-hash="HiDle" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/HiDle/'>Image with Border</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+				<h2>Figure</h2>
+				
+				<p>To make an image into a block-level element, wrap the <code>img</code> tag inside a <code>figure</code> tag. The <code>figure</code> tag is an block-level elements that will allow additional visual effects and elements such as adding a border, adding a shadow, and adding a caption.</p>
+				
+				<h3>Caption</h3>
+				
+				<p>To add a caption to an image, the <code>img</code> tag must be wrapped inside a <code>figure</code> tag and with the caption texts wrapped inside a <code>figcaption</code> tag. The image caption will be displayed right under the image.</p>
+				
+				<div class="example with-code">
+    				<figure>
+                        <img src="src/img/id_logo.png" alt="Style Guide" />
+                        <figcaption>Make your page content beautiful!</figcaption>
+                    </figure>
+				</div>
+				
+				<script src="https://gist.github.com/Lin87/9e81acfd2df1a14f13dc99d0963fe9f1.js"></script>
 
-				<h2>Shadowed</h2>
-				<p data-height="290" data-theme-id="6473" data-slug-hash="aJueF" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/aJueF/'>Image with Shadow</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+				<h3>Bordered</h3>
+				
+				<p>To add a border around an image, the <code>img</code> tag must be wrapped inside a <code>figure</code> tag. The <code>figure</code> tag must have a <code>bordered</code> class applied. For example, <code>&lt;figure class="bordered"&gt;...&lt;/figure&gt;</code>.</p>
+				
+				<div class="example">
+    				<figure class="bordered ">
+                        <img src="src/img/id_logo.png" alt="Style Guide" />
+                    </figure>
+				</div>
 
-				<h2>Polaroid</h2>
-				<p>Polaroid image width and height are set at 316 pixels &times; 237 pixels.</p>
-				<p data-height="380" data-theme-id="6473" data-slug-hash="rJfts" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/rJfts/'>Polaroid Image</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-
+				<h3>Shadowed</h3>
+				
+				<p>To add a shadow around an image, the <code>img</code> tag must be wrapped inside a <code>figure</code> tag. The <code>figure</code> tag must have a <code>shadowed</code> class applied. For example, <code>&lt;figure class="shadowed"&gt;...&lt;/figure&gt;</code>.</p>
+				
+				<div class="example">
+    				<figure class="shadowed">
+                        <img src="src/img/id_logo.png" alt="Style Guide" />
+                    </figure>
+				</div>
+                
+                <div class="callout callout-guide info">
+                    <p>A <code>figure</code> tag can has both the <code>bordered</code> and <code>shadowed</code> classes applied.<br>For example: <code>&lt;figure class="bordered shadowed"&gt;...&lt;/figure&gt;</code>.</p>
+                </div>
+                
+                <h3>Scale / Size</h3>
+                
+                <p>By default, the image in the <code>figure</code> tag will be displayed in its original resolution or size. If the image is too big, additional classes are available to scale or size the image down from its original size: <code>x-small</code> (25%), <code>small</code> (30%), and <code>medium</code> (50%).</p>
+                <p>For example: <code>&lt;figure class="small"&gt;...&lt;/figure&gt;</code></p>
+                
 				<h2>Alignments</h2>
-				<p>Alignments can be applied to <code>img</code> and <code>figure</code> elements. When applying alignment to <code>figure</code> element, do not apply the alignment class to the <code>img</code> element.</p>
+				
+				<p>Alignments can be applied to <code>img</code> and <code>figure</code> elements. When applying alignment to <code>figure</code> element, do not apply the alignment class again to the <code>img</code> element.</p>
+				
 				<h3>Left</h3>
+				
 				<p>Left align the image or figure with the <code>left</code> class.</p>
-				<p data-height="215" data-theme-id="6473" data-slug-hash="zIsLv" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/zIsLv/'>Image Float Left</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+				
+				<div class="example">
+                    <p><img class="left" src="src/img/id_logo.png" width="164" height="auto" alt="Style Guide" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, odio, optio, aspernatur, unde ea libero delectus esse magnam mollitia veniam vel voluptatum praesentium eligendi provident a! Consequatur, modi architecto autem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, nemo harum alias similique ullam consequatur tenetur modi cupiditate quisquam repellendus quod amet quia nisi perferendis eius odit nesciunt nobis voluptatibus.</p>
+				</div>
 
 				<h3>Right</h3>
+				
 				<p>Right align the image or figure with the <code>right</code> class.</p>
-				<p data-height="215" data-theme-id="6473" data-slug-hash="huEFr" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Lin87/pen/huEFr/'>Image Float Right</a> by Ethan Lin (<a href='http://codepen.io/Lin87'>@Lin87</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+				
+				<div class="example">
+				    <p><img class="right" src="src/img/id_logo.png" width="164" height="auto" alt="Style Guide" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, odio, optio, aspernatur, unde ea libero delectus esse magnam mollitia veniam vel voluptatum praesentium eligendi provident a! Consequatur, modi architecto autem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, nemo harum alias similique ullam consequatur tenetur modi cupiditate quisquam repellendus quod amet quia nisi perferendis eius odit nesciunt nobis voluptatibus.</p>
+				</div>
 
 				<div class="callout callout-guide info">
-				    <p><strong>Notes:</strong> if you are experiencing float issues, place a <code>&lt;div&gt;</code> element with the <code>clearfix</code> class after the place where you would like the elements to stop floating.</p>
+				    <p>If you are experiencing alignment issues, place a <code>&lt;div&gt;</code> tag with the <code>clearfix</code> class after the place where you would like the elements to stop floating or aligning next to each other. For example: 
+    				    <code>&lt;div class="clearfix"&gt;&lt;/div&gt;</code>. The <code>clearfix</code> class only works if alignment classes are used.
+				    </p>
 				</div>
 
 			</div>

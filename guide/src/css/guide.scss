@@ -19,6 +19,68 @@ body{
     height: 100%;
 }
 
+.gist {
+    
+    table {
+        
+        tbody {
+            
+            tr {
+                
+                td {
+                    border-width: 0px;
+                }
+                
+            }
+            
+        }
+
+    }
+    
+    .gist-file {
+        
+        border-radius: 0 0 3px 3px !important;
+        
+        .gist-data {
+            border-bottom: none;
+        }
+        
+    }
+    
+    .gist-meta {
+        display: none;
+    }
+    
+}
+
+.example {
+    position: relative;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    margin-top: 33px;
+    margin-bottom: 16px;
+    border-radius: 0 3px 3px 3px;
+}
+
+.with-code {
+    margin-bottom: 0;
+    border-bottom: none;
+    border-radius: 0 3px 0 0;
+}
+
+.example:before {
+    position: absolute;
+    top: -17px;
+    left: -1px;
+    content: "Example";
+    font-size: 12px;
+    line-height: 12px;
+    color: #586069;
+    background-color: #f7f7f7;
+    padding: 2px 5px;
+    border-radius: 2px 2px 0 0;
+}
+
 .home_wrapper {
     
     @include display-flex();
@@ -510,6 +572,7 @@ pre {
         .name {
             font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
             top: 0;
+            left: 0;
             position: absolute;
             width: 100%;
             height: 30px;
@@ -521,6 +584,7 @@ pre {
             
             font-family: monospace;
             bottom: 0;
+            left: 0;
             position: absolute;
             width: 100%;
             height: 30px;

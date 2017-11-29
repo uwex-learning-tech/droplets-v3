@@ -7,6 +7,7 @@
 	<link href="src/css/style.css" rel="stylesheet" media="all" />
 	<link href="src/css/guide.css" rel="stylesheet" media="all" />
 	<script src="src/script/jquery.min.js" type="text/javascript"></script>
+	<script src="src/script/style.js" type="text/javascript"></script>
 	<script src="src/script/guide.min.js" type="text/javascript"></script>
 	<script src="src/script/jquery.scrollUp.min.js" type="text/javascript"></script>
 </head>
@@ -53,13 +54,67 @@
 
 				<p class="lead">A way to display high resolution images.</p>
                 
-                <p>Lightbox only works with image. To use lightbox, add the <code>with-lightbox</code> class to the <code>img</code> tag. Use the <code>alt</code> attribute of the <code>img</code> tag to add caption to the lightbox effect.</p>
+                <p>Lightbox only works with <code>img</code> or <code>figure</code> tag. To use lightbox, add the <code>with-lightbox</code> class to a <code>img</code> or <code>figure</code> tag. You can also applied lightbox effect to a collection of images rather than individual image.</p>
                 
-				<p data-height="500" data-theme-id="6473" data-slug-hash="XeLRqa" data-default-tab="result" data-user="Lin87" data-pen-title="Lightbox" class="codepen">See the Pen <a href="https://codepen.io/Lin87/pen/XeLRqa/">Lightbox</a> by Ethan Lin (<a href="https://codepen.io/Lin87">@Lin87</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-				
-				<div class="callout callout-guide info">
-        		    <p><strong>The example above is not working!</strong> Fear not! The example above stopped working after five seconds. This is a performance measure that CodePen puts in place to prevent looping scripts and animations. Place the cursor over the example and click the "RERUN" button to get it working again for another five seconds.</p>
-        		</div>
+                <h2>Basic</h2>
+                
+                <p>To create a basic lightbox effect for an image, use the <code>img</code> tag and to add caption to the lightbox effect, use the <code>alt</code> attribute of the <code>img</code> tag. The caption will not be display in the unexpanded image for a basic lightbox setup.</p>
+                
+                <div class="example with-code">
+                    <p><img class="with-lightbox" src="src/img/imagezoomsample.jpg" alt="Sample Image 1" /></p>
+                </div>
+                
+                <script src="https://gist.github.com/Lin87/e878363463bbee8ab64427e82ceb0f9a.js"></script>
+                
+                <h2>Caption</h2>
+                
+                <p>To display caption in both unexpanded and expanded view of the image, use the <code>figure</code> tag with <code>figcaption</code>. The <code>alt</code> attribute of the <code>img</code> tag will be ignored. The <code>figcaption</code> must be used when using a <code>figure</code> tag for lightbox effect.</p>
+                
+                <div class="example with-code">
+                    <figure class="with-lightbox">
+                        <img src="src/img/imagezoomsample.jpg" alt="Sample Image 1" />
+                        <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</figcaption>
+                    </figure>
+                </div>
+                
+                <script src="https://gist.github.com/Lin87/640d2283ab69ea859254f0c1badc4120.js"></script>
+                
+                <h2>Collection</h2>
+                
+                <p>When there are multiple images and needs to in a grid layout, use a <code>div</code> tag with the <code>with-lightbox</code> class. Inside the <code>div</code> tag, either use <code>img</code> or <code>figure</code> tag. It cannot be both.</p>
+                
+                <div class="example with-code">
+                    <div class="with-lightbox">
+                        <img src="src/img/imagezoomsample.jpg" alt="Beep Peep 1" />
+                        <img src="src/img/id_logo.png" alt="Sample Image 1" />
+                        <img src="src/img/imagezoomsample.jpg" alt="Sample Image 2" />
+                    </div>
+                </div>
+                
+                <script src="https://gist.github.com/Lin87/70f8c1eb39a9b46f476cabc4e765c392.js"></script>
+                
+                <div class="example with-code">
+                    <div class="with-lightbox">
+                        <figure>
+                            <img src="src/img/imagezoomsample.jpg" alt="Sample Image 1" />
+                            <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="src/img/id_logo.png" alt="Sample Image 1" />
+                            <figcaption>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </figcaption>
+                        </figure>
+                        <figure>
+                            <img src="src/img/imagezoomsample.jpg" alt="Sample Image 1" />
+                            <figcaption>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</figcaption>
+                        </figure>
+                  </div>
+                </div>
+                
+                <script src="https://gist.github.com/Lin87/1e9e23d8787baa100964751c39975d46.js"></script>
+                
+                <h2>Alignments</h2>
+                
+                <p>A single lightbox image can be aligned left or right by appending the <code>left</code> or <code>right</code> class. Images or figures in a collection does not need alignment classes.</p>
 				
 			</div>
 		</div>

@@ -1153,23 +1153,69 @@ $(document).ready(function() {
             var id = "with-reveal-" + (i + 1);
             $(this).attr("id", id);
             
-            $(this).on("click", handleLightBox);
+            if ( $(this)[0].nodeName === "DIV" ) {
+                
+                $(this).find("figure, img").on("click", {collection: true}, handleLightBox);
+                
+            } else {
+                
+                $(this).on("click", handleLightBox);
+            }
+
             
         } );
-        
-        
         
     }
     
     function handleLightBox(e) {
         
         var currentTarget = $(e.currentTarget);
-        var src = currentTarget.attr("src");
-        var caption = currentTarget.attr("alt");
+        var innerParent = $(e.target).parent();
+        var src;
+        var caption;
         
-        var divEl = "<div id=\"lightbox-effect\"><div class=\"content\"><img src=\"" + src + "\" alt=\"" + caption + "\" /><p class=\"caption\">" + caption + "</p></div><button class=\"closeBtn\">&times;</button></div>";
+        // for collection
+        var parent = $(this).parent();
+        var imgs = parent.children();
+        var totalImgs = imgs.length;
+        var currentIndex = $(this).index();
+        
+        if ( currentTarget[0].nodeName === "FIGURE" ) {
+            
+            src = currentTarget.find("img").attr("src");
+            caption = currentTarget.find("figcaption").html();
+            
+        } else {
+            
+            src = currentTarget.attr("src");
+            caption =  currentTarget.attr("alt");
+            
+            e.stopPropagation();
+            
+            if (innerParent[0].nodeName === "FIGURE") {
+                
+                parent = innerParent.parent();
+                imgs = parent.children();
+                totalImgs = imgs.length;
+                currentIndex = innerParent.index();
+                
+                src = innerParent.find("img").attr("src");
+                caption = innerParent.find("figcaption").html();
+                
+            }
+            
+        }
+        
+        var divEl = "<div id=\"lightbox-effect\"><div class=\"content\"><img src=\"" + src + "\" alt=\"" + caption + "\" /><p class=\"caption\">" + caption + "</p><button class=\"lb-btn closeBtn\">&times;</button></div></div>";
         
         $("body").append(divEl);
+        
+        if ( e.data !== undefined && e.data.collection) {
+
+            $("#lightbox-effect .content").append("<button class=\"lb-btn prevBtn\">&larr;</button><button class=\"lb-btn nextBtn\">&rarr;</button>");
+            
+        }
+        
         $("#lightbox-effect").hide().fadeIn(500);
         
         $("#lightbox-effect").on("click", function(e) {
@@ -1180,6 +1226,50 @@ $(document).ready(function() {
                     $(this).off("click");
                     $(this).remove();
                 });
+                
+            }
+            
+            if (e.target === this || e.target === $(".prevBtn").get(0)) {
+                
+                currentIndex--;
+                
+                if (currentIndex <= -1) {
+                    currentIndex = totalImgs - 1;
+                }
+            
+                if (innerParent[0].nodeName === "FIGURE") {
+                    
+                    $("#lightbox-effect .content").find("img").attr("src", $(imgs[currentIndex]).find("img").attr("src"));
+                    $("#lightbox-effect .content").find(".caption").html($(imgs[currentIndex]).find("figcaption").html());
+                    
+                } else {
+                    
+                    $("#lightbox-effect .content").find("img").attr("src", $(imgs[currentIndex]).attr("src"));
+                    $("#lightbox-effect .content").find(".caption").html($(imgs[currentIndex]).attr("alt"));
+                    
+                }
+ 
+            }
+            
+            if (e.target === this || e.target === $(".nextBtn").get(0)) {
+                
+                currentIndex++;
+                
+                if (currentIndex >= totalImgs) {
+                    currentIndex = 0;
+                }
+            
+                if (innerParent[0].nodeName === "FIGURE") {
+                    
+                    $("#lightbox-effect .content").find("img").attr("src", $(imgs[currentIndex]).find("img").attr("src"));
+                    $("#lightbox-effect .content").find(".caption").html($(imgs[currentIndex]).find("figcaption").html());
+                    
+                } else {
+                    
+                    $("#lightbox-effect .content").find("img").attr("src", $(imgs[currentIndex]).attr("src"));
+                    $("#lightbox-effect .content").find(".caption").html($(imgs[currentIndex]).attr("alt"));
+                    
+                }
                 
             }
 

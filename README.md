@@ -1,5 +1,5 @@
 # DROPLETS
-**_version 1.5.1_**  
+**_version 1.5.2_**  
 
 A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
 
@@ -42,6 +42,9 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 
 ---
 #### Version Change Log
+
+**1.5.2**
+* Lightbox enhancements: grid layout & support both <code>img</code> and <code>figure</code> (with <code>figcaption</code> as well)
 
 **1.5.1**
 * Two new icons: Email and Extra Credit

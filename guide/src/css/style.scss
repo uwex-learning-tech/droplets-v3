@@ -1158,21 +1158,35 @@ table > tfoot > tr.neutral > th {
 figure {
     
     display: table;
-    text-align: left;
-    width: 1px;
-    margin-left: 0;
-    margin-right: 0;
+    margin: rem($gutter) 0 rem($gutter);
     
     img {
-        display: table-row;
+        width: 100%;
+        height: auto;
+        display: block;
     }
     
 	figcaption {
-    	display: table-row;
+    	display: table-caption;
     	font-size: rem( 12px );
     	line-height: rem( 16px );
+    	margin-top: rem(6px);
+    	caption-side: bottom;
+    	
 	}
 
+}
+
+figure.x-small {
+    width: 25%;
+}
+
+figure.small {
+    width: 35%;
+}
+
+figure.medium {
+    width: 50%;
 }
 
 .bordered {
@@ -2277,10 +2291,65 @@ span.with-popover.active {
 -----------------------------------------------------------------*/
 .with-lightbox {
     
-    width: 35%;
+    display: block;
     height: auto;
     vertical-align: middle;
     cursor: pointer;
+    padding: rem( 6px );
+    margin: rem($gutter) 0 0;
+    @include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
+    @include box-sizing( 'border-box' );
+    
+}
+
+figure.with-lightbox {
+    
+    display: table;
+	
+	img {
+    	width: 100%;
+	}
+	
+}
+
+div.with-lightbox {
+        
+    @include single-box-shadow( 0, 0, 0, 0, #888 );
+    padding: 0;
+    cursor: default;
+    
+    img {
+        cursor: pointer;
+        padding: rem( 6px );
+        margin: 0 rem($gutter) rem($gutter) 0;
+        @include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
+        @include box-sizing( 'border-box' );
+    }
+    
+    img:nth-child(3n+3) {
+        margin-right: 0;
+    }
+    
+    figure {
+        
+        padding: rem(6px);
+        cursor: pointer;
+        @include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
+        @include box-sizing( 'border-box' );
+        
+        img {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            @include single-box-shadow( 0, 0, 0, 0, #888 );
+            @include box-sizing( 'border-box' );
+        }
+        
+    }
+    
+    figure:nth-child(3n+3) {
+        margin-right: 0;
+    }
     
 }
 
@@ -2315,25 +2384,46 @@ span.with-popover.active {
         
         .caption {
             font-size: rem(14px);
+            line-height: rem( 18px );
             margin-bottom: 0;
         }
         
-    }
-    
-    .closeBtn {
-        position: absolute;
-        top: rem($gutter);
-        right: rem($gutter);
-        width: 50px;
-        height: 50px;
-        font-size: rem(32px);
-        border: none;
-        background-color: #888;
-        color: #fff;
-        padding-bottom: 8px;
-        @include border-radius(50%);
-        @include single-box-shadow( 0, 0, rem( 8px ), 0, #000 );
-        cursor: pointer;
+        .lb-btn {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            font-size: rem(20px);
+            border: none;
+            background-color: #000;
+            color: #fff;
+            padding-left: rem(8px);
+            padding-bottom: rem(3px);
+            @include border-radius(50%);
+            @include single-box-shadow( 0, 0, rem( 15px ), rem( 5px ), #888 );
+            cursor: pointer;
+        }
+        
+        .closeBtn {
+            top: rem($gutter * -1);
+            right: rem($gutter * -1);
+        }
+        
+        .prevBtn {
+            top: 50%;
+            left: rem(30px / 2 * -1);
+            padding-left: rem(7px);
+            padding-bottom: rem(2px);
+            @include single-box-shadow( 0, 0, rem( 10px ), 0, #888 );
+        }
+        
+        .nextBtn {
+            top: 50%;
+            right: rem(30px / 2 * -1);
+            padding-left: rem(7px);
+            padding-bottom: rem(2px);
+            @include single-box-shadow( 0, 0, rem( 10px ), 0, #888 );
+        }
+        
     }
     
 }
@@ -2713,6 +2803,32 @@ iframe, object {
     
     }
     
+    .with-lightbox {
+        
+        width: 100%;
+        
+        img {
+            width: 100%;
+        }
+        
+        img:last-child {
+        	margin-bottom: 0;
+    	}
+    	
+    	figure {
+        	width: 100%;
+    	}
+        
+    }
+    
+    div.with-lightbox {
+        
+        figure {
+        	margin-right: 0;
+    	}
+    	
+    }
+    
     .polaroid {
 
     	width: rem( 316px );
@@ -2915,6 +3031,39 @@ iframe, object {
         margin: 0 auto;
         
     }
+    
+    .with-lightbox {
+        width: 31.5556%;
+    }
+    
+    div.with-lightbox {
+        
+        width: 100%;
+        
+        img {
+            display: block;
+            width: 31.9356%;
+            float: left;
+        }
+        
+        figure {
+            width: 31.9356%;
+            float: left;
+            margin: 0 rem($gutter) rem($gutter) 0;
+        }
+        
+    }
+    
+    div.with-lightbox:before,
+    div.with-lightbox:after {
+      display: table;
+      content: " ";
+    }
+    
+    div.with-lightbox:after {
+      clear: both;
+    }
+    
     
     .with-learning-resources {
     
