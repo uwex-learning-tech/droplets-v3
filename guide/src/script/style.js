@@ -1112,6 +1112,10 @@ $(document).ready(function() {
         var hiddenEl = $( parent ).find(".hidden-content")[0];
         var btnName = $(parent).data("button-name")
         
+        if ( btnName === undefined ) {
+            btnName = "Show";
+        }
+        
         if ( $(hiddenEl).hasClass("show") ) {
             
             $(hiddenEl).hide("fast", function() {
@@ -1148,14 +1152,11 @@ $(document).ready(function() {
         
         var lightboxImg = $(".with-lightbox");
         
-        lightboxImg.each( function(i) {
-            
-            var id = "with-reveal-" + (i + 1);
-            $(this).attr("id", id);
+        lightboxImg.each( function() {
             
             if ( $(this)[0].nodeName === "DIV" ) {
                 
-                $(this).find("figure, img").on("click", {collection: true}, handleLightBox);
+                $(this).find( "figure, img" ).on( "click", {collection: true}, handleLightBox );
                 
             } else {
                 
