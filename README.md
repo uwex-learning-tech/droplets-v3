@@ -1,5 +1,5 @@
 # DROPLETS
-**_version 1.5.2_**  
+**_version 1.5.3_**  
 
 A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
 
@@ -42,6 +42,9 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 
 ---
 #### Version Change Log
+
+**1.5.3**
+* Fixed an issue where img in figure tag is not respecting to img's width and height attributes.
 
 **1.5.2**
 * Lightbox enhancements: grid layout & support both <code>img</code> and <code>figure</code> (with <code>figcaption</code> as well)
@@ -126,4 +129,4 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 * Minor bug fixes
 
 ---
-&copy; 2013 - 2017. Ethan Lin, University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning, and Board of Regents. All rights reserved.
+&copy; 2013 - 2018. Ethan Lin, University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning, and Board of Regents. All rights reserved.

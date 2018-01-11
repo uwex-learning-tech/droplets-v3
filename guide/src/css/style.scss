@@ -1161,8 +1161,6 @@ figure {
     margin: rem($gutter) 0 rem($gutter);
     
     img {
-        width: 100%;
-        height: auto;
         display: block;
     }
     
@@ -3042,12 +3040,12 @@ iframe, object {
         
         img {
             display: block;
-            width: 31.9356%;
+            width: 31.934%;
             float: left;
         }
         
         figure {
-            width: 31.9356%;
+            width: 31.934%;
             float: left;
             margin: 0 rem($gutter) rem($gutter) 0;
         }
