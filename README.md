@@ -1,33 +1,30 @@
 # DROPLETS
-**_version 1.5.3_**  
+**_version 2.0.0_**  
 
-A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UW-EX CEOEL).
+A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UWEX CEOEL).
 
 ### How To Use
-1. To start, download the [framework](https://github.com/oel-mediateam/droplets/archive/master.zip) (ZIP).
-2. Unzip or extract the ZIP file when the download is completed.
-3. Open the `dist` directory.
-4. Upload all of the files and directories inside the `dist` directory to your LMS's file storage.
-5. Include the `style.css` stylesheet from the `css` directory to the HTML head element. For example, `<link href="path_to_your_lms_file_directory/style.css" rel="stylesheet" />`.
-6. If interested in using the JavaScript components, include the `style.js` javascript file from the `script` directory to the HTML head element. For example:
-```
-<script src="path_to_your_lms_file_directory/style.js" type="text/javascript"></script>
-```
-**Note:** This framework is specifically developed for designers use at UW-EX CEOEL. Some setups or usages may not be optimal or preferable for your organization. In addition, this framework is somewhat built to accommodate the LMS (Desire2Learn) that is being used at UW-EX CEOEL. However, you are most welcome to download or fork this repository and modified it to your organization's needs.
+1. To start, download the [framework](https://github.com/oel-mediateam/droplets-for-canvas/archive/master.zip) (ZIP)
+2. Unzip or extract the ZIP file when the download is completed
+3. Open the `droplets` directory
+4. Upload the `droplets.css` (inside `css` directory) and `droplets.js` (inside `script` directory) file to your LMS.
+5. Inside your LMS's WYSIWYG HTML editor, wrap your HTML inside a `div` tag with ID of `uws-droplets-page`
+
+**Note:** This framework is specifically developed for instructional designers use at UWEX CEOEL. Some setups or usages may not be optimal or preferable for your organization. In addition, this framework is built to accommodate the LMS (Canvas.net) that will be used at UWEX CEOEL. You are most welcome to download or fork this repository and modified it to your organization's needs.
 
 ### Development Requirements
-* HTML5
+* HTML
 * Cascading Style Sheets (CSS3)
 * SASS (http://sass-lang.com/)
 * Compass (http://compass-style.org/)
-* jQuery 3.x
+* JavaScript
 
-Knowledges of SASS and Compass are essential to write the CSS for this framework. The CSS file is created/compiled and minified by SASS, a CSS preprocessor.
+Knowledges of SASS and Compass are essential to write the CSS for this framework. The CSS file is compiled and minified by SASS, a CSS preprocessor.
 
-**Note:** [CodeKit](https://incident57.com/codekit/) is highly recommended for Mac users during the development process.
+**Note:** [CodeKit](https://incident57.com/codekit/) is highly recommended for Mac users for the development enviroment.
 
 ### Minimum Supported Web Browsers
-* Internet Explorer 9+
+* Internet Explorer 11+
 * Mozilla Firefox 30+
 * Google Chrome 33+
 * Apple Safari 5+
@@ -36,12 +33,15 @@ Knowledges of SASS and Compass are essential to write the CSS for this framework
 *Latest stable version is always recommended.*
 
 ### Bug Reporting and Questions
-If any bugs/glitches are found in this framework, please report them under the "**[Issues](https://github.com/oel-mediateam/droplets/issues)**" page on GitHub. When reporting a bug, please write the report as detailed and specifically as possible. Note the steps to reproduce the bug and include screen captures if possible.
+If any bugs/glitches are found in this framework, please report them under the "**[Issues](https://github.com/oel-mediateam/droplets-for-canvas/issues)**" page on GitHub. When reporting a bug, please write the report as detailed and specifically as possible. Note the steps to reproduce the bug and include screen captures if possible.
 
-For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/droplets/issues)**" page on GitHub.
+For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/droplets-for-canvas/issues)**" page on GitHub.
 
 ---
 #### Version Change Log
+
+** 2.0.0 **
+* Optimized for Canvas.net environment
 
 **1.5.3**
 * Fixed an issue where img in figure tag is not respecting to img's width and height attributes.
@@ -129,4 +129,4 @@ For questions, please also post them under the "**[Issues](https://github.com/oe
 * Minor bug fixes
 
 ---
-&copy; 2013 - 2018. Ethan Lin, University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning, and Board of Regents. All rights reserved.
+&copy; 2018. Ethan Lin, University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning, and Board of Regents. All rights reserved.
