@@ -17,7 +17,8 @@
 		"oF": 1
 		},
 	"\/config.rb": {
-		"ft": 131072,
+		"cB": 0,
+		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/config.rb",
 		"oF": 0
@@ -91,24 +92,21 @@
 		"sC": 1,
 		"tS": 0
 		},
+	"\/droplets\/script\/droplets-min.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/droplets\/script\/droplets-min.js.map",
+		"oF": 0
+		},
 	"\/droplets\/script\/droplets.js": {
 		"ft": 64,
-		"ma": 0,
+		"ma": 1,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/guide\/src\/script\/droplets-min.js",
+		"oAP": "\/droplets\/script\/droplets-min.js",
 		"oF": 3,
 		"sC": 3,
-		"tS": 0
-		},
-	"\/guide\/src\/script\/droplets-min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/guide\/src\/script\/min\/droplets-min-min.js",
-		"oF": 0,
-		"sC": 1,
 		"tS": 0
 		},
 	"\/LICENSE": {
