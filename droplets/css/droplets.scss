@@ -1,0 +1,1716 @@
+
+/*
+D000: VARIABLES
+--------------------------------------------------------------------------------
+Setting up variables. Define colors and spacing.
+----------------------------------------------------------------------------- */
+
+$font-size: 16px;
+$light-font-weight: 300;
+$font-color: #333;
+$border-color: #e9e9e9;
+$gutter: 16px;
+
+$table-border-color: #727272;
+$table-bg-color: #f1f1f1;
+
+$gray-color: #757575;
+$success-color: #34612E;
+$info-color: #115B8D;
+$warning-color: #854700;
+$danger-color: #A02E2C;
+
+$light-gray-color: #EEEEEE;
+$light-success-color: #EEFFEF;
+$light-info-color: #F0F7FD;
+$light-warning-color: #FEFBED;
+$light-danger-color: #FCF2F2;
+
+/*
+D001: FUNCTIONS
+--------------------------------------------------------------------------------
+Setting up functions. Convert px unit to rem unit.
+----------------------------------------------------------------------------- */
+
+@function rem( $px, $base: $font-size ) {
+    @return ( $px / $base ) * 1rem;
+}
+
+/*
+D002: COMPASS IMPORTS
+--------------------------------------------------------------------------------
+Setting COMPASS imports. Extends the SASS.
+----------------------------------------------------------------------------- */
+
+@import "compass/css3/border-radius";
+@import "compass/css3/box-sizing";
+@import "compass/css3/box-shadow";
+@import "compass/css3/transform";
+@import "compass/css3/opacity";
+@import "compass/css3/flexbox";
+@import "compass/css3/animation";
+
+/*
+D003: UWS DROPLETS PAGE
+--------------------------------------------------------------------------------
+Droplets page container. Droplets classes only work inside this container.
+----------------------------------------------------------------------------- */
+
+#uws-droplets-page {
+    
+    // container property
+    position: relative;
+    max-width: rem( 940px );
+    margin: 0;
+    padding: 0;
+    
+    * {
+        @include box-sizing( "border-box" );
+    }
+    
+    /*
+    D004: PAGE HEADER
+    --------------------------------------------------------------------------*/
+    
+    .header {
+        
+        padding: 0 0 rem( 8px ) 0;
+        margin-bottom: rem( $gutter );
+    	border-bottom: rem( 1px ) solid $border-color;
+    
+    	h2 {
+    
+        	margin: 0;
+    
+            [class^="icon-"] {
+                display: inline-block;
+                margin-right: rem( 5px );
+                font-size: 125%;
+            }
+    
+            [class*=" icon-"] {
+                @extend [class^="icon-"];
+            }
+    
+            small {
+                font-size: rem( 18px );
+                font-weight: normal;
+                line-height: normal;
+            }
+    
+    	}
+        
+    }
+    
+    /*
+    D005: TYPOGRAPHY
+    --------------------------------------------------------------------------*/
+    
+    // D005.1: Paragraph lead
+    .lead {
+        font-size: rem( 18px );
+        font-weight: $light-font-weight;
+        line-height: rem( 27px );
+        margin: rem( $gutter ) 0;
+    }
+    
+    // D005.2: Drop caps - revisit in future for CSS Initial Letter support
+    .dropcap:first-letter {
+        float: left;
+        font-size: 272%;
+        font-weight: bold;
+        padding: rem( 4px ) rem( 4px ) 0 0;
+    }
+    
+    // D005.3: blockquote
+    blockquote {
+        
+    	padding: rem( 8px ) rem( 20px );
+    	border-left: rem( 5px ) solid $light-gray-color;
+    
+    	p {
+        	margin: 0;
+        	font-size: rem( 18px );
+        	line-height: rem( 27px );
+            font-weight: $light-font-weight;
+    	}
+    
+    	.author {
+        	font-size: rem( 14px );
+    	}
+    
+    	.author:before {
+        	content: '\2014 \00A0';
+    	}
+    
+    }
+    
+    // D005.4: right align block quote
+    .pull-right {
+    	padding-right: rem ( $gutter );
+    	padding-left: 0;
+    	border-right: rem( 5px ) solid $light-gray-color;
+    	border-left: 0;
+    	text-align: right;
+    }
+    
+    // D005.5: replace block quote border with a quote mark
+    .with-quote-mark {
+
+    	border: 0;
+    	padding-left: 0;
+    	padding-right: 0;
+    	quotes: "\201C""\201D";
+    
+    	p {
+        	display: inline;
+    	}
+    
+    	.author {
+    	    display: inline;
+    	}
+    
+    }
+    
+    .with-quote-mark:before {
+        color: $light-gray-color;
+        content: open-quote;
+        font-size: 500%;
+        line-height: 0;
+        margin-right: rem( 6px );
+        vertical-align: rem( -36px );
+    }
+    
+    // D005.6: remove unordered & ordered list bullets
+    .no-bullet {
+    
+        list-style: none;
+    
+        ul, ol {
+            list-style: none;
+        }
+    
+    }
+    
+    // D005.7: text indentations
+    .indent {
+    	text-indent: rem( 40px );
+    }
+    
+    .indent-all {
+    	padding-left: rem( 40px );
+    }
+    
+    .hanging-indent {
+        padding-left: rem( 40px );
+        text-indent: rem( -40px );
+    }
+    
+    // D005.8: buttons
+    .btn {
+    	display: inline-block;
+    	background-color: $gray-color;
+    	padding: rem( 8px ) rem( $gutter );
+    	font-size: rem( 18px );
+    	color: #fff;
+    	text-decoration: none;
+    	vertical-align: middle;
+    	outline: none;
+    	cursor: pointer;
+    	border: 0 solid #404040;
+    	@include box-sizing( "border-box" );
+    	@include border-radius( rem( 3px ) );
+    }
+    
+    .btn:hover {
+    	background-color: #404040;
+    }
+    
+    .btn:active {
+    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 2px ), $gray-color, inset );
+    }
+    
+    .btn.info {
+    	background-color: $info-color;
+    }
+    
+    .btn.info:hover {
+    	background-color: #1f82bf;
+    }
+    
+    .btn.info:active {
+    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 2px ), $info-color, inset );
+    }
+    
+    .btn.success {
+    	background-color: $success-color;
+    }
+    
+    .btn.success:hover {
+    	background-color: #159c0b;
+    }
+    
+    .btn.success:active {
+    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 2px ), $success-color, inset );
+    }
+    
+    .btn.warning {
+    	background-color: $warning-color;
+    }
+    
+    .btn.warning:hover {
+    	background-color: #e3990e;
+    }
+    
+    .btn.warning:active {
+    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 2px ), $warning-color, inset );
+    }
+    
+    .btn.danger {
+        background-color: $danger-color;
+    }
+    
+    .btn.danger:hover {
+    	background-color: #a31818;
+    }
+    
+    .btn.danger:active {
+    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 2px ), $danger-color, inset );
+    }
+    
+    .btn.block {
+    	display: block;
+    	width: 100%;
+    	padding: rem( 16px ) 0;
+    	text-align: center;
+    	margin: rem( $gutter ) auto;
+    }
+    
+    .btn:focus {
+    	outline:none;
+    }
+    
+    .btn.small {
+        font-size: rem( 14px );
+        padding: rem(5px);
+    }
+    
+    // D005.9: text alignments
+    @each $pos in (left),
+                  (right),
+                  (center),
+                  (justify) {
+    
+        .#{$pos} {
+            text-align: #{$pos};
+            @if $pos == justify { text-justify: newspaper }
+        }
+    
+    }
+    
+    /*
+    D006: LAYOUTS
+    --------------------------------------------------------------------------*/
+
+    // D006.1: columns
+    .columns {
+        
+        width: 100%;
+    	@include display-flex();
+    	@include flex-flow( row nowrap );
+    	@include justify-content( space-evenly );
+    	
+    	div {
+        	margin-left: rem( $gutter );
+    	}
+    	
+    	div:first-child {
+        	margin-left: 0;
+    	}
+    	
+    	.wider {
+        	@include flex( 0 0 75% );
+    	}
+    
+    }
+    
+    // D006.2: footer
+    .footer {
+    
+    	width: 100%;
+    	border-top: rem( 1px ) solid $border-color;
+    	margin: rem( $gutter ) 0 0 0;
+    	color: $gray-color;
+    	font-size: rem( 12px );
+    
+    	p {
+        	
+    	}
+    
+    	p:after {
+        	content: "\00A9  Board of Regents. University of Wisconsin System. All rights reserved.";
+    	}
+    
+    }
+    
+    /*
+    D007: EMPHASIS
+    --------------------------------------------------------------------------*/
+    
+    .underline {
+    	text-decoration: underline;
+    }
+    
+    abbr {
+    	cursor: help;
+    	border-bottom: rem( 1px ) dotted #999999;
+    }
+    
+    .text-info {
+    	color: $info-color;
+    }
+    
+    .text-success {
+    	color: $success-color;
+    }
+    
+    .text-warning {
+    	color: $warning-color;
+    }
+    
+    .text-danger {
+    	color: $danger-color;
+    }
+    
+    /*
+    D008: INLINE CALLOUTS
+    --------------------------------------------------------------------------*/
+    
+    // D008.1: labels
+    .label {
+    	padding: rem( 2px ) rem( 6px );
+    	font-weight: bold;
+    	color: #ffffff;
+    	text-transform: uppercase;
+    	white-space: nowrap;
+    	background-color: $gray-color;
+    	@include border-radius( rem( 3px ) );
+    }
+    
+    .label.success {
+    	background-color: $success-color;
+    }
+    
+    .label.info {
+    	background-color: $info-color;
+    }
+    
+    .label.warning {
+    	background-color: $warning-color;
+    }
+    
+    .label.danger {
+    	background-color: $danger-color;
+    }
+    
+    // D008.2: highlight
+    .highlight {
+    	padding: rem( 1px ) rem( 4px ) rem( 2px );
+    	background-color: #fff3b4;
+    	@include border-radius( rem( 3px ) );
+    }
+    
+    /*
+    D009: BLOCK-LEVEL CALLOUTS
+    --------------------------------------------------------------------------*/
+    
+    // D009.1: Default
+    .callout {
+    
+    	margin: rem( 16px ) 0;
+    	padding: rem( 16px ) rem( 30px ) rem( 16px ) rem( 16px );
+    	background-color: $light-gray-color;
+    	border-color: $gray-color;
+    	border-left: rem( 8px ) solid #7e7e7e;
+    	border-right: rem( 5px ) solid #b2b2b2;
+    	@include box-sizing( "border-box" );
+    
+    	h4 {
+    
+        	margin: 0 0 rem( $gutter ) 0;
+        	padding: 0;
+    
+        	[class^="icon-"],
+        	[class*=" icon-"] {
+                font-size: 100%;
+        	}
+    
+    	}
+        
+        p {
+            margin-top: 0;
+        }
+        
+    	p:last-child {
+        	margin-bottom: 0;
+    	}
+    
+    }
+    
+    .callout.vertical {
+    	padding: rem( 16px );
+    	border-left: 0;
+    	border-right: 0;
+    	border-top: rem( 10px ) solid $gray-color;
+    	border-bottom: rem( 5px ) solid #b2b2b2;
+    }
+    
+    @media ( min-width: 768px ) {
+        
+        .callout.vertical.left {
+            width: rem( 250px );
+            margin: rem( 5px ) rem( $gutter ) 0 0;
+            float: left;
+        }
+        
+        .callout.vertical.right {
+            width: rem( 250px );
+            margin: rem( 5px ) 0 0 rem( $gutter );
+            float: right;
+            text-align: left;
+        }
+        
+    }
+    
+    .callout.success {
+    	background-color: $light-success-color;
+    	border-left-color: $success-color;
+    	border-right-color: #c0f3bd;
+    	border-top-color: $success-color;
+    	border-bottom-color: #c0f3bd;
+    }
+    
+    .callout.info {
+    	background-color: $light-info-color;
+    	border-left-color: $info-color;
+    	border-right-color: #d0e3f0;
+    	border-top-color: $info-color;
+    	border-bottom-color: #d0e3f0;
+    }
+    
+    .callout.warning {
+    	background-color: $light-warning-color;
+    	border-left-color: $warning-color;
+    	border-right-color: #f1e7bc;
+    	border-top-color: $warning-color;
+    	border-bottom-color: #f1e7bc;
+    }
+    
+    .callout.danger {
+    	background-color: $light-danger-color;
+    	border-left-color: $danger-color;
+    	border-right-color: #dfb5b4;
+    	border-top-color: $danger-color;
+    	border-bottom-color: #dfb5b4;
+    }
+    
+    // D009.2: Minimal style
+    .callout.minimal {
+    	background-color: #fff;
+    	border-right: 0;
+    	border-left-width: rem( 5px );
+    }
+    
+    // D009.3: Add shadow
+    .callout.minimal.shadowed {
+        @include single-box-shadow( 0, 0, rem( 6px ), 0, #858585, false );
+    }
+    
+    
+    // D009.4: Add border
+    .callout.minimal.bordered {
+    	border: rem( 1px ) solid $gray-color;
+    	@include border-radius( rem( 3px ) );
+    	@include single-box-shadow( 0, rem( 3px ), 0, 0, $gray-color, false );
+    }
+    
+    .callout.minimal.bordered.danger {
+    	border-color: $danger-color;
+    	@include single-box-shadow( 0, rem( 3px ), 0, 0, $danger-color, false );
+    }
+    
+    .callout.minimal.bordered.success {
+    	border-color: $success-color;
+    	@include single-box-shadow( 0, rem( 3px ), 0, 0, $success-color, false );
+    }
+    
+    .callout.minimal.bordered.info {
+    	border-color: $info-color;
+    	@include single-box-shadow( 0, rem( 3px ), 0, 0, $info-color, false );
+    }
+    
+    .callout.minimal.bordered.warning {
+    	border-color: $warning-color;
+    	@include single-box-shadow( 0, rem( 3px ), 0, 0, $warning-color, false );
+    }
+    
+    /*
+    D010: TABLE
+    --------------------------------------------------------------------------*/
+    
+    //D010.1: Default
+    table {
+
+    	width: 100%;
+    	background-color: transparent;
+    	border-collapse: collapse;
+    	border-spacing: 0;
+    	margin: rem( $gutter ) 0;
+    
+    	thead > tr > th {
+        	padding: rem( 8px );
+            vertical-align: bottom;
+            text-align: left;
+            font-size: rem( 16px );
+            border-bottom: rem( 2px ) solid $table-border-color;
+    	}
+    
+    	thead:first-child {
+    
+    	    tr:first-child {
+    
+        	    th {
+            	    border-top: 0;
+        	    }
+    
+    	    }
+    
+        }
+    
+        tbody > tr > td {
+    
+            padding: rem( 8px );
+            vertical-align: top;
+            border-top: rem( 1px ) solid $table-border-color;
+            line-height: normal;
+    
+            ul, ol {
+                margin: 0;
+                padding: 0 0 0 rem( 16px );
+                list-style-position: inside;
+                text-indent: rem( -13px );
+    
+                li {
+                    margin: 0;
+                }
+    
+            }
+    
+        }
+        
+        // D010.2: Vertical alignments
+        .vert-top {
+            vertical-align: top;
+        }
+        
+        .vert-bottom {
+            vertical-align: bottom;
+        }
+        
+        .vert-center {
+            vertical-align: middle;
+        }
+        
+        // D010.3: Borders
+        .top-border {
+        	border-top: rem( 1px ) solid $table-border-color;
+        }
+        
+        .bottom-border {
+        	border-bottom: rem( 1px ) solid $table-border-color;
+        }
+        
+        .left-border {
+        	border-left: rem( 1px ) solid $table-border-color;
+        }
+        
+        .right-border {
+        	border-right: rem( 1px ) solid $table-border-color;
+        }
+        
+        // D010.4: Border style
+        .double-line {
+        	border-style: double;
+        	border-bottom-width: rem( 4px );
+        }
+        
+        .dotted {
+        	border-style: dotted;
+        }
+        
+        // D010.5: Border thickness
+        .medium {
+        	border-width: rem( 2px );
+        }
+        
+        .heavy {
+        	border-width: rem( 4px );
+        }
+        
+        // D010.6: Cell indentation
+        .indent {
+        	text-indent: rem( 10px );
+        }
+        
+        .double-indent {
+        	text-indent: rem( 20px );
+        }
+        
+        // D010.7: Cell background color
+        .gray {
+          background-color: $light-gray-color;
+        }
+        
+        .info {
+            background-color: $light-info-color;
+        }
+        
+        .success {
+            background-color: $light-success-color;
+        }
+        
+        .warning {
+            background-color: $light-warning-color;
+        }
+        
+        .danger {
+            background-color: $light-danger-color;
+        }
+    
+    }
+    
+    // D010.8: Stripped style
+    table.striped {
+
+        tbody {
+    
+            tr:nth-child(odd) {
+                background-color: $table-bg-color;
+            }
+    
+        }
+    
+    }
+    
+    // D010.9: Stripe nested table bodies
+    table.striped-body {
+
+        tbody:nth-child(even) {
+            background-color: $table-bg-color;
+        }
+    
+    }
+    
+    // D010.10: All border
+    table.bordered {
+        
+        * {
+            border: rem( 1px ) solid $table-border-color;
+        }
+    	
+    }
+    
+    // D010.11: No border
+    .no-border {
+        
+        * {
+            border: 0;
+        }
+    	
+    }
+    
+    // D010.12: Minimal style
+    table.minimal {
+        
+        background-color: #ffffff;
+        border: rem( 1px ) solid #d6d6d6;
+        @include border-radius( rem( 3px ) );
+        @include single-box-shadow( 0, rem( 2px ), 0, #d6d6d6 );
+        
+        * {
+            border: 0;
+            vertical-align: middle;
+            border-right: rem( 1px ) solid #e3e3e3;
+            padding-left: rem( 12px );
+            padding-right: rem( 12px );
+        }
+        
+    }
+    
+    // D010.13: Hover state
+    table.hover tr:hover {
+    	background-color: $table-bg-color;
+    }
+    
+    // D010.14: Less cell padding
+    table.minimal-padding {
+
+        * {
+            padding: rem(1px) rem( 3px );
+        }
+    
+    }
+    
+    // D010.14: Smaller font
+    table.small-text {
+
+        thead > tr > th {
+            font-size: rem( 14px );
+        }
+    
+        tbody > tr > td {
+            font-size: rem( 12px );
+        }
+    
+    }
+    
+    // D010.15: Widths
+    table.three-fourths {
+        width: 75%;
+    }
+    
+    table.half {
+        width: 50%;
+    }
+    
+    table.quarter {
+        width: 25%;
+    }
+    
+    // D010.16: Alignment
+    @media ( min-width: 768px ) {
+        
+        table.left {
+        	float: left;
+        	margin: 0 rem( $gutter ) 0 0;
+        	text-align: left;
+        }
+        
+        table.right {
+        	float: right;
+        	margin: 0 0 0 rem( $gutter );
+        	text-align: left;
+        }
+        
+    }
+    
+    /*
+    D011: IMAGE
+    --------------------------------------------------------------------------*/
+    
+    figure {
+        
+        display: table;
+        margin: rem( $gutter ) 0;
+        
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+    	figcaption {
+        	display: table-caption;
+        	font-size: rem( 12px );
+        	line-height: rem( 16px );
+        	margin-top: rem(6px);
+        	caption-side: bottom;
+        	
+    	}
+    
+    }
+    
+    figure.x-small {
+        width: 25%;
+    }
+    
+    figure.small {
+        width: 35%;
+    }
+    
+    figure.medium {
+        width: 50%;
+    }
+    
+    figure.bordered {
+    
+    	img {
+    	    padding: rem( 8px );
+        	border: rem( 1px ) solid $light-gray-color;
+    	}
+    
+    }
+    
+    figure.shadowed {
+        
+        img {
+            padding: rem( 8px );
+            @include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
+        }
+    
+    }
+    
+    // FOR VIEWPORT < 414px
+    @media ( min-width: 414px ) {
+        
+        figure {
+        
+            img {
+                max-width: none;
+            }
+        
+        }
+        
+    }
+    
+    // FOR VIEWPORT < 768x
+    @media ( min-width: 768px ) {
+        
+        .imgCommons {
+            display: inline-block;
+        	text-align: left;
+        }
+        
+        figure.right {
+            @extend .imgCommons;
+            float: right;
+            margin: 0 0 0 rem( $gutter );
+            display: table;
+        }
+        
+        figure.left {
+            @extend .imgCommons;
+            float: left;
+            margin: 0 rem( $gutter ) 0 0;
+            display: table;
+        }
+        
+    }
+    
+    /*
+    D012: ICONS
+    --------------------------------------------------------------------------*/
+    
+    .iconCommons {
+        speak: none;
+    	font-style: normal;
+    	font-weight: normal;
+    	font-variant: normal;
+    	text-transform: none;
+    	vertical-align: baseline;
+    	/* Better Font Rendering =========== */
+    	-webkit-font-smoothing: antialiased;
+    	-moz-osx-font-smoothing: grayscale;
+    }
+    
+    [class^="icon-"],
+    [class*=" icon-"] {
+        @extend .iconCommons;
+    	font-family: 'collaborativeicon';
+    	font-size: 80%;
+    }
+    
+    [class^="icon-"]:before,
+    [class*=" icon-"]:before {
+        position: relative;
+    }
+    
+    
+    // D012.1: Default
+    @each $icon, $unicode in
+    
+        (calendar, "\e000"),
+        (overview, "\e001"),
+        (help, "\e002"),
+        (information, "\e003"),
+        (timeline, "\e004"),
+        (competency, "\e005"),
+        (resources, "\e006"),
+        (reading, "\e007"),
+        (audio, "\e008"),
+        (external-link, "\e009"),
+        (group-assignment, "\e010"),
+        (learning-resource, "\e011"),
+        (assessment, "\e012"),
+        (assignment, "\e013"),
+        (research, "\e014"),
+        (tech, "\e015"),
+        (download, "\e016"),
+        (dropbox, "\e017"),
+        (tip, "\e018"),
+        (outcomes, "\e019"),
+        (facebook, "\e00a"),
+        (lecture, "\e00b"),
+        (discussion, "\e00c"),
+        (welcome, "\e00d"),
+        (practice, "\e00e"),
+        (video, "\e00f"),
+        (exam, "\e01a"),
+        (set-map, "\e01b"),
+        (project, "\e01c"),
+        (important, "\e01d"),
+        (map, "\e01e"),
+        (briefcase, "\e01f"),
+        (lab, "\e020"),
+        (email, "\e021"),
+        (extra-credit, "\e022") {
+        
+        .icon-#{$icon}:before {
+            content: "#{$unicode}";
+        }
+    
+    }
+    
+    [class^="icon-"].medium,
+    [class*=" icon-"].medium {
+    	font-size: 155%;
+    }
+    
+    [class^="icon-"].large,
+    [class*=" icon-"].large {
+    	font-size: 170%;
+    }
+    
+    
+    // D012.2: Droplets UI
+    [class^="sg-icon-"],
+    [class*=" sg-icon-"] {
+        @extend .iconCommons;
+    	font-family: 'sgicon';
+    	font-size: 100%;
+    }
+    
+    @each $icon, $unicode in
+    
+        (grid, "\e600"),
+        (list, "\e601"),
+        (close, "\e602"),
+        (show-all, "\e603"),
+        (tools, "\e90d"),
+        (video, "\e95c"),
+        (book, "\e993"),
+        (document, "\e9ae"),
+        (tags, "\e9ef"),
+        (website, "\ec8e"),
+        (audio, "\ed8d") {
+        
+        .sg-icon-#{$icon}:before {
+            content: "#{$unicode}";
+        }
+    
+    }
+    
+    // D012.3: Flexible option icons
+    @each $icon, $unicode in
+        (overview, "\e680"),
+         (practice-assessment, "\e630"),
+         (assessment, "\e642"),
+         (set-map, "\e68c"),
+         (learning-resource, "\e69a") {
+    
+        .flex.icon-#{$icon}:before {
+            color:#40a1a1;
+            font-family: "flexicon";
+            content: "#{$unicode}";
+        }
+        
+    }
+    
+    /*
+    D013: IFRAME EMBED
+    --------------------------------------------------------------------------*/
+    
+    iframe {
+    	display: block;
+    	margin: rem( $gutter ) auto;
+    	border: 0;
+    }
+    
+    /*
+    D014: HELPERS
+    --------------------------------------------------------------------------*/
+    
+    @media ( min-width: 768px ) {
+        
+        // clear fix for floating elements
+        .clearfix:before,
+        .clearfix:after {
+          display: table;
+          content: " ";
+        }
+        
+        .clearfix:after {
+          clear: both;
+        }
+        
+    }
+    
+    /*
+    D015: TOOLTIP
+    --------------------------------------------------------------------------*/
+    
+    .droplets-tooltip {
+        
+    	cursor: help;
+    	border-bottom: rem( 1px ) dotted $gray-color;
+    	
+    	.tooltip {
+            position: absolute;
+            display: block;
+            min-width: rem( 150px );
+            font-size: rem( 14px );
+            line-height: rem( 16px );
+            z-index: 99;
+        }
+        
+        .tooltip-inner {
+            max-width: rem( 250px );
+            padding: rem( 5px ) rem( 5px ) rem( 7px );
+            color: #fff;
+            text-align: left;
+            background-color: #333;
+            @include border-radius( rem( 3px ) );
+            @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
+        }
+    	
+    }
+    
+    /*
+    D016: TABBED CONTENTS
+    --------------------------------------------------------------------------*/
+
+    .droplets-tabs {
+    
+    	margin: rem( $gutter ) 0;
+    	clear: both;
+    
+    	.tabs {
+    
+        	width: 100%;
+        	list-style: none;
+        	padding: 0;
+        	margin: 0;
+        	border-bottom: rem( 1px ) solid $border-color;
+        	background-color: $light-gray-color;
+        	padding: rem( 8px ) rem( 5px ) 0;
+        	float: left;
+        	clear: both;
+        	@include border-corner-radius( top, left, rem( 3px ) );
+            @include border-corner-radius( top, right, rem( 3px ) );
+    
+        	li {
+    
+            	display: block;
+            	float: left;
+            	margin-bottom: rem( -1px );
+            	margin-right: rem( 3px );
+            	background-color: #fff;
+            	@include border-corner-radius( top, left, rem( 3px ) );
+            	@include border-corner-radius( top, right, rem( 3px ) );
+    
+            	a, a:visited {
+                	display: block;
+                	padding: rem( 5px ) rem( 10px );
+                	text-decoration: none;
+                	color: $gray-color;
+            	}
+    
+            	a:hover {
+                	color: #000;
+            	}
+    
+        	}
+        	
+        	li:hover {
+            	
+            	@include single-box-shadow( 0, rem( -3px ), rem( 2px ), 0, $gray-color );
+            	
+            	a {
+                	color: #000;
+            	}
+            	
+        	}
+        	
+        	.active {
+            	
+            	border-top: rem( 1px ) solid #929292;
+            	border-right: rem( 1px ) solid #929292;
+            	border-left: rem( 1px ) solid #929292;
+            	border-bottom: transparent;
+            	@include single-box-shadow( 0, rem( -3px ), rem( 2px ), 0, $gray-color );
+            	
+            	a {
+                	color: #000;
+            	}
+            	
+        	}
+        	
+        	.info {
+            	
+            	background-color: $info-color;
+            	
+            	a, a:hover {
+                	color: #fff;
+            	}
+            	
+        	}
+        	
+        	.danger {
+            	@extend .info;
+            	background-color: $danger-color;
+        	}
+        	
+        	.success {
+            	@extend .info;
+            	background-color: $success-color;
+        	}
+        	
+        	.warning {
+            	@extend .info;
+            	background-color: $warning-color;
+        	}
+    
+    	}
+    
+    	.tab-contents {
+    
+        	border-bottom: rem( 1px ) solid $border-color;
+            clear: both;
+    
+            div {
+                display: none;
+                padding: rem( 6px ) rem( 10px ) 0;
+                background-color: #fff;
+            }
+    
+            .active {
+                display: block;
+                animation: fadeIn 1s;
+            }
+    
+    	}
+    	
+    	@include keyframes( fadeIn ) {
+        	from { @include opacity(0); }
+            to { @include opacity(1); }
+    	}
+    
+    }
+    
+    /*
+    D017: ACCORDION
+    --------------------------------------------------------------------------*/
+
+    .droplets-accordion {
+    
+    	margin: rem( 16px ) 0;
+    
+    	.accordion-controls {
+            
+            @include display-flex;
+            @include flex-flow( row wrap );
+            @include justify-content( flex-end );
+        	font-size: rem( 12px );
+        	line-height: rem( 16px );
+        	text-align: center;
+        	padding-right: rem( 8px );
+    
+        	a, a:visited {
+            	display: block;
+            	text-decoration: none;
+            	color: #000;
+            	background-color: $light-gray-color;
+            	padding: rem( 2px ) rem( 5px );
+            	margin: 0 rem( 8px ) rem( -5px ) 0;
+            	@include border-corner-radius( top, left, rem( 3px ) );
+            	@include border-corner-radius( top, right, rem( 3px ) );
+        	}
+    
+        }
+    
+        .accordion-title {
+            position: relative;
+        	background-color: $light-gray-color;
+        	border: rem( 1px ) solid $border-color;
+        	padding: rem( 10px ) rem( 25px ) rem( 10px ) rem( 10px );
+        	margin-top: rem( 5px );
+        	cursor: pointer;
+        	@include border-radius( rem( 5px ) );
+        }
+        
+        .accordion-title:after {
+            position: absolute;
+            display: block;
+        	width: rem( 11px );
+        	height: 100%;
+        	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAQCAYAAADnEwSWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPJJREFUeNq0lIENhCAMAIEJHMUV3EA30B0Ygx10A0dgBRcw/yP8CF8+JcF+W9HEJgRsS8+WpsagrOvapGUeFJtBsEXUdcMwfB6BFaAWddtTQEdABs9RK2kIoYfVngWnfg4zoSIC4fKYKp/sGpDzy282wzYydw4lxQBzYU/6znu/MaA/P1t0owrc9z1l+WLsByADyvK25VcFsBcC/YBYftHuSg2Ua4Jtkd4Q/j7ZJsaeO3rWMncks4Z0Js3OnADVElsCigJsway1JlBB3ASpAlUA2S61d0FnbU5B0gSpBjFvKIK0CVIFYoAiSJogl0BX5CvAAMVTm4swyLw7AAAAAElFTkSuQmCC);
+        	background-repeat: no-repeat;
+        	background-position: left center;
+        	top: 0;
+        	right: rem( 10px );
+        	content: '';
+        }
+    
+        .accordion-title:first-child {
+        	margin-top: 0;
+        }
+    
+        .active {
+        	border-bottom: transparent;
+        	@include border-corner-radius( top, left, rem( 5px ) );
+            @include border-corner-radius( top, right, rem( 5px ) );
+            @include border-corner-radius( bottom, left, 0 );
+            @include border-corner-radius( bottom, right, 0 );
+        }
+        
+        .active:after {
+            width: rem( 16px );
+            background-position: rem( -11px ) center;
+        }
+    
+        .accordion-content {
+        	padding: 0 rem( 10px );
+        	display: none;
+        	background-color: #fff;
+        	border: rem( 1px ) solid $border-color;
+        	@include border-corner-radius( top, left, 0 );
+            @include border-corner-radius( top, right, 0 );
+            @include border-corner-radius( bottom, left, rem( 5px ) );
+            @include border-corner-radius( bottom, right, rem( 5px ) );
+        }
+    
+    }
+    
+    .no-arrow {
+        
+        .accordion-title:after {
+            display: none;
+        }
+        
+    }
+    
+    /*
+    D018: RESOURCES
+    --------------------------------------------------------------------------*/
+
+    .droplets-resources {
+
+        margin: rem( $gutter ) 0;
+    
+        .resource {
+    
+            @include display-flex();
+            @include flex-flow( row wrap );
+            height: rem( 150px );
+            border: rem( 1px ) solid $table-border-color;
+            margin-bottom: rem( $gutter );
+    
+            .image {
+                
+                @include display-flex();
+    	        @include flex-flow( column nowrap );
+    	        @include justify-content( center );
+    	        @include align-items( center );
+                @include flex( 1 0 11.02% );
+                position: relative;
+                background-color: $border-color;
+                
+    
+                img {
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    object-fit: cover;
+                }
+    
+            }
+            
+            .image:after {
+                font-family: 'sgicon';
+                font-size: rem( 25px );
+                text-align: center;
+                color: $gray-color;
+            }
+    
+            .cover-info {
+                
+                @include flex( 2 0 83.98% );
+                padding: rem( $gutter / 2 );
+                @include box-sizing( "border-box" );
+                min-height: rem( 148px );
+    
+                .title {
+                    position: relative;
+                    font-size: rem( 18px );
+                    line-height: rem( 22px );
+                    font-weight: bold;
+                    overflow : hidden;
+                }
+    
+                .author-source {
+                    @extend .title;
+                    font-size: rem( 14px );
+                    line-height: rem( 18px );
+                    font-weight: normal;
+                    margin: rem( 6px ) 0;
+                }
+    
+                .meta {
+    
+                    position: relative;
+                    font-size: rem( 12px );
+                    line-height: rem( 12px );
+                    text-transform: lowercase;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    margin: rem( 10px ) 0 rem( 10px ) rem( 19px );
+    
+                    li {
+    
+                        display: inline-block;
+                        margin: 0 0 rem( 8px ) rem( 4px );
+    
+                        .label {
+                            font-size: rem( 12px );
+                            font-weight: normal;
+                            text-transform: lowercase;
+                            padding: rem( 2px ) rem( 4px );
+                        }
+    
+                    }
+    
+                }
+    
+                .meta:before {
+                    position: absolute;
+                    font-family: 'sgicon';
+                    content: "\e9ef";
+                    color: $gray-color;
+                    font-style: normal;
+                    left: rem( -19px );
+                }
+    
+            }
+            
+            .arrow {
+    	        @include display-flex();
+    	        @include flex-flow( column nowrap );
+    	        @include justify-content( center );
+    	        @include align-items( center );
+    	        @include flex( 1 0 5% );
+    	        background-color: $light-gray-color;
+    	        cursor: pointer;
+            }
+            
+            .arrow:after {
+                display: block;
+                content: '';
+                width: rem( 16px );
+                height: rem( 16px );
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAQCAYAAADnEwSWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPJJREFUeNq0lIENhCAMAIEJHMUV3EA30B0Ygx10A0dgBRcw/yP8CF8+JcF+W9HEJgRsS8+WpsagrOvapGUeFJtBsEXUdcMwfB6BFaAWddtTQEdABs9RK2kIoYfVngWnfg4zoSIC4fKYKp/sGpDzy282wzYydw4lxQBzYU/6znu/MaA/P1t0owrc9z1l+WLsByADyvK25VcFsBcC/YBYftHuSg2Ua4Jtkd4Q/j7ZJsaeO3rWMncks4Z0Js3OnADVElsCigJsway1JlBB3ASpAlUA2S61d0FnbU5B0gSpBjFvKIK0CVIFYoAiSJogl0BX5CvAAMVTm4swyLw7AAAAAElFTkSuQmCC);
+	        	background-repeat: no-repeat;
+	        	background-position: rem( -11px ) center;
+            }
+    
+            .expandable-panel {
+                
+                display: none;
+                background-color: $table-bg-color;
+                border-top: rem( 1px ) solid $border-color;
+                padding: 0 rem( 10px );
+        
+                .actions {
+                    
+                    margin-bottom: rem( 10px );
+                    padding: 0;
+                    list-style: none;
+        
+                    li {
+                        display: inline-block;
+                    }
+        
+                }
+        
+            } 
+    
+        }
+        
+        .expanded {
+            
+            height: auto;
+            
+            .expandable-panel {
+                display: block;
+            }
+            
+            .arrow:after {
+                @include rotate( 180deg );
+            }
+            
+        }
+    
+        .resource:hover {
+            
+            .arrow {
+                background-color: $border-color;
+            }
+            
+        }
+    
+        .book {
+    
+            .image:after {
+                content: "\e993";
+            }
+    
+        }
+    
+        .tools {
+    
+            .image:after {
+                content: "\e90d";
+            }
+    
+        }
+    
+        .video {
+    
+            .image:after {
+                content: "\e95c";
+            }
+    
+        }
+    
+        .document {
+    
+            .image:after {
+                content: "\e9ae";
+            }
+    
+        }
+    
+        .website {
+    
+            .image:after {
+                content: "\ec8e";
+            }
+    
+        }
+    
+        .audio {
+    
+            .image:after {
+                content: "\ed8d";
+            }
+    
+        }
+    
+    }
+    
+    /*
+    D019: FOR PRINTING
+    --------------------------------------------------------------------------*/
+
+    @media print {
+    
+    	a:after {
+    		content: " (" attr(href) ")";
+    		font-size: 75%;
+    	}
+    
+    	table {
+        	page-break-inside: avoid;
+    	}
+    
+        .with-tooltip {
+    		border-bottom: 0;
+    	}
+    
+        .with-tooltip:after {
+    		content: " (" attr(data-tip) ")";
+    	}
+    	
+    	a[href].with-tooltip:after {
+    		content: " (" attr(title) " | Link URL: " attr(href) ")";
+    	}
+    	
+    	.label {
+    		color: #000;
+    		background-color: transparent;
+    	}
+    
+    	.with-accordion {
+    
+        	.accordion-title {
+            	border: 0;
+            	font-weight: bold;
+        	}
+    
+        	.accordion-content {
+            	border: 0;
+            	display: block !important;
+        	}
+    
+        	.accordion-controls {
+            	display: none;
+        	}
+    
+    	}
+    
+    	.with-tabs {
+    
+        	.tabs {
+    
+        	    display: none;
+    
+            	li {
+    
+                	a:after {
+                    	content: "";
+                	}
+    
+            	}
+    
+        	}
+    
+        	.tab-contents {
+    
+            	.tab-section {
+                	display: block;
+                	padding: 0;
+            	}
+    
+        	}
+    
+    	}
+        
+        .with-learning-resources {
+    
+            .resource {
+    
+                width: 100%;
+                margin: 0;
+                border: none;
+                page-break-inside : avoid;
+    
+                .image {
+                    width: rem( 100px );
+                    height: rem( 150px );
+                    border: rem( 1px ) solid #000;
+                }
+    
+                .image:after {
+                    top: 25pt;
+                }
+    
+                .cover-info {
+    
+                    height: auto;
+                    line-height: normal;
+                    padding-top: 0;
+                    padding-bottom: 0;
+    
+                    .title {
+                        position: relative;
+    					font-size: 12pt;
+                        height: auto;
+                        max-height: none;
+                        overflow : visible;
+                    }
+    
+                    .author-source {
+                        position: relative;
+                        height: auto;
+                        font-size: 10pt;
+                        max-height: none;
+                        overflow : visible;
+                    }
+    
+                }
+                
+                .arrow {
+    	            display: none;
+                }
+    
+                .expandable-panel {
+    
+                    display: block;
+                    width: 100%;
+    
+                    .actions {
+    
+                        li {
+    
+                            a.btn {
+                                display: block;
+                                border: none;
+                                padding: 0;
+                                font-size: 10pt;
+                                color: #000;
+                                line-height: normal;
+                                background-color: transparent;
+                            }
+    
+                        }
+    
+                    }
+    
+                }
+    
+            }
+            
+            .resource.book {
+    	        
+    	        .image:after {
+                    top: 40pt;
+                }
+    	        
+            }
+    
+        }
+    
+    }
+    
+} // end page container
+
+/*
+D020: FONT FACES
+--------------------------------------------------------------------------------
+Setting up font face. To support font icons used inside page container.
+----------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'collaborativeicon';
+    src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABGwAA0AAAAAGvwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAARlAAAABoAAAAcgfPWf0dERUYAABF4AAAAHAAAAB4AJwAsT1MvMgAAAaAAAABDAAAAVi+STGdjbWFwAAACDAAAAEUAAAFKwDMjvmdhc3AAABFwAAAACAAAAAj//wADZ2x5ZgAAAqQAAAyuAAAToEDjy9BoZWFkAAABMAAAAC4AAAA2DW3wc2hoZWEAAAFgAAAAHgAAACQEMAIDaG10eAAAAeQAAAAmAAAAVAZyAPhsb2NhAAACVAAAAE4AAABOYFhbym1heHAAAAGAAAAAHgAAACAAdQDJbmFtZQAAD1QAAADtAAABziiGnktwb3N0AAAQRAAAASoAAAGnqyqcUXjaY2BkYGAA4k2su2fG89t8ZeBmYgCBa+rXd8Po/78YGJjYwOIcDGAKAD46CuUAAHjaY2BkYGBiAAI9Job/v/7/Y2JjYGRABSwAX2IENwAAeNpjYGRgYFBjOMbAywACTEDMyAAScwDzGQAavAE/AAB42mNgZGJgnMDAysDA6MOYxsDA4A6lvzJIMrQwMDAxsHIywIEAgskQkOaawuDwgOGBEuOD/w8Y9JggwowgAgCJOAptAHjaY2KAACYohgIFBik4Cx0oIIklMMiBeQr/f4H57EAsCABC4gNwAAB42mNgYGBmgGAZBkYGEHAB8hjBfBYGDSDNBqQZGZgYGB4o/f8PUvCAAUQrMEPVAwEjGwOcwwhUCVKNAhgZhj0AAIlOBtEAAAAAAAAAAAAAAACCAKoA/gEwAW4B1AIYAnwC0ALyAyIDVgO8BM4E7AUKBVgFgAW2Bf4GJAbwBwwHJgdkB8wIKAhgCLQI6AkECTwJZgmcCdAAAHjanVhrjOPWdb6HFHmpF0XxIWo00gwpjsjZmd0ZjSiKM97H0BPHzXjX7STrfcCON4pReNNxbYyzbgts3FTFtnYKxO002WyLAHX0y8jrxyI1gtQ/CvVHiv6psUDTomiAYIDEQIsWzaIB0nUTcHvuleaxthMUJcX74n0cnnvOd78jUiR4CXiTLCmSMrHIFGkQl7TIMXKCfIh8lHyCkMishG6nF5VdKbQ8a/KIv6AMXtRtNsDlqdeUedHPNP2oG1tm5zRULPPBmq7CSNVTAv0Bv4YPZDBKnPvESVRdIHq6W9c1RwOVZ46q41jHSdgN5IFsuKTrS+zR1QTHbumqnqtrWj2ns0EHZfx8YDqAu6iDaczjAOX3F4EJzr+H2qEVRmHkRXA7SXbVnJZTh8Pb7fbtBIVLkmQ+p6q5+YHTbo9GfYcQ8UCnlJRIjJWmbFY6va7Q9Lu9TsWMcWpTbvqnoRv34l7UDXzUE1UhWALWEHZs1IoKsP29W7e+d+u/6rpe162GaqqGqrtaedp0JFHP5rJitjHjLThNqyyQW6xv+lOddf5COa8xobSaUSiYJb2gVo1sThTLuaZVqdbnDYd991E5bdzzAzlb3d5J6FSYkKgHPzI8/vmoholE6R7XAk/6A8fpO5P1ZyaNai79V2fgDIlEUCGwN9FFFVcJPkAfqALUAK1wPVim3bMjVH0ET79148ZbN27d3N6+uT1bXJ1fmnn27Zml+dXi2pcdtIsb7HX64232/l/sqfnVVqXSWp2fsi+8Mxg6JENquPY73LZN0iUPE4KbK9PY7sVB7NGAVuzY9gOsBJEXYD0ogUVtdlshvsI7jOKAMmPtjfXhfUcvtLceVS4vl14p6Atq+xL9la0TUa3UbKnN6Zpb8pul6SnVw9pUraW2mqUbzZWVR1bazb+cf2Yjmzz+rF6d10q/ce7h3IeffqXm6i1XncbR0Cq507WmitVaTWvOldzVFQ9HNqG5wrZJwmdOkOGfSR73ahq1uMhstWcblRLIgegHHlqBidsWlbsU9yp+Tx1Ony9lPpHRPlaSrmT+uq9pfc1JktF+Ad6oZErpsCxWRBX6Wk9LdzQNdrVPtVcPixObeUgg8F1c/yGyiTIsAdoI5Q5DZatcCTtx76SAFoxrT0ohw46uhDvMG2bB8j3JXxSadB14D/i5/ugxutHpbNBjj+oZQc2KQY/SuCUpzmGRZtMBLLaguSTLSy1YDOFXWwsgdE4AtJaotNSEL1bqCwv1SkZORyU5CGT2ZGVI5Hvln0414F5V06r3oFEbf4cD34EfEo14zEdbaItxDz0RU7tiUjloBoctHd5Em8sIaOi1J5nmK6hfKsOncipdWaFU09fXs0/nZUWZmVEUatATJ+THZenlNU1be1nO53JCXzXpyudXqEk1bf3NdXqC9Zq9OIsppcc/e1x5XvqMNtQ+o2SkXNrPScDd0yHOBJ81lNIth7FbdsvU8NBKYxv698lukt6FQTK8s3W3fXerjwCIetIS0Hh9gm98jiZWXPSwsom7wzw6Yp5ueQjUIUWP4/vkwzfSr3udjveNJFl2t7a0y9pHnsO6QDoee7GXtN3lRGsnex0PLnod9DM+P+wRnVTQ52aOrmLF+7Myo3Qjlz1wJ+2b9bq59eVvY5b+HFH+PmFyjyCBvbp5n5j1waBuAuYI/eziSxDSwHV+RAzyYdSFaVuy1wzw4TBisd1g6FHB26xYZ2CMpKGFfWjEYRa/N+xU0Of5jQYpw4/qUnZ5xixHZ89un61m0htLpVLDlECgULYlIWcUqmvPrcETr1z5+B8K047i2Y7bmvPc826Rgit96MrGxnKrkQW3tVKvTpmFaSEvoqOWAdaENaFQP5HNrF5+/De3zxZEv2HkC4U8U5eCT4zf8neIir9OrpHfJ39C/oK8Sb5LiEH5R3TQN5jITWlZ8FFQGnhMYHzQ4fGHKIX9Kvxr0cPWgXseGmeAY/mhwhviqLs8foUt6/slCVWG84dMaziXfVBltQrDu4MqLnOkHgfMb7GTx9yDN84Ksez5y8D8BGvsQP/oWVmWVImn8BWAc+q8KuGhp+f9erGoZjsgPiZILa1kqNKsMluYM0umKBcUKihZPasIcj6r5EERJTmnUJpdFmWrWEyfVHIZW1ZoQa7QGs1LFUqVvFyRPS0v2TJVCrJ9piJr2MRefOmJfF6AUt6Xlawky6HeyOdOfSTI0GwG5RIVzCR441xGQXeTxtk6k1ST1FymLmXKgvhYRvC1kqlNSW7OkeZKJig0L4hyls0vyrKczUNRFkUUKY9SglY0yn+e16SKXKBZqSIdw7It5TXZkufyCu6YXMCGQkXOo0jsxWtPZPMtWc7oyKtEYzMnC5lzGS0jy2cR7bi973OzAvoUPyPBhh7EtkCW3WAq3dtB9pOS9g7cdpcdXp1Kf2e4w8cmaF8jPC/wrAdmQSY3jK4U2fDv1+5esyyWpKMh3Na0S9+6xJK/GvXHflbnfjZFIvSz6AxE3SWxqYrM3iwVLLfrS73YZ/6EFoZiHb4Ke3Ch6kK27Hbcchac6uYn4Y+fSX8yF6kZs2iGxUemWLtb3XzmZfG1avGkW5+e10slfX667p4sVuVkcTGR7KKu+PNnG8ezayX9WA3fqFUpWcwcwbIp/Cov8GLP5g/1RCssh4ykYAp7jjOv9JUtfOYRPUZICUfgDJGtJUNEFNQaaotztX1+ouCMs1gOfWRhiA4Ugd4bo9iY/EIQc8B9SaDFM4akaNo9rVrVYEerpv99dWbzj2ZgICnGmaKUuantVrV0i79eTf/xt2ceuj5DjnAhtpaLDHvll60nek08aDpm8J78AyXY2dO0B38fLAxD04T/yBH7KiLvJy3GwhgzQ4iw47kJN4N19+oXrl7dXFv6WpK+s81A8t+W1javYqP7N8nuWdaC02QO5grIMvk98ioh6xBQhAWPQReaPlIrRCo8syqzEKLV2HHQW4co8OXJSq0o6CITo/5hgvtLm3z0YWJRyzb5PIdJaIdxh894mET7837bshtSQXbkgtSwLTHjeRnx/U0nOcmGnabQKLoymHYdsrRhKBnslVGMBs1C3TZBdosNofl/6fTp1YWF1YU/+yVLHjZtcNb+g//nSu/v1F5gi5PJmelwHJA4hgQekgcIuJ+Ak6Ax3ic7W8kW8oe0D/30zs5g8AvHSbZneZH3AeN22DCRIHjAEIeWMYY8hgccY/lRl8GHz3j9jIAnsTVuDOQj5WH4ZOg4V/7giuO88fksLJxbgMqnZWieasKoNT3dso6v+RtXrmz4a8d/a0XOs6a8/OJBics7M7G/dfJrKDpjaUgAzgh8aWTuJQg7mDFWihn3NZ8lgY9GOGZ4LOSiqtAAgY/Aroy54kQwdAyjrKrFF19/EWqLeNwkmtM2Gm1FksTZjYffenhD4xd6w7K7ZszVfE1beqRhaubxBrrKpibCx7UEAT/RtHbDaMuUvqBeOn3q1OlLzV5VN6YemtdgGLYUBHG/ttoiJHeAFSJGTnlkCQbn/bPIVU8hR8DdEN0H4/GDx7VcwAgG9ypA5u9hBINED+MZ3HJqBTRyYOQgQxykw8MLOPcyDKdoGEVnP8dLIClqNXVYFH54wfmj3TAf7DrO7gM4QJGvVo9GlRLjXnYJ/J45dk3aZITEMuX9qLJ9/eL5k29fXr3L3UHl5euTyHL74vXVy2+f/CR307useP7idULkAz2VEVNb5ASeWKfZycAtjsdAiKaMfyISsGUNZNAWi4tOM8o7RtT35nBn1+/6uxj1DLX/5AvupYMEMTXZej/Mjmq+X9PSPu/tcMnTj8GgjTs9OsRa8f7/oF5klDOPO4nnTEvEI1mUOdb7E6SKJn8KMDIL736/MFf4ftGowbdqxj0uxfjXgzcrlfRcBbeBN7zA/s/os2QSn2not3cndkPKMcYKdjkwMB8OR/gbDGCIEUICd/rp7hY4/XTQH8dD3N+ZnWGMHnOIiPlfIYjC/H+cOLS9MQQE1viUOg3PX0uuPY/rJ4MEZfj7Z503fjJIBv3xXzqogOdDVU8SXQ2vOXgm90dMzhEzEYq79C7qw2AneUuMwk4XY0jcGWuilVaMEtjwg9fRsYb4vD49F0ESzaWDq8nVF4A+5zjPpe8uJcngmy+99M1JjDz+hhJGIhZGIo3DSGR8piJvoVHsIquNbXcdrP1ABIYsDvnhq1XY+moYhtvp3/7TqzCqm+mIv03M+j9s/0z47HQcv/ran/6M67lM1uDH8B/IzQy2jmGH1A5oHISHJTzoJqXPTT+1Wd/cnN586mb9SVaqbz55s45tj2HpKahdjC5G+IP5C70LUXSh97uThv8Fel8riAAAeNqVjjFqw0AQRZ9k2SEkdpnCuNg2AQlJjUBlCh3AhXvZCCEQWljLPkrOk4PkBDlFvpRNIEUg2WGZN7P/7wxwzwsB0wlYs/McckPpecHjtyaS5s3zkrsg9LxiHTxJGUS36mxn18QhG776C/Y8e46kefW85IF3zyu2wYYTll5RcxQ55ZGOKw2cbN/XR+vqsbuq3KvXcpm1TmXTXvpaUMk3yFXN/lYqQ05Cqlzq/j7h870gJlPEcqXKhb60w1hZ1zYmT1JTmh+bqC7iLIvzNJP07/sf1HOc9TrtazRp2pFD486dHUyWpP/47QPn3ExWAAAAeNpdT2tTGzEQi3IJ51x49g2FQmmn3+5HbexNYuLzeta+JP33mM4wdNBHSStpJ9PJ/8DkPf78Y6eYosEMc5yghcECHZY4xRnOcYFLXOEDPuITPuMLvuIbrnGD77jFHX7gHg/4iUf8wm9jKXB0pEb2rHvPh9mWQ1r6uBYdqHiJpviBg4/cWRkSF47270I5y6iWc6tMzsfNnEbn5YyPhTVS6OvBzqzJ8kpk1wa2ZVTunM92zLmmtgcONY9NUrLFW57vvWO53KiMqafq2cSBY7kKTBprQf9a2VWRc34RuzefqXJ12u2ssN0aJ4cYhFzrVNJKjk3xychYXirzjI80tJlLP1Bqk8pTnbfwQxItFEtT2cVKPa8tZW4CreY8kA+n9Tml3io7X54BsrV3aAAAAAAAAf//AAJ42mNgZGBg4AFiMSBmYmAEQlUgZgHzGAAFNQBUeNpjYGBgZACCq0vUOUD0NfXru2E0AEEvBsgAAA==) format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'flexicon';
+	src: url(data:application/font-woff;charset=utf-8;base64,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) format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'sgicon';
+	src: url(data:application/x-font-ttf;charset=utf-8;base64,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) format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

@@ -7,7 +7,7 @@
 		"uuidString": "E5DCFD8E-3F47-4090-A652-E5776268F028"
 		}
 	],
-"creatorBuild": "26148",
+"creatorBuild": "26330",
 "files": {
 	"\/.gitignore": {
 		"cB": 0,
@@ -22,390 +22,84 @@
 		"oAP": "\/config.rb",
 		"oF": 0
 		},
-	"\/dist": {
-		"ft": 65536,
+	"\/droplets\/css\/droplets.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
 		"oA": 1,
-		"oAP": "\/build\/dist",
-		"oF": 0
+		"oAP": "\/droplets\/css\/droplets-ck.css",
+		"oF": 0,
+		"oS": 0
 		},
-	"\/guide\/accordion.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/accordion.html",
-		"oF": 1
-		},
-	"\/guide\/actioncalls.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/actioncalls.html",
-		"oF": 1
-		},
-	"\/guide\/blockcallouts.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/blockcallouts.html",
-		"oF": 1
-		},
-	"\/guide\/calendar-demo.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/calendar-demo.html",
-		"oF": 1
-		},
-	"\/guide\/calendar.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/calendar.html",
-		"oF": 1
-		},
-	"\/guide\/demo.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/demo.html",
-		"oF": 1
-		},
-	"\/guide\/emphasis.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/emphasis.html",
-		"oF": 1
-		},
-	"\/guide\/helpers.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/helpers.html",
-		"oF": 1
-		},
-	"\/guide\/icons.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/icons.html",
-		"oF": 1
-		},
-	"\/guide\/image.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/image.html",
-		"oF": 1
-		},
-	"\/guide\/imagezoom.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/imagezoom.html",
-		"oF": 1
-		},
-	"\/guide\/index.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/index.html",
-		"oF": 1
-		},
-	"\/guide\/inlinecallouts.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/inlinecallouts.html",
-		"oF": 1
-		},
-	"\/guide\/internalnav.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/internalnav.html",
-		"oF": 1
-		},
-	"\/guide\/layouts.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/layouts.html",
-		"oF": 1
-		},
-	"\/guide\/learning-resources-demo.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/learning-resources-demo.html",
-		"oF": 1
-		},
-	"\/guide\/learning_resources.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/learning_resources.html",
-		"oF": 1
-		},
-	"\/guide\/lightbox.html": {
+	"\/droplets\/css\/droplets.css.map": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/guide\/lightbox.html",
+		"oAP": "\/droplets\/css\/droplets.css.map",
 		"oF": 0
 		},
-	"\/guide\/pageheaders.html": {
+	"\/droplets\/css\/droplets.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 0,
+		"oAP": "\/guide\/src\/css\/droplets.css",
+		"oF": 0,
+		"oS": 3,
+		"uL": 1
+		},
+	"\/droplets\/demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 1,
-		"oAP": "\/guide\/pageheaders.html",
+		"oAP": "\/droplets\/demo.html",
 		"oF": 1
 		},
-	"\/guide\/popover.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/popover.html",
-		"oF": 1
-		},
-	"\/guide\/readmore.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/readmore.html",
-		"oF": 1
-		},
-	"\/guide\/reveal.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/guide\/reveal.html",
-		"oF": 0
-		},
-	"\/guide\/src\/css\/collaborativeicon.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "\/guide\/src\/css\/collaborativeicon-ck.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/guide\/src\/css\/collaborativeicon.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
+	"\/droplets\/img\/id_logo.png": {
+		"ft": 32768,
+		"iS": 21423,
 		"oA": 0,
-		"oAP": "\/guide\/src\/css\/collaborativeicon.css",
-		"oF": 1,
-		"oS": 3,
-		"uL": 1
-		},
-	"\/guide\/src\/css\/flexicon.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "\/guide\/src\/css\/flexicon-ck.css",
+		"oAP": "\/droplets\/img\/id_logo.png",
 		"oF": 0,
-		"oS": 0
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
-	"\/guide\/src\/css\/flexicon.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
+	"\/droplets\/img\/learning_resource_ph.png": {
+		"ft": 32768,
+		"iS": 131653,
 		"oA": 0,
-		"oAP": "\/guide\/src\/css\/flexicon.css",
+		"oAP": "\/droplets\/img\/learning_resource_ph.png",
 		"oF": 0,
-		"oS": 3,
-		"uL": 1
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
-	"\/guide\/src\/css\/guide.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "\/guide\/src\/css\/guide-ck.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/guide\/src\/css\/guide.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/guide\/src\/css\/guide.css",
-		"oF": 0,
-		"oS": 3,
-		"uL": 1
-		},
-	"\/guide\/src\/css\/sgicon.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "\/guide\/src\/css\/sgicon-ck.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/guide\/src\/css\/sgicon.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/guide\/src\/css\/sgicon.css",
-		"oF": 1,
-		"oS": 3,
-		"uL": 1
-		},
-	"\/guide\/src\/css\/style.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "\/guide\/src\/css\/style-ck.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/guide\/src\/css\/style.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/guide\/src\/css\/style.css",
-		"oF": 0,
-		"oS": 3,
-		"uL": 1
-		},
-	"\/guide\/src\/fonts": {
-		"ft": 65536,
-		"oA": 1,
-		"oAP": "\/build\/guide\/src\/fonts",
-		"oF": 0
-		},
-	"\/guide\/src\/img": {
-		"ft": 65536,
-		"oA": 1,
-		"oAP": "\/build\/guide\/src\/img",
-		"oF": 0
-		},
-	"\/guide\/src\/script\/guide.js": {
+	"\/droplets\/script\/droplets-min.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/guide\/src\/script\/guide.min.js",
-		"oF": 2,
-		"sC": 3,
-		"tS": 0
-		},
-	"\/guide\/src\/script\/guide.min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 1,
-		"oAP": "\/guide\/src\/script\/min\/guide.min-min.js",
+		"oAP": "\/droplets\/script\/min\/droplets-min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/guide\/src\/script\/jquery.min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 1,
-		"oAP": "\/guide\/src\/script\/min\/jquery.min-min.js",
-		"oF": 1,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/guide\/src\/script\/jquery.scrollUp.min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 1,
-		"oAP": "\/guide\/src\/script\/min\/jquery.scrollUp.min-min.js",
-		"oF": 1,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/guide\/src\/script\/style.js": {
+	"\/droplets\/script\/droplets.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/dist\/script\/droplets.js",
-		"oF": 2,
+		"oAP": "\/guide\/src\/script\/droplets-min.js",
+		"oF": 3,
 		"sC": 3,
 		"tS": 0
-		},
-	"\/guide\/starter": {
-		"ft": 65536,
-		"oA": 1,
-		"oAP": "\/build\/guide\/starter",
-		"oF": 0
-		},
-	"\/guide\/starter.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/starter.html",
-		"oF": 1
-		},
-	"\/guide\/support.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/support.html",
-		"oF": 1
-		},
-	"\/guide\/tab.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/tab.html",
-		"oF": 1
-		},
-	"\/guide\/tables.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/tables.html",
-		"oF": 1
-		},
-	"\/guide\/tooltip.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/tooltip.html",
-		"oF": 1
-		},
-	"\/guide\/typography.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/guide\/typography.html",
-		"oF": 1
 		},
 	"\/LICENSE": {
 		"cB": 0,
@@ -436,18 +130,10 @@
 "hooks": [
 	],
 "manualImportLinks": {
-	"\/guide\/src\/script\/style.js": [
-		{
-			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/guide\/src\/script\/jquery.min.js",
-			"position": 0,
-			"type": 0
-			}
-		]
 	},
 "projectAttributes": {
 	"creationDate": 499371919,
-	"displayValue": "droplets",
+	"displayValue": "droplets-for-canvas",
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "meme-fry"
 	},
@@ -457,6 +143,7 @@
 	"animateCSSInjections": 1,
 	"autoBuildNewItems": 1,
 	"autoprefixerBrowserString": "> 1%, last 2 versions, Firefox ESR, Opera 12.1",
+	"autoprefixerEnableIEGrid": 0,
 	"babelAuxiliaryCommentAfter": "",
 	"babelAuxiliaryCommentBefore": "",
 	"babelConfigFileHandlingType": 0,
@@ -1020,6 +707,10 @@
 		"id-match": {
 			"active": 0,
 			"optionString": "'^[a-z]+([A-Z][a-z]+)*$', {'properties': false, 'onlyDeclarations': true}"
+			},
+		"implicit-arrow-linebreak": {
+			"active": 0,
+			"optionString": "'beside'"
 			},
 		"indent": {
 			"active": 0,
