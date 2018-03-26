@@ -52,13 +52,6 @@
 		"oS": 3,
 		"uL": 1
 		},
-	"\/droplets\/demo.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/droplets\/demo.html",
-		"oF": 1
-		},
 	"\/droplets\/img\/id_logo.png": {
 		"ft": 32768,
 		"iS": 21423,
@@ -81,6 +74,13 @@
 		"oT": 1,
 		"q": 100
 		},
+	"\/droplets\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/droplets\/index.html",
+		"oF": 1
+		},
 	"\/droplets\/script\/droplets-min.js": {
 		"ft": 64,
 		"ma": 0,
@@ -99,6 +99,16 @@
 		"oAP": "\/guide\/src\/script\/droplets-min.js",
 		"oF": 3,
 		"sC": 3,
+		"tS": 0
+		},
+	"\/guide\/src\/script\/droplets-min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/guide\/src\/script\/min\/droplets-min-min.js",
+		"oF": 0,
+		"sC": 1,
 		"tS": 0
 		},
 	"\/LICENSE": {
@@ -2116,7 +2126,7 @@
 		],
 	"overrideExternalServerCSS": 0,
 	"previewPathAddition": "",
-	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules, \/guide\/src\/img, \/guide\/starter, \/guide\/src\/fonts, \/build\/fonts, \/build\/css, \/dist",
+	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules",
 	"sourceFolderName": "source",
 	"susyVersion": 3,
 	"uglifyDefinesString": "",
@@ -2287,7 +2297,7 @@
 			}
 		},
 	"uglifyReservedNamesString": "$",
-	"websiteRelativeRoot": "guide"
+	"websiteRelativeRoot": "droplets"
 	},
 "settingsFileVersion": "3"
 }

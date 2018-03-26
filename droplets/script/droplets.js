@@ -1,3 +1,15 @@
+/**
+ * DROPLET 
+ *
+ * @version: 2.0.0
+ * @author: Ethan Lin
+ * @url: https://github.com/oel-mediateam/droplets-for-canvas
+ *
+ * @license: The MIT License (MIT)
+ * Copyright 2018 UWEX CEOEL Media
+ *
+ */
+
 "use strict";
 
 /**
@@ -29,20 +41,20 @@ function checkDropletsComponents() {
     var resourcesSelector = document.getElementsByClassName( 'droplets-resources' );
     
     if ( toolTipSelector.length ) {
-		enableToolTip( toolTipSelector );
-	}
+        enableToolTip( toolTipSelector );
+    }
 	
-	if ( tabsSelector.length ) {
-		enableTabs( tabsSelector );
-	}
-	
-	if ( accordionsSelector.length ) {
-		enableAccordions( accordionsSelector );
-	}
-	
-	if ( resourcesSelector.length ) {
-		enableResources( resourcesSelector );
-	}
+    if ( tabsSelector.length ) {
+        enableTabs( tabsSelector );
+    }
+    
+    if ( accordionsSelector.length ) {
+        enableAccordions( accordionsSelector );
+    }
+    
+    if ( resourcesSelector.length ) {
+        enableResources( resourcesSelector );
+    }
     
 }
 
@@ -61,12 +73,12 @@ function enableToolTip( toolTips ) {
         el.addEventListener( 'mouseenter', function() {
             
             var tip = this.getAttribute( 'data-tip' );
-			var position = {
-    			left: this.offsetLeft,
-    			top: this.offsetTop,
-    			bottom: this.offsetTop - this.offsetHeight
+            var position = {
+                left: this.offsetLeft,
+                top: this.offsetTop,
+                bottom: this.offsetTop - this.offsetHeight
             };
-			var x = 0, y = 0;
+            var x = 0, y = 0;
             
             // create tool tip container with classes
             var toolTipNode = document.createElement( 'div' );
@@ -83,36 +95,36 @@ function enableToolTip( toolTips ) {
             // add the tool tip container to the DOM
             this.insertBefore( toolTipNode, this.firstChild );
 			
-			// determine tooltip display positions
-			if ( this.classList.contains( 'top' ) ) {
-    			x = position.top - toolTipNode.offsetHeight - 2;
+            // determine tooltip display positions
+            if ( this.classList.contains( 'top' ) ) {
+                x = position.top - toolTipNode.offsetHeight - 2;
                 y = position.left;
-			} else if ( this.classList.contains( 'bottom' ) ) {
+            } else if ( this.classList.contains( 'bottom' ) ) {
                 x = position.top + toolTipNode.offsetHeight - 5;
                 y = position.left;
-			} else if ( this.classList.contains( "right" ) ) {
+            } else if ( this.classList.contains( "right" ) ) {
                 x = position.top;
                 y = position.left + this.offsetWidth + 5;
-			} else if ( this.classList.contains( "left" ) ) {
+            } else if ( this.classList.contains( "left" ) ) {
                 x = position.top;
                 y = position.left - toolTipNode.offsetWidth - 5;
-			} else {
-    			x = position.top - toolTipNode.offsetHeight - 2;
+            } else {
+                x = position.top - toolTipNode.offsetHeight - 2;
                 y = position.left;
-			}
+            }
 			
-			// set tool tip position
+            // set tool tip position
             toolTipNode.style.top = x + 'px';
             toolTipNode.style.left = y + 'px';
             
             // add mouse leave event to remove the tool tip container from DOM
-			this.addEventListener( "mouseleave", function() {
-				
-				if ( toolTipNode.parentNode !== null ) {
-    				toolTipNode.parentNode.removeChild(toolTipNode);
-				}
-				
-			} );
+            this.addEventListener( "mouseleave", function() {
+            
+                if ( toolTipNode.parentNode !== null ) {
+                    toolTipNode.parentNode.removeChild(toolTipNode);
+                }
+            
+            } );
             
         } );
         
@@ -351,12 +363,3 @@ function enableResources( resources ) {
     } );
     
 }
-
-
-
-
-
-
-
-
-
