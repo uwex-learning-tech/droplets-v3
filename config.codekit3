@@ -33,13 +33,6 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/droplets\/css\/droplets.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/droplets\/css\/droplets.css.map",
-		"oF": 0
-		},
 	"\/droplets\/css\/droplets.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -48,7 +41,7 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 0,
-		"oAP": "\/guide\/src\/css\/droplets.css",
+		"oAP": "\/droplets\/css\/droplets.css",
 		"oF": 0,
 		"oS": 3,
 		"uL": 1

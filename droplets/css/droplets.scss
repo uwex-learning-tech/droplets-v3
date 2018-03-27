@@ -1,5 +1,5 @@
 /*
-DROPLET
+DROPLETS
 @version: 2.0.0
 @author: Ethan Lin
 @url: https://github.com/oel-mediateam/droplets-for-canvas
@@ -21,14 +21,13 @@ TABLE OF CONTENTS
  10. TABLE ---------------------------------------------------------------- D010
  11. IMAGE ---------------------------------------------------------------- D011
  12. ICONS ---------------------------------------------------------------- D012
- 13. IFRAME EMBED --------------------------------------------------------- D013
- 14. HELPERS -------------------------------------------------------------- D014
- 15. TOOLTIP -------------------------------------------------------------- D015
- 16. TABBED CONTENTS ------------------------------------------------------ D016
- 17. ACCORDION ------------------------------------------------------------ D017
- 18. RESOURCES ------------------------------------------------------------ D018
- 19. FOR PRINTING --------------------------------------------------------- D019
- 20. FONT FACES ----------------------------------------------------------- D020
+ 13. HELPERS -------------------------------------------------------------- D013
+ 14. TOOLTIP -------------------------------------------------------------- D014
+ 15. TABBED CONTENTS ------------------------------------------------------ D015
+ 16. ACCORDION ------------------------------------------------------------ D016
+ 17. RESOURCES ------------------------------------------------------------ D017
+ 18. FOR PRINTING --------------------------------------------------------- D018
+ 19. FONT FACES ----------------------------------------------------------- D019
 ----------------------------------------------------------------------------- */
 
 /*
@@ -41,7 +40,7 @@ $font-size: 16px;
 $light-font-weight: 300;
 $font-color: #333;
 $border-color: #e9e9e9;
-$gutter: 16px;
+$gutter: 12px;
 
 $table-border-color: #727272;
 $table-bg-color: #f1f1f1;
@@ -313,7 +312,7 @@ Droplets page container. Droplets classes only work inside this container.
     .btn.block {
     	display: block;
     	width: 100%;
-    	padding: rem( 16px ) 0;
+    	padding: rem( $gutter ) 0;
     	text-align: center;
     	margin: rem( $gutter ) auto;
     }
@@ -351,9 +350,29 @@ Droplets page container. Droplets classes only work inside this container.
     	@include display-flex();
     	@include flex-flow( row nowrap );
     	@include justify-content( space-evenly );
+    	margin: rem( 12px ) 0;
     	
     	div {
+        	
         	margin-left: rem( $gutter );
+        	@include flex( 0 1 50% );
+        	
+        	p:first-child {
+            	margin-top: 0;
+        	}
+        	
+        	p:last-child {
+            	margin-bottom: 0;
+        	}
+        	
+        	figure:first-child {
+            	margin-top: 0;
+        	}
+        	
+        	figure:last-child {
+            	margin-bottom: 0;
+        	}
+        	
     	}
     	
     	div:first-child {
@@ -362,6 +381,10 @@ Droplets page container. Droplets classes only work inside this container.
     	
     	.wider {
         	@include flex( 0 0 75% );
+    	}
+    	
+    	.vertical-center {
+        	@include align-self( center );
     	}
     
     }
@@ -455,8 +478,8 @@ Droplets page container. Droplets classes only work inside this container.
     // D009.1: Default
     .callout {
     
-    	margin: rem( 16px ) 0;
-    	padding: rem( 16px ) rem( 30px ) rem( 16px ) rem( 16px );
+    	margin: rem( $gutter ) 0;
+    	padding: rem( $gutter ) rem( $gutter * 2 ) rem( $gutter ) rem( $gutter );
     	background-color: $light-gray-color;
     	border-color: $gray-color;
     	border-left: rem( 8px ) solid #7e7e7e;
@@ -486,7 +509,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .callout.vertical {
-    	padding: rem( 16px );
+    	padding: rem( $gutter );
     	border-left: 0;
     	border-right: 0;
     	border-top: rem( 10px ) solid $gray-color;
@@ -624,7 +647,7 @@ Droplets page container. Droplets classes only work inside this container.
     
             ul, ol {
                 margin: 0;
-                padding: 0 0 0 rem( 16px );
+                padding: 0 0 0 rem( $gutter );
                 list-style-position: inside;
                 text-indent: rem( -13px );
     
@@ -1055,17 +1078,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D013: IFRAME EMBED
-    --------------------------------------------------------------------------*/
-    
-    iframe {
-    	display: block;
-    	margin: rem( $gutter ) auto;
-    	border: 0;
-    }
-    
-    /*
-    D014: HELPERS
+    D013: HELPERS
     --------------------------------------------------------------------------*/
     
     @media ( min-width: 768px ) {
@@ -1084,7 +1097,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D015: TOOLTIP
+    D014: TOOLTIP
     --------------------------------------------------------------------------*/
     
     .droplets-tooltip {
@@ -1114,7 +1127,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D016: TABBED CONTENTS
+    D015: TABBED CONTENTS
     --------------------------------------------------------------------------*/
 
     .droplets-tabs {
@@ -1215,7 +1228,7 @@ Droplets page container. Droplets classes only work inside this container.
         	border-bottom: rem( 1px ) solid $border-color;
             clear: both;
     
-            div {
+            .tab-section {
                 display: none;
                 padding: rem( 6px ) rem( 10px ) 0;
                 background-color: #fff;
@@ -1236,12 +1249,12 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D017: ACCORDION
+    D016: ACCORDION
     --------------------------------------------------------------------------*/
 
     .droplets-accordion {
     
-    	margin: rem( 16px ) 0;
+    	margin: rem( $gutter ) 0;
     
     	.accordion-controls {
             
@@ -1328,7 +1341,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D018: RESOURCES
+    D017: RESOURCES
     --------------------------------------------------------------------------*/
 
     .droplets-resources {
@@ -1464,12 +1477,29 @@ Droplets page container. Droplets classes only work inside this container.
         
                 .actions {
                     
+                    margin-left: 0;
                     margin-bottom: rem( 10px );
                     padding: 0;
                     list-style: none;
         
                     li {
+                        
                         display: inline-block;
+                        
+                        a {
+                            
+                            .ui-icon {
+                                display: none;
+                            }
+                            
+                        }
+                        
+                        .youtubed {
+                            img {
+                                display: none;
+                            }
+                        }
+                        
                     }
         
                 }
@@ -1551,7 +1581,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D019: FOR PRINTING
+    D018: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -1565,15 +1595,15 @@ Droplets page container. Droplets classes only work inside this container.
         	page-break-inside: avoid;
     	}
     
-        .with-tooltip {
+        .droplets-tooltip {
     		border-bottom: 0;
     	}
     
-        .with-tooltip:after {
+        .droplets-tooltip:after {
     		content: " (" attr(data-tip) ")";
     	}
     	
-    	a[href].with-tooltip:after {
+    	a[href].droplets-tooltip:after {
     		content: " (" attr(title) " | Link URL: " attr(href) ")";
     	}
     	
@@ -1582,15 +1612,48 @@ Droplets page container. Droplets classes only work inside this container.
     		background-color: transparent;
     	}
     
-    	.with-accordion {
+        .columns {
+            
+            display: block;
+            
+            div {
+                
+                width: 100%;
+                padding: 0;
+                margin-left: 0;
+                margin-right: 0;
+                
+                p:first-child {
+                	margin-top: rem( $gutter );
+            	}
+        	
+            	p:last-child {
+                	margin-bottom: rem( $gutter );
+            	}
+            	
+            	figure:first-child {
+                	margin-top: rem( $gutter );
+            	}
+            	
+            	figure:last-child {
+                	margin-bottom: rem( $gutter );
+            	}
+            	
+            }
+            
+        }
+        
+    	.droplets-accordion {
     
         	.accordion-title {
             	border: 0;
+            	padding: 0;
             	font-weight: bold;
         	}
     
         	.accordion-content {
             	border: 0;
+            	padding: 0;
             	display: block !important;
         	}
     
@@ -1600,7 +1663,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     	}
     
-    	.with-tabs {
+    	.droplets-tabs {
     
         	.tabs {
     
@@ -1627,11 +1690,12 @@ Droplets page container. Droplets classes only work inside this container.
     
     	}
         
-        .with-learning-resources {
+        .droplets-resources {
     
             .resource {
     
                 width: 100%;
+                height: auto;
                 margin: 0;
                 border: none;
                 page-break-inside : avoid;
@@ -1679,6 +1743,8 @@ Droplets page container. Droplets classes only work inside this container.
     
                     display: block;
                     width: 100%;
+                    border: none;
+                    padding: 0;
     
                     .actions {
     
@@ -1717,7 +1783,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D020: FONT FACES
+D019: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */

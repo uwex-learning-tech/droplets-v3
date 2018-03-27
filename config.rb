@@ -3,11 +3,11 @@ require 'compass/import-once/activate'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "guide/src/css"
-sass_dir = "guide/src/css"
-images_dir = "guide/src/img"
-javascripts_dir = "guide/src/script"
-fonts_dir = "guide/src/fonts"
+css_dir = "droplets/css"
+sass_dir = "droplets/css"
+images_dir = "droplets/img"
+javascripts_dir = "droplets/script"
+fonts_dir = "droplets/fonts"
 
 output_style = :compressed
 environment = :production
