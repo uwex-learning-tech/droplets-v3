@@ -1,5 +1,5 @@
 /**
- * DROPLET 
+ * DROPLETS
  *
  * @version: 2.0.0
  * @author: Ethan Lin
@@ -310,7 +310,7 @@ function openAccordionItem( el ) {
 }
 
 /**
- * Enable all accordion elements.
+ * Enable all resource elements.
  * @function enableResources
  * @param {Object[]} resources - Collection of resource elements.
  * @since 2.0.0
