@@ -1147,8 +1147,8 @@ Droplets page container. Droplets classes only work inside this container.
             @include border-corner-radius( top, left, rem( 3px ) );
             @include border-corner-radius( top, right, rem( 3px ) );
     
-        	li {
-    
+            li {
+            
                 display: block;
                 float: left;
                 margin-bottom: rem( -1px );
@@ -1156,7 +1156,7 @@ Droplets page container. Droplets classes only work inside this container.
                 background-color: #fff;
                 @include border-corner-radius( top, left, rem( 3px ) );
                 @include border-corner-radius( top, right, rem( 3px ) );
-    
+                
                 a, a:visited {
                     display: block;
                     padding: rem( 5px ) rem( 10px );
@@ -1167,10 +1167,10 @@ Droplets page container. Droplets classes only work inside this container.
                 a:hover {
                     color: #000;
                 }
-    
-        	}
-        	
-        	li:hover {
+            
+            }
+            
+            li:hover {
             	
                 @include single-box-shadow( 0, rem( -3px ), rem( 2px ), 0, $gray-color );
                 
@@ -1178,9 +1178,9 @@ Droplets page container. Droplets classes only work inside this container.
                     color: #000;
                 }
             	
-        	}
-        	
-        	.active {
+            }
+            
+            .active {
             	
                 border-top: rem( 1px ) solid #929292;
                 border-right: rem( 1px ) solid #929292;
@@ -1192,9 +1192,9 @@ Droplets page container. Droplets classes only work inside this container.
                     color: #000;
                 }
             	
-        	}
-        	
-        	.info {
+            }
+            
+            .info {
             	
                 background-color: $info-color;
                 
@@ -1202,7 +1202,7 @@ Droplets page container. Droplets classes only work inside this container.
                     color: #fff;
                 }
             	
-        	}
+            }
         	
             .danger {
                 @extend .info;
