@@ -10,7 +10,7 @@ A HTML, CSS, and JavaScript framework for instructional designers at University 
 4. Upload the `droplets.css` (inside `css` directory) and `droplets.js` (inside `script` directory) file to your LMS.
 5. Inside your LMS's WYSIWYG HTML editor, wrap your HTML inside a `div` tag with ID of `uws-droplets-page`
 
-**Note:** This framework is specifically developed for instructional designers use at UWEX CEOEL. Some setups or usages may not be optimal or preferable for your organization. In addition, this framework is built to accommodate the LMS (Canvas.net) that will be used at UWEX CEOEL. You are most welcome to download or fork this repository and modified it to your organization's needs.
+**Note:** This framework is specifically developed for use by instructional designers at UWEX CEOEL. Some setups or usages may not be optimal or preferable for your organization. In addition, this framework is built to accommodate the LMS (Canvas.net) that will be used at UWEX CEOEL. You are most welcome to download or fork this repository and modify it to your organization's needs.
 
 ### Development Requirements
 * HTML
