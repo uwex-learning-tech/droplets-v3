@@ -27,7 +27,8 @@ TABLE OF CONTENTS
  16. ACCORDION ------------------------------------------------------------ D016
  17. RESOURCES ------------------------------------------------------------ D017
  18. FOR PRINTING --------------------------------------------------------- D018
- 19. FONT FACES ----------------------------------------------------------- D019
+ 19. FOOTER --------------------------------------------------------------- D019
+ 19. FONT FACES ----------------------------------------------------------- D020
 ----------------------------------------------------------------------------- */
 
 /*
@@ -148,7 +149,7 @@ Droplets page container. Droplets classes only work inside this container.
     // D005.2: Drop caps - revisit in future for CSS Initial Letter support
     .dropcap:first-letter {
         float: left;
-        font-size: 272%;
+        font-size: 200%;
         font-weight: bold;
         padding: rem( 4px ) rem( 4px ) 0 0;
     }
@@ -287,6 +288,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     .btn.warning {
     	background-color: $warning-color;
+    	background-image: none;
     }
     
     .btn.warning:hover {
@@ -343,7 +345,6 @@ Droplets page container. Droplets classes only work inside this container.
     D006: LAYOUTS
     --------------------------------------------------------------------------*/
 
-    // D006.1: columns
     .columns {
         
         width: 100%;
@@ -389,21 +390,6 @@ Droplets page container. Droplets classes only work inside this container.
     
     }
     
-    // D006.2: footer
-    .footer {
-    
-    	width: 100%;
-    	border-top: rem( 1px ) solid $border-color;
-    	margin: rem( $gutter ) 0 0 0;
-    	color: $gray-color;
-    	font-size: rem( 12px );
-    
-    	p:after {
-            content: "\00A9  Board of Regents. University of Wisconsin System. All rights reserved.";
-    	}
-    
-    }
-    
     /*
     D007: EMPHASIS
     --------------------------------------------------------------------------*/
@@ -439,12 +425,13 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D008.1: labels
     .label {
-    	padding: rem( 2px ) rem( 6px );
+    	padding: rem( 3.5px ) rem( 6px ) rem( 2px );
     	font-weight: bold;
     	color: #ffffff;
     	text-transform: uppercase;
     	white-space: nowrap;
     	background-color: $gray-color;
+    	vertical-align: middle;
     	@include border-radius( rem( 3px ) );
     }
     
@@ -1780,7 +1767,25 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D019: FONT FACES
+D019: Footer
+--------------------------------------------------------------------------------
+Contains copyright info. Added automatically via CSS.
+----------------------------------------------------------------------------- */
+
+#uws-droplets-page:after {
+    
+    display: block;
+	border-top: rem( 1px ) solid $border-color;
+	margin: rem( $gutter ) 0 0 0;
+	padding: rem( $gutter) 0;
+	color: $gray-color;
+	font-size: rem( 12px );
+	content: "\00A9 Board of Regents and University of Wisconsin System. All rights reserved.";
+    
+}
+
+/*
+D020: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */
