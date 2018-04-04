@@ -23,12 +23,13 @@ TABLE OF CONTENTS
  12. ICONS ---------------------------------------------------------------- D012
  13. HELPERS -------------------------------------------------------------- D013
  14. TOOLTIP -------------------------------------------------------------- D014
- 15. TABBED CONTENTS ------------------------------------------------------ D015
- 16. ACCORDION ------------------------------------------------------------ D016
- 17. RESOURCES ------------------------------------------------------------ D017
- 18. FOR PRINTING --------------------------------------------------------- D018
- 19. FOOTER --------------------------------------------------------------- D019
- 19. FONT FACES ----------------------------------------------------------- D020
+ 15. POPOVER -------------------------------------------------------------- D015
+ 16. TABBED CONTENTS ------------------------------------------------------ D016
+ 17. ACCORDION ------------------------------------------------------------ D017
+ 18. RESOURCES ------------------------------------------------------------ D018
+ 19. FOR PRINTING --------------------------------------------------------- D019
+ 20. FOOTER --------------------------------------------------------------- D020
+ 21. FONT FACES ----------------------------------------------------------- D021
 ----------------------------------------------------------------------------- */
 
 /*
@@ -1112,7 +1113,104 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D015: TABBED CONTENTS
+    D015: POPOVER
+    --------------------------------------------------------------------------*/
+    .droplets-popover {
+        
+        display: inline;
+        position: relative;
+        border: rem( 1px ) solid $gray-color;
+        padding: rem( 2px ) rem( 4px );
+        @include border-radius( rem( 3px ) );
+        cursor: pointer;
+        
+        .popover {
+            
+            display: none;
+            position: absolute;
+            width: rem( 200px );
+            max-width: rem( 300px );
+            text-align: left;
+            white-space: normal;
+            color: #fff;
+            background-color: #333;
+            font-weight: normal;
+            font-size: rem( 14px );
+            line-height: rem( 16px );
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            @include border-radius( rem( 6px ) );
+            @include single-box-shadow( 0, 0, rem( 8px ), 0, #000 );
+            top: 0;
+            left: 0;
+            z-index: 999;
+            
+            .popover-content {
+                padding: rem( 8px ) rem( $gutter );
+            }
+            
+        }
+        
+        .popover:after {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-top-color: #333;
+            border-style: solid;
+            border-width: rem( 10px );
+            border-bottom-width: 0;
+            bottom: rem( -10px );
+            left: 50%;
+            margin-left: rem( -10px );
+            content: '';
+        }
+        
+        .popover.right:after {
+
+            top: calc( 50% - 10px );
+            left: 0;
+            border-left-width: 0;
+            border-right-color: #333;
+            border-top-color: transparent;
+            border-bottom-width: rem(10px);
+            bottom: unset;
+            right: unset;
+        
+        }
+        
+        .popover.left:after {
+
+            top: calc( 50% - 10px );
+            right: rem( -10px );
+            border-right-width: 0;
+            border-left-color: #333;
+            border-top-color: transparent;
+            border-bottom-width: rem(10px);
+            left: unset;
+            bottom: unset;
+        
+        }
+        
+        .popover.bottom:after {
+            
+            top: rem( -10px );
+            border-top-width: 0;
+            border-top-color: transparent;
+            border-bottom-color: #333;
+            border-bottom-width: rem(10px);
+        
+        }
+        
+    }
+
+    .droplets-popover:hover,
+    .droplets-popover.active {
+        background-color: $light-gray-color;
+    }
+    
+    /*
+    D016: TABBED CONTENTS
     --------------------------------------------------------------------------*/
 
     .droplets-tabs {
@@ -1234,7 +1332,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D016: ACCORDION
+    D017: ACCORDION
     --------------------------------------------------------------------------*/
 
     .droplets-accordion {
@@ -1326,7 +1424,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D017: RESOURCES
+    D018: RESOURCES
     --------------------------------------------------------------------------*/
 
     .droplets-resources {
@@ -1565,7 +1663,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D018: FOR PRINTING
+    D019: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -1589,6 +1687,16 @@ Droplets page container. Droplets classes only work inside this container.
     	
     	a[href].droplets-tooltip:after {
             content: " (" attr(title) " | Link URL: " attr(href) ")";
+    	}
+    	
+    	.droplets-popover {
+    		border: 0;
+    		background: none;
+    		padding: 0;
+    	}
+    
+    	.droplets-popover:after {
+    		content: " (" attr(data-title) ")";
     	}
     	
     	.label {
@@ -1767,7 +1875,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D019: Footer
+D020: Footer
 --------------------------------------------------------------------------------
 Contains copyright info. Added automatically via CSS.
 ----------------------------------------------------------------------------- */
@@ -1785,7 +1893,7 @@ Contains copyright info. Added automatically via CSS.
 }
 
 /*
-D020: FONT FACES
+D021: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */

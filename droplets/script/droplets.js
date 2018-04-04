@@ -57,12 +57,17 @@ function checkEnvironment() {
 function checkDropletsComponents() {
     
     var toolTipSelector = document.getElementsByClassName( 'droplets-tooltip' );
+    var popoverSelector = document.getElementsByClassName( 'droplets-popover' );
     var tabsSelector = document.getElementsByClassName( 'droplets-tabs' );
     var accordionsSelector = document.getElementsByClassName( 'droplets-accordion' );
     var resourcesSelector = document.getElementsByClassName( 'droplets-resources' );
     
     if ( toolTipSelector.length ) {
-        enableToolTip( toolTipSelector );
+        enableToolTips( toolTipSelector );
+    }
+    
+    if ( popoverSelector.length ) {
+        enablePopovers( popoverSelector );
     }
 	
     if ( tabsSelector.length ) {
@@ -81,11 +86,11 @@ function checkDropletsComponents() {
 
 /**
  * Enable all tool tip elements.
- * @function enableToolTip
+ * @function enableToolTips
  * @param {Object[]} toolTips - Collection of tool tip elements.
  * @since 2.0.0
  */
-function enableToolTip( toolTips ) {
+function enableToolTips( toolTips ) {
     
     // loop through each tool tip elements to add mouse enter and leave
     // event listener to each tool tip element
@@ -146,6 +151,100 @@ function enableToolTip( toolTips ) {
                 }
             
             } );
+            
+        } );
+        
+    } );
+    
+}
+
+/**
+ * Enable all popover elements.
+ * @function enablePopovers
+ * @param {Object[]} popovers - Collection of pop over elements.
+ * @since 2.0.0
+ */
+function enablePopovers( popovers ) {
+    
+    // loop through each popovers
+    Array.prototype.forEach.call( popovers, function( el ) {
+        
+        var title = el.getAttribute( 'data-title' );
+        
+        // create the popover container
+        var popoverDiv = document.createElement( 'div' );
+                
+        popoverDiv.classList.add( 'popover' );
+        popoverDiv.setAttribute( 'role', 'tooltip' );
+        
+        var popoverContentDiv = document.createElement( 'div' );
+        
+        popoverContentDiv.classList.add( 'popover-content' );
+        popoverContentDiv.innerHTML = title;
+        
+        popoverDiv.appendChild( popoverContentDiv );
+        
+        // add the popover container to the DOM
+        el.insertBefore( popoverDiv, el.firstChild );
+        
+        // add the click event listener
+        el.addEventListener( 'click', function() {
+            
+            // if visible
+            if ( this.querySelectorAll( '.popover' )[0].style.display === 'block' ) {
+                
+                // hide
+                this.querySelectorAll( '.popover' )[0].style.display = 'none';
+                this.classList.remove( 'active' );
+                
+            } else {
+                
+                // else show
+                this.classList.add( 'active' );
+                popoverDiv.style.display = 'block';
+                
+                // and determine popover positions
+                var x = 0, y = 0;
+                var horzCenter = this.offsetWidth - ( ( popoverDiv.offsetWidth + this.offsetWidth ) / 2 );
+                var vertzCenter = this.offsetHeight - ( ( popoverDiv.offsetHeight + this.offsetHeight ) / 2 );
+                
+                if ( this.classList.contains( 'top' ) ) {
+                    
+                    popoverDiv.classList.add( 'top' );
+                    x = ( popoverDiv.offsetHeight + 10 ) * -1;
+                    y = horzCenter;
+                    
+                } else if ( this.classList.contains( 'bottom' ) ) {
+                    
+                    popoverDiv.classList.add( 'bottom' );
+                    x = this.offsetHeight + 10;
+                    y = horzCenter;
+                    
+                } else if ( this.classList.contains( "right" ) ) {
+                    
+                    popoverDiv.classList.add( 'right' );
+                    x = vertzCenter;
+                    y = this.offsetWidth + 10;
+                    
+                } else if ( this.classList.contains( "left" ) ) {
+                    
+                    popoverDiv.classList.add( 'left' );
+                    x = vertzCenter;
+                    y = ( popoverDiv.offsetWidth + 10 ) * -1;
+                    
+                } else {
+                    
+                    popoverDiv.classList.add( 'top' );
+                    x = ( popoverDiv.offsetHeight + 10 ) * -1;
+                    y = horzCenter;
+                    
+                }
+                
+                // position the popover on the DOM
+                popoverDiv.style.top = x + 'px';
+                popoverDiv.style.left = y + 'px';
+                
+            }
             
         } );
         
