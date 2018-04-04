@@ -13,24 +13,45 @@
 "use strict";
 
 /**
- * On DOM ready, execute checkDropletsComponents function.
- * @param {checkDropletsComponents} fn - the callback to check droplet components
+ * On DOM ready, execute checkEnviroment function.
+ * @param {checkEnviroment} fn - the callback to check the enviroment
  */
 ( function ready( fn ) {
     
     if ( document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading' ) {
+        
         fn();
+        
     } else {
-        document.addEventListener( 'DOMContentLoaded', fn );
+        
+        document.addEventListener( 'DOMContentLoaded', checkEnvironment);
+        
     }
     
-} ) ( checkDropletsComponents );
+} )( checkEnvironment );
+
+ /**
+ * Check to see if Droplets JavaScript is loaded on a allowed domain. If yes,
+ * execute the checkDropletsComponents function to check for any Droplet
+ * JavaScript components are in use. If not, do nothing.
+ * @function checkEnviroment
+ * @callback checkEnviroment
+ * @since 2.0.0
+ */
+function checkEnvironment() {
+    
+    if ( isOnAllowedDomains() ) {
+            
+        checkDropletsComponents();
+        
+    }
+    
+}
 
 /**
  * Checking the DOM to see if any Droplets components are used. If yes,
  * execute the function to set up the component. If not, ignore.
  * @function checkDropletsComponents
- * @callback checkDropletsComponents
  * @since 2.0.0
  */
 function checkDropletsComponents() {
@@ -361,5 +382,75 @@ function enableResources( resources ) {
         } );
         
     } );
+    
+}
+
+/**
+ * Check to see if JavaScript is loaded on one of the allowed domain or in the
+ * intended enviroment. Droplets is being used outside of Canvas. So, we want
+ * to make sure it will still work for users on "non-Canvas" environment.
+ * @function isOnAllowedDomains
+ * @since 2.0.0
+ * @return {boolean} true if matched, else false
+ */
+function isOnAllowedDomains() {
+    
+    // set arrary of allowed domains
+    var allowedDomains = [ 
+        'localhost/', 
+        'media.uwex.edu/',
+        '.instructure.com/',
+        'laethanlin.local:'
+    ];
+    var found = false;
+    
+    // loop through the allowedDomains array
+    Array.prototype.forEach.call( allowedDomains, function( el ) {
+        
+        // use the current domain string to create regular expression object
+        var regex = new RegExp( el );
+        
+        // if it matched with DOM/Window URL
+        if ( location.href.match( regex ) ) {
+            
+            // if the domain is Canvas
+            if ( el === '.instructure.com\/' ) {
+                
+                // check to see if it is on a course content page
+                found = onCanvasContentPage( /\/pages/ );
+                
+                // exit the loop
+                return;
+                
+            }
+            
+            // set found to true and exit the loop
+            found = true;
+            return;
+            
+        }
+        
+    } )
+    
+    return found;
+    
+}
+
+/**
+ * Check to see if the page is a content page on Canvas
+ * @function onCanvasContentPage
+ * @param {Object} regex - a regular expression object.
+ * @since 2.0.0
+ * @return {boolean} true if matched, else false
+ */
+function onCanvasContentPage( regex ) {
+    
+    if ( location.pathname.match( regex ) ) {
+        
+        return true;
+        
+    }
+    
+    return false;
     
 }
