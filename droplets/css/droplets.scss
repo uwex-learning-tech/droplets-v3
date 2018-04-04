@@ -40,7 +40,6 @@ Setting up variables. Define colors and spacing.
 
 $font-size: 16px;
 $light-font-weight: 300;
-$font-color: #333;
 $border-color: #e9e9e9;
 $gutter: 12px;
 
@@ -48,16 +47,22 @@ $table-border-color: #727272;
 $table-bg-color: #f1f1f1;
 
 $gray-color: #757575;
-$success-color: #34612E;
-$info-color: #115B8D;
-$warning-color: #854700;
-$danger-color: #A02E2C;
+$success-color: #1E8533;
+$info-color: #018298;
+$warning-color: #FFB90B;
+$danger-color: #D72E3D;
 
 $light-gray-color: #EEEEEE;
-$light-success-color: #EEFFEF;
-$light-info-color: #F0F7FD;
-$light-warning-color: #FEFBED;
-$light-danger-color: #FCF2F2;
+$light-success-color: #CEEAD5;
+$light-info-color: #CBE9EF;
+$light-warning-color: #FFF1C6;
+$light-danger-color: #F7D1D5;
+
+$warning-text-color: #4F4F4F;
+$light-warning-text-color: #654A01;
+$light-info-text-color: #0B4A55;
+$light-danger-text-color: #671A21;
+$light-success-text-color: #154D21;
 
 /*
 D001: FUNCTIONS
@@ -256,23 +261,15 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .btn:hover {
-    	background-color: #404040;
+    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 3px ), #1A1C1E, inset );
     }
-    
-    .btn:active {
-    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 2px ), $gray-color, inset );
-    }
-    
+
     .btn.info {
     	background-color: $info-color;
     }
     
     .btn.info:hover {
-    	background-color: #1f82bf;
-    }
-    
-    .btn.info:active {
-    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 2px ), $info-color, inset );
+    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 3px ), $light-info-text-color, inset );
     }
     
     .btn.success {
@@ -280,24 +277,17 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .btn.success:hover {
-    	background-color: #159c0b;
-    }
-    
-    .btn.success:active {
-    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 2px ), $success-color, inset );
+    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 3px ), $light-success-text-color, inset );
     }
     
     .btn.warning {
+        color: $warning-text-color;
     	background-color: $warning-color;
     	background-image: none;
     }
     
     .btn.warning:hover {
-    	background-color: #e3990e;
-    }
-    
-    .btn.warning:active {
-    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 2px ), $warning-color, inset );
+    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 3px ), $light-warning-text-color, inset );
     }
     
     .btn.danger {
@@ -305,11 +295,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .btn.danger:hover {
-    	background-color: #a31818;
-    }
-    
-    .btn.danger:active {
-    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 2px ), $danger-color, inset );
+    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 3px ), $light-danger-text-color, inset );
     }
     
     .btn.block {
@@ -445,6 +431,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .label.warning {
+        color: $warning-text-color;
     	background-color: $warning-color;
     }
     
@@ -522,6 +509,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .callout.success {
+        color: $light-success-text-color;
     	background-color: $light-success-color;
     	border-left-color: $success-color;
     	border-right-color: #c0f3bd;
@@ -530,6 +518,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .callout.info {
+        color: $light-info-text-color;
     	background-color: $light-info-color;
     	border-left-color: $info-color;
     	border-right-color: #d0e3f0;
@@ -538,6 +527,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .callout.warning {
+        color: $light-warning-text-color;
     	background-color: $light-warning-color;
     	border-left-color: $warning-color;
     	border-right-color: #f1e7bc;
@@ -546,6 +536,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .callout.danger {
+        color: $light-danger-text-color;
     	background-color: $light-danger-color;
     	border-left-color: $danger-color;
     	border-right-color: #dfb5b4;
@@ -555,6 +546,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D009.2: Minimal style
     .callout.minimal {
+        color: inherit;
     	background-color: #fff;
     	border-right: 0;
     	border-left-width: rem( 5px );
@@ -711,18 +703,22 @@ Droplets page container. Droplets classes only work inside this container.
         
         .info {
             background-color: $light-info-color;
+            color: $light-info-text-color;
         }
         
         .success {
             background-color: $light-success-color;
+            color: $light-success-text-color;
         }
         
         .warning {
             background-color: $light-warning-color;
+            color: $light-warning-text-color;
         }
         
         .danger {
             background-color: $light-danger-color;
+            color: $light-danger-text-color;
         }
     
     }
