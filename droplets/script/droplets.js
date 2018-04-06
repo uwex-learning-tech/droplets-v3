@@ -104,13 +104,19 @@ function enableToolTips( toolTips ) {
         
         el.addEventListener( 'mouseenter', function() {
             
-            var tip = this.getAttribute( 'data-tip' );
+            var tip = this.getAttribute( 'title' );
             var position = {
                 left: this.offsetLeft,
                 top: this.offsetTop,
                 bottom: this.offsetTop - this.offsetHeight
             };
             var x = 0, y = 0;
+            
+            // create an attribute to hold the original tip
+            el.setAttribute( 'data-tip', tip );
+            
+            // reset tip variable to data-tip attribute value
+            tip = el.getAttribute( 'data-tip' );
             
             // create tool tip container with classes
             var toolTipNode = document.createElement( 'div' );
@@ -149,12 +155,18 @@ function enableToolTips( toolTips ) {
             toolTipNode.style.top = x + 'px';
             toolTipNode.style.left = y + 'px';
             
+            // remove title attribute
+            this.removeAttribute( 'title' );
+            
             // add mouse leave event to remove the tool tip container from DOM
             this.addEventListener( "mouseleave", function() {
             
                 if ( toolTipNode.parentNode !== null ) {
                     toolTipNode.parentNode.removeChild(toolTipNode);
                 }
+                
+                // add title attribute back
+                this.setAttribute( 'title', tip );
             
             } );
             
