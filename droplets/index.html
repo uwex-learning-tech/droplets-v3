@@ -68,25 +68,31 @@
         <div class="droplets-tabs" role="tabpanel">
             
             <ul class="tabs" role="tablist">
-                <li class="active" role="presentation"><a href="#item1" role="tab" aria-controls="item1">Item 1</a></li>
-                <li role="presentation"><a href="#sr-item2" role="tab" aria-controls="item2">Item 2</a></li>
-                <li role="presentation"><a href="#sr-item3" role="tab" aria-controls="item3">Item 3</a></li>
+                <li class="active">
+                    <a id="item1-tab" href="#sr-item1" role="tab" aria-controls="sr-item1" aria-selected="true">Item 1</a>
+                </li>
+                <li>
+                    <a id="item2-tab" href="#sr-item2" role="tab" aria-controls="sr-item2" aria-selected="false">Item 2</a>
+                </li>
+                <li>
+                    <a id="item3-tab" href="#sr-item3" role="tab" aria-controls="sr-item3" aria-selected="false">Item 3</a>
+                </li>
             </ul>
             
             <div class="tab-contents">
                 
-                <div class="tab-section active" role="tabpanel" id="sr-item1">
+                <div class="tab-section active" role="tabpanel" id="sr-item1" aria-labelledby="item1-tab">
                     <h4>Item 1 Content</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga cum ullam quam velit temporibus iusto quo saepe esse in consequatur.</p>
                 </div>
                 
-                <div class="tab-section" role="tabpanel" id="sr-item2">
+                <div class="tab-section" role="tabpanel" id="sr-item2" aria-labelledby="item2-tab">
                     <h4>Item 2 Content</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga cum ullam quam velit temporibus iusto quo saepe esse in consequatur.</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga cum ullam quam velit temporibus iusto quo saepe esse in consequatur.</p>
                 </div>
                 
-                <div class="tab-section" role="tabpanel" id="sr-item3">
+                <div class="tab-section" role="tabpanel" id="sr-item3" aria-labelledby="item3-tab">
                     <h4>Item 3 Content</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga cum ullam quam velit temporibus iusto quo saepe esse in consequatur.</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, dignissimos, ex, quisquam, quidem officia excepturi debitis repellat earum ipsum eos beatae fugit necessitatibus vitae quos fugiat doloremque magni maxime placeat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, dignissimos, illum, accusamus incidunt nulla quisquam quibusdam est quidem fuga cum ullam quam velit temporibus iusto quo saepe esse in consequatur.</p>

@@ -284,6 +284,7 @@ function enableTabs( tabs ) {
                 Array.prototype.forEach.call( tabBtns, function( el, i ) {
                     
                     el.classList.remove( 'active' );
+                    el.children[0].setAttribute( 'aria-selected', 'false');
                     tabSections[i].classList.remove( 'active' );
                     
                 });
@@ -291,6 +292,7 @@ function enableTabs( tabs ) {
                 // add active class to current clicked tab
                 // and display corresponding tab section
                 this.classList.add( 'active' );
+                this.children[0].setAttribute( 'aria-selected', 'true');
                 tabSections[i].classList.add( 'active' );
                 
                 // prevent default event action
