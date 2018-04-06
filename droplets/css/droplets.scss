@@ -1727,7 +1727,7 @@ Droplets page container. Droplets classes only work inside this container.
     	}
     
         .droplets-tooltip:after {
-            content: " (" attr(data-tip) ")";
+            content: " (" attr(title) ")";
     	}
     	
     	a[href].droplets-tooltip:after {
@@ -1747,8 +1747,9 @@ Droplets page container. Droplets classes only work inside this container.
     	.label {
             color: #000;
             background-color: transparent;
+            vertical-align: baseline;
     	}
-    
+        
         .columns {
             
             display: block;
@@ -1913,6 +1914,17 @@ Droplets page container. Droplets classes only work inside this container.
     	        
             }
     
+        }
+        
+        .droplets-readmore {
+        
+            overflow: unset;
+            height: auto;
+            
+            .readmore-cntrl {
+                display: none;
+            }
+        
         }
     
     }
