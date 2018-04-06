@@ -56,11 +56,12 @@ function checkEnvironment() {
  */
 function checkDropletsComponents() {
     
-    var toolTipSelector = document.getElementsByClassName( 'droplets-tooltip' );
-    var popoverSelector = document.getElementsByClassName( 'droplets-popover' );
-    var tabsSelector = document.getElementsByClassName( 'droplets-tabs' );
-    var accordionsSelector = document.getElementsByClassName( 'droplets-accordion' );
-    var resourcesSelector = document.getElementsByClassName( 'droplets-resources' );
+    var pageContainerId = '#uws-droplets-page';
+    var toolTipSelector = document.querySelectorAll( pageContainerId + ' .droplets-tooltip' );
+    var popoverSelector = document.querySelectorAll( pageContainerId + ' .droplets-popover' );
+    var tabsSelector = document.querySelectorAll( pageContainerId + ' .droplets-tabs' );
+    var accordionsSelector = document.querySelectorAll( pageContainerId + ' .droplets-accordion' );
+    var resourcesSelector = document.querySelectorAll( pageContainerId + ' .droplets-resources' );
     
     if ( toolTipSelector.length ) {
         enableToolTips( toolTipSelector );
