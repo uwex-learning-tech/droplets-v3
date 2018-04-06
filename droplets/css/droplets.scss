@@ -27,9 +27,10 @@ TABLE OF CONTENTS
  16. TABBED CONTENTS ------------------------------------------------------ D016
  17. ACCORDION ------------------------------------------------------------ D017
  18. RESOURCES ------------------------------------------------------------ D018
- 19. FOR PRINTING --------------------------------------------------------- D019
- 20. FOOTER --------------------------------------------------------------- D020
- 21. FONT FACES ----------------------------------------------------------- D021
+ 19. READ MORE ------------------------------------------------------------ D019
+ 20. FOR PRINTING --------------------------------------------------------- D020
+ 21. FOOTER --------------------------------------------------------------- D021
+ 22. FONT FACES ----------------------------------------------------------- D022
 ----------------------------------------------------------------------------- */
 
 /*
@@ -1659,7 +1660,55 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D019: FOR PRINTING
+    D019: READ MORE
+    --------------------------------------------------------------------------*/
+    .droplets-readmore {
+        
+        position: relative;
+        height: rem( 250px );
+        overflow: hidden;
+        
+        *:first-of-type {
+            margin-top: 0;
+        }
+        
+        .readmore-cntrl {
+        
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            background: #fff;
+            @include box-shadow( #fff 0 rem( 0px ) rem( 100px ) rem( 70px ) );
+            border-bottom: rem( 1px ) solid $border-color;
+            cursor: pointer;
+        
+        }
+        
+        .readmore-cntrl:after {
+            
+            display: block;
+            content: '';
+            width: rem( 16px );
+            height: rem( 16px );
+            margin: 0 auto;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAQCAYAAADnEwSWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPJJREFUeNq0lIENhCAMAIEJHMUV3EA30B0Ygx10A0dgBRcw/yP8CF8+JcF+W9HEJgRsS8+WpsagrOvapGUeFJtBsEXUdcMwfB6BFaAWddtTQEdABs9RK2kIoYfVngWnfg4zoSIC4fKYKp/sGpDzy282wzYydw4lxQBzYU/6znu/MaA/P1t0owrc9z1l+WLsByADyvK25VcFsBcC/YBYftHuSg2Ua4Jtkd4Q/j7ZJsaeO3rWMncks4Z0Js3OnADVElsCigJsway1JlBB3ASpAlUA2S61d0FnbU5B0gSpBjFvKIK0CVIFYoAiSJogl0BX5CvAAMVTm4swyLw7AAAAAElFTkSuQmCC);
+            background-repeat: no-repeat;
+            background-position: rem( -11px ) center;
+            
+        }
+        
+        .readmore-cntrl.opened {
+            @include box-shadow( #fff 0 0 0 );
+        }
+        
+        .readmore-cntrl.opened:after {
+            @include rotate(180deg);
+        }
+        
+    }
+    
+    /*
+    D020: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -1871,7 +1920,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D020: Footer
+D021: Footer
 --------------------------------------------------------------------------------
 Contains copyright info. Added automatically via CSS.
 ----------------------------------------------------------------------------- */
@@ -1889,7 +1938,7 @@ Contains copyright info. Added automatically via CSS.
 }
 
 /*
-D021: FONT FACES
+D022: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */

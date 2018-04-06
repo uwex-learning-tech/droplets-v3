@@ -62,6 +62,7 @@ function checkDropletsComponents() {
     var tabsSelector = document.querySelectorAll( pageContainerId + ' .droplets-tabs' );
     var accordionsSelector = document.querySelectorAll( pageContainerId + ' .droplets-accordion' );
     var resourcesSelector = document.querySelectorAll( pageContainerId + ' .droplets-resources' );
+    var readMoreSelector = document.querySelectorAll( pageContainerId + ' .droplets-readmore' );
     
     if ( toolTipSelector.length ) {
         enableToolTips( toolTipSelector );
@@ -81,6 +82,10 @@ function checkDropletsComponents() {
     
     if ( resourcesSelector.length ) {
         enableResources( resourcesSelector );
+    }
+    
+    if ( readMoreSelector.length ) {
+        enableReadMore( readMoreSelector );
     }
     
 }
@@ -478,6 +483,57 @@ function enableResources( resources ) {
                 } );
                 
             } );
+            
+        } );
+        
+    } );
+    
+}
+
+/**
+ * Enable all read more elements.
+ * @function enableReadMore
+ * @param {Object[]} readMore - Collection of read more elements.
+ * @since 2.0.0
+ */
+function enableReadMore( readMore ) {
+    
+    // loop through collection of read more elements
+    Array.prototype.forEach.call( readMore, function( el ) {
+        
+        // create the read more control
+        var readMoreCntrl = document.createElement( 'div' );
+        
+        readMoreCntrl.classList.add( 'readmore-cntrl' );
+        readMoreCntrl.setAttribute( 'role', 'button');
+        readMoreCntrl.setAttribute( 'aria-controls', 'click to read more' );
+        readMoreCntrl.setAttribute( 'aria-expanded', 'false' );
+        
+        // add the read more control to the DOM
+        el.appendChild( readMoreCntrl );
+        
+        // on click event lisitener
+        readMoreCntrl.addEventListener( 'click', function() {
+            
+            if ( this.classList.contains( 'opened' ) ) {
+                
+                this.classList.remove( 'opened' );
+                this.setAttribute( 'aria-expanded', 'false' );
+                
+                el.style.height = null;
+                el.style.overflow = 'hidden';
+                
+            } else {
+                
+                var expandedHeight = el.scrollHeight + 'px';
+                
+                this.classList.add( 'opened' );
+                this.setAttribute( 'aria-expanded', 'true' );
+                
+                el.style.height = expandedHeight;
+                el.style.overflow = 'unset';
+                
+            }
             
         } );
         
