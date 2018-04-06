@@ -63,6 +63,7 @@ function checkDropletsComponents() {
     var accordionsSelector = document.querySelectorAll( pageContainerId + ' .droplets-accordion' );
     var resourcesSelector = document.querySelectorAll( pageContainerId + ' .droplets-resources' );
     var readMoreSelector = document.querySelectorAll( pageContainerId + ' .droplets-readmore' );
+    var revealSelector = document.querySelectorAll( pageContainerId + ' .droplets-reveal' );
     
     if ( toolTipSelector.length ) {
         enableToolTips( toolTipSelector );
@@ -86,6 +87,10 @@ function checkDropletsComponents() {
     
     if ( readMoreSelector.length ) {
         enableReadMore( readMoreSelector );
+    }
+    
+    if ( revealSelector.length ) {
+        enableReveal( revealSelector );
     }
     
 }
@@ -574,6 +579,56 @@ function enableReadMore( readMore ) {
     } );
     
 }
+
+/**
+ * Enable all reveal elements.
+ * @function enableReveal
+ * @param {Object[]} reveal - Collection of reveal elements.
+ * @since 2.0.0
+ */
+function enableReveal( reveals ) {
+    
+    // loop through collection of reveal elements
+    Array.prototype.forEach.call( reveals, function( el ) {
+        
+        // create a toggle button
+        var toggleBtn = document.createElement( 'a' );
+        
+        toggleBtn.classList.add( 'btn', 'success', 'small' );
+        toggleBtn.setAttribute( 'aria-hidden', 'true' );
+        toggleBtn.innerHTML = el.getAttribute( 'data-button-name' );
+        
+        // add the toggle button to the DOM
+        el.appendChild(toggleBtn);
+        
+        // show/hide hidden content on click
+        toggleBtn.addEventListener( 'click', function() {
+            
+            var hiddenContent = el.querySelectorAll( '.hidden-content' )[0];
+            
+            if ( hiddenContent.style.display !== 'unset' ) {
+                
+                hiddenContent.style.display = 'unset';
+            
+                this.classList.remove( 'success' );
+                this.innerHTML = 'Hide';
+                
+            } else {
+                
+                hiddenContent.style.display = 'none';
+            
+                this.classList.add( 'success' );
+                this.innerHTML = el.getAttribute( 'data-button-name' );
+                
+            }
+            
+        } );
+        
+    } );
+    
+}
+
+/* --------------------------- HELPER FUNCTIONS ----------------------------- */
 
 /**
  * Check to see if JavaScript is loaded on one of the allowed domain or in the
