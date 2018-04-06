@@ -175,7 +175,13 @@ function enablePopovers( popovers ) {
     // loop through each popovers
     Array.prototype.forEach.call( popovers, function( el ) {
         
-        var title = el.getAttribute( 'data-title' );
+        var title = el.getAttribute( 'title' );
+        
+        // create data-title to hold the original title attribute value
+        el.setAttribute( 'data-title', title );
+        
+        // reset the title variable to data-title instead
+        title = el.getAttribute( 'data-title' );
         
         // create the popover container
         var popoverDiv = document.createElement( 'div' );
@@ -251,6 +257,20 @@ function enablePopovers( popovers ) {
                 popoverDiv.style.left = y + 'px';
                 
             }
+            
+        } );
+        
+        // add mouse enter event to remove the title attribute
+        // to prevent default tooltip behavior and add back in on mouse leave
+        el.addEventListener( 'mouseenter', function() {
+            
+            this.removeAttribute( 'title' );
+            
+            this.addEventListener( 'mouseleave', function() {
+            
+                this.setAttribute( 'title', title );
+                
+            } );
             
         } );
         

@@ -1741,7 +1741,7 @@ Droplets page container. Droplets classes only work inside this container.
     	}
     
     	.droplets-popover:after {
-    		content: " (" attr(data-title) ")";
+    		content: " (" attr(title) ")";
     	}
     	
     	.label {
