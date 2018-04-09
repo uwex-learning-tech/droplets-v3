@@ -689,12 +689,11 @@ function enableImgZoom( imgZooms ) {
             var pageY = Number( page.getAttribute( 'data-y' ) );
             var magnifyX = evt.pageX - pageX - this.offsetLeft;
             var magnifyY = evt.pageY - pageY - this.offsetTop;
-            
+
             // show / hide magnified image
             if ( magnifyX < this.offsetWidth && magnifyY < this.offsetHeight 
                  && magnifyX > 0 && magnifyY > 0 ) {
                  
-                magnifyDiv.classList.remove( 'hide' );
                 magnifyDiv.classList.add( 'show' );
                  
                 var rx = Math.round( magnifyX / img.offsetWidth * nativeWidth - magnifyDiv.offsetWidth / 2 ) * -1;
@@ -708,7 +707,6 @@ function enableImgZoom( imgZooms ) {
             } else {
                 
                 magnifyDiv.classList.remove( 'show' );
-                magnifyDiv.classList.add( 'hide' );
                 
             }
             
@@ -726,8 +724,10 @@ function enableImgZoom( imgZooms ) {
  */
 function enableLightbox( lightboxes ) {
     
+    // get page element
     var page = document.getElementById( 'uws-droplets-page' );
     
+    // create overlay element and its controls
     var overlayDiv = document.createElement( 'div' );
     
     overlayDiv.classList.add( 'droplets-lightbox-overlay' );
@@ -744,8 +744,10 @@ function enableLightbox( lightboxes ) {
     overlayDiv.appendChild( closeOverlayBtn );
     overlayDiv.appendChild( contentDiv );
     
+    // add overlay element to DOM
     page.appendChild( overlayDiv );
     
+    // event listeners to close overlay
     overlayDiv.addEventListener( 'click', function( evt ) {
                 
         if ( evt.target === this ) {
@@ -770,7 +772,7 @@ function enableLightbox( lightboxes ) {
         
     } );
     
-    // loop through collection of image zoom elements
+    // loop through collection of image zoom elements to show the selected image
     Array.prototype.forEach.call( lightboxes, function( lightbox ) {
         
         var imgSelector = lightbox.querySelectorAll( 'img, figure' );

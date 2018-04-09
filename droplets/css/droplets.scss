@@ -1748,6 +1748,11 @@ Droplets page container. Droplets classes only work inside this container.
             z-index: 99;
         }
         
+        .show {
+            display: block;
+            @include animation( fadeIn 1s );
+        }
+        
     }
     
     /*
@@ -1864,11 +1869,6 @@ Droplets page container. Droplets classes only work inside this container.
         from { @include opacity(1); }
         to { @include opacity(0); }
 	}
-	
-	.show {
-        display: block;
-        @include animation( fadeIn 1s );
-    }
     
     .show-overlay {
         @include display-flex();
