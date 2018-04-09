@@ -56,15 +56,23 @@ function checkEnvironment() {
  */
 function checkDropletsComponents() {
     
-    var pageContainerId = '#uws-droplets-page';
-    var toolTipSelector = document.querySelectorAll( pageContainerId + ' .droplets-tooltip' );
-    var popoverSelector = document.querySelectorAll( pageContainerId + ' .droplets-popover' );
-    var tabsSelector = document.querySelectorAll( pageContainerId + ' .droplets-tabs' );
-    var accordionsSelector = document.querySelectorAll( pageContainerId + ' .droplets-accordion' );
-    var resourcesSelector = document.querySelectorAll( pageContainerId + ' .droplets-resources' );
-    var readMoreSelector = document.querySelectorAll( pageContainerId + ' .droplets-readmore' );
-    var revealSelector = document.querySelectorAll( pageContainerId + ' .droplets-reveal' );
+    var prefix = '#uws-droplets-page .droplets-';
+    var toolTipSelector = document.querySelectorAll( prefix + 'tooltip' );
+    var popoverSelector = document.querySelectorAll( prefix + 'popover' );
+    var tabsSelector = document.querySelectorAll( prefix + 'tabs' );
+    var accordionsSelector = document.querySelectorAll( prefix + 'accordion' );
+    var resourcesSelector = document.querySelectorAll( prefix + 'resources' );
+    var readMoreSelector = document.querySelectorAll( prefix + ' readmore' );
+    var revealSelector = document.querySelectorAll( prefix + 'reveal' );
+    var imgZoomSelector = document.querySelectorAll( prefix + 'image-zoom' );
     
+    // set initial page container x and y as data- attributes
+    var page = document.getElementById( 'uws-droplets-page' );
+    var pageBounding = page.getBoundingClientRect();
+    page.setAttribute( 'data-x', pageBounding.x );
+    page.setAttribute( 'data-y', pageBounding.y );
+    
+    // check for components
     if ( toolTipSelector.length ) {
         enableToolTips( toolTipSelector );
     }
@@ -91,6 +99,10 @@ function checkDropletsComponents() {
     
     if ( revealSelector.length ) {
         enableReveal( revealSelector );
+    }
+    
+    if ( imgZoomSelector.length ) {
+        enableImgZoom( imgZoomSelector );
     }
     
 }
@@ -583,7 +595,7 @@ function enableReadMore( readMore ) {
 /**
  * Enable all reveal elements.
  * @function enableReveal
- * @param {Object[]} reveal - Collection of reveal elements.
+ * @param {Object[]} reveals - Collection of reveal elements.
  * @since 2.0.0
  */
 function enableReveal( reveals ) {
@@ -619,6 +631,77 @@ function enableReveal( reveals ) {
             
                 this.classList.add( 'success' );
                 this.innerHTML = el.getAttribute( 'data-button-name' );
+                
+            }
+            
+        } );
+        
+    } );
+    
+}
+
+/**
+ * Enable all image zoom elements.
+ * @function enableImgZoom
+ * @param {Object[]} imgZooms - Collection of image zoom elements.
+ * @since 2.0.0
+ */
+function enableImgZoom( imgZooms ) {
+    
+    // loop through collection of image zoom elements
+    Array.prototype.forEach.call( imgZooms, function( el ) {
+        
+        // get sibiling image src
+        var img = el.querySelectorAll( 'img' )[0];
+        
+        // create magnified container
+        var magnifyDiv = document.createElement( 'div' );
+        
+        magnifyDiv.classList.add( 'magnify' );
+        magnifyDiv.style.backgroundImage = 'url(\"' + img.src + '\")';
+        
+        // add the magnify div to the DOM
+        el.appendChild( magnifyDiv );
+        
+        // show manified version on mousemove over image
+        el.addEventListener( 'mousemove', function( evt ) {
+            
+            // get and set native width and height as data- attributes
+            var imgObj = new Image();
+            imgObj.src = img.src;
+            
+            img.setAttribute( 'data-width', imgObj.width );
+            img.setAttribute( 'data-height', imgObj.height );
+            
+            var nativeWidth = img.getAttribute( 'data-width' );
+            var nativeHeight = img.getAttribute( 'data-height' );
+            
+            // get positions
+            var page = document.getElementById( 'uws-droplets-page' );
+            var pageX = Number( page.getAttribute( 'data-x' ) );
+            var pageY = Number( page.getAttribute( 'data-y' ) );
+            var magnifyX = evt.pageX - pageX - this.offsetLeft;
+            var magnifyY = evt.pageY - pageY - this.offsetTop;
+            
+            // show / hide magnified image
+            if ( magnifyX < this.offsetWidth && magnifyY < this.offsetHeight 
+                 && magnifyX > 0 && magnifyY > 0 ) {
+                 
+                magnifyDiv.classList.remove( 'hide' );
+                magnifyDiv.classList.add( 'show' );
+                 
+                var rx = Math.round( magnifyX / img.offsetWidth * nativeWidth - magnifyDiv.offsetWidth / 2 ) * -1;
+                var ry = Math.round( magnifyY / img.offsetHeight * nativeHeight - magnifyDiv.offsetHeight / 2 ) * -1;
+                
+                magnifyDiv.style.left = ( magnifyX - magnifyDiv.offsetWidth / 2 ) + 'px';
+                magnifyDiv.style.top = ( magnifyY - magnifyDiv.offsetHeight / 2 ) + 'px';
+                
+                magnifyDiv.style.backgroundPosition = rx + "px " + ry + "px";
+                 
+            } else {
+                
+                magnifyDiv.classList.remove( 'show' );
+                magnifyDiv.classList.add( 'hide' );
                 
             }
             

@@ -33,20 +33,13 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/droplets\/css\/droplets.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/droplets\/css\/droplets.css.map",
-		"oF": 0
-		},
 	"\/droplets\/css\/droplets.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
 		"dS": 0,
 		"ft": 4,
-		"ma": 1,
+		"ma": 0,
 		"oA": 0,
 		"oAP": "\/droplets\/css\/droplets.css",
 		"oF": 0,
@@ -92,16 +85,9 @@
 		"sC": 1,
 		"tS": 0
 		},
-	"\/droplets\/script\/droplets-min.js.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/droplets\/script\/droplets-min.js.map",
-		"oF": 0
-		},
 	"\/droplets\/script\/droplets.js": {
 		"ft": 64,
-		"ma": 1,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/droplets\/script\/droplets-min.js",
