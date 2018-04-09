@@ -56,6 +56,14 @@ function checkEnvironment() {
  */
 function checkDropletsComponents() {
     
+    // set initial page container x and y as data- attributes
+    var page = document.getElementById( 'uws-droplets-page' );
+    var pageBounding = page.getBoundingClientRect();
+    
+    page.setAttribute( 'data-x', pageBounding.x );
+    page.setAttribute( 'data-y', pageBounding.y );
+    
+    // component elements
     var prefix = '#uws-droplets-page .droplets-';
     var toolTipSelector = document.querySelectorAll( prefix + 'tooltip' );
     var popoverSelector = document.querySelectorAll( prefix + 'popover' );
@@ -65,12 +73,7 @@ function checkDropletsComponents() {
     var readMoreSelector = document.querySelectorAll( prefix + ' readmore' );
     var revealSelector = document.querySelectorAll( prefix + 'reveal' );
     var imgZoomSelector = document.querySelectorAll( prefix + 'image-zoom' );
-    
-    // set initial page container x and y as data- attributes
-    var page = document.getElementById( 'uws-droplets-page' );
-    var pageBounding = page.getBoundingClientRect();
-    page.setAttribute( 'data-x', pageBounding.x );
-    page.setAttribute( 'data-y', pageBounding.y );
+    var lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
     
     // check for components
     if ( toolTipSelector.length ) {
@@ -103,6 +106,10 @@ function checkDropletsComponents() {
     
     if ( imgZoomSelector.length ) {
         enableImgZoom( imgZoomSelector );
+    }
+    
+    if ( lighboxSelector.length ) {
+        enableLightbox( lighboxSelector );
     }
     
 }
@@ -704,6 +711,113 @@ function enableImgZoom( imgZooms ) {
                 magnifyDiv.classList.add( 'hide' );
                 
             }
+            
+        } );
+        
+    } );
+    
+}
+
+/**
+ * Enable all lightbox elements.
+ * @function enableLightbox
+ * @param {Object[]} lightboxes - Collection of lightbox elements.
+ * @since 2.0.0
+ */
+function enableLightbox( lightboxes ) {
+    
+    var page = document.getElementById( 'uws-droplets-page' );
+    
+    var overlayDiv = document.createElement( 'div' );
+    
+    overlayDiv.classList.add( 'droplets-lightbox-overlay' );
+    overlayDiv.setAttribute( 'aria-hidden', 'true' );
+    
+    var contentDiv = document.createElement( 'div' );
+    
+    contentDiv.classList.add( 'overlay-content' );
+    
+    var closeOverlayBtn = document.createElement( 'a' );
+    closeOverlayBtn.classList.add( 'overlay-close-btn' );
+    closeOverlayBtn.innerHTML = '&times;';
+    
+    overlayDiv.appendChild( closeOverlayBtn );
+    overlayDiv.appendChild( contentDiv );
+    
+    page.appendChild( overlayDiv );
+    
+    overlayDiv.addEventListener( 'click', function( evt ) {
+                
+        if ( evt.target === this ) {
+            
+            if ( overlayDiv.classList.contains( 'show-overlay' ) ) {
+            
+                overlayDiv.classList.remove( 'show-overlay' );
+                
+            } 
+            
+        }
+        
+    } );
+    
+    closeOverlayBtn.addEventListener( 'click', function() {
+                
+        if ( overlayDiv.classList.contains( 'show-overlay' ) ) {
+            
+            overlayDiv.classList.remove( 'show-overlay' );
+            
+        } 
+        
+    } );
+    
+    // loop through collection of image zoom elements
+    Array.prototype.forEach.call( lightboxes, function( lightbox ) {
+        
+        var imgSelector = lightbox.querySelectorAll( 'img, figure' );
+        
+        Array.prototype.forEach.call( imgSelector, function( img ) {
+            
+            img.addEventListener( 'click', function() {
+                
+                contentDiv.innerHTML = '';
+                
+                var fullImg = document.createElement( 'img' );
+                var caption = document.createElement( 'p' );
+                
+                if ( this.nodeName === "IMG" ) {
+                    
+                    fullImg.src = this.src;
+                
+                    caption.classList.add( 'caption' );
+                    caption.innerHTML = this.getAttribute( 'alt' );
+                    
+                } else if ( this.nodeName === "FIGURE" ) {
+                    
+                    var innerImg = this.querySelectorAll( 'img' )[0];
+                    var figcaption = this.querySelectorAll( 'figcaption' )[0];
+                    
+                    fullImg.src = innerImg.src;
+                
+                    caption.classList.add( 'caption' );
+                    
+                    if ( figcaption !== undefined ) {
+                        
+                        caption.innerHTML = figcaption.innerHTML;
+                        
+                    } else {
+                        
+                        caption.innerHTML = innerImg.getAttribute( 'alt' );
+                        
+                    }
+                    
+                }
+
+                contentDiv.appendChild( fullImg );
+                contentDiv.appendChild( caption );
+                
+                overlayDiv.classList.add( 'show-overlay' );
+                
+            } );
             
         } );
         
