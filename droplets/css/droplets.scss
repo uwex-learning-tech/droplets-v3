@@ -752,8 +752,12 @@ Droplets page container. Droplets classes only work inside this container.
     // D010.10: All border
     table.bordered {
         
-        * {
+        tr {
             border: rem( 1px ) solid $table-border-color;
+        }
+        
+        td {
+            @extend tr;
         }
     	
     }
