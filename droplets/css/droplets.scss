@@ -857,13 +857,11 @@ Droplets page container. Droplets classes only work inside this container.
         margin: rem( $gutter ) 0;
         
         img {
-            display: block;
-            width: 100%;
             height: auto;
         }
         
     	figcaption {
-            display: table-caption;
+        	display: table-caption;
             font-size: rem( 12px );
             line-height: rem( 16px );
             margin-top: rem(6px);
@@ -873,15 +871,33 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     figure.x-small {
+        
         width: 25%;
+        
+        img {
+            width: 100%;
+        }
+        
     }
     
     figure.small {
+        
         width: 35%;
+        
+        img {
+            width: 100%;
+        }
+        
     }
     
     figure.medium {
+        
         width: 50%;
+        
+        img {
+            width: 100%;
+        }
+        
     }
     
     figure.bordered {
