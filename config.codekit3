@@ -17,7 +17,8 @@
 		"oF": 1
 		},
 	"\/config.rb": {
-		"ft": 131072,
+		"cB": 0,
+		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/config.rb",
 		"oF": 0
@@ -44,6 +45,23 @@
 		"oF": 0,
 		"oS": 3,
 		"uL": 1
+		},
+	"\/droplets\/fonts\/dropletsIcons.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/droplets\/fonts\/dropletsIcons.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/droplets\/fonts\/dropletsIcons.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/droplets\/fonts\/dropletsIcons.ttf",
+		"oF": 0
 		},
 	"\/droplets\/img\/id_logo.png": {
 		"ft": 32768,
