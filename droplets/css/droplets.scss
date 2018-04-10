@@ -34,7 +34,8 @@ TABLE OF CONTENTS
  23. ANIMATION ------------------------------------------------------------ D023
  24. FOR PRINTING --------------------------------------------------------- D024
  25. FOOTER --------------------------------------------------------------- D025
- 26. FONT FACES ----------------------------------------------------------- D026
+ 26. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D026
+ 27. FONT FACES ----------------------------------------------------------- D027
 ----------------------------------------------------------------------------- */
 
 /*
@@ -1803,6 +1804,11 @@ Droplets page container. Droplets classes only work inside this container.
             }
         
         }
+        
+        .lightbox-error {
+            position: absolute;
+            width: 100%;
+        }
     
     }
     
@@ -1842,18 +1848,19 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .overlay-left-arrow {
-            display: block;
+            @include display-flex();
+            @include align-items( center );
+            @include justify-content( center );
             position: absolute;
             left: rem( 84px );
             width: rem( 30px );
             height: rem( 30px );
-            padding-top: rem( 7.5px );
-            padding-left: rem( 6px );
             background-color: #fff;
             text-decoration: none;
             cursor: pointer;
             @include opacity( 0.25 );
             @include border-radius( 100% );
+            color: $gray-color;
         }
         
         .overlay-left-arrow:hover {
@@ -1869,7 +1876,6 @@ Droplets page container. Droplets classes only work inside this container.
             @extend .overlay-left-arrow;
             right: rem( 84px );
             left: unset;
-            padding-left: rem( 7px );
         }
         
         .overlay-right-arrow:after {
@@ -2174,6 +2180,12 @@ Contains copyright info. Added automatically via CSS.
     
 }
 
+/*
+D026: CANVAS.NET ADJUSTMENTS
+--------------------------------------------------------------------------------
+Additional adjustments only when loaded on Canvas.net
+----------------------------------------------------------------------------- */
+
 #uws-droplets-page.canvas-net {
     
     .droplets-lightbox-overlay {
@@ -2195,7 +2207,7 @@ Contains copyright info. Added automatically via CSS.
 }
 
 /*
-D026: FONT FACES
+D027: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */

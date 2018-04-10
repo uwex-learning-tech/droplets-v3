@@ -239,10 +239,10 @@ function enablePopovers( popovers ) {
         el.addEventListener( 'click', function() {
             
             // if visible
-            if ( this.querySelectorAll( '.popover' )[0].style.display === 'block' ) {
+            if ( this.querySelector( '.popover' ).style.display === 'block' ) {
                 
                 // hide
-                this.querySelectorAll( '.popover' )[0].style.display = 'none';
+                this.querySelector( '.popover' ).style.display = 'none';
                 this.classList.remove( 'active' );
                 
             } else {
@@ -659,7 +659,7 @@ function enableImgZoom( imgZooms ) {
     Array.prototype.forEach.call( imgZooms, function( el ) {
         
         // get sibiling image src
-        var img = el.querySelectorAll( 'img' )[0];
+        var img = el.querySelector( 'img' );
         
         // create magnified container
         var magnifyDiv = document.createElement( 'div' );
@@ -738,9 +738,24 @@ function enableLightbox( lightboxes ) {
     contentDiv.classList.add( 'overlay-content' );
     
     var closeOverlayBtn = document.createElement( 'a' );
-    closeOverlayBtn.classList.add( 'overlay-close-btn' );
-    closeOverlayBtn.innerHTML = '&times;';
     
+    closeOverlayBtn.classList.add( 'overlay-close-btn' );
+    closeOverlayBtn.setAttribute( 'role', 'button' );
+    
+    // create left and right arrows
+    var leftArrow = document.createElement( 'a' );
+    
+    leftArrow.classList.add( 'overlay-left-arrow' );
+    leftArrow.setAttribute( 'role', 'button' );
+    
+    var rightArrow = document.createElement( 'a' );
+    
+    rightArrow.classList.add( 'overlay-right-arrow' );
+    rightArrow.setAttribute( 'role', 'button' );
+    
+    // add them all to the overlay div
+    overlayDiv.appendChild( leftArrow );
+    overlayDiv.appendChild( rightArrow );
     overlayDiv.appendChild( closeOverlayBtn );
     overlayDiv.appendChild( contentDiv );
     
@@ -775,55 +790,179 @@ function enableLightbox( lightboxes ) {
     // loop through collection of image zoom elements to show the selected image
     Array.prototype.forEach.call( lightboxes, function( lightbox ) {
         
-        var imgSelector = lightbox.querySelectorAll( 'img, figure' );
+        var imgFigSelector = lightbox.querySelectorAll( 'img, figure' );
         
-        Array.prototype.forEach.call( imgSelector, function( img ) {
+        // check to see if there is mixed of img and figure
+        // if true, show error and exit main loop
+        if ( isImgFigCombo( imgFigSelector ) ) {
             
-            img.addEventListener( 'click', function() {
+            var err = document.createElement( 'div' );
+            err.classList.add( 'callout', 'danger', 'lightbox-error' );
+            
+            var msg = document.createElement( 'p' );
+            msg.innerHTML = '<strong>Error:</strong> Do not mix img and figure tags.';
+            
+            err.appendChild( msg );
+            lightbox.appendChild( err );
+            
+            return;
+            
+        }
+        
+        // determind which element is used
+        var imgSelector = lightbox.querySelectorAll( 'img' );
+        var figSelector = lightbox.querySelectorAll( 'figure' );
+        var targetSelector = figSelector;
+        
+        if ( figSelector.length === 0 ) {
+            targetSelector = imgSelector;
+        }
+        
+        // loop throug the elements to add event listeners
+        Array.prototype.forEach.call( targetSelector, function( img, index ) {
+            
+            var currentIndex = 0;
+            
+            img.addEventListener( 'click', function( evt ) {
                 
-                contentDiv.innerHTML = '';
-                
-                var fullImg = document.createElement( 'img' );
-                var caption = document.createElement( 'p' );
-                
-                if ( this.nodeName === "IMG" ) {
+                // add event listener to left and right button if more than 1
+                if ( targetSelector.length > 1 ) {
                     
-                    fullImg.src = this.src;
-                
-                    caption.classList.add( 'caption' );
-                    caption.innerHTML = this.getAttribute( 'alt' );
+                    rightArrow.style.display = 'inherit';
                     
-                } else if ( this.nodeName === "FIGURE" ) {
-                    
-                    var innerImg = this.querySelectorAll( 'img' )[0];
-                    var figcaption = this.querySelectorAll( 'figcaption' )[0];
-                    
-                    fullImg.src = innerImg.src;
-                
-                    caption.classList.add( 'caption' );
-                    
-                    if ( figcaption !== undefined ) {
+                    rightArrow.addEventListener( 'click', function ( evt ) {
                         
-                        caption.innerHTML = figcaption.innerHTML;
+                        currentIndex++;
                         
-                    } else {
+                        if ( currentIndex > targetSelector.length - 1 ) {
+                            
+                            currentIndex = 0;
+                            
+                        }
                         
-                        caption.innerHTML = innerImg.getAttribute( 'alt' );
+                        selectImage( targetSelector[currentIndex], contentDiv );
+                        evt.preventDefault();
                         
-                    }
+                    } );
+                    
+                    leftArrow.style.display = 'inherit';
+                    
+                    leftArrow.addEventListener( 'click', function ( evt ) {
+                        
+                        currentIndex--;
+                        
+                        if ( currentIndex < 0 ) {
+                            
+                            currentIndex = targetSelector.length - 1;
+                            
+                        }
+                        
+                        selectImage( targetSelector[currentIndex], contentDiv );
+                        
+                        evt.preventDefault();
+                        
+                    } );
+                    
+                } else {
+                    
+                    rightArrow.style.display = 'none';
+                    rightArrow.removeEventListener( 'click', function() {} );
+                    
+                    leftArrow.style.display = 'none';
+                    leftArrow.removeEventListener( 'click', function() {} );
                     
                 }
-
-                contentDiv.appendChild( fullImg );
-                contentDiv.appendChild( caption );
                 
+                selectImage( img, contentDiv )
                 overlayDiv.classList.add( 'show-overlay' );
+                currentIndex = index;
+                evt.preventDefault();
                 
             } );
             
         } );
         
     } );
+    
+}
+
+/**
+ * Check to see if the lightbox is mixed of img and figure tag
+ * @function isImgFigCombo
+ * @param {Object[]} selectiors - Collection of img or figure elements.
+ * @since 2.0.0
+ */
+function isImgFigCombo( selectors ) {
+    
+    var img = 0;
+    var fig = 0;
+    
+    Array.prototype.forEach.call( selectors, function( el ) {
+        
+        if ( el.nodeName === 'IMG' ) {
+            
+            img++;
+            
+        } else if ( el.nodeName === 'FIGURE' ) {
+            
+            fig++;
+            
+        }
+            
+    } );
+    
+    if ( img >= 1 && fig >= 1 && img > fig ) {
+        return true;
+    }
+    
+    return false;
+    
+}
+
+/**
+ * Select and display the full lightbox image
+ * @function selectImage
+ * @param {Object} img - img or figure element.
+ * @param {Object} img - container to append img element.
+ * @since 2.0.0
+ */
+function selectImage( img, contentDiv ) {
+    
+    contentDiv.innerHTML = '';
+                
+    var fullImg = document.createElement( 'img' );
+    var caption = document.createElement( 'p' );
+    
+    if ( img.nodeName === "IMG" ) {
+        
+        fullImg.src = img.src;
+    
+        caption.classList.add( 'caption' );
+        caption.innerHTML = img.getAttribute( 'alt' );
+        
+    } else if ( img.nodeName === "FIGURE" ) {
+        
+        var innerImg = img.querySelector( 'img' );
+        var figcaption = img.querySelector( 'figcaption' );
+        
+        fullImg.src = innerImg.src;
+    
+        caption.classList.add( 'caption' );
+
+        if ( figcaption ) {
+            
+            caption.innerHTML = figcaption.innerHTML;
+            
+        } else {
+            
+            caption.innerHTML = innerImg.getAttribute( 'alt' );
+            
+        }
+        
+    }
+
+    contentDiv.appendChild( fullImg );
+    contentDiv.appendChild( caption );
     
 }
 
@@ -891,6 +1030,7 @@ function onCanvasContentPage( regex ) {
     
     if ( location.pathname.match( regex ) ) {
         
+        document.getElementById( 'uws-droplets-page' ).classList.add( 'canvas-net' );
         return true;
         
     }
