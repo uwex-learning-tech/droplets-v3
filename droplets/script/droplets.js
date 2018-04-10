@@ -70,7 +70,7 @@ function checkDropletsComponents() {
     var tabsSelector = document.querySelectorAll( prefix + 'tabs' );
     var accordionsSelector = document.querySelectorAll( prefix + 'accordion' );
     var resourcesSelector = document.querySelectorAll( prefix + 'resources' );
-    var readMoreSelector = document.querySelectorAll( prefix + ' readmore' );
+    var readMoreSelector = document.querySelectorAll( prefix + 'readmore' );
     var revealSelector = document.querySelectorAll( prefix + 'reveal' );
     var imgZoomSelector = document.querySelectorAll( prefix + 'image-zoom' );
     var lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
