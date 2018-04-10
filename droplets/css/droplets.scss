@@ -1778,7 +1778,6 @@ Droplets page container. Droplets classes only work inside this container.
         
         @include display-flex();
         @include flex-flow( row wrap );
-        cursor: pointer;
         margin: rem( $gutter ) 0 0;
         
         img {
@@ -1829,8 +1828,9 @@ Droplets page container. Droplets classes only work inside this container.
         .overlay-content {
             
             display: block;
-            width: 85%;
+            width: 95%;
             height: auto;
+            padding-left: rem( 84px );
             
             img {
                 display: block;
