@@ -17,9 +17,16 @@
 		"oF": 1
 		},
 	"\/config.rb": {
-		"ft": 131072,
+		"cB": 0,
+		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/config.rb",
+		"oF": 0
+		},
+	"\/dreamweaver_commands": {
+		"ft": 65536,
+		"oA": 1,
+		"oAP": "\/build\/dreamweaver_commands",
 		"oF": 0
 		},
 	"\/droplets\/css\/droplets.css": {
@@ -2128,7 +2135,7 @@
 		],
 	"overrideExternalServerCSS": 0,
 	"previewPathAddition": "",
-	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules",
+	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules, \/dreamweaver_commands",
 	"sourceFolderName": "source",
 	"susyVersion": 3,
 	"uglifyDefinesString": "",

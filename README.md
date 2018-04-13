@@ -12,6 +12,8 @@ A HTML, CSS, and JavaScript framework for instructional designers at University 
 
 **Note:** This framework is specifically developed for use by instructional designers at UWEX CEOEL. Some setups or usages may not be optimal or preferable for your organization. In addition, this framework is built to accommodate the LMS (Canvas.net) that will be used at UWEX CEOEL. You are most welcome to download or fork this repository and modify it to your organization's needs.
 
+**Note:** <code>dreamweaver_commands</code> directory is not part of the Droplets for Canvas. This directory contains useful command utilities for Adobe Dreamweaver users.
+
 ### Development Requirements
 * HTML
 * Cascading Style Sheets (CSS3)
