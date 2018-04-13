@@ -7,7 +7,7 @@
 		"uuidString": "E5DCFD8E-3F47-4090-A652-E5776268F028"
 		}
 	],
-"creatorBuild": "26330",
+"creatorBuild": "26680",
 "files": {
 	"\/.gitignore": {
 		"cB": 0,
@@ -17,8 +17,7 @@
 		"oF": 1
 		},
 	"\/config.rb": {
-		"cB": 0,
-		"ft": 8192,
+		"ft": 131072,
 		"oA": 0,
 		"oAP": "\/config.rb",
 		"oF": 0
@@ -102,16 +101,9 @@
 		"sC": 1,
 		"tS": 0
 		},
-	"\/droplets\/script\/droplets-min.js.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/droplets\/script\/droplets-min.js.map",
-		"oF": 0
-		},
 	"\/droplets\/script\/droplets.js": {
 		"ft": 64,
-		"ma": 1,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/droplets\/script\/droplets-min.js",
@@ -153,7 +145,8 @@
 	"creationDate": 499371919,
 	"displayValue": "droplets-for-canvas",
 	"displayValueWasSetByUser": 1,
-	"iconImageName": "meme-fry"
+	"iconImageName": "meme-fry",
+	"iconImageWasSetByUser": 0
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
@@ -1956,6 +1949,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
+		"outputFormat": 0,
 		"quality": 100
 		},
 	"languageDefaultsJS": {

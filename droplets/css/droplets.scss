@@ -954,6 +954,20 @@ Droplets page container. Droplets classes only work inside this container.
             display: table;
         }
         
+        img.right {
+            @extend .imgCommons;
+            float: right;
+            margin: 0 0 0 rem( $gutter );
+            display: table;
+        }
+        
+        img.left {
+            @extend .imgCommons;
+            float: left;
+            margin: 0 rem( $gutter ) 0 0;
+            display: table;
+        }
+        
     }
     
     /*
