@@ -211,13 +211,26 @@ function enablePopovers( popovers ) {
     // loop through each popovers
     Array.prototype.forEach.call( popovers, function( el ) {
         
-        var title = el.getAttribute( 'title' );
+        var title = '';
         
-        // create data-title to hold the original title attribute value
-        el.setAttribute( 'data-title', title );
-        
-        // reset the title variable to data-title instead
-        title = el.getAttribute( 'data-title' );
+        // if data-title attribute is specified
+        if ( el.getAttribute( 'data-title' ) !== null ) {
+            
+            // set the title to data-title value
+            title = el.getAttribute( 'data-title' );
+            
+        } else {
+            
+            // set title to the title attribute
+            title = el.getAttribute( 'title' )
+            
+            // create data-title to hold the original title attribute value
+            el.setAttribute( 'data-title', title );
+            
+            // reset the title variable to data-title instead
+            title = el.getAttribute( 'data-title' );
+            
+        }
         
         // create the popover container
         var popoverDiv = document.createElement( 'div' );
