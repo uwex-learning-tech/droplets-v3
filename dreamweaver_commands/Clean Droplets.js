@@ -242,6 +242,16 @@ function clean() {
     
     log.innerHTML += 'done!</li>';
     
+    // Find and remove external-link icons
+    log.innerHTML += '<li>Removing external link icons...';
+    
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="span" qconvertednls="true"><qattribute qname="class" qcompare="=" qvalue="(([\\s\\S]*)\\s)*(icon-external-link)(\\s([\\s\\S]*))*"></qattribute></qtag></find><replace action="removeTagAndContents" param1="" param2=""/></dwquery>');
+    
+    dw.replaceAll();
+    clicks++;
+    
+    log.innerHTML += 'done!</li>';
+    
     // Find and replace image/figure
     
     log.innerHTML += '<li>Updating image / figure... removing polariod class... ';
