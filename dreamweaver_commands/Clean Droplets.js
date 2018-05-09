@@ -31,7 +31,7 @@ function clean() {
     
     log.innerHTML += '<li>Updating Droplets CSS link... ';
     
-    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="true" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="link" qconvertednls="true"><qattribute qname="href" qcompare="=" qvalue="/content/support/css/style.css"></qattribute></qtag></find><replace action="setAttribute" param1="href" param2="https://media.uwex.edu/app/droplets/css/droplets.css"/></dwquery>');
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="link" qconvertednls="true"><qattribute qname="href" qcompare="=" qvalue="([\\S])*(content\/support\/css\/style.css)"></qattribute></qtag></find><replace action="setAttribute" param1="href" param2="https://media.uwex.edu/app/droplets/css/droplets.css"/></dwquery>');
     
     dw.replaceAll();
     clicks++;
@@ -42,7 +42,7 @@ function clean() {
     
     log.innerHTML += '<li>Removing Flexible Options CSS link... ';
     
-    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="true" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="link" qconvertednls="true"><qattribute qname="href" qcompare="=" qvalue="/content/support/fonts/flexicon.css"></qattribute></qtag></find><replace action="removeTagAndContents" /></dwquery>');
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="link" qconvertednls="true"><qattribute qname="href" qcompare="=" qvalue="([\\S])*(content\/support\/fonts\/flexicon.css)"></qattribute></qtag></find><replace action="removeTagAndContents" /></dwquery>');
     
     dw.replaceAll();
     clicks++;
@@ -53,7 +53,7 @@ function clean() {
     
     log.innerHTML += '<li>Updating Droplets JavaScript source... ';
     
-    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="true" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="script" qconvertednls="true"><qattribute qname="src" qcompare="=" qvalue="/content/support/scripts/style.js"></qattribute></qtag></find><replace action="setAttribute" param1="src" param2="https://media.uwex.edu/app/droplets/script/droplets.js"/></dwquery>');
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="script" qconvertednls="true"><qattribute qname="src" qcompare="=" qvalue="([\\S])*(content\\/support\\/scripts\\/style.js)"></qattribute></qtag></find><replace action="setAttribute" param1="src" param2="https://media.uwex.edu/app/droplets/script/droplets.js" /></dwquery>');
     
     dw.replaceAll();
     clicks++;
@@ -277,6 +277,16 @@ function clean() {
     log.innerHTML += '<li>Updating popover... ';
     
     dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="[any tag]" qconvertednls="true"><qattribute qname="class" qcompare="=" qvalue="(([\\s\\S]*)\\s)*(with-popover)(\\s([\\s\\S]*))*"></qattribute></qtag></find><replace action="setAttribute" param1="class" param2="droplets-popover"/></dwquery>');
+    
+    dw.replaceAll();
+    clicks++;
+    
+    log.innerHTML += 'done!</li>';
+    
+    // Find and replace accordions
+    log.innerHTML += '<li>Updating accordions... ';
+    
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="div" qconvertednls="true"><qattribute qname="class" qcompare="=" qvalue="(([\\s\\S]*)\\s)*(with-accordion)(\\s([\\s\\S]*))*"></qattribute></qtag></find><replace action="setAttribute" param1="class" param2="droplets-accordion"/></dwquery>');
     
     dw.replaceAll();
     clicks++;
