@@ -1838,17 +1838,20 @@ Droplets page container. Droplets classes only work inside this container.
         top: 0;
         left: 0;
         background-color: rgba( 255, 255, 255, 0.85 );
+        z-index: 11;
         
         .overlay-content {
             
             display: block;
-            width: 95%;
             height: auto;
             
             img {
                 display: block;
                 width: 100%;
                 height: auto;
+                max-width: 90vw;
+                max-height: 90vh;
+                object-fit: contain;
                 @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
             }
             
