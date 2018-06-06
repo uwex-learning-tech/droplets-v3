@@ -47,7 +47,7 @@ Setting up variables. Define colors and spacing.
 $font-size: 16px;
 $light-font-weight: 300;
 $border-color: #e9e9e9;
-$gutter: 12px;
+$gutter: 16px;
 
 $table-border-color: #727272;
 $table-bg-color: #f1f1f1;
@@ -155,7 +155,7 @@ Droplets page container. Droplets classes only work inside this container.
         font-size: rem( 18px );
         font-weight: $light-font-weight;
         line-height: rem( 27px );
-        margin: rem( $gutter ) 0;
+        margin: 0 0 rem( $gutter );
     }
     
     // D005.2: Drop caps - revisit in future for CSS Initial Letter support
@@ -418,13 +418,13 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D008.1: labels
     .label {
-    	padding: rem( 3.5px ) rem( 6px ) rem( 2px );
+    	padding: rem( 2px ) rem( 6px );
     	font-weight: bold;
     	color: #ffffff;
     	text-transform: uppercase;
     	white-space: nowrap;
     	background-color: $gray-color;
-    	vertical-align: middle;
+    	vertical-align: bottom;
     	@include border-radius( rem( 3px ) );
     }
     
@@ -980,7 +980,7 @@ Droplets page container. Droplets classes only work inside this container.
     	font-weight: normal;
     	font-variant: normal;
     	text-transform: none;
-    	vertical-align: baseline;
+    	vertical-align: text-bottom;
     	/* Better Font Rendering =========== */
     	-webkit-font-smoothing: antialiased;
     	-moz-osx-font-smoothing: grayscale;
@@ -990,7 +990,7 @@ Droplets page container. Droplets classes only work inside this container.
     [class*=" icon-"] {
         @extend .iconCommons;
     	font-family: 'collaborativeicon';
-    	font-size: 80%;
+    	font-size: 100%;
     }
     
     [class^="icon-"]:before,
@@ -2195,6 +2195,10 @@ Contains copyright info. Added automatically via CSS.
 	font-size: rem( 12px );
 	content: "\00A9  Board of Regents and University of Wisconsin System. All rights reserved.";
     
+}
+
+#uws-droplets-page.no-footer:after {
+    display: none;
 }
 
 /*
