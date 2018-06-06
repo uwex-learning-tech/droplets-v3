@@ -867,6 +867,7 @@ Droplets page container. Droplets classes only work inside this container.
             line-height: rem( 16px );
             margin-top: rem(6px);
             caption-side: bottom;
+            cursor: text;
     	}
     
     }
@@ -1815,6 +1816,7 @@ Droplets page container. Droplets classes only work inside this container.
             
             figcaption {
                 display: block;
+                cursor: text;
             }
         
         }
@@ -2221,6 +2223,123 @@ Additional adjustments only when loaded on Canvas.net
         
         .overlay-right-arrow {
             left: unset;
+        }
+        
+    }
+    
+}
+
+#uws-droplets-page.canvas-net.no-js {
+    
+    // Accordion
+    .droplets-accordion {
+        
+        .accordion-title {
+            border-bottom: transparent;
+            @include border-corner-radius( top, left, rem( 5px ) );
+            @include border-corner-radius( top, right, rem( 5px ) );
+            @include border-corner-radius( bottom, left, 0 );
+            @include border-corner-radius( bottom, right, 0 );
+            cursor: default;
+        }
+        
+        .accordion-title:after {
+            display: none;
+        }
+        
+        .accordion-content {
+            display: block;
+        }
+        
+    }
+    
+    // Tabs
+    .droplets-tabs {
+        
+        .tabs {
+            
+            padding: rem( $gutter / 2 );
+            
+            li {
+                border: rem( 1px ) solid #929292;
+                @include border-corner-radius( bottom, left, rem( 3px ) );
+                @include border-corner-radius( bottom, right, rem( 3px ) );
+            }
+            
+            li:hover {
+                @include box-shadow( none );
+            }
+            
+            .active {
+                @include box-shadow( none );
+            }
+            
+        }
+        
+        .tab-contents {
+            
+            .tab-section {
+                display: block;
+            }
+            
+        }
+        
+    }
+    
+    // Resources
+    .droplets-resources {
+        
+        .resource {
+            
+            border-color: $border-color;
+            height: unset;
+            
+            .expandable-panel {
+                display: block;
+            }
+            
+        }
+        
+    }
+    
+    // Read More
+    .droplets-readmore {
+        position: unset;
+        height: unset;
+        overflow: unset;
+    }
+    
+    .droplets-readmore:after {
+        display: none;
+    }
+    
+    // Reveal
+    .droplets-reveal {
+        
+        .hidden-content {
+            display: block;
+        }
+        
+    }
+    
+    // Image Zoom
+    .droplets-image-zoom {
+        position: unset;
+        cursor: default;
+    }
+    
+    // Lightbox
+    .droplets-lightbox {
+        
+        figure {
+            
+            @include flex( unset );
+            cursor: default;
+            
+            img {
+                cursor: default;
+            }
+            
         }
         
     }

@@ -17,7 +17,8 @@
 		"oF": 1
 		},
 	"\/config.rb": {
-		"ft": 131072,
+		"cB": 0,
+		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/config.rb",
 		"oF": 0
@@ -33,7 +34,7 @@
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 1,
+		"oA": 2,
 		"oAP": "\/droplets\/css\/droplets-ck.css",
 		"oF": 0,
 		"oS": 0

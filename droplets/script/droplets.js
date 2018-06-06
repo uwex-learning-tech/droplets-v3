@@ -1012,9 +1012,22 @@ function isOnAllowedDomains() {
             // if the domain is Canvas
             if ( el === '.instructure.com\/' ) {
                 
+                var page = document.getElementById( 'uws-droplets-page' );
+                
+                // add canvas-net no matter if it is found or not also as
+                // it is in Canvas
+                page.classList.add( 'canvas-net' );
+                
                 // check to see if it is on a course content page
                 found = onCanvasContentPage( /\/pages/ );
                 
+                // add no-js class to page container if not content page
+                if ( found === false ) {
+                    
+                    page.classList.add( 'no-js' );
+                    
+                }
+                                
                 // exit the loop
                 return;
                 
@@ -1043,7 +1056,6 @@ function onCanvasContentPage( regex ) {
     
     if ( location.pathname.match( regex ) ) {
         
-        document.getElementById( 'uws-droplets-page' ).classList.add( 'canvas-net' );
         return true;
         
     }
