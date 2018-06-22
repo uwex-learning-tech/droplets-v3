@@ -13,7 +13,6 @@ function commandButtons() {
 function clean() {
     
     var log = document.getElementById( 'log' );
-    var completeMsg = document.getElementById( 'completeMsg' );
     var clicks = 0;
     
     // remove title tag content
@@ -187,7 +186,7 @@ function clean() {
     dw.replaceAll();
     clicks++;
     
-    log.innerHTML += 'changing section tag to div... '; 
+    log.innerHTML += 'changing section tag to div... ';
     
     dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="true" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="section" qconvertednls="true"><qtag qname="div" qinside="true"><qattribute qname="class" qcompare="=" qvalue="columns"></qattribute></qtag></qtag></find><replace action="changeTag" param1="div" /></dwquery>');
     
@@ -263,6 +262,7 @@ function clean() {
     
     log.innerHTML += 'done!</li>';
     
+
     // Find and replace tooltip
     log.innerHTML += '<li>Updating tooltip... ';
     
@@ -273,6 +273,7 @@ function clean() {
     
     log.innerHTML += 'done!</li>';
 
+    
     // Find and replace popover
     log.innerHTML += '<li>Updating popover... ';
     
@@ -283,7 +284,7 @@ function clean() {
     
     log.innerHTML += 'done!</li>';
     
-    // Find and replace accordions
+   // Find and replace accordions
     log.innerHTML += '<li>Updating accordions... ';
     
     dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="div" qconvertednls="true"><qattribute qname="class" qcompare="=" qvalue="(([\\s\\S]*)\\s)*(with-accordion)(\\s([\\s\\S]*))*"></qattribute></qtag></find><replace action="setAttribute" param1="class" param2="droplets-accordion"/></dwquery>');
@@ -301,23 +302,21 @@ function clean() {
     dw.replaceAll();
     clicks++;
     
-    log.innerHTML += 'changing section tag to div... ';
-    
-    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="true" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="section" qconvertednls="true"><qtag qname="div" qinside="true"><qattribute qname="class" qcompare="=" qvalue="tab-contents"></qattribute></qtag></qtag></find><replace action="changeTag" param1="div" param2=""/></dwquery>');
-    
-    dw.replaceAll();
-    clicks++;
-    
     log.innerHTML += 'adding tab-section class... ';
     
-    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="true" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="div" qconvertednls="true"><qattribute qname="class" qcompare="!=" qvalue="active" qnegate="true"></qattribute><qtag qname="div" qinside="true"><qattribute qname="class" qcompare="=" qvalue="tab-contents"></qattribute></qtag></qtag></find><replace action="setAttribute" param1="class" param2="tab-section"/></dwquery>');
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="section" qconvertednls="true"><qattribute qname="class" qcompare="=" qvalue="active"></qattribute><qtag qname="div" qinside="true" qnegate="true"><qattribute qname="class" qcompare="=" qvalue="(([\\s\\S]*)\\s)*((two|three)(-column))(\\s([\\s\\S]*))*"></qattribute><qtag qname="div" qinside="true"><qattribute qname="class" qcompare="=" qvalue="tab-contents"></qattribute></qtag></qtag></qtag></find><replace action="setAttribute" param1="class" param2="tab-section active"/></dwquery>');
     
     dw.replaceAll();
     clicks++;
     
-    log.innerHTML += 'checking for other varitities... ';
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="section" qconvertednls="true"><qattribute qname="class" qcompare="" qvalue="" qnegate="true"></qattribute><qtag qname="div" qinside="true" qnegate="true"><qattribute qname="class" qcompare="=" qvalue="(([\\s\\S]*)\\s)*((two|three)(-column))(\\s([\\s\\S]*))*"></qattribute><qtag qname="div" qinside="true"><qattribute qname="class" qcompare="=" qvalue="tab-contents"></qattribute></qtag></qtag></qtag></find><replace action="setAttribute" param1="class" param2="tab-section"/></dwquery>');
     
-    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="true" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="div" qconvertednls="true"><qattribute qname="class" qcompare="=" qvalue="active"></qattribute><qtag qname="div" qinside="true"><qattribute qname="class" qcompare="=" qvalue="tab-contents"></qattribute></qtag></qtag></find><replace action="setAttribute" param1="class" param2="tab-section active"/></dwquery>');
+    dw.replaceAll();
+    clicks++;
+    
+    log.innerHTML += 'changing section tag to div... ';
+    
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="section" qconvertednls="true"><qattribute qname="class" qcompare="=" qvalue="tab-section( active)*"></qattribute></qtag></find><replace action="changeTag" param1="div" param2=""/></dwquery>');
     
     dw.replaceAll();
     clicks++;
@@ -393,6 +392,6 @@ function clean() {
     log.innerHTML += 'done! Double check that you are not mixing img and figure tags.</li>';
     
     // final message
-    completeMsg.innerHTML = 'All done! You have click "Yes" ' + clicks + ' times and can now cancel.';
+    log.innerHTML += '<li>Done! ' + clicks + ' clicks.</li>';
     
 }
