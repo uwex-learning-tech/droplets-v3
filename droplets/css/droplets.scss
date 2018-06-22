@@ -1393,6 +1393,8 @@ Droplets page container. Droplets classes only work inside this container.
         }
     
         .accordion-title {
+            
+            position: relative;
             @include display-flex();
             @include flex-flow( row nowrap );
             @include align-items( center );
@@ -1403,6 +1405,12 @@ Droplets page container. Droplets classes only work inside this container.
             margin-top: rem( 5px );
             cursor: pointer;
             @include border-radius( rem( 5px ) );
+            
+            a {
+                text-decoration: none;
+                color: unset;
+            }
+            
         }
         
         .accordion-title:after {

@@ -353,7 +353,7 @@ function enableTabs( tabs ) {
                 Array.prototype.forEach.call( tabBtns, function( el, i ) {
                     
                     el.classList.remove( 'active' );
-                    el.children[0].setAttribute( 'aria-selected', 'false');
+                    el.setAttribute( 'aria-selected', 'false');
                     tabSections[i].classList.remove( 'active' );
                     
                 });
@@ -361,8 +361,9 @@ function enableTabs( tabs ) {
                 // add active class to current clicked tab
                 // and display corresponding tab section
                 this.classList.add( 'active' );
-                this.children[0].setAttribute( 'aria-selected', 'true');
+                this.setAttribute( 'aria-selected', 'true');
                 tabSections[i].classList.add( 'active' );
+                tabSections[i].setAttribute( 'aria-selected', 'true');
                 
                 // prevent default event action
                 evt.preventDefault();
@@ -396,14 +397,12 @@ function enableAccordions( accordions ) {
         var closeBtn = document.createElement( 'a' );
         closeBtn.classList.add( 'closeAll' );
         closeBtn.setAttribute( 'role', 'button' );
-        closeBtn.setAttribute( 'aria-control', 'close all' );
         closeBtn.innerHTML = 'Close All';
         closeBtn.href = 'javascript:void(0)';
         
         var openBtn = document.createElement( 'a' );
         openBtn.classList.add( 'openAll' );
         openBtn.setAttribute( 'role', 'button' );
-        openBtn.setAttribute( 'aria-control', 'open all' );
         openBtn.innerHTML = 'Open All';
         openBtn.href = 'javascript:void(0)';
         
@@ -485,7 +484,7 @@ function closeAccordionItem( el ) {
     if ( el.classList.contains( 'active' ) ) {
                             
         el.nextElementSibling.style.display = 'none';
-        el.setAttribute( 'aria-expanded', 'false' );
+        el.nextElementSibling.setAttribute( 'aria-expanded', 'false' );
         el.classList.remove( 'active' );
         
     }
@@ -500,8 +499,8 @@ function closeAccordionItem( el ) {
  */
 function openAccordionItem( el ) {
     
-    el.setAttribute( 'aria-expanded', 'true' );
     el.classList.add( 'active' );
+    el.nextElementSibling.setAttribute( 'aria-expanded', 'true' );
     el.nextElementSibling.style.display = 'block';
     
 }
@@ -576,9 +575,7 @@ function enableReadMore( readMore ) {
         var readMoreCntrl = document.createElement( 'div' );
         
         readMoreCntrl.classList.add( 'readmore-cntrl' );
-        readMoreCntrl.setAttribute( 'role', 'button');
-        readMoreCntrl.setAttribute( 'aria-controls', 'click to read more' );
-        readMoreCntrl.setAttribute( 'aria-expanded', 'false' );
+        readMoreCntrl.setAttribute( 'aria-hidden', 'true');
         
         // add the read more control to the DOM
         el.appendChild( readMoreCntrl );
@@ -589,7 +586,6 @@ function enableReadMore( readMore ) {
             if ( this.classList.contains( 'opened' ) ) {
                 
                 this.classList.remove( 'opened' );
-                this.setAttribute( 'aria-expanded', 'false' );
                 
                 el.style.height = null;
                 el.style.overflow = 'hidden';
@@ -599,7 +595,6 @@ function enableReadMore( readMore ) {
                 var expandedHeight = el.scrollHeight + 'px';
                 
                 this.classList.add( 'opened' );
-                this.setAttribute( 'aria-expanded', 'true' );
                 
                 el.style.height = expandedHeight;
                 el.style.overflow = 'unset';
