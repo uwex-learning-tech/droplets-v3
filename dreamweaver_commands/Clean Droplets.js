@@ -389,6 +389,23 @@ function clean() {
     dw.replaceAll();
     clicks++;
     
+    log.innerHTML += 'done!</li>';
+    
+    // Find and update learning resources
+    log.innerHTML += '<li>Updating learning resources... ';
+    
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="true" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="div" qconvertednls="true"><qattribute qname="class" qcompare="=" qvalue="(([\\s\\S]*)\\s)*(with-learning-resources)(\\s([\\s\\S]*))*"></qattribute></qtag></find><replace action="setAttribute" param1="class" param2="droplets-resources"/></dwquery>');
+    
+    dw.replaceAll();
+    clicks++;
+    
+    log.innerHTML += 'changing expanded-info class to expandable-panel... ';
+    
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="div" qconvertednls="true"><qattribute qname="class" qcompare="=" qvalue="expanded-info"></qattribute></qtag></find><replace action="setAttribute" param1="class" param2="expandable-panel"/></dwquery>');
+    
+    dw.replaceAll();
+    clicks++;
+    
     log.innerHTML += 'done! Double check that you are not mixing img and figure tags.</li>';
     
     // final message
