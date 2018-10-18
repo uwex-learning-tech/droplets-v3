@@ -601,6 +601,15 @@ Droplets page container. Droplets classes only work inside this container.
     	border-collapse: collapse;
     	border-spacing: 0;
     	margin: rem( $gutter ) 0;
+    	caption-side: bottom;
+    	
+    	caption {
+        	text-align: left;
+        	font-size: rem( 12px );
+        	font-style: italic;
+        	margin: rem( $gutter / 2 ) 0 rem( $gutter );
+        	color: $gray-color
+    	}
     
     	thead > tr > th {
             padding: rem( 8px );
