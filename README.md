@@ -23,7 +23,7 @@ A HTML, CSS, and JavaScript framework for instructional designers at University 
 
 Knowledges of SASS and Compass are essential to write the CSS for this framework. The CSS file is compiled and minified by SASS, a CSS preprocessor.
 
-**Note:** [CodeKit](https://incident57.com/codekit/) is highly recommended for Mac users for the development enviroment.
+**Note:** [CodeKit](https://incident57.com/codekit/) is highly recommended for Mac users for the development environment.
 
 ### Minimum Supported Web Browsers
 * Internet Explorer 11+

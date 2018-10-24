@@ -916,7 +916,7 @@ Droplets page container. Droplets classes only work inside this container.
             padding: rem( 8px );
             border: rem( 1px ) solid $light-gray-color;
     	}
-    
+    	
     }
     
     figure.shadowed {
@@ -926,6 +926,14 @@ Droplets page container. Droplets classes only work inside this container.
             @include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
         }
     
+    }
+    
+    figure.padded {
+        
+        img {
+            padding: rem( $gutter );
+        }
+        
     }
     
     // FOR VIEWPORT < 414px
