@@ -1,12 +1,12 @@
 /**
  * DROPLETS
  *
- * @version: 2.0.0
+ * @version: 2.0.1
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-for-canvas
  *
  * @license: The MIT License (MIT)
- * Copyright 2018 UWEX CEOEL Media
+ * Copyright 2018-2019 UWEX CEOEL Media
  *
  */
 
@@ -1009,20 +1009,24 @@ function isOnAllowedDomains() {
                 
                 var page = document.getElementById( 'uws-droplets-page' );
                 
-                // add canvas-net no matter if it is found or not also as
-                // it is in Canvas
-                page.classList.add( 'canvas-net' );
-                
-                // check to see if it is on a course content page
-                found = onCanvasContentPage( /\/pages/ );
-                
-                // add no-js class to page container if not content page
-                if ( found === false ) {
+                if ( page != undefined ) {
                     
-                    page.classList.add( 'no-js' );
+                    // add canvas-net no matter if it is found or not also as
+                    // it is in Canvas
+                    page.classList.add( 'canvas-net' );
                     
-                }
-                                
+                    // check to see if it is on a course content page
+                    found = onCanvasContentPage( /\/pages/ );
+                    
+                    // add no-js class to page container if not content page
+                    if ( found === false ) {
+                        
+                        page.classList.add( 'no-js' );
+                        
+                    }
+                    
+                }                
+              
                 // exit the loop
                 return;
                 
