@@ -4,7 +4,7 @@ DROPLETS
 @author: Ethan Lin
 @url: https://github.com/oel-mediateam/droplets-for-canvas
 @license: The MIT License (MIT)
-Copyright 2018 UWEX CEOEL Media
+Copyright 2018-2019 UWEX CEOEL Media
     
 TABLE OF CONTENTS
 --------------------------------------------------------------------------------
@@ -922,7 +922,6 @@ Droplets page container. Droplets classes only work inside this container.
     figure.shadowed {
         
         img {
-            padding: rem( 8px );
             @include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
         }
     
@@ -932,6 +931,38 @@ Droplets page container. Droplets classes only work inside this container.
         
         img {
             padding: rem( $gutter );
+        }
+        
+    }
+    
+    figure.padded-left {
+        
+        img {
+            padding-left: rem( $gutter );
+        }
+        
+    }
+    
+    figure.padded-right {
+        
+        img {
+            padding-right: rem( $gutter );
+        }
+        
+    }
+    
+    figure.padded-top {
+        
+        img {
+            padding-top: rem( $gutter );
+        }
+        
+    }
+    
+    figure.padded-bottom {
+        
+        img {
+            padding-bottom: rem( $gutter );
         }
         
     }
