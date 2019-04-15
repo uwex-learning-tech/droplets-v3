@@ -374,7 +374,16 @@ Droplets page container. Droplets classes only work inside this container.
     	}
     	
     	.wider {
-            @include flex( 0 0 75% );
+            @include flex( 0 0 70% );
+    	}
+    	
+    	.aside {
+        	
+            .callout.vertical {
+                width: 100%;
+                margin-left: 0;
+            }
+        	
     	}
     	
     	.vertical-center {
