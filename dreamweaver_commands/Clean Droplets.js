@@ -1,9 +1,7 @@
 // resouce https://forums.adobe.com/thread/1193750
 
 function canAcceptCommand() {
-    
     return true;
-    
 }
 
 function commandButtons() {
@@ -189,6 +187,31 @@ function clean() {
     log.innerHTML += 'changing section tag to div... ';
     
     dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="true" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="section" qconvertednls="true"><qtag qname="div" qinside="true"><qattribute qname="class" qcompare="=" qvalue="columns"></qattribute></qtag></qtag></find><replace action="changeTag" param1="div" /></dwquery>');
+    
+    dw.replaceAll();
+    clicks++;
+	
+	log.innerHTML += 'done!</li>';
+	
+	// find and replace aside tag in columns
+	
+	log.innerHTML += '<li>Updating aside tag in column... adding wider class to first div... ';
+    
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="false" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="div" qconvertednls="true"><qattribute qname="class" qcompare="=" qvalue="" qnegate="true"></qattribute><qtag qname="div" qinside="true"><qattribute qname="class" qcompare="=" qvalue="columns"></qattribute><qtag qname="aside"></qtag></qtag></qtag></find><replace action="setAttribute" param1="class" param2="wider"/></dwquery>');
+    
+    dw.replaceAll();
+    clicks++;
+	
+	log.innerHTML += 'adding aside class to aside tag... ';
+    
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="true" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="aside"></qtag></find><replace action="setAttribute" param1="class" param2="aside"/></dwquery>');
+    
+    dw.replaceAll();
+    clicks++;
+    
+    log.innerHTML += 'change aside tag to div tag... ';
+    
+    dreamweaver.setUpComplexFindReplace('<dwquery><queryparams matchcase="false" ignorewhitespace="true" useregexp="false" wholeword="false" textonly="false" /><find searchmode="site"><qtag qname="aside" qconvertednls="true"></qtag></find><replace action="changeTag" param1="div" param2="aside"/></dwquery>');
     
     dw.replaceAll();
     clicks++;
