@@ -505,23 +505,6 @@ Droplets page container. Droplets classes only work inside this container.
     	border-bottom: rem( 5px ) solid #b2b2b2;
     }
     
-    @media ( min-width: 768px ) {
-        
-        .callout.vertical.left {
-            width: rem( 250px );
-            margin: rem( 5px ) rem( $gutter ) 0 0;
-            float: left;
-        }
-        
-        .callout.vertical.right {
-            width: rem( 250px );
-            margin: rem( 5px ) 0 0 rem( $gutter );
-            float: right;
-            text-align: left;
-        }
-        
-    }
-    
     .callout.success {
         color: $light-success-text-color;
     	background-color: $light-success-color;
@@ -596,6 +579,48 @@ Droplets page container. Droplets classes only work inside this container.
     .callout.minimal.bordered.warning {
     	border-color: $warning-color;
     	@include single-box-shadow( 0, rem( 3px ), 0, 0, $warning-color, false );
+    }
+    
+    // D009.5: Alignment
+    .callout.right {
+        text-align: left;
+    }
+    
+    @media ( min-width: 768px ) {
+        
+        // D009.5: Alignment
+        .callout.left {
+            max-width: 25%;
+            float: left;
+            margin: 0 rem( $gutter ) 0 0;
+        }
+        
+        .callout.right {
+            max-width: 25%;
+            float: right;
+            margin: 0 0 0 rem( $gutter );
+        }
+        
+    }
+    
+    // D009.6: Widths
+    @media ( min-width: 768px ) {
+        
+        .callout.three-fourths {
+            width: 75%;
+            max-width: unset;
+        }
+        
+        .callout.half {
+            width: 50%;
+            max-width: unset;
+        }
+        
+        .callout.quarter {
+            width: 25%;
+            max-width: unset;
+        }
+        
     }
     
     /*
@@ -798,7 +823,7 @@ Droplets page container. Droplets classes only work inside this container.
         @include border-radius( rem( 3px ) );
         @include single-box-shadow( 0, rem( 2px ), 0, #d6d6d6 );
         
-        * {
+        th, td {
             border: 0;
             vertical-align: middle;
             border-right: rem( 1px ) solid #e3e3e3;
