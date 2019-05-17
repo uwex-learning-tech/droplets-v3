@@ -1,11 +1,11 @@
 /*
 DROPLETS
-@version: 2.0.0
+@version: 2.0.2
 @author: Ethan Lin
 @url: https://github.com/oel-mediateam/droplets-for-canvas
 @license: The MIT License (MIT)
 Copyright 2018-2019 UWEX CEOEL Media
-    
+ 
 TABLE OF CONTENTS
 --------------------------------------------------------------------------------
   0. VARIABLES ------------------------------------------------------------ D000
@@ -341,15 +341,9 @@ Droplets page container. Droplets classes only work inside this container.
     .columns {
         
         width: 100%;
-    	@include display-flex();
-    	@include flex-flow( row nowrap );
-    	@include justify-content( space-evenly );
     	margin: rem( 12px ) 0;
     	
     	div {
-        	
-            margin-left: rem( $gutter );
-            @include flex( 0 1 50% );
             
             p:first-child {
                 margin-top: 0;
@@ -372,25 +366,45 @@ Droplets page container. Droplets classes only work inside this container.
     	div:first-child {
             margin-left: 0;
     	}
-    	
-    	.wider {
-            @include flex( 0 0 70% );
-    	}
-    	
-    	.aside {
-        	
-            .callout.vertical {
-                width: 100%;
-                margin-left: 0;
-            }
-        	
-    	}
-    	
-    	.vertical-center {
-            @include align-self( center );
-    	}
     
     }
+    
+    @media ( min-width: 768px ) {
+        	
+    	.columns {
+        
+        	@include display-flex();
+        	@include flex-flow( row nowrap );
+        	@include justify-content( space-evenly );
+        	
+        	div {
+            	
+                margin-left: rem( $gutter );
+                @include flex( 0 1 50% );
+            	
+        	}
+        	
+        	.wider {
+                @include flex( 0 0 70% );
+        	}
+        	
+        	.aside {
+            	
+                .callout {
+                    max-width: unset;
+                    margin: 0 0 rem( $gutter ) 0;
+                }
+            	
+        	}
+        	
+        	.vertical-center {
+                @include align-self( center );
+        	}
+        
+        }
+    	
+	}
+    
     
     /*
     D007: EMPHASIS
@@ -900,6 +914,7 @@ Droplets page container. Droplets classes only work inside this container.
         margin: rem( $gutter ) 0;
         
         img {
+            max-width: 100%;
             height: auto;
         }
         
@@ -1002,6 +1017,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     // FOR VIEWPORT < 414px
+/*
     @media ( min-width: 414px ) {
         
         figure {
@@ -1013,6 +1029,7 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
     }
+*/
     
     // FOR VIEWPORT < 768x
     @media ( min-width: 768px ) {
