@@ -1,7 +1,7 @@
 /**
  * DROPLETS
  *
- * @version: 2.0.1
+ * @version: 2.0.2
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-for-canvas
  *
@@ -710,7 +710,9 @@ function enableImgZoom( imgZooms ) {
                 magnifyDiv.style.left = ( magnifyX - magnifyDiv.offsetWidth / 2 ) + 'px';
                 magnifyDiv.style.top = ( magnifyY - magnifyDiv.offsetHeight / 2 ) + 'px';
                 
-                magnifyDiv.style.backgroundPosition = rx + "px " + ry + "px";
+                if ( rx != 100 && ry != 100 ) {
+                    magnifyDiv.style.backgroundPosition = rx + "px " + ry + "px";
+                }
                  
             } else {
                 
@@ -991,7 +993,7 @@ function isOnAllowedDomains() {
         'localhost/', 
         'media.uwex.edu/',
         '.instructure.com/',
-        'laethanlin.local:'
+        'lar18elin.local:'
     ];
     var found = false;
     
