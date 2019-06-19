@@ -446,7 +446,7 @@ Droplets page container. Droplets classes only work inside this container.
     	text-transform: uppercase;
     	white-space: nowrap;
     	background-color: $gray-color;
-    	vertical-align: bottom;
+    	vertical-align: middle;
     	@include border-radius( rem( 3px ) );
     }
     
