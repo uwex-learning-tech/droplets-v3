@@ -1,5 +1,5 @@
 # DROPLETS FOR CANVAS
-**_version 2.0.2_**  
+**_version 2.0.3_**  
 
 A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UWEX CEOEL).
 

@@ -1,6 +1,6 @@
 /*
 DROPLETS
-@version: 2.0.2
+@version: 2.0.3
 @author: Ethan Lin
 @url: https://github.com/oel-mediateam/droplets-for-canvas
 @license: The MIT License (MIT)
@@ -781,6 +781,15 @@ Droplets page container. Droplets classes only work inside this container.
         .danger {
             background-color: $light-danger-color;
             color: $light-danger-text-color;
+        }
+        
+        // label text color fix
+        span.label {
+            color: #fff;
+        }
+        
+        span.label.warning {
+            color: $warning-text-color;
         }
     
     }
@@ -2334,7 +2343,7 @@ Additional adjustments only when loaded on Canvas.net
     }
     
 }
-
+body.uws-droplets-js-disabled #uws-droplets-page,
 #uws-droplets-page.canvas-net.no-js {
     
     // Accordion

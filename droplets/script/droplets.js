@@ -1,7 +1,7 @@
 /**
  * DROPLETS
  *
- * @version: 2.0.2
+ * @version: 2.0.3
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-for-canvas
  *
@@ -12,10 +12,19 @@
 
 "use strict";
 
+// set arrary of allowed domains
+let allowedDomains = [ 
+    'localhost/', 
+    'media.uwex.edu/',
+    '.instructure.com/',
+    'lar18elin.local:'
+];
+
 /**
  * On DOM ready, execute checkEnviroment function.
  * @param {checkEnviroment} fn - the callback to check the enviroment
  */
+
 ( function ready( fn ) {
     
     if ( document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading' ) {
@@ -40,9 +49,17 @@
  */
 function checkEnvironment() {
     
-    if ( isOnAllowedDomains() ) {
-            
-        checkDropletsComponents();
+    let domain = isOnAllowedDomains();
+    
+    switch ( domain ) {
+        
+        case '.instructure.com\/':
+            observeUserContentReady();
+        break;
+        
+        default:
+            checkDropletsComponents();
+        break;
         
     }
     
@@ -984,18 +1001,11 @@ function selectImage( img, contentDiv ) {
  * to make sure it will still work for users on "non-Canvas" environment.
  * @function isOnAllowedDomains
  * @since 2.0.0
- * @return {boolean} true if matched, else false
+ * @return {string} the element in the allowedDomains
  */
 function isOnAllowedDomains() {
     
-    // set arrary of allowed domains
-    var allowedDomains = [ 
-        'localhost/', 
-        'media.uwex.edu/',
-        '.instructure.com/',
-        'lar18elin.local:'
-    ];
-    var found = false;
+    var found = '';
     
     // loop through the allowedDomains array
     Array.prototype.forEach.call( allowedDomains, function( el ) {
@@ -1006,36 +1016,8 @@ function isOnAllowedDomains() {
         // if it matched with DOM/Window URL
         if ( location.href.match( regex ) ) {
             
-            // if the domain is Canvas
-            if ( el === '.instructure.com\/' ) {
-                
-                var page = document.getElementById( 'uws-droplets-page' );
-                
-                if ( page != undefined ) {
-                    
-                    // add canvas-net no matter if it is found or not also as
-                    // it is in Canvas
-                    page.classList.add( 'canvas-net' );
-                    
-                    // check to see if it is on a course content page
-                    found = onCanvasContentPage( /\/pages/ );
-                    
-                    // add no-js class to page container if not content page
-                    if ( found === false ) {
-                        
-                        page.classList.add( 'no-js' );
-                        
-                    }
-                    
-                }                
-              
-                // exit the loop
-                return;
-                
-            }
-            
             // set found to true and exit the loop
-            found = true;
+            found = el;
             return;
             
         }
@@ -1043,6 +1025,86 @@ function isOnAllowedDomains() {
     } )
     
     return found;
+    
+}
+
+/**
+ * Observe the change in DOM to check for the loading Droplets
+ * JavaScript components.
+ * @function observeUserContentReady
+ * @since 2.0.3
+ */
+function observeUserContentReady( mutations, observer ) {
+    
+    const droplets = document.getElementById( 'uws-droplets-page' );
+    
+    if ( !droplets && typeof observer === 'undefined' ) {
+        
+        const obs = new MutationObserver( observeUserContentReady );
+        
+        obs.observe( document.body, {
+            'childList': true
+        } );
+        
+    }
+    
+    if ( droplets ) {
+        
+        if ( typeof observer !== 'undefined' ) {
+            
+            observer.disconnect();
+            
+        }
+        
+        setDropletJs();
+        
+    }
+    
+}
+
+/**
+ * Set and enable Droplets JavaScript components according
+ * when the allowed domain is canvas/instructure.com. Called in 
+ * the observeUserContentReady when the Droplets elements are loaded.
+ * @function setDropletJs
+ * @since 2.0.3
+ */
+function setDropletJs() {
+    
+    let htmlBody = document.getElementsByTagName( 'body' )[0];
+    let page = document.getElementById( 'uws-droplets-page' );
+           
+    if ( page != undefined ) {
+        
+        // add canvas-net no matter if it is found or not also as
+        // it is in Canvas
+        page.classList.add( 'canvas-net' );
+        
+        // check to see if it is on a course content page
+        let isPage = onCanvasContentPage( /\/pages/ );
+        
+        // add no-js class to page container if not content page
+        if ( isPage === false ) {
+            
+            page.classList.add( 'no-js' );
+            
+        } else {
+            
+            if ( htmlBody.classList.contains( 'uws-droplets-js-disabled' ) ) {
+                
+                htmlBody.classList.remove( 'uws-droplets-js-disabled' );
+                
+            }
+            
+            checkDropletsComponents();
+            
+        }
+        
+    } else {
+        
+        htmlBody.classList.add( 'uws-droplets-js-disabled' );
+        
+    }
     
 }
 
@@ -1056,7 +1118,7 @@ function isOnAllowedDomains() {
 function onCanvasContentPage( regex ) {
     
     if ( location.pathname.match( regex ) ) {
-        
+
         return true;
         
     }
