@@ -1,7 +1,7 @@
 /**
  * DROPLETS
  *
- * @version: 2.0.3
+ * @version: 2.0.3_1
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-for-canvas
  *
@@ -54,7 +54,31 @@ function checkEnvironment() {
     switch ( domain ) {
         
         case '.instructure.com\/':
-            observeUserContentReady();
+            
+            if ( document.getElementById( 'uws-droplets-page' ) ) {
+                
+                setDropletJsForCanvas();
+                
+            } else {
+                
+                observeUserContentReady();
+                
+            }
+            
+            setTimeout(function() {
+                
+                let parent = document.getElementsByTagName('body')[0];
+                let pokeDiv = document.createElement('div');
+                
+                pokeDiv.setAttribute('id', 'uws-droplets-poke');
+                parent.append( pokeDiv );
+                
+                let poke = document.getElementById('uws-droplets-poke');
+                
+                parent.removeChild( poke );
+                
+            }, 3000 );
+        
         break;
         
         default:
@@ -1056,7 +1080,7 @@ function observeUserContentReady( mutations, observer ) {
             
         }
         
-        setDropletJs();
+        setDropletJsForCanvas();
         
     }
     
@@ -1064,16 +1088,16 @@ function observeUserContentReady( mutations, observer ) {
 
 /**
  * Set and enable Droplets JavaScript components according
- * when the allowed domain is canvas/instructure.com. Called in 
- * the observeUserContentReady when the Droplets elements are loaded.
- * @function setDropletJs
+ * when the allowed domain is canvas/instructure.com.
+ 
+ * @function setDropletJsForCanvas
  * @since 2.0.3
  */
-function setDropletJs() {
+function setDropletJsForCanvas() {
     
     let htmlBody = document.getElementsByTagName( 'body' )[0];
     let page = document.getElementById( 'uws-droplets-page' );
-           
+    
     if ( page != undefined ) {
         
         // add canvas-net no matter if it is found or not also as
