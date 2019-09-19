@@ -1,5 +1,5 @@
 # DROPLETS FOR CANVAS
-**_version 2.0.3_**  
+**_version 2.0.3_1**  
 
 A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin-Extension division of Continuing Education, Outreach &amp; E-Learning (UWEX CEOEL).
 
@@ -40,4 +40,4 @@ If any bugs/glitches are found in this framework, please report them under the "
 For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/droplets-for-canvas/issues)**" page on GitHub.
 
 ---
-&copy; 2018-2019. Ethan Lin, University of Wisconsin-Extension Division of Continuing Education, Outreach & E-Learning, and Board of Regents. All rights reserved.
+&copy; 2018-2019. Ethan Lin, [Creative Media Services](https://media.uwex.edu), and [University of Wisconsin Extended Campus](https://ce.uwex.edu). All rights reserved.
