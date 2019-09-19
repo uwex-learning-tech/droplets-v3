@@ -27,7 +27,7 @@ TABLE OF CONTENTS
  16. TABS ----------------------------------------------------------------- D016
  17. COLLAPSIBLE ---------------------------------------------------------- D017
  18. RESOURCES ------------------------------------------------------------ D018
- 19. READ MORE ------------------------------------------------------------ D019
+ 19. SHOW MORE ------------------------------------------------------------ D019
  20. REVEAL --------------------------------------------------------------- D020
  21. IMAGE ZOOM ----------------------------------------------------------- D021
  22. LIGHTBOX ------------------------------------------------------------- D022
@@ -1483,7 +1483,7 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .toggle:checked + .lbl-toggle + .collapsible-content {
-            max-height: rem( 350px );
+            max-height: rem( 999px );
         }
         
         .toggle:checked + .lbl-toggle {
@@ -1756,46 +1756,66 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D019: READ MORE
+    D019: SHOW MORE
     --------------------------------------------------------------------------*/
-    .droplets-readmore {
+    .droplets-show-more {
         
         position: relative;
-        height: rem( 250px );
-        overflow: hidden;
+        padding-bottom: rem( 26px );
         
-        *:first-of-type {
-            margin-top: 0;
+        input[type='checkbox'] {
+            display: none;
         }
         
-        .readmore-cntrl {
+        .lbl-toggle {
+            @include display-flex();
+            @include flex-wrap(nowrap);
+            @include align-items( center );
+            @include justify-content ( center );
             position: absolute;
             width: 100%;
-            bottom: 0;
-            background: #fff;
-            @include box-shadow( #fff 0 rem( 0px ) rem( 100px ) rem( 70px ) );
-            border-bottom: rem( 1px ) solid $border-color;
-            cursor: pointer;
-        }
-        
-        .readmore-cntrl:after {
-            display: block;
-            content: '';
-            width: rem( 16px );
-            height: rem( 16px );
-            margin: 0 auto;
-            font-family: 'dropletsIcons';
-            content: '\e000';
-            @include rotate(270deg);
+            font-family: sans-serif;
+            font-size: 70%;
             color: $gray-color;
+            text-transform: uppercase;
+            height: rem( 26px );
+            bottom: 0;
+            cursor: pointer;
+            @include single-box-shadow( 0, rem(-6px), rem(5px), 0, #fff);
         }
         
-        .readmore-cntrl.opened {
-            @include box-shadow( #fff 0 0 0 );
+        .lbl-toggle:before {
+            content: "Show More";
         }
         
-        .readmore-cntrl.opened:after {
-            @include rotate(90deg);
+        .lbl-toggle:after {
+            margin-left: rem( 5px );
+            font-family: 'dropletsIcons';
+            content: '\e001';
+            color: $gray-color;
+            @include rotate( 90deg );
+        }
+        
+        .toggle:checked + .lbl-toggle {
+            @include single-box-shadow( 0, 0, 0, 0, #fff);
+        }
+        
+        .toggle:checked + .lbl-toggle + .panel {
+            max-height: rem( 999px );
+        }
+        
+        .toggle:checked + .lbl-toggle:before {
+            content: "Show Less";
+        }
+        
+        .toggle:checked + .lbl-toggle:after {
+            @include rotate( -90deg );
+        }
+        
+        .panel {
+            max-height: rem( 250px );
+            @include single-transition( max-height, 0.25s, ease-in-out );
+            overflow: hidden;
         }
         
     }
@@ -2023,28 +2043,6 @@ Droplets page container. Droplets classes only work inside this container.
     	table {
             page-break-inside: avoid;
     	}
-    
-        .droplets-tooltip {
-            border-bottom: 0;
-    	}
-    
-        .droplets-tooltip:after {
-            content: " (" attr(title) ")";
-    	}
-    	
-    	a[href].droplets-tooltip:after {
-            content: " (" attr(title) " | Link URL: " attr(href) ")";
-    	}
-    	
-    	.droplets-popover {
-    		border: 0;
-    		background: none;
-    		padding: 0;
-    	}
-    
-    	.droplets-popover:after {
-    		content: " (" attr(title) ")";
-    	}
     	
     	.label {
             color: #000;
@@ -2125,6 +2123,45 @@ Droplets page container. Droplets classes only work inside this container.
             }
             
         }
+        
+        .droplets-show-more {
+            
+            padding-bottom: 0;
+            
+            .lbl-toggle {
+                display: none;
+            }
+            
+            .panel {
+                max-height: none;
+                overflow: unset;
+            }
+            
+        }
+        
+        /* legecy components (to be removed in future version */
+        
+        .droplets-tooltip {
+            border-bottom: 0;
+    	}
+    
+        .droplets-tooltip:after {
+            content: " (" attr(title) ")";
+    	}
+    	
+    	a[href].droplets-tooltip:after {
+            content: " (" attr(title) " | Link URL: " attr(href) ")";
+    	}
+    	
+    	.droplets-popover {
+    		border: 0;
+    		background: none;
+    		padding: 0;
+    	}
+    
+    	.droplets-popover:after {
+    		content: " (" attr(title) ")";
+    	}
         
         .droplets-accordion {
     
@@ -2441,9 +2478,7 @@ To be removed in future versions.
         
     }
     
-    /*
-    D028.2: TABBED CONTENTS
-    --------------------------------------------------------------------------*/
+    /* D028.2: TABBED CONTENTS */
 
     .droplets-tabs {
     
@@ -2556,6 +2591,50 @@ To be removed in future versions.
     
     	}
     
+    }
+    
+    /* D028.3: READ MORE */
+    
+    .droplets-readmore {
+        
+        position: relative;
+        height: rem( 250px );
+        overflow: hidden;
+        
+        *:first-of-type {
+            margin-top: 0;
+        }
+        
+        .readmore-cntrl {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            background: #fff;
+            @include box-shadow( #fff 0 rem( 0px ) rem( 100px ) rem( 70px ) );
+            border-bottom: rem( 1px ) solid $border-color;
+            cursor: pointer;
+        }
+        
+        .readmore-cntrl:after {
+            display: block;
+            content: '';
+            width: rem( 16px );
+            height: rem( 16px );
+            margin: 0 auto;
+            font-family: 'dropletsIcons';
+            content: '\e000';
+            @include rotate(270deg);
+            color: $gray-color;
+        }
+        
+        .readmore-cntrl.opened {
+            @include box-shadow( #fff 0 0 0 );
+        }
+        
+        .readmore-cntrl.opened:after {
+            @include rotate(90deg);
+        }
+        
     }
     
 }
