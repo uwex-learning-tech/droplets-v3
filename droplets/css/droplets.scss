@@ -24,7 +24,7 @@ TABLE OF CONTENTS
  13. HELPERS -------------------------------------------------------------- D013
  14. TOOLTIP -------------------------------------------------------------- D014
  15. POPOVER -------------------------------------------------------------- D015
- 16. TABBED CONTENTS ------------------------------------------------------ D016
+ 16. TABS ----------------------------------------------------------------- D016
  17. COLLAPSIBLE ---------------------------------------------------------- D017
  18. RESOURCES ------------------------------------------------------------ D018
  19. READ MORE ------------------------------------------------------------ D019
@@ -1358,116 +1358,88 @@ Droplets page container. Droplets classes only work inside this container.
     D016: TABBED CONTENTS
     --------------------------------------------------------------------------*/
 
-    .droplets-tabs {
+    .droplets-tabbed {
     
-    	margin: rem( $gutter ) 0;
-    	clear: both;
-    
-    	.tabs {
-    
+    	@include display-flex();
+    	@include flex-wrap( wrap );
+    	background-color: $border-color;
+    	@include single-box-shadow( 0, rem(6px), rem(10px), rem(-4px), rgba(0, 0, 0, 0.3));
+    	margin: rem($gutter) 0;
+    	
+    	input[type='radio'] {
+            display: none;
+        }
+        
+        .lbl-toggle {
             width: 100%;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            border-bottom: rem( 1px ) solid $border-color;
+            padding: rem(20px) rem(30px);
+            background-color: $border-color;
+            font-weight: bold;
+            font-size: 110%;
+            color: $gray-color;
+            cursor: pointer;
+            @include single-transition( background, 0.1s );
+            @include single-transition( color, 0.1s );
+        }
+        
+        .lbl-toggle:hover {
             background-color: $light-gray-color;
-            padding: rem( 8px ) rem( 5px ) 0;
-            float: left;
-            clear: both;
-            @include border-corner-radius( top, left, rem( 3px ) );
-            @include border-corner-radius( top, right, rem( 3px ) );
-    
-            li {
+        }
+        
+        .lbl-toggle:after {
+            position: absolute;
+            right: rem( $gutter );
+            font-family: 'dropletsIcons';
+            content: '\e001';
+            color: $gray-color;
+        }
+        
+        .toggle:focus + .lbl-toggle {
+          @include single-box-shadow( 0, 0, 0, rem(3px), #2aa1c0, inset);
+          z-index: 1;
+        }
+        
+        .toggle:checked + .lbl-toggle {
+            color: $gray-color;
+            background-color: $border-color;
+        }
+        
+        .toggle:checked + .lbl-toggle:after {
+            @include rotate( 90deg );
+        }
+        
+        @media (min-width: 600px) {
             
-                display: block;
-                float: left;
-                margin-bottom: rem( -1px );
-                margin-right: rem( 3px );
-                background-color: #fff;
-                @include border-corner-radius( top, left, rem( 3px ) );
-                @include border-corner-radius( top, right, rem( 3px ) );
-                
-                a, a:visited {
-                    display: block;
-                    padding: rem( 5px ) rem( 10px );
-                    text-decoration: none;
-                    color: $gray-color;
-                }
-                
-                a:hover {
-                    color: #000;
-                }
-            
+            .lbl-toggle {
+                width: auto;
             }
             
-            li:hover {
-            	
-                @include single-box-shadow( 0, rem( -3px ), rem( 2px ), 0, $gray-color );
-                
-                a {
-                    color: #000;
-                }
-            	
-            }
-            
-            .active {
-            	
-                border-top: rem( 1px ) solid #929292;
-                border-right: rem( 1px ) solid #929292;
-                border-left: rem( 1px ) solid #929292;
-                border-bottom: transparent;
-                @include single-box-shadow( 0, rem( -3px ), rem( 2px ), 0, $gray-color );
-                
-                a {
-                    color: #000;
-                }
-            	
-            }
-            
-            .info {
-            	
-                background-color: $info-color;
-                
-                a, a:hover {
-                    color: #fff;
-                }
-            	
-            }
-        	
-            .danger {
-                @extend .info;
-                background-color: $danger-color;
-            }
-            
-            .success {
-                @extend .info;
-                background-color: $success-color;
-            }
-            
-            .warning {
-                @extend .info;
-                background-color: $warning-color;
-            }
-    
-    	}
-    
-    	.tab-contents {
-    
-            border-bottom: rem( 1px ) solid $border-color;
-            clear: both;
-    
-            .tab-section {
+            .lbl-toggle:after {
                 display: none;
-                padding: rem( 6px ) rem( 10px ) 0;
-                background-color: #fff;
             }
-    
-            .active {
-                display: block;
-                @include animation( fadeIn 1s );
+            
+            .toggle:checked + .lbl-toggle {
+                background: #fff;
+                color: #000;
             }
-    
-    	}
+            
+        }
+        
+        .panel {
+          display: none;
+          padding: rem(20px) rem(30px) rem(30px);
+          background: #fff;
+        }
+        
+        @media (min-width: 600px) {
+            .panel {
+                order: 99;
+            }
+        }
+        
+        .toggle:checked + .lbl-toggle + .panel {
+            display: block;
+        }
     
     }
     
@@ -2129,6 +2101,31 @@ Droplets page container. Droplets classes only work inside this container.
             
         }
         
+        .droplets-tabbed {
+            
+            page-break-inside: avoid;
+            
+            .lbl-toggle:after {
+                position: absolute;
+                right: rem( $gutter );
+                font-family: 'dropletsIcons';
+                content: '\e001';
+                color: $gray-color;
+                @include rotate( 90deg );
+            }
+            
+            .lbl-toggle {
+                color: $gray-color;
+                background-color: $border-color;
+            }
+            
+            .panel {
+                display: block;
+                
+            }
+            
+        }
+        
         .droplets-accordion {
     
             .accordion-title {
@@ -2442,6 +2439,123 @@ To be removed in future versions.
             display: none;
         }
         
+    }
+    
+    /*
+    D028.2: TABBED CONTENTS
+    --------------------------------------------------------------------------*/
+
+    .droplets-tabs {
+    
+    	margin: rem( $gutter ) 0;
+    	clear: both;
+    
+    	.tabs {
+    
+            width: 100%;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: rem( 1px ) solid $border-color;
+            background-color: $light-gray-color;
+            padding: rem( 8px ) rem( 5px ) 0;
+            float: left;
+            clear: both;
+            @include border-corner-radius( top, left, rem( 3px ) );
+            @include border-corner-radius( top, right, rem( 3px ) );
+    
+            li {
+            
+                display: block;
+                float: left;
+                margin-bottom: rem( -1px );
+                margin-right: rem( 3px );
+                background-color: #fff;
+                @include border-corner-radius( top, left, rem( 3px ) );
+                @include border-corner-radius( top, right, rem( 3px ) );
+                
+                a, a:visited {
+                    display: block;
+                    padding: rem( 5px ) rem( 10px );
+                    text-decoration: none;
+                    color: $gray-color;
+                }
+                
+                a:hover {
+                    color: #000;
+                }
+            
+            }
+            
+            li:hover {
+            	
+                @include single-box-shadow( 0, rem( -3px ), rem( 2px ), 0, $gray-color );
+                
+                a {
+                    color: #000;
+                }
+            	
+            }
+            
+            .active {
+            	
+                border-top: rem( 1px ) solid #929292;
+                border-right: rem( 1px ) solid #929292;
+                border-left: rem( 1px ) solid #929292;
+                border-bottom: transparent;
+                @include single-box-shadow( 0, rem( -3px ), rem( 2px ), 0, $gray-color );
+                
+                a {
+                    color: #000;
+                }
+            	
+            }
+            
+            .info {
+            	
+                background-color: $info-color;
+                
+                a, a:hover {
+                    color: #fff;
+                }
+            	
+            }
+        	
+            .danger {
+                @extend .info;
+                background-color: $danger-color;
+            }
+            
+            .success {
+                @extend .info;
+                background-color: $success-color;
+            }
+            
+            .warning {
+                @extend .info;
+                background-color: $warning-color;
+            }
+    
+    	}
+    
+    	.tab-contents {
+    
+            border-bottom: rem( 1px ) solid $border-color;
+            clear: both;
+    
+            .tab-section {
+                display: none;
+                padding: rem( 6px ) rem( 10px ) 0;
+                background-color: #fff;
+            }
+    
+            .active {
+                display: block;
+                @include animation( fadeIn 1s );
+            }
+    
+    	}
+    
     }
     
 }
