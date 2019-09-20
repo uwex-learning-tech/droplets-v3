@@ -22,14 +22,14 @@ TABLE OF CONTENTS
  11. IMAGE ---------------------------------------------------------------- D011
  12. ICONS ---------------------------------------------------------------- D012
  13. HELPERS -------------------------------------------------------------- D013
- 14. TOOLTIP -------------------------------------------------------------- D014
- 15. POPOVER -------------------------------------------------------------- D015
- 16. TABS ----------------------------------------------------------------- D016
- 17. COLLAPSIBLE ---------------------------------------------------------- D017
- 18. RESOURCES ------------------------------------------------------------ D018
- 19. SHOW MORE ------------------------------------------------------------ D019
- 20. UNVEIL --------------------------------------------------------------- D020
- 21. LIGHTBOX ------------------------------------------------------------- D022
+ 14. TOOLTIP -❌------------------------------------------------------------ D014
+ 15. POPOVER -❌------------------------------------------------------------ D015
+ 16. TABS -✅--------------------------------------------------------------- D016
+ 17. COLLAPSIBLE -✅-------------------------------------------------------- D017
+ 18. RESOURCES -❌---------------------------------------------------------- D018
+ 19. SHOW MORE -✅---------------------------------------------------------- D019
+ 20. UNVEIL -✅------------------------------------------------------------- D020
+ 21. LIGHTBOX -❌----------------------------------------------------------- D022
  22. ANIMATION ------------------------------------------------------------ D023
  23. FOR PRINTING --------------------------------------------------------- D024
  24. FOOTER --------------------------------------------------------------- D025
@@ -111,6 +111,10 @@ Droplets page container. Droplets classes only work inside this container.
     
     * {
         @include box-sizing( "border-box" );
+    }
+    
+    *:focus {
+        outline: rem( 1px ) dotted black;
     }
     
     /*
@@ -1081,7 +1085,7 @@ Droplets page container. Droplets classes only work inside this container.
     	font-weight: normal;
     	font-variant: normal;
     	text-transform: none;
-    	vertical-align: text-bottom;
+    	vertical-align: baseline;
     	/* Better Font Rendering =========== */
     	-webkit-font-smoothing: antialiased;
     	-moz-osx-font-smoothing: grayscale;
@@ -1093,12 +1097,6 @@ Droplets page container. Droplets classes only work inside this container.
     	font-family: 'collaborativeicon';
     	font-size: 100%;
     }
-    
-    [class^="icon-"]:before,
-    [class*=" icon-"]:before {
-        position: relative;
-    }
-    
     
     // D012.1: Default
     @each $icon, $unicode in
@@ -1192,7 +1190,7 @@ Droplets page container. Droplets classes only work inside this container.
          (learning-resource, "\e69a") {
     
         .flex.icon-#{$icon}:before {
-            color:#40a1a1;
+            color: #40a1a1;
             font-family: "flexicon";
             content: "#{$unicode}";
         }
