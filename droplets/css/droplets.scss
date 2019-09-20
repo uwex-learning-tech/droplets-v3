@@ -2086,14 +2086,8 @@ Droplets page container. Droplets classes only work inside this container.
                 @include rotate( 90deg );
             }
             
-            .lbl-toggle {
-                color: $gray-color;
-                background-color: $border-color;
-            }
-            
             .panel {
                 display: block;
-                
             }
             
         }
