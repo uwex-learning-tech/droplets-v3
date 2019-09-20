@@ -1765,6 +1765,8 @@ Droplets page container. Droplets classes only work inside this container.
         
         position: relative;
         padding-bottom: rem( 26px );
+        background-color: rgba($light-gray-color, 0.5);
+        border: rem( 1px ) solid $border-color;
         
         input[type='checkbox'] {
             display: none;
@@ -1780,11 +1782,14 @@ Droplets page container. Droplets classes only work inside this container.
             font-family: sans-serif;
             font-size: 70%;
             color: $gray-color;
+            background-color: $border-color;
             text-transform: uppercase;
             height: rem( 26px );
             bottom: 0;
             cursor: pointer;
-            @include single-box-shadow( 0, rem(-6px), rem(5px), 0, #fff);
+            border-top: rem( 1px ) solid $border-color;
+            @include single-box-shadow( 0, rem(-6px), rem(5px), 0, $border-color);
+            
         }
         
         .lbl-toggle:before {
@@ -1804,7 +1809,7 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .toggle:checked + .lbl-toggle + .panel {
-            max-height: rem( 999px );
+            height: auto;
         }
         
         .toggle:checked + .lbl-toggle:before {
@@ -1816,8 +1821,8 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .panel {
-            max-height: rem( 250px );
-            @include single-transition( max-height, 0.25s, ease-in-out );
+            height: rem( 242px );
+            padding: rem(10px) rem(30px) rem(20px);
             overflow: hidden;
         }
         
@@ -2102,8 +2107,7 @@ Droplets page container. Droplets classes only work inside this container.
             }
             
             .panel {
-                max-height: none;
-                overflow: unset;
+                height: auto;
             }
             
         }
