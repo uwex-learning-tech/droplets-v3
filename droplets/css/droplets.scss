@@ -26,7 +26,7 @@ TABLE OF CONTENTS
  15. POPOVER -❌------------------------------------------------------------ D015
  16. TABS -✅--------------------------------------------------------------- D016
  17. COLLAPSIBLE -✅-------------------------------------------------------- D017
- 18. RESOURCES -❌---------------------------------------------------------- D018
+ 18. RESOURCE -✅---------------------------------------------------------- D018
  19. SHOW MORE -✅---------------------------------------------------------- D019
  20. UNVEIL -✅------------------------------------------------------------- D020
  21. LIGHTBOX -❌----------------------------------------------------------- D022
@@ -1465,7 +1465,6 @@ Droplets page container. Droplets classes only work inside this container.
             cursor: pointer;
             font-weight: bold;
             font-size: 110%;
-            
         }
         
         .lbl-toggle:hover {
@@ -1508,140 +1507,151 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D018: RESOURCES
+    D018: RESOURCE
     --------------------------------------------------------------------------*/
 
-    .droplets-resources {
-
+    .droplets-resource {
+        
+        width: 100%;
+        min-height: rem( 152px );
         margin: rem( $gutter ) 0;
-    
-        .resource {
-    
-            @include display-flex();
-            @include flex-flow( row wrap );
-            height: rem( 150px );
-            border: rem( 1px ) solid $table-border-color;
-            margin-bottom: rem( $gutter );
-    
-            .image {
+        border: rem(1px) solid $border-color;
+        
+        .type {
+            
+            position: relative;
+            margin: 0;
+            padding-right: rem( 40px );
+            
+            input[type='checkbox'] {
+                display: none;
+            }
+            
+            .lbl-toggle {
+                @include display-flex();
+                @include flex-wrap(nowrap);
+                @include align-items( center );
+                @include justify-content ( center );
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: rem( 40px );
+                height: 100%;
+                background-color: $light-gray-color;
+                cursor: pointer; 
+            }
+            
+            .lbl-toggle:hover {
+                background-color: $border-color;
+            }
+            
+            .lbl-toggle:after {
+                font-family: 'dropletsIcons';
+                content: '\e001';
+                color: $gray-color;
+                @include rotate(90deg);
+            }
+            
+            .cover {
                 
                 @include display-flex();
-    	        @include flex-flow( column nowrap );
-    	        @include justify-content( center );
-    	        @include align-items( center );
-                @include flex( 1 0 11.02% );
-                position: relative;
-                background-color: $border-color;
-    
-                img {
-                    position: absolute;
-                    display: block;
+                @include flex-flow( row nowrap );
+                min-height: rem( 152px );
+                
+                .image {
+                    
+                    min-width: rem( 100px );
+                    max-width: rem( 100px );
+                    background-color: $border-color;
+                    
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                    
+                }
+                
+                .image:after {
+                    @include display-flex();
+                    @include flex-wrap(nowrap);
+                    @include align-items( center );
+                    @include justify-content( center );
                     width: 100%;
                     height: 100%;
-                    top: 0;
-                    left: 0;
-                    z-index: 10;
-                    object-fit: cover;
-                }
-    
-            }
-            
-            .image:after {
-                font-family: 'dropletsIcons';
-                font-size: rem( 25px );
-                text-align: center;
-                color: $gray-color;
-            }
-    
-            .cover-info {
-                
-                @include flex( 2 0 83.98% );
-                padding: rem( $gutter / 2 );
-                @include box-sizing( "border-box" );
-                min-height: rem( 148px );
-    
-                .title {
-                    position: relative;
-                    font-size: rem( 18px );
-                    line-height: rem( 22px );
-                    font-weight: bold;
-                    overflow : hidden;
-                }
-    
-                .author-source {
-                    @extend .title;
-                    font-size: rem( 14px );
-                    line-height: rem( 18px );
-                    font-weight: normal;
-                    margin: rem( 6px ) 0;
-                }
-    
-                .meta {
-    
-                    position: relative;
-                    font-size: rem( 12px );
-                    line-height: rem( 12px );
-                    text-transform: lowercase;
-                    margin: 0;
-                    padding: 0;
-                    list-style: none;
-                    margin: rem( 10px ) 0 rem( 10px ) rem( 19px );
-    
-                    li {
-    
-                        display: inline-block;
-                        margin: 0 0 rem( 8px ) rem( 4px );
-    
-                        .label {
-                            font-size: rem( 12px );
-                            font-weight: normal;
-                            text-transform: lowercase;
-                            padding: rem( 2px ) rem( 4px );
-                        }
-    
-                    }
-    
-                }
-    
-                .meta:before {
-                    position: absolute;
                     font-family: 'dropletsIcons';
-                    content: "\e006";
+                    font-size: 200%;
                     color: $gray-color;
-                    font-style: normal;
-                    left: rem( -19px );
                 }
-    
-            }
-            
-            .arrow {
-    	        @include display-flex();
-    	        @include flex-flow( column nowrap );
-    	        @include justify-content( center );
-    	        @include align-items( center );
-    	        @include flex( 1 0 5% );
-    	        background-color: $light-gray-color;
-    	        cursor: pointer;
-            }
-            
-            .arrow:after {
-                display: block;
-                content: '';
-                width: rem( 16px );
-                height: rem( 16px );
-                font-family: 'dropletsIcons';
-                content: '\e000';
-                color: $gray-color;
-                @include rotate( 270deg );
-            }
-    
-            .expandable-panel {
                 
-                display: none;
-                background-color: $table-bg-color;
-                border-top: rem( 1px ) solid $border-color;
-                padding: 0 rem( 10px );
+                .meta {
+                    
+                    padding: rem( 10px );
+                    
+                    .title {
+                        font-size: 110%;
+                        font-weight: bold;
+                    }
+                    
+                    .author-source {
+                        font-size: 80%;
+                        margin-top: rem( 5px );
+                    }
+                    
+                    .tags {
+    
+                        position: relative;
+                        font-size: 75%;
+                        text-transform: lowercase;
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                        margin: rem( 10px ) 0 rem( 10px ) rem( 19px );
         
+                        li {
+        
+                            display: inline-block;
+                            margin: 0 0 rem( 4px ) rem( 4px );
+        
+                            .label {
+                                font-size: rem( 12px );
+                                font-weight: normal;
+                                text-transform: lowercase;
+                                padding: rem( 2px ) rem( 4px );
+                            }
+        
+                        }
+        
+                    }
+        
+                    .tags:before {
+                        position: absolute;
+                        font-family: 'dropletsIcons';
+                        content: "\e006";
+                        color: $gray-color;
+                        font-style: normal;
+                        left: rem( -19px );
+                    }
+                    
+                }
+                
+            }
+            
+            .toggle:checked + .lbl-toggle:after {
+                @include rotate( -90deg );
+            }
+            
+            .toggle:checked + .lbl-toggle + .cover + .panel {
+                display: block;
+            }
+            
+            .panel {
+            
+                display: none;
+                background-color: rgba($light-gray-color, 0.5);
+                padding: rem(10px) rem(20px);
+                
                 .actions {
                     
                     margin-left: 0;
@@ -1670,81 +1680,58 @@ Droplets page container. Droplets classes only work inside this container.
                     }
         
                 }
+                
+            }
+            
+            .book {
+    
+                .image:after {
+                    content: "\e003";
+                }
         
-            } 
-    
-        }
+            }
         
-        .expanded {
-            
-            height: auto;
-            
-            .expandable-panel {
-                display: block;
-                width: 100%;
+            .tools {
+        
+                .image:after {
+                    content: "\e007";
+                }
+        
+            }
+        
+            .video {
+        
+                .image:after {
+                    content: "\e008";
+                }
+        
+            }
+        
+            .document {
+        
+                .image:after {
+                    content: "\e005";
+                }
+        
+            }
+        
+            .website {
+        
+                .image:after {
+                    content: "\e009";
+                }
+        
+            }
+        
+            .audio {
+        
+                .image:after {
+                    content: "\e002";
+                }
+        
             }
             
-            .arrow:after {
-                @include rotate( 90deg );
-            }
-            
-        }
-    
-        .resource:hover {
-            
-            .arrow {
-                background-color: $border-color;
-            }
-            
-        }
-    
-        .book {
-    
-            .image:after {
-                content: "\e003";
-            }
-    
-        }
-    
-        .tools {
-    
-            .image:after {
-                content: "\e007";
-            }
-    
-        }
-    
-        .video {
-    
-            .image:after {
-                content: "\e008";
-            }
-    
-        }
-    
-        .document {
-    
-            .image:after {
-                content: "\e005";
-            }
-    
-        }
-    
-        .website {
-    
-            .image:after {
-                content: "\e009";
-            }
-    
-        }
-    
-        .audio {
-    
-            .image:after {
-                content: "\e002";
-            }
-    
-        }
+        } 
     
     }
     
@@ -2176,6 +2163,24 @@ Droplets page container. Droplets classes only work inside this container.
                 
             }
             
+        }
+        
+        .droplets-resource {
+            
+            .type {
+                
+                padding-right: 0;
+                
+                .lbl-toggle {
+                    display: none; 
+                }
+                
+                .panel {
+                    display: block;
+                }
+                
+            } 
+        
         }
         
         /* legecy components (to be removed in future version) */
@@ -2717,6 +2722,245 @@ To be removed in future versions.
             display: none;
         }
         
+    }
+    
+    /* D026.6: RESOURCES */
+    
+    .droplets-resources {
+
+        margin: rem( $gutter ) 0;
+    
+        .resource {
+    
+            @include display-flex();
+            @include flex-flow( row wrap );
+            height: rem( 150px );
+            border: rem( 1px ) solid $table-border-color;
+            margin-bottom: rem( $gutter );
+    
+            .image {
+                
+                @include display-flex();
+    	        @include flex-flow( column nowrap );
+    	        @include justify-content( center );
+    	        @include align-items( center );
+                @include flex( 1 0 11.02% );
+                position: relative;
+                background-color: $border-color;
+    
+                img {
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    object-fit: cover;
+                }
+    
+            }
+            
+            .image:after {
+                font-family: 'dropletsIcons';
+                font-size: rem( 25px );
+                text-align: center;
+                color: $gray-color;
+            }
+    
+            .cover-info {
+                
+                @include flex( 2 0 83.98% );
+                padding: rem( $gutter / 2 );
+                @include box-sizing( "border-box" );
+                min-height: rem( 148px );
+    
+                .title {
+                    position: relative;
+                    font-size: rem( 18px );
+                    line-height: rem( 22px );
+                    font-weight: bold;
+                    overflow : hidden;
+                }
+    
+                .author-source {
+                    @extend .title;
+                    font-size: rem( 14px );
+                    line-height: rem( 18px );
+                    font-weight: normal;
+                    margin: rem( 6px ) 0;
+                }
+    
+                .meta {
+    
+                    position: relative;
+                    font-size: rem( 12px );
+                    line-height: rem( 12px );
+                    text-transform: lowercase;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    margin: rem( 10px ) 0 rem( 10px ) rem( 19px );
+    
+                    li {
+    
+                        display: inline-block;
+                        margin: 0 0 rem( 8px ) rem( 4px );
+    
+                        .label {
+                            font-size: rem( 12px );
+                            font-weight: normal;
+                            text-transform: lowercase;
+                            padding: rem( 2px ) rem( 4px );
+                        }
+    
+                    }
+    
+                }
+    
+                .meta:before {
+                    position: absolute;
+                    font-family: 'dropletsIcons';
+                    content: "\e006";
+                    color: $gray-color;
+                    font-style: normal;
+                    left: rem( -19px );
+                }
+    
+            }
+            
+            .arrow {
+    	        @include display-flex();
+    	        @include flex-flow( column nowrap );
+    	        @include justify-content( center );
+    	        @include align-items( center );
+    	        @include flex( 1 0 5% );
+    	        background-color: $light-gray-color;
+    	        cursor: pointer;
+            }
+            
+            .arrow:after {
+                display: block;
+                content: '';
+                width: rem( 16px );
+                height: rem( 16px );
+                font-family: 'dropletsIcons';
+                content: '\e000';
+                color: $gray-color;
+                @include rotate( 270deg );
+            }
+    
+            .expandable-panel {
+                
+                display: none;
+                background-color: $table-bg-color;
+                border-top: rem( 1px ) solid $border-color;
+                padding: 0 rem( 10px );
+        
+                .actions {
+                    
+                    margin-left: 0;
+                    margin-bottom: rem( 10px );
+                    padding: 0;
+                    list-style: none;
+        
+                    li {
+                        
+                        display: inline-block;
+                        
+                        a {
+                            
+                            .ui-icon {
+                                display: none;
+                            }
+                            
+                        }
+                        
+                        .youtubed {
+                            img {
+                                display: none;
+                            }
+                        }
+                        
+                    }
+        
+                }
+        
+            } 
+    
+        }
+        
+        .expanded {
+            
+            height: auto;
+            
+            .expandable-panel {
+                display: block;
+                width: 100%;
+            }
+            
+            .arrow:after {
+                @include rotate( 90deg );
+            }
+            
+        }
+    
+        .resource:hover {
+            
+            .arrow {
+                background-color: $border-color;
+            }
+            
+        }
+    
+        .book {
+    
+            .image:after {
+                content: "\e003";
+            }
+    
+        }
+    
+        .tools {
+    
+            .image:after {
+                content: "\e007";
+            }
+    
+        }
+    
+        .video {
+    
+            .image:after {
+                content: "\e008";
+            }
+    
+        }
+    
+        .document {
+    
+            .image:after {
+                content: "\e005";
+            }
+    
+        }
+    
+        .website {
+    
+            .image:after {
+                content: "\e009";
+            }
+    
+        }
+    
+        .audio {
+    
+            .image:after {
+                content: "\e002";
+            }
+    
+        }
+    
     }
     
 }
