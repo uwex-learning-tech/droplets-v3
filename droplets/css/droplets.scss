@@ -22,19 +22,18 @@ TABLE OF CONTENTS
  11. IMAGE ---------------------------------------------------------------- D011
  12. ICONS ---------------------------------------------------------------- D012
  13. HELPERS -------------------------------------------------------------- D013
- 14. TOOLTIP -❌------------------------------------------------------------ D014
- 15. POPOVER -❌------------------------------------------------------------ D015
- 16. TABS -✅--------------------------------------------------------------- D016
- 17. COLLAPSIBLE -✅-------------------------------------------------------- D017
- 18. RESOURCE -✅---------------------------------------------------------- D018
- 19. SHOW MORE -✅---------------------------------------------------------- D019
- 20. UNVEIL -✅------------------------------------------------------------- D020
- 21. POPUP -❌-------------------------------------------------------------- D021
- 22. FOR PRINTING --------------------------------------------------------- D022
- 23. FOOTER --------------------------------------------------------------- D023
- 24. FONT FACES ----------------------------------------------------------- D024
- 25. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D025
- 26. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D026
+ 14. TIP ------------------------------------------------------------------ D014
+ 15. TABS ----------------------------------------------------------------- D015
+ 16. COLLAPSIBLE ---------------------------------------------------------- D016
+ 17. RESOURCE ------------------------------------------------------------- D017
+ 18. SHOW MORE ------------------------------------------------------------ D018
+ 19. UNVEIL --------------------------------------------------------------- D019
+ 20. POPUP ---------------------------------------------------------------- D020
+ 21. FOR PRINTING --------------------------------------------------------- D021
+ 22. FOOTER --------------------------------------------------------------- D022
+ 23. FONT FACES ----------------------------------------------------------- D023
+ 24. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D024
+ 25. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D025
 ----------------------------------------------------------------------------- */
 
 /*
@@ -1217,134 +1216,16 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D014: TOOLTIP
+    D014: TIP
     --------------------------------------------------------------------------*/
     
-    .droplets-tooltip {
-        
+    .droplets-tip {
     	cursor: help;
     	border-bottom: rem( 1px ) dotted $gray-color;
-    	
-    	.tooltip {
-            position: absolute;
-            display: block;
-            min-width: rem( 150px );
-            font-size: rem( 14px );
-            line-height: rem( 16px );
-            z-index: 99;
-        }
-        
-        .tooltip-inner {
-            max-width: rem( 250px );
-            padding: rem( 5px ) rem( 5px ) rem( 7px );
-            color: #fff;
-            text-align: left;
-            background-color: #333;
-            @include border-radius( rem( 3px ) );
-            @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
-        }
-    	
     }
     
     /*
-    D015: POPOVER
-    --------------------------------------------------------------------------*/
-    .droplets-popover {
-        
-        display: inline;
-        position: relative;
-        border: rem( 1px ) solid $gray-color;
-        padding: rem( 2px ) rem( 4px );
-        @include border-radius( rem( 3px ) );
-        cursor: pointer;
-        
-        .popover {
-            
-            display: none;
-            position: absolute;
-            width: rem( 200px );
-            max-width: rem( 300px );
-            text-align: left;
-            white-space: normal;
-            color: #fff;
-            background-color: #333;
-            font-weight: normal;
-            font-size: rem( 14px );
-            line-height: rem( 16px );
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            @include border-radius( rem( 6px ) );
-            @include single-box-shadow( 0, 0, rem( 8px ), 0, #000 );
-            top: 0;
-            left: 0;
-            z-index: 999;
-            
-            .popover-content {
-                padding: rem( 8px ) rem( $gutter );
-            }
-            
-        }
-        
-        .popover:after {
-            position: absolute;
-            display: block;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-top-color: #333;
-            border-style: solid;
-            border-width: rem( 10px );
-            border-bottom-width: 0;
-            bottom: rem( -10px );
-            left: 50%;
-            margin-left: rem( -10px );
-            content: '';
-        }
-        
-        .popover.right:after {
-
-            top: calc( 50% - 10px );
-            left: 0;
-            border-left-width: 0;
-            border-right-color: #333;
-            border-top-color: transparent;
-            border-bottom-width: rem(10px);
-            bottom: unset;
-            right: unset;
-        
-        }
-        
-        .popover.left:after {
-
-            top: calc( 50% - 10px );
-            right: rem( -10px );
-            border-right-width: 0;
-            border-left-color: #333;
-            border-top-color: transparent;
-            border-bottom-width: rem(10px);
-            left: unset;
-            bottom: unset;
-        
-        }
-        
-        .popover.bottom:after {
-            
-            top: rem( -10px );
-            border-top-width: 0;
-            border-top-color: transparent;
-            border-bottom-color: #333;
-            border-bottom-width: rem(10px);
-        
-        }
-        
-    }
-
-    .droplets-popover:hover,
-    .droplets-popover.active {
-        background-color: $light-gray-color;
-    }
-    
-    /*
-    D016: TABBED CONTENTS
+    D015: TABBED CONTENTS
     --------------------------------------------------------------------------*/
 
     .droplets-tabbed {
@@ -1444,7 +1325,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D017: COLLAPSIBLE
+    D016: COLLAPSIBLE
     --------------------------------------------------------------------------*/
     
     .droplets-collapsible {
@@ -1507,7 +1388,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D018: RESOURCE
+    D017: RESOURCE
     --------------------------------------------------------------------------*/
 
     .droplets-resource {
@@ -1736,7 +1617,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D019: SHOW MORE
+    D018: SHOW MORE
     --------------------------------------------------------------------------*/
     .droplets-show-more {
         
@@ -1806,7 +1687,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D020: UNVEIL
+    D019: UNVEIL
     --------------------------------------------------------------------------*/
     
     .droplets-unveil {
@@ -1877,7 +1758,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D021: POPUP
+    D020: POPUP
     --------------------------------------------------------------------------*/
     .droplets-popup {
         
@@ -1991,7 +1872,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D022: FOR PRINTING
+    D021: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -2162,6 +2043,18 @@ Droplets page container. Droplets classes only work inside this container.
             }
         
         }
+        
+        .droplets-tip {
+            border-bottom: 0;
+    	}
+    
+        .droplets-tip:after {
+            content: " (" attr(title) ")";
+    	}
+    	
+    	a[href].droplets-tool:after {
+            content: " (" attr(title) " | Link URL: " attr(href) ")";
+    	}
         
         /* legecy components (to be removed in future version) */
         
@@ -2350,7 +2243,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D023: Footer
+D022: Footer
 --------------------------------------------------------------------------------
 Contains copyright info. Added automatically via CSS.
 ----------------------------------------------------------------------------- */
@@ -2372,7 +2265,7 @@ Contains copyright info. Added automatically via CSS.
 }
 
 /*
-D024: FONT FACES
+D023: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */
@@ -2399,7 +2292,7 @@ Setting up font face. To support font icons used inside page container.
 }
 
 /*
-D025: LEGACY/DEPRECATED COMPONENTS
+D024: LEGACY/DEPRECATED COMPONENTS
 --------------------------------------------------------------------------------
 Components that are no longer to be used or should not continue to be used.
 To be removed in future versions.
@@ -2407,7 +2300,7 @@ To be removed in future versions.
 
 #uws-droplets-page {
     
-    /* D025.1: ACCORDION */
+    /* D024.1: ACCORDION */
     
     .droplets-accordion {
     
@@ -2502,7 +2395,7 @@ To be removed in future versions.
         
     }
     
-    /* D025.2: TABBED CONTENTS */
+    /* D024.2: TABBED CONTENTS */
 
     .droplets-tabs {
     
@@ -2617,7 +2510,7 @@ To be removed in future versions.
     
     }
     
-    /* D025.3: READ MORE */
+    /* D024.3: READ MORE */
     
     .droplets-readmore {
         
@@ -2661,7 +2554,7 @@ To be removed in future versions.
         
     }
     
-    /* D025.4: IMAGE ZOOM */
+    /* D024.4: IMAGE ZOOM */
     
     .droplets-image-zoom {
         
@@ -2694,7 +2587,7 @@ To be removed in future versions.
         
     }
     
-    /* D025.5: REVEAL */
+    /* D024.5: REVEAL */
 
     .droplets-reveal {
         
@@ -2704,7 +2597,7 @@ To be removed in future versions.
         
     }
     
-    /* D025.6: RESOURCES */
+    /* D024.6: RESOURCES */
     
     .droplets-resources {
 
@@ -2943,7 +2836,7 @@ To be removed in future versions.
     
     }
     
-    /* D025.7: LIGHTBOX */
+    /* D024.7: LIGHTBOX */
     
     .droplets-lightbox {
         
@@ -3102,10 +2995,134 @@ To be removed in future versions.
         @include animation( fadeIn 1s );
     }
     
+    /* D024.8: TOOLTIP */
+    
+    .droplets-tooltip {
+        
+    	cursor: help;
+    	border-bottom: rem( 1px ) dotted $gray-color;
+    	
+    	.tooltip {
+            position: absolute;
+            display: block;
+            min-width: rem( 150px );
+            font-size: rem( 14px );
+            line-height: rem( 16px );
+            z-index: 99;
+        }
+        
+        .tooltip-inner {
+            max-width: rem( 250px );
+            padding: rem( 5px ) rem( 5px ) rem( 7px );
+            color: #fff;
+            text-align: left;
+            background-color: #333;
+            @include border-radius( rem( 3px ) );
+            @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
+        }
+    	
+    }
+    
+    /* D024.9: POPOVER */
+    
+    .droplets-popover {
+        
+        display: inline;
+        position: relative;
+        border: rem( 1px ) solid $gray-color;
+        padding: rem( 2px ) rem( 4px );
+        @include border-radius( rem( 3px ) );
+        cursor: pointer;
+        
+        .popover {
+            
+            display: none;
+            position: absolute;
+            width: rem( 200px );
+            max-width: rem( 300px );
+            text-align: left;
+            white-space: normal;
+            color: #fff;
+            background-color: #333;
+            font-weight: normal;
+            font-size: rem( 14px );
+            line-height: rem( 16px );
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            @include border-radius( rem( 6px ) );
+            @include single-box-shadow( 0, 0, rem( 8px ), 0, #000 );
+            top: 0;
+            left: 0;
+            z-index: 999;
+            
+            .popover-content {
+                padding: rem( 8px ) rem( $gutter );
+            }
+            
+        }
+        
+        .popover:after {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-top-color: #333;
+            border-style: solid;
+            border-width: rem( 10px );
+            border-bottom-width: 0;
+            bottom: rem( -10px );
+            left: 50%;
+            margin-left: rem( -10px );
+            content: '';
+        }
+        
+        .popover.right:after {
+
+            top: calc( 50% - 10px );
+            left: 0;
+            border-left-width: 0;
+            border-right-color: #333;
+            border-top-color: transparent;
+            border-bottom-width: rem(10px);
+            bottom: unset;
+            right: unset;
+        
+        }
+        
+        .popover.left:after {
+
+            top: calc( 50% - 10px );
+            right: rem( -10px );
+            border-right-width: 0;
+            border-left-color: #333;
+            border-top-color: transparent;
+            border-bottom-width: rem(10px);
+            left: unset;
+            bottom: unset;
+        
+        }
+        
+        .popover.bottom:after {
+            
+            top: rem( -10px );
+            border-top-width: 0;
+            border-top-color: transparent;
+            border-bottom-color: #333;
+            border-bottom-width: rem(10px);
+        
+        }
+        
+    }
+
+    .droplets-popover:hover,
+    .droplets-popover.active {
+        background-color: $light-gray-color;
+    }
+    
 }
 
 /*
-D026: CANVAS.NET ADJUSTMENTS
+D025: CANVAS.NET ADJUSTMENTS
 --------------------------------------------------------------------------------
 Additional adjustments only when loaded on Canvas.net
 ----------------------------------------------------------------------------- */
