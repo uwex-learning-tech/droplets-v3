@@ -29,13 +29,12 @@ TABLE OF CONTENTS
  18. RESOURCE -✅---------------------------------------------------------- D018
  19. SHOW MORE -✅---------------------------------------------------------- D019
  20. UNVEIL -✅------------------------------------------------------------- D020
- 21. LIGHTBOX -❌----------------------------------------------------------- D022
- 22. ANIMATION ------------------------------------------------------------ D023
- 23. FOR PRINTING --------------------------------------------------------- D024
- 24. FOOTER --------------------------------------------------------------- D025
- 25. FONT FACES ----------------------------------------------------------- D026
- 26. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D027
- 27. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D028
+ 21. POPUP -❌-------------------------------------------------------------- D021
+ 22. FOR PRINTING --------------------------------------------------------- D022
+ 23. FOOTER --------------------------------------------------------------- D023
+ 24. FONT FACES ----------------------------------------------------------- D024
+ 25. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D025
+ 26. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D026
 ----------------------------------------------------------------------------- */
 
 /*
@@ -1164,16 +1163,17 @@ Droplets page container. Droplets classes only work inside this container.
     
     @each $icon, $unicode in
     
-        (arrow-left, "\e000"),
-        (arrow-right, "\e001"),
-        (audio, "\e002"),
-        (book, "\e003"),
-        (close, "\e004"),
-        (document, "\e005"),
-        (tags, "\e006"),
-        (tools, "\e007"),
-        (video, "\e008"),
-        (website, "\e009") {
+        (arrow-left, "\e001"),
+        (arrow-right, "\e002"),
+        (audio, "\e003"),
+        (book, "\e004"),
+        (close, "\e005"),
+        (document, "\e006"),
+        (tags, "\e007"),
+        (tools, "\e008"),
+        (video, "\e009"),
+        (website, "\e00a"),
+        (zoomin, "\e00b") {
         
         .sg-icon-#{$icon}:before {
             content: "#{$unicode}";
@@ -1377,7 +1377,7 @@ Droplets page container. Droplets classes only work inside this container.
             position: absolute;
             right: rem( $gutter );
             font-family: 'dropletsIcons';
-            content: '\e001';
+            content: '\e002';
             color: $gray-color;
         }
         
@@ -1475,7 +1475,7 @@ Droplets page container. Droplets classes only work inside this container.
             position: absolute;
             right: rem( $gutter );
             font-family: 'dropletsIcons';
-            content: '\e001';
+            content: '\e002';
             color: $gray-color;
         }
         
@@ -1547,7 +1547,7 @@ Droplets page container. Droplets classes only work inside this container.
             
             .lbl-toggle:after {
                 font-family: 'dropletsIcons';
-                content: '\e001';
+                content: '\e002';
                 color: $gray-color;
                 @include rotate(90deg);
             }
@@ -1628,7 +1628,7 @@ Droplets page container. Droplets classes only work inside this container.
                     .tags:before {
                         position: absolute;
                         font-family: 'dropletsIcons';
-                        content: "\e006";
+                        content: "\e007";
                         color: $gray-color;
                         font-style: normal;
                         left: rem( -19px );
@@ -1686,7 +1686,7 @@ Droplets page container. Droplets classes only work inside this container.
             .book {
     
                 .image:after {
-                    content: "\e003";
+                    content: "\e004";
                 }
         
             }
@@ -1694,7 +1694,7 @@ Droplets page container. Droplets classes only work inside this container.
             .tools {
         
                 .image:after {
-                    content: "\e007";
+                    content: "\e008";
                 }
         
             }
@@ -1702,7 +1702,7 @@ Droplets page container. Droplets classes only work inside this container.
             .video {
         
                 .image:after {
-                    content: "\e008";
+                    content: "\e009";
                 }
         
             }
@@ -1710,7 +1710,7 @@ Droplets page container. Droplets classes only work inside this container.
             .document {
         
                 .image:after {
-                    content: "\e005";
+                    content: "\e006";
                 }
         
             }
@@ -1718,7 +1718,7 @@ Droplets page container. Droplets classes only work inside this container.
             .website {
         
                 .image:after {
-                    content: "\e009";
+                    content: "\e00a";
                 }
         
             }
@@ -1726,7 +1726,7 @@ Droplets page container. Droplets classes only work inside this container.
             .audio {
         
                 .image:after {
-                    content: "\e002";
+                    content: "\e003";
                 }
         
             }
@@ -1776,7 +1776,7 @@ Droplets page container. Droplets classes only work inside this container.
         .lbl-toggle:after {
             margin-left: rem( 5px );
             font-family: 'dropletsIcons';
-            content: '\e001';
+            content: '\e002';
             color: $gray-color;
             @include rotate( 90deg );
         }
@@ -1877,171 +1877,121 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D021: LIGHTBOX
+    D021: POPUP
     --------------------------------------------------------------------------*/
-    .droplets-lightbox {
+    .droplets-popup {
         
-        @include display-flex();
-        @include flex-flow( row wrap );
-        margin: rem( $gutter ) 0 0;
+        margin: rem( $gutter ) 0;
         
-        img {
-            @include flex( 0 1 32% );
+        .thumbnail {
+            
+            position: relative;
             display: block;
-            cursor: pointer;
-            margin: 0 rem( $gutter ) rem( $gutter ) 0;
-            padding: rem( 6px );
-            @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
-        }
-        
-        figure {
-        
-            @include flex( 0 1 32% );
-            display: block;
-            cursor: pointer;
-            margin: 0 rem( $gutter ) rem( $gutter ) 0;
+            width: rem(263px + $gutter);
+            height: rem(146px + $gutter);
+            border: rem($gutter) solid #fff;
+            @include single-box-shadow(0, 0, rem(6px), 0, $border-color);
             
             img {
-                padding: 0;
-                margin: 0;
+                display: block;
                 width: 100%;
-                padding: rem( 6px );
-                @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
+                height: 100%;
+                object-fit: cover;
             }
             
-            figcaption {
-                display: block;
-                cursor: text;
-            }
-        
         }
         
-        .lightbox-error {
+        .thumbnail::before {
             position: absolute;
-            width: 100%;
-        }
-    
-    }
-    
-    .droplets-lightbox-overlay {
-        
-        display: none;
-        position: fixed;
-        @include flex-flow( column nowrap );
-        @include align-items( center );
-        @include justify-content( center );
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: rgba( 255, 255, 255, 0.85 );
-        z-index: 11;
-        
-        .overlay-content {
-            
-            display: block;
-            height: auto;
-            
-            img {
-                display: block;
-                width: 100%;
-                height: auto;
-                max-width: 90vw;
-                max-height: 90vh;
-                object-fit: contain;
-                @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
-            }
-            
-            .caption {
-                font-size: rem( 14px );
-                padding: 0 rem( $gutter );
-                font-style: italic;
-                margin-bottom: 0;
-            }
-            
+            bottom: rem( 0px );
+            right: rem( 1px );
+            font-family: 'dropletsIcons';
+            content: "\e00b";
+            color: $gray-color;
+            font-size: 115%;
+            z-index: 1;
         }
         
-        .overlay-left-arrow {
+        .thumbnail::after {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0; 
+            height: 0; 
+            border-style: solid;
+            border-width: 0 0 50px 50px;
+            border-color: transparent transparent #fff transparent;
+            @include rotate(360deg);
+            content: " ";
+        }
+        
+        .overlay {
+            
             @include display-flex();
-            @include align-items( center );
             @include justify-content( center );
-            position: absolute;
-            left: rem( 84px );
-            width: rem( 30px );
-            height: rem( 30px );
-            background-color: #fff;
-            text-decoration: none;
-            cursor: pointer;
-            @include opacity( 0.25 );
-            @include border-radius( 100% );
-            color: $gray-color;
+            @include align-items( center );
+            background-color: rgba(0, 0, 0, 0.95);
+            visibility: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+            
+            &:target {
+                visibility: visible;
+            }
+            
+            .content {
+                max-height: 100%;
+                overflow: auto;
+            }
+            
+            .figure {
+                
+                display: block;
+                padding: rem( $gutter );
+                margin: 0;
+                
+                .img-caption {
+                    display: block;
+                    color: #fff;
+                    margin-top: rem( $gutter / 2 );
+                }
+                
+                img {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                }
+                
+            }
+            
+            .closeBtn {
+                position: absolute;
+                width: rem( 24px );
+                height: rem( 25px );
+                top: rem( $gutter );
+                right: rem( $gutter );
+                font-size: rem( 24px );
+                color: $light-gray-color;
+                margin: 0;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            
+            .closeBtn:after {
+                font-family: 'dropletsIcons';
+                content: '\e005';
+            }
+            
         }
-        
-        .overlay-left-arrow:hover {
-            @include opacity( 1 );
-        }
-        
-        .overlay-left-arrow:after {
-            font-family: 'dropletsIcons';
-            content: '\e000';
-        }
-        
-        .overlay-right-arrow {
-            @extend .overlay-left-arrow;
-            right: rem( 84px );
-            left: unset;
-        }
-        
-        .overlay-right-arrow:after {
-            content: '\e001';
-        }
-        
-        .overlay-close-btn {
-            position: absolute;
-            width: rem( 24px );
-            height: rem( 25px );
-            top: rem( $gutter );
-            right: rem( $gutter );
-            font-size: rem( 24px );
-            color: $gray-color;
-            margin: 0;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        
-        .overlay-close-btn:after {
-            font-family: 'dropletsIcons';
-            content: '\e004';
-        }
-        
-        .overlay-close-btn:hover {
-            color: inherit;
-            border-border: $gray-color;
-        }
-        
+    
     }
     
     /*
-    D022: ANIMATION
-    --------------------------------------------------------------------------*/
-    
-    @include keyframes( fadeIn ) {
-        from { @include opacity(0); }
-        to { @include opacity(1); }
-	}
-	
-	@include keyframes( fadeOut ) {
-        from { @include opacity(1); }
-        to { @include opacity(0); }
-	}
-    
-    .show-overlay {
-        @include display-flex();
-        @include animation( fadeIn 1s );
-    }
-    
-    /*
-    D023: FOR PRINTING
+    D022: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -2112,8 +2062,6 @@ Droplets page container. Droplets classes only work inside this container.
         
         .droplets-tabbed {
             
-            page-break-inside: avoid;
-            
             .lbl-toggle:after {
                 position: absolute;
                 right: rem( $gutter );
@@ -2180,6 +2128,38 @@ Droplets page container. Droplets classes only work inside this container.
                 }
                 
             } 
+        
+        }
+        
+        .droplets-popup {
+            
+            .thumbnail {
+                display: none;
+            }
+            
+            .overlay {
+                
+                display: block;
+                background-color: transparent;
+                visibility: visible;
+                position: unset;
+                z-index: unset;
+                
+                .figure {
+                    
+                    padding: 0;
+                    
+                    .img-caption {
+                        color: #000;
+                    }
+                    
+                }
+                
+                .closeBtn {
+                    display: none;
+                }
+                
+            }
         
         }
         
@@ -2370,7 +2350,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D024: Footer
+D023: Footer
 --------------------------------------------------------------------------------
 Contains copyright info. Added automatically via CSS.
 ----------------------------------------------------------------------------- */
@@ -2392,7 +2372,7 @@ Contains copyright info. Added automatically via CSS.
 }
 
 /*
-D025: FONT FACES
+D024: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */
@@ -2413,13 +2393,13 @@ Setting up font face. To support font icons used inside page container.
 
 @font-face {
     font-family: 'dropletsIcons';
-    src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
+    src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 /*
-D026: LEGACY/DEPRECATED COMPONENTS
+D025: LEGACY/DEPRECATED COMPONENTS
 --------------------------------------------------------------------------------
 Components that are no longer to be used or should not continue to be used.
 To be removed in future versions.
@@ -2427,7 +2407,7 @@ To be removed in future versions.
 
 #uws-droplets-page {
     
-    /* D026.1: ACCORDION */
+    /* D025.1: ACCORDION */
     
     .droplets-accordion {
     
@@ -2481,7 +2461,7 @@ To be removed in future versions.
             position: absolute;
             right: rem( $gutter );
             font-family: 'dropletsIcons';
-            content: '\e001';
+            content: '\e002';
             color: $gray-color;
         }
     
@@ -2522,7 +2502,7 @@ To be removed in future versions.
         
     }
     
-    /* D026.2: TABBED CONTENTS */
+    /* D025.2: TABBED CONTENTS */
 
     .droplets-tabs {
     
@@ -2637,7 +2617,7 @@ To be removed in future versions.
     
     }
     
-    /* D026.3: READ MORE */
+    /* D025.3: READ MORE */
     
     .droplets-readmore {
         
@@ -2666,7 +2646,7 @@ To be removed in future versions.
             height: rem( 16px );
             margin: 0 auto;
             font-family: 'dropletsIcons';
-            content: '\e000';
+            content: '\e001';
             @include rotate(270deg);
             color: $gray-color;
         }
@@ -2681,7 +2661,7 @@ To be removed in future versions.
         
     }
     
-    /* D026.4: IMAGE ZOOM */
+    /* D025.4: IMAGE ZOOM */
     
     .droplets-image-zoom {
         
@@ -2714,7 +2694,7 @@ To be removed in future versions.
         
     }
     
-    /* D026.5: REVEAL */
+    /* D025.5: REVEAL */
 
     .droplets-reveal {
         
@@ -2724,7 +2704,7 @@ To be removed in future versions.
         
     }
     
-    /* D026.6: RESOURCES */
+    /* D025.6: RESOURCES */
     
     .droplets-resources {
 
@@ -2821,7 +2801,7 @@ To be removed in future versions.
                 .meta:before {
                     position: absolute;
                     font-family: 'dropletsIcons';
-                    content: "\e006";
+                    content: "\e007";
                     color: $gray-color;
                     font-style: normal;
                     left: rem( -19px );
@@ -2845,7 +2825,7 @@ To be removed in future versions.
                 width: rem( 16px );
                 height: rem( 16px );
                 font-family: 'dropletsIcons';
-                content: '\e000';
+                content: '\e001';
                 color: $gray-color;
                 @include rotate( 270deg );
             }
@@ -2916,7 +2896,7 @@ To be removed in future versions.
         .book {
     
             .image:after {
-                content: "\e003";
+                content: "\e004";
             }
     
         }
@@ -2924,7 +2904,7 @@ To be removed in future versions.
         .tools {
     
             .image:after {
-                content: "\e007";
+                content: "\e008";
             }
     
         }
@@ -2932,7 +2912,7 @@ To be removed in future versions.
         .video {
     
             .image:after {
-                content: "\e008";
+                content: "\e009";
             }
     
         }
@@ -2940,7 +2920,7 @@ To be removed in future versions.
         .document {
     
             .image:after {
-                content: "\e005";
+                content: "\e006";
             }
     
         }
@@ -2948,7 +2928,7 @@ To be removed in future versions.
         .website {
     
             .image:after {
-                content: "\e009";
+                content: "\e00a";
             }
     
         }
@@ -2956,17 +2936,176 @@ To be removed in future versions.
         .audio {
     
             .image:after {
-                content: "\e002";
+                content: "\e003";
             }
     
         }
     
     }
     
+    /* D025.7: LIGHTBOX */
+    
+    .droplets-lightbox {
+        
+        @include display-flex();
+        @include flex-flow( row wrap );
+        margin: rem( $gutter ) 0 0;
+        
+        img {
+            @include flex( 0 1 32% );
+            display: block;
+            cursor: pointer;
+            margin: 0 rem( $gutter ) rem( $gutter ) 0;
+            padding: rem( 6px );
+            @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
+        }
+        
+        figure {
+        
+            @include flex( 0 1 32% );
+            display: block;
+            cursor: pointer;
+            margin: 0 rem( $gutter ) rem( $gutter ) 0;
+            
+            img {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                padding: rem( 6px );
+                @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
+            }
+            
+            figcaption {
+                display: block;
+                cursor: text;
+            }
+        
+        }
+        
+        .lightbox-error {
+            position: absolute;
+            width: 100%;
+        }
+    
+    }
+    
+    .droplets-lightbox-overlay {
+        
+        display: none;
+        position: fixed;
+        @include flex-flow( column nowrap );
+        @include align-items( center );
+        @include justify-content( center );
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba( 255, 255, 255, 0.85 );
+        z-index: 11;
+        
+        .overlay-content {
+            
+            display: block;
+            height: auto;
+            
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+                max-width: 90vw;
+                max-height: 90vh;
+                object-fit: contain;
+                @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
+            }
+            
+            .caption {
+                font-size: rem( 14px );
+                padding: 0 rem( $gutter );
+                font-style: italic;
+                margin-bottom: 0;
+            }
+            
+        }
+        
+        .overlay-left-arrow {
+            @include display-flex();
+            @include align-items( center );
+            @include justify-content( center );
+            position: absolute;
+            left: rem( 84px );
+            width: rem( 30px );
+            height: rem( 30px );
+            background-color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            @include opacity( 0.25 );
+            @include border-radius( 100% );
+            color: $gray-color;
+        }
+        
+        .overlay-left-arrow:hover {
+            @include opacity( 1 );
+        }
+        
+        .overlay-left-arrow:after {
+            font-family: 'dropletsIcons';
+            content: '\e001';
+        }
+        
+        .overlay-right-arrow {
+            @extend .overlay-left-arrow;
+            right: rem( 84px );
+            left: unset;
+        }
+        
+        .overlay-right-arrow:after {
+            content: '\e002';
+        }
+        
+        .overlay-close-btn {
+            position: absolute;
+            width: rem( 24px );
+            height: rem( 25px );
+            top: rem( $gutter );
+            right: rem( $gutter );
+            font-size: rem( 24px );
+            color: $gray-color;
+            margin: 0;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .overlay-close-btn:after {
+            font-family: 'dropletsIcons';
+            content: '\e005';
+        }
+        
+        .overlay-close-btn:hover {
+            color: inherit;
+            border-border: $gray-color;
+        }
+        
+    }
+    
+    @include keyframes( fadeIn ) {
+        from { @include opacity(0); }
+        to { @include opacity(1); }
+	}
+	
+	@include keyframes( fadeOut ) {
+        from { @include opacity(1); }
+        to { @include opacity(0); }
+	}
+    
+    .show-overlay {
+        @include display-flex();
+        @include animation( fadeIn 1s );
+    }
+    
 }
 
 /*
-D027: CANVAS.NET ADJUSTMENTS
+D026: CANVAS.NET ADJUSTMENTS
 --------------------------------------------------------------------------------
 Additional adjustments only when loaded on Canvas.net
 ----------------------------------------------------------------------------- */
