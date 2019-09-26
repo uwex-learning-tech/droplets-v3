@@ -164,9 +164,10 @@ Droplets page container. Droplets classes only work inside this container.
     // D005.2: Drop caps - revisit in future for CSS Initial Letter support
     .dropcap:first-letter {
         float: left;
-        font-size: 200%;
+        font-size: 280%;
+        line-height: 0.9;
         font-weight: bold;
-        padding: rem( 4px ) rem( 4px ) 0 0;
+        padding: 0 rem( 4px ) 0 0;
     }
     
     // D005.3: blockquote
