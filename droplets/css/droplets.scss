@@ -1241,6 +1241,7 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .lbl-toggle {
+            position: relative;
             margin-top: rem( 5px );
             width: 100%;
             padding: rem(10px) rem(15px);
@@ -1278,6 +1279,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         .panel {
             display: none;
+            width: 100%;
             padding: rem(20px) rem(30px);
             background-color: rgba($light-gray-color, 0.5);
             border-bottom: rem( 1px ) solid $border-color;
