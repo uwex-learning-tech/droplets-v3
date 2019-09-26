@@ -1222,7 +1222,8 @@ Droplets page container. Droplets classes only work inside this container.
     
     .droplets-tip {
     	cursor: help;
-    	border-bottom: rem( 1px ) dotted $gray-color;
+    	text-decoration: underline dotted;
+    	//border-bottom: rem( 1px ) dotted $gray-color;
     }
     
     /*
@@ -2060,7 +2061,8 @@ Droplets page container. Droplets classes only work inside this container.
         /* legecy components (to be removed in future version) */
         
         .droplets-tooltip {
-            border-bottom: 0;
+            text-decoration: none;
+            //border-bottom: 0;
     	}
     
         .droplets-tooltip:after {
@@ -3001,7 +3003,8 @@ To be removed in future versions.
     .droplets-tooltip {
         
     	cursor: help;
-    	border-bottom: rem( 1px ) dotted $gray-color;
+    	text-decoration: underline dotted;
+    	//border-bottom: rem( 1px ) dotted $gray-color;
     	
     	.tooltip {
             position: absolute;
