@@ -1623,7 +1623,7 @@ Droplets page container. Droplets classes only work inside this container.
     /*
     D018: SHOW MORE
     --------------------------------------------------------------------------*/
-    .droplets-show-more {
+    .droplets-showmore {
         
         position: relative;
         padding-bottom: rem( 26px );
@@ -1684,7 +1684,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         .panel {
             height: rem( 242px );
-            padding: rem(10px) rem(30px) rem(20px);
+            padding: rem(20px) rem(30px) 0;
             overflow: hidden;
         }
         
@@ -1962,7 +1962,7 @@ Droplets page container. Droplets classes only work inside this container.
             
         }
         
-        .droplets-show-more {
+        .droplets-showmore {
             
             padding-bottom: 0;
             
