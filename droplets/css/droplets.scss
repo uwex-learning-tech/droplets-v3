@@ -1079,7 +1079,6 @@ Droplets page container. Droplets classes only work inside this container.
     --------------------------------------------------------------------------*/
     
     .iconCommons {
-        speak: none;
     	font-style: normal;
     	font-weight: normal;
     	font-variant: normal;
@@ -2983,7 +2982,7 @@ To be removed in future versions.
         
         .overlay-close-btn:hover {
             color: inherit;
-            border-border: $gray-color;
+            border-color: $gray-color;
         }
         
     }
