@@ -1445,29 +1445,32 @@ Droplets page container. Droplets classes only work inside this container.
                 
                 .image {
                     
+                    position: relative;
+                    @include display-flex();
+                    @include align-items( center );
+                    @include justify-content( center );
                     min-width: rem( 100px );
                     max-width: rem( 100px );
                     background-color: $border-color;
                     
                     img {
                         display: block;
+                        position: relative;
                         width: 100%;
                         height: 100%;
+                        z-index: 1;
                         object-fit: cover;
                     }
                     
                 }
                 
                 .image:after {
-                    @include display-flex();
-                    @include flex-wrap(nowrap);
-                    @include align-items( center );
-                    @include justify-content( center );
-                    width: 100%;
-                    height: 100%;
+                    position: absolute;
+                    display: block;
                     font-family: 'dropletsIcons';
                     font-size: 200%;
                     color: $gray-color;
+                    z-index: 0;
                 }
                 
                 .meta {
@@ -1568,55 +1571,55 @@ Droplets page container. Droplets classes only work inside this container.
                 
             }
             
-            .book {
+        }
+        
+        .book {
     
-                .image:after {
-                    content: "\e004";
-                }
-        
+            .image:after {
+                content: "\e004";
             }
-        
-            .tools {
-        
-                .image:after {
-                    content: "\e008";
-                }
-        
+    
+        }
+    
+        .tools {
+    
+            .image:after {
+                content: "\e008";
             }
-        
-            .video {
-        
-                .image:after {
-                    content: "\e009";
-                }
-        
+    
+        }
+    
+        .video {
+    
+            .image:after {
+                content: "\e009";
             }
-        
-            .document {
-        
-                .image:after {
-                    content: "\e006";
-                }
-        
+    
+        }
+    
+        .document {
+    
+            .image:after {
+                content: "\e006";
             }
-        
-            .website {
-        
-                .image:after {
-                    content: "\e00a";
-                }
-        
+    
+        }
+    
+        .website {
+    
+            .image:after {
+                content: "\e00a";
             }
-        
-            .audio {
-        
-                .image:after {
-                    content: "\e003";
-                }
-        
+    
+        }
+    
+        .audio {
+    
+            .image:after {
+                content: "\e003";
             }
-            
-        } 
+    
+        }
     
     }
     
@@ -1751,7 +1754,7 @@ Droplets page container. Droplets classes only work inside this container.
         .panel {
             
             margin: 0;
-            padding: rem(10px) rem(30px);
+            padding: rem(20px) rem(30px) 0;
             
             .hidden-content {
                 display: none;
