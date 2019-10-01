@@ -1434,6 +1434,7 @@ Droplets page container. Droplets classes only work inside this container.
                 content: '\e002';
                 color: $gray-color;
                 @include rotate(90deg);
+                margin-right: rem(3px);
             }
             
             .cover {
@@ -1658,6 +1659,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         .lbl-toggle:before {
             content: "Show More";
+            margin-right: rem(-3px);
         }
         
         .lbl-toggle:after {
@@ -1727,6 +1729,7 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .lbl-toggle:before {
+            margin-right: rem(-3px);
             content: "Show";
         }
         
