@@ -345,9 +345,9 @@ Droplets page container. Droplets classes only work inside this container.
     .columns {
         
         width: 100%;
-    	
+
     	div {
-            
+
             figure:first-child {
                 margin-top: 0;
             }
@@ -360,7 +360,23 @@ Droplets page container. Droplets classes only work inside this container.
     	
     	div:first-child {
             margin-left: 0;
-    	}
+        }
+        
+        // for a grid of popups
+        .droplets-popup {
+
+            margin: 0 0 rem( $gutter) 0;
+
+            .thumbnail {
+                width: 100%;
+                height: rem(200px - $gutter);
+            }
+
+            .overlay {
+                margin: 0;
+            }
+            
+        }
     
     }
     
@@ -369,15 +385,20 @@ Droplets page container. Droplets classes only work inside this container.
     	.columns {
         
         	@include display-flex();
-        	@include flex-flow( row nowrap );
+        	@include flex-flow( row wrap );
         	@include justify-content( space-evenly );
-        	margin: rem( $gutter * -1 ) 0;
-        	
+            
+            .row {
+                @include display-flex();
+                @include flex-flow( row nowrap );
+                @include justify-content( space-evenly );
+                @include flex( 0 1 100% );
+                margin: rem( $gutter ) 0 0 0;
+            }
+
         	div {
-            	
-                margin-left: rem( $gutter );
+                //margin-left: rem( $gutter );
                 @include flex( 0 1 50% );
-            	
         	}
         	
         	.wider {
@@ -395,7 +416,12 @@ Droplets page container. Droplets classes only work inside this container.
         	
         	.vertical-center {
                 @include align-self( center );
-        	}
+            }
+            
+            // for a grid of popups
+            .droplets-popup {
+                margin: 0 0 0 rem( $gutter);
+            }
         
         }
     	
@@ -1778,7 +1804,7 @@ Droplets page container. Droplets classes only work inside this container.
             position: relative;
             display: block;
             width: rem(263px + $gutter);
-            height: rem(146px + $gutter);
+            height: rem(200px - $gutter);
             border: rem($gutter) solid #fff;
             @include single-box-shadow(0, 0, rem(6px), 0, $border-color);
             
@@ -1843,6 +1869,7 @@ Droplets page container. Droplets classes only work inside this container.
                 display: block;
                 padding: rem( $gutter );
                 margin: 0;
+                height: 100%;
                 
                 .img-caption {
                     display: block;
@@ -1852,23 +1879,49 @@ Droplets page container. Droplets classes only work inside this container.
                 
                 img {
                     display: block;
-                    width: 100%;
-                    height: auto;
+                    width: auto;
+                    height: 95%;
+                    object-fit: contain;
                 }
                 
             }
             
-            .closeBtn {
+            .prevBtn, .nextBtn, .closeBtn {
                 position: absolute;
                 width: rem( 24px );
                 height: rem( 25px );
-                top: rem( $gutter );
-                right: rem( $gutter );
+                top: calc(50% - 25px);
                 font-size: rem( 24px );
                 color: $light-gray-color;
-                margin: 0;
+                margin: 0 0 0 rem(-5px);
                 cursor: pointer;
                 text-decoration: none;
+            }
+            
+            .prevBtn {
+                left: rem( $gutter );
+                right: unset;
+            }
+
+            .prevBtn:after {
+                font-family: 'dropletsIcons';
+                content: '\e001';
+            }
+
+            .nextBtn {
+                left: unset;
+                right: rem( $gutter );
+            }
+            
+            .nextBtn:after {
+                font-family: 'dropletsIcons';
+                content: '\e002';
+            }
+
+            .closeBtn {
+                top: rem( $gutter );
+                left: unset;
+                right: rem( $gutter );
             }
             
             .closeBtn:after {
