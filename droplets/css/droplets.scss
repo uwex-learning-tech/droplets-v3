@@ -3190,6 +3190,18 @@ D025: CANVAS.NET ADJUSTMENTS
 --------------------------------------------------------------------------------
 Additional adjustments only when loaded on Canvas.net
 ----------------------------------------------------------------------------- */
+#uws-droplets-page {
+
+    .generic-wrapper, .storybook-wrapper, .audio-wrapper {
+
+        iframe {
+            border: none;
+            overflow: hidden;
+        }
+    
+    }
+
+}
 
 #uws-droplets-page.canvas-net {
     
