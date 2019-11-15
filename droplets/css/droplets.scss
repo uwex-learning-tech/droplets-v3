@@ -93,6 +93,8 @@ Setting COMPASS imports. Extends the SASS.
 @import "compass/css3/flexbox";
 @import "compass/css3/animation";
 
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i&display=swap');
+
 /*
 D003: UWS DROPLETS PAGE
 --------------------------------------------------------------------------------
@@ -106,6 +108,9 @@ Droplets page container. Droplets classes only work inside this container.
     max-width: rem( 940px );
     margin: 0;
     padding: 0;
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
     
     * {
         @include box-sizing( "border-box" );
@@ -153,6 +158,39 @@ Droplets page container. Droplets classes only work inside this container.
     D005: TYPOGRAPHY
     --------------------------------------------------------------------------*/
     
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 700;
+        margin: rem( 6px ) 0;
+    }
+
+    h1 {
+        font-size: rem( 32px );
+    }
+
+    h2 {
+        font-size: rem( 28px );
+    }
+
+    h3 {
+        font-size: rem( 24px );
+    }
+
+    h4 {
+        font-size: rem( 20px );
+    }
+
+    h5 {
+        font-size: rem( 18px );
+    }
+
+    h6 {
+        font-size: rem(  16px );
+    }
+
+    p {
+        margin: rem( 6px ) 0;
+    }
+
     // D005.1: Paragraph lead
     .lead {
         font-size: rem( 18px );
@@ -164,10 +202,10 @@ Droplets page container. Droplets classes only work inside this container.
     // D005.2: Drop caps - revisit in future for CSS Initial Letter support
     .dropcap:first-letter {
         float: left;
-        font-size: 280%;
-        line-height: 0.9;
-        font-weight: bold;
-        padding: 0 rem( 4px ) 0 0;
+        font-size: 250%;
+        line-height: 1.2;
+        font-weight: 700;
+        margin-right: rem( 5px );
     }
     
     // D005.3: blockquote
