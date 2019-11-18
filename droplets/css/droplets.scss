@@ -45,7 +45,9 @@ Setting up variables. Define colors and spacing.
 $font-size: 16px;
 $light-font-weight: 300;
 $border-color: #e9e9e9;
+$hr-color: #c7cdd1;
 $gutter: 16px;
+$margin-spacing: 10px;
 
 $table-border-color: #727272;
 $table-bg-color: #f1f1f1;
@@ -108,9 +110,10 @@ Droplets page container. Droplets classes only work inside this container.
     max-width: rem( 940px );
     margin: 0;
     padding: 0;
+    font-size: rem( $font-size );
     font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.25;
     
     * {
         @include box-sizing( "border-box" );
@@ -127,7 +130,7 @@ Droplets page container. Droplets classes only work inside this container.
     .section-header {
         
         padding: 0 0 rem( 8px ) 0;
-        margin-bottom: rem( $gutter );
+        margin: rem( $margin-spacing ) 0;
     	border-bottom: rem( 1px ) solid $border-color;
     
     	h2 {
@@ -158,9 +161,11 @@ Droplets page container. Droplets classes only work inside this container.
     D005: TYPOGRAPHY
     --------------------------------------------------------------------------*/
     
+    // D005.1: Headings
     h1, h2, h3, h4, h5, h6 {
         font-weight: 700;
-        margin: rem( 6px ) 0;
+        line-height: 1.3;
+        margin: rem( $margin-spacing ) 0;
     }
 
     h1 {
@@ -187,31 +192,31 @@ Droplets page container. Droplets classes only work inside this container.
         font-size: rem(  16px );
     }
 
+    // D005.2: Paragraph
     p {
-        margin: rem( 6px ) 0;
+        margin: rem( $margin-spacing ) 0;
     }
 
-    // D005.1: Paragraph lead
     .lead {
         font-size: rem( 18px );
         font-weight: $light-font-weight;
         line-height: rem( 27px );
-        margin: 0 0 rem( $gutter );
     }
     
-    // D005.2: Drop caps - revisit in future for CSS Initial Letter support
+    // D005.3: Drop caps - revisit in future for CSS Initial Letter support
     .dropcap:first-letter {
         float: left;
         font-size: 250%;
-        line-height: 1.2;
+        line-height: 1;
         font-weight: 700;
         margin-right: rem( 5px );
     }
     
-    // D005.3: blockquote
+    // D005.4: blockquote
     blockquote {
         
-    	padding: rem( 8px ) rem( 20px );
+        padding: rem( 8px ) rem( 20px );
+        margin: rem( $margin-spacing ) 0;
     	border-left: rem( 5px ) solid $light-gray-color;
     
     	p {
@@ -231,7 +236,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     }
     
-    // D005.4: right align block quote
+    // D005.5: right align block quote
     .pull-right {
     	padding-right: rem ( $gutter );
     	padding-left: 0;
@@ -240,7 +245,7 @@ Droplets page container. Droplets classes only work inside this container.
     	text-align: right;
     }
     
-    // D005.5: replace block quote border with a quote mark
+    // D005.6: replace block quote border with a quote mark
     .with-quote-mark {
 
     	border: 0;
@@ -267,7 +272,12 @@ Droplets page container. Droplets classes only work inside this container.
         vertical-align: rem( -36px );
     }
     
-    // D005.6: remove unordered & ordered list bullets
+    // D005.7: unordered & ordered lists
+    ul, ol {
+        margin: rem( $margin-spacing ) 0;
+    }
+
+    // D005.8: remove unordered & ordered list bullets
     .no-bullet {
     
         list-style: none;
@@ -278,7 +288,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     }
     
-    // D005.7: text indentations
+    // D005.9: text indentations
     .indent {
     	text-indent: rem( 40px );
     }
@@ -292,7 +302,7 @@ Droplets page container. Droplets classes only work inside this container.
         text-indent: rem( -40px );
     }
     
-    // D005.8: buttons
+    // D005.10: buttons
     .btn {
     	display: inline-block;
     	background-color: $gray-color;
@@ -305,7 +315,7 @@ Droplets page container. Droplets classes only work inside this container.
     	cursor: pointer;
     	border: 0 solid #404040;
     	@include box-sizing( "border-box" );
-    	@include border-radius( rem( 3px ) );
+    	@include border-radius( rem( 10px ) );
     }
     
     .btn:hover {
@@ -363,7 +373,7 @@ Droplets page container. Droplets classes only work inside this container.
         padding: rem(5px);
     }
     
-    // D005.9: text alignments
+    // D005.11: text alignments
     @each $pos in (left),
                   (right),
                   (center),
@@ -374,6 +384,73 @@ Droplets page container. Droplets classes only work inside this container.
             @if $pos == justify { text-justify: newspaper }
         }
     
+    }
+
+    // D005.12: horizontal rules and alts
+    hr {
+        margin: rem( $margin-spacing ) 0;
+        border: 0;
+        height: rem( 1px );
+        background: $hr-color;
+    }
+
+    hr.none {
+        background: transparent;
+    }
+
+    hr.none.with-arrow {
+        margin: rem( $margin-spacing ) 0;
+    }
+
+    hr.none.with-arrow::after {
+        display: none;
+    }
+
+    hr.fade {
+        background-image: linear-gradient(to right, $hr-color, $table-border-color, $hr-color);
+    }
+
+    hr.dashed {
+        border-bottom: rem( 1px ) dashed $hr-color;
+        background: $table-border-color;
+    }
+
+    hr.double-line {
+        padding: 0;
+        border: none;
+        border-top: medium double $hr-color;
+        color: $hr-color;
+        background-color: transparent;
+    }
+
+    hr.thick {
+        height: rem( 3px );
+    }
+
+    hr.double-spacing {
+        margin: rem( $margin-spacing * 2) 0;
+    }
+
+    hr.triple-spacing {
+        margin: rem( $margin-spacing * 3) 0;
+    }
+
+    hr.with-arrow {
+        position: relative;
+        margin: rem( $margin-spacing * 2 ) 0;
+        overflow: visible;
+    }
+
+    hr.with-arrow::after {
+        position: absolute;
+        content: " ";
+        top: 0;
+        left: calc(50% - 20px);
+        width: 0;
+        height: 0;
+        border-left: rem( 10px ) solid transparent;
+        border-right: rem( 10px ) solid transparent;
+        border-top: rem( 10px ) solid $hr-color;
     }
     
     /*
@@ -500,14 +577,15 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D008.1: labels
     .label {
-    	padding: rem( 2px ) rem( 6px );
-    	font-weight: bold;
+        padding: rem( 4px ) rem( 8px );
+        font-size: 75%;
+    	font-weight: 700;
     	color: #ffffff;
     	text-transform: uppercase;
     	white-space: nowrap;
     	background-color: $gray-color;
     	vertical-align: middle;
-    	@include border-radius( rem( 3px ) );
+    	@include border-radius( rem( 15px ) );
     }
     
     .label.success {
@@ -541,7 +619,7 @@ Droplets page container. Droplets classes only work inside this container.
     // D009.1: Default
     .callout {
     
-    	margin: rem( $gutter ) 0;
+    	margin: rem( $margin-spacing ) 0;
     	padding: rem( $gutter ) rem( $gutter * 2 ) rem( $gutter ) rem( $gutter );
     	background-color: $light-gray-color;
     	border-color: $gray-color;
@@ -1263,7 +1341,7 @@ Droplets page container. Droplets classes only work inside this container.
     /*
     D013: HELPERS
     --------------------------------------------------------------------------*/
-    
+
     @media ( min-width: 768px ) {
         
         // clear fix for floating elements
@@ -1297,7 +1375,10 @@ Droplets page container. Droplets classes only work inside this container.
     
     	@include display-flex();
     	@include flex-wrap( wrap );
-    	margin: rem($gutter) 0;
+        margin: rem($margin-spacing) 0;
+        
+        @include border-radius( rem(10px) );
+        overflow: hidden;
     	
     	input[type='radio'] {
             display: none;
@@ -1359,7 +1440,7 @@ Droplets page container. Droplets classes only work inside this container.
         .droplets-tabbed {
             
             background-color: $border-color;
-            @include single-box-shadow( 0, rem(6px), rem(10px), rem(-4px), rgba(0, 0, 0, 0.3));
+            //@include single-box-shadow( 0, rem(6px), rem(10px), rem(-4px), rgba(0, 0, 0, 0.3));
             
             .lbl-toggle {
                 width: auto;
