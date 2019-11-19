@@ -445,15 +445,15 @@ Droplets page container. Droplets classes only work inside this container.
         background: $hr-color;
     }
 
-    hr.none {
+    hr.no-line {
         background: transparent;
     }
 
-    hr.none.with-arrow {
+    hr.no-line.with-arrow {
         margin: rem( $margin-spacing ) 0;
     }
 
-    hr.none.with-arrow::after {
+    hr.no-line.with-arrow::after {
         display: none;
     }
 
