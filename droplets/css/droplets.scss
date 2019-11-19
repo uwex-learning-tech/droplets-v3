@@ -52,6 +52,8 @@ $margin-spacing: 10px;
 $table-border-color: #727272;
 $table-bg-color: #f1f1f1;
 
+$light-color: #e2e6ea;
+$dark-color: #23272b;
 $gray-color: #757575;
 $success-color: #1E8533;
 $info-color: #018298;
@@ -64,6 +66,24 @@ $light-info-color: #CBE9EF;
 $light-warning-color: #FFF1C6;
 $light-danger-color: #F7D1D5;
 
+$dark-light-color: #c5c8ca;
+$dark-dark-color: #1d2124;
+$dark-gray-color: #515151;
+$dark-success-color: #145822;
+$dark-info-color: #005d6d;
+$dark-warning-color: #d09709;
+$dark-danger-color: #a5232f;
+
+$light-btn-hover-color: #f8f9fa;
+$dark-btn-hover-color: #343a40;
+$gray-btn-hover-color: #888787;
+$success-btn-hover-color: #229a3a;
+$info-btn-hover-color: #019cb7;
+$warning-btn-hover-color: #f9be2d;
+$danger-btn-hover-color: #ef3344;
+
+$light-text-color: #212529;
+$dark-text-color: #fff;
 $warning-text-color: #4F4F4F;
 $light-warning-text-color: #654A01;
 $light-info-text-color: #0B4A55;
@@ -304,8 +324,9 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D005.10: buttons
     .btn {
-    	display: inline-block;
-    	background-color: $gray-color;
+        display: inline-block;
+        position: relative;
+        background-color: $gray-color;
     	padding: rem( 8px ) rem( $gutter );
     	font-size: rem( 18px );
     	color: #fff;
@@ -315,57 +336,87 @@ Droplets page container. Droplets classes only work inside this container.
     	cursor: pointer;
     	border: 0 solid #404040;
     	@include box-sizing( "border-box" );
-    	@include border-radius( rem( 10px ) );
+        @include border-radius( rem( 5px ) );
+        @include single-box-shadow(0, rem( 3px ), 0, 0, $dark-gray-color);
+        @include single-transition( background-color, 0.25s, linear );
     }
     
     .btn:hover {
-    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 3px ), #1A1C1E, inset );
+        background-color: $gray-btn-hover-color;
+    }
+
+    .btn.light {
+        color: $light-text-color;
+        background-color: $light-color;
+        @include single-box-shadow(0, 3px, 0, 0, $dark-light-color);
+    }
+
+    .btn.light:hover {
+        background-color: $light-btn-hover-color;
+    }
+
+    .btn.dark {
+        background-color: $dark-color;
+        @include single-box-shadow(0, 3px, 0, 0, $dark-dark-color);
+    }
+
+    .btn.dark:hover {
+        background-color: $dark-btn-hover-color;
     }
 
     .btn.info {
-    	background-color: $info-color;
+        background-color: $info-color;
+        @include single-box-shadow(0, 3px, 0, 0, $dark-info-color);
     }
     
     .btn.info:hover {
-    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 3px ), $light-info-text-color, inset );
+        background-color: $info-btn-hover-color;
     }
     
     .btn.success {
-    	background-color: $success-color;
+        background-color: $success-color;
+        @include single-box-shadow(0, 3px, 0, 0, $dark-success-color);
     }
     
     .btn.success:hover {
-    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 3px ), $light-success-text-color, inset );
+        background-color: $success-btn-hover-color;
     }
     
     .btn.warning {
         color: $warning-text-color;
     	background-color: $warning-color;
-    	background-image: none;
+        background-image: none;
+        @include single-box-shadow(0, 3px, 0, 0, $dark-warning-color);
     }
     
     .btn.warning:hover {
-    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 3px ), $light-warning-text-color, inset );
+        background-color: $warning-btn-hover-color;
     }
     
     .btn.danger {
         background-color: $danger-color;
+        @include single-box-shadow(0, 3px, 0, 0, $dark-danger-color);
     }
     
     .btn.danger:hover {
-    	@include single-box-shadow( 0, 0, rem( 6px ), rem( 3px ), $light-danger-text-color, inset );
+        background-color: $danger-btn-hover-color;
     }
     
     .btn.block {
     	display: block;
     	width: 100%;
-    	padding: rem( $gutter ) 0;
+    	padding: rem( $gutter / 1.333 ) 0;
     	text-align: center;
     	margin: rem( $gutter ) auto;
     }
     
     .btn:focus {
     	outline:none;
+    }
+
+    .btn:active {
+        @include translate( 0, rem(3px) );
+        @include single-box-shadow( 0, 0, 0, 0 );
     }
     
     .btn.small {
@@ -586,6 +637,15 @@ Droplets page container. Droplets classes only work inside this container.
     	background-color: $gray-color;
     	vertical-align: middle;
     	@include border-radius( rem( 15px ) );
+    }
+
+    .label.light {
+        color: $light-text-color;
+    	background-color: $light-color;
+    }
+
+    .label.dark {
+        background-color: $dark-color;
     }
     
     .label.success {
