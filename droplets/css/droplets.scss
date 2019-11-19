@@ -60,7 +60,7 @@ $info-color: #018298;
 $warning-color: #FFB90B;
 $danger-color: #D72E3D;
 
-$light-gray-color: #EEEEEE;
+$light-gray-color: #d8d7d7;
 $light-success-color: #CEEAD5;
 $light-info-color: #CBE9EF;
 $light-warning-color: #FFF1C6;
@@ -221,6 +221,10 @@ Droplets page container. Droplets classes only work inside this container.
         font-size: rem( 18px );
         font-weight: $light-font-weight;
         line-height: rem( 27px );
+    }
+
+    strong {
+        font-weight: 700;
     }
     
     // D005.3: Drop caps - revisit in future for CSS Initial Letter support
