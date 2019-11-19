@@ -682,16 +682,17 @@ Droplets page container. Droplets classes only work inside this container.
     .callout {
     
     	margin: rem( $margin-spacing ) 0;
-    	padding: rem( $gutter ) rem( $gutter * 2 ) rem( $gutter ) rem( $gutter );
+    	padding: rem( $margin-spacing );
     	background-color: $light-gray-color;
     	border-color: $gray-color;
-    	border-left: rem( 8px ) solid #7e7e7e;
-    	border-right: rem( 5px ) solid #b2b2b2;
-    	@include box-sizing( "border-box" );
+    	border-left: rem( 8px ) solid $dark-gray-color;
+    	border-right: rem( 5px ) solid $light-color;
+        @include box-sizing( "border-box" );
+        @include border-radius( rem( 10px) );
     
     	h4 {
     
-            margin: 0 0 rem( $gutter ) 0;
+            margin: 0 0 rem( $margin-spacing ) 0;
             padding: 0;
             
             [class^="icon-"],
@@ -712,11 +713,11 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .callout.vertical {
-    	padding: rem( $gutter );
+    	padding: rem( $margin-spacing );
     	border-left: 0;
     	border-right: 0;
-    	border-top: rem( 10px ) solid $gray-color;
-    	border-bottom: rem( 5px ) solid #b2b2b2;
+    	border-top: rem( 8px ) solid $dark-gray-color;
+    	border-bottom: rem( 5px ) solid $light-color;
     }
     
     .callout.success {
@@ -762,16 +763,25 @@ Droplets page container. Droplets classes only work inside this container.
     	border-right: 0;
     	border-left-width: rem( 5px );
     }
+
+    .callout.vertical.minimal {
+        color: inherit;
+    	background-color: #fff;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0;
+    	border-top-width: rem( 5px );
+    }
     
     // D009.3: Add shadow
-    .callout.minimal.shadowed {
-        @include single-box-shadow( 0, 0, rem( 6px ), 0, #858585, false );
+    .callout.shadowed {
+        @include single-box-shadow( 0, 0, rem( 6px ), 0, $dark-color, false );
     }
     
     // D009.4: Add border
     .callout.minimal.bordered {
     	border: rem( 1px ) solid $gray-color;
-    	@include border-radius( rem( 3px ) );
+    	@include border-radius( rem( 10px ) );
     	@include single-box-shadow( 0, rem( 3px ), 0, 0, $gray-color, false );
     }
     
@@ -814,12 +824,17 @@ Droplets page container. Droplets classes only work inside this container.
             float: right;
             margin: 0 0 0 rem( $gutter );
         }
-        
-    }
-    
-    // D009.6: Widths
-    @media ( min-width: 768px ) {
-        
+
+        .callout.left:after,
+        .callout.right:after {
+            visibility: hidden;
+            display: block;
+            content: "";
+            clear: both;
+            height: 0;
+        }
+
+        // D009.6: Widths
         .callout.three-fourths {
             width: 75%;
             max-width: unset;
@@ -1120,18 +1135,18 @@ Droplets page container. Droplets classes only work inside this container.
     figure {
         
         display: table;
-        margin: rem( $gutter ) 0;
+        margin: rem( $margin-spacing ) 0;
         
         img {
+            display: block;
             max-width: 100%;
             height: auto;
         }
         
     	figcaption {
         	display: table-caption;
-            font-size: rem( 12px );
-            line-height: rem( 16px );
-            margin-top: rem(6px);
+            font-size: 80%;
+            margin-top: rem($margin-spacing / 2);
             caption-side: bottom;
             cursor: text;
     	}
@@ -1171,8 +1186,7 @@ Droplets page container. Droplets classes only work inside this container.
     figure.bordered {
     
     	img {
-            padding: rem( 8px );
-            border: rem( 1px ) solid $light-gray-color;
+            border: rem( 2px ) solid $dark-light-color;
     	}
     	
     }
@@ -1180,7 +1194,7 @@ Droplets page container. Droplets classes only work inside this container.
     figure.shadowed {
         
         img {
-            @include single-box-shadow( 0, 0, rem( 6px ), 0, #888 );
+            @include single-box-shadow( 0, 0, rem( 6px ), 0, $dark-color );
         }
     
     }
@@ -1225,22 +1239,7 @@ Droplets page container. Droplets classes only work inside this container.
         
     }
     
-    // FOR VIEWPORT < 414px
-/*
-    @media ( min-width: 414px ) {
-        
-        figure {
-        
-            img {
-                max-width: none;
-            }
-        
-        }
-        
-    }
-*/
-    
-    // FOR VIEWPORT < 768x
+    // FOR VIEWPORT < 768px
     @media ( min-width: 768px ) {
         
         .imgCommons {
@@ -1248,20 +1247,7 @@ Droplets page container. Droplets classes only work inside this container.
             text-align: left;
         }
         
-        figure.right {
-            @extend .imgCommons;
-            float: right;
-            margin: 0 0 0 rem( $gutter );
-            display: table;
-        }
-        
-        figure.left {
-            @extend .imgCommons;
-            float: left;
-            margin: 0 rem( $gutter ) 0 0;
-            display: table;
-        }
-        
+        figure.right,
         img.right {
             @extend .imgCommons;
             float: right;
@@ -1269,11 +1255,23 @@ Droplets page container. Droplets classes only work inside this container.
             display: table;
         }
         
+        figure.left,
         img.left {
             @extend .imgCommons;
             float: left;
             margin: 0 rem( $gutter ) 0 0;
             display: table;
+        }
+
+        figure.left:after,
+        img.left:after,
+        figure.right:after,
+        img.right:after {
+            visibility: hidden;
+            display: block;
+            content: "";
+            clear: both;
+            height: 0;
         }
         
     }
