@@ -158,9 +158,8 @@ Droplets page container. Droplets classes only work inside this container.
             margin: 0;
     
             [class^="icon-"] {
-                display: inline-block;
-                margin-right: rem( 5px );
-                font-size: 125%;
+                display: inline;
+                font-size: 100%;
             }
     
             [class*=" icon-"] {
@@ -183,9 +182,15 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D005.1: Headings
     h1, h2, h3, h4, h5, h6 {
+        
         font-weight: 700;
         line-height: 1.3;
         margin: rem( $margin-spacing ) 0;
+
+        .label {
+            font-size: 50%;
+        }
+
     }
 
     h1 {
@@ -1342,7 +1347,7 @@ Droplets page container. Droplets classes only work inside this container.
     [class*=" icon-"] {
         @extend .iconCommons;
     	font-family: 'collaborativeicon';
-    	font-size: 100%;
+    	font-size: 90%;
     }
     
     // D012.1: Default
@@ -1511,10 +1516,9 @@ Droplets page container. Droplets classes only work inside this container.
         
         .lbl-toggle {
             position: relative;
-            margin-top: rem( 5px );
             width: 100%;
             padding: rem(10px) rem(15px);
-            background-color: $light-gray-color;
+            background-color: rgba($light-gray-color, 0.7);
             font-weight: bold;
             font-size: 110%;
             cursor: pointer;
@@ -1523,7 +1527,7 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .lbl-toggle:hover {
-            background-color: $border-color;
+            background-color: rgba($light-gray-color, 0.8);
         }
         
         .lbl-toggle:after {
@@ -1539,7 +1543,7 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .toggle:checked + .lbl-toggle {
-            background-color: $border-color;
+            background-color: rgba($light-gray-color, 1);
         }
         
         .toggle:checked + .lbl-toggle:after {
@@ -1549,8 +1553,8 @@ Droplets page container. Droplets classes only work inside this container.
         .panel {
             display: none;
             width: 100%;
-            padding: rem(20px) rem(30px);
-            background-color: rgba($light-gray-color, 0.5);
+            padding: 0 rem(15px);
+            background-color: rgba($light-gray-color, 0.2);
             border-bottom: rem( 1px ) solid $border-color;
         }
         
@@ -1564,19 +1568,19 @@ Droplets page container. Droplets classes only work inside this container.
         
         .droplets-tabbed {
             
-            background-color: $border-color;
-            //@include single-box-shadow( 0, rem(6px), rem(10px), rem(-4px), rgba(0, 0, 0, 0.3));
+            background-color: rgba($light-gray-color, 0.7);
+            border: rem( 1px ) solid $light-gray-color;
+            border-top: none;
             
             .lbl-toggle {
                 width: auto;
-                margin-top: 0;
-                background-color: $border-color;
                 color: $gray-color;
+                border-bottom: none;
+                background-color: transparent;
             }
             
             .lbl-toggle:hover {
                 color: unset;
-                background-color: $light-gray-color;
             }
             
             .lbl-toggle:after {
@@ -1584,13 +1588,14 @@ Droplets page container. Droplets classes only work inside this container.
             }
             
             .toggle:checked + .lbl-toggle {
-                background: #fff;
+                background-color: #fff;
                 color: #000;
             }
             
             .panel {
                 order: 99;
                 background-color: #fff;
+                border-bottom: none;
             }
             
         }
@@ -1606,6 +1611,8 @@ Droplets page container. Droplets classes only work inside this container.
         input[type='checkbox'] {
             display: none;
         }
+
+        margin: 0 0 rem( $margin-spacing );
         
         .lbl-toggle {
             position: relative;
@@ -1613,19 +1620,22 @@ Droplets page container. Droplets classes only work inside this container.
             @include flex-flow( row nowrap );
             @include align-items( center );
             @include flex( 1 1 95%);
-            background-color: $light-gray-color;
+            background-color: rgba($light-gray-color, 0.7);
             padding: rem(10px) rem(15px);
-            margin-top: rem( 5px );
             cursor: pointer;
             font-weight: bold;
             font-size: 110%;
+            margin: rem( $margin-spacing / 2 ) 0 0;
+            @include border-radius( rem( 10px) rem(10px) );
+            overflow: hidden;
         }
         
         .lbl-toggle:hover {
-            background-color: $border-color;
+            background-color: rgba($light-gray-color, 0.8);
         }
         
         .lbl-toggle:after {
+            display: block;
             position: absolute;
             right: rem( $gutter );
             font-family: 'dropletsIcons';
@@ -1638,7 +1648,8 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .toggle:checked + .lbl-toggle {
-            background-color: $border-color;
+            background-color: rgba($light-gray-color, 1);
+            @include border-radius( rem( 10px) rem(10px) 0 0 );
         }
         
         .toggle:checked + .lbl-toggle:after {
@@ -1648,11 +1659,12 @@ Droplets page container. Droplets classes only work inside this container.
         .collapsible-content {
             
             display: none;
-            background-color: rgba($light-gray-color, 0.5);
+            background-color: rgba($light-gray-color, 0.2);
+            @include border-radius( 0 0 rem( 10px) rem(10px) );
             overflow: hidden;
             
             .content-inner {
-                padding: rem(20px) rem(30px);
+                padding: 0 rem(15px);
                 border-bottom: rem( 1px ) solid $border-color;
             }
             
@@ -1668,7 +1680,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         width: 100%;
         min-height: rem( 152px );
-        margin: rem( $gutter ) 0;
+        margin: rem( $margin-spacing ) 0;
         border: rem(1px) solid $border-color;
         
         .type {
@@ -1691,15 +1703,18 @@ Droplets page container. Droplets classes only work inside this container.
                 right: 0;
                 width: rem( 40px );
                 height: 100%;
-                background-color: $light-gray-color;
+                background-color: rgba($light-gray-color, 0.7);
                 cursor: pointer; 
             }
             
             .lbl-toggle:hover {
-                background-color: $border-color;
+                background-color: rgba($light-gray-color, 0.8);
             }
             
             .lbl-toggle:after {
+                display:block;
+                position: relative;
+                                right: unset;
                 font-family: 'dropletsIcons';
                 content: '\e002';
                 color: $gray-color;
@@ -1712,6 +1727,7 @@ Droplets page container. Droplets classes only work inside this container.
                 @include display-flex();
                 @include flex-flow( row nowrap );
                 min-height: rem( 152px );
+                background-color: #fff;
                 
                 .image {
                     
@@ -1807,7 +1823,7 @@ Droplets page container. Droplets classes only work inside this container.
             .panel {
             
                 display: none;
-                background-color: rgba($light-gray-color, 0.5);
+                background-color: rgba($light-gray-color, 0.2);
                 padding: rem(20px);
                 
                 .actions {
@@ -1902,7 +1918,7 @@ Droplets page container. Droplets classes only work inside this container.
         padding-bottom: rem( 26px );
         background-color: rgba($light-gray-color, 0.5);
         border: rem( 1px ) solid $border-color;
-        margin: rem( $gutter ) 0;
+        margin: rem( $margin-spacing ) 0;
         
         input[type='checkbox'] {
             display: none;
@@ -1918,13 +1934,13 @@ Droplets page container. Droplets classes only work inside this container.
             font-family: sans-serif;
             font-size: 70%;
             color: $gray-color;
-            background-color: $border-color;
+            background-color: rgba($light-gray-color, 0.8);
             text-transform: uppercase;
             height: rem( 26px );
             bottom: 0;
             cursor: pointer;
-            border-top: rem( 1px ) solid $border-color;
-            @include single-box-shadow( 0, rem(-6px), rem(5px), 0, $border-color);
+            border-top: rem( 1px ) solid $light-gray-color;
+            @include single-box-shadow( 0, rem(-6px), rem(5px), 0, $light-gray-color);
         }
         
         .lbl-toggle:before {
@@ -1957,9 +1973,11 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .panel {
+            display: block;
             height: rem( 242px );
-            padding: rem(20px) rem(30px) 0;
+            padding: 0 rem(15px) 0;
             overflow: hidden;
+            background-color: rgba($light-gray-color, 0.2);
         }
         
     }
@@ -1972,9 +1990,9 @@ Droplets page container. Droplets classes only work inside this container.
         
         position: relative;
         padding-bottom: rem( 26px );
-        background-color: rgba($light-gray-color, 0.5);
+        background-color: rgba($light-gray-color, 0.2);
         border: rem( 1px ) solid $border-color;
-        margin: rem( $gutter ) 0;
+        margin: rem( $margin-spacing ) 0;
         
         input[type='checkbox'] {
             display: none;
@@ -1995,7 +2013,7 @@ Droplets page container. Droplets classes only work inside this container.
             height: rem( 26px );
             bottom: 0;
             cursor: pointer;
-            border-top: rem( 1px ) solid $border-color;
+            border-top: rem( 1px ) solid $light-gray-color;
         }
         
         .lbl-toggle:before {
@@ -2004,7 +2022,7 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         .lbl-toggle:hover {
-            background-color: $border-color;
+            background-color: rgba($light-gray-color, 0.8);
         }
         
         .toggle:checked + .lbl-toggle + .panel {
@@ -2025,8 +2043,10 @@ Droplets page container. Droplets classes only work inside this container.
         
         .panel {
             
+            display: block;
             margin: 0;
-            padding: rem(20px) rem(30px) 0;
+            padding: rem( 10px ) rem(15px);
+            background-color: rgba($light-gray-color, 0.2);
             
             .hidden-content {
                 display: none;
@@ -2041,7 +2061,7 @@ Droplets page container. Droplets classes only work inside this container.
     --------------------------------------------------------------------------*/
     .droplets-popup {
         
-        margin: rem( $gutter ) 0;
+        margin: rem( $margin-spacing ) 0;
         
         .thumbnail {
             
