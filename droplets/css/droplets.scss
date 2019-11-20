@@ -863,14 +863,14 @@ Droplets page container. Droplets classes only work inside this container.
     	background-color: transparent;
     	border-collapse: collapse;
     	border-spacing: 0;
-    	margin: rem( $gutter ) 0;
+    	margin: rem( $margin-spacing ) 0;
     	caption-side: bottom;
     	
     	caption {
         	text-align: left;
         	font-size: rem( 12px );
         	font-style: italic;
-        	margin: rem( $gutter / 2 ) 0 rem( $gutter );
+        	margin: rem( $margin-spacing / 2 ) 0 0;
         	color: $gray-color
     	}
     
@@ -1013,7 +1013,11 @@ Droplets page container. Droplets classes only work inside this container.
     table.striped {
 
         tbody {
-    
+
+            tr {
+                background-color: #fff;
+            }
+
             tr:nth-child(odd) {
                 background-color: $table-bg-color;
             }
@@ -1024,6 +1028,10 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D010.9: Stripe nested table bodies
     table.striped-body {
+        
+        tbody {
+            background-color: #fff;
+        }
 
         tbody:nth-child(even) {
             background-color: $table-bg-color;
@@ -1057,23 +1065,48 @@ Droplets page container. Droplets classes only work inside this container.
     table.minimal {
         
         background-color: #ffffff;
-        border: rem( 1px ) solid #d6d6d6;
+        border: rem( 1px ) solid $light-gray-color;
         @include border-radius( rem( 3px ) );
-        @include single-box-shadow( 0, rem( 2px ), 0, #d6d6d6 );
-        
-        th, td {
-            border: 0;
-            vertical-align: middle;
-            border-right: rem( 1px ) solid #e3e3e3;
-            padding-left: rem( 12px );
-            padding-right: rem( 12px );
+        @include single-box-shadow( 0, rem( 2px ), 0, 0, $light-gray-color );
+
+        thead {
+
+            border-bottom: rem( 1px ) solid $light-gray-color;
+
+            th {
+                border: 0;
+                vertical-align: middle;
+                padding-left: rem( 12px );
+                padding-right: rem( 12px );
+            }
+
         }
-        
+
+        tbody {
+
+            td {
+                border: 0;
+                vertical-align: middle;
+                border-right: rem( 1px ) solid $light-gray-color;
+                padding-left: rem( 12px );
+                padding-right: rem( 12px );
+            }
+
+        }
+
     }
     
     // D010.13: Hover state
-    table.hover tr:hover {
-    	background-color: $table-bg-color;
+    table.hover {
+
+        tbody {
+
+            tr:hover {
+                background-color: $table-bg-color;
+            }
+
+        }
+
     }
     
     // D010.14: Less cell padding
@@ -1098,22 +1131,22 @@ Droplets page container. Droplets classes only work inside this container.
     
     }
     
-    // D010.15: Widths
-    table.three-fourths {
-        width: 75%;
-    }
-    
-    table.half {
-        width: 50%;
-    }
-    
-    table.quarter {
-        width: 25%;
-    }
-    
-    // D010.16: Alignment
     @media ( min-width: 768px ) {
         
+        // D010.15: Widths
+        table.three-fourths {
+            width: 75%;
+        }
+        
+        table.half {
+            width: 50%;
+        }
+        
+        table.quarter {
+            width: 25%;
+        }
+
+        // D010.16: Alignment
         table.left {
             float: left;
             margin: 0 rem( $gutter ) 0 0;
@@ -1124,6 +1157,20 @@ Droplets page container. Droplets classes only work inside this container.
             float: right;
             margin: 0 0 0 rem( $gutter );
             text-align: left;
+        }
+
+        table.center-align {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table.left:after,
+        table.right:after {
+            visibility: hidden;
+            display: block;
+            content: "";
+            clear: both;
+            height: 0;
         }
         
     }
@@ -1401,6 +1448,24 @@ Droplets page container. Droplets classes only work inside this container.
     /*
     D013: HELPERS
     --------------------------------------------------------------------------*/
+
+    .spacer {
+        width: 100%;
+        height: rem( $margin-spacing );
+    }
+
+    .spacer.minimal {
+        width: 100%;
+        height: rem( $margin-spacing / 2 );
+    }
+
+    .spacer.double {
+        height: rem( $margin-spacing * 2 );
+    }
+
+    .spacer.triple {
+        height: rem( $margin-spacing * 3 );
+    }
 
     @media ( min-width: 768px ) {
         
