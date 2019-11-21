@@ -18,22 +18,23 @@ TABLE OF CONTENTS
   7. EMPHASIS ------------------------------------------------------------- D007
   8. INLINE CALLOUTS ------------------------------------------------------ D008
   9. BLOCK-LEVEL CALLOUTS ------------------------------------------------- D009
- 10. TABLE ---------------------------------------------------------------- D010
- 11. IMAGE ---------------------------------------------------------------- D011
- 12. ICONS ---------------------------------------------------------------- D012
- 13. HELPERS -------------------------------------------------------------- D013
- 14. TIP ------------------------------------------------------------------ D014
- 15. TABS ----------------------------------------------------------------- D015
- 16. COLLAPSIBLE ---------------------------------------------------------- D016
- 17. RESOURCE ------------------------------------------------------------- D017
- 18. SHOW MORE ------------------------------------------------------------ D018
- 19. UNVEIL --------------------------------------------------------------- D019
- 20. POPUP ---------------------------------------------------------------- D020
- 21. FOR PRINTING --------------------------------------------------------- D021
- 22. FOOTER --------------------------------------------------------------- D022
- 23. FONT FACES ----------------------------------------------------------- D023
- 24. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D024
- 25. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D025
+ 10. ALERTS --------------------------------------------------------------- D010
+ 11. TABLE ---------------------------------------------------------------- D011
+ 12. IMAGE ---------------------------------------------------------------- D012
+ 13. ICONS ---------------------------------------------------------------- D013
+ 14. HELPERS -------------------------------------------------------------- D014
+ 15. TIP ------------------------------------------------------------------ D015
+ 16. TABS ----------------------------------------------------------------- D016
+ 17. COLLAPSIBLE ---------------------------------------------------------- D017
+ 18. RESOURCE ------------------------------------------------------------- D018
+ 19. SHOW MORE ------------------------------------------------------------ D019
+ 20. UNVEIL --------------------------------------------------------------- D020
+ 21. POPUP ---------------------------------------------------------------- D021
+ 22. FOR PRINTING --------------------------------------------------------- D022
+ 23. FOOTER --------------------------------------------------------------- D023
+ 24. FONT FACES ----------------------------------------------------------- D024
+ 25. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D025
+ 26. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D026
 ----------------------------------------------------------------------------- */
 
 /*
@@ -133,6 +134,8 @@ Droplets page container. Droplets classes only work inside this container.
     font-size: rem( $font-size );
     font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     line-height: 1.25;
     
     * {
@@ -870,12 +873,65 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
     }
-    
+
     /*
-    D010: TABLE
+    D010: ALERTS
+    --------------------------------------------------------------------------*/
+    .droplets-alert {
+
+        @include display-flex();
+        @include flex-flow(row nowrap);
+        @include align-items( center );
+        margin: rem( $margin-spacing ) 0;
+    	padding: rem( $margin-spacing );
+    	background-color: $dark-gray-color;
+        color: #fff;
+        font-weight: 700;
+        @include box-sizing( "border-box" );
+        @include border-radius( rem( 10px) );
+
+        .icon {
+            margin-right: rem( $margin-spacing );
+            font-size: 155%;
+        }
+
+        .icon:before {
+            display: block;
+            line-height: normal;
+        }
+
+        p {
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+
+    }
+
+    .droplets-alert.danger {
+        background-color: $dark-danger-color;
+    }
+
+    .droplets-alert.info {
+        background-color: $dark-info-color;
+    }
+
+    .droplets-alert.warning {
+        color: $warning-text-color;
+        background-color: $warning-color;
+    }
+
+    .droplets-alert.success {
+        background-color: $dark-success-color;
+    }
+
+    /*
+    D011: TABLE
     --------------------------------------------------------------------------*/
     
-    //D010.1: Default
+    //D011.1: Default
     table {
 
     	width: 100%;
@@ -934,7 +990,7 @@ Droplets page container. Droplets classes only work inside this container.
     
         }
         
-        // D010.2: Vertical alignments
+        // D011.2: Vertical alignments
         .vert-top {
             vertical-align: top;
         }
@@ -947,7 +1003,7 @@ Droplets page container. Droplets classes only work inside this container.
             vertical-align: middle;
         }
         
-        // D010.3: Borders
+        // D011.3: Borders
         .top-border {
             border-top: rem( 1px ) solid $table-border-color;
         }
@@ -964,7 +1020,7 @@ Droplets page container. Droplets classes only work inside this container.
             border-right: rem( 1px ) solid $table-border-color;
         }
         
-        // D010.4: Border style
+        // D011.4: Border style
         .double-line {
             border-style: double;
             border-bottom-width: rem( 4px );
@@ -974,7 +1030,7 @@ Droplets page container. Droplets classes only work inside this container.
             border-style: dotted;
         }
         
-        // D010.5: Border thickness
+        // D011.5: Border thickness
         .medium {
             border-width: rem( 2px );
         }
@@ -983,7 +1039,7 @@ Droplets page container. Droplets classes only work inside this container.
             border-width: rem( 4px );
         }
         
-        // D010.6: Cell indentation
+        // D011.6: Cell indentation
         .indent {
             text-indent: rem( 10px );
         }
@@ -992,7 +1048,7 @@ Droplets page container. Droplets classes only work inside this container.
             text-indent: rem( 20px );
         }
         
-        // D010.7: Cell background color
+        // D011.7: Cell background color
         .gray {
             background-color: $light-gray-color;
         }
@@ -1028,7 +1084,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     }
     
-    // D010.8: Stripped style
+    // D011.8: Stripped style
     table.striped {
 
         tbody {
@@ -1045,7 +1101,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     }
     
-    // D010.9: Stripe nested table bodies
+    // D011.9: Stripe nested table bodies
     table.striped-body {
         
         tbody {
@@ -1058,7 +1114,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     }
     
-    // D010.10: All border
+    // D011.10: All border
     table.bordered {
         
         tr {
@@ -1071,7 +1127,7 @@ Droplets page container. Droplets classes only work inside this container.
     	
     }
     
-    // D010.11: No border
+    // D011.11: No border
     .no-border {
         
         * {
@@ -1080,7 +1136,7 @@ Droplets page container. Droplets classes only work inside this container.
     	
     }
     
-    // D010.12: Minimal style
+    // D011.12: Minimal style
     table.minimal {
         
         background-color: #ffffff;
@@ -1115,7 +1171,7 @@ Droplets page container. Droplets classes only work inside this container.
 
     }
     
-    // D010.13: Hover state
+    // D011.13: Hover state
     table.hover {
 
         tbody {
@@ -1128,7 +1184,7 @@ Droplets page container. Droplets classes only work inside this container.
 
     }
     
-    // D010.14: Less cell padding
+    // D011.14: Less cell padding
     table.minimal-padding {
 
         * {
@@ -1137,7 +1193,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     }
     
-    // D010.14: Smaller font
+    // D011.14: Smaller font
     table.small-text {
 
         thead > tr > th {
@@ -1152,7 +1208,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     @media ( min-width: 768px ) {
         
-        // D010.15: Widths
+        // D011.15: Widths
         table.three-fourths {
             width: 75%;
         }
@@ -1165,7 +1221,7 @@ Droplets page container. Droplets classes only work inside this container.
             width: 25%;
         }
 
-        // D010.16: Alignment
+        // D011.16: Alignment
         table.left {
             float: left;
             margin: 0 rem( $gutter ) 0 0;
@@ -1195,7 +1251,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D011: IMAGE
+    D012: IMAGE
     --------------------------------------------------------------------------*/
     
     figure {
@@ -1343,7 +1399,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D012: ICONS
+    D013: ICONS
     --------------------------------------------------------------------------*/
     
     .iconCommons {
@@ -1364,7 +1420,7 @@ Droplets page container. Droplets classes only work inside this container.
     	font-size: 90%;
     }
     
-    // D012.1: Default
+    // D013.1: Default
     @each $icon, $unicode in
     
         (calendar, "\e000"),
@@ -1420,7 +1476,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     
-    // D012.2: Droplets UI
+    // D013.2: Droplets UI
     [class^="sg-icon-"],
     [class*=" sg-icon-"] {
         @extend .iconCommons;
@@ -1448,7 +1504,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     }
     
-    // D012.3: Flexible option icons
+    // D013.3: Flexible option icons
     @each $icon, $unicode in
         (overview, "\e680"),
          (practice-assessment, "\e630"),
@@ -1465,7 +1521,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D013: HELPERS
+    D014: HELPERS
     --------------------------------------------------------------------------*/
 
     .spacer {
@@ -1502,7 +1558,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D014: TIP
+    D015: TIP
     --------------------------------------------------------------------------*/
     
     .droplets-tip {
@@ -1512,7 +1568,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D015: TABBED CONTENTS
+    D016: TABBED CONTENTS
     --------------------------------------------------------------------------*/
 
     .droplets-tabbed {
@@ -1617,7 +1673,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D016: COLLAPSIBLE
+    D017: COLLAPSIBLE
     --------------------------------------------------------------------------*/
     
     .droplets-collapsible {
@@ -1687,7 +1743,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D017: RESOURCE
+    D018: RESOURCE
     --------------------------------------------------------------------------*/
 
     .droplets-resource {
@@ -1924,7 +1980,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D018: SHOW MORE
+    D019: SHOW MORE
     --------------------------------------------------------------------------*/
     .droplets-showmore {
         
@@ -1996,7 +2052,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D019: UNVEIL
+    D020: UNVEIL
     --------------------------------------------------------------------------*/
     
     .droplets-unveil {
@@ -2070,7 +2126,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D020: POPUP
+    D021: POPUP
     --------------------------------------------------------------------------*/
     .droplets-popup {
         
@@ -2211,7 +2267,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D021: FOR PRINTING
+    D022: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -2583,7 +2639,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D022: Footer
+D023: Footer
 --------------------------------------------------------------------------------
 Contains copyright info. Added automatically via CSS.
 ----------------------------------------------------------------------------- */
@@ -2605,7 +2661,7 @@ Contains copyright info. Added automatically via CSS.
 }
 
 /*
-D023: FONT FACES
+D024: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */
@@ -2632,7 +2688,7 @@ Setting up font face. To support font icons used inside page container.
 }
 
 /*
-D024: LEGACY/DEPRECATED COMPONENTS
+D025: LEGACY/DEPRECATED COMPONENTS
 --------------------------------------------------------------------------------
 Components that are no longer to be used or should not continue to be used.
 To be removed in future versions.
@@ -2640,7 +2696,7 @@ To be removed in future versions.
 
 #uws-droplets-page {
     
-    /* D024.1: ACCORDION */
+    /* D025.1: ACCORDION */
     
     .droplets-accordion {
     
@@ -2735,7 +2791,7 @@ To be removed in future versions.
         
     }
     
-    /* D024.2: TABBED CONTENTS */
+    /* D025.2: TABBED CONTENTS */
 
     .droplets-tabs {
     
@@ -2850,7 +2906,7 @@ To be removed in future versions.
     
     }
     
-    /* D024.3: READ MORE */
+    /* D025.3: READ MORE */
     
     .droplets-readmore {
         
@@ -2894,7 +2950,7 @@ To be removed in future versions.
         
     }
     
-    /* D024.4: IMAGE ZOOM */
+    /* D025.4: IMAGE ZOOM */
     
     .droplets-image-zoom {
         
@@ -2927,7 +2983,7 @@ To be removed in future versions.
         
     }
     
-    /* D024.5: REVEAL */
+    /* D025.5: REVEAL */
 
     .droplets-reveal {
         
@@ -2937,7 +2993,7 @@ To be removed in future versions.
         
     }
     
-    /* D024.6: RESOURCES */
+    /* D025.6: RESOURCES */
     
     .droplets-resources {
 
@@ -3176,7 +3232,7 @@ To be removed in future versions.
     
     }
     
-    /* D024.7: LIGHTBOX */
+    /* D025.7: LIGHTBOX */
     
     .droplets-lightbox {
         
@@ -3335,7 +3391,7 @@ To be removed in future versions.
         @include animation( fadeIn 1s );
     }
     
-    /* D024.8: TOOLTIP */
+    /* D025.8: TOOLTIP */
     
     .droplets-tooltip {
         
@@ -3364,7 +3420,7 @@ To be removed in future versions.
     	
     }
     
-    /* D024.9: POPOVER */
+    /* D025.9: POPOVER */
     
     .droplets-popover {
         
@@ -3463,7 +3519,7 @@ To be removed in future versions.
 }
 
 /*
-D025: CANVAS.NET ADJUSTMENTS
+D026: CANVAS.NET ADJUSTMENTS
 --------------------------------------------------------------------------------
 Additional adjustments only when loaded on Canvas.net
 ----------------------------------------------------------------------------- */
