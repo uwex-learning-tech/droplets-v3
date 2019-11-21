@@ -158,12 +158,19 @@ Droplets page container. Droplets classes only work inside this container.
             margin: 0;
     
             [class^="icon-"] {
-                display: inline;
                 font-size: 100%;
             }
     
             [class*=" icon-"] {
                 @extend [class^="icon-"];
+            }
+
+            [class^="icon-"].medium {
+                font-size: 110%;
+            }
+
+            [class^="icon-"].large {
+                font-size: 120%;
             }
     
             small {
@@ -303,7 +310,14 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D005.7: unordered & ordered lists
     ul, ol {
-        margin: rem( $margin-spacing ) 0;
+
+        margin-top: rem( $margin-spacing );
+        margin-bottom: rem( $margin-spacing );
+        
+        li {
+            margin-bottom: rem( $margin-spacing / 2 );
+        }
+
     }
 
     // D005.8: remove unordered & ordered list bullets
@@ -1397,12 +1411,12 @@ Droplets page container. Droplets classes only work inside this container.
     
     [class^="icon-"].medium,
     [class*=" icon-"].medium {
-    	font-size: 155%;
+    	font-size: 140%;
     }
     
     [class^="icon-"].large,
     [class*=" icon-"].large {
-    	font-size: 170%;
+    	font-size: 190%;
     }
     
     
@@ -1916,7 +1930,6 @@ Droplets page container. Droplets classes only work inside this container.
         
         position: relative;
         padding-bottom: rem( 26px );
-        background-color: rgba($light-gray-color, 0.5);
         border: rem( 1px ) solid $border-color;
         margin: rem( $margin-spacing ) 0;
         
