@@ -235,7 +235,7 @@ Droplets page container. Droplets classes only work inside this container.
     .lead {
         font-size: rem( 18px );
         font-weight: $light-font-weight;
-        line-height: rem( 27px );
+        line-height: 1.25;
     }
 
     strong {
@@ -891,12 +891,17 @@ Droplets page container. Droplets classes only work inside this container.
         @include border-radius( rem( 10px) );
 
         .icon {
-            margin-right: rem( $margin-spacing );
+            position: relative;
+            margin-right: rem( $margin-spacing * 3 );
+            height: rem( 27px );
             font-size: 155%;
         }
 
         .icon:before {
-            display: block;
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
             line-height: normal;
         }
 
@@ -1633,7 +1638,7 @@ Droplets page container. Droplets classes only work inside this container.
         }
     
     }
-    
+
     @media (min-width: 600px) {
         
         .droplets-tabbed {
@@ -3526,6 +3531,8 @@ Additional adjustments only when loaded on Canvas.net
 #uws-droplets-page {
 
     .generic-wrapper, .storybook-wrapper, .audio-wrapper {
+
+        margin: rem( $margin-spacing ) 0;
 
         iframe {
             border: none;
