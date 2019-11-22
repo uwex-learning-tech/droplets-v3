@@ -18,9 +18,7 @@
 		"oF": 1
 		},
 	"/config.rb": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
+		"ft": 131072,
 		"oA": 0,
 		"oAP": "/config.rb",
 		"oF": 0
@@ -30,6 +28,16 @@
 		"oA": 1,
 		"oAP": "/build/dreamweaver_commands",
 		"oF": 0
+		},
+	"/droplets/css/droplets.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "/droplets/css/droplets-ck.css",
+		"oF": 0,
+		"oS": 0
 		},
 	"/droplets/css/droplets.scss": {
 		"aP": 0,
@@ -111,6 +119,17 @@
 		"oA": 0,
 		"oAP": "/droplets/script/droplets-min.js",
 		"oF": 3,
+		"sC": 3,
+		"tS": 0
+		},
+	"/droplets/script/dropletsjsv3.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/droplets/script/dropletsjsv3-min.js",
+		"oF": 2,
 		"sC": 3,
 		"tS": 0
 		},

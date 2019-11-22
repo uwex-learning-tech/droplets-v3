@@ -23,18 +23,20 @@ TABLE OF CONTENTS
  12. IMAGE ---------------------------------------------------------------- D012
  13. ICONS ---------------------------------------------------------------- D013
  14. HELPERS -------------------------------------------------------------- D014
- 15. TIP ------------------------------------------------------------------ D015
- 16. TABS ----------------------------------------------------------------- D016
- 17. COLLAPSIBLE ---------------------------------------------------------- D017
- 18. RESOURCE ------------------------------------------------------------- D018
- 19. SHOW MORE ------------------------------------------------------------ D019
- 20. UNVEIL --------------------------------------------------------------- D020
- 21. POPUP ---------------------------------------------------------------- D021
- 22. FOR PRINTING --------------------------------------------------------- D022
- 23. FOOTER --------------------------------------------------------------- D023
- 24. FONT FACES ----------------------------------------------------------- D024
- 25. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D025
+ 15. TOOLTIP -------------------------------------------------------------- D015
+ 16. POPOVER -------------------------------------------------------------- D016
+ 17. TABS ----------------------------------------------------------------- D017
+ 18. COLLAPSIBLE / ACCORDION ---------------------------------------------- D018
+ 19. RESOURCE ------------------------------------------------------------- D019
+ 20. SHOW MORE ------------------------------------------------------------ D020
+ 21. UNVEIL --------------------------------------------------------------- D021
+ 22. POPUP ---------------------------------------------------------------- D022
+ 23. FOR PRINTING --------------------------------------------------------- D023
+ 24. FOOTER --------------------------------------------------------------- D024
+ 25. FONT FACES ----------------------------------------------------------- D025
  26. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D026
+ --. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D025
+
 ----------------------------------------------------------------------------- */
 
 /*
@@ -92,13 +94,19 @@ $light-danger-text-color: #671A21;
 $light-success-text-color: #154D21;
 
 /*
-D001: FUNCTIONS
+D001: FUNCTIONS & MIXINS
 --------------------------------------------------------------------------------
 Setting up functions. Convert px unit to rem unit.
 ----------------------------------------------------------------------------- */
 
 @function rem( $px, $base: $font-size ) {
     @return ( $px / $base ) * 1rem;
+}
+
+@mixin calc($property, $expression) {
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
 }
 
 /*
@@ -195,7 +203,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         font-weight: 700;
         line-height: 1.3;
-        margin: rem( $margin-spacing ) 0;
+        margin: rem( $margin-spacing * 2 ) 0;
 
         .label {
             font-size: 50%;
@@ -522,7 +530,7 @@ Droplets page container. Droplets classes only work inside this container.
         position: absolute;
         content: " ";
         top: 0;
-        left: calc(50% - 20px);
+        @include calc( left, '50% - 20px' );
         width: 0;
         height: 0;
         border-left: rem( 10px ) solid transparent;
@@ -555,20 +563,20 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         // for a grid of popups
-        .droplets-popup {
+        // .droplets-popup {
 
-            margin: 0 0 rem( $gutter) 0;
+        //     margin: 0 0 rem( $gutter) 0;
 
-            .thumbnail {
-                width: 100%;
-                height: rem(200px - $gutter);
-            }
+        //     .thumbnail {
+        //         width: 100%;
+        //         height: rem(200px - $gutter);
+        //     }
 
-            .overlay {
-                margin: 0;
-            }
+        //     .overlay {
+        //         margin: 0;
+        //     }
             
-        }
+        // }
     
     }
     
@@ -609,9 +617,9 @@ Droplets page container. Droplets classes only work inside this container.
             }
             
             // for a grid of popups
-            .droplets-popup {
-                margin: 0 0 0 rem( $gutter);
-            }
+            // .droplets-popup {
+            //     margin: 0 0 0 rem( $gutter);
+            // }
         
         }
     	
@@ -730,8 +738,37 @@ Droplets page container. Droplets classes only work inside this container.
         
     	p:last-child {
             margin-bottom: 0;
-    	}
+        }
     
+    }
+
+    .callout.alt {
+
+        @include display-flex();
+        @include flex-flow(row nowrap);
+        @include align-items( center );
+
+        .icon {
+            position: relative;
+            margin-right: rem( $margin-spacing * 3 );
+            height: rem( 27px );
+            font-size: 155%;
+            @include align-self( flex-start );
+        }
+
+        .icon:before {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            line-height: normal;
+        }
+
+        .label {
+            @include align-self( flex-start );
+            margin-right: rem( $margin-spacing );
+        }
+
     }
     
     .callout.vertical {
@@ -1563,17 +1600,128 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D015: TIP
+    D015: TOOLTP
     --------------------------------------------------------------------------*/
     
-    .droplets-tip {
+    .droplets-tooltip {
+        
     	cursor: help;
-    	text-decoration: underline dotted;
-    	//border-bottom: rem( 1px ) dotted $gray-color;
+    	text-decoration: underline dotted $gray-color;
+    	
+    	.tooltip {
+            position: absolute;
+            display: block;
+            min-width: rem( 150px );
+            font-size: rem( 14px );
+            z-index: 99;
+        }
+        
+        .tooltip-inner {
+            max-width: rem( 250px );
+            padding: rem( 8px ) rem( $margin-spacing );
+            color: #fff;
+            text-align: left;
+            line-height: normal;
+            background-color: #333;
+            @include border-radius( rem( 6px ) );
+            @include single-box-shadow( 0, 0, rem( 8px ), 0, $gray-color );
+        }
+    	
+    }
+
+    /*
+    D016: POPOVER
+    --------------------------------------------------------------------------*/
+    
+    .droplets-popover {
+        
+        display: inline;
+        position: relative;
+        border: rem( 1px ) solid $light-gray-color;
+        padding: 0 rem( 4px ) rem( 2px );
+        @include border-radius( rem( 3px ) );
+        cursor: pointer;
+        
+        .popover {
+            
+            display: none;
+            position: absolute;
+            width: rem( 200px );
+            max-width: rem( 300px );
+            text-align: left;
+            white-space: normal;
+            color: #fff;
+            background-color: #333;
+            font-weight: normal;
+            font-size: rem( 14px );
+            line-height: normal;
+            @include border-radius( rem( 6px ) );
+            @include single-box-shadow( 0, 0, rem( 8px ), 0, $gray-color );
+            top: 0;
+            left: 0;
+            z-index: 999;
+            
+            .popover-content {
+                padding: rem( 8px ) rem( $margin-spacing );
+            }
+            
+        }
+        
+        .popover:after {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-top-color: #333;
+            border-style: solid;
+            border-width: rem( 10px );
+            border-bottom-width: 0;
+            bottom: rem( -10px );
+            left: 50%;
+            margin-left: rem( -10px );
+            content: '';
+        }
+        
+        .popover.right:after {
+            @include calc( top, '50% - 10px' );
+            left: 0;
+            border-left-width: 0;
+            border-right-color: #333;
+            border-top-color: transparent;
+            border-bottom-width: rem(10px);
+            bottom: unset;
+            right: unset;
+        }
+        
+        .popover.left:after {
+            @include calc( top, '50% - 10px' );
+            right: rem( -10px );
+            border-right-width: 0;
+            border-left-color: #333;
+            border-top-color: transparent;
+            border-bottom-width: rem(10px);
+            left: unset;
+            bottom: unset;
+        }
+        
+        .popover.bottom:after {
+            top: rem( -10px );
+            border-top-width: 0;
+            border-top-color: transparent;
+            border-bottom-color: #333;
+            border-bottom-width: rem(10px);
+        }
+        
+    }
+
+    .droplets-popover:hover,
+    .droplets-popover.active {
+        background-color: $border-color;
     }
     
     /*
-    D016: TABBED CONTENTS
+    D017: TABS
     --------------------------------------------------------------------------*/
 
     .droplets-tabbed {
@@ -1585,14 +1733,15 @@ Droplets page container. Droplets classes only work inside this container.
         @include border-radius( rem(10px) );
         overflow: hidden;
     	
-    	input[type='radio'] {
-            display: none;
-        }
         
-        .lbl-toggle {
+        .tab {
+            @include display-flex();
+            @include flex-flow(row nowrap);
+            @include align-items( center );
             position: relative;
             width: 100%;
             padding: rem(10px) rem(15px);
+            margin: 0;
             background-color: rgba($light-gray-color, 0.7);
             font-weight: bold;
             font-size: 110%;
@@ -1601,31 +1750,31 @@ Droplets page container. Droplets classes only work inside this container.
             @include single-transition( color, 0.1s );
         }
         
-        .lbl-toggle:hover {
+        .tab:hover {
             background-color: rgba($light-gray-color, 0.8);
         }
         
-        .lbl-toggle:after {
+        .tab:after {
+            display: block;
             position: absolute;
             right: rem( $gutter );
             font-family: 'dropletsIcons';
             content: '\e002';
             color: $gray-color;
+            @include single-transition( transform, 0.1s );
+            @include rotate( 0deg );
         }
         
-        .toggle:focus + .lbl-toggle {
-          z-index: 1;
-        }
-        
-        .toggle:checked + .lbl-toggle {
+        .tab.active {
             background-color: rgba($light-gray-color, 1);
         }
         
-        .toggle:checked + .lbl-toggle:after {
+        .tab.active:after {
+            @include single-transition( transform, 0.2s );
             @include rotate( 90deg );
         }
         
-        .panel {
+        .content {
             display: none;
             width: 100%;
             padding: 0 rem(15px);
@@ -1633,7 +1782,7 @@ Droplets page container. Droplets classes only work inside this container.
             border-bottom: rem( 1px ) solid $border-color;
         }
         
-        .toggle:checked + .lbl-toggle + .panel {
+        .content.active {
             display: block;
         }
     
@@ -1647,30 +1796,30 @@ Droplets page container. Droplets classes only work inside this container.
             border: rem( 1px ) solid $light-gray-color;
             border-top: none;
             
-            .lbl-toggle {
+            .tab {
                 width: auto;
                 color: $gray-color;
                 border-bottom: none;
                 background-color: transparent;
             }
             
-            .lbl-toggle:hover {
+            .tab:hover {
                 color: unset;
             }
             
-            .lbl-toggle:after {
+            .tab:after {
                 display: none;
             }
             
-            .toggle:checked + .lbl-toggle {
+            .tab.active {
                 background-color: #fff;
                 color: #000;
             }
             
-            .panel {
-                order: 99;
+            .content {
                 background-color: #fff;
                 border-bottom: none;
+                order: 99;
             }
             
         }
@@ -1678,77 +1827,71 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D017: COLLAPSIBLE
+    D018: COLLAPSIBLE / ACCORDION
     --------------------------------------------------------------------------*/
     
     .droplets-collapsible {
         
-        input[type='checkbox'] {
-            display: none;
-        }
-
-        margin: 0 0 rem( $margin-spacing );
-        
-        .lbl-toggle {
-            position: relative;
+        margin: rem($margin-spacing) 0;
+        @include border-radius( rem(10px) );
+        overflow: hidden;
+    	
+        .section {
             @include display-flex();
-            @include flex-flow( row nowrap );
+            @include flex-flow(row nowrap);
             @include align-items( center );
-            @include flex( 1 1 95%);
-            background-color: rgba($light-gray-color, 0.7);
+            position: relative;
+            width: 100%;
             padding: rem(10px) rem(15px);
-            cursor: pointer;
+            margin: 0;
+            background-color: rgba($light-gray-color, 0.7);
             font-weight: bold;
             font-size: 110%;
-            margin: rem( $margin-spacing / 2 ) 0 0;
-            @include border-radius( rem( 10px) rem(10px) );
-            overflow: hidden;
+            cursor: pointer;
+            @include single-transition( background, 0.1s );
+            @include single-transition( color, 0.1s );
         }
         
-        .lbl-toggle:hover {
+        .section:hover {
             background-color: rgba($light-gray-color, 0.8);
         }
         
-        .lbl-toggle:after {
+        .section:after {
             display: block;
             position: absolute;
             right: rem( $gutter );
             font-family: 'dropletsIcons';
             content: '\e002';
             color: $gray-color;
+            @include single-transition( transform, 0.1s );
+            @include rotate( 0deg );
         }
         
-        .toggle:checked + .lbl-toggle + .collapsible-content {
-            display: block;
-        }
-        
-        .toggle:checked + .lbl-toggle {
+        .section.active {
             background-color: rgba($light-gray-color, 1);
-            @include border-radius( rem( 10px) rem(10px) 0 0 );
         }
         
-        .toggle:checked + .lbl-toggle:after {
+        .section.active:after {
+            @include single-transition( transform, 0.2s );
             @include rotate( 90deg );
         }
         
-        .collapsible-content {
-            
+        .content {
             display: none;
+            width: 100%;
+            padding: 0 rem(15px);
             background-color: rgba($light-gray-color, 0.2);
-            @include border-radius( 0 0 rem( 10px) rem(10px) );
-            overflow: hidden;
-            
-            .content-inner {
-                padding: 0 rem(15px);
-                border-bottom: rem( 1px ) solid $border-color;
-            }
-            
+            border-bottom: rem( 1px ) solid $border-color;
+        }
+        
+        .content.active {
+            display: block;
         }
         
     }
     
     /*
-    D018: RESOURCE
+    D019: RESOURCE
     --------------------------------------------------------------------------*/
 
     .droplets-resource {
@@ -1985,7 +2128,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D019: SHOW MORE
+    D020: SHOW MORE
     --------------------------------------------------------------------------*/
     .droplets-showmore {
         
@@ -2057,7 +2200,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D020: UNVEIL
+    D021: UNVEIL
     --------------------------------------------------------------------------*/
     
     .droplets-unveil {
@@ -2131,7 +2274,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D021: POPUP
+    D022: POPUP
     --------------------------------------------------------------------------*/
     .droplets-popup {
         
@@ -2228,7 +2371,7 @@ Droplets page container. Droplets classes only work inside this container.
                 position: absolute;
                 width: rem( 24px );
                 height: rem( 25px );
-                top: calc(50% - 25px);
+                @include calc( top, '50% - 25px' );
                 font-size: rem( 24px );
                 color: $light-gray-color;
                 margin: 0 0 0 rem(-5px);
@@ -2272,7 +2415,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D022: FOR PRINTING
+    D023: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -2325,17 +2468,11 @@ Droplets page container. Droplets classes only work inside this container.
     	
     	.droplets-collapsible {
             
-            .lbl-toggle {
-                background-color: $border-color;
-                @include border-bottom-right-radius( 0 );
-                @include border-bottom-left-radius( 0 );
+            .section:after {
+                display: none;
             }
             
-            .lbl-toggle:after {
-                @include rotate( 90deg );
-            }
-            
-            .collapsible-content {
+            .content {
                 display: block;
             }
             
@@ -2343,16 +2480,11 @@ Droplets page container. Droplets classes only work inside this container.
         
         .droplets-tabbed {
             
-            .lbl-toggle:after {
-                position: absolute;
-                right: rem( $gutter );
-                font-family: 'dropletsIcons';
-                content: '\e001';
-                color: $gray-color;
-                @include rotate( 90deg );
+            .tab:after {
+                display: none;
             }
             
-            .panel {
+            .content {
                 display: block;
             }
             
@@ -2644,7 +2776,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D023: Footer
+D024: Footer
 --------------------------------------------------------------------------------
 Contains copyright info. Added automatically via CSS.
 ----------------------------------------------------------------------------- */
@@ -2666,7 +2798,7 @@ Contains copyright info. Added automatically via CSS.
 }
 
 /*
-D024: FONT FACES
+D025: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */
@@ -2693,7 +2825,7 @@ Setting up font face. To support font icons used inside page container.
 }
 
 /*
-D025: LEGACY/DEPRECATED COMPONENTS
+D0--: LEGACY/DEPRECATED COMPONENTS
 --------------------------------------------------------------------------------
 Components that are no longer to be used or should not continue to be used.
 To be removed in future versions.
@@ -3396,131 +3528,6 @@ To be removed in future versions.
         @include animation( fadeIn 1s );
     }
     
-    /* D025.8: TOOLTIP */
-    
-    .droplets-tooltip {
-        
-    	cursor: help;
-    	text-decoration: underline dotted;
-    	//border-bottom: rem( 1px ) dotted $gray-color;
-    	
-    	.tooltip {
-            position: absolute;
-            display: block;
-            min-width: rem( 150px );
-            font-size: rem( 14px );
-            line-height: rem( 16px );
-            z-index: 99;
-        }
-        
-        .tooltip-inner {
-            max-width: rem( 250px );
-            padding: rem( 5px ) rem( 5px ) rem( 7px );
-            color: #fff;
-            text-align: left;
-            background-color: #333;
-            @include border-radius( rem( 3px ) );
-            @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
-        }
-    	
-    }
-    
-    /* D025.9: POPOVER */
-    
-    .droplets-popover {
-        
-        display: inline;
-        position: relative;
-        border: rem( 1px ) solid $gray-color;
-        padding: rem( 2px ) rem( 4px );
-        @include border-radius( rem( 3px ) );
-        cursor: pointer;
-        
-        .popover {
-            
-            display: none;
-            position: absolute;
-            width: rem( 200px );
-            max-width: rem( 300px );
-            text-align: left;
-            white-space: normal;
-            color: #fff;
-            background-color: #333;
-            font-weight: normal;
-            font-size: rem( 14px );
-            line-height: rem( 16px );
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            @include border-radius( rem( 6px ) );
-            @include single-box-shadow( 0, 0, rem( 8px ), 0, #000 );
-            top: 0;
-            left: 0;
-            z-index: 999;
-            
-            .popover-content {
-                padding: rem( 8px ) rem( $gutter );
-            }
-            
-        }
-        
-        .popover:after {
-            position: absolute;
-            display: block;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-top-color: #333;
-            border-style: solid;
-            border-width: rem( 10px );
-            border-bottom-width: 0;
-            bottom: rem( -10px );
-            left: 50%;
-            margin-left: rem( -10px );
-            content: '';
-        }
-        
-        .popover.right:after {
-
-            top: calc( 50% - 10px );
-            left: 0;
-            border-left-width: 0;
-            border-right-color: #333;
-            border-top-color: transparent;
-            border-bottom-width: rem(10px);
-            bottom: unset;
-            right: unset;
-        
-        }
-        
-        .popover.left:after {
-
-            top: calc( 50% - 10px );
-            right: rem( -10px );
-            border-right-width: 0;
-            border-left-color: #333;
-            border-top-color: transparent;
-            border-bottom-width: rem(10px);
-            left: unset;
-            bottom: unset;
-        
-        }
-        
-        .popover.bottom:after {
-            
-            top: rem( -10px );
-            border-top-width: 0;
-            border-top-color: transparent;
-            border-bottom-color: #333;
-            border-bottom-width: rem(10px);
-        
-        }
-        
-    }
-
-    .droplets-popover:hover,
-    .droplets-popover.active {
-        background-color: $light-gray-color;
-    }
-    
 }
 
 /*
@@ -3563,8 +3570,11 @@ Additional adjustments only when loaded on Canvas.net
     
 }
 
-body.uws-droplets-js-disabled #uws-droplets-page,
-#uws-droplets-page.canvas-net.no-js {
+/*
+D027: NO JAVASCRIPT FALLBACK
+----------------------------------------------------------------------------- */
+
+#uws-droplets-page.no-js {
     
     // Accordion
     .droplets-accordion {
@@ -3584,6 +3594,29 @@ body.uws-droplets-js-disabled #uws-droplets-page,
         
         .accordion-content {
             display: block;
+        }
+        
+    }
+
+    // Collapibles
+    .droplets-collapsible {
+        
+        .section {
+            cursor: unset;
+        }
+
+        .section:hover,
+        .section.active {
+            background-color: transparent;
+        }
+
+        .section:after {
+            display: none;
+        }
+        
+        .content {
+            display: block;
+            order: unset;
         }
         
     }
@@ -3617,6 +3650,30 @@ body.uws-droplets-js-disabled #uws-droplets-page,
                 display: block;
             }
             
+        }
+        
+    }
+
+    // Tabbed
+    .droplets-tabbed {
+        
+        .tab {
+            color: #000;
+            cursor: unset;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background-color: transparent;
+        }
+
+        .tab:after {
+            display: none;
+        }
+        
+        .content {
+            display: block;
+            order: unset;
         }
         
     }

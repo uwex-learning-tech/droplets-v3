@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <title>Droplets Framework Demo</title>
 <link href="css/droplets.css" rel="stylesheet" media="all" />
-<script src="script/droplets-min.js"></script>
+<script src="script/dropletsjsv3-min.js"></script>
 <style>
 body {
     font-family: sans-serif;
@@ -50,7 +50,7 @@ body {
 
     <p class="lead">The content below shows all of the possible elements/styles with the use of Droplets CSS/JS. Droplets CSS/JS is created for Instructional Designers at UW Extension division of Continuing Education, Outreach &amp; E-Learning. It provides simple HTML/CSS classes and consistency for course content page designs.</p>
     
-    <div class="droplets-collapsible">
+    <!-- <div class="droplets-collapsible">
         <input id="collapsible1" class="toggle" type="checkbox">
         <label for="collapsible1" class="lbl-toggle" tabindex="0">More Info</label>
         <div class="collapsible-content">
@@ -228,7 +228,7 @@ body {
             
         </div>
         
-    </div>
+    </div> 
     
     <div class="droplets-popup">
         
@@ -268,7 +268,7 @@ body {
         
     </div>
     
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident. <span class="droplets-tip" title="HyperText Markup Language">HTML</span> is the best thing ever.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident. <span class="droplets-tip" title="HyperText Markup Language">HTML</span> is the best thing ever.</p> -->
     
     <h2>Section Header</h2>
     
@@ -290,12 +290,56 @@ body {
     
     <p>Lorem ipsum dolor sit amet, consectetur elit. Vitae, <span class="droplets-popover bottom" title="Doloribus is so awesome. I do not even know what it means.">doloribus</span> aperiam temporibus iusto est vel aut aliquam ipsum quidem consectetur possimus laboriosam iste molestiae consequatur magnam soluta porro commodi quia?</p>
     
-    <figure class="padded-right padded-bottom shadowed"> <img src="https://media.uwex.edu/app/droplets/src/img/imagezoomsample.jpg" width="300" alt="FIG: Sample Image 1" /> </figure>
-    
     <h2>Dropcap</h2>
     
     <p class="dropcap">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     
+    <h2>Tabs</h2>
+
+    <div class="droplets-tabbed">
+
+        <h2 id="sr-tab1" class="tab active" aria-controls="sr-panel1">Orange</h2>
+        <div id="sr-panel1" class="content" aria-labelledby="sr-tab1">
+            <p>The orange (specifically, the sweet orange) is the fruit of the citrus species Citrus × sinensis in the family Rutaceae</p>
+            <p>The fruit of the Citrus × sinensis is considered a sweet orange, whereas the fruit of the Citrus × aurantium is considered a bitter orange. The sweet orange reproduces asexually (apomixis through nucellar embryony); varieties of sweet orange arise through mutations.</p>
+        </div>
+
+        <h2 id="sr-tab2" class="tab" aria-controls="sr-panel2">Tangerine</h2>
+        <div id="sr-panel2" class="content" aria-labelledby="sr-tab2">
+            <p>The tangerine (Citrus tangerina) is an orange-colored citrus fruit that is closely related to, or possibly a type of, mandarin orange (Citrus reticulata).</p>
+            <p>The name was first used for fruit coming from Tangier, Morocco, described as a mandarin variety. Under the Tanaka classification system, Citrus tangerina is considered a separate species.</p>
+        </div>
+
+        <h2 id="sr-tab3" class="tab" aria-controls="sr-panel3">Clemantine</h2>
+        <div id="sr-panel3" class="content" aria-labelledby="sr-tab3">
+            <p>A clementine (Citrus ×clementina) is a hybrid between a mandarin orange and a sweet orange, so named in 1902. The exterior is a deep orange colour with a smooth, glossy appearance. Clementines can be separated into 7 to 14 segments. Similarly to tangerines, they tend to be easy to peel.</p>
+        </div>
+
+    </div>
+
+    <h2>Collapsibles</h2>
+
+    <div class="droplets-collapsible">
+        
+        <h2 id="sr-section1" class="section" aria-controls="sr-content1">Orange</h2>
+        <div id="sr-content1" class="content" aria-labelledby="sr-section1">
+            <p>The orange (specifically, the sweet orange) is the fruit of the citrus species Citrus × sinensis in the family Rutaceae</p>
+            <p>The fruit of the Citrus × sinensis is considered a sweet orange, whereas the fruit of the Citrus × aurantium is considered a bitter orange. The sweet orange reproduces asexually (apomixis through nucellar embryony); varieties of sweet orange arise through mutations.</p>
+        </div>
+
+        <h2 id="sr-section2" class="section" aria-controls="sr-content2">Tangerine</h2>
+        <div id="sr-content2" class="content" aria-labelledby="sr-section2">
+            <p>The tangerine (Citrus tangerina) is an orange-colored citrus fruit that is closely related to, or possibly a type of, mandarin orange (Citrus reticulata).</p>
+            <p>The name was first used for fruit coming from Tangier, Morocco, described as a mandarin variety. Under the Tanaka classification system, Citrus tangerina is considered a separate species.</p>
+        </div>
+
+        <h2 id="sr-section3" class="section" aria-controls="sr-content3">Clemantine</h2>
+        <div id="sr-content3" class="content" aria-labelledby="sr-section3">
+            <p>A clementine (Citrus ×clementina) is a hybrid between a mandarin orange and a sweet orange, so named in 1902. The exterior is a deep orange colour with a smooth, glossy appearance. Clementines can be separated into 7 to 14 segments. Similarly to tangerines, they tend to be easy to peel.</p>
+        </div>
+        
+    </div>
+
     <h2>Tooltip</h2>
     
     <p> Excepteur sint occaecat cupidatat non proident. <span class="droplets-tooltip top" title="HyperText Markup Language">HTML</span> is the best thing ever.</p>
