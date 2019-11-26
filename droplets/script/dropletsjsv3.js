@@ -626,25 +626,90 @@ function enableCollapsibles( collapsibles ) {
                 if ( this.classList.contains( 'active' ) ) {
                     
                     // close it
-                    this.classList.remove( 'active' );
-                    this.setAttribute( 'aria-expanded', 'false');
-                    contents[i].classList.remove( 'active' );
+                    toggleSection( this, contents[i], false );
 
                 } else {
 
                     // open it
-                    this.classList.add( 'active' );
-                    this.setAttribute( 'aria-expanded', 'true');
-                    contents[i].classList.add( 'active' );
+                    toggleSection( this, contents[i], true );
                     
                 }  
                 
             } );
             
         } );
+
+        // create the accordion controls for each accordion
+        const controlsWrapper = document.createElement( 'div' );
+        controlsWrapper.classList.add( 'controls' );
+        
+        const closeBtn = document.createElement( 'a' );
+        closeBtn.classList.add( 'cbtn', 'closeAll' );
+        closeBtn.setAttribute( 'role', 'button' );
+        closeBtn.innerHTML = 'Close All';
+        closeBtn.href = '';
+        
+        const openBtn = document.createElement( 'a' );
+        openBtn.classList.add( 'cbtn', 'openAll' );
+        openBtn.setAttribute( 'role', 'button' );
+        openBtn.innerHTML = 'Open All';
+        openBtn.href = '';
+        
+        controlsWrapper.appendChild( closeBtn );
+        controlsWrapper.appendChild( openBtn );
+
+        collapsiblesWrapper.insertBefore( controlsWrapper, collapsiblesWrapper.firstChild );
+
+        closeBtn.addEventListener( 'click', (evt) => {
+            
+            Array.prototype.forEach.call( sections, function(section, i) {
+                toggleSection( section, contents[i], false );
+            } );
+            
+            // prevent default event action
+            evt.preventDefault();
+
+        } );
+
+        openBtn.addEventListener( 'click', (evt) => {
+            
+            Array.prototype.forEach.call( sections, function(section, i) {
+                toggleSection( section, contents[i], true );
+            } );
+            
+            // prevent default event action
+            evt.preventDefault();
+
+        } );
         
     } );
     
+}
+
+/**
+ * Helper function to toggle the state of the collapsibles.
+ * @function toggleSection
+ * @param {Object} section - the section label button.
+ * @param {Object} content - the section content.
+ * @param {Boolean} isClosed - is closed flag.
+ * @since 3.0.0
+ */
+function toggleSection( section, content, isClosed ) {
+
+    if ( isClosed ) {
+
+        section.classList.add( 'active' );
+        section.setAttribute( 'aria-expanded', 'true');
+        content.classList.add( 'active' );
+
+    } else {
+
+        section.classList.remove( 'active' );
+        section.setAttribute( 'aria-expanded', 'false');
+        content.classList.remove( 'active' );
+
+    }
+
 }
 
 /**

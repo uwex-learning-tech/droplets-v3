@@ -454,8 +454,9 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     .btn.small {
-        font-size: rem( 14px );
+        font-size: 80%;
         padding: rem(5px);
+        @include single-box-shadow(0, rem( 2px ), 0, 0, $gray-color);
     }
     
     // D005.11: text alignments
@@ -1833,10 +1834,44 @@ Droplets page container. Droplets classes only work inside this container.
     .droplets-collapsible {
         
         margin: rem($margin-spacing) 0;
-        @include border-radius( rem(10px) );
+        @include border-radius( 0 0 rem(10px) rem(10px) );
         overflow: hidden;
-    	
+        
+        .controls {
+
+            @include display-flex();
+            @include flex-flow( row nowrap );
+            @include justify-content( flex-end );
+            margin-bottom: rem( $margin-spacing / 2 );
+
+            .cbtn {
+
+                display: block;
+                padding: rem( 2px ) rem( 5px ) rem( 3px );
+                font-size: 80%;
+                color: #666;
+                text-decoration: none;
+                background-color: $light-btn-hover-color;
+                border: rem( 1px ) solid $light-color;
+                @include border-radius( 15px );
+                @include single-transition( color, 0.25s, ease-in-out );
+                @include single-transition( border-color, 0.25s, ease-in-out );
+                
+                &:first-of-type {
+                    margin-right: rem( $margin-spacing / 2 );
+                }
+
+            }
+
+            .cbtn:hover {
+                border-color: $dark-light-color;
+                color: #000;
+            }
+
+        }
+
         .section {
+
             @include display-flex();
             @include flex-flow(row nowrap);
             @include align-items( center );
@@ -1850,6 +1885,12 @@ Droplets page container. Droplets classes only work inside this container.
             cursor: pointer;
             @include single-transition( background, 0.1s );
             @include single-transition( color, 0.1s );
+
+            &:first-of-type {
+                @include border-radius( rem(10px) rem(10px) 0 0 );
+                overflow: hidden;
+            }
+
         }
         
         .section:hover {
