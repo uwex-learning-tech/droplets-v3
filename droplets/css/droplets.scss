@@ -161,7 +161,7 @@ Droplets page container. Droplets classes only work inside this container.
     .section-header {
         
         padding: 0 0 rem( 8px ) 0;
-        margin: rem( $margin-spacing ) 0;
+        margin: rem( $margin-spacing * 2 ) 0;
     	border-bottom: rem( 1px ) solid $border-color;
     
     	h2 {
@@ -743,7 +743,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     }
 
-    .callout.alt {
+    .callout.with-icon {
 
         @include display-flex();
         @include flex-flow(row nowrap);
@@ -1304,7 +1304,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         img {
             display: block;
-            max-width: 100%;
+            max-width: 100% !important;
             height: auto;
         }
         
