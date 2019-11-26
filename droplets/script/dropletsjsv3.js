@@ -99,7 +99,6 @@ function onCanvasLms() {
         // add no-js class if not to expand any hidden contents
         if ( isAllowedCanvasPage() ) {
 
-            console.log("check components");
             checkDropletsComponents();
 
         } else {
@@ -181,7 +180,6 @@ function checkDropletsComponents() {
         enableTabs( tabsSelector );
     }
 
-    console.log(tabbedSelector.length);
     if ( tabbedSelector.length ) {
         enableTabbed( tabbedSelector );
     }

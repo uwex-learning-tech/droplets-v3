@@ -31,6 +31,16 @@
 		"oAP": "/build/dreamweaver_commands",
 		"oF": 0
 		},
+	"/droplets/css/droplets.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "/droplets/css/droplets-ck.css",
+		"oF": 0,
+		"oS": 0
+		},
 	"/droplets/css/droplets.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -132,8 +142,19 @@
 		"mi": 1,
 		"oA": 0,
 		"oAP": "/droplets/script/dropletsjsv3-min.js",
-		"oF": 2,
+		"oF": 3,
 		"sC": 3,
+		"tS": 0
+		},
+	"/droplets/script/prism.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/droplets/script/min/prism-min.js",
+		"oF": 1,
+		"sC": 1,
 		"tS": 0
 		},
 	"/LICENSE": {
@@ -167,6 +188,14 @@
 "hooks": [
 	],
 "manualImportLinks": {
+	"/droplets/script/dropletsjsv3.js": [
+		{
+			"followForSyntaxChecking": 0,
+			"linkedFileAbbreviatedPath": "/droplets/script/prism.js",
+			"position": 0,
+			"type": 0
+			}
+		]
 	},
 "projectAttributes": {
 	"creationDate": 499371919,
