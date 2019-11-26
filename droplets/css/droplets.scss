@@ -876,13 +876,13 @@ Droplets page container. Droplets classes only work inside this container.
         .callout.left {
             max-width: 25%;
             float: left;
-            margin: 0 rem( $gutter ) 0 0;
+            margin: rem( $gutter ) rem( $gutter ) rem( $gutter ) 0 ;
         }
         
         .callout.right {
             max-width: 25%;
             float: right;
-            margin: 0 0 0 rem( $gutter );
+            margin: rem( $gutter ) 0 rem( $gutter ) rem( $gutter );
         }
 
         .callout.left:after,
@@ -1267,13 +1267,14 @@ Droplets page container. Droplets classes only work inside this container.
         // D011.16: Alignment
         table.left {
             float: left;
-            margin: 0 rem( $gutter ) 0 0;
+            margin: rem( $gutter ) rem( $gutter ) rem( $gutter ) 0;
             text-align: left;
         }
         
         table.right {
             float: right;
             margin: 0 0 0 rem( $gutter );
+            margin: rem( $gutter ) 0 rem( $gutter ) rem( $gutter );
             text-align: left;
         }
 
@@ -1417,6 +1418,7 @@ Droplets page container. Droplets classes only work inside this container.
             @extend .imgCommons;
             float: right;
             margin: 0 0 0 rem( $gutter );
+            margin: rem( $gutter ) 0 rem( $gutter ) rem( $gutter ) ;
             display: table;
         }
         
@@ -1425,6 +1427,7 @@ Droplets page container. Droplets classes only work inside this container.
             @extend .imgCommons;
             float: left;
             margin: 0 rem( $gutter ) 0 0;
+            margin: rem( $gutter ) rem( $gutter ) rem( $gutter ) 0 ;
             display: table;
         }
 
