@@ -18,7 +18,9 @@
 		"oF": 1
 		},
 	"/config.rb": {
-		"ft": 131072,
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/config.rb",
 		"oF": 0
@@ -137,7 +139,7 @@
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
-		"mi": 1,
+		"mi": 0,
 		"oA": 0,
 		"oAP": "/droplets/script/dropletsjsv3-min.js",
 		"oF": 3,

@@ -753,6 +753,7 @@ Droplets page container. Droplets classes only work inside this container.
         .icon {
             position: relative;
             margin-right: rem( $margin-spacing );
+            min-width: rem( 24px );
             height: rem( 27px );
             font-size: 155%;
             @include align-self( flex-start );
