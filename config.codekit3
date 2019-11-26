@@ -18,7 +18,9 @@
 		"oF": 1
 		},
 	"/config.rb": {
-		"ft": 131072,
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/config.rb",
 		"oF": 0
@@ -120,6 +122,17 @@
 		"oAP": "/droplets/script/droplets-min.js",
 		"oF": 3,
 		"sC": 3,
+		"tS": 0
+		},
+	"/droplets/script/dropletsjsv3-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/droplets/script/min/dropletsjsv3-min-min.js",
+		"oF": 0,
+		"sC": 1,
 		"tS": 0
 		},
 	"/droplets/script/dropletsjsv3.js": {

@@ -1886,6 +1886,8 @@ Droplets page container. Droplets classes only work inside this container.
         
         .content.active {
             display: block;
+            margin-top: rem( $margin-spacing * -1 );
+            padding-top: rem( $margin-spacing );
         }
         
     }

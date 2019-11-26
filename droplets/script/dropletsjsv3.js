@@ -262,14 +262,14 @@ function enableToolTips( toolTips ) {
                 x = position.top - toolTipNode.offsetHeight - 2;
                 y = position.left;
             } else if ( this.classList.contains( 'bottom' ) ) {
-                x = position.top + toolTipNode.offsetHeight - 20;
+                x = position.top + toolTipNode.offsetHeight - 10;
                 y = position.left;
             } else if ( this.classList.contains( "right" ) ) {
                 x = position.top;
-                y = position.left + this.offsetWidth;
+                y = position.left + this.offsetWidth + 5;
             } else if ( this.classList.contains( "left" ) ) {
                 x = position.top;
-                y = position.left - toolTipNode.offsetWidth;
+                y = position.left - toolTipNode.offsetWidth - 5;
             } else {
                 x = position.top - toolTipNode.offsetHeight - 2;
                 y = position.left;
@@ -435,6 +435,8 @@ function enablePopovers( popovers ) {
  */
 function enableTabbed( tabs ) {
     
+    let activeSet = false;
+
     // loop through collection of tab elements
     Array.prototype.forEach.call( tabs, function( tabWrapper ) {
         
@@ -442,24 +444,35 @@ function enableTabbed( tabs ) {
         const tabBtns = tabWrapper.querySelectorAll( '.tab' );
         const tabContents = tabWrapper.querySelectorAll( '.content' );
 
-        // set role for screen reader
+        // set screen reader attributes for each tab component
         tabWrapper.setAttribute( 'role', 'rolelist');
         tabWrapper.setAttribute( 'aria-multiselectable', 'false' );
 
         // for each tab of current tab element iternation
         Array.prototype.forEach.call( tabBtns, function( tab, i ) {
             
-            // set each tab to have a role of tab for screen reader
+            // if current tab contains active class and activeSet
+            // is false, set activeSet to true
+            // else remove duplicate active class
+            if ( tab.classList.contains( 'active' ) && activeSet === false ) {
+                activeSet = true;
+            } else {
+                tab.classList.remove( 'active' );
+            }
+
+            // set screen reader attributes for each tab
             tab.setAttribute( 'role', 'tab' );
             tabContents[i].setAttribute( 'role', 'tabpanel' );
 
-            // set tab selected state
-            if ( tab.classList.contains( 'active' ) ) {
-                tab.setAttribute( 'aria-selected', 'true');
-                tabContents[i].classList.add( 'active' );
-            } else {
-                tab.setAttribute( 'aria-selected', 'false');
+            if ( tab.id ) {
+                tab.setAttribute( 'id', tab.id );
+                tab.setAttribute( 'aria-controls', tab.id + '-content' );
+                tabContents[i].setAttribute( 'id', tab.id + '-content' );
+                tabContents[i].setAttribute( 'aria-labelledby', tab.id );
             }
+
+            // set tab selected state
+            changeTabState( tab, tabContents[i], tab.classList.contains( 'active' ) );
             
             // add event listener to each tab
             tab.addEventListener( 'click', function() {
@@ -467,31 +480,52 @@ function enableTabbed( tabs ) {
                 // if not selected...
                 if ( !this.classList.contains( 'active' ) ) {
 
-                    // remove active class from all tab
-                    // and hide tab sections
+                    // change all tabs to inactive first
                     Array.prototype.forEach.call( tabBtns, function( el, i ) {
-                        
-                        el.classList.remove( 'active' );
-                        el.setAttribute( 'aria-selected', 'false');
-                        tabContents[i].classList.remove( 'active' );
-                        
+                        changeTabState( el, tabContents[i], false );
                     } );
                     
-                    // add active class to current clicked tab
-                    // and display corresponding tab section
-                    this.classList.add( 'active' );
-                    this.setAttribute( 'aria-selected', 'true');
-                    tabContents[i].classList.add( 'active' );
+                    // change selected tab to active
+                    changeTabState( this, tabContents[i], true );
 
                 }
-                
                 
             } );
             
         } );
+
+        // if there is no active class in tabs, 
+        // set first one active
+        if ( activeSet === false ) {
+            changeTabState( tabBtns[0], tabContents[0], true );
+            activeSet = true;
+        }
         
     } );
     
+}
+
+/**
+ * Helper function to change the state of the tabs.
+ * @function changeTabState
+ * @param {Object} tab - the tab button.
+ * @param {Object} content - the tab content.
+ * @param {Boolean} active - the state of the tab.
+ * @since 3.0.0
+ */
+function changeTabState( tab, content, active ) {
+
+    // set tab selected state
+    if ( active ) {
+        tab.classList.add( 'active' );
+        tab.setAttribute( 'aria-selected', 'true');
+        content.classList.add( 'active' );
+    } else {
+        tab.classList.remove( 'active' );
+        tab.setAttribute( 'aria-selected', 'false');
+        content.classList.remove( 'active' );
+    }
+
 }
 
 /**
@@ -559,16 +593,23 @@ function enableCollapsibles( collapsibles ) {
         const sections = collapsiblesWrapper.querySelectorAll( '.section' );
         const contents = collapsiblesWrapper.querySelectorAll( '.content' );
 
-        // set role for screen reader
+        // set screen reader attributes for each collapsible components
         collapsiblesWrapper.setAttribute( 'role', 'rolelist');
         collapsiblesWrapper.setAttribute( 'aria-multiselectable', 'true' );
 
         // for each section of current collapsible element iternation
         Array.prototype.forEach.call( sections, function( section, i ) {
             
-            // set each section to have a role of tab for screen reader
+            // set screen reader attributes for each collapsible section
             section.setAttribute( 'role', 'tab' );
             contents[i].setAttribute( 'role', 'tabpanel' );
+
+            if ( section.id ) {
+                section.setAttribute( 'id', section.id );
+                section.setAttribute( 'aria-controls', section.id + '-content' );
+                contents[i].setAttribute( 'id', section.id + '-content' );
+                contents[i].setAttribute( 'aria-labelledby', section.id );
+            }
 
             // set section selected state
             if ( section.classList.contains( 'active' ) ) {
