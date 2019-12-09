@@ -160,7 +160,7 @@ function checkDropletsComponents() {
     const tabsSelector = document.querySelectorAll( prefix + 'tabs' );
     const tabbedSelector = document.querySelectorAll( prefix + 'tabbed' );
     const accordionsSelector = document.querySelectorAll( prefix + 'accordion' );
-    const collapsibleSelector = document.querySelectorAll( prefix + 'collapsible' );
+    const collapsibleSelector = document.querySelectorAll( prefix + 'collapsibles' );
     // let resourcesSelector = document.querySelectorAll( prefix + 'resources' );
     // let readMoreSelector = document.querySelectorAll( prefix + 'readmore' );
     // let revealSelector = document.querySelectorAll( prefix + 'reveal' );

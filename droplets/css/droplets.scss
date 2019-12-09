@@ -35,7 +35,8 @@ TABLE OF CONTENTS
  24. FOOTER --------------------------------------------------------------- D024
  25. FONT FACES ----------------------------------------------------------- D025
  26. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D026
- 27. PRISM CSS ------------------------------------------------------------ D027
+ 27. NO JS FALLBACK ------------------------------------------------------- D027
+ 28. PRISMJS CSS ---------------------------------------------------------- D028
  --. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D025
 
 ----------------------------------------------------------------------------- */
@@ -1833,10 +1834,10 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D018: COLLAPSIBLE / ACCORDION
+    D018: COLLAPSIBLES / ACCORDION
     --------------------------------------------------------------------------*/
     
-    .droplets-collapsible {
+    .droplets-collapsibles {
         
         margin: rem($margin-spacing) 0;
         @include border-radius( 0 0 rem(10px) rem(10px) );
@@ -2514,7 +2515,7 @@ Droplets page container. Droplets classes only work inside this container.
             
         }
     	
-    	.droplets-collapsible {
+    	.droplets-collapsibles {
             
             .section:after {
                 display: none;
@@ -3647,7 +3648,7 @@ D027: NO JAVASCRIPT FALLBACK
     }
 
     // Collapibles
-    .droplets-collapsible {
+    .droplets-collapsibles {
         
         .section {
             cursor: unset;
@@ -3787,7 +3788,7 @@ D027: NO JAVASCRIPT FALLBACK
 }
 
 /*
-D027: PRISMJS CSS
+D028: PRISMJS CSS
 --------------------------------------------------------------------------------
 PrismJS 1.17.1
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+java+python+r&plugins=line-numbers+normalize-whitespace

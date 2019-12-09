@@ -19,3 +19,6 @@ line_comments = false
 color_output = false
 
 preferred_syntax = :scss
+
+asset_cache_buster = :none
+cache = false
