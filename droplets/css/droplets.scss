@@ -476,7 +476,7 @@ Droplets page container. Droplets classes only work inside this container.
 
     // D005.12: horizontal rules and alts
     hr {
-        margin: rem( $margin-spacing ) 0;
+        margin: rem( $margin-spacing * 2 ) 0;
         border: 0;
         height: rem( 1px );
         background: $hr-color;
@@ -516,12 +516,12 @@ Droplets page container. Droplets classes only work inside this container.
     }
 
     hr.double-spacing {
-        margin: rem( $margin-spacing * 2) 0;
+        margin: rem( $margin-spacing * 4) 0;
     }
 
-    hr.triple-spacing {
-        margin: rem( $margin-spacing * 3) 0;
-    }
+    // hr.triple-spacing {
+    //     margin: rem( $margin-spacing * 6) 0;
+    // }
 
     hr.with-arrow {
         position: relative;
