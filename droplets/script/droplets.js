@@ -674,9 +674,9 @@ function enableReveal( reveals ) {
             
             var hiddenContent = el.querySelectorAll( '.hidden-content' )[0];
             
-            if ( hiddenContent.style.display !== 'unset' ) {
+            if ( hiddenContent.style.display !== 'inherit' ) {
                 
-                hiddenContent.style.display = 'unset';
+                hiddenContent.style.display = 'inherit';
             
                 this.classList.remove( 'success' );
                 this.innerHTML = 'Hide';
