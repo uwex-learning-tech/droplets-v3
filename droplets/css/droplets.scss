@@ -53,6 +53,7 @@ $border-color: #e9e9e9;
 $hr-color: #c7cdd1;
 $gutter: 16px;
 $margin-spacing: 10px;
+$border-radius: 10px;
 
 $table-border-color: #727272;
 $table-bg-color: #f1f1f1;
@@ -111,6 +112,12 @@ Setting up functions. Convert px unit to rem unit.
     #{$property}: calc(#{$expression});
 }
 
+@mixin clearfix() {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 /*
 D002: COMPASS IMPORTS
 --------------------------------------------------------------------------------
@@ -150,10 +157,11 @@ Droplets page container. Droplets classes only work inside this container.
     
     * {
         @include box-sizing( "border-box" );
-    }
-    
-    *:focus {
-        outline: rem( 1px ) dotted black;
+
+        &:focus {
+            outline: rem( 1px ) dotted black;
+        }
+
     }
     
     /*
@@ -253,12 +261,16 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     // D005.3: Drop caps - revisit in future for CSS Initial Letter support
-    .dropcap:first-letter {
-        float: left;
-        font-size: 250%;
-        line-height: 1;
-        font-weight: 700;
-        margin-right: rem( 5px );
+    .dropcap {
+        
+        &:first-letter {
+            float: left;
+            font-size: 250%;
+            line-height: 1;
+            font-weight: 700;
+            margin-right: rem( 5px );
+        }
+
     }
     
     // D005.4: blockquote
@@ -276,11 +288,13 @@ Droplets page container. Droplets classes only work inside this container.
     	}
     
     	.author {
+
             font-size: rem( 14px );
-    	}
-    
-    	.author:before {
-            content: '\2014 \00A0';
+
+            &:before {
+                content: '\2014 \00A0';
+            }
+
     	}
     
     }
@@ -308,17 +322,17 @@ Droplets page container. Droplets classes only work inside this container.
     
     	.author {
     	    display: inline;
-    	}
+        }
+        
+        &:before {
+            color: $light-gray-color;
+            content: open-quote;
+            font-size: 500%;
+            line-height: 0;
+            margin-right: rem( 6px );
+            vertical-align: rem( -36px );
+        }
     
-    }
-    
-    .with-quote-mark:before {
-        color: $light-gray-color;
-        content: open-quote;
-        font-size: 500%;
-        line-height: 0;
-        margin-right: rem( 6px );
-        vertical-align: rem( -36px );
     }
     
     // D005.7: unordered & ordered lists
@@ -360,11 +374,13 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D005.10: buttons
     .btn {
+
         display: inline-block;
         position: relative;
         background-color: $gray-color;
     	padding: rem( 8px ) rem( $gutter );
-    	font-size: rem( 18px );
+        font-size: rem( 18px );
+        font-weight: 700;
     	color: #fff;
     	text-decoration: none;
     	vertical-align: middle;
@@ -372,93 +388,107 @@ Droplets page container. Droplets classes only work inside this container.
     	cursor: pointer;
     	border: 0 solid #404040;
     	@include box-sizing( "border-box" );
-        @include border-radius( rem( 5px ) );
+        @include border-radius( rem( $border-radius ) );
         @include single-box-shadow(0, rem( 3px ), 0, 0, $dark-gray-color);
         @include single-transition( background-color, 0.25s, linear );
-    }
-    
-    .btn:hover {
-        background-color: $gray-btn-hover-color;
-    }
 
-    .btn.light {
-        color: $light-text-color;
-        background-color: $light-color;
-        @include single-box-shadow(0, 3px, 0, 0, $dark-light-color);
-    }
+        &:hover {
+            background-color: $gray-btn-hover-color;
+        }
 
-    .btn.light:hover {
-        background-color: $light-btn-hover-color;
-    }
+        &.light {
 
-    .btn.dark {
-        background-color: $dark-color;
-        @include single-box-shadow(0, 3px, 0, 0, $dark-dark-color);
-    }
+            color: $light-text-color;
+            background-color: $light-color;
+            @include single-box-shadow(0, 3px, 0, 0, $dark-light-color);
 
-    .btn.dark:hover {
-        background-color: $dark-btn-hover-color;
-    }
+            &:hover {
+                background-color: $light-btn-hover-color;
+            }
 
-    .btn.info {
-        background-color: $info-color;
-        @include single-box-shadow(0, 3px, 0, 0, $dark-info-color);
-    }
-    
-    .btn.info:hover {
-        background-color: $info-btn-hover-color;
-    }
-    
-    .btn.success {
-        background-color: $success-color;
-        @include single-box-shadow(0, 3px, 0, 0, $dark-success-color);
-    }
-    
-    .btn.success:hover {
-        background-color: $success-btn-hover-color;
-    }
-    
-    .btn.warning {
-        color: $warning-text-color;
-    	background-color: $warning-color;
-        background-image: none;
-        @include single-box-shadow(0, 3px, 0, 0, $dark-warning-color);
-    }
-    
-    .btn.warning:hover {
-        background-color: $warning-btn-hover-color;
-    }
-    
-    .btn.danger {
-        background-color: $danger-color;
-        @include single-box-shadow(0, 3px, 0, 0, $dark-danger-color);
-    }
-    
-    .btn.danger:hover {
-        background-color: $danger-btn-hover-color;
-    }
-    
-    .btn.block {
-    	display: block;
-    	width: 100%;
-    	padding: rem( $gutter / 1.333 ) 0;
-    	text-align: center;
-    	margin: rem( $gutter ) auto;
-    }
-    
-    .btn:focus {
-    	outline:none;
-    }
+        }
 
-    .btn:active {
-        @include translate( 0, rem(3px) );
-        @include single-box-shadow( 0, 0, 0, 0 );
-    }
-    
-    .btn.small {
-        font-size: 80%;
-        padding: rem(5px);
-        @include single-box-shadow(0, rem( 2px ), 0, 0, $gray-color);
+        &.dark {
+
+            background-color: $dark-color;
+            @include single-box-shadow(0, 3px, 0, 0, $dark-dark-color);
+
+            &:hover {
+                background-color: $dark-btn-hover-color;
+            }
+
+        }
+
+        &.info {
+
+            background-color: $info-color;
+            @include single-box-shadow(0, 3px, 0, 0, $dark-info-color);
+
+            &:hover {
+                background-color: $info-btn-hover-color;
+            }
+
+        }
+
+        &.success {
+
+            background-color: $success-color;
+            @include single-box-shadow(0, 3px, 0, 0, $dark-success-color);
+
+            &:hover {
+                background-color: $success-btn-hover-color;
+            }
+
+        }
+
+        &.warning {
+
+            color: $warning-text-color;
+            background-color: $warning-color;
+            background-image: none;
+            @include single-box-shadow(0, 3px, 0, 0, $dark-warning-color);
+
+            &:hover {
+                background-color: $warning-btn-hover-color;
+            }
+            
+        }
+
+        &.danger {
+
+            background-color: $danger-color;
+            @include single-box-shadow(0, 3px, 0, 0, $dark-danger-color);
+
+            &:hover {
+                background-color: $danger-btn-hover-color;
+            }
+
+        }
+
+        &.block {
+            display: block;
+            width: 100%;
+            padding: rem( $gutter / 1.333 ) 0;
+            text-align: center;
+            margin: rem( $gutter ) auto;
+        }
+
+        &.small {
+            font-size: 85%;
+            padding: rem(5px) rem(10px);
+            @include border-radius( rem($border-radius / 2) );
+            @include single-box-shadow(0, rem( 2px ), 0, 0, $gray-color);
+        }
+
+        &:active {
+            @include translate( 0, rem(3px) );
+            @include single-box-shadow( 0, 0, 0, 0 );
+        }
+
+        &:focus {
+            outline: none;
+        }
+
     }
     
     // D005.11: text alignments
@@ -476,69 +506,73 @@ Droplets page container. Droplets classes only work inside this container.
 
     // D005.12: horizontal rules and alts
     hr {
+
         margin: rem( $margin-spacing * 2 ) 0;
         border: 0;
         height: rem( 1px );
         background: $hr-color;
-    }
 
-    hr.no-line {
-        background: transparent;
-    }
+        &.no-line {
 
-    hr.no-line.with-arrow {
-        margin: rem( $margin-spacing ) 0;
-    }
+            background: transparent;
 
-    hr.no-line.with-arrow::after {
-        display: none;
-    }
+            &.with-arrow {
 
-    hr.fade {
-        background-image: linear-gradient(to right, $hr-color, $table-border-color, $hr-color);
-    }
+                margin: rem( $margin-spacing ) 0;
 
-    hr.dashed {
-        border-bottom: rem( 1px ) dashed $hr-color;
-        background: $table-border-color;
-    }
+                &:after {
+                    display: none;
+                }
 
-    hr.double-line {
-        padding: 0;
-        border: none;
-        border-top: medium double $hr-color;
-        color: $hr-color;
-        background-color: transparent;
-    }
+            }
 
-    hr.thick {
-        height: rem( 3px );
-    }
+        }
 
-    hr.double-spacing {
-        margin: rem( $margin-spacing * 4) 0;
-    }
+        &.fade {
+            background-image: linear-gradient(to right, $hr-color, $table-border-color, $hr-color);
+        }
 
-    // hr.triple-spacing {
-    //     margin: rem( $margin-spacing * 6) 0;
-    // }
+        &.dashed {
+            border-bottom: rem( 1px ) dashed $hr-color;
+            background: $table-border-color;
+        }
 
-    hr.with-arrow {
-        position: relative;
-        margin: rem( $margin-spacing * 2 ) 0;
-        overflow: visible;
-    }
+        &.double-line {
+            padding: 0;
+            border: none;
+            border-top: medium double $hr-color;
+            color: $hr-color;
+            background-color: transparent;
+        }
 
-    hr.with-arrow::after {
-        position: absolute;
-        content: " ";
-        top: 0;
-        @include calc( left, '50% - 20px' );
-        width: 0;
-        height: 0;
-        border-left: rem( 10px ) solid transparent;
-        border-right: rem( 10px ) solid transparent;
-        border-top: rem( 10px ) solid $hr-color;
+        &.thick {
+            height: rem( 3px );
+        }
+
+        &.double-spacing {
+            margin: rem( $margin-spacing * 4) 0;
+        }
+
+        &.with-arrow {
+
+            position: relative;
+            margin: rem( $margin-spacing * 2 ) 0;
+            overflow: visible;
+
+            &:after {
+                position: absolute;
+                content: " ";
+                top: 0;
+                @include calc( left, '50% - 20px' );
+                width: 0;
+                height: 0;
+                border-left: rem( 10px ) solid transparent;
+                border-right: rem( 10px ) solid transparent;
+                border-top: rem( 10px ) solid $hr-color;
+            }
+
+        }
+
     }
     
     /*
@@ -546,40 +580,22 @@ Droplets page container. Droplets classes only work inside this container.
     --------------------------------------------------------------------------*/
 
     .columns {
-        
-        width: 100%;
 
     	div {
 
-            figure:first-child {
-                margin-top: 0;
-            }
-            
-            figure:last-child {
-                margin-bottom: 0;
+            figure {
+                
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
             }
         	
     	}
-    	
-    	div:first-child {
-            margin-left: 0;
-        }
-        
-        // for a grid of popups
-        // .droplets-popup {
-
-        //     margin: 0 0 rem( $gutter) 0;
-
-        //     .thumbnail {
-        //         width: 100%;
-        //         height: rem(200px - $gutter);
-        //     }
-
-        //     .overlay {
-        //         margin: 0;
-        //     }
-            
-        // }
     
     }
     
@@ -588,42 +604,35 @@ Droplets page container. Droplets classes only work inside this container.
     	.columns {
         
         	@include display-flex();
-        	@include flex-flow( row wrap );
-        	@include justify-content( space-evenly );
+            @include flex-flow( row wrap );
+            margin: 0 rem( $margin-spacing / 2 * -1);
             
             .row {
                 @include display-flex();
                 @include flex-flow( row nowrap );
-                @include justify-content( space-evenly );
-                @include flex( 0 1 100% );
+                @include flex-basis( 100% );
+                margin: 0;
             }
 
         	div {
-                @include flex( 0 1 50% );
-        	}
-        	
-        	.wider {
-                @include flex( 0 0 70% );
-        	}
-        	
-        	.aside {
-            	
-                .callout {
-                    max-width: unset;
-                    margin: 0 0 rem( $gutter ) 0;
+
+                @include flex( 1 0 0 );
+                margin: 0 rem( $margin-spacing / 2 ) rem( $margin-spacing * -1 );
+
+                &.wider {
+                    @include flex( 2 0 );
                 }
-            	
+
+                .callout {
+                    margin: rem( $margin-spacing ) 0;
+                }
+
+                &.vertical-center {
+                    @include align-self( center );
+                }
+
         	}
         	
-        	.vertical-center {
-                @include align-self( center );
-            }
-            
-            // for a grid of popups
-            // .droplets-popup {
-            //     margin: 0 0 0 rem( $gutter);
-            // }
-        
         }
     	
 	}
@@ -663,6 +672,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D008.1: labels
     .label {
+
         padding: rem( 4px ) rem( 8px );
         font-size: 75%;
     	font-weight: 700;
@@ -671,40 +681,41 @@ Droplets page container. Droplets classes only work inside this container.
     	white-space: nowrap;
     	background-color: $gray-color;
     	vertical-align: middle;
-    	@include border-radius( rem( 15px ) );
-    }
+        @include border-radius( rem( $border-radius ) );
+        
+        &.light {
+            color: $light-text-color;
+            background-color: $light-color;
+        }
 
-    .label.light {
-        color: $light-text-color;
-    	background-color: $light-color;
-    }
+        &.dark {
+            background-color: $dark-color;
+        }
 
-    .label.dark {
-        background-color: $dark-color;
-    }
-    
-    .label.success {
-    	background-color: $success-color;
-    }
-    
-    .label.info {
-    	background-color: $info-color;
-    }
-    
-    .label.warning {
-        color: $warning-text-color;
-    	background-color: $warning-color;
-    }
-    
-    .label.danger {
-    	background-color: $danger-color;
+        &.success {
+            background-color: $success-color;
+        }
+
+        &.info {
+            background-color: $info-color;
+        }
+
+        &.warning {
+            color: $warning-text-color;
+            background-color: $warning-color;
+        }
+
+        &.danger {
+            background-color: $danger-color;
+        }
+
     }
     
     // D008.2: highlight
     .highlight {
     	padding: rem( 1px ) rem( 4px ) rem( 2px );
     	background-color: #fff3b4;
-    	@include border-radius( rem( 3px ) );
+    	@include border-radius( rem( $border-radius / 3 ) );
     }
     
     /*
@@ -721,7 +732,7 @@ Droplets page container. Droplets classes only work inside this container.
     	border-left: rem( 8px ) solid $dark-gray-color;
     	border-right: rem( 5px ) solid $light-color;
         @include box-sizing( "border-box" );
-        @include border-radius( rem( 10px) );
+        @include border-radius( $border-radius );
     
     	h4 {
     
@@ -736,181 +747,200 @@ Droplets page container. Droplets classes only work inside this container.
     	}
         
         p {
+
             margin-top: 0;
-        }
-        
-    	p:last-child {
-            margin-bottom: 0;
-        }
-    
-    }
 
-    .callout.with-icon {
+            &:last-child {
+                margin-bottom: 0;
+            }
 
-        @include display-flex();
-        @include flex-flow(row nowrap);
-        @include align-items( center );
-
-        .icon {
-            position: relative;
-            margin-right: rem( $margin-spacing );
-            min-width: rem( 24px );
-            height: rem( 27px );
-            font-size: 155%;
-            @include align-self( flex-start );
         }
 
-        .icon:before {
-            display: inline-block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            line-height: normal;
+        // D009.2: With Icon or Label
+        &.with-icon {
+
+            @include display-flex();
+            @include flex-flow(row nowrap);
+            @include align-items( center );
+
+            .icon {
+
+                position: relative;
+                margin-right: rem( $margin-spacing );
+                min-width: rem( 24px );
+                height: rem( 27px );
+                font-size: 155%;
+                @include align-self( flex-start );
+
+                &:before {
+                    display: inline-block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    line-height: normal;
+                }
+
+            }
+
+            .label {
+                @include align-self( flex-start );
+                margin-right: rem( $margin-spacing );
+            }
+
         }
 
-        .label {
-            @include align-self( flex-start );
-            margin-right: rem( $margin-spacing );
+        // D009.3: Vertical
+        &.vertical {
+
+            padding: rem( $margin-spacing );
+            border-left: 0;
+            border-right: 0;
+            border-top: rem( 8px ) solid $dark-gray-color;
+            border-bottom: rem( 5px ) solid $light-color;
+
+            &.minimal {
+                color: inherit;
+                background-color: #fff;
+                border-left: 0;
+                border-right: 0;
+                border-bottom: 0;
+                border-top-width: rem( 5px );
+            }
+
         }
 
-    }
-    
-    .callout.vertical {
-    	padding: rem( $margin-spacing );
-    	border-left: 0;
-    	border-right: 0;
-    	border-top: rem( 8px ) solid $dark-gray-color;
-    	border-bottom: rem( 5px ) solid $light-color;
-    }
-    
-    .callout.success {
-        color: $light-success-text-color;
-    	background-color: $light-success-color;
-    	border-left-color: $success-color;
-    	border-right-color: #c0f3bd;
-    	border-top-color: $success-color;
-    	border-bottom-color: #c0f3bd;
-    }
-    
-    .callout.info {
-        color: $light-info-text-color;
-    	background-color: $light-info-color;
-    	border-left-color: $info-color;
-    	border-right-color: #d0e3f0;
-    	border-top-color: $info-color;
-    	border-bottom-color: #d0e3f0;
-    }
-    
-    .callout.warning {
-        color: $light-warning-text-color;
-    	background-color: $light-warning-color;
-    	border-left-color: $warning-color;
-    	border-right-color: #f1e7bc;
-    	border-top-color: $warning-color;
-    	border-bottom-color: #f1e7bc;
-    }
-    
-    .callout.danger {
-        color: $light-danger-text-color;
-    	background-color: $light-danger-color;
-    	border-left-color: $danger-color;
-    	border-right-color: #dfb5b4;
-    	border-top-color: $danger-color;
-    	border-bottom-color: #dfb5b4;
-    }
-    
-    // D009.2: Minimal style
-    .callout.minimal {
-        color: inherit;
-    	background-color: #fff;
-    	border-right: 0;
-    	border-left-width: rem( 5px );
-    }
+        &.success {
+            color: $light-success-text-color;
+            background-color: $light-success-color;
+            border-left-color: $success-color;
+            border-right-color: #c0f3bd;
+            border-top-color: $success-color;
+            border-bottom-color: #c0f3bd;
+        }
 
-    .callout.vertical.minimal {
-        color: inherit;
-    	background-color: #fff;
-        border-left: 0;
-        border-right: 0;
-        border-bottom: 0;
-    	border-top-width: rem( 5px );
-    }
-    
-    // D009.3: Add shadow
-    .callout.shadowed {
-        @include single-box-shadow( 0, 0, rem( 6px ), 0, $dark-color, false );
-    }
-    
-    // D009.4: Add border
-    .callout.minimal.bordered {
-    	border: rem( 1px ) solid $gray-color;
-    	@include border-radius( rem( 10px ) );
-    	@include single-box-shadow( 0, rem( 3px ), 0, 0, $gray-color, false );
-    }
-    
-    .callout.minimal.bordered.danger {
-    	border-color: $danger-color;
-    	@include single-box-shadow( 0, rem( 3px ), 0, 0, $danger-color, false );
-    }
-    
-    .callout.minimal.bordered.success {
-    	border-color: $success-color;
-    	@include single-box-shadow( 0, rem( 3px ), 0, 0, $success-color, false );
-    }
-    
-    .callout.minimal.bordered.info {
-    	border-color: $info-color;
-    	@include single-box-shadow( 0, rem( 3px ), 0, 0, $info-color, false );
-    }
-    
-    .callout.minimal.bordered.warning {
-    	border-color: $warning-color;
-    	@include single-box-shadow( 0, rem( 3px ), 0, 0, $warning-color, false );
-    }
-    
-    // D009.5: Alignment
-    .callout.right {
-        text-align: left;
+        &.info {
+            color: $light-info-text-color;
+            background-color: $light-info-color;
+            border-left-color: $info-color;
+            border-right-color: #d0e3f0;
+            border-top-color: $info-color;
+            border-bottom-color: #d0e3f0;
+        }
+
+        &.warning {
+            color: $light-warning-text-color;
+            background-color: $light-warning-color;
+            border-left-color: $warning-color;
+            border-right-color: #f1e7bc;
+            border-top-color: $warning-color;
+            border-bottom-color: #f1e7bc;
+        }
+
+        &.danger {
+            color: $light-danger-text-color;
+            background-color: $light-danger-color;
+            border-left-color: $danger-color;
+            border-right-color: #dfb5b4;
+            border-top-color: $danger-color;
+            border-bottom-color: #dfb5b4;
+        }
+
+        // D009.4: Minimal
+        &.minimal {
+
+            color: inherit;
+            background-color: #fff;
+            border-right: 0;
+            border-left-width: rem( 5px );
+
+            &.bordered {
+
+                border: rem( 1px ) solid $gray-color;
+                @include border-radius( rem( $border-radius ) );
+                @include single-box-shadow( 0, rem( 3px ), 0, 0, $gray-color, false );
+
+                &.danger {
+                    border-color: $danger-color;
+                    @include single-box-shadow( 0, rem( 3px ), 0, 0, $danger-color, false );
+                }
+
+                &.success {
+                    border-color: $success-color;
+    	            @include single-box-shadow( 0, rem( 3px ), 0, 0, $success-color, false );
+                }
+
+                &.info {
+                    border-color: $info-color;
+                    @include single-box-shadow( 0, rem( 3px ), 0, 0, $info-color, false );
+                }
+
+                &.warning {
+                    border-color: $warning-color;
+    	            @include single-box-shadow( 0, rem( 3px ), 0, 0, $warning-color, false );
+                }
+
+            }
+
+        }
+
+        // D009.5: Shadow
+        &.shadowed {
+            @include single-box-shadow( 0, 0, rem( 6px ), 0, $dark-color, false );
+        }
+
+        // D009.6: Right Aligned Text Alignment
+        &.right {
+            text-align: left;
+        }
+
     }
     
     @media ( min-width: 768px ) {
         
-        // D009.5: Alignment
-        .callout.left {
-            max-width: 25%;
-            float: left;
-            margin: rem( $gutter ) rem( $gutter ) rem( $gutter ) 0 ;
-        }
         
-        .callout.right {
-            max-width: 25%;
-            float: right;
-            margin: rem( $gutter ) 0 rem( $gutter ) rem( $gutter );
-        }
+        .callout {
+            
+            // D009.7: Alignment
+            &.left {
 
-        .callout.left:after,
-        .callout.right:after {
-            visibility: hidden;
-            display: block;
-            content: "";
-            clear: both;
-            height: 0;
-        }
+                max-width: 25%;
+                float: left;
+                margin: rem( $gutter ) rem( $gutter ) rem( $gutter ) 0;
 
-        // D009.6: Widths
-        .callout.three-fourths {
-            width: 75%;
-            max-width: unset;
-        }
-        
-        .callout.half {
-            width: 50%;
-            max-width: unset;
-        }
-        
-        .callout.quarter {
-            width: 25%;
-            max-width: unset;
+                &:after {
+                    @include clearfix();
+                }
+
+            }
+
+            &.right {
+
+                max-width: 25%;
+                float: right;
+                margin: rem( $gutter ) 0 rem( $gutter ) rem( $gutter );
+
+                &:after {
+                    @include clearfix();
+                }
+
+            }
+
+            // D009.8: Widths
+            &.three-fourths {
+                width: 75%;
+                max-width: unset;
+            }
+
+            &.half {
+                width: 50%;
+                max-width: unset;
+            }
+
+            &.quarter {
+                width: 25%;
+                max-width: unset;
+            }
+
         }
         
     }
@@ -929,48 +959,60 @@ Droplets page container. Droplets classes only work inside this container.
         color: #fff;
         font-weight: 700;
         @include box-sizing( "border-box" );
-        @include border-radius( rem( 10px) );
+        @include border-radius( rem( $border-radius ) );
 
         .icon {
+
             position: relative;
-            margin-right: rem( $margin-spacing * 3 );
+            margin-right: rem( $margin-spacing * 3.5 );
             height: rem( 27px );
             font-size: 155%;
-        }
 
-        .icon:before {
-            display: inline-block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            line-height: normal;
+            &:before {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                line-height: normal;
+            }
+
         }
 
         p {
             margin: 0;
             display: -webkit-box;
             -webkit-line-clamp: 5;
-            -webkit-box-orient: vertical;  
+            line-clamp: 5;
+            -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-    }
+        &.danger {
+            background-color: $dark-danger-color;
+        }
 
-    .droplets-alert.danger {
-        background-color: $dark-danger-color;
-    }
+        &.info {
+            background-color: $dark-info-color;
+        }
 
-    .droplets-alert.info {
-        background-color: $dark-info-color;
-    }
+        &.warning {
+            color: $warning-text-color;
+            background-color: $warning-color;
+        }
 
-    .droplets-alert.warning {
-        color: $warning-text-color;
-        background-color: $warning-color;
-    }
+        &.success {
+            background-color: $dark-success-color;
+        }
 
-    .droplets-alert.success {
-        background-color: $dark-success-color;
+        &.light {
+            color: $light-text-color;
+            background-color: $dark-light-color;
+        }
+
+        &.dark {
+            background-color: $dark-dark-color;
+        }
+
     }
 
     /*
@@ -1001,18 +1043,26 @@ Droplets page container. Droplets classes only work inside this container.
             text-align: left;
             font-size: rem( 16px );
             border-bottom: rem( 2px ) solid $table-border-color;
-    	}
-    
-    	thead:first-child {
-    
-    	    tr:first-child {
-                
-                th {
-                    border-top: 0;
+        }
+        
+        thead {
+
+            &:first-child {
+
+                tr {
+
+                    &:first-child {
+
+                        th {
+                            border-top: 0;
+                        }
+
+                    }
+
                 }
-    
-    	    }
-    
+
+            }
+
         }
     
         tbody > tr > td {
@@ -1121,11 +1171,17 @@ Droplets page container. Droplets classes only work inside this container.
         
         // label text color fix
         span.label {
-            color: #fff;
-        }
-        
-        span.label.warning {
-            color: $warning-text-color;
+
+            &.label {
+
+                color: #fff;
+
+                &.warning {
+                    color: $warning-text-color;
+                }
+
+            }
+            
         }
     
     }
@@ -1136,11 +1192,13 @@ Droplets page container. Droplets classes only work inside this container.
         tbody {
 
             tr {
-                background-color: #fff;
-            }
 
-            tr:nth-child(odd) {
-                background-color: $table-bg-color;
+                background-color: #fff;
+
+                &:nth-child(odd) {
+                    background-color: $table-bg-color;
+                }
+
             }
     
         }
@@ -1151,11 +1209,13 @@ Droplets page container. Droplets classes only work inside this container.
     table.striped-body {
         
         tbody {
-            background-color: #fff;
-        }
 
-        tbody:nth-child(even) {
-            background-color: $table-bg-color;
+            background-color: #fff;
+
+            &:nth-child(even) {
+                background-color: $table-bg-color;
+            }
+
         }
     
     }
@@ -1187,7 +1247,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         background-color: #ffffff;
         border: rem( 1px ) solid $light-gray-color;
-        @include border-radius( rem( 3px ) );
+        @include border-radius( rem( $border-radius / 3 ) );
         @include single-box-shadow( 0, rem( 2px ), 0, 0, $light-gray-color );
 
         thead {
@@ -1222,8 +1282,12 @@ Droplets page container. Droplets classes only work inside this container.
 
         tbody {
 
-            tr:hover {
-                background-color: $table-bg-color;
+            tr {
+
+                &:hover {
+                    background-color: $table-bg-color;
+                }
+
             }
 
         }
@@ -1254,45 +1318,53 @@ Droplets page container. Droplets classes only work inside this container.
     
     @media ( min-width: 768px ) {
         
-        // D011.15: Widths
-        table.three-fourths {
-            width: 75%;
-        }
         
-        table.half {
-            width: 50%;
-        }
-        
-        table.quarter {
-            width: 25%;
-        }
+        table {
 
-        // D011.16: Alignment
-        table.left {
-            float: left;
-            margin: rem( $gutter ) rem( $gutter ) rem( $gutter ) 0;
-            text-align: left;
-        }
-        
-        table.right {
-            float: right;
-            margin: 0 0 0 rem( $gutter );
-            margin: rem( $gutter ) 0 rem( $gutter ) rem( $gutter );
-            text-align: left;
-        }
+            // D011.15: Widths
+            &.three-fourths {
+                width: 75%;
+            }
 
-        table.center-align {
-            margin-left: auto;
-            margin-right: auto;
-        }
+            &.half {
+                width: 50%;
+            }
 
-        table.left:after,
-        table.right:after {
-            visibility: hidden;
-            display: block;
-            content: "";
-            clear: both;
-            height: 0;
+            &.quarter {
+                width: 25%;
+            }
+
+            // D011.16: Alignment
+            &.left {
+
+                float: left;
+                margin: rem( $gutter ) rem( $gutter ) rem( $gutter ) 0;
+                text-align: left;
+
+                &:after {
+                    @include clearfix();
+                }
+
+            }
+
+            &.right {
+
+                float: right;
+                margin: 0 0 0 rem( $gutter );
+                margin: rem( $gutter ) 0 rem( $gutter ) rem( $gutter );
+                text-align: left;
+
+                &:after {
+                    @include clearfix();
+                }
+
+            }
+
+            &.center-align {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
         }
         
     }
@@ -1318,131 +1390,124 @@ Droplets page container. Droplets classes only work inside this container.
             margin-top: rem($margin-spacing / 2);
             caption-side: bottom;
             cursor: text;
-    	}
-    
-    }
-    
-    figure.x-small {
-        
-        width: 25%;
-        
-        img {
-            width: 100%;
         }
         
-    }
-    
-    figure.small {
+        &.x-small {
+
+            width: 25%;
         
-        width: 35%;
-        
-        img {
-            width: 100%;
+            img {
+                width: 100%;
+            }
+
         }
+
+        &.small {
+
+            width: 35%;
         
-    }
-    
-    figure.medium {
-        
-        width: 50%;
-        
-        img {
-            width: 100%;
+            img {
+                width: 100%;
+            }
+
         }
+
+        &.medium {
+
+            width: 50%;
         
-    }
-    
-    figure.bordered {
-    
-    	img {
-            border: rem( 2px ) solid $dark-light-color;
-    	}
-    	
-    }
-    
-    figure.shadowed {
-        
-        img {
-            @include single-box-shadow( 0, 0, rem( 6px ), 0, $dark-color );
+            img {
+                width: 100%;
+            }
+
+        }
+
+        &.bordered {
+
+            img {
+                border: rem( 2px ) solid $dark-light-color;
+            }
+
+        }
+
+        &.shadowed {
+
+            img {
+                @include single-box-shadow( 0, 0, rem( 6px ), 0, $dark-color );
+            }
+
+        }
+
+        &.padded {
+
+            img {
+                padding: rem( $gutter );
+            }
+
+        }
+
+        &.padded-left {
+
+            img {
+                padding-left: rem( $gutter );
+            }
+
+        }
+
+        &.padded-right {
+
+            img {
+                padding-right: rem( $gutter );
+            }
+
+        }
+
+        &.padded-top {
+
+            img {
+                padding-top: rem( $gutter );
+            }
+
+        }
+
+        &.padded-bottom {
+
+            img {
+                padding-bottom: rem( $gutter );
+            }
+
         }
     
-    }
-    
-    figure.padded {
-        
-        img {
-            padding: rem( $gutter );
-        }
-        
-    }
-    
-    figure.padded-left {
-        
-        img {
-            padding-left: rem( $gutter );
-        }
-        
-    }
-    
-    figure.padded-right {
-        
-        img {
-            padding-right: rem( $gutter );
-        }
-        
-    }
-    
-    figure.padded-top {
-        
-        img {
-            padding-top: rem( $gutter );
-        }
-        
-    }
-    
-    figure.padded-bottom {
-        
-        img {
-            padding-bottom: rem( $gutter );
-        }
-        
     }
     
     // FOR VIEWPORT < 768px
     @media ( min-width: 768px ) {
         
         .imgCommons {
-            display: inline-block;
-            text-align: left;
-        }
-        
-        figure.right,
-        img.right {
-            @extend .imgCommons;
-            float: right;
-            margin: 0 0 0 rem( $gutter );
-            margin: rem( $gutter ) 0 rem( $gutter ) rem( $gutter ) ;
-            display: table;
-        }
-        
-        figure.left,
-        img.left {
-            @extend .imgCommons;
-            float: left;
-            margin: 0 rem( $gutter ) 0 0;
-            margin: rem( $gutter ) rem( $gutter ) rem( $gutter ) 0 ;
-            display: table;
-        }
 
-        figure.left:after,
-        img.left:after,
-        figure.right:after,
-        img.right:after {
-            visibility: hidden;
-            display: block;
-            content: "";
-            clear: both;
-            height: 0;
+            display: table;
+            text-align: left;
+
+            &:after {
+                @include clearfix();
+            }
+
+        }
+        
+        figure, img {
+
+            &.right {
+                @extend .imgCommons;
+                float: right;
+                margin: rem( $gutter ) 0 rem( $gutter ) rem( $gutter ) ;
+            }
+
+            &.left {
+                @extend .imgCommons;
+                float: left;
+                margin: rem( $gutter ) rem( $gutter ) rem( $gutter ) 0 ;
+            }
+
         }
         
     }
@@ -1574,34 +1639,34 @@ Droplets page container. Droplets classes only work inside this container.
     --------------------------------------------------------------------------*/
 
     .spacer {
+
         width: 100%;
         height: rem( $margin-spacing );
-    }
 
-    .spacer.minimal {
-        width: 100%;
-        height: rem( $margin-spacing / 2 );
-    }
+        &.minimal {
+            width: 100%;
+            height: rem( $margin-spacing / 2 );
+        }
 
-    .spacer.double {
-        height: rem( $margin-spacing * 2 );
-    }
+        &.double {
+            height: rem( $margin-spacing * 2 );
+        }
 
-    .spacer.triple {
-        height: rem( $margin-spacing * 3 );
+        &.triple {
+            height: rem( $margin-spacing * 3 );
+        }
+
     }
 
     @media ( min-width: 768px ) {
         
         // clear fix for floating elements
-        .clearfix:before,
-        .clearfix:after {
-            display: table;
-            content: " ";
-        }
-        
-        .clearfix:after {
-            clear: both;
+        .clearfix {
+
+            &:after {
+                @include clearfix();
+            }
+
         }
         
     }
@@ -1630,7 +1695,7 @@ Droplets page container. Droplets classes only work inside this container.
             text-align: left;
             line-height: normal;
             background-color: #333;
-            @include border-radius( rem( 6px ) );
+            @include border-radius( rem( $border-radius / 3 ) );
             @include single-box-shadow( 0, 0, rem( 8px ), 0, $gray-color );
         }
     	
@@ -1662,7 +1727,7 @@ Droplets page container. Droplets classes only work inside this container.
             font-weight: normal;
             font-size: rem( 14px );
             line-height: normal;
-            @include border-radius( rem( 6px ) );
+            @include border-radius( rem( $border-radius / 3 ) );
             @include single-box-shadow( 0, 0, rem( 8px ), 0, $gray-color );
             top: 0;
             left: 0;
@@ -1671,60 +1736,72 @@ Droplets page container. Droplets classes only work inside this container.
             .popover-content {
                 padding: rem( 8px ) rem( $margin-spacing );
             }
-            
-        }
-        
-        .popover:after {
-            position: absolute;
-            display: block;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-top-color: #333;
-            border-style: solid;
-            border-width: rem( 10px );
-            border-bottom-width: 0;
-            bottom: rem( -10px );
-            left: 50%;
-            margin-left: rem( -10px );
-            content: '';
-        }
-        
-        .popover.right:after {
-            @include calc( top, '50% - 10px' );
-            left: 0;
-            border-left-width: 0;
-            border-right-color: #333;
-            border-top-color: transparent;
-            border-bottom-width: rem(10px);
-            bottom: unset;
-            right: unset;
-        }
-        
-        .popover.left:after {
-            @include calc( top, '50% - 10px' );
-            right: rem( -10px );
-            border-right-width: 0;
-            border-left-color: #333;
-            border-top-color: transparent;
-            border-bottom-width: rem(10px);
-            left: unset;
-            bottom: unset;
-        }
-        
-        .popover.bottom:after {
-            top: rem( -10px );
-            border-top-width: 0;
-            border-top-color: transparent;
-            border-bottom-color: #333;
-            border-bottom-width: rem(10px);
-        }
-        
-    }
 
-    .droplets-popover:hover,
-    .droplets-popover.active {
-        background-color: $border-color;
+            &:after {
+                position: absolute;
+                display: block;
+                width: 0;
+                height: 0;
+                border-color: transparent;
+                border-top-color: #333;
+                border-style: solid;
+                border-width: rem( 10px );
+                border-bottom-width: 0;
+                bottom: rem( -10px );
+                left: 50%;
+                margin-left: rem( -10px );
+                content: '';
+            }
+
+            &.right {
+
+                &:after {
+                    @include calc( top, '50% - 10px' );
+                    left: 0;
+                    border-left-width: 0;
+                    border-right-color: #333;
+                    border-top-color: transparent;
+                    border-bottom-width: rem(10px);
+                    bottom: unset;
+                    right: unset;
+                }
+
+            }
+
+            &.left {
+
+                &:after {
+                    @include calc( top, '50% - 10px' );
+                    right: rem( -10px );
+                    border-right-width: 0;
+                    border-left-color: #333;
+                    border-top-color: transparent;
+                    border-bottom-width: rem(10px);
+                    left: unset;
+                    bottom: unset;
+                }
+
+            }
+
+            &.bottom {
+
+                &:after {
+                    top: rem( -10px );
+                    border-top-width: 0;
+                    border-top-color: transparent;
+                    border-bottom-color: #333;
+                    border-bottom-width: rem(10px);
+                }
+
+            }
+            
+        } // end popover class
+
+        &:hover, &.active {
+            background-color: $border-color;
+            overflow: hidden;
+        }
+        
     }
     
     /*
@@ -1737,7 +1814,7 @@ Droplets page container. Droplets classes only work inside this container.
     	@include flex-wrap( wrap );
         margin: rem($margin-spacing) 0;
         
-        @include border-radius( rem(10px) );
+        @include border-radius( rem( $border-radius ) );
         overflow: hidden;
     	
         
@@ -1755,42 +1832,47 @@ Droplets page container. Droplets classes only work inside this container.
             cursor: pointer;
             @include single-transition( background, 0.1s );
             @include single-transition( color, 0.1s );
-        }
-        
-        .tab:hover {
-            background-color: rgba($light-gray-color, 0.8);
-        }
-        
-        .tab:after {
-            display: block;
-            position: absolute;
-            right: rem( $gutter );
-            font-family: 'dropletsIcons';
-            content: '\e002';
-            color: $gray-color;
-            @include single-transition( transform, 0.1s );
-            @include rotate( 0deg );
-        }
-        
-        .tab.active {
-            background-color: rgba($light-gray-color, 1);
-        }
-        
-        .tab.active:after {
-            @include single-transition( transform, 0.2s );
-            @include rotate( 90deg );
+
+            &:hover {
+                background-color: rgba($light-gray-color, 0.8);
+            }
+
+            &:after {
+                display: block;
+                position: absolute;
+                right: rem( $gutter );
+                font-family: 'dropletsIcons';
+                content: '\e002';
+                color: $gray-color;
+                @include single-transition( transform, 0.1s );
+                @include rotate( 0deg );
+            }
+
+            &.active {
+
+                background-color: rgba($light-gray-color, 1);
+
+                &:after {
+                    @include single-transition( transform, 0.2s );
+                    @include rotate( 90deg );
+                }
+
+            }
+
         }
         
         .content {
+
             display: none;
             width: 100%;
             padding: 0 rem(15px);
             background-color: rgba($light-gray-color, 0.2);
             border-bottom: rem( 1px ) solid $border-color;
-        }
-        
-        .content.active {
-            display: block;
+
+            &.active {
+                display: block;
+            }
+
         }
     
     }
@@ -1804,23 +1886,25 @@ Droplets page container. Droplets classes only work inside this container.
             border-top: none;
             
             .tab {
+
                 width: auto;
                 color: $gray-color;
                 border-bottom: none;
                 background-color: transparent;
-            }
-            
-            .tab:hover {
-                color: unset;
-            }
-            
-            .tab:after {
-                display: none;
-            }
-            
-            .tab.active {
-                background-color: #fff;
-                color: #000;
+
+                &:hover {
+                    color: unset;
+                }
+
+                &:after {
+                    display: none;
+                }
+
+                &.active {
+                    background-color: #fff;
+                    color: #000;
+                }
+
             }
             
             .content {
@@ -1840,7 +1924,7 @@ Droplets page container. Droplets classes only work inside this container.
     .droplets-collapsibles {
         
         margin: rem($margin-spacing) 0;
-        @include border-radius( 0 0 rem(10px) rem(10px) );
+        @include border-radius( 0 0 rem( $border-radius ) rem( $border-radius ) );
         overflow: hidden;
         
         .controls {
@@ -1848,7 +1932,6 @@ Droplets page container. Droplets classes only work inside this container.
             @include display-flex();
             @include flex-flow( row nowrap );
             @include justify-content( flex-end );
-            margin-bottom: rem( $margin-spacing / 2 );
 
             .cbtn {
 
@@ -1859,19 +1942,21 @@ Droplets page container. Droplets classes only work inside this container.
                 text-decoration: none;
                 background-color: $light-btn-hover-color;
                 border: rem( 1px ) solid $light-color;
-                @include border-radius( 15px );
+                border-bottom: none;
+                margin-right: rem( $border-radius );
+                @include border-radius( rem( $border-radius ) rem( $border-radius ) 0 0 );
                 @include single-transition( color, 0.25s, ease-in-out );
                 @include single-transition( border-color, 0.25s, ease-in-out );
                 
                 &:first-of-type {
-                    margin-right: rem( $margin-spacing / 2 );
+                    margin-right: rem( $margin-spacing / 3 );
                 }
 
-            }
+                &:hover {
+                    border-color: $dark-light-color;
+                    color: #000;
+                }
 
-            .cbtn:hover {
-                border-color: $dark-light-color;
-                color: #000;
             }
 
         }
@@ -1889,54 +1974,56 @@ Droplets page container. Droplets classes only work inside this container.
             font-weight: bold;
             font-size: 110%;
             cursor: pointer;
-            @include single-transition( background, 0.1s );
+            @include single-transition( background-color, 0.1s );
             @include single-transition( color, 0.1s );
 
             &:first-of-type {
-                @include border-radius( rem(10px) rem(10px) 0 0 );
+                @include border-radius( rem( $border-radius ) rem( $border-radius ) 0 0 );
                 overflow: hidden;
+            }
+
+            &:hover {
+                background-color: rgba($light-gray-color, 0.8);
+            }
+
+            &:after {
+                display: block;
+                position: absolute;
+                right: rem( $gutter );
+                font-family: 'dropletsIcons';
+                content: '\e002';
+                color: $gray-color;
+                @include single-transition( transform, 0.1s );
+                @include rotate( 0deg );
+            }
+
+            &.active {
+                background-color: rgba($light-gray-color, 1);
+            }
+
+            &.active:after {
+                @include single-transition( transform, 0.2s );
+                @include rotate( 90deg );
             }
 
         }
         
-        .section:hover {
-            background-color: rgba($light-gray-color, 0.8);
-        }
-        
-        .section:after {
-            display: block;
-            position: absolute;
-            right: rem( $gutter );
-            font-family: 'dropletsIcons';
-            content: '\e002';
-            color: $gray-color;
-            @include single-transition( transform, 0.1s );
-            @include rotate( 0deg );
-        }
-        
-        .section.active {
-            background-color: rgba($light-gray-color, 1);
-        }
-        
-        .section.active:after {
-            @include single-transition( transform, 0.2s );
-            @include rotate( 90deg );
-        }
-        
         .content {
+
             display: none;
             width: 100%;
             padding: 0 rem(15px);
             background-color: rgba($light-gray-color, 0.2);
             border-bottom: rem( 1px ) solid $border-color;
+
+            &.active {
+                display: block;
+                margin-top: rem( $margin-spacing * -1 );
+                padding-top: rem( $margin-spacing );
+            }
+
         }
-        
-        .content.active {
-            display: block;
-            margin-top: rem( $margin-spacing * -1 );
-            padding-top: rem( $margin-spacing );
-        }
-        
+   
     }
     
     /*
@@ -2179,74 +2266,67 @@ Droplets page container. Droplets classes only work inside this container.
     /*
     D020: SHOW MORE
     --------------------------------------------------------------------------*/
+    .droplets-readmore,
     .droplets-showmore {
         
-        position: relative;
-        padding-bottom: rem( 26px );
-        border: rem( 1px ) solid $border-color;
-        margin: rem( $margin-spacing ) 0;
-        
-        input[type='checkbox'] {
-            display: none;
-        }
-        
-        .lbl-toggle {
-            @include display-flex();
-            @include flex-wrap(nowrap);
-            @include align-items( center );
-            @include justify-content ( center );
-            position: absolute;
-            width: 100%;
-            font-family: sans-serif;
-            font-size: 70%;
-            color: $gray-color;
-            background-color: rgba($light-gray-color, 0.8);
-            text-transform: uppercase;
-            height: rem( 26px );
-            bottom: 0;
-            cursor: pointer;
-            border-top: rem( 1px ) solid $light-gray-color;
-            @include single-box-shadow( 0, rem(-6px), rem(5px), 0, $light-gray-color);
-        }
-        
-        .lbl-toggle:before {
-            content: "Show More";
-            margin-right: rem(-3px);
-        }
-        
-        .lbl-toggle:after {
-            margin-left: rem( 5px );
-            font-family: 'dropletsIcons';
-            content: '\e002';
-            color: $gray-color;
-            @include rotate( 90deg );
-        }
-        
-        .toggle:checked + .lbl-toggle {
-            @include single-box-shadow( 0, 0, 0, 0, #fff);
-        }
-        
-        .toggle:checked + .lbl-toggle + .panel {
-            height: auto;
-        }
-        
-        .toggle:checked + .lbl-toggle:before {
-            content: "Show Less";
-        }
-        
-        .toggle:checked + .lbl-toggle:after {
-            @include rotate( -90deg );
-        }
-        
-        .panel {
-            display: block;
-            height: rem( 242px );
-            padding: 0 rem(15px) 0;
-            overflow: hidden;
-            background-color: rgba($light-gray-color, 0.2);
+        max-height: 250px;
+        padding: 0 rem(15px);
+        background-color: rgba($light-gray-color, 0.2);
+        overflow: hidden;
+        margin-top: rem( $margin-spacing );
+        @include border-radius( rem( $border-radius ) rem( $border-radius ) 0 0 );
+    
+        &.expanded {
+            max-height: none;
         }
         
     }
+
+    .droplets-showmore-cntrl {
+
+        position: relative;
+        z-index: 1;
+        height: rem( 30px );
+        text-align: center;
+        text-transform: uppercase;
+        font-size: rem( 12px );
+        line-height: 1;
+        color: $dark-gray-color;
+        padding-top: rem( 10px );
+        background-color: rgba($light-gray-color, .7);
+        margin-bottom: rem($margin-spacing);
+        cursor: pointer;
+        @include single-transition( background-color, 0.1s );
+        @include border-radius( 0 0 rem( $border-radius ) rem( $border-radius ) );
+        @include single-box-shadow(0, rem( 6px * -1 ), rem(8px), rem(1px * -3), $light-gray-color);
+
+        &:hover {
+            background-color: rgba($light-gray-color, .8);
+        }
+
+        &:after {
+            display: inline-block;
+            font-family: 'dropletsIcons';
+            margin-left: rem( 5px );
+            font-size: 80%;
+            color: $dark-gray-color;
+            content: '\e002';
+            @include single-transition( transform, 0.1s );
+            @include rotate( 90deg );
+        }
+
+        &.expanded {
+
+            @include single-box-shadow(0, 0, 0, 0, $light-gray-color);
+
+            &:after {
+                @include rotate( -90deg );
+            }
+            
+        }
+
+    }
+
     
     /*
     D021: UNVEIL
@@ -2482,7 +2562,32 @@ Droplets page container. Droplets classes only work inside this container.
             color: #000;
             background-color: transparent;
             vertical-align: baseline;
+        }
+        
+        // TOOLTIP
+        .droplets-tooltip {
+            text-decoration: none;
     	}
+    
+        .droplets-tooltip:after {
+            content: " (" attr(title) ")";
+    	}
+    	
+    	a[href].droplets-tooltip:after {
+            content: " (" attr(title) " | Link URL: " attr(href) ")";
+    	}
+    	
+    	.droplets-popover {
+    		border: 0;
+    		background: none;
+    		padding: 0;
+    	}
+    
+    	.droplets-popover:after {
+    		content: " (" attr(title) ")";
+    	}
+
+        // COLUMNS
         
         .columns {
             
@@ -2514,7 +2619,9 @@ Droplets page container. Droplets classes only work inside this container.
             }
             
         }
-    	
+        
+        // ACCORDION / COLLAPSIBLES
+
     	.droplets-collapsibles {
             
             .section:after {
@@ -2527,6 +2634,8 @@ Droplets page container. Droplets classes only work inside this container.
             
         }
         
+        // TABS
+
         .droplets-tabbed {
             
             .tab:after {
@@ -2539,20 +2648,20 @@ Droplets page container. Droplets classes only work inside this container.
             
         }
         
+        // SHOW MORE
+
+        .droplets-readmore,
         .droplets-showmore {
-            
-            padding-bottom: 0;
-            
-            .lbl-toggle {
-                display: none;
-            }
-            
-            .panel {
-                height: auto;
-            }
-            
+            max-height: none;
+            @include border-radius( rem( $border-radius ) );
+        }
+
+        .droplets-showmore-cntrl {
+            display: none;
         }
         
+        // UNVEIL / REVEAL
+
         .droplets-unveil {
         
             padding-bottom: 0;
@@ -2625,42 +2734,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         }
         
-        .droplets-tip {
-            border-bottom: 0;
-    	}
-    
-        .droplets-tip:after {
-            content: " (" attr(title) ")";
-    	}
-    	
-    	a[href].droplets-tool:after {
-            content: " (" attr(title) " | Link URL: " attr(href) ")";
-    	}
-        
         /* legecy components (to be removed in future version) */
-        
-        .droplets-tooltip {
-            text-decoration: none;
-            //border-bottom: 0;
-    	}
-    
-        .droplets-tooltip:after {
-            content: " (" attr(title) ")";
-    	}
-    	
-    	a[href].droplets-tooltip:after {
-            content: " (" attr(title) " | Link URL: " attr(href) ")";
-    	}
-    	
-    	.droplets-popover {
-    		border: 0;
-    		background: none;
-    		padding: 0;
-    	}
-    
-    	.droplets-popover:after {
-    		content: " (" attr(title) ")";
-    	}
         
         .droplets-accordion {
     
@@ -2797,17 +2871,6 @@ Droplets page container. Droplets classes only work inside this container.
     
         }
         
-        .droplets-readmore {
-        
-            overflow: unset;
-            height: auto;
-            
-            .readmore-cntrl {
-                display: none;
-            }
-        
-        }
-        
         .droplets-reveal {
         
             .hidden-content {
@@ -2923,7 +2986,7 @@ To be removed in future versions.
             padding: rem( 10px ) rem( 40px ) rem( 10px ) rem( 10px );
             margin-top: rem( 5px );
             cursor: pointer;
-            @include border-radius( rem( 5px ) );
+            @include border-radius( rem( $border-radius / 3 ) );
             
             a {
                 text-decoration: none;
@@ -3094,47 +3157,47 @@ To be removed in future versions.
     
     /* D025.3: READ MORE */
     
-    .droplets-readmore {
+    // .droplets-readmore {
         
-        position: relative;
-        height: rem( 250px );
-        overflow: hidden;
+    //     position: relative;
+    //     height: rem( 250px );
+    //     overflow: hidden;
         
-        *:first-of-type {
-            margin-top: 0;
-        }
+    //     *:first-of-type {
+    //         margin-top: 0;
+    //     }
         
-        .readmore-cntrl {
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            background: #fff;
-            @include box-shadow( #fff 0 rem( 0px ) rem( 100px ) rem( 70px ) );
-            border-bottom: rem( 1px ) solid $border-color;
-            cursor: pointer;
-        }
+    //     .readmore-cntrl {
+    //         position: absolute;
+    //         width: 100%;
+    //         bottom: 0;
+    //         background: #fff;
+    //         @include box-shadow( #fff 0 rem( 0px ) rem( 100px ) rem( 70px ) );
+    //         border-bottom: rem( 1px ) solid $border-color;
+    //         cursor: pointer;
+    //     }
         
-        .readmore-cntrl:after {
-            display: block;
-            content: '';
-            width: rem( 16px );
-            height: rem( 16px );
-            margin: 0 auto;
-            font-family: 'dropletsIcons';
-            content: '\e001';
-            @include rotate(270deg);
-            color: $gray-color;
-        }
+    //     .readmore-cntrl:after {
+    //         display: block;
+    //         content: '';
+    //         width: rem( 16px );
+    //         height: rem( 16px );
+    //         margin: 0 auto;
+    //         font-family: 'dropletsIcons';
+    //         content: '\e001';
+    //         @include rotate(270deg);
+    //         color: $gray-color;
+    //     }
         
-        .readmore-cntrl.opened {
-            @include box-shadow( #fff 0 0 0 );
-        }
+    //     .readmore-cntrl.opened {
+    //         @include box-shadow( #fff 0 0 0 );
+    //     }
         
-        .readmore-cntrl.opened:after {
-            @include rotate(90deg);
-        }
+    //     .readmore-cntrl.opened:after {
+    //         @include rotate(90deg);
+    //     }
         
-    }
+    // }
     
     /* D025.4: IMAGE ZOOM */
     
@@ -3625,20 +3688,40 @@ D027: NO JAVASCRIPT FALLBACK
 
 #uws-droplets-page.no-js {
     
+    // Popover
+    .droplets-popover {
+
+        cursor: default;
+        padding: unset;
+        border: none;
+        @include border-radius(0);
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        &:after {
+            content: " (" attr(title) ")";
+        }
+
+    }
+
     // Accordion
     .droplets-accordion {
         
         .accordion-title {
+
             border-bottom: transparent;
             @include border-corner-radius( top, left, rem( 5px ) );
             @include border-corner-radius( top, right, rem( 5px ) );
             @include border-corner-radius( bottom, left, 0 );
             @include border-corner-radius( bottom, right, 0 );
             cursor: default;
-        }
-        
-        .accordion-title:after {
-            display: none;
+
+            &:after {
+                display: none;
+            }
+
         }
         
         .accordion-content {
@@ -3651,21 +3734,24 @@ D027: NO JAVASCRIPT FALLBACK
     .droplets-collapsibles {
         
         .section {
+
+            color: #000;
             cursor: unset;
-        }
+            background-color: rgba($light-gray-color, 0.7);
 
-        .section:hover,
-        .section.active {
-            background-color: transparent;
-        }
+            &:hover, &.active {
+                background-color: rgba($light-gray-color, 0.7);
+            }
 
-        .section:after {
-            display: none;
+            &:after {
+                display: none;
+            }
+
         }
         
         .content {
             display: block;
-            order: unset;
+            overflow: hidden;
         }
         
     }
@@ -3707,17 +3793,19 @@ D027: NO JAVASCRIPT FALLBACK
     .droplets-tabbed {
         
         .tab {
+
             color: #000;
             cursor: unset;
-        }
 
-        .tab:hover,
-        .tab.active {
-            background-color: transparent;
-        }
+            &:hover,
+            &.active {
+                background-color: transparent;
+            }
 
-        .tab:after {
-            display: none;
+            &:after {
+                display: none;
+            }
+
         }
         
         .content {
@@ -3743,15 +3831,11 @@ D027: NO JAVASCRIPT FALLBACK
         
     }
     
-    // Read More
-    .droplets-readmore {
-        position: unset;
-        height: unset;
-        overflow: unset;
-    }
-    
-    .droplets-readmore:after {
-        display: none;
+    // Show More
+    .droplets-readmore,
+    .droplets-showmore {
+        max-height: none;
+        @include border-radius( rem( $border-radius ) );
     }
     
     // Reveal

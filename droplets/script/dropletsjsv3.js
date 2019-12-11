@@ -161,8 +161,8 @@ function checkDropletsComponents() {
     const tabbedSelector = document.querySelectorAll( prefix + 'tabbed' );
     const accordionsSelector = document.querySelectorAll( prefix + 'accordion' );
     const collapsibleSelector = document.querySelectorAll( prefix + 'collapsibles' );
+    const showMoreSelector = document.querySelectorAll( prefix + 'readmore, ' + prefix + 'showmore' );
     // let resourcesSelector = document.querySelectorAll( prefix + 'resources' );
-    // let readMoreSelector = document.querySelectorAll( prefix + 'readmore' );
     // let revealSelector = document.querySelectorAll( prefix + 'reveal' );
     // let imgZoomSelector = document.querySelectorAll( prefix + 'image-zoom' );
     // let lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
@@ -191,17 +191,17 @@ function checkDropletsComponents() {
     if ( collapsibleSelector.length ) {
         enableCollapsibles( collapsibleSelector );
     }
+
+    if ( showMoreSelector.length ) {
+        enableShowMore( showMoreSelector );
+    }
+
+    // if ( revealSelector.length ) {
+    //     enableReveal( revealSelector );
+    // }
     
     // if ( resourcesSelector.length ) {
     //     enableResources( resourcesSelector );
-    // }
-    
-    // if ( readMoreSelector.length ) {
-    //     enableReadMore( readMoreSelector );
-    // }
-    
-    // if ( revealSelector.length ) {
-    //     enableReveal( revealSelector );
     // }
     
     // if ( imgZoomSelector.length ) {
@@ -839,5 +839,49 @@ function openAccordionItem( el ) {
     el.classList.add( 'active' );
     el.nextElementSibling.setAttribute( 'aria-expanded', 'true' );
     el.nextElementSibling.style.display = 'block';
+    
+}
+
+/**
+ * Enable all show more elements.
+ * @function enableShowMore
+ * @param {Object[]} showMore - Collection of show more elements.
+ * @since 3.0.0
+ */
+function enableShowMore( showMore ) {
+    
+    // loop through collection of read more elements
+    Array.prototype.forEach.call( showMore, function( el ) {
+        
+        // create the show more control
+        const showMoreCntrl = document.createElement( 'div' );
+        
+        showMoreCntrl.classList.add( 'droplets-showmore-cntrl' );
+        showMoreCntrl.setAttribute( 'aria-hidden', 'true');
+        showMoreCntrl.appendChild( document.createTextNode('Show More') );
+        
+        // add the show more control to the DOM
+        el.insertAdjacentElement( 'afterend', showMoreCntrl );
+        
+        // on click event lisitener
+        showMoreCntrl.addEventListener( 'click', function() {
+
+            if ( el.classList.contains( 'expanded' ) ) {
+                
+                el.classList.remove( 'expanded' );
+                this.innerHTML = 'Show More';
+                this.classList.remove( 'expanded' );
+                
+            } else {
+                
+                el.classList.add( 'expanded' );
+                this.innerHTML = 'Show Less';
+                this.classList.add( 'expanded' );
+                
+            }
+            
+        } );
+        
+    } );
     
 }
