@@ -988,6 +988,10 @@ Droplets page container. Droplets classes only work inside this container.
             overflow: hidden;
         }
 
+        a {
+            color: #fff;
+        }
+
         &.danger {
             background-color: $dark-danger-color;
         }
@@ -997,8 +1001,14 @@ Droplets page container. Droplets classes only work inside this container.
         }
 
         &.warning {
+
             color: $warning-text-color;
             background-color: $warning-color;
+
+            a {
+                color: $warning-text-color;
+            }
+
         }
 
         &.success {
@@ -1006,8 +1016,14 @@ Droplets page container. Droplets classes only work inside this container.
         }
 
         &.light {
+
             color: $light-text-color;
             background-color: $dark-light-color;
+
+            a {
+                color: $light-text-color;
+            }
+            
         }
 
         &.dark {
