@@ -1819,6 +1819,7 @@ Droplets page container. Droplets classes only work inside this container.
     	
         
         .tab {
+
             @include display-flex();
             @include flex-flow(row nowrap);
             @include align-items( center );
@@ -1832,6 +1833,12 @@ Droplets page container. Droplets classes only work inside this container.
             cursor: pointer;
             @include single-transition( background, 0.1s );
             @include single-transition( color, 0.1s );
+
+            border-bottom: rem( 1px ) solid $light-gray-color;
+
+            &:last-of-type {
+                border-bottom: none;
+            }
 
             &:hover {
                 background-color: rgba($light-gray-color, 0.8);
@@ -1851,6 +1858,7 @@ Droplets page container. Droplets classes only work inside this container.
             &.active {
 
                 background-color: rgba($light-gray-color, 1);
+                border-bottom: none;
 
                 &:after {
                     @include single-transition( transform, 0.2s );
@@ -1977,9 +1985,15 @@ Droplets page container. Droplets classes only work inside this container.
             @include single-transition( background-color, 0.1s );
             @include single-transition( color, 0.1s );
 
+            border-bottom: rem( 1px ) solid $light-gray-color;
+
             &:first-of-type {
                 @include border-radius( rem( $border-radius ) rem( $border-radius ) 0 0 );
                 overflow: hidden;
+            }
+
+            &:last-of-type {
+                border-bottom: none;
             }
 
             &:hover {
@@ -1999,6 +2013,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             &.active {
                 background-color: rgba($light-gray-color, 1);
+                border-bottom: none;
             }
 
             &.active:after {
