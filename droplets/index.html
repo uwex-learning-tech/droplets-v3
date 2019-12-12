@@ -366,6 +366,43 @@ body {
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, eligendi, dolorem, itaque, tempore dignissimos ullam accusantium nobis delectus at nemo hic minima vero harum nesciunt suscipit. Rerum, iure iste dolorum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, unde, distinctio, repellendus officiis esse nesciunt sit nobis rerum voluptatem architecto ullam asperiores. Aliquid, dolorem at consequatur provident consequuntur explicabo voluptatem? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, reiciendis, saepe accusantium molestias beatae natus voluptatem quas ipsum recusandae dignissimos fuga adipisci maxime nesciunt enim nobis blanditiis architecto non libero.</p>
     </div>
 
+    <h3>Reveal</h3>
+    
+    <div class="columns">
+        <div class="col" aria-flowto="col-2">
+            <div class="droplets-reveal" data-button-name="Show Answer">
+                <p><strong>What does DTO stands for in object-oriented design pattern?</strong></p>
+                <p>A). Do Try Object<br>
+                    B). Data Transfer Object <span class="hidden-content text-success"><strong>Correct answer!</strong></span><br>
+                    C). Data Type Object<br>
+                    D). Delegate To Object</p>
+            </div>
+        </div>
+        <div class="col" id="col-2">
+            <div class="droplets-reveal" data-button-name="Show Answer">
+                <p><strong>What does DTO stands for in object-oriented design pattern?</strong></p>
+                <p>A). Do Try Object<br>
+                    B). Data Transfer Object<br>
+                    C). Data Type Object<br>
+                    D). Delegate To Object</p>
+                <p class="hidden-content text-success"><strong>Correct answer!</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="droplets-reveal" data-button-name="Show A Code Example">
+        <p><strong>What does a code looks like?</strong></p>
+        <pre class="language-html hidden-content">
+            <code>
+                &lt;p&gt;Here stood the hundred or so horseless stagecoaches that always took the students above first year up to the castle. Harry glanced quickly at them, turned away to keep a lookout for Ron and Hermione, then did a double take.&lt;/p&gt;
+                
+                &lt;hr class="with-arrow"&gt;
+
+                &lt;p&gt;A short distance away, Draco Malfoy, followed by a small gang of cronies including Crabbe, Goyle, and Pansy Parkinson, was pushing some timid-looking second years out of the way so that they could get a coach to themselves. Seconds later Hermione emerged panting from the crowd.&lt;/p&gt;
+            </code>
+        </pre>
+    </div>
+
     <h2>Tooltip</h2>
     
     <p> Excepteur sint occaecat cupidatat non proident. <span class="droplets-tooltip top" title="HyperText Markup Language">HTML</span> is the best thing ever.</p>
@@ -397,13 +434,13 @@ body {
     
     <div class="columns">
         
-        <div aria-flowto="sr-col2">
+        <div class="col" aria-flowto="sr-col2">
             
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
             
         </div>
         
-        <div id="sr-col2">
+        <div class="col" id="sr-col2">
             
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
             
@@ -412,19 +449,19 @@ body {
     
     <div class="columns">
         
-        <div aria-flowto="sr-col2">
+        <div class="col" aria-flowto="sr-col2">
             
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
             
         </div>
         
-        <div id="sr-col2" aria-flowto="sr-col3">
+        <div class="col" id="sr-col2" aria-flowto="sr-col3">
             
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
             
         </div>
         
-        <div id="sr-col3">
+        <div class="col" id="sr-col3">
             
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
             
@@ -436,13 +473,13 @@ body {
 
         <div class="row">
 
-            <div aria-flowto="sr-col2" class="wider">
+            <div aria-flowto="sr-col2" class="col wider">
             
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 
             </div>
             
-            <div id="sr-col2">
+            <div class="col" id="sr-col2">
                 
                 <div class="callout danger icon discussion vertical" role="note">
                     <h4><span class="icon-reading"></span> Danger!</h4>
@@ -454,17 +491,17 @@ body {
         </div>
 
         <div class="row">
-            <div id="sr-col3">
+            <div class="col" id="sr-col3">
         
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
                 
             </div>
-            <div id="sr-col3">
+            <div class="col" id="sr-col3">
     
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
                     
                 </div>
-                <div id="sr-col3">
+                <div class="col" id="sr-col3">
     
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit, explicabo, sit repellat tenetur soluta eius quae ducimus vero minima perspiciatis at illo itaque modi quos delectus nesciunt est facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, excepturi eius hic officiis at illo natus deserunt necessitatibus dignissimos quo assumenda est odit voluptatem laudantium dolores alias esse! Excepturi, possimus!</p>
                         
@@ -658,7 +695,7 @@ body {
     
     <div class="columns">
         
-        <div aria-flowto="sr-col2">
+        <div class="col" aria-flowto="sr-col2">
             
             <div class="callout danger vertical" role="note">
                 <h4>Danger!</h4>
@@ -667,7 +704,7 @@ body {
             
         </div>
         
-        <div id="sr-col2" aria-flowto="sr-col3">
+        <div class="col" id="sr-col2" aria-flowto="sr-col3">
             
             <div class="callout info vertical " role="note">
                 <h4>Danger!</h4>
@@ -676,7 +713,7 @@ body {
             
         </div>
         
-        <div id="sr-col3">
+        <div class="col" id="sr-col3">
             
             <div class="callout success vertical" role="note">
                 <h4>Danger!</h4>
@@ -1158,32 +1195,6 @@ body {
             </div>
             <div id="sr-item3" class="tab-section" role="tabpanel" aria-labelledby="sr-tab3" aria-selected="false">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-    </div>
-    
-    
-    
-    <h3>Reveal</h3>
-    
-    <div class="columns">
-        <div aria-flowto="col-2">
-            <div class="droplets-reveal" data-button-name="Show Answer">
-                <p><strong>What does DTO stands for in object-oriented design pattern?</strong></p>
-                <p>A). Do Try Object<br>
-                    B). Data Transfer Object <span class="hidden-content text-success"><strong>Correct answer!</strong></span><br>
-                    C). Data Type Object<br>
-                    D). Delegate To Object</p>
-            </div>
-        </div>
-        <div id="col-2">
-            <div class="droplets-reveal" data-button-name="Show Answer">
-                <p><strong>What does DTO stands for in object-oriented design pattern?</strong></p>
-                <p>A). Do Try Object<br>
-                    B). Data Transfer Object<br>
-                    C). Data Type Object<br>
-                    D). Delegate To Object</p>
-                <p class="hidden-content text-success"><strong>B is the correct answer!</strong></p>
             </div>
         </div>
     </div>

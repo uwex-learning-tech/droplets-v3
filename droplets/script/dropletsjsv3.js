@@ -162,8 +162,8 @@ function checkDropletsComponents() {
     const accordionsSelector = document.querySelectorAll( prefix + 'accordion' );
     const collapsibleSelector = document.querySelectorAll( prefix + 'collapsibles' );
     const showMoreSelector = document.querySelectorAll( prefix + 'readmore, ' + prefix + 'showmore' );
+    const revealSelector = document.querySelectorAll( prefix + 'reveal' );
     // let resourcesSelector = document.querySelectorAll( prefix + 'resources' );
-    // let revealSelector = document.querySelectorAll( prefix + 'reveal' );
     // let imgZoomSelector = document.querySelectorAll( prefix + 'image-zoom' );
     // let lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
     
@@ -196,9 +196,9 @@ function checkDropletsComponents() {
         enableShowMore( showMoreSelector );
     }
 
-    // if ( revealSelector.length ) {
-    //     enableReveal( revealSelector );
-    // }
+    if ( revealSelector.length ) {
+        enableReveal( revealSelector );
+    }
     
     // if ( resourcesSelector.length ) {
     //     enableResources( resourcesSelector );
@@ -884,4 +884,81 @@ function enableShowMore( showMore ) {
         
     } );
     
+}
+
+/**
+ * Enable all reveal elements.
+ * @function enableReveal
+ * @param {Object[]} reveals - Collection of reveal elements.
+ * @since 2.0.0
+ * @updated 3.0.0
+ */
+function enableReveal( reveals ) {
+    
+    // loop through collection of reveal elements
+    Array.prototype.forEach.call( reveals, function( el ) {
+        
+        // create a toggle button
+        const toggleBtn = document.createElement( 'button' );
+        
+        toggleBtn.classList.add( 'droplets-reveal-btn' );
+        toggleBtn.setAttribute( 'aria-hidden', 'true' );
+        toggleBtn.innerHTML = getRevealBtnName( el );
+
+        // add the toggle button to the DOM
+        el.insertAdjacentElement( 'afterend', toggleBtn );
+        
+        // show/hide hidden content on click
+        toggleBtn.addEventListener( 'click', function() {
+            
+            if ( el.classList.contains( 'revealed' ) ) {
+                
+                el.classList.remove( 'revealed' );
+                this.classList.remove( 'revealed' );
+                this.innerHTML = getRevealBtnName( el );
+                
+            } else {
+                
+                el.classList.add( 'revealed' );
+                this.classList.add( 'revealed' );
+                this.innerHTML = 'Hide';
+                
+            }
+            
+        } );
+        
+    } );
+    
+}
+
+/**
+ * Reveal component helper function to get the button name.
+ * @function getRevealBtnName
+ * @param {Object} el - a reveal DOM object.
+ * @return {String}
+ * @since 3.0.0
+ */
+function getRevealBtnName( el ) {
+    
+    if ( !isEmpty( el.getAttribute( 'data-button-name' ) ) ) {
+        return el.getAttribute( 'data-button-name' );
+    }
+
+    return 'Show';
+
+}
+
+/*********************************************************
+  MISC. DROPLETS HELPER FUNCTIONS
+**********************************************************/
+
+/**
+ * Helper function to check if string is empty or undefined
+ * @function isEmpty
+ * @param {String} str - a string.
+ * @return {Boolean}
+ * @since 3.0.0
+ */
+function isEmpty( str ) {
+    return !str || 0 === str.length;
 }
