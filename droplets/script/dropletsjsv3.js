@@ -163,8 +163,8 @@ function checkDropletsComponents() {
     const collapsibleSelector = document.querySelectorAll( prefix + 'collapsibles' );
     const showMoreSelector = document.querySelectorAll( prefix + 'readmore, ' + prefix + 'showmore' );
     const revealSelector = document.querySelectorAll( prefix + 'reveal' );
+    const imgZoomSelector = document.querySelectorAll( prefix + 'image-zoom' );
     // let resourcesSelector = document.querySelectorAll( prefix + 'resources' );
-    // let imgZoomSelector = document.querySelectorAll( prefix + 'image-zoom' );
     // let lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
     
     // check for components
@@ -199,15 +199,15 @@ function checkDropletsComponents() {
     if ( revealSelector.length ) {
         enableReveal( revealSelector );
     }
+
+    if ( imgZoomSelector.length ) {
+        enableImgZoom( imgZoomSelector );
+    }
     
     // if ( resourcesSelector.length ) {
     //     enableResources( resourcesSelector );
     // }
-    
-    // if ( imgZoomSelector.length ) {
-    //     enableImgZoom( imgZoomSelector );
-    // }
-    
+
     // if ( lighboxSelector.length ) {
     //     enableLightbox( lighboxSelector );
     // }
@@ -946,6 +946,78 @@ function getRevealBtnName( el ) {
 
     return 'Show';
 
+}
+
+/**
+ * Enable all image zoom elements.
+ * @function enableImgZoom
+ * @param {Object[]} imgZooms - Collection of image zoom elements.
+ * @since 2.0.0
+ * @updated 3.0.0
+ */
+function enableImgZoom( imgZooms ) {
+    
+    // loop through collection of image zoom elements
+    Array.prototype.forEach.call( imgZooms, function( el ) {
+        
+        // get sibiling image src
+        const img = el.querySelector( 'img' );
+        
+        // create magnified container
+        const magnifyDiv = document.createElement( 'div' );
+        
+        magnifyDiv.classList.add( 'magnify' );
+        magnifyDiv.style.backgroundImage = 'url(\"' + img.src + '\")';
+        
+        // add the magnify div to the DOM
+        el.appendChild( magnifyDiv );
+        
+        // show manified version on mousemove over image
+        el.addEventListener( 'mousemove', function( evt ) {
+            
+            // get and set native width and height as data- attributes
+            const imgObj = new Image();
+            imgObj.src = img.src;
+            
+            img.setAttribute( 'data-width', imgObj.width );
+            img.setAttribute( 'data-height', imgObj.height );
+            
+            const nativeWidth = img.getAttribute( 'data-width' );
+            const nativeHeight = img.getAttribute( 'data-height' );
+            
+            // get positions
+            const page = document.getElementById( 'uws-droplets-page' );
+            const pageX = Number( page.getAttribute( 'data-x' ) );
+            const pageY = Number( page.getAttribute( 'data-y' ) );
+            const magnifyX = evt.pageX - pageX - this.offsetLeft;
+            const magnifyY = evt.pageY - pageY - this.offsetTop;
+
+            // show / hide magnified image
+            if ( magnifyX < this.offsetWidth && magnifyY < this.offsetHeight 
+                 && magnifyX > 0 && magnifyY > 0 ) {
+                 
+                magnifyDiv.classList.add( 'show' );
+                 
+                const rx = Math.round( magnifyX / img.offsetWidth * nativeWidth - magnifyDiv.offsetWidth / 2 ) * -1;
+                const ry = Math.round( magnifyY / img.offsetHeight * nativeHeight - magnifyDiv.offsetHeight / 2 ) * -1;
+                
+                magnifyDiv.style.left = ( magnifyX - magnifyDiv.offsetWidth / 2 ) + 'px';
+                magnifyDiv.style.top = ( magnifyY - magnifyDiv.offsetHeight / 2 ) + 'px';
+                
+                if ( rx != 100 && ry != 100 ) {
+                    magnifyDiv.style.backgroundPosition = rx + "px " + ry + "px";
+                }
+                 
+            } else {
+                
+                magnifyDiv.classList.remove( 'show' );
+                
+            }
+            
+        } );
+        
+    } );
+    
 }
 
 /*********************************************************

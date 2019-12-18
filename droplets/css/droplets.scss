@@ -31,12 +31,13 @@ TABLE OF CONTENTS
  20. SHOW MORE ------------------------------------------------------------ D020
  21. REVEAL --------------------------------------------------------------- D021
  22. POPUP ---------------------------------------------------------------- D022
- 23. FOR PRINTING --------------------------------------------------------- D023
- 24. FOOTER --------------------------------------------------------------- D024
- 25. FONT FACES ----------------------------------------------------------- D025
- 26. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D026
- 27. NO JS FALLBACK ------------------------------------------------------- D027
- 28. PRISMJS CSS ---------------------------------------------------------- D028
+ 23. IMAGE ZOOM ----------------------------------------------------------- D023
+ 24. FOR PRINTING --------------------------------------------------------- D024
+ 25. FOOTER --------------------------------------------------------------- D025
+ 26. FONT FACES ----------------------------------------------------------- D026
+ 27. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D027
+ 28. NO JS FALLBACK ------------------------------------------------------- D028
+ 29. PRISMJS CSS ---------------------------------------------------------- D029
  --. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D025
 
 ----------------------------------------------------------------------------- */
@@ -2435,9 +2436,43 @@ Droplets page container. Droplets classes only work inside this container.
         }
 
     }
+
+    /*
+    D022: IMAGE ZOOM
+    --------------------------------------------------------------------------*/
+    .droplets-image-zoom {
+        
+        position: relative;
+        cursor: crosshair;
+        
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: rem( $gutter ) 0;
+        }
+        
+        .magnify {
+            display: none;
+            position: absolute;
+            width: rem( 200px );
+            height: rem( 200px );
+            background-color: #fff;
+            background-repeat: no-repeat;
+            @include border-radius( 100% );
+            @include box-shadow( 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25) );
+            z-index: 99;
+        }
+        
+        .show {
+            display: block;
+            @include animation( fadeIn 1s );
+        }
+        
+    }
     
     /*
-    D022: POPUP
+    D023: POPUP
     --------------------------------------------------------------------------*/
     .droplets-popup {
         
@@ -2578,11 +2613,13 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D023: FOR PRINTING
+    D024: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
     
+        // GENERAL
+
     	a {
             
             &:after {
@@ -2603,6 +2640,7 @@ Droplets page container. Droplets classes only work inside this container.
         }
         
         // TOOLTIP
+
         .droplets-tooltip {
 
             text-decoration: none;
@@ -2727,6 +2765,18 @@ Droplets page container. Droplets classes only work inside this container.
             display: none;
         }
 
+        // IMAGE ZOOM
+
+        .droplets-image-zoom {
+        
+            cursor: default;
+
+            .show {
+                display: none;
+            }
+            
+        }
+
         // RESOURCES
         
         .droplets-resource {
@@ -2747,6 +2797,8 @@ Droplets page container. Droplets classes only work inside this container.
         
         }
         
+        // POPUP
+
         .droplets-popup {
             
             .thumbnail {
@@ -2781,6 +2833,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         /* legecy components (to be removed in future version) */
         
+        // old accordion
         .droplets-accordion {
     
             .accordion-title {
@@ -2801,6 +2854,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     	}
     
+        // old tabs
     	.droplets-tabs {
     
             .tabs {
@@ -2921,29 +2975,35 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D024: Footer
+D025: Footer
 --------------------------------------------------------------------------------
 Contains copyright info. Added automatically via CSS.
 ----------------------------------------------------------------------------- */
 
-#uws-droplets-page:after {
-    
-    display: block;
-	border-top: rem( 1px ) solid $border-color;
-	margin: rem( $gutter ) 0 0 0;
-	padding: rem( $gutter) 0;
-	color: $gray-color;
-	font-size: rem( 12px );
-	content: "\00A9  Board of Regents and University of Wisconsin System. All rights reserved.";
-    
-}
+#uws-droplets-page {
 
-#uws-droplets-page.no-footer:after {
-    display: none;
+    &:after {
+        display: block;
+        border-top: rem( 1px ) solid $border-color;
+        margin: rem( $gutter ) 0 0 0;
+        padding: rem( $gutter) 0;
+        color: $gray-color;
+        font-size: rem( 12px );
+        content: "\00A9 Board of Regents and University of Wisconsin System. All rights reserved.";
+    }
+
+    .no-footer {
+
+        &:after {
+            display: none;
+        }
+
+    }
+
 }
 
 /*
-D025: FONT FACES
+D026: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */
@@ -2970,6 +3030,425 @@ Setting up font face. To support font icons used inside page container.
 }
 
 /*
+D027: CANVAS.NET ADJUSTMENTS
+--------------------------------------------------------------------------------
+Additional adjustments only when loaded on Canvas.net
+----------------------------------------------------------------------------- */
+#uws-droplets-page {
+
+    .generic-wrapper, .storybook-wrapper, .audio-wrapper {
+
+        margin: rem( $margin-spacing ) 0;
+
+        iframe {
+            border: none;
+            overflow: hidden;
+        }
+    
+    }
+
+}
+
+#uws-droplets-page.canvas-net {
+    
+    .droplets-lightbox-overlay {
+        
+        .overlay-content {
+            padding-left: rem( 84px );
+        }
+        
+        .overlay-left-arrow {
+            left: rem( 84px * 2 );
+        }
+        
+        .overlay-right-arrow {
+            left: unset;
+        }
+        
+    }
+    
+}
+
+/*
+D028: NO JAVASCRIPT FALLBACK
+----------------------------------------------------------------------------- */
+
+#uws-droplets-page.no-js {
+    
+    // Popover
+    .droplets-popover {
+
+        cursor: default;
+        padding: unset;
+        border: none;
+        @include border-radius(0);
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        &:after {
+            content: " (" attr(title) ")";
+        }
+
+    }
+
+    // Old Accordion
+    .droplets-accordion {
+        
+        .accordion-title {
+
+            border-bottom: transparent;
+            @include border-corner-radius( top, left, rem( 5px ) );
+            @include border-corner-radius( top, right, rem( 5px ) );
+            @include border-corner-radius( bottom, left, 0 );
+            @include border-corner-radius( bottom, right, 0 );
+            cursor: default;
+
+            &:after {
+                display: none;
+            }
+
+        }
+        
+        .accordion-content {
+            display: block;
+        }
+        
+    }
+
+    // Collapibles
+    .droplets-collapsibles {
+        
+        .controls {
+            display: none;
+        }
+
+        .section {
+
+            color: #000;
+            cursor: unset;
+            background-color: rgba($light-gray-color, 0.7);
+
+            &:hover, &.active {
+                background-color: rgba($light-gray-color, 0.7);
+            }
+
+            &:after {
+                display: none;
+            }
+
+        }
+        
+        .content {
+            display: block;
+            overflow: hidden;
+        }
+        
+    }
+    
+    // Old Tabs
+    .droplets-tabs {
+        
+        .tabs {
+            
+            padding: rem( $gutter / 2 );
+            
+            li {
+                border: rem( 1px ) solid #929292;
+                @include border-corner-radius( bottom, left, rem( 3px ) );
+                @include border-corner-radius( bottom, right, rem( 3px ) );
+            }
+            
+            li:hover {
+                @include box-shadow( none );
+            }
+            
+            .active {
+                @include box-shadow( none );
+            }
+            
+        }
+        
+        .tab-contents {
+            
+            .tab-section {
+                display: block;
+            }
+            
+        }
+        
+    }
+
+    // Tabbed
+    .droplets-tabbed {
+        
+        .tab {
+
+            color: #000;
+            cursor: unset;
+
+            &:hover,
+            &.active {
+                background-color: transparent;
+            }
+
+            &:after {
+                display: none;
+            }
+
+        }
+        
+        .content {
+            display: block;
+            order: unset;
+        }
+        
+    }
+    
+    // Resources
+    .droplets-resources {
+        
+        .resource {
+            
+            border-color: $border-color;
+            height: unset;
+            
+            .expandable-panel {
+                display: block;
+            }
+            
+        }
+        
+    }
+    
+    // Show More
+    .droplets-readmore,
+    .droplets-showmore {
+        max-height: none;
+        @include border-radius( rem( $border-radius ) );
+    }
+    
+    // Reveal
+    .droplets-reveal {
+        
+        .hidden-content {
+            display: inline-block;
+        }
+        
+    }
+
+    .droplets-reveal-btn {
+        display: none;
+    }
+    
+    // Image Zoom
+    .droplets-image-zoom {
+        cursor: default;
+    }
+    
+    // Lightbox
+    .droplets-lightbox {
+        
+        figure {
+            
+            @include flex( unset );
+            cursor: default;
+            
+            img {
+                cursor: default;
+            }
+            
+        }
+        
+    }
+    
+}
+
+/*
+D029: PRISMJS CSS
+--------------------------------------------------------------------------------
+PrismJS 1.17.1
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+java+python+r&plugins=line-numbers+normalize-whitespace
+@author Lea Verou
+----------------------------------------------------------------------------- */
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre-wrap;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #9a6e3a;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function,
+.token.class-name {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+.line-numbers-rows > span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+    content: counter(linenumber);
+    color: #999;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
+}
+
+/*
 D0--: LEGACY/DEPRECATED COMPONENTS
 --------------------------------------------------------------------------------
 Components that are no longer to be used or should not continue to be used.
@@ -2978,7 +3457,7 @@ To be removed in future versions.
 
 #uws-droplets-page {
     
-    /* D025.1: ACCORDION */
+    /* D025.1: OLD ACCORDION */
     
     .droplets-accordion {
     
@@ -3073,7 +3552,7 @@ To be removed in future versions.
         
     }
     
-    /* D025.2: TABBED CONTENTS */
+    /* D025.2: OLD TABS */
 
     .droplets-tabs {
     
@@ -3186,39 +3665,6 @@ To be removed in future versions.
     
     	}
     
-    }
-    
-    /* D025.4: IMAGE ZOOM */
-    
-    .droplets-image-zoom {
-        
-        position: relative;
-        cursor: crosshair;
-        
-        img {
-            display: block;
-            width: 100%;
-            height: auto;
-            margin: rem( $gutter ) 0;
-        }
-        
-        .magnify {
-            display: none;
-            position: absolute;
-            width: rem( 200px );
-            height: rem( 200px );
-            background-color: #fff;
-            background-repeat: no-repeat;
-            @include border-radius( 100% );
-            @include box-shadow( 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25) );
-            z-index: 99;
-        }
-        
-        .show {
-            display: block;
-            @include animation( fadeIn 1s );
-        }
-        
     }
     
     /* D025.6: RESOURCES */
@@ -3620,427 +4066,3 @@ To be removed in future versions.
     }
     
 }
-
-/*
-D026: CANVAS.NET ADJUSTMENTS
---------------------------------------------------------------------------------
-Additional adjustments only when loaded on Canvas.net
------------------------------------------------------------------------------ */
-#uws-droplets-page {
-
-    .generic-wrapper, .storybook-wrapper, .audio-wrapper {
-
-        margin: rem( $margin-spacing ) 0;
-
-        iframe {
-            border: none;
-            overflow: hidden;
-        }
-    
-    }
-
-}
-
-#uws-droplets-page.canvas-net {
-    
-    .droplets-lightbox-overlay {
-        
-        .overlay-content {
-            padding-left: rem( 84px );
-        }
-        
-        .overlay-left-arrow {
-            left: rem( 84px * 2 );
-        }
-        
-        .overlay-right-arrow {
-            left: unset;
-        }
-        
-    }
-    
-}
-
-/*
-D027: NO JAVASCRIPT FALLBACK
------------------------------------------------------------------------------ */
-
-#uws-droplets-page.no-js {
-    
-    // Popover
-    .droplets-popover {
-
-        cursor: default;
-        padding: unset;
-        border: none;
-        @include border-radius(0);
-
-        &:hover {
-            background-color: transparent;
-        }
-
-        &:after {
-            content: " (" attr(title) ")";
-        }
-
-    }
-
-    // Accordion
-    .droplets-accordion {
-        
-        .accordion-title {
-
-            border-bottom: transparent;
-            @include border-corner-radius( top, left, rem( 5px ) );
-            @include border-corner-radius( top, right, rem( 5px ) );
-            @include border-corner-radius( bottom, left, 0 );
-            @include border-corner-radius( bottom, right, 0 );
-            cursor: default;
-
-            &:after {
-                display: none;
-            }
-
-        }
-        
-        .accordion-content {
-            display: block;
-        }
-        
-    }
-
-    // Collapibles
-    .droplets-collapsibles {
-        
-        .controls {
-            display: none;
-        }
-
-        .section {
-
-            color: #000;
-            cursor: unset;
-            background-color: rgba($light-gray-color, 0.7);
-
-            &:hover, &.active {
-                background-color: rgba($light-gray-color, 0.7);
-            }
-
-            &:after {
-                display: none;
-            }
-
-        }
-        
-        .content {
-            display: block;
-            overflow: hidden;
-        }
-        
-    }
-    
-    // Tabs
-    .droplets-tabs {
-        
-        .tabs {
-            
-            padding: rem( $gutter / 2 );
-            
-            li {
-                border: rem( 1px ) solid #929292;
-                @include border-corner-radius( bottom, left, rem( 3px ) );
-                @include border-corner-radius( bottom, right, rem( 3px ) );
-            }
-            
-            li:hover {
-                @include box-shadow( none );
-            }
-            
-            .active {
-                @include box-shadow( none );
-            }
-            
-        }
-        
-        .tab-contents {
-            
-            .tab-section {
-                display: block;
-            }
-            
-        }
-        
-    }
-
-    // Tabbed
-    .droplets-tabbed {
-        
-        .tab {
-
-            color: #000;
-            cursor: unset;
-
-            &:hover,
-            &.active {
-                background-color: transparent;
-            }
-
-            &:after {
-                display: none;
-            }
-
-        }
-        
-        .content {
-            display: block;
-            order: unset;
-        }
-        
-    }
-    
-    // Resources
-    .droplets-resources {
-        
-        .resource {
-            
-            border-color: $border-color;
-            height: unset;
-            
-            .expandable-panel {
-                display: block;
-            }
-            
-        }
-        
-    }
-    
-    // Show More
-    .droplets-readmore,
-    .droplets-showmore {
-        max-height: none;
-        @include border-radius( rem( $border-radius ) );
-    }
-    
-    // Reveal
-
-    .droplets-reveal {
-        
-        .hidden-content {
-            display: inline-block;
-        }
-        
-    }
-
-    .droplets-reveal-btn {
-        display: none;
-    }
-    
-    // Image Zoom
-    .droplets-image-zoom {
-        position: unset;
-        cursor: default;
-    }
-    
-    // Lightbox
-    .droplets-lightbox {
-        
-        figure {
-            
-            @include flex( unset );
-            cursor: default;
-            
-            img {
-                cursor: default;
-            }
-            
-        }
-        
-    }
-    
-}
-
-/*
-D028: PRISMJS CSS
---------------------------------------------------------------------------------
-PrismJS 1.17.1
-https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+java+python+r&plugins=line-numbers+normalize-whitespace
-@author Lea Verou
------------------------------------------------------------------------------ */
-code[class*="language-"],
-pre[class*="language-"] {
-	color: black;
-	background: none;
-	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	font-size: 1em;
-	text-align: left;
-	white-space: pre-wrap;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-}
-
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
-
-@media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
-		text-shadow: none;
-	}
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background: #f5f2f0;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-	white-space: normal;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-	color: slategray;
-}
-
-.token.punctuation {
-	color: #999;
-}
-
-.namespace {
-	opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-	color: #905;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-	color: #690;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-	color: #9a6e3a;
-	background: hsla(0, 0%, 100%, .5);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-	color: #07a;
-}
-
-.token.function,
-.token.class-name {
-	color: #DD4A68;
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-	color: #e90;
-}
-
-.token.important,
-.token.bold {
-	font-weight: bold;
-}
-.token.italic {
-	font-style: italic;
-}
-
-.token.entity {
-	cursor: help;
-}
-
-pre[class*="language-"].line-numbers {
-	position: relative;
-	padding-left: 3.8em;
-	counter-reset: linenumber;
-}
-
-pre[class*="language-"].line-numbers > code {
-	position: relative;
-	white-space: inherit;
-}
-
-.line-numbers .line-numbers-rows {
-	position: absolute;
-	pointer-events: none;
-	top: 0;
-	font-size: 100%;
-	left: -3.8em;
-	width: 3em; /* works for line-numbers below 1000 lines */
-	letter-spacing: -1px;
-	border-right: 1px solid #999;
-
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-
-}
-
-.line-numbers-rows > span {
-    pointer-events: none;
-    display: block;
-    counter-increment: linenumber;
-}
-
-.line-numbers-rows > span:before {
-    content: counter(linenumber);
-    color: #999;
-    display: block;
-    padding-right: 0.8em;
-    text-align: right;
-}
-
-
-
