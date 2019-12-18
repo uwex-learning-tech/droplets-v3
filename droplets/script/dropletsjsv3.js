@@ -962,6 +962,14 @@ function enableImgZoom( imgZooms ) {
         
         // get sibiling image src
         const img = el.querySelector( 'img' );
+
+        // set original image width and height
+        const orgImg = new Image();
+        orgImg.src = img.src;
+        orgImg.onload = () => {
+            img.setAttribute( 'data-width', orgImg.width );
+            img.setAttribute( 'data-height', orgImg.height );
+        };
         
         // create magnified container
         const magnifyDiv = document.createElement( 'div' );
@@ -974,14 +982,8 @@ function enableImgZoom( imgZooms ) {
         
         // show manified version on mousemove over image
         el.addEventListener( 'mousemove', function( evt ) {
-            
-            // get and set native width and height as data- attributes
-            const imgObj = new Image();
-            imgObj.src = img.src;
-            
-            img.setAttribute( 'data-width', imgObj.width );
-            img.setAttribute( 'data-height', imgObj.height );
-            
+
+            // get original image width and height
             const nativeWidth = img.getAttribute( 'data-width' );
             const nativeHeight = img.getAttribute( 'data-height' );
             
