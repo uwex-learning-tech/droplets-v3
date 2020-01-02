@@ -165,7 +165,7 @@ function checkDropletsComponents() {
     const revealSelector = document.querySelectorAll( prefix + 'reveal' );
     const imgZoomSelector = document.querySelectorAll( prefix + 'image-zoom' );
     // let resourcesSelector = document.querySelectorAll( prefix + 'resources' );
-    // let lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
+    const lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
     
     // check for components
     if ( toolTipSelector.length ) {
@@ -208,9 +208,9 @@ function checkDropletsComponents() {
     //     enableResources( resourcesSelector );
     // }
 
-    // if ( lighboxSelector.length ) {
-    //     enableLightbox( lighboxSelector );
-    // }
+    if ( lighboxSelector.length ) {
+        enableLightbox( lighboxSelector );
+    }
 
 }
 
@@ -1019,6 +1019,256 @@ function enableImgZoom( imgZooms ) {
         } );
         
     } );
+    
+}
+
+/**
+ * Enable all lightbox elements.
+ * @function enableLightbox
+ * @param {Object[]} lightboxes - Collection of lightbox elements.
+ * @since 2.0.0
+ */
+function enableLightbox( lightboxes ) {
+    
+    // get page element
+    const page = document.getElementById( 'uws-droplets-page' );
+    
+    // create overlay element and its controls
+    const overlayDiv = document.createElement( 'div' );
+    
+    overlayDiv.classList.add( 'droplets-lightbox-overlay' );
+    overlayDiv.setAttribute( 'aria-hidden', 'true' );
+    
+    const contentDiv = document.createElement( 'div' );
+    
+    contentDiv.classList.add( 'overlay-content' );
+    
+    const closeOverlayBtn = document.createElement( 'a' );
+    
+    closeOverlayBtn.classList.add( 'overlay-close-btn' );
+    closeOverlayBtn.setAttribute( 'role', 'button' );
+    
+    // create left and right arrows
+    const leftArrow = document.createElement( 'a' );
+    
+    leftArrow.classList.add( 'overlay-left-arrow' );
+    leftArrow.setAttribute( 'role', 'button' );
+    
+    const rightArrow = document.createElement( 'a' );
+    
+    rightArrow.classList.add( 'overlay-right-arrow' );
+    rightArrow.setAttribute( 'role', 'button' );
+    
+    // add them all to the overlay div
+    overlayDiv.appendChild( leftArrow );
+    overlayDiv.appendChild( rightArrow );
+    overlayDiv.appendChild( closeOverlayBtn );
+    overlayDiv.appendChild( contentDiv );
+    
+    // add overlay element to DOM
+    page.appendChild( overlayDiv );
+    
+    // event listeners to close overlay
+    overlayDiv.addEventListener( 'click', function( evt ) {
+                
+        if ( evt.target === this ) {
+            
+            if ( overlayDiv.classList.contains( 'show-overlay' ) ) {
+            
+                overlayDiv.classList.remove( 'show-overlay' );
+                
+            } 
+            
+        }
+        
+    } );
+    
+    closeOverlayBtn.addEventListener( 'click', function() {
+                
+        if ( overlayDiv.classList.contains( 'show-overlay' ) ) {
+            
+            overlayDiv.classList.remove( 'show-overlay' );
+            
+        } 
+        
+    } );
+    
+    // loop through collection of image zoom elements to show the selected image
+    Array.prototype.forEach.call( lightboxes, function( lightbox ) {
+        
+        const imgFigSelector = lightbox.querySelectorAll( 'img, figure' );
+        
+        // check to see if there is mixed of img and figure
+        // if true, show error and exit main loop
+        if ( isImgFigCombo( imgFigSelector ) ) {
+            
+            const err = document.createElement( 'div' );
+            err.classList.add( 'callout', 'danger', 'lightbox-error' );
+            
+            let msg = document.createElement( 'p' );
+            msg.innerHTML = '<strong>Error:</strong> Do not mix img and figure tags.';
+            
+            err.appendChild( msg );
+            lightbox.appendChild( err );
+            
+            return;
+            
+        }
+        
+        // determind which element is used
+        const imgSelector = lightbox.querySelectorAll( 'img' );
+        const figSelector = lightbox.querySelectorAll( 'figure' );
+        let targetSelector = figSelector;
+        
+        if ( figSelector.length === 0 ) {
+            targetSelector = imgSelector;
+        }
+        
+        // loop throug the elements to add event listeners
+        Array.prototype.forEach.call( targetSelector, function( img, index ) {
+            
+            let currentIndex = 0;
+            
+            img.addEventListener( 'click', function( evt ) {
+                
+                // add event listener to left and right button if more than 1
+                if ( targetSelector.length > 1 ) {
+                    
+                    rightArrow.style.display = 'inherit';
+                    
+                    rightArrow.addEventListener( 'click', function ( evt ) {
+                        
+                        currentIndex++;
+                        
+                        if ( currentIndex > targetSelector.length - 1 ) {
+                            
+                            currentIndex = 0;
+                            
+                        }
+                        
+                        selectImage( targetSelector[currentIndex], contentDiv );
+                        evt.preventDefault();
+                        
+                    } );
+                    
+                    leftArrow.style.display = 'inherit';
+                    
+                    leftArrow.addEventListener( 'click', function ( evt ) {
+                        
+                        currentIndex--;
+                        
+                        if ( currentIndex < 0 ) {
+                            
+                            currentIndex = targetSelector.length - 1;
+                            
+                        }
+                        
+                        selectImage( targetSelector[currentIndex], contentDiv );
+                        
+                        evt.preventDefault();
+                        
+                    } );
+                    
+                } else {
+                    
+                    rightArrow.style.display = 'none';
+                    rightArrow.removeEventListener( 'click', function() {} );
+                    
+                    leftArrow.style.display = 'none';
+                    leftArrow.removeEventListener( 'click', function() {} );
+                    
+                }
+                
+                selectImage( img, contentDiv )
+                overlayDiv.classList.add( 'show-overlay' );
+                currentIndex = index;
+                evt.preventDefault();
+                
+            } );
+            
+        } );
+        
+    } );
+    
+}
+
+/**
+ * Check to see if the lightbox is mixed of img and figure tag
+ * @function isImgFigCombo
+ * @param {Object[]} selectiors - Collection of img or figure elements.
+ * @since 2.0.0
+ */
+function isImgFigCombo( selectors ) {
+    
+    let img = 0;
+    let fig = 0;
+    
+    Array.prototype.forEach.call( selectors, function( el ) {
+        
+        if ( el.nodeName === 'IMG' ) {
+            
+            img++;
+            
+        } else if ( el.nodeName === 'FIGURE' ) {
+            
+            fig++;
+            
+        }
+            
+    } );
+    
+    if ( img >= 1 && fig >= 1 && img > fig ) {
+        return true;
+    }
+    
+    return false;
+    
+}
+
+/**
+ * Select and display the full lightbox image
+ * @function selectImage
+ * @param {Object} img - img or figure element.
+ * @param {Object} img - container to append img element.
+ * @since 2.0.0
+ */
+function selectImage( img, contentDiv ) {
+    
+    contentDiv.innerHTML = '';
+                
+    const fullImg = document.createElement( 'img' );
+    const caption = document.createElement( 'p' );
+    
+    if ( img.nodeName === "IMG" ) {
+        
+        fullImg.src = img.src;
+    
+        caption.classList.add( 'caption' );
+        caption.innerHTML = img.getAttribute( 'alt' );
+        
+    } else if ( img.nodeName === "FIGURE" ) {
+        
+        const innerImg = img.querySelector( 'img' );
+        const figcaption = img.querySelector( 'figcaption' );
+        
+        fullImg.src = innerImg.src;
+    
+        caption.classList.add( 'caption' );
+
+        if ( figcaption ) {
+            
+            caption.innerHTML = figcaption.innerHTML;
+            
+        } else {
+            
+            caption.innerHTML = innerImg.getAttribute( 'alt' );
+            
+        }
+        
+    }
+
+    contentDiv.appendChild( fullImg );
+    contentDiv.appendChild( caption );
     
 }
 
