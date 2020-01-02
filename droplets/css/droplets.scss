@@ -1659,19 +1659,75 @@ Droplets page container. Droplets classes only work inside this container.
     .spacer {
 
         width: 100%;
-        height: rem( $margin-spacing );
+        margin: rem( $margin-spacing * 2 ) 0;
+        border: 0;
+        height: rem( 1px );
+        background: $hr-color;
 
         &.minimal {
             width: 100%;
             height: rem( $margin-spacing / 2 );
         }
 
-        &.double {
-            height: rem( $margin-spacing * 2 );
+        &.no-line {
+
+            background: transparent;
+
+            &.with-arrow {
+
+                margin: rem( $margin-spacing ) 0;
+
+                &:after {
+                    display: none;
+                }
+
+            }
+
         }
 
-        &.triple {
-            height: rem( $margin-spacing * 3 );
+        &.fade {
+            background-image: linear-gradient(to right, $hr-color, $table-border-color, $hr-color);
+        }
+
+        &.dashed {
+            border-bottom: rem( 1px ) dashed $hr-color;
+            background: $table-border-color;
+        }
+
+        &.double-line {
+            padding: 0;
+            border: none;
+            border-top: medium double $hr-color;
+            color: $hr-color;
+            background-color: transparent;
+        }
+
+        &.thick {
+            height: rem( 3px );
+        }
+
+        &.double-spacing {
+            margin: rem( $margin-spacing * 4) 0;
+        }
+
+        &.with-arrow {
+
+            position: relative;
+            margin: rem( $margin-spacing * 2 ) 0;
+            overflow: visible;
+
+            &:after {
+                position: absolute;
+                content: " ";
+                top: 0;
+                @include calc( left, '50% - 20px' );
+                width: 0;
+                height: 0;
+                border-left: rem( 10px ) solid transparent;
+                border-right: rem( 10px ) solid transparent;
+                border-top: rem( 10px ) solid $hr-color;
+            }
+
         }
 
     }
@@ -2991,7 +3047,7 @@ Contains copyright info. Added automatically via CSS.
         content: "\00A9 Board of Regents and University of Wisconsin System. All rights reserved.";
     }
 
-    .no-footer {
+    &.no-footer {
 
         &:after {
             display: none;
