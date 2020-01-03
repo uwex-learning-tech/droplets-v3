@@ -27,7 +27,7 @@ TABLE OF CONTENTS
  16. POPOVER -------------------------------------------------------------- D016
  17. TABS ----------------------------------------------------------------- D017
  18. COLLAPSIBLE / ACCORDION ---------------------------------------------- D018
- 19. RESOURCE ------------------------------------------------------------- D019
+ 19. RESOURCES ------------------------------------------------------------ D019
  20. SHOW MORE ------------------------------------------------------------ D020
  21. REVEAL --------------------------------------------------------------- D021
  22. IMAGE ZOOM ----------------------------------------------------------- D022
@@ -2121,133 +2121,102 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D019: RESOURCE
+    D019: RESOURCES
     --------------------------------------------------------------------------*/
 
-    .droplets-resource {
-        
-        width: 100%;
-        min-height: rem( 152px );
+    .droplets-resources {
+
         margin: rem( $margin-spacing ) 0;
-        border: rem(1px) solid $border-color;
-        
-        .type {
-            
-            position: relative;
-            margin: 0;
-            padding-right: rem( 40px );
-            
-            input[type='checkbox'] {
-                display: none;
-            }
-            
-            .lbl-toggle {
+    
+        .resource {
+    
+            @include display-flex();
+            @include flex-flow( row wrap );
+            height: rem( 180px );
+            border: rem( 1px ) solid $light-gray-color;
+            margin-bottom: rem( $margin-spacing );
+            @include border-radius( rem( $border-radius ) );
+            overflow: hidden;
+    
+            .image {
+                
                 @include display-flex();
-                @include flex-wrap(nowrap);
-                @include align-items( center );
-                @include justify-content ( center );
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: rem( 40px );
-                height: 100%;
-                background-color: rgba($light-gray-color, 0.7);
-                cursor: pointer; 
-            }
-            
-            .lbl-toggle:hover {
-                background-color: rgba($light-gray-color, 0.8);
-            }
-            
-            .lbl-toggle:after {
-                display:block;
+    	        @include flex-flow( column nowrap );
+    	        @include justify-content( center );
+    	        @include align-items( center );
+                @include flex( 1 0 11% );
                 position: relative;
-                right: unset;
-                font-family: $droplets-icon-font;
-                content: '\e002';
-                color: $gray-color;
-                @include rotate(90deg);
-                margin-right: rem(3px);
-            }
-            
-            .cover {
-                
-                @include display-flex();
-                @include flex-flow( row nowrap );
-                min-height: rem( 152px );
-                background-color: #fff;
-                
-                .image {
-                    
-                    position: relative;
-                    @include display-flex();
-                    @include align-items( center );
-                    @include justify-content( center );
-                    min-width: rem( 100px );
-                    max-width: rem( 100px );
-                    background-color: $border-color;
-                    
-                    img {
-                        display: block;
-                        position: relative;
-                        width: 100%;
-                        height: 100%;
-                        z-index: 1;
-                        object-fit: cover;
-                    }
-                    
-                }
-                
-                .image:after {
+                background-color: $border-color;
+    
+                img {
                     position: absolute;
                     display: block;
-                    font-family: $droplets-icon-font;
-                    font-size: 200%;
-                    color: $gray-color;
-                    z-index: 0;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    object-fit: cover;
                 }
-                
-                .meta {
-                    
-                    padding: rem( 10px );
-                    
-                    .title {
-                        font-size: 110%;
-                        font-weight: bold;
-                    }
-                    
-                    .author-source {
-                        font-size: 80%;
-                        margin-top: rem( 5px );
-                    }
-                    
-                    .tags {
+
+                &:after {
+                    font-family: $droplets-icon-font;
+                    font-size: rem( 25px );
+                    text-align: center;
+                    color: $gray-color;
+                }
     
-                        position: relative;
-                        font-size: 75%;
-                        text-transform: lowercase;
-                        margin: 0;
-                        padding: 0;
-                        list-style: none;
-                        margin: rem( 10px ) 0 rem( 10px ) rem( 19px );
-        
-                        li {
-        
-                            display: inline-block;
-                            margin: 0 0 rem( 4px ) rem( 4px );
-        
-                            .label {
-                                font-size: rem( 12px );
-                                font-weight: normal;
-                                text-transform: lowercase;
-                                padding: rem( 2px ) rem( 4px );
-                            }
-        
+            }
+    
+            .cover-info {
+                
+                @include flex( 1 0 89% );
+                padding: rem( $gutter / 2 );
+                @include box-sizing( "border-box" );
+                min-height: rem( 148px );
+    
+                .title {
+                    position: relative;
+                    font-size: rem( 18px );
+                    line-height: rem( 22px );
+                    font-weight: bold;
+                    overflow : hidden;
+                }
+    
+                .author-source {
+                    @extend .title;
+                    font-size: rem( 14px );
+                    line-height: rem( 18px );
+                    font-weight: normal;
+                    margin: rem( 6px ) 0;
+                }
+    
+                .meta {
+    
+                    position: relative;
+                    font-size: rem( 12px );
+                    line-height: rem( 12px );
+                    text-transform: lowercase;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    margin: rem( 10px ) 0 rem( 10px ) rem( 19px );
+    
+                    li {
+    
+                        display: inline-block;
+                        margin: 0 0 rem( 8px ) rem( 4px );
+    
+                        .label {
+                            font-size: rem( 12px );
+                            font-weight: normal;
+                            text-transform: lowercase;
+                            padding: rem( 2px ) rem( 4px );
                         }
-        
+    
                     }
-        
-                    .tags:before {
+
+                    &:before {
                         position: absolute;
                         font-family: $droplets-icon-font;
                         content: "\e007";
@@ -2255,25 +2224,42 @@ Droplets page container. Droplets classes only work inside this container.
                         font-style: normal;
                         left: rem( -19px );
                     }
-                    
+    
                 }
+    
+            }
+            
+            .arrow {
+
+    	        @include display-flex();
+    	        @include flex-flow( column nowrap );
+    	        @include justify-content( center );
+    	        @include align-items( center );
+                @include flex( 2 0 100% );
+                border-top: rem( 1px ) solid $light-gray-color;
+                background-color: rgba($light-gray-color, 0.7);
+                height: rem( 30px );
+                cursor: pointer;
                 
+                &:after {
+                    display: block;
+                    width: rem( 16px );
+                    height: rem( 16px );
+                    font-family: $droplets-icon-font;
+                    content: '\e001';
+                    color: $gray-color;
+                    @include single-transition( transform, 0.1s );
+                    @include rotate( 270deg );
+                }
+
             }
-            
-            .toggle:checked + .lbl-toggle:after {
-                @include rotate( -90deg );
-            }
-            
-            .toggle:checked + .lbl-toggle + .cover + .panel {
-                display: block;
-            }
-            
-            .panel {
-            
+    
+            .expandable-panel {
+                
                 display: none;
                 background-color: rgba($light-gray-color, 0.2);
-                padding: rem(20px);
-                
+                padding: 0 rem( 15px );
+        
                 .actions {
                     
                     margin-left: 0;
@@ -2294,19 +2280,50 @@ Droplets page container. Droplets classes only work inside this container.
                         }
                         
                         .youtubed {
+
                             img {
                                 display: none;
                             }
+
                         }
                         
                     }
         
                 }
-                
+        
+            } 
+    
+        }
+        
+        .expanded {
+            
+            height: auto;
+            
+            .expandable-panel {
+                display: block;
+                width: 100%;
+            }
+            
+            .arrow {
+
+                border-bottom: rem( 1px ) solid $light-gray-color;
+
+                &:after {
+                    @include rotate( 90deg );
+                }
+
             }
             
         }
-        
+    
+        .resource:hover {
+            
+            .arrow {
+                background-color: rgba($light-gray-color, 0.8);
+            }
+            
+        }
+    
         .book {
     
             .image:after {
@@ -2891,22 +2908,77 @@ Droplets page container. Droplets classes only work inside this container.
 
         // RESOURCES
         
-        .droplets-resource {
-            
-            .type {
-                
-                padding-right: 0;
-                
-                .lbl-toggle {
-                    display: none; 
+        .droplets-resources {
+    
+            .resource {
+    
+                width: 100%;
+                height: auto;
+                border: none;
+    
+                .image {
+                    width: rem( 100px );
+                    height: rem( 150px );
+                    border: none;
+                }
+    
+                .image:after {
+                    top: 25pt;
+                }
+    
+                .cover-info {
+    
+                    height: auto;
+                    line-height: normal;
+                    padding-top: 0;
+                    padding-bottom: 0;
+    
+                    .title {
+                        position: relative;
+                        font-size: 12pt;
+                        height: auto;
+                        max-height: none;
+                        overflow : visible;
+                    }
+    
+                    .author-source {
+                        position: relative;
+                        height: auto;
+                        font-size: 10pt;
+                        max-height: none;
+                        overflow : visible;
+                    }
+    
                 }
                 
-                .panel {
+                .arrow {
+    	            display: none;
+                }
+    
+                .expandable-panel {
                     display: block;
+                    width: 100%;
+                    border: none;
                 }
-                
-            } 
-        
+    
+            }
+            
+            .resource {
+
+                &.book {
+
+                    .image {
+
+                        &:after {
+                            top: 40pt;
+                        }
+
+                    }
+
+                }
+    	        
+            }
+    
         }
         
         // LIGHTBOX
@@ -2994,94 +3066,6 @@ Droplets page container. Droplets classes only work inside this container.
             }
     
     	}
-        
-        .droplets-resources {
-    
-            .resource {
-    
-                width: 100%;
-                height: auto;
-                margin: 0;
-                border: none;
-                page-break-inside : avoid;
-    
-                .image {
-                    width: rem( 100px );
-                    height: rem( 150px );
-                    border: rem( 1px ) solid #000;
-                }
-    
-                .image:after {
-                    top: 25pt;
-                }
-    
-                .cover-info {
-    
-                    height: auto;
-                    line-height: normal;
-                    padding-top: 0;
-                    padding-bottom: 0;
-    
-                    .title {
-                        position: relative;
-                        font-size: 12pt;
-                        height: auto;
-                        max-height: none;
-                        overflow : visible;
-                    }
-    
-                    .author-source {
-                        position: relative;
-                        height: auto;
-                        font-size: 10pt;
-                        max-height: none;
-                        overflow : visible;
-                    }
-    
-                }
-                
-                .arrow {
-    	            display: none;
-                }
-    
-                .expandable-panel {
-    
-                    display: block;
-                    width: 100%;
-                    border: none;
-                    padding: 0;
-    
-                    .actions {
-    
-                        li {
-    
-                            a.btn {
-                                display: block;
-                                border: none;
-                                padding: 0;
-                                font-size: 10pt;
-                                color: #000;
-                                line-height: normal;
-                                background-color: transparent;
-                            }
-    
-                        }
-    
-                    }
-    
-                }
-    
-            }
-            
-            .resource.book {
-    	        
-    	        .image:after {
-                    top: 40pt;
-                }
-    	        
-            }
-    
-        }
     
     }
     
@@ -3324,8 +3308,7 @@ D028: NO JAVASCRIPT FALLBACK
         
         .resource {
             
-            border-color: $border-color;
-            height: unset;
+            height: auto;
             
             .expandable-panel {
                 display: block;
@@ -3368,6 +3351,7 @@ D028: NO JAVASCRIPT FALLBACK
         img {
             display: block;
             width: 100%;
+            max-width: none;
             height: auto;
             cursor: default;
             border: 0;
@@ -3377,6 +3361,7 @@ D028: NO JAVASCRIPT FALLBACK
         figure {
 
             width: 100%;
+            max-width: none;
             margin: 0 0 rem( $margin-spacing );
 
             img {
@@ -3792,245 +3777,6 @@ To be removed in future versions.
             }
     
     	}
-    
-    }
-    
-    /* D025.6: RESOURCES */
-    
-    .droplets-resources {
-
-        margin: rem( $gutter ) 0;
-    
-        .resource {
-    
-            @include display-flex();
-            @include flex-flow( row wrap );
-            height: rem( 150px );
-            border: rem( 1px ) solid $table-border-color;
-            margin-bottom: rem( $gutter );
-    
-            .image {
-                
-                @include display-flex();
-    	        @include flex-flow( column nowrap );
-    	        @include justify-content( center );
-    	        @include align-items( center );
-                @include flex( 1 0 11.02% );
-                position: relative;
-                background-color: $border-color;
-    
-                img {
-                    position: absolute;
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                    top: 0;
-                    left: 0;
-                    z-index: 10;
-                    object-fit: cover;
-                }
-    
-            }
-            
-            .image:after {
-                font-family: $droplets-icon-font;
-                font-size: rem( 25px );
-                text-align: center;
-                color: $gray-color;
-            }
-    
-            .cover-info {
-                
-                @include flex( 2 0 83.98% );
-                padding: rem( $gutter / 2 );
-                @include box-sizing( "border-box" );
-                min-height: rem( 148px );
-    
-                .title {
-                    position: relative;
-                    font-size: rem( 18px );
-                    line-height: rem( 22px );
-                    font-weight: bold;
-                    overflow : hidden;
-                }
-    
-                .author-source {
-                    @extend .title;
-                    font-size: rem( 14px );
-                    line-height: rem( 18px );
-                    font-weight: normal;
-                    margin: rem( 6px ) 0;
-                }
-    
-                .meta {
-    
-                    position: relative;
-                    font-size: rem( 12px );
-                    line-height: rem( 12px );
-                    text-transform: lowercase;
-                    margin: 0;
-                    padding: 0;
-                    list-style: none;
-                    margin: rem( 10px ) 0 rem( 10px ) rem( 19px );
-    
-                    li {
-    
-                        display: inline-block;
-                        margin: 0 0 rem( 8px ) rem( 4px );
-    
-                        .label {
-                            font-size: rem( 12px );
-                            font-weight: normal;
-                            text-transform: lowercase;
-                            padding: rem( 2px ) rem( 4px );
-                        }
-    
-                    }
-    
-                }
-    
-                .meta:before {
-                    position: absolute;
-                    font-family: $droplets-icon-font;
-                    content: "\e007";
-                    color: $gray-color;
-                    font-style: normal;
-                    left: rem( -19px );
-                }
-    
-            }
-            
-            .arrow {
-    	        @include display-flex();
-    	        @include flex-flow( column nowrap );
-    	        @include justify-content( center );
-    	        @include align-items( center );
-    	        @include flex( 1 0 5% );
-    	        background-color: $light-gray-color;
-    	        cursor: pointer;
-            }
-            
-            .arrow:after {
-                display: block;
-                content: '';
-                width: rem( 16px );
-                height: rem( 16px );
-                font-family: $droplets-icon-font;
-                content: '\e001';
-                color: $gray-color;
-                @include rotate( 270deg );
-            }
-    
-            .expandable-panel {
-                
-                display: none;
-                background-color: $table-bg-color;
-                border-top: rem( 1px ) solid $border-color;
-                padding: 0 rem( 10px );
-        
-                .actions {
-                    
-                    margin-left: 0;
-                    margin-bottom: rem( 10px );
-                    padding: 0;
-                    list-style: none;
-        
-                    li {
-                        
-                        display: inline-block;
-                        
-                        a {
-                            
-                            .ui-icon {
-                                display: none;
-                            }
-                            
-                        }
-                        
-                        .youtubed {
-                            img {
-                                display: none;
-                            }
-                        }
-                        
-                    }
-        
-                }
-        
-            } 
-    
-        }
-        
-        .expanded {
-            
-            height: auto;
-            
-            .expandable-panel {
-                display: block;
-                width: 100%;
-            }
-            
-            .arrow:after {
-                @include rotate( 90deg );
-            }
-            
-        }
-    
-        .resource:hover {
-            
-            .arrow {
-                background-color: $border-color;
-            }
-            
-        }
-    
-        .book {
-    
-            .image:after {
-                content: "\e004";
-            }
-    
-        }
-    
-        .tools {
-    
-            .image:after {
-                content: "\e008";
-            }
-    
-        }
-    
-        .video {
-    
-            .image:after {
-                content: "\e009";
-            }
-    
-        }
-    
-        .document {
-    
-            .image:after {
-                content: "\e006";
-            }
-    
-        }
-    
-        .website {
-    
-            .image:after {
-                content: "\e00a";
-            }
-    
-        }
-    
-        .audio {
-    
-            .image:after {
-                content: "\e003";
-            }
-    
-        }
     
     }
     

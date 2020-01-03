@@ -98,13 +98,9 @@ function onCanvasLms() {
         // check to see if it is on an allowed page
         // add no-js class if not to expand any hidden contents
         if ( isAllowedCanvasPage() ) {
-
             checkDropletsComponents();
-
         } else {
-
             dropletsPage.classList.add( 'no-js' );
-
         }
         
     }
@@ -120,10 +116,8 @@ function onCanvasLms() {
  */
 function isAllowedCanvasPage( ) {
     
-    if ( location.pathname.match( /\/pages|\/assignments|\/discussion_topics/ ) ) {
-
+    if ( location.pathname.match( /\/pages/ ) ) {
         return true;
-        
     }
     
     return false;
@@ -164,7 +158,7 @@ function checkDropletsComponents() {
     const showMoreSelector = document.querySelectorAll( prefix + 'readmore, ' + prefix + 'showmore' );
     const revealSelector = document.querySelectorAll( prefix + 'reveal' );
     const imgZoomSelector = document.querySelectorAll( prefix + 'image-zoom' );
-    // let resourcesSelector = document.querySelectorAll( prefix + 'resources' );
+    const resourcesSelector = document.querySelectorAll( prefix + 'resources' );
     const lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
     
     // check for components
@@ -204,9 +198,9 @@ function checkDropletsComponents() {
         enableImgZoom( imgZoomSelector );
     }
     
-    // if ( resourcesSelector.length ) {
-    //     enableResources( resourcesSelector );
-    // }
+    if ( resourcesSelector.length ) {
+        enableResources( resourcesSelector );
+    }
 
     if ( lighboxSelector.length ) {
         enableLightbox( lighboxSelector );
@@ -1241,7 +1235,6 @@ function selectImage( img, contentDiv ) {
     if ( img.nodeName === "IMG" ) {
         
         fullImg.src = img.src;
-    
         caption.classList.add( 'caption' );
         caption.innerHTML = img.getAttribute( 'alt' );
         
@@ -1251,23 +1244,70 @@ function selectImage( img, contentDiv ) {
         const figcaption = img.querySelector( 'figcaption' );
         
         fullImg.src = innerImg.src;
-    
         caption.classList.add( 'caption' );
 
         if ( figcaption ) {
-            
             caption.innerHTML = figcaption.innerHTML;
-            
         } else {
-            
             caption.innerHTML = innerImg.getAttribute( 'alt' );
-            
         }
         
     }
 
     contentDiv.appendChild( fullImg );
     contentDiv.appendChild( caption );
+    
+}
+
+/**
+ * Enable all resource elements.
+ * @function enableResources
+ * @param {Object[]} resources - Collection of resource elements.
+ * @since 2.0.0
+ * @updated 3.0.0
+ */
+function enableResources( resources ) {
+    
+    // loop through collection of resource elements
+    Array.prototype.forEach.call( resources, function( resourcesWrapper ) {
+        
+        // get the resource class selector
+        const resourceItems = resourcesWrapper.querySelectorAll( '.resource' );
+        
+        // loop through each resouces
+        Array.prototype.forEach.call( resourceItems, function( resource ) {
+            
+            // get the cover info selector
+            const coverEl = resource.querySelectorAll( '.cover-info' );
+            
+            // loop through the cover info of each resource
+            // There is only 1 element in the array (NodeList) because there is
+            // only 1 cover info per resource
+            Array.prototype.forEach.call( coverEl, function( el ) {
+                
+                // create arrow element
+                const arrow = document.createElement( 'div' );
+                arrow.classList.add( 'arrow' );
+                
+                // add the arrow next to the cover info
+                el.parentNode.insertBefore( arrow, el.nextSibling );
+                
+                // add event listener to the arrow to toggle the resource
+                arrow.addEventListener( 'click', function() {
+                    
+                    if ( this.parentNode.classList.contains( 'expanded' ) ) {
+                        this.parentNode.classList.remove( 'expanded' );
+                    } else {
+                        this.parentNode.classList.add( 'expanded' );
+                    }
+                    
+                } );
+                
+            } );
+            
+        } );
+        
+    } );
     
 }
 
