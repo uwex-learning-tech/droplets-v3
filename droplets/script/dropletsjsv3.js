@@ -1027,6 +1027,7 @@ function enableImgZoom( imgZooms ) {
  * @function enableLightbox
  * @param {Object[]} lightboxes - Collection of lightbox elements.
  * @since 2.0.0
+ * @updated 3.0.0
  */
 function enableLightbox( lightboxes ) {
     
@@ -1076,6 +1077,7 @@ function enableLightbox( lightboxes ) {
             if ( overlayDiv.classList.contains( 'show-overlay' ) ) {
             
                 overlayDiv.classList.remove( 'show-overlay' );
+                overlayDiv.querySelectorAll( '.overlay-content' )[0].innerHTML = "";
                 
             } 
             
@@ -1088,6 +1090,7 @@ function enableLightbox( lightboxes ) {
         if ( overlayDiv.classList.contains( 'show-overlay' ) ) {
             
             overlayDiv.classList.remove( 'show-overlay' );
+            overlayDiv.querySelectorAll( '.overlay-content' )[0].innerHTML = "";
             
         } 
         
@@ -1206,13 +1209,9 @@ function isImgFigCombo( selectors ) {
     Array.prototype.forEach.call( selectors, function( el ) {
         
         if ( el.nodeName === 'IMG' ) {
-            
             img++;
-            
         } else if ( el.nodeName === 'FIGURE' ) {
-            
             fig++;
-            
         }
             
     } );
