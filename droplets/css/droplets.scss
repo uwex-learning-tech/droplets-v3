@@ -1972,6 +1972,7 @@ Droplets page container. Droplets classes only work inside this container.
                 width: auto;
                 color: $gray-color;
                 border-bottom: none;
+                border-right: rem( 2px ) solid $light-gray-color;
                 background-color: transparent;
 
                 &:hover {
@@ -1985,6 +1986,10 @@ Droplets page container. Droplets classes only work inside this container.
                 &.active {
                     background-color: #fff;
                     color: #000;
+                }
+
+                &:last-of-type {
+                    border-right: none;
                 }
 
             }
@@ -2585,11 +2590,13 @@ Droplets page container. Droplets classes only work inside this container.
             
             img {
                 width: 0;
+                max-width: rem( 404px );
                 @include flex( 1 0 0 );
                 margin: 0 rem( $margin-spacing / 2 ) rem( $margin-spacing * -1 );
             }
 
             figure {
+                max-width: rem( 404px );
                 @include flex( 1 0 0 );
                 margin: 0 rem( $margin-spacing / 2 ) rem( $margin-spacing * -1 );
             }
