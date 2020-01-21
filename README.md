@@ -1,5 +1,5 @@
-# DROPLETS FOR CANVAS
-**version 2.0.3_1**  
+# DROPLETS
+**version 3.0.0**  
 
 A HTML, CSS, and JavaScript framework for instructional designers at University of Wisconsin Extended Campus (UWEX).
 
@@ -26,7 +26,7 @@ Knowledges of SASS and Compass are essential to write the CSS for this framework
 **Note:** [CodeKit](https://incident57.com/codekit/) is highly recommended for Mac users for the development environment.
 
 ### Minimum Supported Web Browsers
-* Internet Explorer 11+
+* Microsoft Edge
 * Mozilla Firefox 30+
 * Google Chrome 33+
 * Apple Safari 5+
@@ -40,4 +40,4 @@ If any bugs/glitches are found in this framework, please report them under the "
 For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/droplets-for-canvas/issues)**" page on GitHub.
 
 ---
-&copy; 2018-2019. Ethan Lin, [Creative Media Services](https://media.uwex.edu), and [University of Wisconsin Extended Campus](https://ce.uwex.edu). All rights reserved.
+&copy; 2018-2020. Ethan Lin, [Creative Media Services](https://media.uwex.edu), and [University of Wisconsin Extended Campus](https://ce.uwex.edu). All rights reserved.

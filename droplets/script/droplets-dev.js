@@ -6,7 +6,7 @@
  * @url: https://github.com/oel-mediateam/droplets-for-canvas
  *
  * @license: The MIT License (MIT)
- * Copyright 2018-2019 UWEX CEOEL Media
+ * Copyright 2018-2020 UWEX CEOEL Media
  *
  */
 
