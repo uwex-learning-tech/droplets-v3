@@ -35,9 +35,9 @@ Knowledges of SASS and Compass are essential to write the CSS for this framework
 *Latest stable version is always recommended.*
 
 ### Bug Reporting and Questions
-If any bugs/glitches are found in this framework, please report them under the "**[Issues](https://github.com/oel-mediateam/droplets-for-canvas/issues)**" page on GitHub. When reporting a bug, please write the report as detailed and specifically as possible. Note the steps to reproduce the bug and include screen captures if possible.
+If any bugs/glitches are found in this framework, please report them under the "**[Issues](https://github.com/oel-mediateam/droplets-v3/issues)**" page on GitHub. When reporting a bug, please write the report as detailed and specifically as possible. Note the steps to reproduce the bug and include screen captures if possible.
 
-For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/droplets-for-canvas/issues)**" page on GitHub.
+For questions, please also post them under the "**[Issues](https://github.com/oel-mediateam/droplets-v3/issues)**" page on GitHub.
 
 ---
 &copy; 2018-2020. Ethan Lin, [Creative Media Services](https://media.uwex.edu), and [University of Wisconsin Extended Campus](https://ce.uwex.edu). All rights reserved.
