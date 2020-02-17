@@ -1,12 +1,12 @@
-/*
-DROPLETS
-@version: 3.0.0
-@author: Ethan Lin
-@url: https://github.com/oel-mediateam/droplets-for-canvas
-@license: The MIT License (MIT)
-Copyright 2018-2019 UWEX CEOEL Media
- 
-TABLE OF CONTENTS
+/*!
+ * DROPLETS
+ * @version: 3.0.0
+ * @author: Ethan Lin
+ * @url: https://github.com/oel-mediateam/droplets-v3
+ * @license: The MIT License (MIT)
+ * @copyright: (c) 2018-2020 Learning Technology & Media, University of Wisconsin Extended Campus
+ */
+/* TABLE OF CONTENTS
 --------------------------------------------------------------------------------
   0. VARIABLES ------------------------------------------------------------ D000
   1. FUNCTIONS ------------------------------------------------------------ D001
@@ -38,8 +38,7 @@ TABLE OF CONTENTS
  27. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D027
  28. NO JS FALLBACK ------------------------------------------------------- D028
  29. PRISMJS CSS ---------------------------------------------------------- D029
- --. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D025
-
+ 30. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D030
 ----------------------------------------------------------------------------- */
 
 /*
@@ -3562,7 +3561,7 @@ pre[class*="language-"].line-numbers > code {
 }
 
 /*
-D0--: LEGACY/DEPRECATED COMPONENTS
+D030: LEGACY/DEPRECATED COMPONENTS
 --------------------------------------------------------------------------------
 Components that are no longer to be used or should not continue to be used.
 To be removed in future versions.
@@ -3570,7 +3569,7 @@ To be removed in future versions.
 
 #uws-droplets-page {
     
-    /* D025.1: OLD ACCORDION */
+    /* D030.1: OLD ACCORDION */
     
     .droplets-accordion {
     
@@ -3665,7 +3664,7 @@ To be removed in future versions.
         
     }
     
-    /* D025.2: OLD TABS */
+    /* D030.2: OLD TABS */
 
     .droplets-tabs {
     

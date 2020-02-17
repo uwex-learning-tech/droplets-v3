@@ -1,19 +1,19 @@
 /**
  * DROPLETS
- *
  * @version: 3.0.0
  * @author: Ethan Lin
- * @url: https://github.com/oel-mediateam/droplets-for-canvas
- *
+ * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
- * Copyright 2018-2020 UWEX CEOEL Media
- *
+ * @copyright: (c) 2018-2020 Learning Technology & Media, University of Wisconsin Extended Campus
  */
 
 "use strict";
 
 /*********************************************************
-  GLOBAL (KICK-OFF) 
+  GLOBAL (KICK-OFF)
+  Call the waitForDroplets function to observe the loading
+  of Droplets elements with provided target Id, parent
+  element, and the callback for the mutation observer.
 **********************************************************/
 
 const dropletsParam = {
@@ -31,6 +31,13 @@ waitForDroplets( dropletsParam );
   MUTATION OBSERVER FUNCTION 
 **********************************************************/
 
+/**
+ * Attach a mutation observer to observe that Droplets elements
+ * are available.
+ *
+ * @function waitForDroplets
+ * @since 3.0.0
+ */
 function waitForDroplets(params) {
     
     new MutationObserver(function() {
@@ -55,6 +62,13 @@ function waitForDroplets(params) {
   MAIN DROPLETS FUNCTIONS
 **********************************************************/
 
+/**
+ * Run the Droplets JS base on the browser URL
+ * i.e., if it is on Canvas LMS or somewhere else.
+ *
+ * @function runDropletsJs
+ * @since 3.0.0
+ */
 function runDropletsJs() {
 
      if ( isCanvasLms() ) {
@@ -69,6 +83,13 @@ function runDropletsJs() {
 
 }
 
+/**
+ * Check the browser URL to determine if it is
+ * on Canvas LMS.
+ *
+ * @function isCanvasLms
+ * @since 3.0.0
+ */
 function isCanvasLms() {
 
     if ( location.href.match( new RegExp( '.instructure.com/' ) ) ) {
@@ -82,7 +103,7 @@ function isCanvasLms() {
 /**
  * Set and enable Droplets JavaScript components according
  * when the allowed domain is canvas/instructure.com.
- 
+ *
  * @function onCanvasLms
  * @since 3.0.0
  */
