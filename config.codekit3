@@ -18,7 +18,9 @@
 		"oF": 1
 		},
 	"/config.rb": {
-		"ft": 131072,
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/config.rb",
 		"oF": 0
@@ -175,7 +177,7 @@
 	},
 "projectAttributes": {
 	"creationDate": 499371919,
-	"displayValue": "droplets-for-canvas",
+	"displayValue": "droplets-v3",
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "meme-fry",
 	"iconImageWasSetByUser": 0

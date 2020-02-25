@@ -735,10 +735,11 @@ Droplets page container. Droplets classes only work inside this container.
         @include box-sizing( "border-box" );
         @include border-radius( $border-radius );
     
-    	h4 {
+    	h2, h3, h4, h5, h6 {
     
             margin: 0 0 rem( $margin-spacing ) 0;
             padding: 0;
+            font-size: rem( 20px );
             
             [class^="icon-"],
             [class*=" icon-"] {
