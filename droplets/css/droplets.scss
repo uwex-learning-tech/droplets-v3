@@ -32,13 +32,14 @@
  21. REVEAL --------------------------------------------------------------- D021
  22. IMAGE ZOOM ----------------------------------------------------------- D022
  23. LIGHTBOX ------------------------------------------------------------- D023
- 24. FOR PRINTING --------------------------------------------------------- D024
- 25. FOOTER --------------------------------------------------------------- D025
- 26. FONT FACES ----------------------------------------------------------- D026
- 27. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D027
- 28. NO JS FALLBACK ------------------------------------------------------- D028
- 29. PRISMJS CSS ---------------------------------------------------------- D029
- 30. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D030
+ 24. ANNOTATION ----------------------------------------------------------- D024
+ 25. FOR PRINTING --------------------------------------------------------- D025
+ 26. FOOTER --------------------------------------------------------------- D026
+ 27. FONT FACES ----------------------------------------------------------- D027
+ 28. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D028
+ 29. NO JS FALLBACK ------------------------------------------------------- D029
+ 30. PRISMJS CSS ---------------------------------------------------------- D030
+ 31. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D031
 ----------------------------------------------------------------------------- */
 
 /*
@@ -2742,7 +2743,261 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     /*
-    D024: FOR PRINTING
+    D024: ANNOTATION
+    --------------------------------------------------------------------------*/
+
+    .droplets-annotation {
+
+        overflow: hidden;
+        margin: rem( $margin-spacing ) 0;
+
+        .image-container {
+
+            display: inline-block;
+            position: relative;
+
+            .error {
+                position: absolute;
+                width: 90%;
+                top: 5%;
+                left: 5%;
+                padding: rem( 3px ) rem( 5px );
+                font-size: rem( 14px );
+                color: #fff;
+                background-color: $danger-color;
+                @include single-box-shadow(0, 0, rem(8px), 0, $dark-gray-color);
+            }
+    
+            img {
+                display: block;
+                max-width: 100%;
+                @include border-radius( rem(10px) );
+            }
+
+            .indicators {
+
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+    
+                .indicator {
+    
+                    position: absolute;
+                    @include translate(-50%, -50%);
+    
+                    .dot {
+                        position: relative;
+                        width: 35px;
+                        height: 35px;
+                        border: none;
+                        background-color: rgba(244, 201, 84, 0.65);
+                        font-size: rem( 14px );
+                        font-weight: bold;
+                        cursor: pointer;
+                        @include border-radius( 50% );
+                        @include single-box-shadow(0, 0, rem(6px), 0, $dark-gray-color);
+                        @include single-transition( background-color, 0.25s, linear );
+                        z-index: 10;
+                    }
+        
+                    .tooltip {
+        
+                        display: none;
+                        position: absolute;
+                        width: rem( 300px );
+                        height: rem( 83px );
+                        top: calc( 50% - 41.5px );
+                        background-color: #CCCCCC;
+                        text-align: left;
+                        padding: rem( 10px );
+                        @include border-radius( rem( 10px ) );
+                        z-index: 0;
+                        @include single-box-shadow(0, 0, rem(6px), 0, $dark-gray-color);
+        
+                        .title {
+                            width: 100%;
+                            font-weight: bold;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                        }
+        
+                        .help-txt {
+                            width: 100%;
+                            margin-top: rem( 5px );
+                            font-style: italic;
+                            font-size: rem( 12px );
+                            color: #666;
+                        }
+        
+                    }
+        
+                    .tooltip.right {
+                        left: rem( 15px );
+                        padding-left: rem( 25px );
+                    }
+        
+                    .tooltip.left {
+                        right: rem( 15px );
+                        padding-right: rem( 25px );
+                    }
+    
+                    &:hover {
+    
+                        .dot {
+                            background-color: rgba(244, 201, 84, 1);
+                            @include single-box-shadow(0, 0, 0, 0, transparent);
+                        }
+    
+                        .tooltip {
+                            @include display-flex();
+                            @include flex-flow( column nowrap );
+                            @include justify-content( center );
+                        }
+                        
+                    }
+    
+                }
+    
+                .indicator.active {
+    
+                    .dot {
+                        background-color: rgba(244, 201, 84, 1);
+                        @include single-box-shadow(0, 0, 0, 0, transparent);
+                    }
+                    
+                }
+    
+            }
+
+        }
+
+        .annotations {
+                
+            display: none;
+
+            .title {
+                margin: 0 0 rem( $margin-spacing / 2 );
+                font-size: rem( 16px );
+            }
+
+            .commentary {
+                margin-bottom: rem( $margin-spacing );
+            }
+
+        }
+
+        .commentary-panel {
+
+            position: absolute;
+            top: 5%;
+            width: 35%;
+            height: 90%;
+            text-align: left;
+            background: #E6E6E6;
+            overflow: hidden;
+            @include border-radius( rem( 10px ) );
+            @include single-box-shadow(0, 0, rem( 8px ), 0, $dark-gray-color);
+            z-index: 20;
+
+            .closeBtn {
+
+                position: absolute;
+                top: rem( 3px );
+                right: rem( 3px );
+                border: none;
+                background-color: #666;
+                color: #fff;
+                text-align: center;
+                width: rem( 15px );
+                height: rem( 15px );
+                font-size: rem( 14px );
+                line-height: 0;
+                padding: 0 0 rem( 2.25px ) 0;
+                @include border-radius( 50% );
+                cursor: pointer;
+                @include single-transition( background-color, 0.25s, linear );
+
+                &:hover {
+                    background-color: #000;
+                }
+
+            }
+
+            .head {
+
+                @include display-flex();
+                @include align-items( center );
+                background-color: #CCCCCC;
+                padding: rem( 10px );
+                height: rem( 65px );
+                font-size: 18px;
+                font-weight: bold;
+
+                .number {
+                    font-size: rem( 45px );
+                    text-align: center;
+                    color: #666666;
+                    margin-right: rem( 10px );
+                }
+
+                h4 {
+                    margin: 0;
+                    font-size: 16px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+            }
+
+            .body {
+
+                padding: rem( 10px ) rem( 10px ) 0;
+                @include calc( height, '100% - 65px' );
+                overflow-x: hidden;
+                overflow-y: scroll;
+
+                p, ul, ol {
+                    margin: 0 0 rem( 10px ) 0;
+                }
+
+            }
+
+        }
+
+        .commentary-panel.left {
+            left: 3%;
+        }
+
+        .commentary-panel.right {
+            right: 3%;
+        }
+
+        .commentary-panel.top {
+            left: 3%;
+            width: 94%;
+            height: 35%;
+        }
+
+        .commentary-panel.bottom {
+            top: unset;
+            bottom: 3%;
+            left: 3%;
+            width: 94%;
+            height: 35%;
+        }
+
+    }
+
+    /*
+    D025: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -3015,6 +3270,38 @@ Droplets page container. Droplets classes only work inside this container.
         .droplets-lightbox-overlay {
             display: none;
         }
+
+        // ANNOTATION
+        .droplets-annotation {
+
+            .image-container {
+
+                .indicators {
+
+                    .dot {
+                        background-color: rgba(244, 201, 84, 1);
+                        //@include single-box-shadow(0, 0, rem(6px), 0, $dark-gray-color);
+                    }
+
+                }
+
+            }
+
+            .annotations {
+    
+                display: block;
+    
+                .annotation-item {
+                    
+                    .position {
+                        display: none;
+                    }
+    
+                }
+    
+            }
+    
+        }
         
         /* legecy components (to be removed in future version) */
         
@@ -3072,7 +3359,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D025: Footer
+D026: Footer
 --------------------------------------------------------------------------------
 Contains copyright info. Added automatically via CSS.
 ----------------------------------------------------------------------------- */
@@ -3100,7 +3387,7 @@ Contains copyright info. Added automatically via CSS.
 }
 
 /*
-D026: FONT FACES
+D027: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside page container.
 ----------------------------------------------------------------------------- */
@@ -3127,7 +3414,7 @@ Setting up font face. To support font icons used inside page container.
 }
 
 /*
-D027: CANVAS.NET ADJUSTMENTS
+D028: CANVAS.NET ADJUSTMENTS
 --------------------------------------------------------------------------------
 Additional adjustments only when loaded on Canvas.net
 ----------------------------------------------------------------------------- */
@@ -3167,7 +3454,7 @@ Additional adjustments only when loaded on Canvas.net
 }
 
 /*
-D028: NO JAVASCRIPT FALLBACK
+D029: NO JAVASCRIPT FALLBACK
 ----------------------------------------------------------------------------- */
 
 #uws-droplets-page.no-js {
@@ -3375,11 +3662,30 @@ D028: NO JAVASCRIPT FALLBACK
         }
         
     }
+
+    // Annotation
+    .droplets-annotation {
+
+        .annotations {
+
+            display: block;
+
+            .annotation-item {
+
+                .position {
+                    display: none;
+                }
+
+            }
+
+        }
+
+    }
     
 }
 
 /*
-D029: PRISMJS CSS
+D030: PRISMJS CSS
 --------------------------------------------------------------------------------
 PrismJS 1.17.1
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+java+python+r&plugins=line-numbers+normalize-whitespace
@@ -3562,7 +3868,7 @@ pre[class*="language-"].line-numbers > code {
 }
 
 /*
-D030: LEGACY/DEPRECATED COMPONENTS
+D031: LEGACY/DEPRECATED COMPONENTS
 --------------------------------------------------------------------------------
 Components that are no longer to be used or should not continue to be used.
 To be removed in future versions.

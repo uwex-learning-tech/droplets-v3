@@ -181,6 +181,7 @@ function checkDropletsComponents() {
     const imgZoomSelector = document.querySelectorAll( prefix + 'image-zoom' );
     const resourcesSelector = document.querySelectorAll( prefix + 'resources' );
     const lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
+    const annotationSelector = document.querySelectorAll( prefix + 'annotation' );
     
     // check for components
     if ( toolTipSelector.length ) {
@@ -225,6 +226,10 @@ function checkDropletsComponents() {
 
     if ( lighboxSelector.length ) {
         enableLightbox( lighboxSelector );
+    }
+
+    if ( annotationSelector.length ) {
+        enableAnnotation( annotationSelector );
     }
 
 }
@@ -1332,6 +1337,168 @@ function enableResources( resources ) {
     
 }
 
+/**
+ * Enable all annotation component.
+ * @function enableAnnotation
+ * @param {Object[]} annotations - Collection of annotation elements.
+ * @since 3.1.0
+ */
+function enableAnnotation( annotations ) {
+
+    Array.prototype.forEach.call( annotations, function( parentEl, parentIndex ) {
+
+        const annotationImgEl = parentEl.querySelector( 'img' );
+        let imgNaturalWidth = parentEl.width;
+        let imgNaturalHeight = parentEl.height;
+
+        const annotationDiv = parentEl.querySelector( '.annotations' );
+        const imgPanel = parentEl.querySelector( '.image-container' );
+        const ariaDescribeAttrValue = 'annotation' + ( parentIndex + 1 );
+
+        // add the aria-describedby attribute to link the image to the commentary
+        annotationImgEl.setAttribute( 'aria-describedby', ariaDescribeAttrValue );
+        annotationDiv.setAttribute( 'id', ariaDescribeAttrValue );
+
+        // check image size and then set position indicators
+        annotationImgEl.onload = function() {
+
+            imgNaturalWidth = annotationImgEl.naturalWidth;
+            imgNaturalHeight = annotationImgEl.naturalHeight;
+
+            if ( imgNaturalWidth >= 640 && imgNaturalHeight >= 360 ) {
+
+                // create the div element to hold the indicators
+                const indicatorsDiv = document.createElement( 'div' );
+                indicatorsDiv.classList.add( 'indicators' );
+                indicatorsDiv.setAttribute( 'aria-hidden', 'true');
+
+                // get indicator position for each annotation
+                const annotationItems = parentEl.querySelectorAll( '.annotations .annotation-item' );
+                let annotations = [];
+                
+                let commentaryPanel = null;
+
+                Array.prototype.forEach.call( annotationItems, ( item, itemIndex ) => {
+
+                    const position = item.querySelector( '.position' ).innerText;
+                    const title = item.querySelector( '.title' ).innerText;
+                    const commentary = item.querySelector( '.commentary' ).innerHTML;
+
+                    const xyRaw = position.split( ',', 2 );
+                    const xyPos = {
+                        'x': Number( xyRaw[0].trim() ),
+                        'y': Number( xyRaw[1].trim() )
+                    };
+
+                    // create and display indicator for currrent annotation item
+                    const indicatorItem = document.createElement( 'div' );
+                    indicatorItem.classList.add( 'indicator' );
+                    indicatorItem.style.left = toPercentage( xyPos.x , imgNaturalWidth ) + "%";
+                    indicatorItem.style.top = toPercentage( xyPos.y , imgNaturalHeight ) + "%";
+                    
+                    const indicatorBtn = document.createElement( 'button' );
+                    indicatorBtn.classList.add( 'dot' );
+                    indicatorBtn.innerHTML = itemIndex + 1;
+
+                    const tooltip = createAnnotationTooltip( title );
+
+                    if ( xyPos.x < imgNaturalWidth - 310 ) {
+                        tooltip.classList.add( 'right' );
+                    } else {
+                        tooltip.classList.add( 'left' );
+                    }
+
+                    indicatorItem.appendChild( indicatorBtn );
+                    indicatorItem.appendChild( tooltip );
+                    indicatorsDiv.appendChild( indicatorItem );
+                    
+                    // add to annotation array
+                    annotations.push( {
+                        'number': itemIndex + 1,
+                        'position': position,
+                        'title': title,
+                        'commentary': commentary
+                    } );
+
+                    // add button event listener to indicator buttons
+                    indicatorBtn.addEventListener( 'click', ( evt ) => {
+
+                        const btn = evt.target;
+                        const btnIndex = Number( btn.innerText ) - 1;
+
+                        // remove any opened commentary panel first
+                        if ( imgPanel.querySelector( '.commentary-panel' ) ) {
+
+                            commentaryPanel = imgPanel.querySelector( '.commentary-panel' );
+                            commentaryPanel.querySelector( '.closeBtn' ).removeEventListener( 'click', closeAnnotationCommentary );
+                            imgPanel.removeChild( commentaryPanel );
+                            commentaryPanel = null;
+
+                        }
+
+                        // toggle commentary panel
+                        if ( btn.parentNode.classList.contains( 'active' ) ) {
+
+                            btn.parentNode.classList.remove( 'active' );
+
+                        } else {
+
+                            parentEl.querySelectorAll( '.indicators .indicator' ).forEach( ( indicator ) => {
+                                
+                                if ( indicator.classList.contains( 'active') ) {
+                                    indicator.classList.remove( 'active' );
+                                }
+
+                            } );
+
+                            btn.parentNode.classList.add( 'active' );
+                            commentaryPanel = createAnnotationCommentaryPanel( annotations[btnIndex] )
+
+                            if ( imgNaturalWidth > imgNaturalHeight ) {
+
+                                if ( xyPos.x < imgNaturalWidth / 2 - 50 ) {
+                                    commentaryPanel.classList.add( 'right' );
+                                } else {
+                                    commentaryPanel.classList.add( 'left' );
+                                }
+
+                            } else {
+
+                                if ( xyPos.y < imgNaturalHeight / 2 - 50 ) {
+                                    commentaryPanel.classList.add( 'bottom' );
+                                } else {
+                                    commentaryPanel.classList.add( 'top' );
+                                }
+
+                            }
+
+                            imgPanel.appendChild( commentaryPanel );
+
+                        }
+
+                    } );
+
+                } );
+
+                // add the div element holding the indicators to the current annotation element
+                imgPanel.appendChild( indicatorsDiv );
+                
+            } else {
+
+                const errMsgDiv = document.createElement( 'div' );
+                errMsgDiv.classList.add( 'error' );
+                errMsgDiv.innerHTML = "Image is too narrow or small for annotation. Please make sure the image's width and height are at least greater or equal to 640 pixels by 360 pixels";
+
+                imgPanel.appendChild( errMsgDiv );
+
+            }
+
+        };
+
+    } );
+
+}
+
 /*********************************************************
   MISC. DROPLETS HELPER FUNCTIONS
 **********************************************************/
@@ -1346,3 +1513,108 @@ function enableResources( resources ) {
 function isEmpty( str ) {
     return !str || 0 === str.length;
 }
+
+/**
+ * Helper function get the percentage of a fraction
+ * @function toPercentage
+ * @param {Number} numerator - a number.
+ * @param {Number} denominator - a number.
+ * @return {Number}
+ * @since 3.1.0
+ */
+function toPercentage( numerator, denominator ) {
+    return numerator / denominator * 100;
+}
+
+/**
+ * Helper function to create annotation tooltip
+ * @function createAnnotationTooltip
+ * @param {String} title - a string.
+ * @return {Node}
+ * @since 3.1.0
+ */
+ function createAnnotationTooltip( title ) {
+
+    const tooltip = document.createElement( 'div' );
+    tooltip.classList.add( 'tooltip' );
+
+    const tpTitle = document.createElement( 'div' );
+    tpTitle.classList.add( 'title' );
+    tpTitle.innerHTML = title;
+
+    const tpHelpTxt = document.createElement( 'div' );
+    tpHelpTxt.classList.add( 'help-txt' );
+    tpHelpTxt.innerHTML = 'Click to expand for more details.';
+
+    tooltip.appendChild( tpTitle );
+    tooltip.appendChild( tpHelpTxt );
+
+    return tooltip;
+
+ }
+
+ /**
+ * Helper function to create annotation commentary panel
+ * @function createAnnotationCommentaryPanel
+ * @param {Object} annotation - an annotation object.
+ * @return {Node}
+ * @since 3.1.0
+ */
+function createAnnotationCommentaryPanel( annotation ) {
+
+    const panel = document.createElement( 'div' );
+    panel.classList.add( 'commentary-panel' );
+    panel.setAttribute( 'aria-hidden', 'true' );
+
+    const closeBtn = document.createElement( 'button' );
+    closeBtn.classList.add( 'closeBtn' );
+    closeBtn.innerHTML = '&times;';
+
+    closeBtn.addEventListener( 'click', closeAnnotationCommentary );
+
+    const headDiv = document.createElement( 'div' );
+    headDiv.classList.add( 'head' );
+    
+    const headNum = document.createElement( 'div' );
+    headNum.classList.add( 'number' );
+    headNum.innerHTML = annotation.number;
+
+    const headTitle = document.createElement( 'h4' );
+    headTitle.innerHTML = annotation.title;
+
+    const bodyDiv = document.createElement( 'div' );
+    bodyDiv.classList.add( 'body' );
+    bodyDiv.innerHTML = annotation.commentary;
+
+    headDiv.appendChild( headNum );
+    headDiv.appendChild( headTitle );
+
+    panel.appendChild( closeBtn );
+    panel.appendChild( headDiv );
+    panel.appendChild( bodyDiv );
+
+    return panel;
+
+ }
+
+  /**
+ * Helper function to close annotation commentary panel
+ * @function closeAnnotationCommentary
+ * @param {Event} evt - an event.
+ * @since 3.1.0
+ */
+
+ function closeAnnotationCommentary( evt ) {
+
+    evt.target.parentNode.parentNode.querySelectorAll( '.indicators .indicator' ).forEach( ( indicator ) => {
+                                
+        if ( indicator.classList.contains( 'active') ) {
+            indicator.classList.remove( 'active' );
+        }
+
+    } );
+
+    evt.currentTarget.removeEventListener( 'click', closeAnnotationCommentary );
+    evt.target.parentNode.parentNode.removeChild( evt.target.parentNode );
+
+ }
