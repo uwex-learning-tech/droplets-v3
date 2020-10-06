@@ -1,6 +1,6 @@
 /**
  * DROPLETS
- * @version: 3.0.1
+ * @version: 3.1.0
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
@@ -1347,6 +1347,7 @@ function enableAnnotation( annotations ) {
 
     Array.prototype.forEach.call( annotations, function( parentEl, parentIndex ) {
 
+        const numbered = parentEl.classList.contains( 'unnumber' );
         const annotationImgEl = parentEl.querySelector( 'img' );
         let imgNaturalWidth = parentEl.width;
         let imgNaturalHeight = parentEl.height;
@@ -1397,8 +1398,12 @@ function enableAnnotation( annotations ) {
                     indicatorItem.style.top = toPercentage( xyPos.y , imgNaturalHeight ) + "%";
                     
                     const indicatorBtn = document.createElement( 'button' );
+                    indicatorBtn.setAttribute( 'data-index', itemIndex );
                     indicatorBtn.classList.add( 'dot' );
-                    indicatorBtn.innerHTML = itemIndex + 1;
+
+                    if ( !numbered ) {
+                        indicatorBtn.innerHTML = itemIndex + 1;
+                    }
 
                     const tooltip = createAnnotationTooltip( title );
 
@@ -1415,6 +1420,7 @@ function enableAnnotation( annotations ) {
                     // add to annotation array
                     annotations.push( {
                         'number': itemIndex + 1,
+                        'unnumber': numbered,
                         'position': position,
                         'title': title,
                         'commentary': commentary
@@ -1424,7 +1430,7 @@ function enableAnnotation( annotations ) {
                     indicatorBtn.addEventListener( 'click', ( evt ) => {
 
                         const btn = evt.target;
-                        const btnIndex = Number( btn.innerText ) - 1;
+                        const btnIndex = Number( btn.getAttribute( 'data-index' ) );
 
                         // remove any opened commentary panel first
                         if ( imgPanel.querySelector( '.commentary-panel' ) ) {
@@ -1577,8 +1583,11 @@ function createAnnotationCommentaryPanel( annotation ) {
     
     const headNum = document.createElement( 'div' );
     headNum.classList.add( 'number' );
-    headNum.innerHTML = annotation.number;
 
+    if ( !annotation.unnumber ) {
+        headNum.innerHTML = annotation.number;
+    }
+    
     const headTitle = document.createElement( 'h4' );
     headTitle.innerHTML = annotation.title;
 
