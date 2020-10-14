@@ -33,13 +33,14 @@
  22. IMAGE ZOOM ----------------------------------------------------------- D022
  23. LIGHTBOX ------------------------------------------------------------- D023
  24. ANNOTATION ----------------------------------------------------------- D024
- 25. FOR PRINTING --------------------------------------------------------- D025
- 26. FOOTER --------------------------------------------------------------- D026
- 27. FONT FACES ----------------------------------------------------------- D027
- 28. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D028
- 29. NO JS FALLBACK ------------------------------------------------------- D029
- 30. PRISMJS CSS ---------------------------------------------------------- D030
- 31. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D031
+ 25. SLIDE SHOW ----------------------------------------------------------- D025
+ 26. FOR PRINTING --------------------------------------------------------- D026
+ 27. FOOTER --------------------------------------------------------------- D027
+ 28. FONT FACES ----------------------------------------------------------- D028
+ 29. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D029
+ 30. NO JS FALLBACK ------------------------------------------------------- D030
+ 31. PRISMJS CSS ---------------------------------------------------------- D031
+ 32. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D032
 ----------------------------------------------------------------------------- */
 
 /*
@@ -1629,7 +1630,10 @@ Droplets page container. Droplets classes only work inside this container.
         (tools, "\e008"),
         (video, "\e009"),
         (website, "\e00a"),
-        (zoomin, "\e00b") {
+        (zoomin, "\e00b"),
+        (play, "\e00c"),
+        (pause, "\e00d"),
+        (loop, "\e00e") {
         
         .sg-icon-#{$icon}:before {
             content: "#{$unicode}";
@@ -2997,7 +3001,168 @@ Droplets page container. Droplets classes only work inside this container.
     }
 
     /*
-    D025: FOR PRINTING
+    D025: SLIDE SHOW
+    --------------------------------------------------------------------------*/
+
+    .droplets-slideshow {
+
+        margin-bottom: rem( $margin-spacing );
+        
+        .slide-view {
+
+            @include display-flex();
+            height: rem( 400px );
+            overflow: hidden;
+            
+            .img-area {
+
+                img {
+                    display: block;
+                    width: rem( 640px );
+                    height: rem( 360px );
+                    object-fit: cover;
+                    background-color: #000;
+                }
+
+                .toolbar {
+
+                    @include display-flex();
+                    @include flex-flow( row nowrap );
+                    @include align-items( center );
+                    @include justify-content( space-between );
+                    color: #444;
+                    height: rem(40px );
+                    border-top: solid rem( 1px ) $table-border-color;
+                    background-color: #D8D7D7;
+
+                    button {
+
+                        @include display-flex();
+                        @include align-items( center );
+                        @include justify-content( center );
+                        width: rem( 20px );
+                        height: rem( 20px );
+                        border: none;
+                        background-color: transparent;
+                        padding: 0;
+                        font-size: rem( 20px );
+                        color: #444;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: #000;
+                        }
+
+                    }
+
+                    .left-col {
+
+                        @include flex( 1 0 auto );
+                        padding-left: rem( $gutter );
+
+                        .play-btn {
+                            
+                            &:after {
+                                font-family: $droplets-icon-font;
+                                content: '\e00c';
+                            }
+                            
+                        }
+
+                        .pause-btn {
+                            
+                            &:after {
+                                font-family: $droplets-icon-font;
+                                content: '\e00d';
+                            }
+                            
+                        }
+
+                    }
+
+                    .center-col {
+
+                        @include display-flex();
+                        @include align-items( center );
+                        @include justify-content( space-around );
+                        @include flex( 0 0 20% );
+                        font-size: rem( 12px );
+
+                        .prev-btn {
+
+                            &:after {
+                                font-family: $droplets-icon-font;
+                                content: '\e001';
+                            }
+                            
+                        }
+
+                        .next-btn {
+
+                            &:after {
+                                font-family: $droplets-icon-font;
+                                content: '\e001';
+                                @include rotate( 180deg );
+                            }
+                            
+                        }
+
+                    }
+
+                    .right-col {
+
+                        @include display-flex();
+                        @include justify-content( flex-end );
+                        @include flex( 1 0 auto );
+                        padding-right: rem($gutter);
+
+                        .loop-btn {
+                            
+                            &:after {
+                                font-family: $droplets-icon-font;
+                                content: '\e00e';
+                            }
+
+                            &.active {
+                                color: $info-color;
+                            }
+                            
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+            .commentary {
+                @include flex( 1 0 260px );
+                padding: 0 rem( $margin-spacing ) rem( $margin-spacing );
+                font-size: rem( 14px );
+                color: #fff;
+                background-color: #000;
+                overflow: scroll;
+            }
+
+        }
+
+        .hidden {
+            border: 0;
+            clip: rect(0 0 0 0);
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            width: 1px;
+            position: absolute;
+        }
+
+    }
+
+    /*
+    D026: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -3302,6 +3467,33 @@ Droplets page container. Droplets classes only work inside this container.
             }
     
         }
+
+        // SLIDE SHOW
+        .droplets-slideshow {
+
+            .slide-view {
+                display: none;
+            }
+
+            .slide {
+
+                img {
+                    display: block;
+                    max-width: 100%;
+                    height: auto;
+                }
+
+            }
+
+            .hidden {
+                width: 100%;
+                height: auto;
+                margin: unset;
+                overflow: unset;
+                position: unset;
+            }
+
+        }
         
         /* legecy components (to be removed in future version) */
         
@@ -3359,7 +3551,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D026: Footer
+D027: Footer
 --------------------------------------------------------------------------------
 Contains copyright info. Added automatically via CSS.
 ----------------------------------------------------------------------------- */
@@ -3387,9 +3579,9 @@ Contains copyright info. Added automatically via CSS.
 }
 
 /*
-D027: FONT FACES
+D028: FONT FACES
 --------------------------------------------------------------------------------
-Setting up font face. To support font icons used inside page container.
+Setting up font face. To support font icons used inside the page container.
 ----------------------------------------------------------------------------- */
 
 @font-face {
@@ -3408,13 +3600,13 @@ Setting up font face. To support font icons used inside page container.
 
 @font-face {
     font-family: $droplets-icon-font;
-    src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
+    src: url(data:font/truetype;charset=utf-8;base64,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MrEfASuxBxARErcBAwwNFRYZGyQXOQCxCgMRErAAObATEbcGAQ0ODxYXGSQXObAbErAYOTAxNQEAISAAESMQACEgAwEhETMQACEgEwEhEQEAISAAAQwBMAHEAagCWMD+GP6o/oz4ASz9QMAB6AFYAXT4/tQCwP70/tD+PP5Y/ahAAQz+tAJYAaj+qP4YARQBLAEAAVgB6P7s/tQCwP70AUz9qAAAAQAAAAEAANJtcA9fDzz1AB8IAAAAAADbpSEQAAAAANulIycAAAAACAAIAAAAAAgAAgAAAAAAAAABAAAIAP/YAAAIAAAAAAAIAAABAAAAAAAAAAAAAAAAAAAABQgAAAAAAAAACAAAAAfQAAAIAAFAAcAAAACAAAAAgAAAAAAAAAAAAAABgAEAAAAAAAAAAAAAAAAAAAgAHAAwAK4A7gFUAcQCFgJuAuQDjgP6BAgENASiAAAAAQAAABIASwAGAAAAAAACAAEAAgAWAAABAABzAAAAAAAAAAsAigADAAEECQABAB4AAAADAAEECQACAAwAHgADAAEECQADAFYAKgADAAEECQAEACwAgAADAAEECQAFABYArAADAAEECQAGAB4AwgADAAEECQDIABYA4AADAAEECQDJADAA9gADAAEECQDKAA4BJgADAAEECQDLAA4BNAADAAEECdkDABoBQgB1AG4AdABpAHQAbABlAGQALQBmAG8AbgB0AC0AMQBmAG8AbgB0AC0AMQBGAG8AbgB0AEYAbwByAGcAZQAgADIALgAwACAAOgAgAHUAbgB0AGkAdABsAGUAZAAtAGYAbwBuAHQALQAxACAAOgAgADgALQAxADAALQAyADAAMgAwAHUAbgB0AGkAdABsAGUAZAAtAGYAbwBuAHQALQAxACAAZgBvAG4AdAAtADEAVgBlAHIAcwBpAG8AbgAgADEALgAwAHUAbgB0AGkAdABsAGUAZAAtAGYAbwBuAHQALQAxAFcAZQBiAGYAbwBuAHQAIAAxAC4AMABUAGgAdQAgAE8AYwB0ACAAIAA4ACAAMQA2ADoAMQAyADoAMgA0ACAAMgAwADIAMABkAGUAZgBhAHUAbAB0AHAAZQByAHMAZQB1AHMARgBvAG4AdAAgAFMAcQB1AGkAcgByAGUAbAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAQIBAwEEAQUBBgEHAQgBCQEKAQsBDAENAQ4BDwEQAREBEgZnbHlwaDEHdW5pMDAwRAd1bmkyNUZDB3VuaUUwMDEHdW5pRTAwMgd1bmlFMDAzB3VuaUUwMDQHdW5pRTAwNQd1bmlFMDA2B3VuaUUwMDcHdW5pRTAwOAd1bmlFMDA5B3VuaUUwMEEHdW5pRTAwQgd1bmlFMDBDB3VuaUUwMEQHdW5pRTAwRQAAALgB/4WwAY0AS7AIUFixAQGOWbFGBitYIbAQWUuwFFJYIbCAWR2wBitcWFmwFCsAAA==) format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 /*
-D028: CANVAS.NET ADJUSTMENTS
+D029: CANVAS.NET ADJUSTMENTS
 --------------------------------------------------------------------------------
 Additional adjustments only when loaded on Canvas.net
 ----------------------------------------------------------------------------- */
@@ -3454,7 +3646,7 @@ Additional adjustments only when loaded on Canvas.net
 }
 
 /*
-D029: NO JAVASCRIPT FALLBACK
+D030: NO JAVASCRIPT FALLBACK
 ----------------------------------------------------------------------------- */
 
 #uws-droplets-page.no-js {
@@ -3681,11 +3873,38 @@ D029: NO JAVASCRIPT FALLBACK
         }
 
     }
+
+    // Slide show
+    .droplets-slideshow {
+
+        .slide-view {
+            display: none;
+        }
+
+        .slide {
+
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+
+        }
+
+        .hidden {
+            width: 100%;
+            height: auto;
+            margin: unset;
+            overflow: unset;
+            position: unset;
+        }
+
+    }
     
 }
 
 /*
-D030: PRISMJS CSS
+D031: PRISMJS CSS
 --------------------------------------------------------------------------------
 PrismJS 1.17.1
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+java+python+r&plugins=line-numbers+normalize-whitespace
@@ -3868,7 +4087,7 @@ pre[class*="language-"].line-numbers > code {
 }
 
 /*
-D031: LEGACY/DEPRECATED COMPONENTS
+D032: LEGACY/DEPRECATED COMPONENTS
 --------------------------------------------------------------------------------
 Components that are no longer to be used or should not continue to be used.
 To be removed in future versions.

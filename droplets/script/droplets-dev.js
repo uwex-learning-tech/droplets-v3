@@ -12,7 +12,7 @@
 /*********************************************************
   GLOBAL (KICK-OFF)
   Call the waitForDroplets function to observe the loading
-  of Droplets elements with provided target Id, parent
+  of Droplets elements with the provided target Id, parent
   element, and the callback for the mutation observer.
 **********************************************************/
 
@@ -42,7 +42,7 @@ function waitForDroplets(params) {
     
     new MutationObserver(function() {
 
-        let el = document.getElementById( params.id );
+        const el = document.getElementById( params.id );
 
         if ( el ) {
             this.disconnect();
@@ -157,7 +157,7 @@ function checkDropletsComponents() {
     // set initial page container x and y as data- attributes
     const page = document.getElementById( 'uws-droplets-page' );
 
-    //exit function if no-js class is set
+    // exit function if no-js class is set
     if ( page.classList.contains( 'no-js' ) ) {
         return;
     }
@@ -182,6 +182,7 @@ function checkDropletsComponents() {
     const resourcesSelector = document.querySelectorAll( prefix + 'resources' );
     const lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
     const annotationSelector = document.querySelectorAll( prefix + 'annotation' );
+    const slideShowSelector = document.querySelectorAll( prefix + 'slideshow' );
     
     // check for components
     if ( toolTipSelector.length ) {
@@ -230,6 +231,10 @@ function checkDropletsComponents() {
 
     if ( annotationSelector.length ) {
         enableAnnotation( annotationSelector );
+    }
+
+    if ( slideShowSelector.length ) {
+        enableSlideshow( slideShowSelector );
     }
 
 }
@@ -1500,6 +1505,141 @@ function enableAnnotation( annotations ) {
             }
 
         };
+
+    } );
+
+}
+
+/**
+ * Enable all slide show component.
+ * @function enableSlideshow
+ * @param {Object[]} slideshow - Collection of slide show elements.
+ * @since 3.1.0
+ */
+function enableSlideshow( slideshow ) {
+
+    // loop through every slideshows
+    Array.prototype.forEach.call( slideshow, function( parentEl, parentIndex ) {
+        
+        // get all slides in the slideshow
+        const slides = parentEl.querySelectorAll( '.slide' );
+
+        // looping flag
+        let looping = false;
+        let playing = false;
+
+        // create the slide show view area and toolbar
+        const slideViewEl = document.createElement( 'div' );
+        slideViewEl.classList.add( 'slide-view' );
+        slideViewEl.setAttribute( 'aria-hidden', 'true' );
+
+        const imgAreaEl = document.createElement( 'div' );
+        imgAreaEl.classList.add( 'img-area' );
+
+        const img = new Image();
+        img.src = slides[0].querySelector( 'img' ).src;
+
+        const toolbarEl = document.createElement( 'div' );
+        toolbarEl.classList.add( 'toolbar' );
+
+        const leftColEl = document.createElement( 'div' );
+        leftColEl.classList.add( 'left-col' );
+
+        const playPauseBtn = document.createElement( 'button' );
+        playPauseBtn.classList.add( 'play-btn' );
+
+        playPauseBtn.addEventListener( 'click', (evt) => {
+            
+            const playPause = evt.currentTarget;
+
+            if ( playPause.classList.contains ( 'play-btn' ) ) {
+                playPause.classList.remove( 'play-btn' );
+                playPause.classList.add( 'pause-btn' )
+                playing = false;
+            } else {
+                playPause.classList.add( 'play-btn' );
+                playPause.classList.remove( 'pause-btn' )
+                playing = true;
+            }
+
+            if ( playing ) {
+                
+            }
+
+        } );
+
+        leftColEl.appendChild( playPauseBtn );
+
+        const centerColEl = document.createElement( 'div' );
+        centerColEl.classList.add( 'center-col' );
+
+        const prevBtn = document.createElement( 'button' );
+        prevBtn.classList.add( 'prev-btn' );
+
+        const nextBtn = document.createElement( 'button' );
+        nextBtn.classList.add( 'next-btn' );
+
+        const paging = document.createElement( 'span' );
+        paging.classList.add( 'page' );
+        paging.innerHTML = '1 / ' + slides.length;
+
+        centerColEl.appendChild( prevBtn );
+        centerColEl.appendChild( paging );
+        centerColEl.appendChild( nextBtn );
+
+        const rightColEl = document.createElement( 'div' );
+        rightColEl.classList.add( 'right-col' );
+
+        const loopBtn = document.createElement( 'button' );
+        loopBtn.classList.add( 'loop-btn' );
+
+        loopBtn.addEventListener( 'click', (evt) => {
+
+            const loop = evt.currentTarget;
+
+            if ( loop.classList.contains( 'active' ) ) {
+                loop.classList.remove( 'active' );
+                looping = false;
+            } else {
+                loop.classList.add( 'active' );
+                looping = true;
+            }
+            
+        } );
+
+        rightColEl.appendChild( loopBtn );
+
+        toolbarEl.appendChild( leftColEl );
+        toolbarEl.appendChild( centerColEl );
+        toolbarEl.appendChild( rightColEl );
+
+        imgAreaEl.appendChild( img );
+        imgAreaEl.appendChild( toolbarEl );
+
+        const commentaryEl = document.createElement( 'div' );
+        commentaryEl.classList.add( 'commentary' );
+        commentaryEl.innerHTML = slides[0].querySelector( '.commentary' ).innerHTML;
+
+        slideViewEl.appendChild( imgAreaEl );
+        slideViewEl.appendChild( commentaryEl );
+
+        parentEl.insertBefore( slideViewEl, parentEl.firstChild );
+
+        // loop through every slides
+        Array.prototype.forEach.call( slides, function( slide, slideNum ) {
+            
+            const id = 'droplets-ss-' + parentIndex + '-' + ( slideNum + 1 );
+
+            // hide the individual slides
+            slide.classList.add( 'hidden' );
+
+            const img = slide.querySelector( 'img' );
+            img.setAttribute( 'aria-describedby', id );
+            
+            const commentary = slide.querySelector( '.commentary' );
+            commentary.setAttribute( 'id', id );
+            
+        } );
 
     } );
 
