@@ -138,6 +138,7 @@ Setting COMPASS imports. Extends the SASS.
 @import "compass/css3/transition";
 @import "compass/css3/opacity";
 @import "compass/css3/flexbox";
+@import "compass/css3/filter";
 @import "compass/css3/animation";
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i&display=swap');
@@ -3016,24 +3017,47 @@ Droplets page container. Droplets classes only work inside this container.
             
             .img-area {
 
-                img {
-                    display: block;
+                .img {
+
                     width: rem( 640px );
                     height: rem( 360px );
-                    object-fit: cover;
                     background-color: #000;
-                }
+                    overflow: hidden;
+                    background-repeat: no-repeat;
+                    background-position: top left;
+                    object-fit: cover;
 
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        object-fit: cover;
+                    }
+
+                }
+               
                 .toolbar {
 
                     @include display-flex();
                     @include flex-flow( row nowrap );
                     @include align-items( center );
                     @include justify-content( space-between );
+                    position: relative;
                     color: #444;
                     height: rem(40px );
-                    border-top: solid rem( 1px ) $table-border-color;
+                    border-top: solid rem( 1px ) #444;
                     background-color: #D8D7D7;
+                    overflow: hidden;
+
+                    .progress-bar {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0%;
+                        height: rem( 2.5px );
+                        background-color: $info-color;
+                        @include single-transition( width, 1s, linear );
+                    }
 
                     button {
 
@@ -3141,7 +3165,7 @@ Droplets page container. Droplets classes only work inside this container.
                 padding: 0 rem( $margin-spacing ) rem( $margin-spacing );
                 font-size: rem( 14px );
                 color: #fff;
-                background-color: #000;
+                background-color: #444;
                 overflow: scroll;
             }
 
@@ -3160,6 +3184,26 @@ Droplets page container. Droplets classes only work inside this container.
         }
 
     }
+
+    .puff-in-hor {
+        @include animation( puff-in-hor 0.25s cubic-bezier(0.470, 0.000, 0.745, 0.715) both );
+    }
+
+    @include keyframes( puff-in-hor ) {
+        
+        0% {
+            @include scaleX( 2 );
+            @include filter( blur(4px) );
+            @include opacity( 0 );
+        }
+
+        100% {
+            @include scaleX( 1 );
+            @include filter( blur(0px) );
+            @include opacity( 1 );
+        }
+
+	}
 
     /*
     D026: FOR PRINTING

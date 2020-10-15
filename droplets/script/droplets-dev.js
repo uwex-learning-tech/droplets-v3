@@ -1518,6 +1518,9 @@ function enableAnnotation( annotations ) {
  */
 function enableSlideshow( slideshow ) {
 
+    const progressTick = 1000;
+    const interval = 6000;
+
     // loop through every slideshows
     Array.prototype.forEach.call( slideshow, function( parentEl, parentIndex ) {
         
@@ -1528,6 +1531,13 @@ function enableSlideshow( slideshow ) {
         let looping = false;
         let playing = false;
 
+        // slide image index counter
+        let currentIndex = 0;
+
+        // slide auto-advance interval
+        let progressInterval;
+        let slideInterval;
+
         // create the slide show view area and toolbar
         const slideViewEl = document.createElement( 'div' );
         slideViewEl.classList.add( 'slide-view' );
@@ -1536,11 +1546,20 @@ function enableSlideshow( slideshow ) {
         const imgAreaEl = document.createElement( 'div' );
         imgAreaEl.classList.add( 'img-area' );
 
+        const imgWrapper = document.createElement( 'div' );
+        imgWrapper.classList.add( 'img' );
+
         const img = new Image();
-        img.src = slides[0].querySelector( 'img' ).src;
+        img.src = slides[currentIndex].querySelector( 'img' ).src;
+
+        imgWrapper.style.backgroundImage = 'url(' + img.src + ')';
+        imgWrapper.appendChild( img );
 
         const toolbarEl = document.createElement( 'div' );
         toolbarEl.classList.add( 'toolbar' );
+
+        const progressBar = document.createElement( 'div' );
+        progressBar.classList.add( 'progress-bar' );
 
         const leftColEl = document.createElement( 'div' );
         leftColEl.classList.add( 'left-col' );
@@ -1555,15 +1574,21 @@ function enableSlideshow( slideshow ) {
             if ( playPause.classList.contains ( 'play-btn' ) ) {
                 playPause.classList.remove( 'play-btn' );
                 playPause.classList.add( 'pause-btn' )
-                playing = false;
+                playing = true;
             } else {
                 playPause.classList.add( 'play-btn' );
                 playPause.classList.remove( 'pause-btn' )
-                playing = true;
+                playing = false;
             }
 
             if ( playing ) {
-                
+                slideInterval = setInterval( advanceSlide, interval );
+                resetProgress();
+            } else {
+                clearInterval( slideInterval );
+                clearInterval( progressInterval );
+                progressBar.style.width = '0';
+                progressBar.style.display = 'none';
             }
 
         } );
@@ -1576,12 +1601,122 @@ function enableSlideshow( slideshow ) {
         const prevBtn = document.createElement( 'button' );
         prevBtn.classList.add( 'prev-btn' );
 
+        prevBtn.addEventListener( 'click', () => {
+
+            // if slide show is playing reset timer
+            if ( playing) {
+                clearInterval( slideInterval );
+                slideInterval = setInterval( advanceSlide, interval );
+                resetProgress();
+            }
+            
+            // go to previous slide
+            currentIndex--;
+
+            if ( currentIndex < 0 ) {
+                currentIndex = slides.length - 1;
+            }
+
+            updateSlide();
+
+        } );
+
         const nextBtn = document.createElement( 'button' );
         nextBtn.classList.add( 'next-btn' );
 
+        nextBtn.addEventListener( 'click', () => {
+
+            // if slide show is playing reset timer
+            if ( playing) {
+                clearInterval( slideInterval );
+                slideInterval = setInterval( advanceSlide, interval );
+                resetProgress();
+            }
+            
+            // go to next slide
+            currentIndex++;
+
+            if ( currentIndex > slides.length - 1 ) {
+                currentIndex = 0;
+            }
+
+            updateSlide();
+            
+        } );
+
+        function advanceSlide() {
+
+            if ( playing ) {
+
+                currentIndex++;
+
+                if ( currentIndex == slides.length - 1 && !looping ) {
+                    playPauseBtn.click();
+                }
+
+                if ( currentIndex > slides.length - 1 ) {
+                    currentIndex = 0;
+                }
+
+                updateSlide();
+                resetProgress();
+                
+
+            }
+
+        }
+
+        function updateProgressBar() {
+
+            if ( playing ) {
+
+                progressBar.style.display = '';
+                const lengthToIncrease = imgAreaEl.offsetWidth / ( interval / 1000 );
+                let width  = progressBar.offsetWidth;
+
+                if ( width == 0 ) {
+                    width = lengthToIncrease + 10;
+                }
+
+                width = width + lengthToIncrease;
+
+                progressBar.style.width = width + "px";
+
+            }
+
+        }
+
+        function resetProgress() {
+
+            if ( playing ) {
+
+                clearInterval( progressInterval );
+                progressInterval = setInterval( updateProgressBar, progressTick );
+                progressBar.style.width = '0';
+                progressBar.style.display = 'none';
+
+            }
+
+        }
+
+        function updateSlide() {
+
+            img.classList.add( 'puff-in-hor' );
+            img.src = slides[currentIndex].querySelector( 'img' ).src;
+            
+            img.addEventListener( 'animationend', () => {
+                img.classList.remove( 'puff-in-hor' );
+                imgWrapper.style.backgroundImage = 'url(' + img.src + ')';
+            }, { once: true } );
+
+            commentaryEl.innerHTML = slides[currentIndex].querySelector( '.commentary' ).innerHTML;
+            paging.innerHTML = (currentIndex + 1) + ' / ' + slides.length;
+
+        }
+
         const paging = document.createElement( 'span' );
         paging.classList.add( 'page' );
-        paging.innerHTML = '1 / ' + slides.length;
+        paging.innerHTML = (currentIndex + 1) + ' / ' + slides.length;
 
         centerColEl.appendChild( prevBtn );
         centerColEl.appendChild( paging );
@@ -1609,16 +1744,17 @@ function enableSlideshow( slideshow ) {
 
         rightColEl.appendChild( loopBtn );
 
+        toolbarEl.appendChild( progressBar );
         toolbarEl.appendChild( leftColEl );
         toolbarEl.appendChild( centerColEl );
         toolbarEl.appendChild( rightColEl );
 
-        imgAreaEl.appendChild( img );
+        imgAreaEl.appendChild( imgWrapper );
         imgAreaEl.appendChild( toolbarEl );
 
         const commentaryEl = document.createElement( 'div' );
         commentaryEl.classList.add( 'commentary' );
-        commentaryEl.innerHTML = slides[0].querySelector( '.commentary' ).innerHTML;
+        commentaryEl.innerHTML = slides[currentIndex].querySelector( '.commentary' ).innerHTML;
 
         slideViewEl.appendChild( imgAreaEl );
         slideViewEl.appendChild( commentaryEl );

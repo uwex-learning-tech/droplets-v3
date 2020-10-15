@@ -18,9 +18,7 @@
 		"oF": 1
 		},
 	"/config.rb": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
+		"ft": 131072,
 		"oA": 0,
 		"oAP": "/config.rb",
 		"oF": 0
@@ -136,6 +134,39 @@
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
+		"q": 100
+		},
+	"/droplets/img/ss-sample1.jpg": {
+		"ft": 16384,
+		"iS": 92825,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/droplets/img/ss-sample1.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"/droplets/img/ss-sample2.jpg": {
+		"ft": 16384,
+		"iS": 137619,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/droplets/img/ss-sample2.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"/droplets/img/ss-sample3.jpg": {
+		"ft": 16384,
+		"iS": 401373,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/droplets/img/ss-sample3.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
 		"q": 100
 		},
 	"/droplets/index.html": {
