@@ -1519,7 +1519,7 @@ function enableAnnotation( annotations ) {
 function enableSlideshow( slideshow ) {
 
     const progressTick = 1000;
-    const interval = 6000;
+    const interval = 15000;
 
     // loop through every slideshows
     Array.prototype.forEach.call( slideshow, function( parentEl, parentIndex ) {
@@ -1566,6 +1566,7 @@ function enableSlideshow( slideshow ) {
 
         const playPauseBtn = document.createElement( 'button' );
         playPauseBtn.classList.add( 'play-btn' );
+        playPauseBtn.setAttribute( 'title', 'Play' );
 
         playPauseBtn.addEventListener( 'click', (evt) => {
             
@@ -1574,10 +1575,12 @@ function enableSlideshow( slideshow ) {
             if ( playPause.classList.contains ( 'play-btn' ) ) {
                 playPause.classList.remove( 'play-btn' );
                 playPause.classList.add( 'pause-btn' )
+                playPauseBtn.setAttribute( 'title', 'Pause' );
                 playing = true;
             } else {
                 playPause.classList.add( 'play-btn' );
                 playPause.classList.remove( 'pause-btn' )
+                playPauseBtn.setAttribute( 'title', 'Play' );
                 playing = false;
             }
 
@@ -1600,6 +1603,7 @@ function enableSlideshow( slideshow ) {
 
         const prevBtn = document.createElement( 'button' );
         prevBtn.classList.add( 'prev-btn' );
+        prevBtn.setAttribute( 'title', 'Previous' );
 
         prevBtn.addEventListener( 'click', () => {
 
@@ -1623,6 +1627,7 @@ function enableSlideshow( slideshow ) {
 
         const nextBtn = document.createElement( 'button' );
         nextBtn.classList.add( 'next-btn' );
+        nextBtn.setAttribute( 'title', 'Next' );
 
         nextBtn.addEventListener( 'click', () => {
 
@@ -1727,6 +1732,7 @@ function enableSlideshow( slideshow ) {
 
         const loopBtn = document.createElement( 'button' );
         loopBtn.classList.add( 'loop-btn' );
+        loopBtn.setAttribute( 'title', 'Toggle loop' );
 
         loopBtn.addEventListener( 'click', (evt) => {
 
