@@ -29,16 +29,6 @@
 		"oAP": "/build/dreamweaver_commands",
 		"oF": 0
 		},
-	"/droplets/css/droplets.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 2,
-		"oAP": "/droplets/css/droplets-ck.css",
-		"oF": 0,
-		"oS": 0
-		},
 	"/droplets/css/droplets.scss": {
 		"aP": 0,
 		"bl": 0,
