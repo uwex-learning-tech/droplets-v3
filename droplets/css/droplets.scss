@@ -3010,17 +3010,13 @@ Droplets page container. Droplets classes only work inside this container.
         margin-bottom: rem( $margin-spacing );
         
         .slide-view {
-
-            @include display-flex();
-            height: rem( 400px );
-            overflow: hidden;
             
             .img-area {
 
                 .img {
 
-                    width: rem( 640px );
-                    height: rem( 360px );
+                    width: 100%;
+                    height: auto;
                     background-color: #000;
                     overflow: hidden;
                     background-repeat: no-repeat;
@@ -3161,7 +3157,7 @@ Droplets page container. Droplets classes only work inside this container.
             }
 
             .commentary {
-                @include flex( 1 0 260px );
+                height: rem( 215px );
                 padding: 0 rem( $margin-spacing ) rem( $margin-spacing );
                 font-size: rem( 14px );
                 color: #fff;
@@ -3181,6 +3177,36 @@ Droplets page container. Droplets classes only work inside this container.
             padding: 0;
             width: 1px;
             position: absolute;
+        }
+
+    }
+
+    @media ( min-width: 828px ) {
+
+        .droplets-slideshow {
+
+            .slide-view {
+
+                @include display-flex();
+                height: rem( 400px );
+                overflow: hidden;
+
+                .img-area {
+
+                    .img {
+                        width: rem( 640px );
+                        height: rem( 360px );
+                    }
+                    
+                }
+    
+                .commentary {
+                    @include flex( 1 1 auto );
+                    height: auto;
+                }
+    
+            }
+
         }
 
     }
