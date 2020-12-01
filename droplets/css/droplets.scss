@@ -1059,6 +1059,7 @@ Droplets page container. Droplets classes only work inside this container.
     	}
     
     	thead > tr > th {
+            position: relative;
             padding: rem( 8px );
             vertical-align: bottom;
             text-align: left;
@@ -1087,7 +1088,8 @@ Droplets page container. Droplets classes only work inside this container.
         }
     
         tbody > tr > td {
-    
+            
+            position: relative;
             padding: rem( 8px );
             vertical-align: top;
             border-top: rem( 1px ) solid $table-border-color;
