@@ -51,7 +51,8 @@ function waitForDroplets(params) {
 
     } ).observe( params.parent || document, {
 
-        subtree: !!params.recursive,
+        attributes: true,
+        subtree: true,
         childList: true
 
     } );
