@@ -1,10 +1,10 @@
 /**
  * DROPLETS
- * @version: 3.1.0
+ * @version: 3.2.0
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
- * @copyright: (c) 2018-2020 Learning Technology & Media, University of Wisconsin Extended Campus
+ * @copyright: (c) 2018-2021 Learning Technology & Media, University of Wisconsin Extended Campus
  */
 
 "use strict";
@@ -168,6 +168,8 @@ function checkDropletsComponents() {
     
     page.setAttribute( 'data-x', pageBounding.x );
     page.setAttribute( 'data-y', pageBounding.y );
+
+    console.log(pageBounding.y, pageBounding.height);
     
     // component elements
     const prefix = '#uws-droplets-page .droplets-';
@@ -184,6 +186,7 @@ function checkDropletsComponents() {
     const lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
     const annotationSelector = document.querySelectorAll( prefix + 'annotation' );
     const slideShowSelector = document.querySelectorAll( prefix + 'slideshow' );
+    const speakSelector = document.querySelectorAll( prefix + 'speak' );
     
     // check for components
     if ( toolTipSelector.length ) {
@@ -236,6 +239,10 @@ function checkDropletsComponents() {
 
     if ( slideShowSelector.length ) {
         enableSlideshow( slideShowSelector );
+    }
+
+    if ( speakSelector.length ) {
+        enableSpeak( speakSelector );
     }
 
 }
@@ -1024,6 +1031,8 @@ function enableImgZoom( imgZooms ) {
             if ( magnifyX < this.offsetWidth && magnifyY < this.offsetHeight 
                  && magnifyX > 0 && magnifyY > 0 ) {
                  
+                    
+
                 magnifyDiv.classList.add( 'show' );
                  
                 const rx = Math.round( magnifyX / img.offsetWidth * nativeWidth - magnifyDiv.offsetWidth / 2 ) * -1;
@@ -1787,6 +1796,62 @@ function enableSlideshow( slideshow ) {
     } );
 
 }
+
+/**
+ * Enable all speak component.
+ * @function enableSpeak
+ * @param {Object[]} speak - Collection of speak elements.
+ * @since 3.1.0
+ */
+ function enableSpeak( speak ) {
+
+    const page = document.getElementById( 'uws-droplets-page' );
+    const audioPlayer = document.createElement( 'audio' );
+    
+    audioPlayer.setAttribute( 'aria-hidden', true );
+    page.appendChild( audioPlayer );
+
+    speak.forEach( ( button, index ) => {
+        
+        button.classList.add( 'ready' );
+        button.setAttribute( 'id', 'd-speak-' + index );
+        button.setAttribute( 'aria-label', 'Listen' );
+        button.setAttribute( 'role', 'button' );
+
+        button.addEventListener( 'click', ( evt ) => {
+            
+            speak.forEach( ( item ) => {
+                item.classList.remove( 'playing' );
+            } );
+
+            if ( !audioPlayer.paused ) {
+                audioPlayer.pause();
+                audioPlayer.currentTime = 0;
+            }
+
+            const currentTarget = evt.currentTarget;
+
+            currentTarget.classList.add( 'playing' );
+
+            audioPlayer.setAttribute( 'data-reference', currentTarget.id );
+            audioPlayer.src = currentTarget.dataset.src;
+            audioPlayer.play();
+
+        } );
+
+    } );
+
+    audioPlayer.addEventListener( 'ended', () => {
+
+        const source = document.querySelector( '#' + audioPlayer.dataset.reference );
+        
+        source.classList.remove( 'playing' );
+        audioPlayer.removeAttribute( 'src' );
+        audioPlayer.removeAttribute( 'data-reference' );
+
+    } );
+
+ }
 
 /*********************************************************
   MISC. DROPLETS HELPER FUNCTIONS

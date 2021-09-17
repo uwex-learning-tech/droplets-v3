@@ -1,16 +1,16 @@
 /*!
  * DROPLETS
- * @version: 3.1.0
+ * @version: 3.2.0
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
- * @copyright: (c) 2018-2020 Learning Technology & Media, University of Wisconsin Extended Campus
+ * @copyright: (c) 2018-2021 Learning Technology & Media, University of Wisconsin Extended Campus
  */
 /* TABLE OF CONTENTS
 --------------------------------------------------------------------------------
   0. VARIABLES ------------------------------------------------------------ D000
   1. FUNCTIONS ------------------------------------------------------------ D001
-  2. COMPASS IMPORTS ------------------------------------------------------ D002
+  2. IMPORTS -------------------------------------------------------------- D002
   3. UWS DROPLETS PAGE ---------------------------------------------------- D003
   4. SECTION HEADER ------------------------------------------------------- D004
   5. TYPOGRAPHY ----------------------------------------------------------- D005
@@ -34,13 +34,14 @@
  23. LIGHTBOX ------------------------------------------------------------- D023
  24. ANNOTATION ----------------------------------------------------------- D024
  25. SLIDE SHOW ----------------------------------------------------------- D025
- 26. FOR PRINTING --------------------------------------------------------- D026
- 27. FOOTER --------------------------------------------------------------- D027
- 28. FONT FACES ----------------------------------------------------------- D028
- 29. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D029
- 30. NO JS FALLBACK ------------------------------------------------------- D030
- 31. PRISMJS CSS ---------------------------------------------------------- D031
- 32. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D032
+ 26. SPEAK ---------------------------------------------------------------- D026
+ 27. FOR PRINTING --------------------------------------------------------- D027
+ 28. FOOTER --------------------------------------------------------------- D028
+ 29. FONT FACES ----------------------------------------------------------- D029
+ 30. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D030
+ 31. NO JS FALLBACK ------------------------------------------------------- D031
+ 32. PRISMJS CSS ---------------------------------------------------------- D032
+ 33. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D033
 ----------------------------------------------------------------------------- */
 
 /*
@@ -126,20 +127,10 @@ Setting up functions. Convert px unit to rem unit.
 }
 
 /*
-D002: COMPASS IMPORTS
+D002: IMPORTS
 --------------------------------------------------------------------------------
-Setting COMPASS imports. Extends the SASS.
+External resouce imports
 ----------------------------------------------------------------------------- */
-
-@import "compass/css3/border-radius";
-@import "compass/css3/box-sizing";
-@import "compass/css3/box-shadow";
-@import "compass/css3/transform";
-@import "compass/css3/transition";
-@import "compass/css3/opacity";
-@import "compass/css3/flexbox";
-@import "compass/css3/filter";
-@import "compass/css3/animation";
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i&display=swap');
 
@@ -164,7 +155,8 @@ Droplets page container. Droplets classes only work inside this container.
     line-height: 1.25;
     
     * {
-        @include box-sizing( "border-box" );
+
+        box-sizing: border-box;
 
         &:focus {
             outline: rem( 1px ) dotted black;
@@ -395,10 +387,10 @@ Droplets page container. Droplets classes only work inside this container.
     	outline: none;
     	cursor: pointer;
     	border: 0 solid #404040;
-    	@include box-sizing( "border-box" );
-        @include border-radius( rem( $border-radius ) );
-        @include single-box-shadow(0, rem( 3px ), 0, 0, $dark-gray-color);
-        @include single-transition( background-color, 0.25s, linear );
+        box-sizing: border-box;
+        border-radius: rem( $border-radius );
+        box-shadow: 0 rem( 3px ) 0 0 $dark-gray-color;
+        transition: background-color 0.25s linear;
 
         &:hover {
             background-color: $gray-btn-hover-color;
@@ -408,7 +400,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             color: $light-text-color;
             background-color: $light-color;
-            @include single-box-shadow(0, 3px, 0, 0, $dark-light-color);
+            box-shadow: 0 rem( 3px ) 0 0 $dark-light-color;
 
             &:hover {
                 background-color: $light-btn-hover-color;
@@ -419,7 +411,7 @@ Droplets page container. Droplets classes only work inside this container.
         &.dark {
 
             background-color: $dark-color;
-            @include single-box-shadow(0, 3px, 0, 0, $dark-dark-color);
+            box-shadow: 0 rem( 3px ) 0 0 $dark-dark-color;
 
             &:hover {
                 background-color: $dark-btn-hover-color;
@@ -430,7 +422,7 @@ Droplets page container. Droplets classes only work inside this container.
         &.info {
 
             background-color: $info-color;
-            @include single-box-shadow(0, 3px, 0, 0, $dark-info-color);
+            box-shadow: 0 rem( 3px ) 0 0 $dark-info-color;
 
             &:hover {
                 background-color: $info-btn-hover-color;
@@ -441,7 +433,7 @@ Droplets page container. Droplets classes only work inside this container.
         &.success {
 
             background-color: $success-color;
-            @include single-box-shadow(0, 3px, 0, 0, $dark-success-color);
+            box-shadow: 0 rem( 3px ) 0 0 $dark-success-color;
 
             &:hover {
                 background-color: $success-btn-hover-color;
@@ -454,7 +446,7 @@ Droplets page container. Droplets classes only work inside this container.
             color: $warning-text-color;
             background-color: $warning-color;
             background-image: none;
-            @include single-box-shadow(0, 3px, 0, 0, $dark-warning-color);
+            box-shadow: 0 rem( 3px ) 0 0 $dark-warning-color;
 
             &:hover {
                 background-color: $warning-btn-hover-color;
@@ -465,7 +457,7 @@ Droplets page container. Droplets classes only work inside this container.
         &.danger {
 
             background-color: $danger-color;
-            @include single-box-shadow(0, 3px, 0, 0, $dark-danger-color);
+            box-shadow: 0 rem( 3px ) 0 0 $dark-dark-color;
 
             &:hover {
                 background-color: $danger-btn-hover-color;
@@ -484,13 +476,13 @@ Droplets page container. Droplets classes only work inside this container.
         &.small {
             font-size: 85%;
             padding: rem(5px) rem(10px);
-            @include border-radius( rem($border-radius / 2) );
-            @include single-box-shadow(0, rem( 2px ), 0, 0, $gray-color);
+            border-radius: rem($border-radius / 2);
+            box-shadow: 0 rem( 2px ) 0 0 $gray-color;;
         }
 
         &:active {
-            @include translate( 0, rem(3px) );
-            @include single-box-shadow( 0, 0, 0, 0 );
+            transform: translate(0, rem(3px));
+            box-shadow: 0 0 0 0;
         }
 
         &:focus {
@@ -611,28 +603,28 @@ Droplets page container. Droplets classes only work inside this container.
         	
     	.columns {
         
-        	@include display-flex();
-            @include flex-flow( row wrap );
+        	display: flex;
+            flex-flow: row wrap;
             margin: 0 rem( $margin-spacing / 2 * -1);
             
             .row {
-                @include display-flex();
-                @include flex-flow( row nowrap );
-                @include flex-basis( 100% );
+                display: flex;
+                flex-flow: row nowrap;
+                flex-basis: 100%;
                 margin: 0;
             }
 
         	.col {
 
-                @include flex( 1 0 0 );
+                flex: 1 0 0;
                 margin: 0 rem( $margin-spacing / 2 ) rem( $margin-spacing * -1 );
 
                 &.wider {
-                    @include flex( 2 0 );
+                    flex: 2 0;
                 }
 
                 &.vertical-center {
-                    @include align-self( center );
+                    align-self: center;
                 }
 
         	}
@@ -685,7 +677,7 @@ Droplets page container. Droplets classes only work inside this container.
     	white-space: nowrap;
     	background-color: $gray-color;
     	vertical-align: middle;
-        @include border-radius( rem( $border-radius ) );
+        border-radius: rem( $border-radius );
         
         &.light {
             color: $light-text-color;
@@ -719,7 +711,8 @@ Droplets page container. Droplets classes only work inside this container.
     .highlight {
     	padding: rem( 1px ) rem( 4px ) rem( 2px );
     	background-color: #fff3b4;
-    	@include border-radius( rem( $border-radius / 3 ) );
+    	border-radius: rem( $border-radius / 3);
+        color-adjust: exact;
     }
     
     /*
@@ -735,8 +728,8 @@ Droplets page container. Droplets classes only work inside this container.
     	border-color: $gray-color;
     	border-left: rem( 8px ) solid $dark-gray-color;
     	border-right: rem( 5px ) solid $light-color;
-        @include box-sizing( "border-box" );
-        @include border-radius( $border-radius );
+        box-sizing: border-box;
+        border-radius: $border-radius;
     
     	h2, h3, h4, h5, h6 {
     
@@ -764,9 +757,9 @@ Droplets page container. Droplets classes only work inside this container.
         // D009.2: With Icon or Label
         &.with-icon {
 
-            @include display-flex();
-            @include flex-flow(row nowrap);
-            @include align-items( center );
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
 
             .icon {
 
@@ -775,7 +768,7 @@ Droplets page container. Droplets classes only work inside this container.
                 min-width: rem( 24px );
                 height: rem( 27px );
                 font-size: 155%;
-                @include align-self( flex-start );
+                align-self: flex-start;
 
                 &:before {
                     display: inline-block;
@@ -788,7 +781,7 @@ Droplets page container. Droplets classes only work inside this container.
             }
 
             .label {
-                @include align-self( flex-start );
+                align-self: flex-start;
                 margin-right: rem( $margin-spacing );
             }
 
@@ -861,27 +854,27 @@ Droplets page container. Droplets classes only work inside this container.
             &.bordered {
 
                 border: rem( 1px ) solid $gray-color;
-                @include border-radius( rem( $border-radius ) );
-                @include single-box-shadow( 0, rem( 3px ), 0, 0, $gray-color, false );
+                border-radius: rem( $border-radius );
+                box-shadow: 0 rem( 3px ) 0 0 $gray-color inset;
 
                 &.danger {
                     border-color: $danger-color;
-                    @include single-box-shadow( 0, rem( 3px ), 0, 0, $danger-color, false );
+                    box-shadow: 0 rem( 3px ) 0 0 $danger-color inset;
                 }
 
                 &.success {
                     border-color: $success-color;
-    	            @include single-box-shadow( 0, rem( 3px ), 0, 0, $success-color, false );
+                    box-shadow: 0 rem( 3px ) 0 0 $success-color inset;
                 }
 
                 &.info {
                     border-color: $info-color;
-                    @include single-box-shadow( 0, rem( 3px ), 0, 0, $info-color, false );
+                    box-shadow: 0 rem( 3px ) 0 0 $info-color inset;
                 }
 
                 &.warning {
                     border-color: $warning-color;
-    	            @include single-box-shadow( 0, rem( 3px ), 0, 0, $warning-color, false );
+                    box-shadow: 0 rem( 3px ) 0 0 $warning-color inset;
                 }
 
             }
@@ -890,7 +883,7 @@ Droplets page container. Droplets classes only work inside this container.
 
         // D009.5: Shadow
         &.shadowed {
-            @include single-box-shadow( 0, 0, rem( 6px ), 0, $dark-color, false );
+            box-shadow: 0 0 rem( 6px ) 0 $dark-color;
         }
 
         // D009.6: Right Aligned Text Alignment
@@ -955,16 +948,16 @@ Droplets page container. Droplets classes only work inside this container.
     --------------------------------------------------------------------------*/
     .droplets-alert {
 
-        @include display-flex();
-        @include flex-flow(row nowrap);
-        @include align-items( center );
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
         margin: rem( $margin-spacing ) 0;
     	padding: rem( $margin-spacing );
     	background-color: $dark-gray-color;
         color: #fff;
         font-weight: 700;
-        @include box-sizing( "border-box" );
-        @include border-radius( rem( $border-radius ) );
+        box-sizing: border-box;
+        border-radius: rem( $border-radius );
 
         .icon {
 
@@ -1270,8 +1263,8 @@ Droplets page container. Droplets classes only work inside this container.
         
         background-color: #ffffff;
         border: rem( 1px ) solid $light-gray-color;
-        @include border-radius( rem( $border-radius / 3 ) );
-        @include single-box-shadow( 0, rem( 2px ), 0, 0, $light-gray-color );
+        border-radius: rem( $border-radius / 3 );
+        box-shadow: 0 rem( 2px ) 0 0 $light-gray-color;
 
         thead {
 
@@ -1456,7 +1449,7 @@ Droplets page container. Droplets classes only work inside this container.
         &.shadowed {
 
             img {
-                @include single-box-shadow( 0, 0, rem( 6px ), 0, $dark-color );
+                box-shadow: 0 0 rem( 6px ) 0 $dark-color;
             }
 
         }
@@ -1777,8 +1770,8 @@ Droplets page container. Droplets classes only work inside this container.
             text-align: left;
             line-height: normal;
             background-color: #333;
-            @include border-radius( rem( $border-radius / 3 ) );
-            @include single-box-shadow( 0, 0, rem( 8px ), 0, $gray-color );
+            border-radius: rem( $border-radius / 3);
+            box-shadow: 0 0 rem( 8px ) 0 $gray-color;
         }
     	
     }
@@ -1793,7 +1786,7 @@ Droplets page container. Droplets classes only work inside this container.
         position: relative;
         border: rem( 1px ) solid $light-gray-color;
         padding: 0 rem( 4px ) rem( 2px );
-        @include border-radius( rem( 3px ) );
+        border-radius: rem( 3px );
         cursor: pointer;
         
         .popover {
@@ -1809,8 +1802,8 @@ Droplets page container. Droplets classes only work inside this container.
             font-weight: normal;
             font-size: rem( 14px );
             line-height: normal;
-            @include border-radius( rem( $border-radius / 3 ) );
-            @include single-box-shadow( 0, 0, rem( 8px ), 0, $gray-color );
+            border-radius: rem( $border-radius / 3);
+            box-shadow: 0 0 rem( 8px ) 0 $gray-color;
             top: 0;
             left: 0;
             z-index: 999;
@@ -1892,19 +1885,19 @@ Droplets page container. Droplets classes only work inside this container.
 
     .droplets-tabbed {
     
-    	@include display-flex();
-    	@include flex-wrap( wrap );
+    	display: flex;
+    	flex-wrap: wrap;
         margin: rem($margin-spacing) 0;
         
-        @include border-radius( rem( $border-radius ) );
+        border-radius: rem( $border-radius );
         overflow: hidden;
     	
         
         .tab {
 
-            @include display-flex();
-            @include flex-flow(row nowrap);
-            @include align-items( center );
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
             position: relative;
             width: 100%;
             padding: rem(10px) rem(15px);
@@ -1913,8 +1906,8 @@ Droplets page container. Droplets classes only work inside this container.
             font-weight: bold;
             font-size: 110%;
             cursor: pointer;
-            @include single-transition( background, 0.1s );
-            @include single-transition( color, 0.1s );
+            transition: background 0.1s;
+            transition: color 0.1s;
 
             border-bottom: rem( 1px ) solid $light-gray-color;
 
@@ -1933,8 +1926,8 @@ Droplets page container. Droplets classes only work inside this container.
                 font-family: $droplets-icon-font;
                 content: '\e002';
                 color: $gray-color;
-                @include single-transition( transform, 0.1s );
-                @include rotate( 0deg );
+                transition: transform 0.1s;
+                transform: rotate(0deg);
             }
 
             &.active {
@@ -1943,8 +1936,8 @@ Droplets page container. Droplets classes only work inside this container.
                 border-bottom: none;
 
                 &:after {
-                    @include single-transition( transform, 0.2s );
-                    @include rotate( 90deg );
+                    transition: transform 0.2s;
+                    transform: rotate(90deg);
                 }
 
             }
@@ -2019,14 +2012,14 @@ Droplets page container. Droplets classes only work inside this container.
     .droplets-collapsibles {
         
         margin: rem($margin-spacing) 0;
-        @include border-radius( 0 0 rem( $border-radius ) rem( $border-radius ) );
+        border-radius: 0 0 rem( $border-radius ) rem( $border-radius );
         overflow: hidden;
         
         .controls {
 
-            @include display-flex();
-            @include flex-flow( row nowrap );
-            @include justify-content( flex-end );
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-end;
 
             .cbtn {
 
@@ -2039,9 +2032,9 @@ Droplets page container. Droplets classes only work inside this container.
                 border: rem( 1px ) solid $light-color;
                 border-bottom: none;
                 margin-right: rem( $border-radius );
-                @include border-radius( rem( $border-radius ) rem( $border-radius ) 0 0 );
-                @include single-transition( color, 0.25s, ease-in-out );
-                @include single-transition( border-color, 0.25s, ease-in-out );
+                border-radius: rem( $border-radius ) rem( $border-radius ) 0 0;
+                transition:  color 0.25s ease-in-out;
+                transition: border-color 0.25s ease-in-out;
                 
                 &:first-of-type {
                     margin-right: rem( $margin-spacing / 3 );
@@ -2058,9 +2051,9 @@ Droplets page container. Droplets classes only work inside this container.
 
         .section {
 
-            @include display-flex();
-            @include flex-flow(row nowrap);
-            @include align-items( center );
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
             position: relative;
             width: 100%;
             padding: rem(10px) rem(15px);
@@ -2069,13 +2062,13 @@ Droplets page container. Droplets classes only work inside this container.
             font-weight: bold;
             font-size: 110%;
             cursor: pointer;
-            @include single-transition( background-color, 0.1s );
-            @include single-transition( color, 0.1s );
+            transition: background-color 0.1s;
+            transition: color 0.1s;
 
             border-bottom: rem( 1px ) solid $light-gray-color;
 
             &:first-of-type {
-                @include border-radius( rem( $border-radius ) rem( $border-radius ) 0 0 );
+                border-radius: rem( $border-radius ) rem( $border-radius ) 0 0;
                 overflow: hidden;
             }
 
@@ -2094,8 +2087,8 @@ Droplets page container. Droplets classes only work inside this container.
                 font-family: $droplets-icon-font;
                 content: '\e002';
                 color: $gray-color;
-                @include single-transition( transform, 0.1s );
-                @include rotate( 0deg );
+                transition: transform 0.1s;
+                transform: rotate(0deg);
             }
 
             &.active {
@@ -2104,8 +2097,8 @@ Droplets page container. Droplets classes only work inside this container.
             }
 
             &.active:after {
-                @include single-transition( transform, 0.2s );
-                @include rotate( 90deg );
+                transition: transform 0.2s;
+                transform: rotate(90deg);
             }
 
         }
@@ -2138,21 +2131,21 @@ Droplets page container. Droplets classes only work inside this container.
     
         .resource {
     
-            @include display-flex();
-            @include flex-flow( row wrap );
+            display: flex;
+            flex-flow: row wrap;
             height: rem( 180px );
             border: rem( 1px ) solid $light-gray-color;
             margin-bottom: rem( $margin-spacing );
-            @include border-radius( rem( $border-radius ) );
+            border-radius: rem( $border-radius );
             overflow: hidden;
     
             .image {
                 
-                @include display-flex();
-    	        @include flex-flow( column nowrap );
-    	        @include justify-content( center );
-    	        @include align-items( center );
-                @include flex( 1 0 11% );
+                display: flex;
+    	        flex-flow: column nowrap;
+    	        justify-content: center;
+    	        align-items: center;
+                flex: 1 0 11%;
                 position: relative;
                 background-color: $border-color;
     
@@ -2178,9 +2171,9 @@ Droplets page container. Droplets classes only work inside this container.
     
             .cover-info {
                 
-                @include flex( 1 0 89% );
+                flex: 1 0 89%;
                 padding: rem( $gutter / 2 );
-                @include box-sizing( "border-box" );
+                box-sizing: border-box;
                 min-height: rem( 148px );
     
                 .title {
@@ -2239,11 +2232,11 @@ Droplets page container. Droplets classes only work inside this container.
             
             .arrow {
 
-    	        @include display-flex();
-    	        @include flex-flow( column nowrap );
-    	        @include justify-content( center );
-    	        @include align-items( center );
-                @include flex( 2 0 100% );
+    	        display: flex;
+    	        flex-flow: column nowrap;
+    	        justify-content: center;
+    	        align-items: center;
+                flex: 2 0 100%;
                 border-top: rem( 1px ) solid $light-gray-color;
                 background-color: rgba($light-gray-color, 0.7);
                 height: rem( 30px );
@@ -2256,8 +2249,8 @@ Droplets page container. Droplets classes only work inside this container.
                     font-family: $droplets-icon-font;
                     content: '\e001';
                     color: $gray-color;
-                    @include single-transition( transform, 0.1s );
-                    @include rotate( 270deg );
+                    transition: transform 0.1s;
+                    transform: rotate(270deg);
                 }
 
             }
@@ -2317,7 +2310,7 @@ Droplets page container. Droplets classes only work inside this container.
                 border-bottom: rem( 1px ) solid $light-gray-color;
 
                 &:after {
-                    @include rotate( 90deg );
+                    transform: rotate(90deg);
                 }
 
             }
@@ -2393,7 +2386,7 @@ Droplets page container. Droplets classes only work inside this container.
         background-color: rgba($light-gray-color, 0.2);
         overflow: hidden;
         margin-top: rem( $margin-spacing );
-        @include border-radius( rem( $border-radius ) rem( $border-radius ) 0 0 );
+        border-radius: rem( $border-radius ) rem( $border-radius ) 0 0;
     
         &.expanded {
             max-height: none;
@@ -2416,9 +2409,9 @@ Droplets page container. Droplets classes only work inside this container.
         margin-bottom: rem($margin-spacing);
         border-top: rem( 1px ) solid $light-gray-color;
         cursor: pointer;
-        @include single-transition( background-color, 0.1s );
-        @include border-radius( 0 0 rem( $border-radius ) rem( $border-radius ) );
-        @include single-box-shadow(0, rem( 6px * -1 ), rem(8px), rem(1px * -3), $light-gray-color);
+        transition: background-color 0.1s;
+        border-radius: 0 0 rem( $border-radius ) rem( $border-radius );
+        box-shadow: 0 rem( 6px * -1 ) rem(8px) rem(1px * -3) $light-gray-color;
 
         &:hover {
             background-color: rgba($light-gray-color, .8);
@@ -2431,16 +2424,16 @@ Droplets page container. Droplets classes only work inside this container.
             font-size: 80%;
             color: $dark-gray-color;
             content: '\e002';
-            @include single-transition( transform, 0.1s );
-            @include rotate( 90deg );
+            transform: rotate(90deg);
+            transition: transform 0.1s;
         }
 
         &.expanded {
 
-            @include single-box-shadow(0, 0, 0, 0, $light-gray-color);
+            box-shadow: 0 0 0 0 $light-gray-color;
 
             &:after {
-                @include rotate( -90deg );
+                transform: rotate(-90deg);
             }
             
         }
@@ -2458,7 +2451,7 @@ Droplets page container. Droplets classes only work inside this container.
         background-color: rgba($light-gray-color, 0.2);
         margin: rem( $margin-spacing ) 0 0 0;
         overflow: hidden;
-        @include border-radius( rem( $border-radius ) rem( $border-radius ) 0 0 );
+        border-radius: rem( $border-radius ) rem( $border-radius ) 0 0;
 
         .hidden-content {
             display: none;
@@ -2490,8 +2483,8 @@ Droplets page container. Droplets classes only work inside this container.
         border: none;
         border-top: rem( 1px ) solid $light-gray-color;
         cursor: pointer;
-        @include single-transition( background-color, 0.1s );
-        @include border-radius( 0 0 rem( $border-radius ) rem( $border-radius ) );
+        border-radius: 0 0 rem( $border-radius ) rem( $border-radius );
+        transition: background-color 0.1s;
         z-index: 1;
 
         &:focus {
@@ -2509,14 +2502,14 @@ Droplets page container. Droplets classes only work inside this container.
             font-size: 80%;
             color: $dark-gray-color;
             content: '\e002';
-            @include single-transition( transform, 0.1s );
-            @include rotate( 90deg );
+            transition: transform 0.1s;
+            transform: rotate(90deg);
         }
 
         &.revealed {
 
             &:after {
-                @include rotate( -90deg );
+                transform: rotate(-90deg);
             }
             
         }
@@ -2544,14 +2537,14 @@ Droplets page container. Droplets classes only work inside this container.
             height: rem( 200px );
             background-color: #fff;
             background-repeat: no-repeat;
-            @include border-radius( 100% );
-            @include box-shadow( 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25) );
+            border-radius: 100%;
+            box-shadow: 0 0 0 7px rgba(255,255,255,0.85), 0 0 7px 7px rgba(0,0,0,0.25), inset 0 0 40px 2px rgba(0,0,0,0.25);
             z-index: 99;
         }
         
         .show {
             display: block;
-            @include animation( fadeIn 1s );
+            animation: fadeIn 1s;
         }
         
     }
@@ -2575,7 +2568,7 @@ Droplets page container. Droplets classes only work inside this container.
             width: 100%;
             margin-bottom: rem( $margin-spacing ) ;
             border: rem( $gutter / 2 ) solid #fff;
-            @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
+            box-shadow: 0 0 rem( 6px ) 0 $gray-color;
         }
         
         figure {
@@ -2588,7 +2581,7 @@ Droplets page container. Droplets classes only work inside this container.
                 margin: 0;
                 width: 100%;
                 border: rem( $gutter / 2 ) solid #fff;
-                @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
+                box-shadow: 0 0 rem( 6px ) 0 $gray-color;
             }
 
             figcaption {
@@ -2610,19 +2603,19 @@ Droplets page container. Droplets classes only work inside this container.
 
         .droplets-lightbox {
         
-            @include display-flex();
-            @include flex-flow( row wrap );
+            display: flex;
+            flex-flow: row wrap;
             
             img {
                 width: 0;
                 max-width: rem( 404px );
-                @include flex( 1 0 0 );
+                flex: 1 0 0;
                 margin: 0 rem( $margin-spacing / 2 ) rem( $margin-spacing * -1 );
             }
 
             figure {
                 max-width: rem( 404px );
-                @include flex( 1 0 0 );
+                flex: 1 0 0;
                 margin: 0 rem( $margin-spacing / 2 ) rem( $margin-spacing * -1 );
             }
 
@@ -2634,9 +2627,9 @@ Droplets page container. Droplets classes only work inside this container.
         
         display: none;
         position: fixed;
-        @include flex-flow( column nowrap );
-        @include align-items( center );
-        @include justify-content( center );
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         height: 100%;
         top: 0;
@@ -2656,7 +2649,7 @@ Droplets page container. Droplets classes only work inside this container.
                 max-width: 90vw;
                 max-height: 90vh;
                 object-fit: contain;
-                @include single-box-shadow( 0, 0, rem( 6px ), 0, $gray-color );
+                box-shadow: 0 0 rem( 6px ) 0 $gray-color;
             }
             
             .caption {
@@ -2670,9 +2663,9 @@ Droplets page container. Droplets classes only work inside this container.
         
         .overlay-left-arrow {
 
-            @include display-flex();
-            @include align-items( center );
-            @include justify-content( center );
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: absolute;
             left: rem( 84px );
             width: rem( 30px );
@@ -2680,12 +2673,13 @@ Droplets page container. Droplets classes only work inside this container.
             background-color: #fff;
             text-decoration: none;
             cursor: pointer;
-            @include opacity( 0.25 );
-            @include border-radius( 100% );
+            opacity: 0.25;
+            border-radius: 100%;
             color: $gray-color;
 
             &:hover {
-                @include opacity( 1 );
+                opacity: 1;
+                
             }
 
             &:after {
@@ -2734,19 +2728,19 @@ Droplets page container. Droplets classes only work inside this container.
         
     }
     
-    @include keyframes( fadeIn ) {
-        from { @include opacity(0); }
-        to { @include opacity(1); }
-	}
-	
-	@include keyframes( fadeOut ) {
-        from { @include opacity(1); }
-        to { @include opacity(0); }
-	}
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
     
     .show-overlay {
-        @include display-flex();
-        @include animation( fadeIn 1s );
+        display: flex;
+        animation: fadeIn 1s;
     }
     
     /*
@@ -2772,13 +2766,13 @@ Droplets page container. Droplets classes only work inside this container.
                 font-size: rem( 14px );
                 color: #fff;
                 background-color: $danger-color;
-                @include single-box-shadow(0, 0, rem(8px), 0, $dark-gray-color);
+                box-shadow: 0 0 rem(8px) 0 $dark-gray-color;
             }
     
             img {
                 display: block;
                 max-width: 100%;
-                @include border-radius( rem(10px) );
+                border-radius: rem(10px);
             }
 
             .indicators {
@@ -2792,7 +2786,7 @@ Droplets page container. Droplets classes only work inside this container.
                 .indicator {
     
                     position: absolute;
-                    @include translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
     
                     .dot {
                         position: relative;
@@ -2803,9 +2797,9 @@ Droplets page container. Droplets classes only work inside this container.
                         font-size: rem( 14px );
                         font-weight: bold;
                         cursor: pointer;
-                        @include border-radius( 50% );
-                        @include single-box-shadow(0, 0, rem(6px), 0, $dark-gray-color);
-                        @include single-transition( background-color, 0.25s, linear );
+                        box-shadow: 0 0 rem(6px) 0 $dark-gray-color;
+                        border-radius: 50%;
+                        transition: background-color 0.25s linear;
                         z-index: 10;
                     }
         
@@ -2819,9 +2813,9 @@ Droplets page container. Droplets classes only work inside this container.
                         background-color: #CCCCCC;
                         text-align: left;
                         padding: rem( 10px );
-                        @include border-radius( rem( 10px ) );
+                        border-radius: rem(10px);
                         z-index: 0;
-                        @include single-box-shadow(0, 0, rem(6px), 0, $dark-gray-color);
+                        box-shadow: 0 0 rem(6px) 0 $dark-gray-color;
         
                         .title {
                             width: 100%;
@@ -2857,13 +2851,13 @@ Droplets page container. Droplets classes only work inside this container.
     
                         .dot {
                             background-color: rgba(244, 201, 84, 1);
-                            @include single-box-shadow(0, 0, 0, 0, transparent);
+                            box-shadow: 0 0 0 0 transparent;
                         }
     
                         .tooltip {
-                            @include display-flex();
-                            @include flex-flow( column nowrap );
-                            @include justify-content( center );
+                            display: flex;
+                            flex-flow: column nowrap;
+                            justify-content: center;
                         }
                         
                     }
@@ -2874,7 +2868,7 @@ Droplets page container. Droplets classes only work inside this container.
     
                     .dot {
                         background-color: rgba(244, 201, 84, 1);
-                        @include single-box-shadow(0, 0, 0, 0, transparent);
+                        box-shadow: 0 0 0 0 transparent;
                     }
                     
                 }
@@ -2907,8 +2901,8 @@ Droplets page container. Droplets classes only work inside this container.
             text-align: left;
             background: #E6E6E6;
             overflow: hidden;
-            @include border-radius( rem( 10px ) );
-            @include single-box-shadow(0, 0, rem( 8px ), 0, $dark-gray-color);
+            border-radius: rem(10px);
+            box-shadow: 0 0 rem( 8px ) 0 $dark-gray-color;
             z-index: 20;
 
             .closeBtn {
@@ -2925,9 +2919,9 @@ Droplets page container. Droplets classes only work inside this container.
                 font-size: rem( 14px );
                 line-height: 0;
                 padding: 0 0 rem( 2.25px ) 0;
-                @include border-radius( 50% );
+                border-radius: 50%;
                 cursor: pointer;
-                @include single-transition( background-color, 0.25s, linear );
+                transition: background-color 0.25s linear;
 
                 &:hover {
                     background-color: #000;
@@ -2937,8 +2931,8 @@ Droplets page container. Droplets classes only work inside this container.
 
             .head {
 
-                @include display-flex();
-                @include align-items( center );
+                display: flex;
+                align-items: center;
                 background-color: #CCCCCC;
                 padding: rem( 10px );
                 height: rem( 65px );
@@ -3036,10 +3030,10 @@ Droplets page container. Droplets classes only work inside this container.
                
                 .toolbar {
 
-                    @include display-flex();
-                    @include flex-flow( row nowrap );
-                    @include align-items( center );
-                    @include justify-content( space-between );
+                    display: flex;
+                    flex-flow: row nowrap;
+                    align-items: center;
+                    justify-content: space-between;
                     position: relative;
                     color: #444;
                     height: rem(40px );
@@ -3054,14 +3048,14 @@ Droplets page container. Droplets classes only work inside this container.
                         width: 0%;
                         height: rem( 2.5px );
                         background-color: $info-color;
-                        @include single-transition( width, 1s, linear );
+                        transition: width 1s linear;
                     }
 
                     button {
 
-                        @include display-flex();
-                        @include align-items( center );
-                        @include justify-content( center );
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         width: rem( 20px );
                         height: rem( 20px );
                         border: none;
@@ -3079,7 +3073,7 @@ Droplets page container. Droplets classes only work inside this container.
 
                     .left-col {
 
-                        @include flex( 1 0 auto );
+                        flex: 1 0 auto;
                         padding-left: rem( $gutter );
 
                         .play-btn {
@@ -3104,10 +3098,10 @@ Droplets page container. Droplets classes only work inside this container.
 
                     .center-col {
 
-                        @include display-flex();
-                        @include align-items( center );
-                        @include justify-content( space-around );
-                        @include flex( 0 0 20% );
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        flex: 0 0 20%;
                         font-size: rem( 12px );
 
                         .prev-btn {
@@ -3124,7 +3118,7 @@ Droplets page container. Droplets classes only work inside this container.
                             &:after {
                                 font-family: $droplets-icon-font;
                                 content: '\e001';
-                                @include rotate( 180deg );
+                                transform: rotate(180deg);
                             }
                             
                         }
@@ -3133,9 +3127,9 @@ Droplets page container. Droplets classes only work inside this container.
 
                     .right-col {
 
-                        @include display-flex();
-                        @include justify-content( flex-end );
-                        @include flex( 1 0 auto );
+                        display: flex;
+                        justify-content: flex-end;
+                        flex: 1 0 auto;
                         padding-right: rem($gutter);
 
                         .loop-btn {
@@ -3189,7 +3183,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             .slide-view {
 
-                @include display-flex();
+                display: flex;
                 height: rem( 400px );
                 overflow: hidden;
 
@@ -3203,7 +3197,7 @@ Droplets page container. Droplets classes only work inside this container.
                 }
     
                 .commentary {
-                    @include flex( 1 1 auto );
+                    flex: 1 1 auto;
                     height: auto;
                 }
     
@@ -3214,27 +3208,78 @@ Droplets page container. Droplets classes only work inside this container.
     }
 
     .puff-in-hor {
-        @include animation( puff-in-hor 0.25s cubic-bezier(0.470, 0.000, 0.745, 0.715) both );
+        animation: puff-in-hor 0.25s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
     }
 
-    @include keyframes( puff-in-hor ) {
+    @keyframes puff-in-hor {
         
         0% {
-            @include scaleX( 2 );
-            @include filter( blur(4px) );
-            @include opacity( 0 );
+            transform: scaleX(2);
+            filter: blur( 4px );
+            opacity: 0;
         }
 
         100% {
-            @include scaleX( 1 );
-            @include filter( blur(0px) );
-            @include opacity( 1 );
+            transform: scaleX(1);
+            filter: blur(0px);
+            opacity: 1;
         }
 
-	}
+    }
 
     /*
-    D026: FOR PRINTING
+    D026: SPEAK
+    --------------------------------------------------------------------------*/
+
+    .droplets-speak {
+
+        display: inline;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        border: none;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        font-weight: bold;
+        cursor: pointer;
+
+        &.highlight {
+            padding: rem( 1px ) rem( 4px ) rem( 2px );
+            background-color: #d0fae6;
+        }
+
+        &.ready {
+
+            &::after {
+                display: inline-block;
+                font-family: $droplets-icon-font;
+                font-weight: normal;
+                font-size: 75%;
+                vertical-align: baseline;
+                padding-left: rem( 5px );
+                content: "\e003";
+            }
+
+        }
+
+        &.playing {
+            
+            &::after {
+                animation: fadeinout 1.5s infinite;
+            }
+
+            @keyframes fadeinout {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.25; }
+            }
+
+        }
+
+    }
+
+    /*
+    D027: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -3363,7 +3408,7 @@ Droplets page container. Droplets classes only work inside this container.
         .droplets-readmore,
         .droplets-showmore {
             max-height: none;
-            @include border-radius( rem( $border-radius ) );
+            border-radius: rem( $border-radius );
         }
 
         .droplets-showmore-cntrl {
@@ -3374,7 +3419,7 @@ Droplets page container. Droplets classes only work inside this container.
 
         .droplets-reveal {
         
-            @include border-radius( rem( $border-radius ) );
+            border-radius: rem( $border-radius );
 
             .hidden-content {
                 display: inline-block;
@@ -3480,7 +3525,7 @@ Droplets page container. Droplets classes only work inside this container.
             img {
                 width: 100%;
                 border: 0;
-                @include single-box-shadow( 0, 0, 0, 0, $gray-color );
+                box-shadow: 0 0 0 0 $gray-color;
             }
 
             figure {
@@ -3489,7 +3534,7 @@ Droplets page container. Droplets classes only work inside this container.
 
                 img {
                     border: 0;
-                    @include single-box-shadow( 0, 0, 0, 0, $gray-color );
+                    box-shadow: 0 0 0 0 $gray-color;
                 }
 
             }
@@ -3517,7 +3562,6 @@ Droplets page container. Droplets classes only work inside this container.
 
                     .dot {
                         background-color: rgba(244, 201, 84, 1);
-                        //@include single-box-shadow(0, 0, rem(6px), 0, $dark-gray-color);
                     }
 
                 }
@@ -3565,6 +3609,14 @@ Droplets page container. Droplets classes only work inside this container.
                 position: unset;
             }
 
+        }
+
+        // SPEAK
+        .droplets-speak.ready[data-src]:after {
+            display: inline;
+            font-family: inherit;
+            font-size: 75%;
+            content: "(" attr(data-src) ")";
         }
         
         /* legecy components (to be removed in future version) */
@@ -3623,7 +3675,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D027: Footer
+D028: Footer
 --------------------------------------------------------------------------------
 Contains copyright info. Added automatically via CSS.
 ----------------------------------------------------------------------------- */
@@ -3651,7 +3703,7 @@ Contains copyright info. Added automatically via CSS.
 }
 
 /*
-D028: FONT FACES
+D029: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside the page container.
 ----------------------------------------------------------------------------- */
@@ -3678,7 +3730,7 @@ Setting up font face. To support font icons used inside the page container.
 }
 
 /*
-D029: CANVAS.NET ADJUSTMENTS
+D030: CANVAS.NET ADJUSTMENTS
 --------------------------------------------------------------------------------
 Additional adjustments only when loaded on Canvas.net
 ----------------------------------------------------------------------------- */
@@ -3718,7 +3770,7 @@ Additional adjustments only when loaded on Canvas.net
 }
 
 /*
-D030: NO JAVASCRIPT FALLBACK
+D031: NO JAVASCRIPT FALLBACK
 ----------------------------------------------------------------------------- */
 
 #uws-droplets-page.no-js {
@@ -3729,7 +3781,7 @@ D030: NO JAVASCRIPT FALLBACK
         cursor: default;
         padding: unset;
         border: none;
-        @include border-radius(0);
+        border-radius: 0;
 
         &:hover {
             background-color: transparent;
@@ -3747,10 +3799,10 @@ D030: NO JAVASCRIPT FALLBACK
         .accordion-title {
 
             border-bottom: transparent;
-            @include border-corner-radius( top, left, rem( 5px ) );
-            @include border-corner-radius( top, right, rem( 5px ) );
-            @include border-corner-radius( bottom, left, 0 );
-            @include border-corner-radius( bottom, right, 0 );
+            border-top-left-radius: rem( 5px );
+            border-top-right-radius: rem( 5px );
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
             cursor: default;
 
             &:after {
@@ -3804,16 +3856,16 @@ D030: NO JAVASCRIPT FALLBACK
             
             li {
                 border: rem( 1px ) solid #929292;
-                @include border-corner-radius( bottom, left, rem( 3px ) );
-                @include border-corner-radius( bottom, right, rem( 3px ) );
+                border-bottom-left-radius: rem( 3px );
+                border-bottom-right-radius: rem( 3px );
             }
             
             li:hover {
-                @include box-shadow( none );
+                box-shadow: none;
             }
             
             .active {
-                @include box-shadow( none );
+                box-shadow: none;
             }
             
         }
@@ -3873,7 +3925,7 @@ D030: NO JAVASCRIPT FALLBACK
     .droplets-readmore,
     .droplets-showmore {
         max-height: none;
-        @include border-radius( rem( $border-radius ) );
+        border-radius: rem( $border-radius );
     }
     
     // Reveal
@@ -3976,7 +4028,7 @@ D030: NO JAVASCRIPT FALLBACK
 }
 
 /*
-D031: PRISMJS CSS
+D032: PRISMJS CSS
 --------------------------------------------------------------------------------
 PrismJS 1.17.1
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+java+python+r&plugins=line-numbers+normalize-whitespace
@@ -4159,7 +4211,7 @@ pre[class*="language-"].line-numbers > code {
 }
 
 /*
-D032: LEGACY/DEPRECATED COMPONENTS
+D033: LEGACY/DEPRECATED COMPONENTS
 --------------------------------------------------------------------------------
 Components that are no longer to be used or should not continue to be used.
 To be removed in future versions.
@@ -4167,7 +4219,7 @@ To be removed in future versions.
 
 #uws-droplets-page {
     
-    /* D030.1: OLD ACCORDION */
+    /* D033.1: OLD ACCORDION */
     
     .droplets-accordion {
     
@@ -4175,9 +4227,9 @@ To be removed in future versions.
     
     	.accordion-controls {
             
-            @include display-flex;
-            @include flex-flow( row wrap );
-            @include justify-content( flex-end );
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-end;
             font-size: rem( 12px );
             line-height: rem( 16px );
             text-align: center;
@@ -4190,8 +4242,8 @@ To be removed in future versions.
                 background-color: $light-gray-color;
                 padding: rem( 2px ) rem( 5px );
                 margin: 0 rem( 8px ) rem( -5px ) 0;
-                @include border-corner-radius( top, left, rem( 3px ) );
-                @include border-corner-radius( top, right, rem( 3px ) );
+                border-top-left-radius: rem( 3px );
+                border-top-right-radius: rem( 3px );
             }
     
         }
@@ -4199,16 +4251,16 @@ To be removed in future versions.
         .accordion-title {
             
             position: relative;
-            @include display-flex();
-            @include flex-flow( row nowrap );
-            @include align-items( center );
-            @include flex( 1 1 95%);
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            flex: 1 1 95%;
             background-color: $light-gray-color;
             border: rem( 1px ) solid $border-color;
             padding: rem( 10px ) rem( 40px ) rem( 10px ) rem( 10px );
             margin-top: rem( 5px );
             cursor: pointer;
-            @include border-radius( rem( $border-radius / 3 ) );
+            border-radius: rem( $border-radius / 3);
             
             a {
                 text-decoration: none;
@@ -4231,14 +4283,14 @@ To be removed in future versions.
     
         .active {
             border-bottom: transparent;
-            @include border-corner-radius( top, left, rem( 5px ) );
-            @include border-corner-radius( top, right, rem( 5px ) );
-            @include border-corner-radius( bottom, left, 0 );
-            @include border-corner-radius( bottom, right, 0 );
+            border-top-left-radius: rem( 5px );
+            border-top-right-radius: rem( 5px );
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
         
         .active:after {
-            @include rotate( 90deg );
+            transform: rotate(90deg);
         }
     
         .accordion-content {
@@ -4246,10 +4298,10 @@ To be removed in future versions.
             display: none;
             background-color: #fff;
             border: rem( 1px ) solid $border-color;
-            @include border-corner-radius( top, left, 0 );
-            @include border-corner-radius( top, right, 0 );
-            @include border-corner-radius( bottom, left, rem( 5px ) );
-            @include border-corner-radius( bottom, right, rem( 5px ) );
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: rem( 5px );
+            border-bottom-right-radius: rem( 5px );
         }
     
     }
@@ -4262,7 +4314,7 @@ To be removed in future versions.
         
     }
     
-    /* D030.2: OLD TABS */
+    /* D033.2: OLD TABS */
 
     .droplets-tabs {
     
@@ -4280,8 +4332,8 @@ To be removed in future versions.
             padding: rem( 8px ) rem( 5px ) 0;
             float: left;
             clear: both;
-            @include border-corner-radius( top, left, rem( 3px ) );
-            @include border-corner-radius( top, right, rem( 3px ) );
+            border-top-left-radius: rem( 3px );
+            border-top-right-radius: rem( 3px );
     
             li {
             
@@ -4290,8 +4342,8 @@ To be removed in future versions.
                 margin-bottom: rem( -1px );
                 margin-right: rem( 3px );
                 background-color: #fff;
-                @include border-corner-radius( top, left, rem( 3px ) );
-                @include border-corner-radius( top, right, rem( 3px ) );
+                border-top-left-radius: rem( 3px );
+                border-top-right-radius: rem( 3px );
                 
                 a, a:visited {
                     display: block;
@@ -4308,7 +4360,7 @@ To be removed in future versions.
             
             li:hover {
             	
-                @include single-box-shadow( 0, rem( -3px ), rem( 2px ), 0, $gray-color );
+                box-shadow: 0 rem( -3px ) rem( 2px ) 0 $gray-color;
                 
                 a {
                     color: #000;
@@ -4322,7 +4374,7 @@ To be removed in future versions.
                 border-right: rem( 1px ) solid #929292;
                 border-left: rem( 1px ) solid #929292;
                 border-bottom: transparent;
-                @include single-box-shadow( 0, rem( -3px ), rem( 2px ), 0, $gray-color );
+                box-shadow: 0 rem( -3px ) rem( 2px ) 0 $gray-color;
                 
                 a {
                     color: #000;
@@ -4370,7 +4422,7 @@ To be removed in future versions.
     
             .active {
                 display: block;
-                @include animation( fadeIn 1s );
+                animation: fadeIn 1s;
             }
     
     	}
