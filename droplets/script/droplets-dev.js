@@ -40,7 +40,7 @@ waitForDroplets( dropletsParam );
  */
 function waitForDroplets( params ) {
     
-    new MutationObserver( () => {
+    new MutationObserver( function() {
 
         const el = document.getElementById( params.id );
 
