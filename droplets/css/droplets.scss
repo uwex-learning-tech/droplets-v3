@@ -109,9 +109,10 @@ D001: FUNCTIONS & MIXINS
 --------------------------------------------------------------------------------
 Setting up functions. Convert px unit to rem unit.
 ----------------------------------------------------------------------------- */
+@use 'sass:math';
 
 @function rem( $px, $base: $font-size ) {
-    @return ( $px / $base ) * 1rem;
+    @return ( math.div($px , $base) ) * 1rem;
 }
 
 @mixin calc($property, $expression) {
@@ -342,7 +343,7 @@ Droplets page container. Droplets classes only work inside this container.
         margin-bottom: rem( $margin-spacing );
         
         li {
-            margin-bottom: rem( $margin-spacing / 2 );
+            margin-bottom: rem( math.div($margin-spacing, 2) );
         }
 
     }
@@ -468,7 +469,7 @@ Droplets page container. Droplets classes only work inside this container.
         &.block {
             display: block;
             width: 100%;
-            padding: rem( $gutter / 1.333 ) 0;
+            padding: rem( math.div($gutter, 1.333) ) 0;
             text-align: center;
             margin: rem( $gutter ) auto;
         }
@@ -476,7 +477,7 @@ Droplets page container. Droplets classes only work inside this container.
         &.small {
             font-size: 85%;
             padding: rem(5px) rem(10px);
-            border-radius: rem($border-radius / 2);
+            border-radius: rem(math.div($border-radius, 2));
             box-shadow: 0 rem( 2px ) 0 0 $gray-color;;
         }
 
@@ -605,7 +606,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         	display: flex;
             flex-flow: row wrap;
-            margin: 0 rem( $margin-spacing / 2 * -1);
+            margin: 0 rem( math.div($margin-spacing, 2) * -1);
             
             .row {
                 display: flex;
@@ -617,7 +618,7 @@ Droplets page container. Droplets classes only work inside this container.
         	.col {
 
                 flex: 1 0 0;
-                margin: 0 rem( $margin-spacing / 2 ) rem( $margin-spacing * -1 );
+                margin: 0 rem( math.div($margin-spacing, 2) ) rem( $margin-spacing * -1 );
 
                 &.wider {
                     flex: 2 0;
@@ -711,7 +712,7 @@ Droplets page container. Droplets classes only work inside this container.
     .highlight {
     	padding: rem( 1px ) rem( 4px ) rem( 2px );
     	background-color: #fff3b4;
-    	border-radius: rem( $border-radius / 3);
+    	border-radius: rem( math.div($border-radius, 3) );
         color-adjust: exact;
     }
     
@@ -1047,7 +1048,7 @@ Droplets page container. Droplets classes only work inside this container.
         	text-align: left;
         	font-size: rem( 12px );
         	font-style: italic;
-        	margin: rem( $margin-spacing / 2 ) 0 0;
+        	margin: rem( math.div($margin-spacing, 2) ) 0 0;
         	color: $gray-color
     	}
     
@@ -1263,7 +1264,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         background-color: #ffffff;
         border: rem( 1px ) solid $light-gray-color;
-        border-radius: rem( $border-radius / 3 );
+        border-radius: rem( math.div($border-radius, 3) );
         box-shadow: 0 rem( 2px ) 0 0 $light-gray-color;
 
         thead {
@@ -1403,7 +1404,7 @@ Droplets page container. Droplets classes only work inside this container.
     	figcaption {
         	display: table-caption;
             font-size: 80%;
-            margin-top: rem($margin-spacing / 2);
+            margin-top: rem( math.div($margin-spacing, 2) );
             caption-side: bottom;
             cursor: text;
         }
@@ -1667,7 +1668,7 @@ Droplets page container. Droplets classes only work inside this container.
 
         &.minimal {
             width: 100%;
-            height: rem( $margin-spacing / 2 );
+            height: rem( math.div($margin-spacing, 2) );
         }
 
         &.no-line {
@@ -1770,7 +1771,7 @@ Droplets page container. Droplets classes only work inside this container.
             text-align: left;
             line-height: normal;
             background-color: #333;
-            border-radius: rem( $border-radius / 3);
+            border-radius: rem( math.div($border-radius, 3) );
             box-shadow: 0 0 rem( 8px ) 0 $gray-color;
         }
     	
@@ -1802,7 +1803,7 @@ Droplets page container. Droplets classes only work inside this container.
             font-weight: normal;
             font-size: rem( 14px );
             line-height: normal;
-            border-radius: rem( $border-radius / 3);
+            border-radius: rem( math.div($border-radius, 3) );
             box-shadow: 0 0 rem( 8px ) 0 $gray-color;
             top: 0;
             left: 0;
@@ -2037,7 +2038,7 @@ Droplets page container. Droplets classes only work inside this container.
                 transition: border-color 0.25s ease-in-out;
                 
                 &:first-of-type {
-                    margin-right: rem( $margin-spacing / 3 );
+                    margin-right: rem( math.div($margin-spacing, 3) );
                 }
 
                 &:hover {
@@ -2172,7 +2173,7 @@ Droplets page container. Droplets classes only work inside this container.
             .cover-info {
                 
                 flex: 1 0 89%;
-                padding: rem( $gutter / 2 );
+                padding: rem( math.div($gutter, 2) );
                 box-sizing: border-box;
                 min-height: rem( 148px );
     
@@ -2567,7 +2568,7 @@ Droplets page container. Droplets classes only work inside this container.
             @extend .common;
             width: 100%;
             margin-bottom: rem( $margin-spacing ) ;
-            border: rem( $gutter / 2 ) solid #fff;
+            border: rem( math.div($gutter, 2) ) solid #fff;
             box-shadow: 0 0 rem( 6px ) 0 $gray-color;
         }
         
@@ -2580,7 +2581,7 @@ Droplets page container. Droplets classes only work inside this container.
                 padding: 0;
                 margin: 0;
                 width: 100%;
-                border: rem( $gutter / 2 ) solid #fff;
+                border: rem( math.div($gutter, 2) ) solid #fff;
                 box-shadow: 0 0 rem( 6px ) 0 $gray-color;
             }
 
@@ -2610,13 +2611,13 @@ Droplets page container. Droplets classes only work inside this container.
                 width: 0;
                 max-width: rem( 404px );
                 flex: 1 0 0;
-                margin: 0 rem( $margin-spacing / 2 ) rem( $margin-spacing * -1 );
+                margin: 0 rem( math.div($margin-spacing, 2) ) rem( $margin-spacing * -1 );
             }
 
             figure {
                 max-width: rem( 404px );
                 flex: 1 0 0;
-                margin: 0 rem( $margin-spacing / 2 ) rem( $margin-spacing * -1 );
+                margin: 0 rem( math.div($margin-spacing, 2) ) rem( $margin-spacing * -1 );
             }
 
         }
@@ -2882,7 +2883,7 @@ Droplets page container. Droplets classes only work inside this container.
             display: none;
 
             .title {
-                margin: 0 0 rem( $margin-spacing / 2 );
+                margin: 0 0 rem( math.div($margin-spacing, 2) );
                 font-size: rem( 16px );
             }
 
@@ -3852,7 +3853,7 @@ D031: NO JAVASCRIPT FALLBACK
         
         .tabs {
             
-            padding: rem( $gutter / 2 );
+            padding: rem( math.div($gutter, 2) );
             
             li {
                 border: rem( 1px ) solid #929292;
@@ -4260,7 +4261,7 @@ To be removed in future versions.
             padding: rem( 10px ) rem( 40px ) rem( 10px ) rem( 10px );
             margin-top: rem( 5px );
             cursor: pointer;
-            border-radius: rem( $border-radius / 3);
+            border-radius: rem( math.div($border-radius, 3) );
             
             a {
                 text-decoration: none;
