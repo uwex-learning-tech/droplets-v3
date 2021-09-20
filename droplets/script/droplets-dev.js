@@ -18,7 +18,7 @@
 
 const dropletsParam = {
     id: 'uws-droplets-page',
-    parent: document.querySelector('#main'),
+    parent: document.querySelector( '#main' ),
     recursive: true,
     done: function () {
         runDropletsJs();
@@ -38,9 +38,9 @@ waitForDroplets( dropletsParam );
  * @function waitForDroplets
  * @since 3.0.0
  */
-function waitForDroplets(params) {
+function waitForDroplets( params ) {
     
-    new MutationObserver(function() {
+    new MutationObserver( () => {
 
         const el = document.getElementById( params.id );
 
@@ -168,8 +168,6 @@ function checkDropletsComponents() {
     
     page.setAttribute( 'data-x', pageBounding.x );
     page.setAttribute( 'data-y', pageBounding.y );
-
-    console.log(pageBounding.y, pageBounding.height);
     
     // component elements
     const prefix = '#uws-droplets-page .droplets-';
@@ -1031,8 +1029,6 @@ function enableImgZoom( imgZooms ) {
             if ( magnifyX < this.offsetWidth && magnifyY < this.offsetHeight 
                  && magnifyX > 0 && magnifyY > 0 ) {
                  
-                    
-
                 magnifyDiv.classList.add( 'show' );
                  
                 const rx = Math.round( magnifyX / img.offsetWidth * nativeWidth - magnifyDiv.offsetWidth / 2 ) * -1;
@@ -1805,12 +1801,14 @@ function enableSlideshow( slideshow ) {
  */
  function enableSpeak( speak ) {
 
+    // created the shared audio player
     const page = document.getElementById( 'uws-droplets-page' );
     const audioPlayer = document.createElement( 'audio' );
     
     audioPlayer.setAttribute( 'aria-hidden', true );
     page.appendChild( audioPlayer );
 
+    // for each speak element
     speak.forEach( ( button, index ) => {
         
         button.classList.add( 'ready' );
@@ -1818,8 +1816,11 @@ function enableSlideshow( slideshow ) {
         button.setAttribute( 'aria-label', 'Listen' );
         button.setAttribute( 'role', 'button' );
 
+        // add click event to play the targeted audio
         button.addEventListener( 'click', ( evt ) => {
             
+            // reset first
+
             speak.forEach( ( item ) => {
                 item.classList.remove( 'playing' );
             } );
@@ -1828,6 +1829,8 @@ function enableSlideshow( slideshow ) {
                 audioPlayer.pause();
                 audioPlayer.currentTime = 0;
             }
+
+            // pass the speak reference and and play the audio
 
             const currentTarget = evt.currentTarget;
 
@@ -1841,6 +1844,7 @@ function enableSlideshow( slideshow ) {
 
     } );
 
+    // on audio ended, removing playing class, src, and reference
     audioPlayer.addEventListener( 'ended', () => {
 
         const source = document.querySelector( '#' + audioPlayer.dataset.reference );
