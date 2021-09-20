@@ -4025,6 +4025,18 @@ D031: NO JAVASCRIPT FALLBACK
         }
 
     }
+
+    // Speak
+    .droplets-speak {
+        cursor: text;
+    }
+
+    .droplets-speak[data-src]:after {
+        font-family: inherit;
+        font-size: 75%;
+        content: " (" attr(data-src) ") ";
+        cursor: not-allowed;
+    }
     
 }
 
