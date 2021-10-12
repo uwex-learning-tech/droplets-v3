@@ -465,11 +465,11 @@ function enablePopovers( popovers ) {
  * @since 3.0.0
  */
 function enableTabbed( tabs ) {
-    
-    let activeSet = false;
 
     // loop through collection of tab elements
     Array.prototype.forEach.call( tabs, function( tabWrapper ) {
+
+        let activeSet = false;
         
         // set each tab element's tabs and sections
         const tabBtns = tabWrapper.querySelectorAll( '.tab' );
