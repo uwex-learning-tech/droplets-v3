@@ -115,6 +115,10 @@ Setting up functions. Convert px unit to rem unit.
     @return ( math.div($px , $base) ) * 1rem;
 }
 
+@function unicode($str) {
+    @return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"")
+}
+
 @mixin calc($property, $expression) {
     #{$property}: -moz-calc(#{$expression});
     #{$property}: -webkit-calc(#{$expression});
@@ -1554,44 +1558,44 @@ Droplets page container. Droplets classes only work inside this container.
     // D013.1: Default
     @each $icon, $unicode in
     
-        (calendar, "\e000"),
-        (overview, "\e001"),
-        (help, "\e002"),
-        (information, "\e003"),
-        (timeline, "\e004"),
-        (competency, "\e005"),
-        (resources, "\e006"),
-        (reading, "\e007"),
-        (audio, "\e008"),
-        (external-link, "\e009"),
-        (group-assignment, "\e010"),
-        (learning-resource, "\e011"),
-        (assessment, "\e012"),
-        (assignment, "\e013"),
-        (research, "\e014"),
-        (tech, "\e015"),
-        (download, "\e016"),
-        (dropbox, "\e017"),
-        (tip, "\e018"),
-        (outcomes, "\e019"),
-        (facebook, "\e00a"),
-        (lecture, "\e00b"),
-        (discussion, "\e00c"),
-        (welcome, "\e00d"),
-        (practice, "\e00e"),
-        (video, "\e00f"),
-        (exam, "\e01a"),
-        (set-map, "\e01b"),
-        (project, "\e01c"),
-        (important, "\e01d"),
-        (map, "\e01e"),
-        (briefcase, "\e01f"),
-        (lab, "\e020"),
-        (email, "\e021"),
-        (extra-credit, "\e022") {
+        (calendar, "e000"),
+        (overview, "e001"),
+        (help, "e002"),
+        (information, "e003"),
+        (timeline, "e004"),
+        (competency, "e005"),
+        (resources, "e006"),
+        (reading, "e007"),
+        (audio, "e008"),
+        (external-link, "e009"),
+        (group-assignment, "e010"),
+        (learning-resource, "e011"),
+        (assessment, "e012"),
+        (assignment, "e013"),
+        (research, "e014"),
+        (tech, "e015"),
+        (download, "e016"),
+        (dropbox, "e017"),
+        (tip, "e018"),
+        (outcomes, "e019"),
+        (facebook, "e00a"),
+        (lecture, "e00b"),
+        (discussion, "e00c"),
+        (welcome, "e00d"),
+        (practice, "e00e"),
+        (video, "e00f"),
+        (exam, "e01a"),
+        (set-map, "e01b"),
+        (project, "e01c"),
+        (important, "e01d"),
+        (map, "e01e"),
+        (briefcase, "e01f"),
+        (lab, "e020"),
+        (email, "e021"),
+        (extra-credit, "e022") {
         
         .icon-#{$icon}:before {
-            content: "#{$unicode}";
+            content: unicode(#{$unicode});
         }
     
     }
@@ -1617,39 +1621,39 @@ Droplets page container. Droplets classes only work inside this container.
     
     @each $icon, $unicode in
     
-        (arrow-left, "\e001"),
-        (arrow-right, "\e002"),
-        (audio, "\e003"),
-        (book, "\e004"),
-        (close, "\e005"),
-        (document, "\e006"),
-        (tags, "\e007"),
-        (tools, "\e008"),
-        (video, "\e009"),
-        (website, "\e00a"),
-        (zoomin, "\e00b"),
-        (play, "\e00c"),
-        (pause, "\e00d"),
-        (loop, "\e00e") {
+        (arrow-left, "e001"),
+        (arrow-right, "e002"),
+        (audio, "e003"),
+        (book, "e004"),
+        (close, "e005"),
+        (document, "e006"),
+        (tags, "e007"),
+        (tools, "e008"),
+        (video, "e009"),
+        (website, "e00a"),
+        (zoomin, "e00b"),
+        (play, "e00c"),
+        (pause, "e00d"),
+        (loop, "e00e") {
         
         .sg-icon-#{$icon}:before {
-            content: "#{$unicode}";
+            content: unicode(#{$unicode});
         }
     
     }
     
     // D013.3: Flexible option icons
     @each $icon, $unicode in
-        (overview, "\e680"),
-         (practice-assessment, "\e630"),
-         (assessment, "\e642"),
-         (set-map, "\e68c"),
-         (learning-resource, "\e69a") {
+        (overview, "e680"),
+         (practice-assessment, "e630"),
+         (assessment, "e642"),
+         (set-map, "e68c"),
+         (learning-resource, "e69a") {
     
         .flex.icon-#{$icon}:before {
             color: #40a1a1;
             font-family: "flexicon";
-            content: "#{$unicode}";
+            content: unicode(#{$unicode});
         }
         
     }
