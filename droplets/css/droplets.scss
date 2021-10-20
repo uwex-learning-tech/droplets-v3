@@ -1,6 +1,7 @@
 /*!
  * DROPLETS
  * @version: 3.2.0
+ * @updated on: 10-20-2021
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
@@ -1929,7 +1930,7 @@ Droplets page container. Droplets classes only work inside this container.
                 position: absolute;
                 right: rem( $gutter );
                 font-family: $droplets-icon-font;
-                content: '\e002';
+                content: unicode('e002');
                 color: $gray-color;
                 transition: transform 0.1s;
                 transform: rotate(0deg);
@@ -2090,7 +2091,7 @@ Droplets page container. Droplets classes only work inside this container.
                 position: absolute;
                 right: rem( $gutter );
                 font-family: $droplets-icon-font;
-                content: '\e002';
+                content: unicode('e002');
                 color: $gray-color;
                 transition: transform 0.1s;
                 transform: rotate(0deg);
@@ -2225,7 +2226,7 @@ Droplets page container. Droplets classes only work inside this container.
                     &:before {
                         position: absolute;
                         font-family: $droplets-icon-font;
-                        content: "\e007";
+                        content: unicode('e007');
                         color: $gray-color;
                         font-style: normal;
                         left: rem( -19px );
@@ -2252,7 +2253,7 @@ Droplets page container. Droplets classes only work inside this container.
                     width: rem( 16px );
                     height: rem( 16px );
                     font-family: $droplets-icon-font;
-                    content: '\e001';
+                    content: unicode('e001');
                     color: $gray-color;
                     transition: transform 0.1s;
                     transform: rotate(270deg);
@@ -2333,7 +2334,7 @@ Droplets page container. Droplets classes only work inside this container.
         .book {
     
             .image:after {
-                content: "\e004";
+                content: unicode('e004');
             }
     
         }
@@ -2341,7 +2342,7 @@ Droplets page container. Droplets classes only work inside this container.
         .tools {
     
             .image:after {
-                content: "\e008";
+                content: unicode('e008');
             }
     
         }
@@ -2349,7 +2350,7 @@ Droplets page container. Droplets classes only work inside this container.
         .video {
     
             .image:after {
-                content: "\e009";
+                content: unicode('e009');
             }
     
         }
@@ -2357,7 +2358,7 @@ Droplets page container. Droplets classes only work inside this container.
         .document {
     
             .image:after {
-                content: "\e006";
+                content: unicode('e006');
             }
     
         }
@@ -2365,7 +2366,7 @@ Droplets page container. Droplets classes only work inside this container.
         .website {
     
             .image:after {
-                content: "\e00a";
+                content: unicode('e00a');
             }
     
         }
@@ -2373,7 +2374,7 @@ Droplets page container. Droplets classes only work inside this container.
         .audio {
     
             .image:after {
-                content: "\e003";
+                content: unicode('e003');
             }
     
         }
@@ -2428,7 +2429,7 @@ Droplets page container. Droplets classes only work inside this container.
             margin-left: rem( 5px );
             font-size: 80%;
             color: $dark-gray-color;
-            content: '\e002';
+            content: unicode('e002');
             transform: rotate(90deg);
             transition: transform 0.1s;
         }
@@ -2506,7 +2507,7 @@ Droplets page container. Droplets classes only work inside this container.
             margin-left: rem( 5px );
             font-size: 80%;
             color: $dark-gray-color;
-            content: '\e002';
+            content: unicode('e002');
             transition: transform 0.1s;
             transform: rotate(90deg);
         }
@@ -2689,7 +2690,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             &:after {
                 font-family: $droplets-icon-font;
-                content: '\e001';
+                content: unicode('e001');
             }
 
         }
@@ -2701,7 +2702,7 @@ Droplets page container. Droplets classes only work inside this container.
             left: unset;
 
             &:after {
-                content: '\e002';
+                content: unicode('e002');
             }
 
         }
@@ -2721,7 +2722,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             &:after {
                 font-family: $droplets-icon-font;
-                content: '\e005';
+                content: unicode('e005');
             }
 
             &:hover {
@@ -3086,7 +3087,7 @@ Droplets page container. Droplets classes only work inside this container.
                             
                             &:after {
                                 font-family: $droplets-icon-font;
-                                content: '\e00c';
+                                content: unicode('e00c');
                             }
                             
                         }
@@ -3095,7 +3096,7 @@ Droplets page container. Droplets classes only work inside this container.
                             
                             &:after {
                                 font-family: $droplets-icon-font;
-                                content: '\e00d';
+                                content: unicode('e00d');
                             }
                             
                         }
@@ -3114,7 +3115,7 @@ Droplets page container. Droplets classes only work inside this container.
 
                             &:after {
                                 font-family: $droplets-icon-font;
-                                content: '\e001';
+                                content: unicode('e001');
                             }
                             
                         }
@@ -3123,7 +3124,7 @@ Droplets page container. Droplets classes only work inside this container.
 
                             &:after {
                                 font-family: $droplets-icon-font;
-                                content: '\e001';
+                                content: unicode('e001');
                                 transform: rotate(180deg);
                             }
                             
@@ -3142,7 +3143,7 @@ Droplets page container. Droplets classes only work inside this container.
                             
                             &:after {
                                 font-family: $droplets-icon-font;
-                                content: '\e00e';
+                                content: unicode('e00e');
                             }
 
                             &.active {
@@ -3264,7 +3265,7 @@ Droplets page container. Droplets classes only work inside this container.
                 font-size: 75%;
                 vertical-align: baseline;
                 padding-left: rem( 5px );
-                content: "\e003";
+                content: unicode('e003');
             }
 
         }
@@ -4291,7 +4292,7 @@ To be removed in future versions.
             position: absolute;
             right: rem( $gutter );
             font-family: $droplets-icon-font;
-            content: '\e002';
+            content: unicode('e002');
             color: $gray-color;
         }
     
