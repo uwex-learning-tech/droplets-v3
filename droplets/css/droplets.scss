@@ -3018,7 +3018,6 @@ Droplets page container. Droplets classes only work inside this container.
                 .img {
 
                     width: 100%;
-                    max-width: 100% !important;
                     height: auto;
                     background-color: #000;
                     overflow: hidden;
@@ -3029,6 +3028,7 @@ Droplets page container. Droplets classes only work inside this container.
                     img {
                         display: block;
                         width: 100%;
+                        max-width: 100% !important;
                         height: auto;
                         object-fit: cover;
                     }
