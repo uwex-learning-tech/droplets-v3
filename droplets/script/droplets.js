@@ -1,6 +1,6 @@
 /**
  * DROPLETS
- * @version: 3.2.0
+ * @version: 3.2.1
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)

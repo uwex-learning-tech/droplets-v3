@@ -1,6 +1,6 @@
 /**
  * DROPLETS
- * @version: 3.2.0
+ * @version: 3.2.1
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
@@ -1061,7 +1061,7 @@ function enableImgZoom( imgZooms ) {
  * @updated 3.0.0
  */
 function enableLightbox( lightboxes ) {
-    
+
     // get page element
     const page = document.getElementById( 'uws-droplets-page' );
     

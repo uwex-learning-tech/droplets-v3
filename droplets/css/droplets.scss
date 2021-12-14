@@ -1,7 +1,7 @@
 /*!
  * DROPLETS
- * @version: 3.2.0
- * @updated on: 11-02-2021
+ * @version: 3.2.1
+ * @updated on: 12-14-2021
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
@@ -2632,7 +2632,7 @@ Droplets page container. Droplets classes only work inside this container.
     .droplets-lightbox-overlay {
         
         display: none;
-        position: fixed;
+        position: fixed !important;
         flex-flow: column nowrap;
         align-items: center;
         justify-content: center;
