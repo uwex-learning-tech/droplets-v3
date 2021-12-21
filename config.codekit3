@@ -32,11 +32,11 @@
     "\/droplets\/css\/droplets.scss" : {
       "aP" : 1,
       "bl" : 0,
-      "co" : 1,
+      "co" : 2,
       "dP" : 10,
       "ec" : 0,
       "ft" : 4,
-      "ma" : 0,
+      "ma" : 3,
       "oA" : 0,
       "oAP" : "\/droplets\/css\/droplets.css",
       "oF" : 0,
@@ -190,8 +190,8 @@
     "\/droplets\/script\/droplets-dev.js" : {
       "bF" : 0,
       "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
+      "ma" : 3,
+      "mi" : 2,
       "oA" : 0,
       "oAP" : "\/droplets\/script\/droplets.js",
       "oF" : 3,
@@ -257,7 +257,7 @@
         "followForSyntaxChecking" : 0,
         "linkedFileAbbreviatedPath" : "\/droplets\/script\/prism.js",
         "position" : 0,
-        "type" : 0
+        "type" : 1
       }
     ]
   },
