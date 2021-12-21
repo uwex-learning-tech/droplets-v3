@@ -1,6 +1,6 @@
 /**
  * DROPLETS
- * @version: 3.2.1
+ * @version: 3.2.2
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
@@ -15,10 +15,12 @@
   of Droplets elements with the provided target Id, parent
   element, and the callback for the mutation observer.
 **********************************************************/
+window.Prism = window.Prism || {};
+Prism.manual = true; 
 
 const dropletsParam = {
     id: 'uws-droplets-page',
-    parent: document.querySelector( '#main' ),
+    parent: document.querySelector( '#main' ) ? document.querySelector( '#main' ) : document.querySelector( 'body' ),
     recursive: true,
     done: function () {
         runDropletsJs();
@@ -38,7 +40,7 @@ waitForDroplets( dropletsParam );
  * @function waitForDroplets
  * @since 3.0.0
  */
-function waitForDroplets( params ) {
+function waitForDroplets( params ) {   
     
     new MutationObserver( function() {
 
@@ -185,6 +187,7 @@ function checkDropletsComponents() {
     const annotationSelector = document.querySelectorAll( prefix + 'annotation' );
     const slideShowSelector = document.querySelectorAll( prefix + 'slideshow' );
     const speakSelector = document.querySelectorAll( prefix + 'speak' );
+    const prismSelector = document.querySelectorAll( '#uws-droplets-page [class*=language-]' );
     
     // check for components
     if ( toolTipSelector.length ) {
@@ -241,6 +244,10 @@ function checkDropletsComponents() {
 
     if ( speakSelector.length ) {
         enableSpeak( speakSelector );
+    }
+
+    if ( prismSelector.length ) {
+        Prism.highlightAllUnder( document.querySelector('#uws-droplets-page'), false );
     }
 
 }
