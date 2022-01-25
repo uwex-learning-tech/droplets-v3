@@ -1619,22 +1619,25 @@ Droplets page container. Droplets classes only work inside this container.
     	font-size: 100%;
     }
     
+    // e000,e001,e002,e003,e004,e005,e006,e007,e008,e009,e00a,e00b,e00c,e00d,e00e,e00f
     @each $icon, $unicode in
     
-        (arrow-left, "e001"),
-        (arrow-right, "e002"),
-        (audio, "e003"),
-        (book, "e004"),
-        (close, "e005"),
-        (document, "e006"),
-        (tags, "e007"),
-        (tools, "e008"),
-        (video, "e009"),
-        (website, "e00a"),
-        (zoomin, "e00b"),
-        (play, "e00c"),
-        (pause, "e00d"),
-        (loop, "e00e") {
+        (arrow-left, "e000"),
+        (arrow-right, "e001"),
+        (audio, "e002"),
+        (book, "e003"),
+        (close, "e004"),
+        (document, "e005"),
+        (loop, "e006"),
+        (minus, "e007"),
+        (pause, "e008"),
+        (play, "e009"),
+        (plus, "e00a"),
+        (tags, "e00b"),
+        (tools, "e00c")
+        (video, "e00d"),
+        (website, "e00e"),
+        (zoomin, "e00f") {
         
         .sg-icon-#{$icon}:before {
             content: unicode(#{$unicode});
@@ -1929,7 +1932,7 @@ Droplets page container. Droplets classes only work inside this container.
                 position: absolute;
                 right: rem( $gutter );
                 font-family: $droplets-icon-font;
-                content: unicode('e002');
+                content: unicode('e001');
                 color: $gray-color;
                 transition: transform 0.1s;
                 transform: rotate(0deg);
@@ -2090,7 +2093,7 @@ Droplets page container. Droplets classes only work inside this container.
                 position: absolute;
                 right: rem( $gutter );
                 font-family: $droplets-icon-font;
-                content: unicode('e002');
+                content: unicode('e001');
                 color: $gray-color;
                 transition: transform 0.1s;
                 transform: rotate(0deg);
@@ -2252,7 +2255,7 @@ Droplets page container. Droplets classes only work inside this container.
                     width: rem( 16px );
                     height: rem( 16px );
                     font-family: $droplets-icon-font;
-                    content: unicode('e001');
+                    content: unicode('e000');
                     color: $gray-color;
                     transition: transform 0.1s;
                     transform: rotate(270deg);
@@ -2333,7 +2336,7 @@ Droplets page container. Droplets classes only work inside this container.
         .book {
     
             .image:after {
-                content: unicode('e004');
+                content: unicode('e003');
             }
     
         }
@@ -2341,7 +2344,7 @@ Droplets page container. Droplets classes only work inside this container.
         .tools {
     
             .image:after {
-                content: unicode('e008');
+                content: unicode('e00c');
             }
     
         }
@@ -2349,7 +2352,7 @@ Droplets page container. Droplets classes only work inside this container.
         .video {
     
             .image:after {
-                content: unicode('e009');
+                content: unicode('e00d');
             }
     
         }
@@ -2357,7 +2360,7 @@ Droplets page container. Droplets classes only work inside this container.
         .document {
     
             .image:after {
-                content: unicode('e006');
+                content: unicode('e005');
             }
     
         }
@@ -2365,7 +2368,7 @@ Droplets page container. Droplets classes only work inside this container.
         .website {
     
             .image:after {
-                content: unicode('e00a');
+                content: unicode('e00e');
             }
     
         }
@@ -2373,7 +2376,7 @@ Droplets page container. Droplets classes only work inside this container.
         .audio {
     
             .image:after {
-                content: unicode('e003');
+                content: unicode('e002');
             }
     
         }
@@ -2428,7 +2431,7 @@ Droplets page container. Droplets classes only work inside this container.
             margin-left: rem( 5px );
             font-size: 80%;
             color: $dark-gray-color;
-            content: unicode('e002');
+            content: unicode('e001');
             transform: rotate(90deg);
             transition: transform 0.1s;
         }
@@ -2506,7 +2509,7 @@ Droplets page container. Droplets classes only work inside this container.
             margin-left: rem( 5px );
             font-size: 80%;
             color: $dark-gray-color;
-            content: unicode('e002');
+            content: unicode('e001');
             transition: transform 0.1s;
             transform: rotate(90deg);
         }
@@ -2689,7 +2692,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             &:after {
                 font-family: $droplets-icon-font;
-                content: unicode('e001');
+                content: unicode('e000');
             }
 
         }
@@ -2701,7 +2704,7 @@ Droplets page container. Droplets classes only work inside this container.
             left: unset;
 
             &:after {
-                content: unicode('e002');
+                content: unicode('e001');
             }
 
         }
@@ -2721,7 +2724,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             &:after {
                 font-family: $droplets-icon-font;
-                content: unicode('e005');
+                content: unicode('e004');
             }
 
             &:hover {
@@ -3086,7 +3089,7 @@ Droplets page container. Droplets classes only work inside this container.
                             
                             &:after {
                                 font-family: $droplets-icon-font;
-                                content: unicode('e00c');
+                                content: unicode('e009');
                             }
                             
                         }
@@ -3095,7 +3098,7 @@ Droplets page container. Droplets classes only work inside this container.
                             
                             &:after {
                                 font-family: $droplets-icon-font;
-                                content: unicode('e00d');
+                                content: unicode('e008');
                             }
                             
                         }
@@ -3114,7 +3117,7 @@ Droplets page container. Droplets classes only work inside this container.
 
                             &:after {
                                 font-family: $droplets-icon-font;
-                                content: unicode('e001');
+                                content: unicode('e000');
                             }
                             
                         }
@@ -3124,7 +3127,6 @@ Droplets page container. Droplets classes only work inside this container.
                             &:after {
                                 font-family: $droplets-icon-font;
                                 content: unicode('e001');
-                                transform: rotate(180deg);
                             }
                             
                         }
@@ -3142,7 +3144,7 @@ Droplets page container. Droplets classes only work inside this container.
                             
                             &:after {
                                 font-family: $droplets-icon-font;
-                                content: unicode('e00e');
+                                content: unicode('e006');
                             }
 
                             &.active {
@@ -3264,7 +3266,7 @@ Droplets page container. Droplets classes only work inside this container.
                 font-size: 75%;
                 vertical-align: baseline;
                 padding-left: rem( 5px );
-                content: unicode('e003');
+                content: unicode('e002');
             }
 
         }
@@ -3679,7 +3681,7 @@ Setting up font face. To support font icons used inside the page container.
 
 @font-face {
     font-family: $droplets-icon-font;
-    src: url(data:font/truetype;charset=utf-8;base64,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MrEfASuxBxARErcBAwwNFRYZGyQXOQCxCgMRErAAObATEbcGAQ0ODxYXGSQXObAbErAYOTAxNQEAISAAESMQACEgAwEhETMQACEgEwEhEQEAISAAAQwBMAHEAagCWMD+GP6o/oz4ASz9QMAB6AFYAXT4/tQCwP70/tD+PP5Y/ahAAQz+tAJYAaj+qP4YARQBLAEAAVgB6P7s/tQCwP70AUz9qAAAAQAAAAEAANJtcA9fDzz1AB8IAAAAAADbpSEQAAAAANulIycAAAAACAAIAAAAAAgAAgAAAAAAAAABAAAIAP/YAAAIAAAAAAAIAAABAAAAAAAAAAAAAAAAAAAABQgAAAAAAAAACAAAAAfQAAAIAAFAAcAAAACAAAAAgAAAAAAAAAAAAAABgAEAAAAAAAAAAAAAAAAAAAgAHAAwAK4A7gFUAcQCFgJuAuQDjgP6BAgENASiAAAAAQAAABIASwAGAAAAAAACAAEAAgAWAAABAABzAAAAAAAAAAsAigADAAEECQABAB4AAAADAAEECQACAAwAHgADAAEECQADAFYAKgADAAEECQAEACwAgAADAAEECQAFABYArAADAAEECQAGAB4AwgADAAEECQDIABYA4AADAAEECQDJADAA9gADAAEECQDKAA4BJgADAAEECQDLAA4BNAADAAEECdkDABoBQgB1AG4AdABpAHQAbABlAGQALQBmAG8AbgB0AC0AMQBmAG8AbgB0AC0AMQBGAG8AbgB0AEYAbwByAGcAZQAgADIALgAwACAAOgAgAHUAbgB0AGkAdABsAGUAZAAtAGYAbwBuAHQALQAxACAAOgAgADgALQAxADAALQAyADAAMgAwAHUAbgB0AGkAdABsAGUAZAAtAGYAbwBuAHQALQAxACAAZgBvAG4AdAAtADEAVgBlAHIAcwBpAG8AbgAgADEALgAwAHUAbgB0AGkAdABsAGUAZAAtAGYAbwBuAHQALQAxAFcAZQBiAGYAbwBuAHQAIAAxAC4AMABUAGgAdQAgAE8AYwB0ACAAIAA4ACAAMQA2ADoAMQAyADoAMgA0ACAAMgAwADIAMABkAGUAZgBhAHUAbAB0AHAAZQByAHMAZQB1AHMARgBvAG4AdAAgAFMAcQB1AGkAcgByAGUAbAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAQIBAwEEAQUBBgEHAQgBCQEKAQsBDAENAQ4BDwEQAREBEgZnbHlwaDEHdW5pMDAwRAd1bmkyNUZDB3VuaUUwMDEHdW5pRTAwMgd1bmlFMDAzB3VuaUUwMDQHdW5pRTAwNQd1bmlFMDA2B3VuaUUwMDcHdW5pRTAwOAd1bmlFMDA5B3VuaUUwMEEHdW5pRTAwQgd1bmlFMDBDB3VuaUUwMEQHdW5pRTAwRQAAALgB/4WwAY0AS7AIUFixAQGOWbFGBitYIbAQWUuwFFJYIbCAWR2wBitcWFmwFCsAAA==) format('truetype');
+    src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
     font-weight: normal;
     font-style: normal;
 }
