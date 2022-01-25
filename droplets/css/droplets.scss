@@ -1,6 +1,6 @@
 /*!
  * DROPLETS
- * @version: 3.2.3
+ * @version: 3.2.4
  * @updated on: 01-xx-2022
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
@@ -3265,6 +3265,39 @@ Droplets page container. Droplets classes only work inside this container.
                 font-weight: normal;
                 font-size: 75%;
                 vertical-align: baseline;
+                padding-left: rem( 5px );
+                content: unicode('e002');
+            }
+
+        }
+
+        &.error {
+
+            position: relative;
+            cursor: default;
+            
+            &::before {
+                display: inline-block;
+                position: absolute;
+                width: 110px;
+                top: 3px;
+                left: 0;
+                color: #fff;
+                padding: 3px;
+                background-color: rgba(177, 30, 30, 0.8);
+                font-weight: normal;
+                font-size: rem( 12px );
+                text-align: center;
+                content: 'audio failed to load';
+            }
+
+            &::after {
+                display: inline-block;
+                font-family: $droplets-icon-font;
+                font-weight: normal;
+                font-size: 75%;
+                vertical-align: baseline;
+                color: $dark-light-color;
                 padding-left: rem( 5px );
                 content: unicode('e002');
             }

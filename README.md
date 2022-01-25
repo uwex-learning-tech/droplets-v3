@@ -1,5 +1,5 @@
 # DROPLETS
-**version 3.2.3**  
+**version 3.2.4**  
 
 A HTML, CSS, and JavaScript framework for Instructional Designers at University of Wisconsin Extended Campus (UWEX).
 

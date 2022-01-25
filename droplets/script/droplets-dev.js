@@ -1,6 +1,6 @@
 /**
  * DROPLETS
- * @version: 3.2.3
+ * @version: 3.2.4
  * @author: Ethan Lin
  * @updated on: 01-xx-2022
  * @url: https://github.com/oel-mediateam/droplets-v3
@@ -1629,36 +1629,47 @@ function enableSlideshow( slideshow ) {
     // for each speak element
     speak.forEach( ( button, index ) => {
         
-        button.classList.add( 'ready' );
         button.setAttribute( 'id', 'd-speak-' + index );
         button.setAttribute( 'aria-label', 'Listen' );
         button.setAttribute( 'role', 'button' );
 
-        // add click event to play the targeted audio
-        button.addEventListener( 'click', ( evt ) => {
-            
-            // reset first
+        fileExists( button.dataset.src, () => { // if success
 
-            speak.forEach( ( item ) => {
-                item.classList.remove( 'playing' );
+            button.classList.add( 'ready' );
+
+            // add click event to play the targeted audio
+            button.addEventListener( 'click', ( evt ) => {
+                
+                // reset first
+
+                speak.forEach( ( item ) => {
+                    item.classList.remove( 'playing' );
+                } );
+
+                if ( !audioPlayer.paused ) {
+                    audioPlayer.pause();
+                    audioPlayer.currentTime = 0;
+                }
+
+                // pass the speak reference and and play the audio
+
+                const currentTarget = evt.currentTarget;
+
+                currentTarget.classList.add( 'playing' );
+
+                audioPlayer.setAttribute( 'data-reference', currentTarget.id );
+                audioPlayer.src = currentTarget.dataset.src;
+                audioPlayer.play();
+
             } );
 
-            if ( !audioPlayer.paused ) {
-                audioPlayer.pause();
-                audioPlayer.currentTime = 0;
-            }
+        }, () => { // if failed
 
-            // pass the speak reference and and play the audio
-
-            const currentTarget = evt.currentTarget;
-
-            currentTarget.classList.add( 'playing' );
-
-            audioPlayer.setAttribute( 'data-reference', currentTarget.id );
-            audioPlayer.src = currentTarget.dataset.src;
-            audioPlayer.play();
+            button.classList.add( 'error' );
 
         } );
+
+        
 
     } );
 
@@ -1797,3 +1808,32 @@ function createAnnotationCommentaryPanel( annotation ) {
     evt.target.parentNode.parentNode.removeChild( evt.target.parentNode );
 
  }
+
+ /**
+ * Helper function to check if file exists
+ * @function closeAnnotationCommentary
+ * @param {String} src - path to resource file.
+ * @since 3.2.4
+ */
+function fileExists( src, success, failed ) {
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+
+        if ( this.readyState === this.DONE ) {
+            
+            if ( this.status == 200 ) {
+                success();
+            } else {
+                failed();
+            }
+
+        }
+
+    };
+
+    xhr.open( 'HEAD', src );
+    xhr.send();
+
+}
