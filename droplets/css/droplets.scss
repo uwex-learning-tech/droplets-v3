@@ -3876,15 +3876,7 @@ Contains copyright info. Added automatically via CSS.
         padding: rem( $gutter) 0;
         color: $gray-color;
         font-size: rem( 12px );
-        content: "\00A9 Board of Regents and University of Wisconsin System. All rights reserved.";
-    }
-
-    &.no-footer {
-
-        &:after {
-            display: none;
-        }
-
+        content: " ";
     }
 
 }
