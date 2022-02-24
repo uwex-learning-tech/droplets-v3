@@ -1,5 +1,5 @@
 # DROPLETS
-**version 3.2.4**  
+**version 3.2.6**  
 
 A HTML, CSS, and JavaScript framework for Instructional Designers at University of Wisconsin Extended Campus (UWEX).
 
@@ -12,7 +12,6 @@ A HTML, CSS, and JavaScript framework for Instructional Designers at University 
 
 **Note:** This framework is specifically developed for use by Instructional Designers at UWEX. Some setups or usages may not be optimal or preferable for your organization. In addition, this framework is built to accommodate the Canvas LMS. You are most welcome to download or fork this repository and modify it to fit your organization's needs.
 
-
 ### Development Requirements
 * HTML
 * Cascading Style Sheets (CSS3)
@@ -21,12 +20,12 @@ A HTML, CSS, and JavaScript framework for Instructional Designers at University 
 
 **Note:** [CodeKit](https://incident57.com/codekit/) is highly recommended for Mac users for the development environment.
 
-### Minimum Supported Web Browsers
+### Recommended Web Browsers
+* Mozilla Firefox
+* Google Chrome
 * Microsoft Edge
-* Mozilla Firefox 30+
-* Google Chrome 33+
-* Apple Safari 5+
-* Opera 20+
+* Apple Safari
+* Opera
 
 *Latest stable version is always recommended.*
 
