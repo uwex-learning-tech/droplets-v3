@@ -17,33 +17,6 @@
       "oAP" : "\/.gitignore",
       "oF" : 1
     },
-    "\/droplets\/css\/droplets.css" : {
-      "aP" : 0,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 2,
-      "oAP" : "\/droplets\/css\/droplets-ck.css",
-      "oF" : 0,
-      "pg" : 0
-    },
-    "\/droplets\/css\/droplets.scss" : {
-      "aP" : 1,
-      "bl" : 0,
-      "co" : 2,
-      "dP" : 10,
-      "ec" : 0,
-      "ft" : 4,
-      "ma" : 3,
-      "oA" : 0,
-      "oAP" : "\/droplets\/css\/droplets.css",
-      "oF" : 0,
-      "oS" : 3,
-      "pg" : 0,
-      "sct" : 0
-    },
     "\/droplets\/fonts\/dropletsIcons.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -179,36 +152,6 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/droplets\/index.html" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 1,
-      "oAP" : "\/droplets\/index.html",
-      "oF" : 1
-    },
-    "\/droplets\/script\/droplets-dev.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 3,
-      "mi" : 2,
-      "oA" : 0,
-      "oAP" : "\/droplets\/script\/droplets.js",
-      "oF" : 3,
-      "sC" : 3,
-      "tS" : 0
-    },
-    "\/droplets\/script\/droplets.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/droplets\/script\/min\/droplets-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/droplets\/script\/prism.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -252,14 +195,7 @@
 
   ],
   "manualImportLinks" : {
-    "\/droplets\/script\/droplets-dev.js" : [
-      {
-        "followForSyntaxChecking" : 0,
-        "linkedFileAbbreviatedPath" : "\/droplets\/script\/prism.js",
-        "position" : 0,
-        "type" : 1
-      }
-    ]
+
   },
   "projectAttributes" : {
     "creationDate" : 499371919,

@@ -1896,10 +1896,8 @@ Droplets page container. Droplets classes only work inside this container.
     	display: flex;
     	flex-wrap: wrap;
         margin: rem($margin-spacing) 0;
-        
         border-radius: rem( $border-radius );
         overflow: hidden;
-    	
         
         .tab {
 
@@ -1965,6 +1963,58 @@ Droplets page container. Droplets classes only work inside this container.
             }
 
         }
+
+        &.new {
+
+            border-radius: 0;
+
+            .tab {
+
+                background-color: #fff;
+                border: 1px solid $light-gray-color;
+                margin-bottom: rem($margin-spacing);
+    
+                &:last-of-type {
+                    border-bottom: 1px solid $light-gray-color;
+                }
+    
+                &:hover {
+                    background-color: unset;
+                }
+    
+                &:after {
+                    content: unicode('e00a');
+                }
+    
+                &.active {
+    
+                    background-color: $border-color;
+
+                    &:after {
+                        transition: none;
+                        transform: unset;
+                        content: unicode('e007');
+                    }
+    
+                }
+    
+            }
+
+            .content {
+
+                border: rem( 1px ) solid $light-gray-color;
+                background-color: #fff;
+    
+                &.active {
+                    display: block;
+                    border-top: none;
+                    margin-top: rem( $margin-spacing * -1 );
+                    margin-bottom: rem( $margin-spacing );
+                }
+    
+            }
+
+        }
     
     }
 
@@ -2007,6 +2057,71 @@ Droplets page container. Droplets classes only work inside this container.
                 background-color: #fff;
                 border-bottom: none;
                 order: 99;
+            }
+
+            &.new {
+
+                border: none;
+                background-color: #fff;
+
+                .tab {
+
+                    border: rem( 1px ) solid $light-gray-color;
+                    border-bottom: none;
+                    margin-right: rem( math.div($margin-spacing, 2) );
+    
+                    &:hover {
+                        background-color: unset;
+                    }
+    
+                    &:after {
+                        display: none;
+                    }
+    
+                    &.active {
+
+                        background-color: #fff;
+                        border-color: #999999;
+                        color: #000;
+
+                        &:after {
+                            display: block;
+                            width: 100%;
+                            height: 2px;
+                            bottom: -1px;
+                            left: 0;
+                            font-family: unset;
+                            content: '';
+                            transition: none;
+                            transform: unset;
+                            background-color: #fff;
+                        }
+
+                        &:last-of-type {
+                            border-color: #999999;
+                        }
+
+                    }
+    
+                    &:last-of-type {
+                        border-right: rem( 1px ) solid $light-gray-color;
+                        border-bottom: none;
+                    }
+    
+                }
+
+                .content {
+
+                    background-color: #fff;
+                    border: rem( 1px ) solid $light-gray-color;
+                    order: 99;
+
+                    &.active {
+                        border: rem( 1px ) solid #999999;
+                        border-color: #999999;
+                    }
+                }
+
             }
             
         }
@@ -2123,6 +2238,76 @@ Droplets page container. Droplets classes only work inside this container.
                 display: block;
                 margin-top: rem( $margin-spacing * -1 );
                 padding-top: rem( $margin-spacing );
+            }
+
+        }
+
+        &.new {
+
+            border-radius: 0;
+
+            .controls {
+
+                margin-bottom: rem( math.div($margin-spacing, 2) );
+
+                .cbtn {
+    
+                    border: rem( 1px ) solid $light-color;
+                    border-bottom: rem( 1px ) solid $light-color;
+                    margin-left: rem( $border-radius );
+                    margin-right: 0;
+                    border-radius: 0;
+    
+                }
+    
+            }
+
+            .section {
+
+                background-color: #fff;
+                border: rem( 1px ) solid $light-gray-color;
+                margin-bottom: rem( $margin-spacing );
+    
+                &:first-of-type {
+                    border-radius: 0;
+                }
+    
+                &:last-of-type {
+                    border-bottom: rem( 1px ) solid $light-gray-color;
+                    margin-bottom: 0;
+                }
+    
+                &:hover {
+                    transition: background-color .5s;
+                    background-color: $border-color;
+                }
+    
+                &:after {
+                    content: unicode('e00a');
+                }
+    
+                &.active {
+                    background-color: $border-color;
+                }
+    
+                &.active:after {
+                    transform: unset;
+                    content: unicode('e007');
+                }
+    
+            }
+
+            .content {
+
+                background-color: #fff;
+                border: rem( 1px ) solid $border-color;
+                border-top: none;
+    
+                &.active {
+                    margin-top: rem( $margin-spacing * -1 );
+                    margin-bottom: rem( $margin-spacing );
+                }
+    
             }
 
         }
@@ -2399,6 +2584,13 @@ Droplets page container. Droplets classes only work inside this container.
         &.expanded {
             max-height: none;
         }
+
+        &.new {
+            background-color: #fff;
+            border-radius: 0;
+            border: 1px solid $light-gray-color;
+            border-bottom: none;
+        }
         
     }
 
@@ -2444,6 +2636,11 @@ Droplets page container. Droplets classes only work inside this container.
                 transform: rotate(-90deg);
             }
             
+        }
+
+        &.new  {
+            border-radius: 0;
+            border: 1px solid $light-gray-color;
         }
 
     }

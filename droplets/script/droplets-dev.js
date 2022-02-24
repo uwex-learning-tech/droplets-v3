@@ -706,6 +706,11 @@ function enableShowMore( showMore ) {
         const showMoreCntrl = document.createElement( 'div' );
         
         showMoreCntrl.classList.add( 'droplets-showmore-cntrl' );
+
+        if ( el.classList.contains( 'new' ) ) {
+            showMoreCntrl.classList.add( 'new' );
+        }
+
         showMoreCntrl.setAttribute( 'aria-hidden', 'true');
         showMoreCntrl.appendChild( document.createTextNode('Show More') );
         
