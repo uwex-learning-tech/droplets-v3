@@ -3659,6 +3659,57 @@ Droplets page container. Droplets classes only work inside this container.
             font-size: 75%;
             content: "(" attr(data-src) ")";
         }
+
+         /* legecy components (to be removed in future version) */
+        
+        // old accordion
+        .droplets-accordion {
+    
+            .accordion-title {
+                border: 0;
+                padding: 0;
+                font-weight: bold;
+            }
+            
+            .accordion-content {
+                border: 0;
+                padding: 0;
+                display: block !important;
+            }
+            
+            .accordion-controls {
+                display: none;
+            }
+    
+    	}
+    
+        // old tabs
+    	.droplets-tabs {
+    
+            .tabs {
+            
+                display: none;
+            
+            	li {
+            
+                    a:after {
+                        content: "";
+                    }
+            
+            	}
+            
+            }
+            
+            .tab-contents {
+            
+                .tab-section {
+                    display: block;
+                    padding: 0;
+                }
+            
+            }
+    
+    	}
     
     }
     
@@ -3775,6 +3826,30 @@ D031: NO JAVASCRIPT FALLBACK
 
     }
 
+    // Old Accordion
+    .droplets-accordion {
+        
+        .accordion-title {
+
+            border-bottom: transparent;
+            border-top-left-radius: rem( 5px );
+            border-top-right-radius: rem( 5px );
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            cursor: default;
+
+            &:after {
+                display: none;
+            }
+
+        }
+        
+        .accordion-content {
+            display: block;
+        }
+        
+    }
+
     // Collapibles
     .droplets-collapsibles {
         
@@ -3801,6 +3876,39 @@ D031: NO JAVASCRIPT FALLBACK
         .content {
             display: block;
             overflow: hidden;
+        }
+        
+    }
+
+    // Old Tabs
+    .droplets-tabs {
+        
+        .tabs {
+            
+            padding: rem( math.div($gutter, 2) );
+            
+            li {
+                border: rem( 1px ) solid #929292;
+                border-bottom-left-radius: rem( 3px );
+                border-bottom-right-radius: rem( 3px );
+            }
+            
+            li:hover {
+                box-shadow: none;
+            }
+            
+            .active {
+                box-shadow: none;
+            }
+            
+        }
+        
+        .tab-contents {
+            
+            .tab-section {
+                display: block;
+            }
+            
         }
         
     }
@@ -3975,5 +4083,226 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
 
     code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
     pre[class*=language-].line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}pre[class*=language-].line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:0;font-size:100%;left:-3.8em;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.line-numbers-rows>span{display:block;counter-increment:linenumber}.line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}
+
+}
+
+/*
+D033: LEGACY/DEPRECATED COMPONENTS
+--------------------------------------------------------------------------------
+Components that are no longer to be used or should not continue to be used.
+To be removed in future versions.
+----------------------------------------------------------------------------- */
+
+#uws-droplets-page {
+    
+    /* D033.1: OLD ACCORDION */
+    
+    .droplets-accordion {
+    
+    	margin: rem( $gutter ) 0;
+    
+    	.accordion-controls {
+            
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-end;
+            font-size: rem( 12px );
+            line-height: rem( 16px );
+            text-align: center;
+            padding-right: rem( 8px );
+    
+            a, a:visited {
+                display: block;
+                text-decoration: none;
+                color: #000;
+                background-color: $light-gray-color;
+                padding: rem( 2px ) rem( 5px );
+                margin: 0 rem( 8px ) rem( -5px ) 0;
+                border-top-left-radius: rem( 3px );
+                border-top-right-radius: rem( 3px );
+            }
+    
+        }
+    
+        .accordion-title {
+            
+            position: relative;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            flex: 1 1 95%;
+            background-color: $light-gray-color;
+            border: rem( 1px ) solid $border-color;
+            padding: rem( 10px ) rem( 40px ) rem( 10px ) rem( 10px );
+            margin-top: rem( 5px );
+            cursor: pointer;
+            border-radius: rem( math.div($border-radius, 3) );
+            
+            a {
+                text-decoration: none;
+                color: unset;
+            }
+            
+        }
+        
+        .accordion-title:after {
+            position: absolute;
+            right: rem( $gutter );
+            font-family: $droplets-icon-font;
+            content: unicode('e001');
+            color: $gray-color;
+        }
+    
+        .accordion-title:first-child {
+            margin-top: 0;
+        }
+    
+        .active {
+            border-bottom: transparent;
+            border-top-left-radius: rem( 5px );
+            border-top-right-radius: rem( 5px );
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        
+        .active:after {
+            transform: rotate(90deg);
+        }
+    
+        .accordion-content {
+            padding: 0 rem( 10px );
+            display: none;
+            background-color: #fff;
+            border: rem( 1px ) solid $border-color;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: rem( 5px );
+            border-bottom-right-radius: rem( 5px );
+        }
+    
+    }
+    
+    .no-arrow {
+        
+        .accordion-title:after {
+            display: none;
+        }
+        
+    }
+    
+    /* D033.2: OLD TABS */
+
+    .droplets-tabs {
+    
+    	margin: rem( $gutter ) 0;
+    	clear: both;
+    
+    	.tabs {
+    
+            width: 100%;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: rem( 1px ) solid $border-color;
+            background-color: $light-gray-color;
+            padding: rem( 8px ) rem( 5px ) 0;
+            float: left;
+            clear: both;
+            border-top-left-radius: rem( 3px );
+            border-top-right-radius: rem( 3px );
+    
+            li {
+            
+                display: block;
+                float: left;
+                margin-bottom: rem( -1px );
+                margin-right: rem( 3px );
+                background-color: #fff;
+                border-top-left-radius: rem( 3px );
+                border-top-right-radius: rem( 3px );
+                
+                a, a:visited {
+                    display: block;
+                    padding: rem( 5px ) rem( 10px );
+                    text-decoration: none;
+                    color: $gray-color;
+                }
+                
+                a:hover {
+                    color: #000;
+                }
+            
+            }
+            
+            li:hover {
+            	
+                box-shadow: 0 rem( -3px ) rem( 2px ) 0 $gray-color;
+                
+                a {
+                    color: #000;
+                }
+            	
+            }
+            
+            .active {
+            	
+                border-top: rem( 1px ) solid #929292;
+                border-right: rem( 1px ) solid #929292;
+                border-left: rem( 1px ) solid #929292;
+                border-bottom: transparent;
+                box-shadow: 0 rem( -3px ) rem( 2px ) 0 $gray-color;
+                
+                a {
+                    color: #000;
+                }
+            	
+            }
+            
+            .info {
+            	
+                background-color: $info-color;
+                
+                a, a:hover {
+                    color: #fff;
+                }
+            	
+            }
+        	
+            .danger {
+                @extend .info;
+                background-color: $danger-color;
+            }
+            
+            .success {
+                @extend .info;
+                background-color: $success-color;
+            }
+            
+            .warning {
+                @extend .info;
+                background-color: $warning-color;
+            }
+    
+    	}
+    
+    	.tab-contents {
+    
+            border-bottom: rem( 1px ) solid $border-color;
+            clear: both;
+    
+            .tab-section {
+                display: none;
+                padding: rem( 6px ) rem( 10px ) 0;
+                background-color: #fff;
+            }
+    
+            .active {
+                display: block;
+                animation: fadeIn 1s;
+            }
+    
+    	}
+    
+    }
 
 }

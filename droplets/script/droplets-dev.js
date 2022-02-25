@@ -176,7 +176,9 @@ function checkDropletsComponents() {
     const prefix = '#uws-droplets-page .droplets-';
     const toolTipSelector = document.querySelectorAll( prefix + 'tooltip' );
     const popoverSelector = document.querySelectorAll( prefix + 'popover' );
+    const tabsSelector = document.querySelectorAll( prefix + 'tabs' );
     const tabbedSelector = document.querySelectorAll( prefix + 'tabbed' );
+    const accordionsSelector = document.querySelectorAll( prefix + 'accordion' );
     const collapsibleSelector = document.querySelectorAll( prefix + 'collapsibles' );
     const showMoreSelector = document.querySelectorAll( prefix + 'readmore, ' + prefix + 'showmore' );
     const revealSelector = document.querySelectorAll( prefix + 'reveal' );
@@ -197,8 +199,16 @@ function checkDropletsComponents() {
         enablePopovers( popoverSelector );
     }
 
+    if ( tabsSelector.length ) {
+        enableTabs( tabsSelector );
+    }
+
     if ( tabbedSelector.length ) {
         enableTabbed( tabbedSelector );
+    }
+
+    if ( accordionsSelector.length ) {
+        enableAccordions( accordionsSelector );
     }
 
     if ( collapsibleSelector.length ) {
@@ -1836,4 +1846,184 @@ function fileExists( src, success, failed ) {
     xhr.open( 'HEAD', src );
     xhr.send();
 
+}
+
+/**
+ * Enable all (old way) tab elements.
+ * @function enableTabs
+ * @param {Object[]} tabs - Collection of tab elements.
+ * @since 2.0.0
+ * @updated 3.0.0
+ */
+function enableTabs( tabs ) {
+    
+    // loop through collection of tab elements
+    Array.prototype.forEach.call( tabs, function( tabWrapper ) {
+        
+        // set each tab element's tabs and sections
+        const tabBtns = tabWrapper.querySelectorAll( '.tabs li' );
+        const tabSections = tabWrapper.querySelectorAll( '.tab-contents .tab-section' );
+
+        // for each tab of current tab element iternation
+        Array.prototype.forEach.call( tabBtns, function( tab, i ) {
+            
+            // add event listener to each tab
+            tab.addEventListener( 'click', function( evt ) {
+                
+                // remove active class from all tab
+                // and hide tab sections
+                Array.prototype.forEach.call( tabBtns, function( el, i ) {
+                    
+                    el.classList.remove( 'active' );
+                    el.setAttribute( 'aria-selected', 'false');
+                    tabSections[i].classList.remove( 'active' );
+                    
+                });
+                
+                // add active class to current clicked tab
+                // and display corresponding tab section
+                this.classList.add( 'active' );
+                this.setAttribute( 'aria-selected', 'true');
+                tabSections[i].classList.add( 'active' );
+                tabSections[i].setAttribute( 'aria-selected', 'true');
+                
+                // prevent default event action
+                evt.preventDefault();
+                
+            } );
+            
+        });
+        
+    } );
+    
+}
+
+/**
+ * Enable all (old way) accordion elements.
+ * @function enableAccordions
+ * @param {Object[]} accordions - Collection of accordion elements.
+ * @since 2.0.0
+ * @updated 3.0.0
+ */
+function enableAccordions( accordions ) {
+    
+    // loop through collection of tab elements
+    Array.prototype.forEach.call( accordions, function( accordionWrapper ) {
+        
+        // query the accordion title banners
+        const titleBanners = accordionWrapper.querySelectorAll( '.accordion-title' );
+        
+        // create the accordion controls for each accordion
+        const accordionControlsWrapper = document.createElement( 'div' );
+        accordionControlsWrapper.classList.add( 'accordion-controls' );
+        
+        const closeBtn = document.createElement( 'a' );
+        closeBtn.classList.add( 'closeAll' );
+        closeBtn.setAttribute( 'role', 'button' );
+        closeBtn.innerHTML = 'Close All';
+        closeBtn.href = 'javascript:void(0)';
+        
+        const openBtn = document.createElement( 'a' );
+        openBtn.classList.add( 'openAll' );
+        openBtn.setAttribute( 'role', 'button' );
+        openBtn.innerHTML = 'Open All';
+        openBtn.href = 'javascript:void(0)';
+        
+        accordionControlsWrapper.appendChild( closeBtn );
+        accordionControlsWrapper.appendChild( openBtn );
+        
+        // add the accordion controls to the DOM
+        accordionWrapper.insertBefore( accordionControlsWrapper, accordionWrapper.firstChild );
+        
+        // add event listener to the close all control
+        closeBtn.addEventListener( 'click', function( evt ) {
+            
+            Array.prototype.forEach.call( titleBanners, function( banner ) {
+                closeAccordionItem( banner );
+            } );
+            
+            // prevent default event action
+            evt.preventDefault();
+            
+        } );
+        
+        // add event listener to open all control
+        openBtn.addEventListener( 'click', function( evt ) {
+            
+            Array.prototype.forEach.call( titleBanners, function( banner ) {
+                openAccordionItem( banner );
+            } );
+            
+            // prevent default event action
+            evt.preventDefault();
+            
+        } );
+        
+        // loop through each title banner
+        Array.prototype.forEach.call( titleBanners, function( banner ) {
+            
+            // if it contains active class, display the accordion content
+            if ( banner.classList.contains( 'active' ) ) {
+                openAccordionItem( banner );
+            }
+            
+            // add event listener to each title banner
+            banner.addEventListener( 'click', function( evt ) {
+                
+                // if current target is open, close it
+                if ( this.classList.contains( 'active' ) ) {
+                    closeAccordionItem( this );
+                } else {
+                    
+                    // close all of the accordion
+                    Array.prototype.forEach.call( titleBanners, function( el ) {
+                        closeAccordionItem( el );
+                    } );
+                    
+                    // open the current target
+                    openAccordionItem( this );
+                    
+                }
+                
+                // prevent default event action
+                evt.preventDefault();
+                
+            } );
+            
+        } );
+        
+    } );
+    
+}
+
+/**
+ * Close accordion item.
+ * @function closeAccordionItem
+ * @param {Object} el - element to be hidden.
+ * @since 2.0.0
+ */
+function closeAccordionItem( el ) {
+    
+    if ( el.classList.contains( 'active' ) ) {
+                            
+        el.nextElementSibling.style.display = 'none';
+        el.nextElementSibling.setAttribute( 'aria-expanded', 'false' );
+        el.classList.remove( 'active' );
+        
+    }
+    
+}
+
+/**
+ * Open accordion item.
+ * @function openAccordionItem
+ * @param {Object} el - element to be displayed.
+ * @since 2.0.0
+ */
+function openAccordionItem( el ) {
+    
+    el.classList.add( 'active' );
+    el.nextElementSibling.setAttribute( 'aria-expanded', 'true' );
+    el.nextElementSibling.style.display = 'block';
+    
 }
