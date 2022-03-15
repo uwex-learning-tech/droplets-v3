@@ -1,8 +1,8 @@
 /**
  * DROPLETS
- * @version: 3.2.5
+ * @version: 3.2.6
  * @author: Ethan Lin
- * @updated on: 02-25-2022
+ * @updated on: 03-15-2022
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
  * @copyright: (c) 2018-2022 Learning Technology & Media, University of Wisconsin Extended Campus
@@ -1642,44 +1642,32 @@ function enableSlideshow( slideshow ) {
         button.setAttribute( 'id', 'd-speak-' + index );
         button.setAttribute( 'aria-label', 'Listen' );
         button.setAttribute( 'role', 'button' );
+        button.classList.add( 'ready' );
 
-        fileExists( button.dataset.src, () => { // if success
-
-            button.classList.add( 'ready' );
-
-            // add click event to play the targeted audio
-            button.addEventListener( 'click', ( evt ) => {
-                
-                // reset first
-
-                speak.forEach( ( item ) => {
-                    item.classList.remove( 'playing' );
-                } );
-
-                if ( !audioPlayer.paused ) {
-                    audioPlayer.pause();
-                    audioPlayer.currentTime = 0;
-                }
-
-                // pass the speak reference and and play the audio
-
-                const currentTarget = evt.currentTarget;
-
-                currentTarget.classList.add( 'playing' );
-
-                audioPlayer.setAttribute( 'data-reference', currentTarget.id );
-                audioPlayer.src = currentTarget.dataset.src;
-                audioPlayer.play();
-
+        // add click event to play the targeted audio
+        button.addEventListener( 'click', ( evt ) => {
+            
+            // reset first
+            speak.forEach( ( item ) => {
+                item.classList.remove( 'playing' );
             } );
 
-        }, () => { // if failed
+            if ( !audioPlayer.paused ) {
+                audioPlayer.pause();
+                audioPlayer.currentTime = 0;
+            }
 
-            button.classList.add( 'error' );
+            // pass the speak reference and and play the audio
+
+            const currentTarget = evt.currentTarget;
+
+            currentTarget.classList.add( 'playing' );
+
+            audioPlayer.setAttribute( 'data-reference', currentTarget.id );
+            audioPlayer.src = currentTarget.dataset.src;
+            audioPlayer.play();
 
         } );
-
-        
 
     } );
 
@@ -1691,6 +1679,14 @@ function enableSlideshow( slideshow ) {
         source.classList.remove( 'playing' );
         audioPlayer.removeAttribute( 'src' );
         audioPlayer.removeAttribute( 'data-reference' );
+
+    } );
+
+    audioPlayer.addEventListener( 'error', () => {
+        
+        const source = document.querySelector( '#' + audioPlayer.dataset.reference );
+        source.classList.remove( 'playing' );
+        source.classList.add( 'error' );
 
     } );
 
@@ -1818,35 +1814,6 @@ function createAnnotationCommentaryPanel( annotation ) {
     evt.target.parentNode.parentNode.removeChild( evt.target.parentNode );
 
  }
-
- /**
- * Helper function to check if file exists
- * @function closeAnnotationCommentary
- * @param {String} src - path to resource file.
- * @since 3.2.4
- */
-function fileExists( src, success, failed ) {
-
-    const xhr = new XMLHttpRequest();
-
-    xhr.onreadystatechange = function() {
-
-        if ( this.readyState === this.DONE ) {
-            
-            if ( this.status == 200 ) {
-                success();
-            } else {
-                failed();
-            }
-
-        }
-
-    };
-
-    xhr.open( 'HEAD', src );
-    xhr.send();
-
-}
 
 /**
  * Enable all (old way) tab elements.
