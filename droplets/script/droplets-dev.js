@@ -1,11 +1,11 @@
 /**
  * DROPLETS
- * @version: 3.2.6
+ * @version: 3.2.7
  * @author: Ethan Lin
- * @updated on: 03-15-2022
+ * @updated on: 07-25-2023
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
- * @copyright: (c) 2018-2022 Learning Technology & Media, University of Wisconsin Extended Campus
+ * @copyright: (c) 2018-2023 Learning Technology & Media, University of Wisconsin Extended Campus
  */
 
 "use strict";
@@ -1186,6 +1186,7 @@ function enableAnnotation( annotations ) {
 
     Array.prototype.forEach.call( annotations, function( parentEl, parentIndex ) {
 
+        const parentElement =  parentEl;
         const numbered = parentEl.classList.contains( 'unnumber' );
         const annotationImgEl = parentEl.querySelector( 'img' );
         let imgNaturalWidth = parentEl.width;
@@ -1200,7 +1201,10 @@ function enableAnnotation( annotations ) {
         annotationDiv.setAttribute( 'id', ariaDescribeAttrValue );
 
         // check image size and then set position indicators
-        annotationImgEl.onload = function() {
+        const tempImg = new Image();
+
+        tempImg.src = annotationImgEl.src;
+        tempImg.addEventListener( "load", function() {
 
             imgNaturalWidth = annotationImgEl.naturalWidth;
             imgNaturalHeight = annotationImgEl.naturalHeight;
@@ -1215,7 +1219,6 @@ function enableAnnotation( annotations ) {
                 // get indicator position for each annotation
                 const annotationItems = parentEl.querySelectorAll( '.annotations .annotation-item' );
                 let annotations = [];
-                
                 let commentaryPanel = null;
 
                 Array.prototype.forEach.call( annotationItems, ( item, itemIndex ) => {
@@ -1223,7 +1226,6 @@ function enableAnnotation( annotations ) {
                     const position = item.querySelector( '.position' ).innerText;
                     const title = item.querySelector( '.title' ).innerText;
                     const commentary = item.querySelector( '.commentary' ).innerHTML;
-
                     const xyRaw = position.split( ',', 2 );
                     const xyPos = {
                         'x': Number( xyRaw[0].trim() ),
@@ -1337,8 +1339,7 @@ function enableAnnotation( annotations ) {
                 imgPanel.appendChild( errMsgDiv );
 
             }
-
-        };
+        }, false );
 
     } );
 
