@@ -28,7 +28,17 @@ const dropletsParam = {
     }
 };
 
-waitForDroplets( dropletsParam );
+if ( document.readyState != 'loading' ) {
+
+    waitForDroplets( dropletsParam );
+
+} else {
+
+    document.addEventListener( 'DOMContentLoaded', function() {
+        waitForDroplets( dropletsParam );
+    } );
+
+}
 
 /*********************************************************
   MUTATION OBSERVER FUNCTION 
@@ -1186,7 +1196,6 @@ function enableAnnotation( annotations ) {
 
     Array.prototype.forEach.call( annotations, function( parentEl, parentIndex ) {
 
-        const parentElement =  parentEl;
         const numbered = parentEl.classList.contains( 'unnumber' );
         const annotationImgEl = parentEl.querySelector( 'img' );
         let imgNaturalWidth = parentEl.width;
@@ -1200,15 +1209,15 @@ function enableAnnotation( annotations ) {
         annotationImgEl.setAttribute( 'aria-describedby', ariaDescribeAttrValue );
         annotationDiv.setAttribute( 'id', ariaDescribeAttrValue );
 
-        // check image size and then set position indicators
-        const tempImg = new Image();
-
+        let tempImg = new Image();
         tempImg.src = annotationImgEl.src;
+
         tempImg.addEventListener( "load", function() {
 
             imgNaturalWidth = annotationImgEl.naturalWidth;
             imgNaturalHeight = annotationImgEl.naturalHeight;
 
+            // check image size and then set position indicators
             if ( imgNaturalWidth >= 640 && imgNaturalHeight >= 360 ) {
 
                 // create the div element to hold the indicators
@@ -1217,7 +1226,7 @@ function enableAnnotation( annotations ) {
                 indicatorsDiv.setAttribute( 'aria-hidden', 'true');
 
                 // get indicator position for each annotation
-                const annotationItems = parentEl.querySelectorAll( '.annotations .annotation-item' );
+                let annotationItems = annotationDiv.querySelectorAll( '.annotations .annotation-item' );
                 let annotations = [];
                 let commentaryPanel = null;
 
@@ -1333,13 +1342,15 @@ function enableAnnotation( annotations ) {
             } else {
 
                 const errMsgDiv = document.createElement( 'div' );
+                
                 errMsgDiv.classList.add( 'error' );
                 errMsgDiv.innerHTML = "Image is too narrow or small for annotation. Please make sure the image's width and height are at least greater or equal to 640 pixels by 360 pixels";
 
                 imgPanel.appendChild( errMsgDiv );
 
             }
-        }, false );
+
+        } );
 
     } );
 
