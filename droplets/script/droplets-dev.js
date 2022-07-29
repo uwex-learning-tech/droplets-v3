@@ -56,7 +56,7 @@ function waitForDroplets( params ) {
     new MutationObserver( function() {
 
         const el = document.getElementById( params.id );
-
+        
         if ( el ) {
             this.disconnect();
             params.done();
@@ -69,6 +69,9 @@ function waitForDroplets( params ) {
         childList: true
 
     } );
+
+    // trigger the observer to at least detect a change in the DOM
+    params.parent.setAttribute("data-droplets", "dropletjs-loaded");
 
 }
 
