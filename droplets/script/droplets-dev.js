@@ -1,8 +1,8 @@
 /**
  * DROPLETS
- * @version: 3.2.7
+ * @version: 3.2.8
  * @author: Ethan Lin
- * @updated on: 07-25-2023
+ * @updated on: 08-01-2023
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
  * @copyright: (c) 2018-2023 Learning Technology & Media, University of Wisconsin Extended Campus
@@ -94,6 +94,12 @@ function runDropletsJs() {
 
      } else {
 
+        // set default font
+        const dropletsContainer = document.querySelector( "#uws-droplets-page" );
+        dropletsContainer.style.fontFamily = "Helvetica Neue, Arial, san-serif";
+        dropletsContainer.style.lineHeight = "1.25";
+
+        // set droplets JS components
         checkDropletsComponents();
 
      }
