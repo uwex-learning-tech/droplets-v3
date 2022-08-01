@@ -71,7 +71,9 @@ function waitForDroplets( params ) {
     } );
 
     // trigger the observer to at least detect a change in the DOM
-    params.parent.setAttribute("data-droplets", "dropletjs-loaded");
+    const el = document.querySelector( '#main' ) ? document.querySelector( '#main' ) : document.querySelector( 'body' );
+
+    el.setAttribute("data-droplets", "dropletjs-loaded");
 
 }
 
