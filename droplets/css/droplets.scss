@@ -50,7 +50,7 @@ D000: VARIABLES
 Setting up variables. Define fonts, colors, and spacing.
 ----------------------------------------------------------------------------- */
 
-$font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+$font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $droplets-icon-font: 'dropletsIcons';
 $collaborative-icon-font: 'collaborativeicon';
 $flex-icon-font: 'flexicon';
@@ -152,12 +152,12 @@ Droplets page container. Droplets classes only work inside this container.
     max-width: rem( 940px );
     margin: 0;
     padding: 0;
-    // font-size: rem( $font-size );
-    // font-family: $font-family;
-    // font-weight: 400;
+    font-size: rem( $font-size );
+    font-family: $font-family;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    // line-height: 1.25;
+    line-height: 1.25;
     
     * {
 
@@ -717,7 +717,7 @@ Droplets page container. Droplets classes only work inside this container.
     	padding: rem( 1px ) rem( 4px ) rem( 2px );
     	background-color: #fff3b4;
     	border-radius: rem( math.div($border-radius, 3) );
-        color-adjust: exact;
+        print-color-adjust: exact;
     }
     
     /*
@@ -3783,6 +3783,11 @@ Additional adjustments only when loaded on Canvas.net
 }
 
 #uws-droplets-page.canvas-net {
+
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
     
     .droplets-lightbox-overlay {
         

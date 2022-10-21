@@ -70,10 +70,10 @@ function waitForDroplets( params ) {
 
     } );
 
-    // trigger the observer to at least detect a change in the DOM
+    // trigger the observer to at least once detect a change in the DOM
     const el = document.querySelector( '#main' ) ? document.querySelector( '#main' ) : document.querySelector( 'body' );
 
-    el.setAttribute("data-droplets", "dropletjs-loaded");
+    el.setAttribute( 'data-droplets', 'dropletjs-loaded' );
 
 }
 
@@ -95,11 +95,6 @@ function runDropletsJs() {
         onCanvasLms();
 
      } else {
-
-        // set default font
-        const dropletsContainer = document.querySelector( "#uws-droplets-page" );
-        dropletsContainer.style.fontFamily = "Helvetica Neue, Arial, san-serif";
-        dropletsContainer.style.lineHeight = "1.25";
 
         // set droplets JS components
         checkDropletsComponents();
@@ -269,7 +264,7 @@ function checkDropletsComponents() {
     }
 
     if ( prismSelector.length ) {
-        Prism.highlightAllUnder( document.querySelector('#uws-droplets-page'), false );
+        Prism.highlightAllUnder( document.querySelector( '#uws-droplets-page' ), false );
     }
 
 }
@@ -324,10 +319,10 @@ function enableToolTips( toolTips ) {
             } else if ( this.classList.contains( 'bottom' ) ) {
                 x = position.top + toolTipNode.offsetHeight - 10;
                 y = position.left;
-            } else if ( this.classList.contains( "right" ) ) {
+            } else if ( this.classList.contains( 'right' ) ) {
                 x = position.top;
                 y = position.left + this.offsetWidth + 5;
-            } else if ( this.classList.contains( "left" ) ) {
+            } else if ( this.classList.contains( 'left' ) ) {
                 x = position.top;
                 y = position.left - toolTipNode.offsetWidth - 5;
             } else {
@@ -441,13 +436,13 @@ function enablePopovers( popovers ) {
                     x = this.offsetHeight + 10;
                     y = horzCenter;
                     
-                } else if ( this.classList.contains( "right" ) ) {
+                } else if ( this.classList.contains( 'right' ) ) {
                     
                     popoverDiv.classList.add( 'right' );
                     x = vertzCenter;
                     y = this.offsetWidth + 10;
                     
-                } else if ( this.classList.contains( "left" ) ) {
+                } else if ( this.classList.contains( 'left' ) ) {
                     
                     popoverDiv.classList.add( 'left' );
                     x = vertzCenter;
@@ -623,10 +618,10 @@ function enableCollapsibles( collapsibles ) {
 
             // set section selected state
             if ( section.classList.contains( 'active' ) ) {
-                section.setAttribute( 'aria-expanded', 'true');
+                section.setAttribute( 'aria-expanded', 'true' );
                 contents[i].classList.add( 'active' );
             } else {
-                section.setAttribute( 'aria-expanded', 'false');
+                section.setAttribute( 'aria-expanded', 'false' );
             }
             
             // add event listener to each section
@@ -709,13 +704,13 @@ function toggleSection( section, content, isClosed ) {
     if ( isClosed ) {
 
         section.classList.add( 'active' );
-        section.setAttribute( 'aria-expanded', 'true');
+        section.setAttribute( 'aria-expanded', 'true' );
         content.classList.add( 'active' );
 
     } else {
 
         section.classList.remove( 'active' );
-        section.setAttribute( 'aria-expanded', 'false');
+        section.setAttribute( 'aria-expanded', 'false' );
         content.classList.remove( 'active' );
 
     }
@@ -737,8 +732,8 @@ function enableShowMore( showMore ) {
         const showMoreCntrl = document.createElement( 'div' );
         
         showMoreCntrl.classList.add( 'droplets-showmore-cntrl' );
-        showMoreCntrl.setAttribute( 'aria-hidden', 'true');
-        showMoreCntrl.appendChild( document.createTextNode('Show More') );
+        showMoreCntrl.setAttribute( 'aria-hidden', 'true' );
+        showMoreCntrl.appendChild( document.createTextNode( 'Show More' ) );
         
         // add the show more control to the DOM
         el.insertAdjacentElement( 'afterend', showMoreCntrl );
@@ -887,7 +882,7 @@ function enableImgZoom( imgZooms ) {
                 magnifyDiv.style.top = ( magnifyY - magnifyDiv.offsetHeight / 2 ) + 'px';
                 
                 if ( rx != 100 && ry != 100 ) {
-                    magnifyDiv.style.backgroundPosition = rx + "px " + ry + "px";
+                    magnifyDiv.style.backgroundPosition = rx + 'px ' + ry + 'px';
                 }
                  
             } else {
@@ -957,7 +952,7 @@ function enableLightbox( lightboxes ) {
             if ( overlayDiv.classList.contains( 'show-overlay' ) ) {
             
                 overlayDiv.classList.remove( 'show-overlay' );
-                overlayDiv.querySelectorAll( '.overlay-content' )[0].innerHTML = "";
+                overlayDiv.querySelectorAll( '.overlay-content' )[0].innerHTML = '';
                 
             } 
             
@@ -970,7 +965,7 @@ function enableLightbox( lightboxes ) {
         if ( overlayDiv.classList.contains( 'show-overlay' ) ) {
             
             overlayDiv.classList.remove( 'show-overlay' );
-            overlayDiv.querySelectorAll( '.overlay-content' )[0].innerHTML = "";
+            overlayDiv.querySelectorAll( '.overlay-content' )[0].innerHTML = '';
             
         } 
         
@@ -1118,13 +1113,13 @@ function selectImage( img, contentDiv ) {
     const fullImg = document.createElement( 'img' );
     const caption = document.createElement( 'p' );
     
-    if ( img.nodeName === "IMG" ) {
+    if ( img.nodeName === 'IMG' ) {
         
         fullImg.src = img.src;
         caption.classList.add( 'caption' );
         caption.innerHTML = img.getAttribute( 'alt' );
         
-    } else if ( img.nodeName === "FIGURE" ) {
+    } else if ( img.nodeName === 'FIGURE' ) {
         
         const innerImg = img.querySelector( 'img' );
         const figcaption = img.querySelector( 'figcaption' );
@@ -1223,7 +1218,7 @@ function enableAnnotation( annotations ) {
         let tempImg = new Image();
         tempImg.src = annotationImgEl.src;
 
-        tempImg.addEventListener( "load", function() {
+        tempImg.addEventListener( 'load', function() {
 
             imgNaturalWidth = annotationImgEl.naturalWidth;
             imgNaturalHeight = annotationImgEl.naturalHeight;
@@ -1234,7 +1229,7 @@ function enableAnnotation( annotations ) {
                 // create the div element to hold the indicators
                 const indicatorsDiv = document.createElement( 'div' );
                 indicatorsDiv.classList.add( 'indicators' );
-                indicatorsDiv.setAttribute( 'aria-hidden', 'true');
+                indicatorsDiv.setAttribute( 'aria-hidden', 'true' );
 
                 // get indicator position for each annotation
                 let annotationItems = annotationDiv.querySelectorAll( '.annotations .annotation-item' );
@@ -1255,8 +1250,8 @@ function enableAnnotation( annotations ) {
                     // create and display indicator for currrent annotation item
                     const indicatorItem = document.createElement( 'div' );
                     indicatorItem.classList.add( 'indicator' );
-                    indicatorItem.style.left = toPercentage( xyPos.x , imgNaturalWidth ) + "%";
-                    indicatorItem.style.top = toPercentage( xyPos.y , imgNaturalHeight ) + "%";
+                    indicatorItem.style.left = toPercentage( xyPos.x , imgNaturalWidth ) + '%';
+                    indicatorItem.style.top = toPercentage( xyPos.y , imgNaturalHeight ) + '%';
                     
                     const indicatorBtn = document.createElement( 'button' );
                     indicatorBtn.setAttribute( 'data-index', itemIndex );
@@ -1355,7 +1350,7 @@ function enableAnnotation( annotations ) {
                 const errMsgDiv = document.createElement( 'div' );
                 
                 errMsgDiv.classList.add( 'error' );
-                errMsgDiv.innerHTML = "Image is too narrow or small for annotation. Please make sure the image's width and height are at least greater or equal to 640 pixels by 360 pixels";
+                errMsgDiv.innerHTML = 'Image is too narrow or small for annotation. Please make sure the image\'s width and height are at least greater or equal to 640 pixels by 360 pixels';
 
                 imgPanel.appendChild( errMsgDiv );
 
@@ -1542,7 +1537,7 @@ function enableSlideshow( slideshow ) {
 
                 width = width + lengthToIncrease;
 
-                progressBar.style.width = width + "px";
+                progressBar.style.width = width + 'px';
 
             }
 
@@ -1865,7 +1860,7 @@ function enableTabs( tabs ) {
                 Array.prototype.forEach.call( tabBtns, function( el, i ) {
                     
                     el.classList.remove( 'active' );
-                    el.setAttribute( 'aria-selected', 'false');
+                    el.setAttribute( 'aria-selected', 'false' );
                     tabSections[i].classList.remove( 'active' );
                     
                 });
@@ -1873,9 +1868,9 @@ function enableTabs( tabs ) {
                 // add active class to current clicked tab
                 // and display corresponding tab section
                 this.classList.add( 'active' );
-                this.setAttribute( 'aria-selected', 'true');
+                this.setAttribute( 'aria-selected', 'true' );
                 tabSections[i].classList.add( 'active' );
-                tabSections[i].setAttribute( 'aria-selected', 'true');
+                tabSections[i].setAttribute( 'aria-selected', 'true' );
                 
                 // prevent default event action
                 evt.preventDefault();
