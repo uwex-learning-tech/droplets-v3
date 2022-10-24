@@ -1,11 +1,11 @@
 /*!
  * DROPLETS
- * @version: 3.2.8
- * @updated on: 08-01-2023
+ * @version: 3.2.9
+ * @updated on: 10-24-2022
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
- * @copyright: (c) 2018-2023 Learning Technology & Media, University of Wisconsin Extended Campus
+ * @copyright: (c) 2018-2022 Learning Technology & Media, University of Wisconsin Extended Campus
  */
 /* TABLE OF CONTENTS
 --------------------------------------------------------------------------------
@@ -155,9 +155,10 @@ Droplets page container. Droplets classes only work inside this container.
     font-size: rem( $font-size );
     font-family: $font-family;
     font-weight: 400;
+    color: #000;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1.25;
+    line-height: 1.5;
     
     * {
 
@@ -714,10 +715,41 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D008.2: highlight
     .highlight {
+
     	padding: rem( 1px ) rem( 4px ) rem( 2px );
-    	background-color: #fff3b4;
-    	border-radius: rem( math.div($border-radius, 3) );
+    	background-color: #ffee08;
+    	//border-radius: rem( math.div($border-radius, 3) );
         print-color-adjust: exact;
+
+        &.green {
+            background-color: #68ff38;
+        }
+
+        &.cyan {
+            background-color: #06ffdd;
+        }
+
+        &.purple {
+            background-color: #eb7bfb;
+        }
+
+        &.orange {
+            background-color: #FFD4B3;
+        }
+
+        &.pink {
+            background-color: #FFD1FF;
+        }
+
+        &.embellish {
+            border-bottom: #000 solid rem(8px);
+        }
+
+        &.embellish-left {
+            border-left: #000 solid rem(8px);
+            border-bottom: unset;
+        }
+
     }
     
     /*
@@ -3788,6 +3820,7 @@ Additional adjustments only when loaded on Canvas.net
     font-family: inherit;
     font-weight: inherit;
     line-height: inherit;
+    color: inherit;
     
     .droplets-lightbox-overlay {
         

@@ -1,5 +1,5 @@
 # DROPLETS
-**version 3.2.8**  
+**version 3.2.9**  
 
 A HTML, CSS, and JavaScript framework for Instructional Designers at University of Wisconsin Extended Campus (UWEX).
 
@@ -35,4 +35,4 @@ If any bugs/glitches are found in this framework, please report them under the "
 For questions, please also post them under the "**[Issues](https://github.com/uwex-learning-tech/droplets-v3/issues)**" page on GitHub.
 
 ---
-&copy; 2018-2023. Ethan Lin, [Learning Technology & Media](https://media.uwex.edu), and [University of Wisconsin Extended Campus](https://ce.uwex.edu). All rights reserved.
+&copy; 2018-2022. Ethan Lin, [Learning Technology & Media](https://media.uwex.edu), and [University of Wisconsin Extended Campus](https://ce.uwex.edu). All rights reserved.
