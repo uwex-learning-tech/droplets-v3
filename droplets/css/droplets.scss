@@ -1,11 +1,11 @@
 /*!
  * DROPLETS
- * @version: 3.2.9
- * @updated on: 10-24-2022
+ * @version: 3.3.0
+ * @updated on: xx-xx-202x
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
- * @copyright: (c) 2018-2022 Learning Technology & Media, University of Wisconsin Extended Campus
+ * @copyright: (c) 2018-2023 Learning Technology & Media, University of Wisconsin Extended Campus
  */
 /* TABLE OF CONTENTS
 --------------------------------------------------------------------------------
@@ -36,12 +36,13 @@
  24. ANNOTATION ----------------------------------------------------------- D024
  25. SLIDE SHOW ----------------------------------------------------------- D025
  26. SPEAK ---------------------------------------------------------------- D026
- 27. FOR PRINTING --------------------------------------------------------- D027
- 28. FOOTER --------------------------------------------------------------- D028
- 29. FONT FACES ----------------------------------------------------------- D029
- 30. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D030
- 31. NO JS FALLBACK ------------------------------------------------------- D031
- 32. PRISMJS CSS ---------------------------------------------------------- D032
+ 27. CARDS (LAYOUT)  ------------------------------------------------------ D027
+ 28. FOR PRINTING --------------------------------------------------------- D028
+ 29. FOOTER --------------------------------------------------------------- D029
+ 30. FONT FACES ----------------------------------------------------------- D030
+ 31. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D031
+ 32. NO JS FALLBACK ------------------------------------------------------- D032
+ 33. PRISMJS CSS ---------------------------------------------------------- D033
 ----------------------------------------------------------------------------- */
 
 /*
@@ -60,7 +61,7 @@ $light-font-weight: 300;
 $border-color: #e9e9e9;
 $hr-color: #c7cdd1;
 $gutter: 16px;
-$margin-spacing: 10px;
+$margin-spacing: 12px;
 $border-radius: 10px;
 
 $table-border-color: #727272;
@@ -125,6 +126,12 @@ Setting up functions. Convert px unit to rem unit.
     #{$property}: calc(#{$expression});
 }
 
+@mixin headings {
+    h1, h2, h3, h4, h5, h6 {
+      @content;
+    }
+}
+
 @mixin clearfix() {
     content: "";
     clear: both;
@@ -152,13 +159,14 @@ Droplets page container. Droplets classes only work inside this container.
     max-width: rem( 940px );
     margin: 0;
     padding: 0;
-    font-size: rem( $font-size );
     font-family: $font-family;
+    font-size: rem( $font-size );
+    line-height: 1.5;
     font-weight: 400;
     color: #000;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1.5;
+
     
     * {
 
@@ -219,7 +227,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         font-weight: 700;
         // line-height: 1.3;
-        // margin: rem( $margin-spacing * 2 ) 0;
+        margin: rem( math.div( $margin-spacing, 2 ) ) 0;
 
         .label {
             font-size: 50%;
@@ -271,7 +279,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         &:first-letter {
             float: left;
-            font-size: 250%;
+            font-size: 300%;
             line-height: 1;
             font-weight: 700;
             margin-right: rem( 5px );
@@ -3352,7 +3360,73 @@ Droplets page container. Droplets classes only work inside this container.
     }
 
     /*
-    D027: FOR PRINTING
+    D027: CARDS (LAYOUT)
+    --------------------------------------------------------------------------*/
+
+    .droplets-card-deck {
+
+        display: grid;
+        grid-template-columns: repeat( 1, 1fr );
+        grid-row-gap: rem( $margin-spacing * 2 );
+        grid-column-gap: rem( $margin-spacing * 2 );
+        margin: rem( $margin-spacing ) 0;
+
+        @media ( min-width: 540px ) {
+            grid-template-columns: repeat( 2, 1fr );
+        }
+
+        @media ( min-width: 768px ) {
+            grid-template-columns: repeat( 3, 1fr );
+        }
+
+        .card {
+
+            display: flex;
+            flex-flow: column;
+            padding: rem( $margin-spacing ) rem( $margin-spacing ) rem( $margin-spacing * 2 );
+            border-radius: rem( $border-radius );
+            box-shadow: 0 0 rem( 8px ) $light-gray-color;
+            border: 1px solid $light-gray-color;
+            background-color: #fff;
+
+            .icon {
+                font-size: 325%;
+                text-align: center;
+                color: $dark-gray-color;
+            }
+
+            .title {
+
+                font-size: rem( 18px );
+                font-weight: bold;
+                line-height: 1.25;
+
+                p {
+                    margin: 0;
+                }
+
+                @include headings {
+                    font-size: rem( 18px );
+                    line-height: 1.25;
+                    margin: 0;
+                }
+
+            }
+
+            .body {
+                flex: 1 0 auto;
+            }
+
+            // .footer {
+
+            // }
+
+        }
+
+    }
+
+    /*
+    D028: FOR PRINTING
     --------------------------------------------------------------------------*/
 
     @media print {
@@ -3748,7 +3822,7 @@ Droplets page container. Droplets classes only work inside this container.
 } // end page container
 
 /*
-D028: Footer
+D029: Footer
 --------------------------------------------------------------------------------
 A line and some spaces beneath.
 ----------------------------------------------------------------------------- */
@@ -3768,7 +3842,7 @@ A line and some spaces beneath.
 }
 
 /*
-D029: FONT FACES
+D030: FONT FACES
 --------------------------------------------------------------------------------
 Setting up font face. To support font icons used inside the page container.
 ----------------------------------------------------------------------------- */
@@ -3795,7 +3869,7 @@ Setting up font face. To support font icons used inside the page container.
 }
 
 /*
-D030: CANVAS.NET ADJUSTMENTS
+D031: CANVAS.NET ADJUSTMENTS
 --------------------------------------------------------------------------------
 Additional adjustments only when loaded on Canvas.net
 ----------------------------------------------------------------------------- */
@@ -3841,7 +3915,7 @@ Additional adjustments only when loaded on Canvas.net
 }
 
 /*
-D031: NO JAVASCRIPT FALLBACK
+D032: NO JAVASCRIPT FALLBACK
 ----------------------------------------------------------------------------- */
 
 #uws-droplets-page.no-js {
@@ -4111,7 +4185,7 @@ D031: NO JAVASCRIPT FALLBACK
 }
 
 /*
-D032: PRISMJS CSS
+D033: PRISMJS CSS
 --------------------------------------------------------------------------------
 PrismJS 1.25.0
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+java+python+r&plugins=line-numbers+normalize-whitespace
@@ -4125,7 +4199,7 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
 }
 
 /*
-D033: LEGACY/DEPRECATED COMPONENTS
+D034: LEGACY/DEPRECATED COMPONENTS
 --------------------------------------------------------------------------------
 Components that are no longer to be used or should not continue to be used.
 To be removed in future versions.
