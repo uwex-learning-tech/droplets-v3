@@ -3421,7 +3421,7 @@ Droplets page container. Droplets classes only work inside this container.
     D027: CARDS (LAYOUT)
     --------------------------------------------------------------------------*/
 
-    .droplets-card-deck {
+    .card-deck {
 
         display: grid;
         grid-template-columns: repeat( 1, 1fr );
