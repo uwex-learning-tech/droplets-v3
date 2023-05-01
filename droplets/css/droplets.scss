@@ -1250,6 +1250,367 @@ Droplets page container. Droplets classes only work inside this container.
     }
 
     // D009.10: Embellished Callout (special)
+    .embellished-callout {
+
+        position: relative;
+        padding: ( $margin-spacing * 2 ) 0 ( $margin-spacing * 2 ) ( $margin-spacing * 2 );
+        border-radius: $border-radius 0 0 $border-radius;
+        margin-top: ($margin-spacing * 4);
+        margin-bottom: ($margin-spacing * 2);
+        background: linear-gradient(90deg, $gray-color 50%, transparent 50%);
+
+        .icon {
+            display: flex;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            content: " ";
+            width: 100px;
+            height: 100px;
+            color: #fff;
+            font-size: 350%;
+            background-color: $gray-color;
+            border: 5px solid $light-gray-color;
+            border-radius: 50%;
+            top: $margin-spacing * -3.5;
+            padding-left: 12px;
+            right: 0;
+            z-index: 99;
+        }
+
+        .content {
+
+            position: relative;
+            width: 94%;
+            padding: $margin-spacing;
+            background: #fff;
+            border-radius: 0 0 $border-radius 0;
+            box-shadow: 0 0 6px $dark-color;
+            z-index: 1;
+
+            @include headings {
+
+                font-size: rem( 18px );
+                line-height: 1.25;
+                margin-bottom: $margin-spacing;
+                border-radius: $border-radius;
+                
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &.embellish-header {
+
+                    width: 105.2%;
+                    margin-left: ($margin-spacing + 10 )* -1;
+                    padding: 8px 32px 8px 12px;
+                    border-left: 10px solid $dark-gray-color;
+                    border-right: 10px solid $dark-gray-color;
+                    box-shadow: 0px 3px 8px $dark-gray-color;
+
+                    &.left-border {
+                        border-left: none;
+                    }
+        
+                    &.round-top-corners {
+                        border-radius: 0 !important;
+                    }
+        
+                    &.light {
+        
+                        border-left-color: $dark-light-color;
+                        border-right-color: $dark-light-color;
+
+                        &:before {
+                            background-color: $dark-light-color;
+                        }
+        
+                        &:after {
+                            background-color: $light-color;
+                        }
+        
+                    }
+            
+                    &.dark {
+        
+                        border-left-color: $dark-dark-color;
+                        border-right-color: $dark-dark-color;
+
+                        &:before {
+                            background-color: $dark-dark-color;
+                        }
+        
+                        &:after {
+                            background-color: $dark-color;
+                        }
+        
+                    }
+            
+                    &.success {
+
+                        border-left-color: $dark-success-color;
+                        border-right-color: $dark-success-color;
+                        
+                        &:before {
+                            background-color: $dark-success-color;
+                        }
+        
+                        &:after {
+                            background-color: $success-color;
+                        }
+        
+                    }
+            
+                    &.info {
+
+                        border-left-color: $dark-info-color;
+                        border-right-color: $dark-info-color;
+        
+                        &:before {
+                            background-color: $dark-info-color;
+                        }
+        
+                        &:after {
+                            background-color: $info-color;
+                        }
+        
+                    }
+            
+                    &.warning {
+
+                        border-left-color: $dark-warning-color;
+                        border-right-color: $dark-warning-color;
+        
+                        &:before {
+                            background-color: $dark-warning-color;
+                        }
+        
+                        &:after {
+                            background-color: $warning-color;
+                        }
+        
+                    }
+            
+                    &.danger {
+
+                        border-left-color: $dark-danger-color;
+                        border-right-color: $dark-danger-color;
+                        
+                        &:before {
+                            background-color: $dark-danger-color;
+                        }
+        
+                        &:after {
+                            background-color: $danger-color;
+                        }
+        
+                    }
+    
+                }
+
+            }
+
+            &:before {
+                display: block;
+                position: absolute;
+                content: " ";
+                bottom: -34px;
+                right: 19%;
+                border-left: 38px solid $gray-color;
+                border-top: 22px solid transparent;
+                border-bottom: 22px solid transparent;
+            }
+
+            &:after {
+                display: block;
+                position: absolute;
+                background-color: $gray-color;
+                width: 80%;
+                height: $margin-spacing * 2;
+                content: " ";
+                bottom: $margin-spacing * 2 * -1;
+                left: $margin-spacing * 2 * -1;
+                z-index: -10;
+                border-radius: 0 0 0 $border-radius; 
+            }
+
+        }
+
+        &.light {
+
+            background: linear-gradient(90deg, $dark-light-color 50%, transparent 50%);
+
+            .icon {
+                background-color: $dark-light-color;
+                border-color: $light-color;
+            }
+
+            .content {
+
+                &:before {
+                    border-left-color: $dark-light-color;
+                }
+
+                &:after {
+                    background-color: $dark-light-color;
+                }
+
+            }
+
+            &:before {
+                background-color: $dark-light-color;
+            }
+
+        }
+
+        &.dark {
+
+            background: linear-gradient(90deg, $dark-dark-color 50%, transparent 50%);
+
+            .icon {
+                background-color: $dark-dark-color;
+                border-color: $dark-color;
+            }
+
+            .content {
+
+                &:before {
+                    border-left-color: $dark-dark-color;
+                }
+
+                &:after {
+                    background-color: $dark-dark-color;
+                }
+
+            }
+
+            &:before {
+                background-color: $dark-dark-color;
+            }
+
+        }
+
+        &.success {
+            
+            background: linear-gradient(90deg, $dark-success-color 50%, transparent 50%);
+
+            .icon {
+                background-color: $dark-success-color;
+                border-color: $success-color;
+            }
+
+            .content {
+
+                &:before {
+                    border-left-color: $dark-success-color;
+                }
+
+                &:after {
+                    background-color: $dark-success-color;
+                }
+
+            }
+
+            &:before {
+                background-color: $dark-success-color;
+            }
+
+        }
+
+        &.info {
+
+            background: linear-gradient(90deg, $dark-info-color 50%, transparent 50%);
+
+            .icon {
+                background-color: $dark-info-color;
+                border-color: $info-color;
+            }
+
+            .content {
+
+                &:before {
+                    border-left-color: $dark-info-color;
+                }
+
+                &:after {
+                    background-color: $dark-info-color;
+                }
+
+            }
+
+            &:before {
+                background-color: $dark-info-color;
+            }
+
+        }
+
+        &.warning {
+
+            background: linear-gradient(90deg, $dark-warning-color 50%, transparent 50%);
+
+            .icon {
+                background-color: $dark-warning-color;
+                border-color: $warning-color;
+            }
+
+            .content {
+
+                &:before {
+                    border-left-color: $dark-warning-color;
+                }
+
+                &:after {
+                    background-color: $dark-warning-color;
+                }
+
+            }
+
+            &:before {
+                background-color: $dark-warning-color;
+            }
+
+        }
+
+        &.danger {
+            
+            background: linear-gradient(90deg, $dark-danger-color 50%, transparent 50%);
+
+            .icon {
+                background-color: $dark-danger-color;
+                border-color: $danger-color;
+            }
+
+            .content {
+
+                &:before {
+                    border-left-color: $dark-danger-color;
+                }
+
+                &:after {
+                    background-color: $dark-danger-color;
+                }
+
+            }
+
+            &:before {
+                background-color: $dark-danger-color;
+            }
+
+        }
+
+        &:before {
+            display: block;
+            position: absolute;
+            background-color: $gray-color;
+            width: 95%;
+            height: $margin-spacing * 2;
+            content: " ";
+            top: 0;
+            left: 0;
+            border-radius: $border-radius 0 0 0; 
+        }
+
+    }
 
     /*
     D010: ALERTS
