@@ -156,7 +156,7 @@ Droplets page container. Droplets classes only work inside this container.
     
     // container property
     position: relative;
-    max-width: rem( 940px );
+    max-width: 940px;
     margin: 0;
     padding: 0;
     font-family: $font-family;
@@ -184,9 +184,9 @@ Droplets page container. Droplets classes only work inside this container.
     
     .section-header {
         
-        padding: 0 0 rem( 8px ) 0;
-        margin: rem( $margin-spacing * 2 ) 0;
-    	border-bottom: rem( 1px ) solid $border-color;
+        padding: 0 0 8px 0;
+        margin: ($margin-spacing * 2) 0;
+    	border-bottom: 1px solid $border-color;
     
     	h2 {
     
@@ -226,7 +226,7 @@ Droplets page container. Droplets classes only work inside this container.
     h1, h2, h3, h4, h5, h6 {
         
         font-weight: 700;
-        margin: rem( math.div( $margin-spacing, 2 ) ) 0;
+        margin: math.div( $margin-spacing, 2 ) 0;
 
         .label {
             font-size: 50%;
@@ -249,7 +249,7 @@ Droplets page container. Droplets classes only work inside this container.
             }
     
             &.round-top-corners:not(.left-border) {
-                border-radius: rem($margin-spacing) rem($margin-spacing) 0 0;
+                border-radius: $margin-spacing $margin-spacing 0 0;
             }
     
             &.left-border {
@@ -319,7 +319,7 @@ Droplets page container. Droplets classes only work inside this container.
 
     // D005.2: Paragraph
     p {
-        margin: rem( $margin-spacing ) 0;
+        margin: $margin-spacing 0;
     }
 
     .lead {
@@ -340,7 +340,7 @@ Droplets page container. Droplets classes only work inside this container.
             font-size: 300%;
             line-height: 1;
             font-weight: 700;
-            margin-right: rem( 5px );
+            margin-right: 5px;
         }
 
     }
@@ -348,9 +348,9 @@ Droplets page container. Droplets classes only work inside this container.
     // D005.4: blockquote
     blockquote {
         
-        padding: rem( 8px ) rem( 20px );
-        margin: rem( $margin-spacing ) 0;
-    	border-left: rem( 5px ) solid $light-gray-color;
+        padding: 8px 20px;
+        margin: $margin-spacing 0;
+    	border-left: 5px solid $light-gray-color;
     
     	p {
             margin: 0;
@@ -373,9 +373,9 @@ Droplets page container. Droplets classes only work inside this container.
     
     // D005.5: right align block quote
     .pull-right {
-    	padding-right: rem ( $gutter );
+    	padding-right: $gutter;
     	padding-left: 0;
-    	border-right: rem( 5px ) solid $light-gray-color;
+    	border-right: 5px solid $light-gray-color;
     	border-left: 0;
     	text-align: right;
     }
@@ -677,7 +677,8 @@ Droplets page container. Droplets classes only work inside this container.
         
         	display: flex;
             flex-flow: row wrap;
-            margin: 0 rem( math.div($margin-spacing, 2) * -1);
+            margin: $margin-spacing rem( math.div($margin-spacing, 2) * -1);
+            width: 100%;
             
             .row {
                 display: flex;
@@ -1060,6 +1061,10 @@ Droplets page container. Droplets classes only work inside this container.
         border-radius: math.div( $border-radius, 2 );
         overflow: hidden;
 
+        p {
+            margin: math.div($margin-spacing, 2) 0;
+        }
+
         p, ol, ul {
 
             flex-basis: 100%;
@@ -1079,6 +1084,7 @@ Droplets page container. Droplets classes only work inside this container.
             position: relative;
             flex-basis: 100%;
             font-size: rem( 18px );
+            margin: math.div($margin-spacing, 2) 0;
             line-height: 1.25;
 
             &.embellish-header {
@@ -1242,6 +1248,8 @@ Droplets page container. Droplets classes only work inside this container.
         }
 
     }
+
+    // D009.10: Embellished Callout (special)
 
     /*
     D010: ALERTS
