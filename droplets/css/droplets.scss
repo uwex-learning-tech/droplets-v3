@@ -2687,7 +2687,7 @@ Droplets page container. Droplets classes only work inside this container.
         margin: rem($margin-spacing) 0;
         border-radius: 0 0 rem( $border-radius ) rem( $border-radius );
         overflow: hidden;
-        
+
         .controls {
 
             display: flex;
@@ -2737,7 +2737,6 @@ Droplets page container. Droplets classes only work inside this container.
             cursor: pointer;
             transition: background-color 0.1s;
             transition: color 0.1s;
-
             border-bottom: rem( 1px ) solid $light-gray-color;
 
             &:first-of-type {
@@ -2788,6 +2787,176 @@ Droplets page container. Droplets classes only work inside this container.
                 display: block;
                 margin-top: rem( $margin-spacing * -1 );
                 padding-top: rem( $margin-spacing );
+            }
+
+        }
+
+        &.no-rounded-corners {
+
+            border-radius: 0;
+
+            .section {
+
+                &:first-of-type {
+                    border-radius: 0;
+                }
+
+            }
+
+        }
+
+        &.left-border {
+
+            .section {
+                padding-left: 8px;
+                border-left: 8px solid $gray-color;
+            }
+            
+        }
+
+        &.light {
+
+            .section {
+
+                background-color: $light-color;
+                border-left-color: $dark-light-color;
+
+                &:hover {
+                    background-color: rgba($dark-light-color, 0.8);
+                }
+
+                &.active {
+                    background-color: $light-color;
+                    border-left-color: $dark-light-color;
+                }
+
+            }
+
+        }
+
+        &.dark {
+
+            .section {
+
+                color: #fff;
+                background-color: $dark-color;
+                border-left-color: $dark-dark-color;
+
+                &:hover {
+                    background-color: rgba($dark-dark-color, 0.8);
+                }
+
+                &.active {
+                    background-color: $dark-color;
+                    border-left-color: $dark-dark-color;
+                }
+
+                &:after {
+                    color: #fff;
+                }
+
+            }
+
+        }
+
+        &.success {
+            
+            .section {
+
+                color: #fff;
+                background-color: $success-color;
+                border-left-color: $dark-success-color;
+
+                &:hover {
+                    background-color: rgba($dark-success-color, 0.9);
+                }
+
+                &.active {
+                    background-color: $success-color;
+                    border-left-color: $dark-success-color;
+                }
+
+                &:after {
+                    color: #fff;
+                }
+
+            }
+
+        }
+
+        &.info {
+
+            .section {
+
+                color: #fff;
+                background-color: $info-color;
+                border-left-color: $dark-info-color;
+
+                &:hover {
+                    background-color: rgba($dark-info-color, 0.9);
+                }
+
+                &.active {
+                    background-color: $info-color;
+                    border-left-color: $dark-info-color;
+                }
+
+                &:after {
+                    color: #fff;
+                }
+
+            }
+
+        }
+
+        &.warning {
+
+            .section {
+
+                color: $warning-text-color;
+                background-color: $warning-color;
+                border-left-color: $dark-warning-color;
+
+                &:hover {
+                    background-color: rgba($dark-warning-color, 0.9);
+                    color: #fff;
+                }
+
+                &.active {
+                    background-color: $warning-color;
+                    border-left-color: $dark-warning-color;
+                    color: #fff;
+                }
+
+                &:after {
+                    color: #fff;
+                }
+
+            }
+
+        }
+
+        &.danger {
+            
+            .section {
+
+                color: #fff;
+                background-color: $danger-color;
+                border-left-color: $dark-danger-color;
+
+                &:hover {
+                    background-color: rgba($dark-danger-color, 0.9);
+                }
+
+                &.active {
+                    background-color: $danger-color;
+                    border-left-color: $dark-danger-color;
+                }
+
+                &:after {
+                    color: #fff;
+                }
+
             }
 
         }
