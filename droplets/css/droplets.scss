@@ -75,6 +75,7 @@ $info-color: #018298;
 $warning-color: #FFB90B;
 $danger-color: #D72E3D;
 
+$light-dark-color: #2c2c2d;
 $light-gray-color: #d8d7d7;
 $light-success-color: #CEEAD5;
 $light-info-color: #CBE9EF;
@@ -237,7 +238,7 @@ Droplets page container. Droplets classes only work inside this container.
             display: flex;
             align-items: center;
             background-color: $gray-color;
-            color: #fff;
+            color: $dark-text-color;
             padding: 8px 16px;
     
             [class^="icon-"] {
@@ -248,45 +249,8 @@ Droplets page container. Droplets classes only work inside this container.
                 @extend [class^="icon-"];
             }
     
-            &.round-top-corners:not(.left-border) {
+            &.round-top-corners {
                 border-radius: $margin-spacing $margin-spacing 0 0;
-            }
-    
-            &.left-border {
-                padding-left: 8px;
-                border-left: 8px solid $dark-gray-color;
-            }
-
-            &.light {
-                color: $light-text-color;
-                background-color: $light-color;
-                border-color: $dark-light-color;
-            }
-    
-            &.dark {
-                background-color: $dark-color;
-                border-color: $dark-dark-color;
-            }
-    
-            &.success {
-                background-color: $success-color;
-                border-color: $dark-success-color;
-            }
-    
-            &.info {
-                background-color: $info-color;
-                border-color: $dark-info-color;
-            }
-    
-            &.warning {
-                color: $warning-text-color;
-                background-color: $warning-color;
-                border-color: $dark-warning-color;
-            }
-    
-            &.danger {
-                background-color: $danger-color;
-                border-color: $dark-danger-color;
             }
     
         }
@@ -719,6 +683,26 @@ Droplets page container. Droplets classes only work inside this container.
     	cursor: help;
     }
     
+    .text-light {
+
+    	color: $dark-text-color !important;
+
+        &:after {
+            color: $dark-text-color !important;
+        }
+
+    }
+
+    .text-dark {
+
+        color: $light-text-color !important;
+
+        &:after {
+            color: $light-text-color !important;
+        }
+
+    }
+
     .text-info {
     	color: $info-color;
     }
@@ -1047,210 +1031,243 @@ Droplets page container. Droplets classes only work inside this container.
         
     }
 
-    // D009.9: Outcome Callout (special)
-    .outcome-callout {
+    // D009.9: Embellished wedge Callout (special)
+    .embellish-wedge-callout {
 
         display: flex;
-        flex-flow: row wrap;
-        align-items: center;
-        position: relative;
-        background-color: $light-info-color;
+        flex-flow: row nowrap;
         box-shadow: 0 3px 8px 0 $gray-color;
-        padding: $margin-spacing $margin-spacing $margin-spacing 186px;
         margin: $margin-spacing 0;
         border-radius: math.div( $border-radius, 2 );
         overflow: hidden;
 
-        p {
-            margin: math.div($margin-spacing, 2) 0;
-        }
-
-        p, ol, ul {
-
-            flex-basis: 100%;
-
-            &:first-child {
-                margin-top: 0;
-            }
-            
-            &:last-child {
-                margin-bottom: 0;
-            }
-
-        }
-
-        @include headings {
+        .icon {
 
             position: relative;
-            flex-basis: 100%;
-            font-size: rem( 18px );
-            margin: math.div($margin-spacing, 2) 0;
-            line-height: 1.25;
+            min-width: 150px;
+            color: #fff;
+            background-color: $dark-gray-color;
 
-            &.embellish-header {
-
-                &.left-border {
-                    border-left: none;
-                }
+            [class^="icon-"] {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 21px;
+                font-size: 525%;
+                line-height: 0;
+                height: 100%;
+            }
     
-                &.round-top-corners {
-                    border-radius: 0 !important;
-                }
-
-                &:after {
-                    position: absolute;
-                    display: block;
-                    top: 0;
-                    right: $margin-spacing * -1;
-                    width: $margin-spacing;
-                    height: 100%;
-                    content: " ";
-                    background-color: $gray-color;
-                }
-    
-                &:before {
-                    position: absolute;
-                    display: block;
-                    bottom: -4px;
-                    left: $margin-spacing;
-                    width: 100%;
-                    height: 4px;
-                    content: " ";
-                    background-color: $dark-gray-color;
-                }
-    
-                &.light {
-    
-                    &:before {
-                        background-color: $dark-light-color;
-                    }
-    
-                    &:after {
-                        background-color: $light-color;
-                    }
-    
-                }
-        
-                &.dark {
-    
-                    &:before {
-                        background-color: $dark-dark-color;
-                    }
-    
-                    &:after {
-                        background-color: $dark-color;
-                    }
-    
-                }
-        
-                &.success {
-                    
-                    &:before {
-                        background-color: $dark-success-color;
-                    }
-    
-                    &:after {
-                        background-color: $success-color;
-                    }
-    
-                }
-        
-                &.info {
-    
-                    &:before {
-                        background-color: $dark-info-color;
-                    }
-    
-                    &:after {
-                        background-color: $info-color;
-                    }
-    
-                }
-        
-                &.warning {
-    
-                    &:before {
-                        background-color: $dark-warning-color;
-                    }
-    
-                    &:after {
-                        background-color: $warning-color;
-                    }
-    
-                }
-        
-                &.danger {
-                    
-                    &:before {
-                        background-color: $dark-danger-color;
-                    }
-    
-                    &:after {
-                        background-color: $danger-color;
-                    }
-    
-                }
-
+            [class*=" icon-"] {
+                @extend [class^="icon-"];
             }
 
-            &:first-child {
-                margin-top: 0;
-            }
-            
-            &:last-child {
-                margin-bottom: 0;
+            &:after {
+                display: block;
+                position: absolute;
+                top: calc(50% - 13px);
+                left: rem( 150px );
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 13.5px 0 13.5px 23.4px;
+                border-color: transparent transparent transparent $dark-gray-color;
+                content: " ";
             }
 
         }
 
-        ol, ul {
+        .content {
 
-            padding-inline-start: 25px;
+            padding: $margin-spacing $margin-spacing $margin-spacing 42px;
+            background-color: $light-gray-color;
 
-            li {
-
+            p {
+                margin: math.div($margin-spacing, 2) 0;
+            }
+    
+            p, ol, ul {
+    
+                &:first-child {
+                    margin-top: 0;
+                }
+                
                 &:last-child {
                     margin-bottom: 0;
                 }
-
+    
+            }
+    
+            @include headings {
+    
+                font-size: rem( 18px );
+                line-height: 1.25;
+                margin: $margin-spacing 0;
+    
+                &.embellish-header {
+                    
+                    width: calc(100% + ($margin-spacing * 2));
+                    margin-left: ($margin-spacing ) * -1;
+                    padding-left: $margin-spacing;
+                    position: relative;
+    
+                    &.round-top-corners {
+                        border-radius: 0 !important;
+                    }
+        
+                    &:after {
+                        position: absolute;
+                        display: block;
+                        bottom: -4px;
+                        left: $margin-spacing;
+                        width: calc( 100% - $margin-spacing );
+                        height: 4px;
+                        content: " ";
+                        background-color: $dark-gray-color;
+                    }
+    
+                }
+    
+                &:first-child {
+                    margin-top: 0;
+                }
+                
+                &:last-child {
+                    margin-bottom: 0;
+                }
+    
+            }
+    
+            ol, ul {
+    
+                padding-inline-start: 25px;
+    
+                li {
+    
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+    
+                }
+    
             }
 
         }
 
-        &:before {
-            display: flex;
-            position: absolute;
-            align-items: center;
-            justify-content: center;
-            top: 0;
-            left: 0;
-            width: rem( 150px );
-            height: 100%;
-            font-family: $droplets-icon-font;
-            content: "\e010";
-            color: #fff;
-            font-size: 525%;
-            line-height: normal;
-            background-color: $dark-info-color;
-            box-shadow: rem( 3px ) 0 rem( 6px ) 0 $light-gray-color;
+        &.light {
+
+            .icon {
+
+                background-color: $dark-light-color;
+
+                &:after {
+                    border-color: transparent transparent transparent $dark-light-color;
+                }
+
+            }
+
+            .content {
+                background-color: $light-color;
+            }
+
         }
 
-        &:after {
-            display: block;
-            position: absolute;
-            left: rem( 150px );
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 13.5px 0 13.5px 23.4px;
-            border-color: transparent transparent transparent $dark-info-color;
-            content: " ";
+        &.dark {
+
+            color: $dark-text-color;
+
+            .icon {
+
+                background-color: $dark-dark-color;
+
+                &:after {
+                    border-color: transparent transparent transparent $dark-dark-color;
+                }
+
+            }
+
+            .content {
+                background-color: $light-dark-color;
+            }
+
+        }
+
+        &.success {
+
+            .icon {
+
+                background-color: $dark-success-color;
+
+                &:after {
+                    border-color: transparent transparent transparent $dark-success-color;
+                }
+
+            }
+
+            .content {
+                background-color: $light-success-color;
+            }
+
+        }
+
+        &.info {
+
+            .icon {
+
+                background-color: $dark-info-color;
+
+                &:after {
+                    border-color: transparent transparent transparent $dark-info-color;
+                }
+
+            }
+
+            .content {
+                background-color: $light-info-color;
+            }
+
+        }
+
+        &.warning {
+
+            .icon {
+
+                background-color: $dark-warning-color;
+
+                &:after {
+                    border-color: transparent transparent transparent $dark-warning-color;
+                }
+
+            }
+
+            .content {
+                background-color: $light-warning-color;
+            }
+
+        }
+
+        &.danger {
+            
+            .icon {
+
+                background-color: $dark-danger-color;
+
+                &:after {
+                    border-color: transparent transparent transparent $dark-danger-color;
+                }
+
+            }
+
+            .content {
+                background-color: $light-danger-color;
+            }
+
         }
 
     }
 
-    // D009.10: Embellished Callout (special)
-    .embellished-callout {
+    // D009.10: Embellished Arrow Callout (special)
+    .embellish-arrow-callout {
 
         position: relative;
         padding: ( $margin-spacing * 2 ) 0 ( $margin-spacing * 2 ) ( $margin-spacing * 2 );
@@ -1281,7 +1298,6 @@ Droplets page container. Droplets classes only work inside this container.
         .content {
 
             position: relative;
-            width: 94%;
             padding: $margin-spacing;
             background: #fff;
             border-radius: 0 0 $border-radius 0;
@@ -1293,7 +1309,6 @@ Droplets page container. Droplets classes only work inside this container.
                 font-size: rem( 18px );
                 line-height: 1.25;
                 margin-bottom: $margin-spacing;
-                border-radius: $border-radius;
                 
                 &:first-child {
                     margin-top: 0;
@@ -1301,109 +1316,23 @@ Droplets page container. Droplets classes only work inside this container.
 
                 &.embellish-header {
 
-                    width: 105.2%;
-                    margin-left: ($margin-spacing + 10 )* -1;
-                    padding: 8px 32px 8px 12px;
-                    border-left: 10px solid $dark-gray-color;
-                    border-right: 10px solid $dark-gray-color;
-                    box-shadow: 0px 3px 8px $dark-gray-color;
+                    position: relative;
+                    margin-left: ($margin-spacing ) * -1;
+                    padding-left: $margin-spacing;
 
-                    &.left-border {
-                        border-left: none;
-                    }
-        
                     &.round-top-corners {
                         border-radius: 0 !important;
                     }
-        
-                    &.light {
-        
-                        border-left-color: $dark-light-color;
-                        border-right-color: $dark-light-color;
-
-                        &:before {
-                            background-color: $dark-light-color;
-                        }
-        
-                        &:after {
-                            background-color: $light-color;
-                        }
-        
-                    }
-            
-                    &.dark {
-        
-                        border-left-color: $dark-dark-color;
-                        border-right-color: $dark-dark-color;
-
-                        &:before {
-                            background-color: $dark-dark-color;
-                        }
-        
-                        &:after {
-                            background-color: $dark-color;
-                        }
-        
-                    }
-            
-                    &.success {
-
-                        border-left-color: $dark-success-color;
-                        border-right-color: $dark-success-color;
-                        
-                        &:before {
-                            background-color: $dark-success-color;
-                        }
-        
-                        &:after {
-                            background-color: $success-color;
-                        }
-        
-                    }
-            
-                    &.info {
-
-                        border-left-color: $dark-info-color;
-                        border-right-color: $dark-info-color;
-        
-                        &:before {
-                            background-color: $dark-info-color;
-                        }
-        
-                        &:after {
-                            background-color: $info-color;
-                        }
-        
-                    }
-            
-                    &.warning {
-
-                        border-left-color: $dark-warning-color;
-                        border-right-color: $dark-warning-color;
-        
-                        &:before {
-                            background-color: $dark-warning-color;
-                        }
-        
-                        &:after {
-                            background-color: $warning-color;
-                        }
-        
-                    }
-            
-                    &.danger {
-
-                        border-left-color: $dark-danger-color;
-                        border-right-color: $dark-danger-color;
-                        
-                        &:before {
-                            background-color: $dark-danger-color;
-                        }
-        
-                        &:after {
-                            background-color: $danger-color;
-                        }
-        
+    
+                    &:after {
+                        position: absolute;
+                        display: block;
+                        bottom: -4px;
+                        left: $margin-spacing;
+                        width: calc( 100% - $margin-spacing);
+                        height: 4px;
+                        content: " ";
+                        background-color: $dark-gray-color;
                     }
     
                 }
@@ -1607,7 +1536,7 @@ Droplets page container. Droplets classes only work inside this container.
             content: " ";
             top: 0;
             left: 0;
-            border-radius: $border-radius 0 0 0; 
+            border-radius: $border-radius $border-radius 0 0; 
         }
 
     }
@@ -2222,41 +2151,43 @@ Droplets page container. Droplets classes only work inside this container.
     // D013.1: Default
     @each $icon, $unicode in
     
-        (calendar, "e000"),
-        (overview, "e001"),
-        (help, "e002"),
-        (information, "e003"),
-        (timeline, "e004"),
-        (competency, "e005"),
-        (resources, "e006"),
-        (reading, "e007"),
-        (audio, "e008"),
-        (external-link, "e009"),
-        (group-assignment, "e010"),
-        (learning-resource, "e011"),
-        (assessment, "e012"),
-        (assignment, "e013"),
-        (research, "e014"),
-        (tech, "e015"),
-        (download, "e016"),
-        (dropbox, "e017"),
-        (tip, "e018"),
-        (outcomes, "e019"),
+        (target, "e000"),
+        (learning-resource, "e001"),
+        (research, "e002"),
+        (tech, "e003"),
+        (download, "e004"),
+        (assignment, "e005"),
+        (assessment, "e006"),
+        (video, "e007"),
+        (group-assignment, "e008"),
+        (link, "e009"),
         (facebook, "e00a"),
         (lecture, "e00b"),
-        (discussion, "e00c"),
+        (practice, "e00c"),
         (welcome, "e00d"),
-        (practice, "e00e"),
-        (video, "e00f"),
-        (exam, "e01a"),
-        (set-map, "e01b"),
+        (discussion, "e00e"),
+        (external-link, "e00f"),
+        (audio, "e010"),
+        (calendar, "e011"),
+        (resources, "e012"),
+        (reading, "e013"),
+        (timeline, "e014"),
+        (information, "e015"),
+        (help, "e016"),
+        (overview, "e017"),
+        (competency, "e018"),
+        (briefcase, "e019"),
+        (map, "e01a"),
+        (important, "e01b"),
         (project, "e01c"),
-        (important, "e01d"),
-        (map, "e01e"),
-        (briefcase, "e01f"),
-        (lab, "e020"),
-        (email, "e021"),
-        (extra-credit, "e022") {
+        (set-map, "e01d"),
+        (lab, "e01e"),
+        (extra-credit, "e01f"),
+        (exam, "e020"),
+        (outcomes, "e021"),
+        (tip, "e022"),
+        (dropbox, "e023"),
+        (email, "e024") {
         
         .icon-#{$icon}:before {
             content: unicode(#{$unicode});
@@ -2301,8 +2232,7 @@ Droplets page container. Droplets classes only work inside this container.
         (tools, "e00c")
         (video, "e00d"),
         (website, "e00e"),
-        (zoomin, "e00f"),
-        (target-arrow, "e010") {
+        (zoomin, "e00f") {
         
         .sg-icon-#{$icon}:before {
             content: unicode(#{$unicode});
@@ -2561,11 +2491,9 @@ Droplets page container. Droplets classes only work inside this container.
     	display: flex;
     	flex-wrap: wrap;
         margin: rem($margin-spacing) 0;
-        
         border-radius: rem( $border-radius );
         overflow: hidden;
     	
-        
         .tab {
 
             display: flex;
@@ -2622,11 +2550,241 @@ Droplets page container. Droplets classes only work inside this container.
             display: none;
             width: 100%;
             padding: 0 rem(15px);
-            background-color: rgba($light-gray-color, 0.2);
+            background-color: #fff;
             border-bottom: rem( 1px ) solid $border-color;
 
             &.active {
                 display: block;
+            }
+
+        }
+
+        &.light {
+
+            background-color: $light-color;
+            border-color: $light-color;
+
+            .tab {
+
+                background-color: transparent;
+
+                &:hover {
+                    background-color: rgba($light-color, 0.8);
+                }
+
+                &.active {
+
+                    border-top-color: $dark-light-color;
+
+                    @media (min-width: 600px) {
+                        &:hover {
+                            background-color: #fff;
+                            color: #000;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+        &.dark {
+
+            background-color: $dark-color;
+            border-color: $dark-color;
+
+            .tab {
+
+                background-color: transparent;
+                color: $dark-text-color;
+
+                @media (min-width: 600px) {
+                    color: rgba($dark-text-color, 0.75);
+                }
+
+                &:hover {
+                    background-color: $light-dark-color;
+                    color: $dark-text-color;
+                }
+
+                &.active {
+
+                    border-top-color: $dark-dark-color;
+
+                    @media (min-width: 600px) {
+                        &:hover {
+                            background-color: #fff;
+                            color: #000;
+                        }
+                    }
+
+                }
+
+                &:after {
+                    color: rgba($dark-text-color, 0.75);
+                }
+
+            }
+
+        }
+
+        &.success {
+
+            background-color: $dark-success-color;
+            border-color: $dark-success-color;
+
+            .tab {
+
+                background-color: transparent;
+                color: $dark-text-color;
+
+                @media (min-width: 600px) {
+                    color: rgba($dark-text-color, 0.75);
+                }
+
+                &:hover {
+                    background-color: $success-color;
+                    color: $dark-text-color;
+                }
+
+                &.active {
+                    
+                    border-top-color: $dark-success-color;
+
+                    @media (min-width: 600px) {
+                        &:hover {
+                            background-color: #fff;
+                            color: #000;
+                        }
+                    }
+
+                }
+
+                &:after {
+                    color: rgba($dark-text-color, 0.75);
+                }
+
+            }
+
+        }
+
+        &.info {
+
+            background-color: $dark-info-color;
+            border-color: $dark-info-color;
+
+            .tab {
+
+                background-color: transparent;
+                color: $dark-text-color;
+
+                @media (min-width: 600px) {
+                    color: rgba($dark-text-color, 0.75);
+                }
+
+                &:hover {
+                    background-color: $info-color;
+                    color: $dark-text-color;
+                }
+
+                &.active {
+                    
+                    border-top-color: $dark-info-color;
+
+                    @media (min-width: 600px) {
+                        &:hover {
+                            background-color: #fff;
+                            color: #000;
+                        }
+                    }
+
+                }
+
+                &:after {
+                    color: rgba($dark-text-color, 0.75);
+                }
+
+            }
+
+        }
+
+        &.warning {
+
+            background-color: $dark-warning-color;
+            border-color: $dark-warning-color;
+
+            .tab {
+
+                background-color: transparent;
+                color: $dark-text-color;
+
+                @media (min-width: 600px) {
+                    color: rgba($dark-text-color, 0.75);
+                }
+
+                &:hover {
+                    background-color: $warning-color;
+                    color: $dark-text-color;
+                }
+
+                &.active {
+                    
+                    border-top-color: $dark-warning-color;
+
+                    @media (min-width: 600px) {
+                        &:hover {
+                            background-color: #fff;
+                            color: #000;
+                        }
+                    }
+
+                }
+
+                &:after {
+                    color: rgba($dark-text-color, 0.75);
+                }
+
+            }
+
+        }
+
+        &.danger {
+
+            background-color: $dark-danger-color;
+            border-color: $dark-danger-color;
+
+            .tab {
+
+                background-color: transparent;
+                color: $dark-text-color;
+
+                @media (min-width: 600px) {
+                    color: rgba($dark-text-color, 0.75);
+                }
+                
+                &:hover {
+                    background-color: $danger-color;
+                    color: $dark-text-color;
+                }
+
+                &.active {
+                    
+                    border-top-color: $dark-danger-color;
+                    
+                    @media (min-width: 600px) {
+                        &:hover {
+                            background-color: #fff;
+                            color: #000;
+                        }
+                    }
+
+                }
+
+                &:after {
+                    color: rgba($dark-text-color, 0.75);
+                }
+
             }
 
         }
@@ -2659,6 +2817,7 @@ Droplets page container. Droplets classes only work inside this container.
 
                 &.active {
                     background-color: #fff;
+                    border-top: 5px solid $dark-gray-color;
                     color: #000;
                 }
 
@@ -2669,7 +2828,6 @@ Droplets page container. Droplets classes only work inside this container.
             }
             
             .content {
-                background-color: #fff;
                 border-bottom: none;
                 order: 99;
             }
@@ -2799,162 +2957,6 @@ Droplets page container. Droplets classes only work inside this container.
 
                 &:first-of-type {
                     border-radius: 0;
-                }
-
-            }
-
-        }
-
-        &.left-border {
-
-            .section {
-                padding-left: 8px;
-                border-left: 8px solid $gray-color;
-            }
-            
-        }
-
-        &.light {
-
-            .section {
-
-                background-color: $light-color;
-                border-left-color: $dark-light-color;
-
-                &:hover {
-                    background-color: rgba($dark-light-color, 0.8);
-                }
-
-                &.active {
-                    background-color: $light-color;
-                    border-left-color: $dark-light-color;
-                }
-
-            }
-
-        }
-
-        &.dark {
-
-            .section {
-
-                color: #fff;
-                background-color: $dark-color;
-                border-left-color: $dark-dark-color;
-
-                &:hover {
-                    background-color: rgba($dark-dark-color, 0.8);
-                }
-
-                &.active {
-                    background-color: $dark-color;
-                    border-left-color: $dark-dark-color;
-                }
-
-                &:after {
-                    color: #fff;
-                }
-
-            }
-
-        }
-
-        &.success {
-            
-            .section {
-
-                color: #fff;
-                background-color: $success-color;
-                border-left-color: $dark-success-color;
-
-                &:hover {
-                    background-color: rgba($dark-success-color, 0.9);
-                }
-
-                &.active {
-                    background-color: $success-color;
-                    border-left-color: $dark-success-color;
-                }
-
-                &:after {
-                    color: #fff;
-                }
-
-            }
-
-        }
-
-        &.info {
-
-            .section {
-
-                color: #fff;
-                background-color: $info-color;
-                border-left-color: $dark-info-color;
-
-                &:hover {
-                    background-color: rgba($dark-info-color, 0.9);
-                }
-
-                &.active {
-                    background-color: $info-color;
-                    border-left-color: $dark-info-color;
-                }
-
-                &:after {
-                    color: #fff;
-                }
-
-            }
-
-        }
-
-        &.warning {
-
-            .section {
-
-                color: $warning-text-color;
-                background-color: $warning-color;
-                border-left-color: $dark-warning-color;
-
-                &:hover {
-                    background-color: rgba($dark-warning-color, 0.9);
-                    color: #fff;
-                }
-
-                &.active {
-                    background-color: $warning-color;
-                    border-left-color: $dark-warning-color;
-                    color: #fff;
-                }
-
-                &:after {
-                    color: #fff;
-                }
-
-            }
-
-        }
-
-        &.danger {
-            
-            .section {
-
-                color: #fff;
-                background-color: $danger-color;
-                border-left-color: $dark-danger-color;
-
-                &:hover {
-                    background-color: rgba($dark-danger-color, 0.9);
-                }
-
-                &.active {
-                    background-color: $danger-color;
-                    border-left-color: $dark-danger-color;
-                }
-
-                &:after {
-                    color: #fff;
                 }
 
             }
@@ -3307,6 +3309,31 @@ Droplets page container. Droplets classes only work inside this container.
 
         }
 
+        &.light {
+            background-color: rgba($light-color, 0.5);
+        }
+
+        &.dark {
+            background-color: rgba($light-dark-color, 0.75);
+            color: $dark-text-color;
+        }
+
+        &.success {
+            background-color: $light-success-color;
+        }
+
+        &.info {
+            background-color: $light-info-color;
+        }
+
+        &.warning {
+            background-color: $light-warning-color;
+        }
+
+        &.danger {
+            background-color: $light-danger-color;
+        }
+
     }
 
     .droplets-reveal-btn {
@@ -3354,6 +3381,66 @@ Droplets page container. Droplets classes only work inside this container.
                 transform: rotate(-90deg);
             }
             
+        }
+
+        &.light {
+            background-color: $light-color;
+        }
+
+        &.dark {
+
+            border-top-color: $dark-color;
+            background-color: $dark-dark-color;
+            color: $dark-text-color;
+
+            &:after {
+                color: $dark-text-color;
+            }
+
+        }
+
+        &.success {
+
+            background-color: $dark-success-color;
+            color: $dark-text-color;
+
+            &:after {
+                color: $dark-text-color;
+            }
+
+        }
+
+        &.info {
+
+            background-color: $dark-info-color;
+            color: $dark-text-color;
+
+            &:after {
+                color: $dark-text-color;
+            }
+
+        }
+
+        &.warning {
+
+            background-color: $dark-warning-color;
+            color: $dark-text-color;
+
+            &:after {
+                color: $dark-text-color;
+            }
+
+        }
+
+        &.danger {
+
+            background-color: $dark-danger-color;
+            color: $dark-text-color;
+
+            &:after {
+                color: $dark-text-color;
+            }
+
         }
 
     }
@@ -4643,7 +4730,7 @@ Setting up font face. To support font icons used inside the page container.
 
 @font-face {
     font-family: $collaborative-icon-font;
-    src: url(data:application/font-woff;charset=utf-8;base64,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) format("woff");
+    src: url(data:font/ttf;charset=utf-8;base64,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UAGAQP5gAWBwcICAAAUAAAAgAgABwAAPABIAFQAaAB0AAAEhIgYVERQWMyEyNjURNCYFBzU3IQ8BFzcXIT8BFQHQ/mAUHBwUAaAUHBz+44cYAVCoMzMzav7G1ocBwBwU/sAUHBwUAUAUHNNq+wJ+Gzc3h42R+wAAAAAADACWAAEAAAAAAAEADQAcAAEAAAAAAAIABwA6AAEAAAAAAAMAKACUAAEAAAAAAAQADQDZAAEAAAAAAAUACwD/AAEAAAAAAAYADQEnAAMAAQQJAAEAGgAAAAMAAQQJAAIADgAqAAMAAQQJAAMAUABCAAMAAQQJAAQAGgC9AAMAAQQJAAUAFgDnAAMAAQQJAAYAGgELAGMAbwBsAGwAYQBiAG8AcgBhAHQAaQB2AGUAAGNvbGxhYm9yYXRpdmUAAFIAZQBnAHUAbABhAHIAAFJlZ3VsYXIAAEYAbwBuAHQARgBvAHIAZwBlACAAMgAuADAAIAA6ACAAYwBvAGwAbABhAGIAbwByAGEAdABpAHYAZQAgADoAIAA0AC0ANQAtADIAMAAyADMAAEZvbnRGb3JnZSAyLjAgOiBjb2xsYWJvcmF0aXZlIDogNC01LTIwMjMAAGMAbwBsAGwAYQBiAG8AcgBhAHQAaQB2AGUAAGNvbGxhYm9yYXRpdmUAAFYAZQByAHMAaQBvAG4AIAAxAC4AMAAAVmVyc2lvbiAxLjAAAGMAbwBsAGwAYQBiAG8AcgBhAHQAaQB2AGUAAGNvbGxhYm9yYXRpdmUAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAACgAAAABAAIBAgEDAQQBBQEGAQcBCAEJAQoBCwEMAQ0BDgEPARABEQESARMBFAEVARYBFwEYARkBGgEbARwBHQEeAR8BIAEhASIBIwEkASUBJgZ0YXJnZXQRbGVhcm5pbmctcmVzb3VyY2UIcmVzZWFyY2gEdGVjaAhkb3dubG9hZAphc3NpZ25tZW50CmFzc2Vzc21lbnQFdmlkZW8QZ3JvdXAtYXNzaWdubWVudARsaW5rCGZhY2Vib29rB2xlY3R1cmUIcHJhY3RpY2UHd2VsY29tZQpkaXNjdXNzaW9uDWV4dGVybmFsLWxpbmsFYXVkaW8IY2FsZW5kYXIJcmVzb3VyY2VzB3JlYWRpbmcIdGltZWxpbmULaW5mb3JtYXRpb24EaGVscAhvdmVydmlldwpjb21wZXRlbmN5CWJyaWVmY2FzZQNtYXAJaW1wb3J0YW50B3Byb2plY3QHc2V0LW1hcANsYWIMZXh0cmEtY3JlZGl0BGV4YW0Ib3V0Y29tZXMDdGlwB2Ryb3Bib3gFZW1haWwAAAAAAf//AAIAAQAAAAwAAAAWAAAAAgABAAEAJwABAAQAAAACAAAAAAAAAAEAAAAA1aQnCAAAAADgedfsAAAAAOB51+w=) format("truetype");
     font-weight: normal;
     font-style: normal;
 }
@@ -4657,7 +4744,7 @@ Setting up font face. To support font icons used inside the page container.
 
 @font-face {
     font-family: $droplets-icon-font;
-    src: url(data:font/ttf;charset=utf-8;base64,AAEAAAANAIAAAwBQRkZUTZaFIBMAAA0QAAAAHEdERUYAJwAaAAAM8AAAAB5PUy8yL5JMVQAAAVgAAABWY21hcMAhI74AAAHgAAABSmdhc3D//wADAAAM6AAAAAhnbHlmjA5R3AAAA1gAAAcwaGVhZCH/OgcAAADcAAAANmhoZWEELwIFAAABFAAAACRobXR4BzAAsAAAAbAAAAAwbG9jYQ7CDJQAAAMsAAAAKm1heHAAXABOAAABOAAAACBuYW1l+I6IzgAACogAAAGncG9zdMHO8esAAAwwAAAAtwABAAAAAQAAnhv6lF8PPPUACwIAAAAAAOBwfIUAAAAA4HB8hQAAAAACAAIAAAAACAACAAAAAAAAAAEAAAIAAAAALgIAAAAAAAIAAAEAAAAAAAAAAAAAAAAAAAAEAAEAAAAUAEsABgAAAAAAAgAAAAEAAQAAAEAAAAAAAAAAAQIAAZAABQAAAUwBZgAAAEcBTAFmAAAA9QAZAIQAAAIABQkAAAAAAAAAAAAAEAAAAAAAAAAAAAAAUGZFZABA4ADgEAHg/+AALgIAAAAAAAABAAAAAAAAAgAAAAAAAAACAAAAAgAAUABwAAAAIAAAACAAAAAgAEAAYAAgAAAAAAAAAAAAAAAAAAAAAwAAAAMAAAAcAAEAAAAAAEQAAwABAAAAHAAEACgAAAAGAAQAAQACAADgEP//AAAAAOAA//8AACADAAEAAAAAAAAAAAEGAAABAAAAAAAAAAECAAAAAgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASACQAeACkANYBHgFMAWgBfAGKAbwB+AJIApIC/gMyA5gAAAABAFAAAAGQAgAABQAAITcnNycBAVBAwMBA/wBAwMBA/wAAAAABAHAAAAGwAgAABQAAEwcXBxcBsEDAwEABAAIAQMDAQAEAAAADAAAAIAG4AeMAEAAkADgAACUiJjQ3NjQnJjQ3NhcWFAcGJyInJjQ3NjQnJjQ3NjIXFhQHBiMHIi8BIyI9ATQ7ATc2FxYVERQHBgFoCg4HMTEHBxASPz8JXQsGCAgeHggIBxMHLS0HCkIGBXw5EBA5fAYLCgoCYA4UBzGLMgcUBxAQP7Q/By0IBxMHH1YfBxMHBwcsfi0HbQV7EKAQewgEBQr+YAoFAQACACAAAAHgAgAAEwAZAAABESEiJjQ2MyERISIGFREUFjMhEQEiFDMhNQHA/rAUHBwUATD+wBomJhoBgP6QEBABMAHA/mAcKBwBgCYa/oAaJgHA/qAgIAAAAwAAAAACAAIAAAcADwAbAAAAIgYUFjI2NAIiJjQ2MhYUJwcnBxcHFzcXNyc3AWrUlpbUlqqsenqseoBQUDBQUDBQUDBQUAIAltSWltT+xnqsenqs1lBQMFBQMFBQMFBQAAAAAAUAIAAAAeACAAAIABkAIQApADEAAAEzJicuAScmJwciPQEjIgYVERQWMyEyNjURAyMiNDsBMhQnIyI0OwEyFCcjIjQ7ATIUAWB0AgcNPhMFCBAQ+BAYGBABcBAYcOAQEOAQEOAQEOAQEOAQEOAQAYAFCBM+DQUElBCQGBD+UBAYGBABOP8AICBAICBAICAAAAIAAAAAAgACAAAOAB0AAAEmIyIGFTM0NjMyFwczNQcUBiMiJzcjFTcWMzI2NQG9THFqljB6Vl0+S7AwelZdPkuwQ0xxapYBrVOWalZ6RUuw8FZ6RUuwQ1OWagAAAQAgANAB4AEwAA8AAAEhIgYdARQWMyEyNj0BNCYBwP6ADhISDgGADhISATASDiAOEhIOIA4SAAACAEAAQAHAAcAAAwAHAAATMxEjEzMRI0CgoOCgoAHA/oABgP6AAAAAAQBgAEABoAHAAAIAABMNAWABQP7AAcDAwAAAAAEAIAAgAeAB4AAjAAABIzU0JisBIgYdASMiBh0BFBY7ARUUFjsBMjY9ATMyNj0BNCYBwJASDiAOEpAOEhIOkBIOIA4SkA4SEgEwkA4SEg6QEg4gDhKQDhISDpASDiAOEgAAAAADAAAAMwIAAc0AEAAYACQAAAEjIg8BBh8BFjI/ATY9ATQmBiImNDYyFhQFNyMiDwEGHwEWPwEB7ZoTDr4NDaUFEQW+DgxXIBcXIBb+gNogFQy+Dg6kDg4MAc0Ovg4NpQYGvg4TmggLmhcgFhYgV9oOvg4NpQ4ODAAEAAAAAAIAAgAAKgAtADQAOAAAATUBMzUzFTM1MxUzNTMVMzUzFTM1MxUzNSM1MzUjNTM1IzUzNSM1MzUjNQMjNycBBzcBNCYDJzcXAgD+EIAQMBAwEDAQMBBgICBAQCAgQEAgQLCwcP8AMIABACzkIOAgAXCA/hAgIEBAICBAQCAgYBAwEDAQMBAwEP7wsPD/AIAwAQAkLP7gIOAgAAAAAwAAAAAB4AIAACUAKAAwAAABISIGFREUFjsBBwYXFjI/ATMVFDI9ATMXFjI3Ni8BMzI2NRE0JgUXBxchIjQzITIUAcj+UAoODgqPQg0NBwwHWgcgB1oHDAcNDUKPCg4O/u6AgND+wBAQAUAQAgAOCv6QCg5BDQ0FBVtQEBBQWwUFDQ1BDgoBcAoOYFBQYCAgAAAAAAYAAAALAgAB6wASACIAMgA6AEIASgAAJRcWMjY0LwE3JicmIyIGFRQfAQUUFjMhMjY1ETQmIyEiBhUXITIWHQEUBiMhIiY9ATQ2JjQ2MhYUBiI2NDYyFhQGIjY0NjIWFAYiAR8fCBYOBx8fdQUCBgkNATT/ABkSAaoSGRkS/lYSGU0BZgoODgr+mgoODg4QFhAQFlAQFhAQFlAQFhAQFpwfBw4WCB8fMgIBDQkFA3pIERkZEQGLEhkZEmsNCucKDQ0K5woNOxYPDxYQEBYPDxYQEBYPDxYQAAMAAAAAAgACAAALABkAIQAAEyMVIxUzFTM1MzUjFzY1NCYiBhQWMzI3FzckIiY0NjIWFMAgQEAgQEB/IWeSZ2dJOS6pQP7laktLaksBoEAgQEAgdy45SWdnkmchwUCQS2pLS2oAAAAABAAAAAACAAIAABcALwA9AEYAAAEiBhQWMjY1NCc3FhUUBiImNDYzMhcHJhcWFRQGIiY0NjMyFzcmIyIGFBYyNjU0JwcOARQWMjY3BwYiJjQ3HwE3MzcjNQcVAQA1S0tqSwQhDmWMZWVGIiEiFMAIfbB9fVgdHiIrMmqWltSWEvQhLjJGMAIZEzQmEw8eejdAVUABgEtqS0s1CxYiISJGZWWMZQ4hBEUeHVh9fbB9CCESltSWlmoyKwgCMUQzLiEYEyY0Ey0eekBVQDcAAAAMAJYAAQAAAAAAAQALABgAAQAAAAAAAgACACoAAQAAAAAAAwAnAH0AAQAAAAAABAALAL0AAQAAAAAABQALAOEAAQAAAAAABgALAQUAAwABBAkAAQAWAAAAAwABBAkAAgAEACQAAwABBAkAAwBOAC0AAwABBAkABAAWAKUAAwABBAkABQAWAMkAAwABBAkABgAWAO0AZAByAG8AcABsAGUAdABzAC0AdgAzAABkcm9wbGV0cy12MwAAdgAzAAB2MwAARgBvAG4AdABGAG8AcgBnAGUAIAAyAC4AMAAgADoAIABkAHIAbwBwAGwAZQB0AHMALQB2ADMAIAA6ACAAMgA3AC0ANAAtADIAMAAyADMAAEZvbnRGb3JnZSAyLjAgOiBkcm9wbGV0cy12MyA6IDI3LTQtMjAyMwAAZAByAG8AcABsAGUAdABzAC0AdgAzAABkcm9wbGV0cy12MwAAVgBlAHIAcwBpAG8AbgAgADEALgAwAABWZXJzaW9uIDEuMAAAZAByAG8AcABsAGUAdABzAC0AdgAzAABkcm9wbGV0cy12MwAAAAIAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAFAAAAAEAAgECAQMBBAEFAQYBBwEIAO8BCQEKAA4BCwEMAQ0BDgEPARAKYXJyb3ctbGVmdAthcnJvdy1yaWdodAVhdWRpbwRib29rBWNsb3NlCGRvY3VtZW50BGxvb3AFcGF1c2UEcGxheQR0YWdzBXRvb2xzBXZpZGVvBndpbmRvdwZ6b29taW4MdGFyZ2V0LWFycm93AAAAAAH//wACAAEAAAAMAAAAFgAAAAIAAQABABMAAQAEAAAAAgAAAAAAAAABAAAAANWkJwgAAAAA4HB8hQAAAADgcHyF) format('truetype');
+    src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
     font-weight: normal;
     font-style: normal;
 }

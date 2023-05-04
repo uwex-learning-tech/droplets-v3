@@ -766,7 +766,7 @@ function enableShowMore( showMore ) {
  * @function enableReveal
  * @param {Object[]} reveals - Collection of reveal elements.
  * @since 2.0.0
- * @updated 3.0.0
+ * @updated 3.3.0
  */
 function enableReveal( reveals ) {
     
@@ -779,6 +779,17 @@ function enableReveal( reveals ) {
         toggleBtn.classList.add( 'droplets-reveal-btn' );
         toggleBtn.setAttribute( 'aria-hidden', 'true' );
         toggleBtn.innerHTML = getRevealBtnName( el );
+
+        el.classList.forEach( (c, i) => {
+
+            if ( c.match(/light|dark|success|info|warning|danger/) ) {
+
+                toggleBtn.classList.add( el.classList[i] );
+                return;
+
+            }
+
+        } );
 
         // add the toggle button to the DOM
         el.insertAdjacentElement( 'afterend', toggleBtn );
