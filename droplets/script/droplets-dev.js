@@ -31,7 +31,7 @@ const dropletsParam = {
 if ( document.readyState != 'loading' ) {
 
     waitForDroplets( dropletsParam );
-
+    
 } else {
 
     document.addEventListener( 'DOMContentLoaded', function() {
@@ -39,6 +39,77 @@ if ( document.readyState != 'loading' ) {
     } );
 
 }
+
+// if ( isCanvasLms() && isCanvasEditPage() ) {
+
+//     const canvasEditorParam = {
+//         class: 'tox-edit-area__iframe',
+//         parent: document.querySelector( '#main' ) ? document.querySelector( '#main' ) : document.querySelector( 'body' ),
+//         recursive: true,
+//         done: function () {
+            
+//             const canvasEditor = document.getElementsByClassName( 'tox-edit-area__iframe' )[0];
+    
+//             if ( canvasEditor ) {
+    
+//                 const canvasEditorDoc = canvasEditor.contentDocument || canvasEditor.contentWindow.document;
+//                 const docHead = canvasEditorDoc.querySelector( 'head' );
+    
+//                 if ( docHead ) {
+
+//                     const dropletsCss = document.createElement( 'link' );
+
+//                     dropletsCss.rel = 'stylesheet';
+//                     dropletsCss.href = 'https://instructure-uploads.s3.amazonaws.com/account_118300000000000001/attachments/62012174/droplets.css';
+//                     dropletsCss.type = 'text/css';
+//                     docHead.appendChild(dropletsCss);
+
+//                     const dropletsJs = document.createElement( 'script' );
+                    
+//                     dropletsJs.src = 'https://instructure-uploads.s3.amazonaws.com/account_118300000000000001/attachments/62019220/droplets.js';
+//                     docHead.appendChild(dropletsJs);
+
+//                 }
+    
+//             }
+    
+//         }
+//     };
+
+//     waitForCanvasEditor( canvasEditorParam );
+
+// }
+
+// function isCanvasEditPage( ) {
+    
+//     if ( location.pathname.match( /\/edit|new/ ) ) {
+//         return true;
+//     }
+    
+//     return false;
+    
+// }
+
+// function waitForCanvasEditor( params ) {   
+    
+//     new MutationObserver( function() {
+
+//         const el = document.getElementsByClassName( params.class )[0];
+        
+//         if ( el ) {
+//             this.disconnect();
+//             params.done();
+//         }
+
+//     } ).observe( params.parent || document, {
+
+//         attributes: true,
+//         subtree: true,
+//         childList: true
+
+//     } );
+
+// }
 
 /*********************************************************
   MUTATION OBSERVER FUNCTION 
