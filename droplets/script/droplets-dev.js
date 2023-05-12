@@ -2,10 +2,10 @@
  * DROPLETS
  * @version: 3.3.0
  * @author: Ethan Lin
- * @updated on: xx-xx-202x
+ * @updated on: 05-12-2023
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
- * @copyright: (c) 2018-2023 Learning Technology & Media, University of Wisconsin Extended Campus
+ * @copyright: (c) 2018-2023 Learning Technology & Media Services, University of Wisconsin Extended Campus
  */
 
 "use strict";
