@@ -1,7 +1,7 @@
 /*!
  * DROPLETS
- * @version: 3.3.0
- * @updated on: 05-12-2023
+ * @version: 3.3.1
+ * @updated on: 05-19-2023
  * @author: Ethan Lin
  * @url: https://github.com/oel-mediateam/droplets-v3
  * @license: The MIT License (MIT)
@@ -1077,8 +1077,9 @@ Droplets page container. Droplets classes only work inside this container.
 
         }
 
-        .content {
+        .body {
 
+            flex: 1 0 auto;
             padding: $margin-spacing $margin-spacing $margin-spacing 42px;
             background-color: $light-gray-color;
 
@@ -1166,7 +1167,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             }
 
-            .content {
+            .body {
                 background-color: $light-color;
             }
 
@@ -1186,7 +1187,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             }
 
-            .content {
+            .body {
                 background-color: $light-dark-color;
             }
 
@@ -1204,7 +1205,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             }
 
-            .content {
+            .body {
                 background-color: $light-success-color;
             }
 
@@ -1222,7 +1223,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             }
 
-            .content {
+            .body {
                 background-color: $light-info-color;
             }
 
@@ -1240,7 +1241,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             }
 
-            .content {
+            .body {
                 background-color: $light-warning-color;
             }
 
@@ -1258,7 +1259,7 @@ Droplets page container. Droplets classes only work inside this container.
 
             }
 
-            .content {
+            .body {
                 background-color: $light-danger-color;
             }
 
@@ -1295,7 +1296,7 @@ Droplets page container. Droplets classes only work inside this container.
             z-index: 99;
         }
 
-        .content {
+        .body {
 
             position: relative;
             padding: $margin-spacing;
@@ -1374,7 +1375,7 @@ Droplets page container. Droplets classes only work inside this container.
                 border-color: $light-color;
             }
 
-            .content {
+            .body {
 
                 &:before {
                     border-left-color: $dark-light-color;
@@ -1401,7 +1402,7 @@ Droplets page container. Droplets classes only work inside this container.
                 border-color: $dark-color;
             }
 
-            .content {
+            .body {
 
                 &:before {
                     border-left-color: $dark-dark-color;
@@ -1428,7 +1429,7 @@ Droplets page container. Droplets classes only work inside this container.
                 border-color: $success-color;
             }
 
-            .content {
+            .body {
 
                 &:before {
                     border-left-color: $dark-success-color;
@@ -1455,7 +1456,7 @@ Droplets page container. Droplets classes only work inside this container.
                 border-color: $info-color;
             }
 
-            .content {
+            .body {
 
                 &:before {
                     border-left-color: $dark-info-color;
@@ -1482,7 +1483,7 @@ Droplets page container. Droplets classes only work inside this container.
                 border-color: $warning-color;
             }
 
-            .content {
+            .body {
 
                 &:before {
                     border-left-color: $dark-warning-color;
@@ -1509,7 +1510,7 @@ Droplets page container. Droplets classes only work inside this container.
                 border-color: $danger-color;
             }
 
-            .content {
+            .body {
 
                 &:before {
                     border-left-color: $dark-danger-color;
