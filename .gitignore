@@ -200,3 +200,4 @@ dist
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/node,sass,macos,visualstudiocode
+droplets-v3.code-workspace
