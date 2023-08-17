@@ -1,0 +1,26 @@
+{
+  "name": "droplets-v3",
+  "version": "3.3.1",
+  "description": "CSS Framework for Instructional Designers.",
+  "main": "droplets/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uwex-learning-tech/droplets-v3.git"
+  },
+  "keywords": [
+    "CSS",
+    "HTML",
+    "JavaScript",
+    "framework",
+    "templates"
+  ],
+  "author": "Ethan Lin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uwex-learning-tech/droplets-v3/issues"
+  },
+  "homepage": "https://github.com/uwex-learning-tech/droplets-v3#readme"
+}
