@@ -121,12 +121,6 @@ Setting up functions. Convert px unit to rem unit.
     @return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"")
 }
 
-@mixin calc($property, $expression) {
-    #{$property}: -moz-calc(#{$expression});
-    #{$property}: -webkit-calc(#{$expression});
-    #{$property}: calc(#{$expression});
-}
-
 @mixin headings {
     h1, h2, h3, h4, h5, h6 {
       @content;
@@ -155,7 +149,7 @@ Droplets page container. Droplets classes only work inside this container.
 
 #uws-droplets-page {
     
-    // container property
+
     position: relative;
     max-width: 940px;
     margin: 0;
@@ -599,7 +593,8 @@ Droplets page container. Droplets classes only work inside this container.
                 position: absolute;
                 content: " ";
                 top: 0;
-                @include calc( left, '50% - 20px' );
+                //@include calc( left, '50% - 20px' );
+                left: calc(50% - 20px);
                 width: 0;
                 height: 0;
                 border-left: rem( 10px ) solid transparent;
@@ -2325,7 +2320,8 @@ Droplets page container. Droplets classes only work inside this container.
                 position: absolute;
                 content: " ";
                 top: 0;
-                @include calc( left, '50% - 20px' );
+                //@include calc( left, '50% - 20px' );
+                left: calc(50% - 20px);
                 width: 0;
                 height: 0;
                 border-left: rem( 10px ) solid transparent;
@@ -2435,7 +2431,8 @@ Droplets page container. Droplets classes only work inside this container.
             &.right {
 
                 &:after {
-                    @include calc( top, '50% - 10px' );
+                    //@include calc( top, '50% - 10px' );
+                    top: calc(50% - 10px);
                     left: 0;
                     border-left-width: 0;
                     border-right-color: #333;
@@ -2450,7 +2447,8 @@ Droplets page container. Droplets classes only work inside this container.
             &.left {
 
                 &:after {
-                    @include calc( top, '50% - 10px' );
+                    //@include calc( top, '50% - 10px' );
+                    top: calc(50% - 10px);
                     right: rem( -10px );
                     border-right-width: 0;
                     border-left-color: #333;
@@ -3661,7 +3659,8 @@ Droplets page container. Droplets classes only work inside this container.
             .body {
 
                 padding: rem( 10px ) rem( 10px ) 0;
-                @include calc( height, '100% - 65px' );
+                //@include calc( height, '100% - 65px' );
+                height: calc(100% - 65px);
                 overflow-x: hidden;
                 overflow-y: scroll;
 

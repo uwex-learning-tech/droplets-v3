@@ -2,10 +2,10 @@
   "name": "droplets-v3",
   "version": "3.3.1",
   "description": "CSS Framework for Instructional Designers.",
-  "main": "droplets/index.html",
+  "main": "droplets/scripts/droplets-dev.js",
   "scripts": {
-    "start": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "start": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,16 @@
   "homepage": "https://github.com/uwex-learning-tech/droplets-v3#readme",
   "devDependencies": {
     "css-loader": "^6.8.1",
-    "node-sass": "^9.0.0",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
+    "sass": "^1.65.1",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
+    "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.9.0"
   }
 }
