@@ -22,15 +22,13 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     "css-loader",
                     "postcss-loader",
-                    
                     {
                         loader: 'sass-loader',
                         options: {
                           // Prefer `dart-sass`
-                          implementation: require('sass'),
+                          implementation: require.resolve('sass'),
                         },
                     },
-                    
                 ],
             },
         ],
