@@ -4,7 +4,8 @@
   "description": "CSS Framework for Instructional Designers.",
   "main": "droplets/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack --mode development --watch",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
