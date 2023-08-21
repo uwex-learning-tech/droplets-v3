@@ -1,3 +1,4 @@
+import Prism from 'prismjs';
 import './droplets.scss';
 
 "use strict";

@@ -3,6 +3,7 @@ const common = require('./webpack.common.js');
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
+
  module.exports = merge( common, {
    mode: 'production',
    plugins: [
@@ -18,4 +19,5 @@ const TerserPlugin = require('terser-webpack-plugin');
         )
       ],
     },
+    devtool: 'source-map',
 } );

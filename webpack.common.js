@@ -4,14 +4,11 @@ const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
 module.exports = {
     entry: {
-        'droplets' : [
-            path.resolve(__dirname, './droplets/assets/droplets-dev.js'),
-            path.resolve(__dirname, './droplets/assets/prism.js'),
-        ],
+        'droplets' : path.resolve(__dirname, './droplets/assets/droplets-dev.js'),
     },
     output: {
         filename: '[name].js',
-        path: path.resolve( __dirname, 'dist', 'assets' ),
+        path: path.resolve( __dirname, 'dist' ),
         clean: true,
     },
     module: {
@@ -36,7 +33,6 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin( {
             template: 'droplets/index.html',
-            chunksSortMode: 'auto',
             filename: path.resolve( __dirname, 'dist', 'index.html' ),
         } ),
         new MiniCssExtractPlugin({
