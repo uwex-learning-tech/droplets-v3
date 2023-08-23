@@ -30,9 +30,11 @@ A HTML, CSS, and JavaScript framework for Instructional Designers at University 
 *Latest stable version is always recommended.*
 
 ### Feature requests, Bug Reporting, and Questions
-If any bugs/glitches are found in this framework, please report them under the "**[Issues](https://github.com/uwex-learning-tech/droplets-v3/issues)**" page on GitHub. When reporting a bug, please write the report as detailed and specifically as possible. Note the steps to reproduce the bug and include screen captures if possible.
+If any bugs/glitches are found in this framework, please report them at the "**[Issues](https://github.com/uwex-learning-tech/droplets-v3/issues/new/choose)**" page by selecting the **Bug report** option.
 
-For questions, please also post them under the "**[Issues](https://github.com/uwex-learning-tech/droplets-v3/issues)**" page on GitHub.
+For feature requests, please post them at the "**[Issues](https://github.com/uwex-learning-tech/droplets-v3/issues/new/choose)**" page by selecting the **Question** option.
+
+For questions, please post them at the "**[Issues](https://github.com/uwex-learning-tech/droplets-v3/issues/new/choose)**" page by selecting the **Feature request** option.
 
 ---
 &copy; 2018-2023. Ethan Lin, Learning Technology, and [University of Wisconsin Extended Campus](https://uwex.wisconsin.edu). All rights reserved.
