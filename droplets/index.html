@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8" />
     <title>Droplets v3 Framework Demo</title>
-    <link href="css/droplets.css" rel="stylesheet" media="all" />
-    <script src="script/droplets.js" defer></script>
 </head>
 
 <body>
     
     <div id="uws-droplets-page">
+
+      <p><span class="icon-calendar">&nbsp;</span></p>
+      <p><span class="flex icon-assessment">&nbsp;</span></p>
+      <p><span class="flex icon-learning-resource">&nbsp;</span></p>
+      <p><span class="flex icon-set-map">&nbsp;</span></p>
+      <p><span class="flex icon-overview">&nbsp;</span></p>
+      <p><span class="flex icon-practice-assessment">&nbsp;</span></p>
+      <pre class="language-javascript line-numbers">
+        <code>
+          let harry = new Character();
+      
+          harry.hasScar = true;
+          harry.role = ( isWizard( harry ) ) ? 'A Wizard!' : 'I am a what?';
+      
+          function isWizard( character ) {
+            return ( character.hasScar ) ? true : false;
+          }
+        </code>
+      </pre>
 
         <h1 class="embellish-header round-top-corners" style="background: rgb(240, 84, 6);">
             <span class="icon icon-welcome">&nbsp;</span>
@@ -41,75 +58,25 @@
             Hello World! (h6)
         </h6>
 
-        <div class="embellish-arrow-callout">
-            <div class="icon"><span class="icon-welcome">&nbsp;</span></div>
-            <div class="content">
-                
-                <h2 >Real World Connection</h2>
-                
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime aliquam odit excepturi velit, quod, in voluptate repudiandae similique, molestias reprehenderit sint recusandae amet sequi. Quasi dolore ipsum fuga illo veniam!</p>
-
-                <h2>Takeaways!</h2>
-
-                <p>Iste ipsa autem, quas voluptate praesentium repudiandae magni magnam excepturi suscipit reiciendis placeat totam, laborum, eveniet vel perferendis quidem. Sapiente in ducimus corrupti accusantium quas doloremque! Quam magnam error qui?</p>
+        <div class="embellish-arrow-callout info" role="note">
+            <div class="icon"><span class="icon-discussion">&nbsp;</span></div>
+            <div class="body">
+              <h2>Real World Connection</h2>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime aliquam odit excepturi velit, quod, in voluptate repudiandae similique, molestias reprehenderit sint recusandae amet sequi. Quasi dolore ipsum fuga illo veniam! Quisquam praesentium ex veritatis obcaecati quis, facere voluptatem omnis cum eaque quos nobis natus deserunt porro quo iusto, eius cumque molestias soluta maiores magni ratione repudiandae fuga. Autem, dolore? Inventore?</p>
+          
+              <h3>Takeaways</h3>
+              <p>Iste ipsa autem, quas voluptate praesentium repudiandae magni magnam excepturi suscipit reiciendis placeat totam, laborum, eveniet vel perferendis quidem. Sapiente in ducimus corrupti accusantium quas doloremque! Quam magnam error qui? Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
-        </div>
+          </div>
 
-        <div class="embellish-arrow-callout danger">
-            <div class="icon"><span class="icon-tip">&nbsp;</span></div>
-            <div class="content">
-                
-                <h2 class="embellish-header">Real World Connection</h2>
-                
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime aliquam odit excepturi velit, quod, in voluptate repudiandae similique, molestias reprehenderit sint recusandae amet sequi. Quasi dolore ipsum fuga illo veniam!</p>
-
-                <h2 class="embellish-header text-dark" style="background: rgb(230, 129, 239);">Takeaways!</h2>
-
-                <p>Iste ipsa autem, quas voluptate praesentium repudiandae magni magnam excepturi suscipit reiciendis placeat totam, laborum, eveniet vel perferendis quidem. Sapiente in ducimus corrupti accusantium quas doloremque! Quam magnam error qui?</p>
-            </div>
-        </div>
-
-        <div class="embellish-wedge-callout" role="note">
-            <div class="icon"><span class="icon-outcomes">&nbsp;</span></div>
-            <div class="content">
-                <h2>What you are getting into!</h2>
-            
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia nam ea porro rerum voluptatem accusantium. Vero voluptates deserunt rerum est tempora dignissimos fugit, facilis, ullam, eius natus consequuntur numquam!</p>
-
-                <h3>I am a plain header... blah!</h3>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia nam ea porro rerum voluptatem accusantium. Vero voluptates deserunt rerum est tempora dignissimos fugit, facilis, ullam, eius natus consequuntur numquam!</p>
-                
-                <h2>What you are getting out of it!</h2>
-                <ol>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                </ol>
-            </div>
-            
-        </div>
-
-        <div class="embellish-wedge-callout warning" role="note">
+          <div class="embellish-wedge-callout danger" role="note">
             <div class="icon"><span class="icon-lab">&nbsp;</span></div>
-            <div class="content">
-                <h2 class="embellish-header">What you are getting into!</h2>
-            
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia nam ea porro rerum voluptatem accusantium. Vero voluptates deserunt rerum est tempora dignissimos fugit, facilis, ullam, eius natus consequuntur numquam!</p>
-
-                <h3>I am a plain header... blah!</h3>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia nam ea porro rerum voluptatem accusantium. Vero voluptates deserunt rerum est tempora dignissimos fugit, facilis, ullam, eius natus consequuntur numquam!</p>
-                
-                <h2 class="embellish-header text-dark" style="background: rgb(230, 129, 239);">What you are getting out of it!</h2>
-                <ol>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                </ol>
+            <div class="body">
+              <h2>Polyjuice Potion</h2>
+              <p>Effects: Allows the drinker to temporarily assume the form of another person.</p>
+              <p>Once you have the right ingredients you can begin to brew Polyjuice Potion. Some of the ingredients you require may be hard to find so you will need to be resourceful and eagle-eyed. The instructions have been split into two stages and you will have to complete stage one of the brewing process before you can move on to the second stage, even if you have all of the ingredients.</p>
             </div>
-            
-        </div>
+          </div>
 
         <div class="card-deck">
 
