@@ -7,7 +7,7 @@ module.exports = {
         'droplets' : path.resolve(__dirname, './droplets/assets/droplets-dev.js'),
     },
     output: {
-        filename: '[name].js',
+        filename: 'assets/[name].js',
         path: path.resolve( __dirname, 'dist' ),
         clean: true,
     },
@@ -28,6 +28,11 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+            },
         ],
     },
     plugins: [
@@ -36,8 +41,8 @@ module.exports = {
             filename: path.resolve( __dirname, 'dist', 'index.html' ),
         } ),
         new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[id].css',
+            filename: 'assets/[name].css',
+            chunkFilename: 'assets/[id].css',
         } ),
     ],
 };
