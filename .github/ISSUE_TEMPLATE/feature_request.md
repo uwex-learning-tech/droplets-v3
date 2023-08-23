@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
+about: Suggest new features or ideas
 title: ''
 labels: enhancement
 assignees: ''
@@ -10,6 +10,8 @@ assignees: ''
 _Please verify that your Style Guide doesn’t address the issue before submitting a feature request._ 
 
 Suggestions that fall under the umbrella of a feature request include enhancements to existing elements or components (visual or functional), additional options for visually designing pages, and new elements or components to make pages interactive.
+
+**Please submit one request per issue.**
 
 **Suggestion. Please describe.**
 A short description of the feature request or a clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
