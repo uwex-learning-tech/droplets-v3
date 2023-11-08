@@ -2081,6 +2081,62 @@ Droplets page container. Droplets classes only work inside this container.
             }
 
         }
+
+        &.rounded {
+
+            img {
+                border-radius: rem-unit( $gutter );
+            }
+
+        }
+
+        &.rounded-top {
+
+            img {
+                border-radius: rem-unit( $gutter ) rem-unit( $gutter ) 0 0;
+            }
+
+        }
+
+        &.rounded-bottom {
+
+            img {
+                border-radius: 0 0 rem-unit( $gutter ) rem-unit( $gutter );
+            }
+
+        }
+
+        &.rounded-right {
+
+            img {
+                border-radius: 0 rem-unit( $gutter ) rem-unit( $gutter ) 0;
+            }
+
+        }
+
+        &.rounded-left {
+
+            img {
+                border-radius: rem-unit( $gutter ) 0 0 rem-unit( $gutter );
+            }
+
+        }
+
+        &.rounded-circle {
+
+            img {
+                border-radius: 50%;
+            }
+
+        }
+
+        &.rounded-pill {
+
+            img {
+                border-radius: 500px;
+            }
+
+        }
     
     }
     
