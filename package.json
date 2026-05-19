@@ -1,6 +1,6 @@
 {
   "name": "droplets-v3",
-  "version": "3.3.2",
+  "version": "3.4.0",
   "description": "CSS Framework for Instructional Designers.",
   "main": "droplets/scripts/droplets-dev.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "framework",
     "templates"
   ],
-  "author": "Ethan Lin",
+  "author": "Ethan Lin and Bryan Bortz",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/uwex-learning-tech/droplets-v3/issues"

@@ -10,11 +10,11 @@ module.exports = merge( common, {
     new webpack.BannerPlugin( {
       banner: `DROPLETS
 @version: ${require('./package.json').version}
-@author: Ethan Lin
-@updated on: 11-08-2023
+@author: Ethan Lin and Bryan Bortz
+@updated on: 05-19-2026
 @url: https://github.com/uwex-learning-tech/droplets-v3
 @license: The MIT License (MIT)
-@copyright: (c) 2018-${new Date().getUTCFullYear()} Learning Technology, University of Wisconsin Extended Campus`,
+@copyright: (c) 2018-${new Date().getUTCFullYear()} Office of Online & Professional Learning Resources`,
       entryOnly: true
     } ),
   ],

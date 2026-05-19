@@ -33,6 +33,8 @@
  30. FONT FACES ----------------------------------------------------------- D030
  31. CANVAS.NET ADJUSTMENTS ----------------------------------------------- D031
  32. NO JS FALLBACK ------------------------------------------------------- D032
+ 33. LEGACY/DEPRECATED COMPONENTS ----------------------------------------- D033
+ 34. CANVAS SANITIZER FIXES ----------------------------------------------- D034
 ----------------------------------------------------------------------------- */
 
 /*
@@ -5096,9 +5098,37 @@ To be rem-unitoved in future versions.
                 display: block;
                 animation: fadeIn 1s;
             }
-    
+
     	}
-    
+
+    }
+
+}
+
+/*
+D034: CANVAS SANITIZER FIXES
+--------------------------------------------------------------------------------
+Canvas's HTML sanitizer strips `position`/`top`/`left`/`right`/`bottom` from
+inline styles at render time of discussion pages, breaking the 16:9 padding-top
+iframe technique. Restore via CSS.
+----------------------------------------------------------------------------- */
+
+#uws-droplets-page {
+
+    .generic-wrapper[style*="56.25%"],
+    .storyline-wrapper[style*="56.25%"] {
+
+        position: relative;
+
+        > iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
     }
 
 }
