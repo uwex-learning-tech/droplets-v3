@@ -13,7 +13,7 @@ A HTML, CSS, and JavaScript framework for Instructional Designers at Office of O
 **Note:** This framework is specifically developed for use by Instructional Designers at OPLR. Some setups or usages may not be optimal or preferable for your organization. In addition, this framework is built to accommodate the Canvas LMS. You are most welcome to download or fork this repository and modify it to fit your organization's needs.
 
 ### Development Requirements
-* NPM
+* Node.js 22.15 or later, with NPM
 * Webpack version 5 or later
 * HTML
 * Cascading Style Sheets (CSS3)

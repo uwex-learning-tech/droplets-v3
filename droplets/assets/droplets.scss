@@ -104,13 +104,14 @@ D001: FUNCTIONS & MIXINS
 Setting up functions. Convert px unit to rem unit.
 ----------------------------------------------------------------------------- */
 @use 'sass:math';
+@use 'sass:string';
 
 @function rem-unit( $px ) {
     @return ( math.div($px , $font-size) ) * 1rem;
 }
 
 @function unicode($str) {
-    @return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"")
+    @return string.unquote("\"")+string.unquote(string.insert($str, "\\", 1))+string.unquote("\"")
 }
 
 @mixin calc($property, $expression) {
