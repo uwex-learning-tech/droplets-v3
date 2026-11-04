@@ -99,7 +99,8 @@ $light-danger-text-color: #671A21;
 $light-success-text-color: #154D21;
 
 $dp-component: '#uws-droplets-page :is([class^="dp-"], [class*=" dp-"])';
-$not-dp: ':not(:where(#{$dp-component}, #{$dp-component} *))';
+$dp-panel-body: '#uws-droplets-page :is(.dp-panel-content, .tab-pane)';
+$not-dp: ':not(:where(#{$dp-component}, #{$dp-component} *:not(#{$dp-panel-body} *), #uws-droplets-page .dp-wrapper *))';
 
 /*
 D001: FUNCTIONS & MIXINS
