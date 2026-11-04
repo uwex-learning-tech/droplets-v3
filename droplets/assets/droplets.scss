@@ -98,6 +98,9 @@ $light-info-text-color: #0B4A55;
 $light-danger-text-color: #671A21;
 $light-success-text-color: #154D21;
 
+$dp-component: '#uws-droplets-page :is([class^="dp-"], [class*=" dp-"])';
+$not-dp: ':not(:where(#{$dp-component}, #{$dp-component} *))';
+
 /*
 D001: FUNCTIONS & MIXINS
 --------------------------------------------------------------------------------
@@ -222,7 +225,7 @@ Droplets page container. Droplets classes only work inside this container.
     --------------------------------------------------------------------------*/
     
     // D005.1: Headings
-    h1, h2, h3, h4, h5, h6 {
+    h1#{$not-dp}, h2#{$not-dp}, h3#{$not-dp}, h4#{$not-dp}, h5#{$not-dp}, h6#{$not-dp} {
         
         font-weight: 700;
         margin: math.div( $margin-spacing, 2 ) 0;
@@ -255,32 +258,32 @@ Droplets page container. Droplets classes only work inside this container.
 
     }
 
-    h1 {
+    h1#{$not-dp} {
         font-size: rem-unit( 32px );
     }
 
-    h2 {
+    h2#{$not-dp} {
         font-size: rem-unit( 28px );
     }
 
-    h3 {
+    h3#{$not-dp} {
         font-size: rem-unit( 24px );
     }
 
-    h4 {
+    h4#{$not-dp} {
         font-size: rem-unit( 20px );
     }
 
-    h5 {
+    h5#{$not-dp} {
         font-size: rem-unit( 18px );
     }
 
-    h6 {
+    h6#{$not-dp} {
         font-size: rem-unit(  16px );
     }
 
     // D005.2: Paragraph
-    p {
+    p#{$not-dp} {
         margin: $margin-spacing 0;
     }
 
@@ -308,7 +311,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     // D005.4: blockquote
-    blockquote {
+    blockquote#{$not-dp} {
         
         padding: 8px 20px;
         margin: $margin-spacing 0;
@@ -370,7 +373,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     // D005.7: unordered & ordered lists
-    ul, ol {
+    ul#{$not-dp}, ol#{$not-dp} {
 
         margin-top: rem-unit( $margin-spacing );
         margin-bottom: rem-unit( $margin-spacing );
@@ -407,7 +410,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
     
     // D005.10: buttons
-    .btn {
+    .btn#{$not-dp} {
 
         display: inline-block;
         position: relative;
@@ -539,7 +542,7 @@ Droplets page container. Droplets classes only work inside this container.
     }
 
     // D005.12: horizontal rules and alts
-    hr {
+    hr#{$not-dp} {
 
         margin: rem-unit( $margin-spacing * 2 ) 0;
         border: 0;
@@ -1631,7 +1634,7 @@ Droplets page container. Droplets classes only work inside this container.
     --------------------------------------------------------------------------*/
     
     //D011.1: Default
-    table {
+    table#{$not-dp} {
 
     	width: 100%;
     	background-color: transparent;
