@@ -8,6 +8,7 @@ module.exports = merge( common, {
     devtool: 'inline-source-map',
     devServer: {
         static: path.resolve( __dirname, 'dist' ),
+        headers: { 'Cache-Control': 'no-store' },
         hot: true,
         liveReload: true,
         watchFiles: [ 'droplets/*.html' ]
