@@ -4016,19 +4016,24 @@ Droplets page container. Droplets classes only work inside this container.
 
             position: relative;
             cursor: default;
-            
+
             &::before {
-                display: inline-block;
                 position: absolute;
-                width: 110px;
-                top: 3px;
-                left: 0;
+                bottom: 100%;
+                right: 0;
+                z-index: 99;
+                margin-bottom: rem-unit( 4px );
+                padding: rem-unit( 6px ) rem-unit( $margin-spacing );
+                border-radius: rem-unit( math.div($border-radius, 3) );
+                box-shadow: 0 0 rem-unit( 8px ) 0 $gray-color;
                 color: #fff;
-                padding: 3px;
-                background-color: rgba(177, 30, 30, 0.8);
+                background-color: $dark-danger-color;
                 font-weight: normal;
-                font-size: rem-unit( 12px );
-                text-align: center;
+                font-size: rem-unit( 14px );
+                line-height: normal;
+                white-space: nowrap;
+                pointer-events: none;
+                transform: translateX( calc( 50% - 0.4em ) );
                 content: 'audio failed to load';
             }
 
