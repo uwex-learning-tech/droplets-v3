@@ -1,5 +1,5 @@
 # DROPLETS
-**version 3.5.0**  
+**version 3.5.1**  
 
 A HTML, CSS, and JavaScript framework for Instructional Designers at Office of Online & Professional Learning Resources (OPLR).
 
