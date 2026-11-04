@@ -3320,7 +3320,7 @@ Droplets page container. Droplets classes only work inside this container.
         
         .show {
             display: block;
-            animation: fadeIn 1s;
+            animation: droplets-fadeIn 1s;
         }
         
     }
@@ -3504,19 +3504,19 @@ Droplets page container. Droplets classes only work inside this container.
         
     }
     
-    @keyframes fadeIn {
+    @keyframes droplets-fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
     }
 
-    @keyframes fadeOut {
+    @keyframes droplets-fadeOut {
         from { opacity: 1; }
         to { opacity: 0; }
     }
     
     .show-overlay {
         display: flex;
-        animation: fadeIn 1s;
+        animation: droplets-fadeIn 1s;
     }
     
     /*
@@ -3984,10 +3984,10 @@ Droplets page container. Droplets classes only work inside this container.
     }
 
     .puff-in-hor {
-        animation: puff-in-hor 0.25s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+        animation: droplets-puff-in-hor 0.25s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
     }
 
-    @keyframes puff-in-hor {
+    @keyframes droplets-puff-in-hor {
         
         0% {
             transform: scaleX(2);
@@ -5145,7 +5145,7 @@ To be rem-unitoved in future versions.
     
             .active {
                 display: block;
-                animation: fadeIn 1s;
+                animation: droplets-fadeIn 1s;
             }
 
     	}
