@@ -16,7 +16,7 @@
                 "normalize-whitespace"
             ],
             "theme": "default",
-            "css": true
+            "css": false
         } ]
     ]
 }
