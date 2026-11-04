@@ -5172,7 +5172,8 @@ iframe technique. Restore via CSS.
 
         position: relative;
 
-        > iframe {
+        > iframe,
+        > .dp-embed-wrapper > iframe {
             position: absolute;
             top: 0;
             left: 0;
