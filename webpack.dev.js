@@ -19,6 +19,10 @@ module.exports = merge( common, {
                 {
                     from: 'droplets/assets/img',
                     to: 'assets/img'
+                },
+                {
+                    from: 'droplets/assets/audio',
+                    to: 'assets/audio'
                 }
             ],
         } ),
