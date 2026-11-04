@@ -1724,9 +1724,31 @@ function enableSlideshow( slideshow ) {
 
     const page = document.getElementById( 'uws-droplets-page' );
     const audioPlayer = document.createElement( 'audio' );
+    const status = document.createElement( 'div' );
 
     audioPlayer.setAttribute( 'aria-hidden', true );
     page.appendChild( audioPlayer );
+
+    status.setAttribute( 'role', 'status' );
+    status.classList.add( 'sr-only' );
+    page.appendChild( status );
+
+    const nameOf = ( button ) => {
+        const img = button.querySelector( 'img' );
+        return button.textContent.trim() || ( img && img.getAttribute( 'alt' ) || '' ).trim();
+    };
+
+    const label = ( button, action ) => {
+        const name = nameOf( button );
+        button.setAttribute( 'aria-label', name ? action + ' ' + name : action );
+    };
+
+    const announce = ( message ) => {
+        status.textContent = '';
+        window.requestAnimationFrame( () => {
+            status.textContent = message;
+        } );
+    };
 
     const reset = ( failed ) => {
 
@@ -1736,9 +1758,11 @@ function enableSlideshow( slideshow ) {
         if ( source ) {
 
             source.classList.remove( 'playing' );
+            label( source, 'Listen to' );
 
             if ( failed ) {
                 source.classList.add( 'error' );
+                announce( 'Audio failed to load' + ( nameOf( source ) ? ' for ' + nameOf( source ) : '' ) );
             }
 
         }
@@ -1751,9 +1775,33 @@ function enableSlideshow( slideshow ) {
     speak.forEach( ( button, index ) => {
 
         button.setAttribute( 'id', 'd-speak-' + index );
-        button.setAttribute( 'aria-label', 'Listen' );
-        button.setAttribute( 'role', 'button' );
         button.classList.add( 'ready' );
+        label( button, 'Listen to' );
+
+        if ( button.nodeName !== 'BUTTON' && !button.closest( 'a, button' ) ) {
+
+            button.setAttribute( 'role', 'button' );
+            button.setAttribute( 'tabindex', '0' );
+
+            button.addEventListener( 'keydown', ( evt ) => {
+
+                if ( evt.key === ' ' ) {
+                    evt.preventDefault();
+                } else if ( evt.key === 'Enter' && !evt.repeat ) {
+                    evt.currentTarget.click();
+                }
+
+            } );
+
+            button.addEventListener( 'keyup', ( evt ) => {
+
+                if ( evt.key === ' ' ) {
+                    evt.currentTarget.click();
+                }
+
+            } );
+
+        }
 
         button.addEventListener( 'click', ( evt ) => {
 
@@ -1771,6 +1819,7 @@ function enableSlideshow( slideshow ) {
 
             currentTarget.classList.remove( 'error' );
             currentTarget.classList.add( 'playing' );
+            label( currentTarget, 'Stop' );
             audioPlayer.setAttribute( 'data-reference', id );
             audioPlayer.src = currentTarget.dataset.src;
             audioPlayer.play().catch( ( err ) => {
