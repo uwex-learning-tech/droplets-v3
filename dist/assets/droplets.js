@@ -1,6 +1,6 @@
 /*!
  * DROPLETS
- * @version: 3.5.1
+ * @version: 3.5.2
  * @author: Ethan Lin and Bryan Bortz
  * @updated on: 11-04-2026
  * @url: https://github.com/uwex-learning-tech/droplets-v3
