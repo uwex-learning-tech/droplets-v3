@@ -2310,16 +2310,25 @@ Droplets page container. Droplets classes only work inside this container.
     D014: HELPERS
     --------------------------------------------------------------------------*/
 
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
-        border: 0;
-        overflow: hidden;
-        clip: rect( 0, 0, 0, 0 );
-        white-space: nowrap;
+    @at-root {
+
+        #uws-droplets-page,
+        .dp-wrapper {
+
+            .droplets-sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
+                clip: rect( 0, 0, 0, 0 );
+                white-space: nowrap;
+            }
+
+        }
+
     }
 
     .spacer {
@@ -3992,92 +4001,101 @@ Droplets page container. Droplets classes only work inside this container.
     D026: SPEAK
     --------------------------------------------------------------------------*/
 
-    .droplets-speak {
+    @at-root {
 
-        display: inline;
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
-        border: none;
-        padding: 0;
-        margin: 0;
-        background-color: transparent;
-        font-weight: bold;
-        cursor: pointer;
+        #uws-droplets-page,
+        .dp-wrapper {
 
-        &.highlight {
-            padding: rem-unit( 1px ) rem-unit( 4px ) rem-unit( 2px );
-            background-color: #d0fae6;
-        }
+            .droplets-speak {
 
-        &.ready {
-
-            &::after {
-                display: inline-block;
-                font-family: $droplets-icon-font;
-                font-weight: normal;
-                font-size: 1em;
-                vertical-align: -0.1em;
-                padding-left: rem-unit( 5px );
-                content: unicode('e002');
-            }
-
-        }
-
-        &.error {
-
-            position: relative;
-            cursor: default;
-
-            &::before {
-                position: absolute;
-                bottom: 100%;
-                right: 0;
-                z-index: 99;
-                margin-bottom: rem-unit( 4px );
-                padding: rem-unit( 6px ) rem-unit( $margin-spacing );
-                border-radius: rem-unit( math.div($border-radius, 3) );
-                box-shadow: 0 0 rem-unit( 8px ) 0 $gray-color;
-                color: #fff;
-                background-color: $dark-danger-color;
-                font-weight: normal;
-                font-size: rem-unit( 14px );
-                line-height: normal;
-                white-space: nowrap;
-                pointer-events: none;
-                transform: translateX( calc( 50% - 0.4em ) );
-                content: 'audio failed to load';
-            }
-
-            &::after {
-                display: inline-block;
-                font-family: $droplets-icon-font;
-                font-weight: normal;
-                font-size: 1em;
-                vertical-align: -0.1em;
-                color: $dark-light-color;
-                padding-left: rem-unit( 5px );
-                content: unicode('e002');
-            }
-
-        }
-
-        &.playing {
-
-            &::after {
-                width: 0.75em;
-                height: 0.75em;
+                display: inline;
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
+                border: none;
                 padding: 0;
-                margin-left: 0.5em;
-                margin-right: 0.15em;
-                border-radius: 1px;
-                background-color: currentColor;
-                vertical-align: -0.05em;
-                content: '';
+                margin: 0;
+                background-color: transparent;
+                font-weight: bold;
+                cursor: pointer;
 
-                @media ( forced-colors: active ) {
-                    forced-color-adjust: none;
+                &.highlight {
+                    padding: rem-unit( 1px ) rem-unit( 4px ) rem-unit( 2px );
+                    background-color: #d0fae6;
                 }
+
+                &.ready {
+
+                    &::after {
+                        display: inline-block;
+                        font-family: $droplets-icon-font;
+                        font-weight: normal;
+                        font-size: 1em;
+                        vertical-align: -0.1em;
+                        padding-left: rem-unit( 5px );
+                        content: unicode('e002');
+                    }
+
+                }
+
+                &.error {
+
+                    position: relative;
+                    cursor: default;
+
+                    &::before {
+                        position: absolute;
+                        bottom: 100%;
+                        right: 0;
+                        z-index: 99;
+                        margin-bottom: rem-unit( 4px );
+                        padding: rem-unit( 6px ) rem-unit( $margin-spacing );
+                        border-radius: rem-unit( math.div($border-radius, 3) );
+                        box-shadow: 0 0 rem-unit( 8px ) 0 $gray-color;
+                        color: #fff;
+                        background-color: $dark-danger-color;
+                        font-weight: normal;
+                        font-size: rem-unit( 14px );
+                        line-height: normal;
+                        white-space: nowrap;
+                        pointer-events: none;
+                        transform: translateX( calc( 50% - 0.4em ) );
+                        content: 'audio failed to load';
+                    }
+
+                    &::after {
+                        display: inline-block;
+                        font-family: $droplets-icon-font;
+                        font-weight: normal;
+                        font-size: 1em;
+                        vertical-align: -0.1em;
+                        color: $dark-light-color;
+                        padding-left: rem-unit( 5px );
+                        content: unicode('e002');
+                    }
+
+                }
+
+                &.playing {
+
+                    &::after {
+                        width: 0.75em;
+                        height: 0.75em;
+                        padding: 0;
+                        margin-left: 0.5em;
+                        margin-right: 0.15em;
+                        border-radius: 1px;
+                        background-color: currentColor;
+                        vertical-align: -0.05em;
+                        content: '';
+
+                        @media ( forced-colors: active ) {
+                            forced-color-adjust: none;
+                        }
+                    }
+
+                }
+
             }
 
         }

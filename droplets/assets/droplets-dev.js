@@ -14,12 +14,21 @@ Prism.manual = true;
 
 const dropletsParam = {
     id: 'uws-droplets-page',
+    fallback: '.dp-wrapper',
     parent: document.querySelector( '#main' ) ? document.querySelector( '#main' ) : document.querySelector( 'body' ),
     recursive: true,
-    done: function () {
-        runDropletsJs();
+    done: function ( el ) {
+
+        if ( el.id === 'uws-droplets-page' ) {
+            runDropletsJs();
+        } else {
+            runSpeakOnly( el );
+        }
+
     }
 };
+
+let speakCount = 0;
 
 if ( document.readyState != 'loading' ) {
 
@@ -120,10 +129,17 @@ function waitForDroplets( params ) {
     new MutationObserver( function() {
 
         const el = document.getElementById( params.id );
-        
+
         if ( el ) {
             this.disconnect();
-            params.done();
+            params.done( el );
+            return;
+        }
+
+        const fallback = params.fallback ? document.querySelector( params.fallback ) : null;
+
+        if ( fallback ) {
+            params.done( fallback );
         }
 
     } ).observe( params.parent || document, {
@@ -164,6 +180,28 @@ function runDropletsJs() {
         checkDropletsComponents();
 
      }
+
+}
+
+/**
+ * Enable only the speak component inside a non-Droplets wrapper,
+ * such as a DesignPLUS page.
+ *
+ * @function runSpeakOnly
+ * @param {Object} wrapper - the container element.
+ * @since 3.5.0
+ */
+function runSpeakOnly( wrapper ) {
+
+    if ( isCanvasLms() && !isAllowedCanvasPage() ) {
+        return;
+    }
+
+    const speak = wrapper.querySelectorAll( '.droplets-speak:not(.ready)' );
+
+    if ( speak.length ) {
+        enableSpeak( speak, wrapper );
+    }
 
 }
 
@@ -267,7 +305,7 @@ function checkDropletsComponents() {
     const lighboxSelector = document.querySelectorAll( prefix + 'lightbox' );
     const annotationSelector = document.querySelectorAll( prefix + 'annotation' );
     const slideShowSelector = document.querySelectorAll( prefix + 'slideshow' );
-    const speakSelector = document.querySelectorAll( prefix + 'speak' );
+    const speakSelector = document.querySelectorAll( prefix + 'speak:not(.ready)' );
     const prismSelector = document.querySelectorAll( '#uws-droplets-page [class*=language-]' );
     
     // check for components
@@ -324,7 +362,7 @@ function checkDropletsComponents() {
     }
 
     if ( speakSelector.length ) {
-        enableSpeak( speakSelector );
+        enableSpeak( speakSelector, page );
     }
 
     if ( prismSelector.length ) {
@@ -1718,20 +1756,29 @@ function enableSlideshow( slideshow ) {
  * Enable all speak component.
  * @function enableSpeak
  * @param {Object[]} speak - Collection of speak elements.
+ * @param {Object} page - Container that receives the shared audio player.
  * @since 3.1.0
  */
- function enableSpeak( speak ) {
+ function enableSpeak( speak, page ) {
 
-    const page = document.getElementById( 'uws-droplets-page' );
-    const audioPlayer = document.createElement( 'audio' );
-    const status = document.createElement( 'div' );
+    let audioPlayer = page.querySelector( ':scope > audio[data-speak]' );
+    let status = page.querySelector( ':scope > [data-speak][role="status"]' );
+    const shared = !!audioPlayer;
 
-    audioPlayer.setAttribute( 'aria-hidden', true );
-    page.appendChild( audioPlayer );
+    if ( !shared ) {
 
-    status.setAttribute( 'role', 'status' );
-    status.classList.add( 'sr-only' );
-    page.appendChild( status );
+        audioPlayer = document.createElement( 'audio' );
+        audioPlayer.setAttribute( 'aria-hidden', true );
+        audioPlayer.setAttribute( 'data-speak', '' );
+        page.appendChild( audioPlayer );
+
+        status = document.createElement( 'div' );
+        status.setAttribute( 'role', 'status' );
+        status.setAttribute( 'data-speak', '' );
+        status.classList.add( 'droplets-sr-only' );
+        page.appendChild( status );
+
+    }
 
     const nameOf = ( button ) => {
         const img = button.querySelector( 'img' );
@@ -1772,9 +1819,9 @@ function enableSlideshow( slideshow ) {
 
     };
 
-    speak.forEach( ( button, index ) => {
+    speak.forEach( ( button ) => {
 
-        button.setAttribute( 'id', 'd-speak-' + index );
+        button.setAttribute( 'id', 'd-speak-' + speakCount++ );
         button.classList.add( 'ready' );
         label( button, 'Listen to' );
 
@@ -1835,6 +1882,10 @@ function enableSlideshow( slideshow ) {
         } );
 
     } );
+
+    if ( shared ) {
+        return;
+    }
 
     audioPlayer.addEventListener( 'ended', () => reset() );
 
