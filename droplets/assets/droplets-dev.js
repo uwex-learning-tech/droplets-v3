@@ -1722,66 +1722,76 @@ function enableSlideshow( slideshow ) {
  */
  function enableSpeak( speak ) {
 
-    // created the shared audio player
     const page = document.getElementById( 'uws-droplets-page' );
     const audioPlayer = document.createElement( 'audio' );
-    
+
     audioPlayer.setAttribute( 'aria-hidden', true );
     page.appendChild( audioPlayer );
 
-    // for each speak element
+    const reset = ( failed ) => {
+
+        const id = audioPlayer.dataset.reference;
+        const source = id ? document.getElementById( id ) : null;
+
+        if ( source ) {
+
+            source.classList.remove( 'playing' );
+
+            if ( failed ) {
+                source.classList.add( 'error' );
+            }
+
+        }
+
+        audioPlayer.removeAttribute( 'src' );
+        audioPlayer.removeAttribute( 'data-reference' );
+
+    };
+
     speak.forEach( ( button, index ) => {
-        
+
         button.setAttribute( 'id', 'd-speak-' + index );
         button.setAttribute( 'aria-label', 'Listen' );
         button.setAttribute( 'role', 'button' );
         button.classList.add( 'ready' );
 
-        // add click event to play the targeted audio
         button.addEventListener( 'click', ( evt ) => {
-            
-            // reset first
-            speak.forEach( ( item ) => {
-                item.classList.remove( 'playing' );
-            } );
 
-            if ( !audioPlayer.paused ) {
-                audioPlayer.pause();
-                audioPlayer.currentTime = 0;
-            }
-
-            // pass the speak reference and and play the audio
+            audioPlayer.pause();
+            reset();
 
             const currentTarget = evt.currentTarget;
+            const id = currentTarget.id;
 
+            currentTarget.classList.remove( 'error' );
             currentTarget.classList.add( 'playing' );
-
-            audioPlayer.setAttribute( 'data-reference', currentTarget.id );
+            audioPlayer.setAttribute( 'data-reference', id );
             audioPlayer.src = currentTarget.dataset.src;
-            audioPlayer.play();
+            audioPlayer.play().catch( ( err ) => {
+
+                if ( err.name === 'AbortError' || audioPlayer.dataset.reference !== id ) {
+                    return;
+                }
+
+                reset( err.name !== 'NotAllowedError' );
+
+            } );
 
         } );
 
     } );
 
-    // on audio ended, removing playing class, src, and reference
-    audioPlayer.addEventListener( 'ended', () => {
+    audioPlayer.addEventListener( 'ended', () => reset() );
 
-        const source = document.querySelector( '#' + audioPlayer.dataset.reference );
-        
-        source.classList.remove( 'playing' );
-        audioPlayer.removeAttribute( 'src' );
-        audioPlayer.removeAttribute( 'data-reference' );
+    audioPlayer.addEventListener( 'pause', () => {
 
-    } );
-
-    audioPlayer.addEventListener( 'error', () => {
-        
-        const source = document.querySelector( '#' + audioPlayer.dataset.reference );
-        source.classList.remove( 'playing' );
-        source.classList.add( 'error' );
+        if ( audioPlayer.paused && !audioPlayer.ended ) {
+            reset();
+        }
 
     } );
+
+    audioPlayer.addEventListener( 'error', () => reset( true ) );
 
  }
 
