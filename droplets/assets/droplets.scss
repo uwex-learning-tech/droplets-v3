@@ -4016,8 +4016,8 @@ Droplets page container. Droplets classes only work inside this container.
                 display: inline-block;
                 font-family: $droplets-icon-font;
                 font-weight: normal;
-                font-size: 75%;
-                vertical-align: baseline;
+                font-size: 1em;
+                vertical-align: -0.1em;
                 padding-left: rem-unit( 5px );
                 content: unicode('e002');
             }
@@ -4053,8 +4053,8 @@ Droplets page container. Droplets classes only work inside this container.
                 display: inline-block;
                 font-family: $droplets-icon-font;
                 font-weight: normal;
-                font-size: 75%;
-                vertical-align: baseline;
+                font-size: 1em;
+                vertical-align: -0.1em;
                 color: $dark-light-color;
                 padding-left: rem-unit( 5px );
                 content: unicode('e002');
@@ -4072,7 +4072,7 @@ Droplets page container. Droplets classes only work inside this container.
                 margin-right: 0.15em;
                 border-radius: 1px;
                 background-color: currentColor;
-                vertical-align: 0.1em;
+                vertical-align: -0.05em;
                 content: '';
 
                 @media ( forced-colors: active ) {
