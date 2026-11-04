@@ -11,7 +11,7 @@ module.exports = merge( common, {
       banner: `DROPLETS
 @version: ${require('./package.json').version}
 @author: Ethan Lin and Bryan Bortz
-@updated on: 05-19-2026
+@updated on: ${new Date().toLocaleDateString( 'en-US', { month: '2-digit', day: '2-digit', year: 'numeric', timeZone: 'UTC' } ).replace( /\//g, '-' )}
 @url: https://github.com/uwex-learning-tech/droplets-v3
 @license: The MIT License (MIT)
 @copyright: (c) 2018-${new Date().getUTCFullYear()} Office of Online & Professional Learning Resources`,
