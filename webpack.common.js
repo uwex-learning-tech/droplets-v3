@@ -1,5 +1,6 @@
 const path = require( 'path' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 
 module.exports = {
     entry: {
@@ -43,6 +44,13 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'assets/[name].css',
             chunkFilename: 'assets/[id].css',
+        } ),
+        new CopyWebpackPlugin( {
+            patterns: [
+                {
+                    from: '.htaccess'
+                }
+            ],
         } ),
     ],
 };

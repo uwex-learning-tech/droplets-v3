@@ -1,0 +1,22 @@
+# Droplets caching
+# Install in the framework folder on the server: /app/droplets_v3/.htaccess
+# It covers the css/ and script/ folders beneath it.
+
+<IfModule mod_headers.c>
+    # Drop ETags: Apache's "-gzip" ETags never match, so browsers
+    # re-download files instead of getting a quick "not modified".
+    # Last-Modified still works for that check.
+    Header unset ETag
+
+    # Framework code: browsers always check for a newer copy
+    # before using a saved one, so updates reach everyone right away.
+    <FilesMatch "\.(js|css|json|html)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+
+    # Images and fonts: keep for a day without checking.
+    <FilesMatch "\.(png|jpe?g|gif|svg|webp|woff2?|ttf|otf|eot)$">
+        Header set Cache-Control "max-age=86400"
+    </FilesMatch>
+</IfModule>
+FileETag None
