@@ -4051,14 +4051,21 @@ Droplets page container. Droplets classes only work inside this container.
         }
 
         &.playing {
-            
-            &::after {
-                animation: fadeinout 1.5s infinite;
-            }
 
-            @keyframes fadeinout {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0.25; }
+            &::after {
+                width: 0.75em;
+                height: 0.75em;
+                padding: 0;
+                margin-left: 0.5em;
+                margin-right: 0.15em;
+                border-radius: 1px;
+                background-color: currentColor;
+                vertical-align: 0.1em;
+                content: '';
+
+                @media ( forced-colors: active ) {
+                    forced-color-adjust: none;
+                }
             }
 
         }

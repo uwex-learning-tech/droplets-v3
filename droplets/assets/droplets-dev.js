@@ -1757,10 +1757,16 @@ function enableSlideshow( slideshow ) {
 
         button.addEventListener( 'click', ( evt ) => {
 
+            const currentTarget = evt.currentTarget;
+            const stopping = currentTarget.classList.contains( 'playing' );
+
             audioPlayer.pause();
             reset();
 
-            const currentTarget = evt.currentTarget;
+            if ( stopping ) {
+                return;
+            }
+
             const id = currentTarget.id;
 
             currentTarget.classList.remove( 'error' );
